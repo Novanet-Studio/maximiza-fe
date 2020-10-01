@@ -1,5 +1,5 @@
 require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
+  path: `.env`,
 })
 
 module.exports = {
@@ -36,20 +36,20 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-sass',
+      resolve: "gatsby-plugin-sass",
       otions: {
-        useResolveUrlLoader: true
-      }
-    }
+        useResolveUrlLoader: true,
+      },
+    },
     // Uncomment to use
-    // {
-    //   resolve: "gatsby-source-strapi",
-    //   options: {
-    //     apiURL: process.env.API_URL || "http://localhost:1337",
-    //     contentTypes: [],
-    //     singleTypes: [],
-    //     queryLimit: 1000,
-    //   },
-    // },
+    {
+      resolve: "gatsby-source-strapi",
+      options: {
+        apiURL: process.env.API_URL,
+        contentTypes: ["articulo"],
+        singleTypes: ["blog", "contacto", "educacion", "empresa", "inicio"],
+        queryLimit: 1000,
+      },
+    },
   ],
 }

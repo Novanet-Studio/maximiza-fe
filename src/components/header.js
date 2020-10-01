@@ -1,42 +1,50 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
-const Header = ({ siteTitle }) => (
+const Header = () => (
   <header
     style={{
-      background: `rebeccapurple`,
+      background: `white`,
       marginBottom: `1.45rem`,
+      borderBottom: "1px solid",
     }}
   >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
+    <nav>
+      <AniLink
+        cover
+        direction="right"
+        duration={0.55}
+        bg="#f36f21"
+        to="/nosotros"
+        // activeStyle={linkActivo}
+        aria-label="Ir al vínculo de Nosotros"
+      >
+        Nosotros
+      </AniLink>
+      <AniLink
+        cover
+        direction="left"
+        duration={0.55}
+        bg="#f36f21"
+        to="/comunidad"
+        // activeStyle={linkActivo}
+        aria-label="Ir al vínculo de Comunidad"
+      >
+        Comunidad
+      </AniLink>
+      <AniLink
+        cover
+        direction="right"
+        duration={0.55}
+        bg="#f36f21"
+        to="/asesorias"
+        // activeStyle={linkActivo}
+        aria-label="Ir al vínculo de Asesoria"
+      >
+        Asesorías
+      </AniLink>
+    </nav>
   </header>
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
 
 export default Header
