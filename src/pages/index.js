@@ -1,29 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
 
 import Layout from "../components/layout"
-// import Image from "../components/image"
 import SEO from "../components/seo"
-
-// const IndexPage = () => (
-//   <Layout>
-//     <SEO title="Home" />
-//     <h1>Hi people</h1>
-//     <p>Welcome to your new Gatsby site.</p>
-//     <p>Now go build something great.</p>
-//     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-//       <Image />
-//     </div>
-//     <Link to="/page-2/">Go to page 2</Link> <br />
-//   </Layout>
-// )
 
 const IndexPage = ({ data }) => (
   <Layout>
     <SEO title="Inicio" />
     <section className="principal">
-      {console.log(data)}
       <div className="contenido contenido--left">
         <img src={data.strapiInicio.principal.logo.url} alt="logo" />
         <p className="principal__texto">
@@ -32,7 +16,8 @@ const IndexPage = ({ data }) => (
         <button className="principal__button">Quiero saber más</button>
       </div>
       <div className="contenido contenido--derecha">
-        <img src="" alt="logo" className="principal__fondo" />
+        <img src={data.strapiInicio.principal.imagen.url} alt="logo" className="principal__fondo" />
+        {/* <Img fluid={data.strapiInicio.principal.} /> */}
       </div>
     </section>
     <section className="benificios">
@@ -85,6 +70,9 @@ export const query = graphql`
         logo {
           url
         }
+        imagen {
+          url
+        }
         logo_texto
       }
       beneficios_titulo
@@ -100,8 +88,8 @@ export const query = graphql`
         contenido
         imagen {
           childImageSharp {
-            fluid {
-              base64
+            fluid(maxWidth: 459) {
+              ...GatsbyImageSharpFluid
             }
           }
         }
