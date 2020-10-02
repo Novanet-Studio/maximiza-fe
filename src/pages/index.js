@@ -9,7 +9,7 @@ const IndexPage = ({ data }) => (
     <SEO title="Inicio" />
     <section className="principal">
       <div className="contenido contenido--left">
-        <img src={data.strapiInicio.principal.logo.url} alt="logo" />
+        <img src={data.strapiInicio.principal.logo.url} alt="logo" className="principal__logo"/>
         <p className="principal__texto">
           {data.strapiInicio.principal.logo_texto}
         </p>
@@ -52,9 +52,9 @@ const IndexPage = ({ data }) => (
         Lorem ipsum, dolor sit amet consectetur adipisicing elit.
       </p>
       <form className="form">
-        <input type="text" className="form__input" />
-        <input type="email" className="form__input" />
-        <textarea cols="30" rows="10" className="form__textarea"></textarea>
+        <input type="text" placeholder="Nombre y apellido" className="form__input" />
+        <input type="email" placeholder="Correo electrónico" className="form__input" />
+        <textarea cols="30" rows="3" placeholder="Mensaje" className="form__textarea"></textarea>
         <button className="form__button">Enviar Mensaje</button>
       </form>
     </section>
@@ -68,10 +68,10 @@ export const query = graphql`
     strapiInicio {
       principal {
         logo {
-          url
+          publicURL
         }
         imagen {
-          url
+          publicURL
         }
         logo_texto
       }

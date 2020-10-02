@@ -1,1 +1,357 @@
-@import "./normalize"
+@import "./normalize";
+
+/*------Contenedores y fuentes------*/
+/* Montserrat 300 - light */
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../fonts/Montserrat/Montserrat-Light.ttf");
+}
+
+/* Montserrat 400 - Regular */
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/Montserrat/Montserrat-Regular.ttf");
+}
+
+/* Montserrat 500 - Medium */
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/Montserrat/Montserrat-Medium.ttf");
+}
+
+/* Montserrat 700 - Bold */
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/Montserrat/Montserrat-Bold.ttf");
+}
+
+/* Montserrat 900 - Black */
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 900;
+  src: url("../fonts/Montserrat/Montserrat-Black.ttf");
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+}
+
+.contenedor {
+  margin: 0 5vw;
+}
+
+h2 {
+  font-size: 1.9rem;
+  text-align: center;
+  font-weight: 900;
+  margin-bottom: 3vh;
+  color: #050505;
+}
+
+h3 {
+  font-size: 1.7rem;
+  line-height: 2rem;
+  font-weight: 900;
+}
+
+h4 {
+  font-size: 1.5rem;
+  line-height: 1.8rem;
+  font-weight: 700;
+}
+
+.contacto__descripcion {
+  color: #5f5f5f;
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+  font-weight: 400;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+/*------Cabecera------*/
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5vh 0;
+  background: #fff;
+  .cabecera__logo {
+    width: 50%;
+  }
+  nav {
+    width: 50%;
+    a {
+      padding: 2.5vh 2.5vw;
+      font-weight: 900;
+      font-size: 1.1rem;
+      margin-right: 3vw;
+      text-decoration: none;
+      color: #737474;
+      border: #fff solid 1px;
+      position: relative;
+      &:hover {
+        transition: 1s;
+        border: #bfbfbf solid 1px;
+      }
+      &:nth-child(1) {
+        span {
+          color: #00735e;
+        }
+      }
+      &:nth-child(2) {
+        span {
+          color: #007d43;
+        }
+      }
+      &:nth-child(3) {
+        span {
+          color: #09b333;
+        }
+      }
+      span {
+        font-size: 2rem;
+        position: absolute;
+        top: 1.4vh;
+        left: 2.6vh;
+      }
+    }
+  }
+}
+
+/*------Contenedor y secciones------*/
+
+.principal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  height: 46vh;
+  &__logo {
+    width: 45vh;
+    margin: 2vh 5vw;
+  }
+  &__titulo {
+  }
+  &__texto {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 400;
+    color: #707070;
+    margin: 3vh 5vw;
+  }
+  &__button {
+    margin: 0 5vw;
+    font-size: 1rem;
+    font-weight: 300;
+    color: #fff;
+    padding: 2vh;
+    border: none;
+    background: #2d7300;
+  }
+  &__fondo {
+    width: 100%;
+  }
+
+  .contenido--left {
+    width: 50%;
+    text-align: right;
+  }
+  .contenido--derecha {
+    width: 50%;
+  }
+}
+
+/*------Pie------*/
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-bottom: 4vh;
+  ul {
+    li {
+      width: 4vh;
+      height: 4vh;
+      margin-right: 1.5vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      &:nth-child(1) {
+        background: #00735e;
+      }
+      &:nth-child(2) {
+        background: #007d43;
+      }
+      &:nth-child(3) {
+        background: #09b333;
+      }
+    }
+  }
+  p {
+    color: #5f5f5f;
+    font-size: 1rem;
+    font-weight: 300;
+    img {
+      width: 6vw;
+      padding-left: 0.5vw;
+    }
+  }
+}
+
+/*------------------------------------------Vista Inicio------------------------------------------*/
+/*------Beneficios------*/
+.beneficios {
+  margin-top: 14vh;
+  &__lista {
+    margin-top: 7vh;
+  }
+
+  &__item {
+    width: 30%;
+    border-bottom: #d1d1d1 4px solid;
+    &:nth-child(1) {
+      .beneficios__subtitulo {
+        color: #00735e;
+      }
+    }
+    &:nth-child(2) {
+      margin-left: 5%;
+      .beneficios__subtitulo {
+        color: #007d43;
+      }
+    }
+    &:nth-child(3) {
+      margin-left: 5%;
+      .beneficios__subtitulo {
+        color: #09b333;
+      }
+    }
+  }
+
+  &__descripcion {
+    color: #050505;
+    font-size: 1.2rem;
+    padding-bottom: 1vh;
+  }
+}
+
+/*------Servicios------*/
+.servicios {
+  margin-top: 14vh;
+  &__lista {
+    margin-top: 4vh;
+  }
+  &__item {
+    width: 30%;
+    height: 37vh;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    filter: grayscale(100%);
+    &:hover {
+      filter: grayscale(0%);
+      transition: 2s;
+      .servicios__descripcion {
+        display: block;
+      }
+    }
+    &:nth-child(1) {
+      background-color: #00735e;
+      .servicios__descripcion {
+        background-color: #00735e;
+      }
+    }
+    &:nth-child(2) {
+      background-color: #007d43;
+      margin-left: 5%;
+      .servicios__descripcion {
+        background-color: #007d43;
+      }
+    }
+    &:nth-child(3) {
+      background-color: #09b333;
+      margin-left: 5%;
+      .servicios__descripcion {
+        background-color: #09b333;
+      }
+    }
+    .servicios__subtitulo {
+      color: #fff;
+      padding: 2.5vh;
+    }
+  }
+  &__subtitulo {
+    color: #fff;
+    padding: 2.5vh;
+  }
+  &__descripcion {
+    display: none;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    padding: 2.5vh;
+    transition: 2s;
+    width: 100%;
+    position: absolute;
+    bottom: -14vh;
+  }
+}
+
+/*------Contacto------*/
+.contacto {
+  margin-top: 14vh;
+  margin-bottom: 14vh;
+  .form {
+    margin: 10vh 5vh;
+    input {
+      width: 49%;
+      margin-bottom: 2vh;
+      color: #5f5f5f;
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding: 2vh 0.5vh;
+      border: none;
+      border-bottom: #00735e 2px solid;
+      &:nth-child(2) {
+        margin-left: 1.5vw;
+      }
+    }
+    textarea {
+      width: 84.5%;
+      color: #5f5f5f;
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding: 2vh 0.5vh;
+      border: none;
+      border-bottom: #00735e 2px solid;
+      margin-right: 1.5vw;
+    }
+    &__button {
+      font-size: 1rem;
+      font-weight: 300;
+      color: #fff;
+      background: #04661d;
+      padding: 3.5vh;
+      border: none;
+    }
+  }
+}

@@ -13,13 +13,22 @@ import React from "react"
 // )
 
 const Footer = () => (
-  <footer>
+  <footer className="contenedor">
     <ul>
-      <li>Instagram</li>
-      <li>LinkedIn</li>
-      <li>Twitter</li>
+      <li>
+        <span>Ins</span>
+      </li>
+      <li>
+        <span>Lin</span>
+      </li>
+      <li>
+        <span>Twi</span>
+      </li>
     </ul>
-    <p>© {new Date().getFullYear()} Maximiza Casa de Bolsa - Derechos reservados | Diseñado por: <img src="" alt="novanet"/></p>
+    <p>
+      © {new Date().getFullYear()} Maximiza Casa de Bolsa - Derechos reservados
+      | Diseñado por: <img src="" alt="novanet" />
+    </p>
   </footer>
 )
 
