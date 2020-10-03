@@ -2,14 +2,14 @@ import React from "react"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 const Header = () => (
-  <header className="contenedor">
+  <header>
     <div className="cabecera__logo"></div>
     <nav>
       <AniLink
         cover
         direction="right"
         duration={0.55}
-        to="/nosotros"
+        to="#"
         // activeStyle={linkActivo}
         aria-label="Ir al vínculo de Nosotros"
       >
@@ -19,7 +19,7 @@ const Header = () => (
         cover
         direction="left"
         duration={0.55}
-        to="/comunidad"
+        to="#"
         // activeStyle={linkActivo}
         aria-label="Ir al vínculo de Comunidad"
       >
@@ -29,7 +29,7 @@ const Header = () => (
         cover
         direction="right"
         duration={0.55}
-        to="/asesorias"
+        to="#"
         // activeStyle={linkActivo}
         aria-label="Ir al vínculo de Asesoria"
       >

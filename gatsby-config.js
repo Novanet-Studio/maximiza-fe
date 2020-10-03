@@ -10,8 +10,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`, 
     `gatsby-plugin-transition-link`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
@@ -49,6 +48,12 @@ module.exports = {
         contentTypes: ["articulo"],
         singleTypes: ["blog", "contacto", "educacion", "empresa", "inicio", "legal", "servicios"],
         queryLimit: 1000,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaultQuality: 100,
       },
     },
   ],

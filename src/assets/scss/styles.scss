@@ -1,6 +1,8 @@
 @import "./normalize";
+@import "./variables";
 
 /*------Contenedores y fuentes------*/
+
 /* Montserrat 300 - light */
 @font-face {
   font-family: "Montserrat";
@@ -48,12 +50,8 @@
   font-family: "Montserrat", sans-serif;
 }
 
-.contenedor {
-  margin: 0 5vw;
-}
-
 h2 {
-  font-size: 1.9rem;
+  font-size: 1.6rem;
   text-align: center;
   font-weight: 900;
   margin-bottom: 3vh;
@@ -61,13 +59,13 @@ h2 {
 }
 
 h3 {
-  font-size: 1.7rem;
+  font-size: 1.3rem;
   line-height: 2rem;
   font-weight: 900;
 }
 
 h4 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   line-height: 1.8rem;
   font-weight: 700;
 }
@@ -85,6 +83,21 @@ ul {
   list-style: none;
 }
 
+img {
+  width: 100%;
+}
+
+/*------Contenedores princiales------*/
+
+#___gatsby {
+  @extend .flex;
+  justify-content: center;
+}
+
+.contenedor {
+  width: 1280px;
+}
+
 /*------Cabecera------*/
 
 header {
@@ -99,16 +112,23 @@ header {
     width: 50%;
     a {
       padding: 2.5vh 2.5vw;
-      font-weight: 900;
-      font-size: 1.1rem;
+      font-weight: 800;
+      font-size: 1rem;
       margin-right: 3vw;
       text-decoration: none;
-      color: #737474;
-      border: #fff solid 1px;
+      color: #737474;   
       position: relative;
-      &:hover {
-        transition: 1s;
-        border: #bfbfbf solid 1px;
+      &:hover {    
+        transition: 0.5s;    
+        &:nth-child(1) { 
+          border-bottom: #00735e solid 2px;
+        }
+        &:nth-child(2) {
+          border-bottom: #007d43 solid 2px;
+        }
+        &:nth-child(3) {
+          border-bottom: #09b333 solid 2px;
+        }
       }
       &:nth-child(1) {
         span {
@@ -135,46 +155,43 @@ header {
   }
 }
 
-/*------Contenedor y secciones------*/
+/*----- Secciones------*/
 
 .principal {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin: 0;
   height: 46vh;
+  .columna--left,
+  .columna--derecha {
+    width: 50%;
+    padding: 2.5vw;
+  }
+  .columna--left {
+    text-align: right;
+  }
   &__logo {
     width: 45vh;
-    margin: 2vh 5vw;
   }
   &__titulo {
   }
+  &__imagen {
+    width: 100%;
+  }
   &__texto {
-    font-size: 1.5rem;
-    line-height: 2rem;
-    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 1.8rem;
+    font-weight: 300;
     color: #707070;
-    margin: 3vh 5vw;
   }
   &__button {
-    margin: 0 5vw;
     font-size: 1rem;
     font-weight: 300;
     color: #fff;
     padding: 2vh;
+    margin-top: 2vh;
     border: none;
     background: #2d7300;
-  }
-  &__fondo {
-    width: 100%;
-  }
-
-  .contenido--left {
-    width: 50%;
-    text-align: right;
-  }
-  .contenido--derecha {
-    width: 50%;
   }
 }
 
@@ -216,30 +233,31 @@ footer {
   }
 }
 
-/*------------------------------------------Vista Inicio------------------------------------------*/
+/* Inicio
+========================================================================== */
+
 /*------Beneficios------*/
 .beneficios {
   margin-top: 14vh;
   &__lista {
+    justify-content: space-between;
     margin-top: 7vh;
   }
 
   &__item {
     width: 30%;
-    border-bottom: #d1d1d1 4px solid;
+    border-bottom: #d1d1d1 3px solid;
     &:nth-child(1) {
       .beneficios__subtitulo {
         color: #00735e;
       }
     }
     &:nth-child(2) {
-      margin-left: 5%;
       .beneficios__subtitulo {
         color: #007d43;
       }
     }
     &:nth-child(3) {
-      margin-left: 5%;
       .beneficios__subtitulo {
         color: #09b333;
       }
@@ -248,8 +266,10 @@ footer {
 
   &__descripcion {
     color: #050505;
-    font-size: 1.2rem;
-    padding-bottom: 1vh;
+    font-size: 1rem;
+    line-height: 1.4rem;
+    padding-top: 0.25vh;
+    padding-bottom: 1.5vh;
   }
 }
 
@@ -258,6 +278,7 @@ footer {
   margin-top: 14vh;
   &__lista {
     margin-top: 4vh;
+    justify-content: space-between;
   }
   &__item {
     width: 30%;
@@ -265,42 +286,37 @@ footer {
     cursor: pointer;
     display: flex;
     align-items: flex-end;
-    filter: grayscale(100%);
+    position: relative;
     &:hover {
-      filter: grayscale(0%);
-      transition: 2s;
+      transition: 0.5s;
       .servicios__descripcion {
         display: block;
       }
-    }
-    &:nth-child(1) {
-      background-color: #00735e;
-      .servicios__descripcion {
+      &:nth-child(1) {
         background-color: #00735e;
+        .servicios__descripcion {
+          background-color: #00735e;
+        }
       }
-    }
-    &:nth-child(2) {
-      background-color: #007d43;
-      margin-left: 5%;
-      .servicios__descripcion {
+      &:nth-child(2) {
         background-color: #007d43;
+        .servicios__descripcion {
+          background-color: #007d43;
+        }
       }
-    }
-    &:nth-child(3) {
-      background-color: #09b333;
-      margin-left: 5%;
-      .servicios__descripcion {
+      &:nth-child(3) {
         background-color: #09b333;
+        .servicios__descripcion {
+          background-color: #09b333;
+        }
       }
     }
     .servicios__subtitulo {
       color: #fff;
       padding: 2.5vh;
+      z-index: 3;
+      text-shadow: 2px 2px 2px #000;
     }
-  }
-  &__subtitulo {
-    color: #fff;
-    padding: 2.5vh;
   }
   &__descripcion {
     display: none;
@@ -312,7 +328,21 @@ footer {
     transition: 2s;
     width: 100%;
     position: absolute;
-    bottom: -14vh;
+    top: 37vh;
+    z-index: 2;
+  }
+
+  &__imagen {
+    width: 100%;
+    height: 37vh;
+    position: absolute !important;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    &:hover {
+      mix-blend-mode: multiply;
+      transition: 0.5s;
+    }
   }
 }
 
