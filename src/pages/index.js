@@ -14,7 +14,7 @@ const IndexPage = ({ data }) => (
           alt="logo"
           className="principal__logo"
         />
-        <p className="principal__texto">
+        <p className="principal__texto principal__texto--pequeño">
           {data.strapiInicio.principal.logo_texto}
         </p>
         <button className="principal__button">Quiero saber más</button>
