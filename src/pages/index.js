@@ -19,7 +19,7 @@ const IndexPage = ({ data }) => (
         </p>
         <button className="principal__button">Quiero saber más</button>
       </div>
-      <div className="columna--derecha">
+      <div className="columna--right">
         <img
           src={data.strapiInicio.principal.imagen.url}
           alt="logo"
@@ -28,9 +28,7 @@ const IndexPage = ({ data }) => (
       </div>
     </section>
     <section className="beneficios">
-      <h2>
-        {data.strapiInicio.beneficios_titulo}
-      </h2>
+      <h2>{data.strapiInicio.beneficios_titulo}</h2>
       <ul className="beneficios__lista">
         {data.strapiInicio.beneficios.map((item) => (
           <li className="beneficios__item" key={item.id}>
@@ -41,9 +39,7 @@ const IndexPage = ({ data }) => (
       </ul>
     </section>
     <section className="servicios">
-      <h2>
-        {data.strapiInicio.servicios_titulo}
-      </h2>
+      <h2>{data.strapiInicio.servicios_titulo}</h2>
       <ul className="servicios__lista">
         {data.strapiInicio.servicios.map((item) => (
           <li className="servicios__item" key={item.id}>
@@ -63,23 +59,28 @@ const IndexPage = ({ data }) => (
         Lorem ipsum, dolor sit amet consectetur adipisicing elit.
       </p>
       <form className="form">
-        <input
-          type="text"
-          placeholder="Nombre y apellido"
-          className="form__input"
-        />
-        <input
-          type="email"
-          placeholder="Correo electrónico"
-          className="form__input"
-        />
-        <textarea
-          cols="30"
-          rows="3"
-          placeholder="Mensaje"
-          className="form__textarea"
-        ></textarea>
-        <button className="form__button">Enviar Mensaje</button>
+        <div className="columna--left">
+          <input
+            type="text"
+            placeholder="Nombre y apellido"
+            className="form__input"
+          />
+          <input
+            type="email"
+            placeholder="Correo electrónico"
+            className="form__input"
+          />
+          <textarea
+            cols="30"
+            rows="3"
+            placeholder="Mensaje"
+            className="form__textarea"
+          ></textarea>
+        </div>
+        
+        <div className="columna--right">
+          <button className="form__button">Enviar mensaje</button>
+        </div>
       </form>
     </section>
   </Layout>
