@@ -3,6 +3,13 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+// @fortawesome libraries
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { fab } from "@fortawesome/free-brands-svg-icons"
+import { fas } from "@fortawesome/free-solid-svg-icons"
+// add fas and fab to the library
+library.add(fab, fas)
 
 const IndexPage = ({ data }) => (
   <Layout>
@@ -34,15 +41,25 @@ const IndexPage = ({ data }) => (
     </section>
 
     <section className="normativas">
-      <h2>
-        {data.strapiLegal.normativas_titulo}
-      </h2>
+      <h2>{data.strapiLegal.normativas_titulo}</h2>
       <ul className="normativas__lista">
         {data.strapiLegal.descargas.map((item) => (
           <li className="normativas__item" key={item.id}>
             <div className="normativas__descarga">
-            <button className="normativas__ver">más</button>
-            <button className="normativas__down">más</button>
+              <button className="normativas__ver">
+                <FontAwesomeIcon
+                  icon={["fas", "eye"]}
+                  fixedWidth
+                  size="1.5x"
+                />
+              </button>
+              <button className="normativas__down">
+                <FontAwesomeIcon
+                  icon={["fas", "download"]}
+                  fixedWidth
+                  size="1.5x"
+                />
+              </button>
             </div>
             <p className="normativas__contenido">{item.documento}</p>
           </li>

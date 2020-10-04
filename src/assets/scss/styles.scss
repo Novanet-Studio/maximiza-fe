@@ -159,6 +159,39 @@ header {
         top: 1.3vh;
         left: 1.3vw;
       }
+      &:hover .cabecera__menudrop {
+        display: block;
+      }
+      &:nth-child(1) .cabecera__menudrop {
+        .cabecera__droplink:hover {
+          font-weight: 700;
+          color: #00735f;
+        }
+      }
+      &:nth-child(2) .cabecera__menudrop {
+        .cabecera__droplink:hover {
+          font-weight: 700;
+          color: #007e43;
+        }
+      }
+      &:nth-child(3) .cabecera__menudrop {
+        .cabecera__droplink:hover {
+          font-weight: 700;
+          color: #09b333;
+        }
+      }
+    }
+    .cabecera__menudrop {
+      display: none;
+      position: absolute;
+      background: #fff;
+      top: 6vh;
+      left: 0;
+    }
+    .cabecera__droplink {
+      padding: 0.5vh 2.5vw;
+      font-weight: 500;
+      font-size: 0.9rem;
     }
   }
 }
@@ -223,8 +256,8 @@ footer {
       height: 4vh;
       margin-right: 1.5vh;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       color: #fff;
       cursor: pointer;
       &:nth-child(1) {
@@ -554,6 +587,89 @@ footer {
   }
 }
 
+/* Servicios
+========================================================================== */
+
+/*------Inversionista------*/
+.inversionista {
+  &__grupo {
+    margin-top: 16vh;
+    @extend .flex;
+    justify-content: space-between;
+    &:last-child {
+      margin-bottom: 16vh;
+      .inversionista__cabecera {
+        order: 2;
+        .inversionista__titulo {
+          text-align: right;
+        }
+      }
+      .inversionista__contenido {
+        .inversionista__icono {
+          background: #09b333;
+        }
+        .inversionista__contenido {
+          order: 1;
+        }
+      }
+    }
+  }
+  &__cabecera {
+    width: 25%;
+  }
+  &__titulo {
+    text-align: right;
+    padding: 2.5vh;
+    font-weight: 900;
+    color: #fff;
+    z-index: 3;
+    text-shadow: 2px 2px 2px #000;
+  }
+  &__imagen {
+    width: 100%;
+  }
+  &__contenido {
+    width: 72%;
+    @extend .flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  &__item {
+    width: 48%;
+    background: #f1f1f1;
+    padding: 1.2vh 0;
+    position: relative;
+    background-image: url(../images/dropdown.png);
+    background-repeat: no-repeat;
+    background-size: 12px;
+    background-position: 96% 50%;
+    &:hover {
+      .inversionista__texto {
+        transition: 0.5s;
+        display: block;
+      }
+    }
+  }
+  &__subtitulo {
+    font-weight: 500;
+  }
+  &__icono {
+    background: #007d43;
+    color: #fff;
+    padding: 1.5vh;
+    margin-right: 2vh;
+  }
+  &__texto {
+    display: none;
+    padding: 2vh;
+    font-size: 0.85rem;
+    line-height: 1.4rem;
+    background: #f1f1f1;
+    z-index: 3;
+    position: absolute;
+  }
+}
+
 /* Educación
 ========================================================================== */
 
@@ -748,12 +864,14 @@ footer {
     width: 14%;
   }
   &__ver {
+    cursor: pointer;
     padding: 0.7vh 0;
     width: 100%;
     color: #f1f1f1;
     border: none;
   }
   &__down {
+    cursor: pointer;
     padding: 0.7vh 0;
     width: 100%;
     background: #f1f1f1;

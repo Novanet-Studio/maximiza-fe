@@ -3,6 +3,13 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+// @fortawesome libraries
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { fab } from "@fortawesome/free-brands-svg-icons"
+import { fas } from "@fortawesome/free-solid-svg-icons"
+// add fas and fab to the library
+library.add(fab, fas)
 
 const Servicios = ({ data }) => (
   <Layout>
@@ -22,22 +29,34 @@ const Servicios = ({ data }) => (
         />
       </div>
     </section>
+
     <section className="inversionista">
-      <ul className="inversionista__lista">
-        {data.strapiServicios.inversionista.map((item) => (
-          <li className="inversionista__tipo" key={item.id}>
-            <h3 className="inversionista__titulo">{item.titulo}</h3>
+      {data.strapiServicios.inversionista.map((item) => (
+        <div className="inversionista__grupo" key={item.id}>
+          <div className="inversionista__cabecera">
+            <h3 className="inversionista__titulo">lorem ipsum dolor</h3>
+            <div className="inversionista__imagen"></div>
+          </div>
+          <ul className="inversionista__contenido">
             {item.items.map((element) => (
-              <div className="inversionista__item" key={element.id}>
-                <h4 className="inversionista__subtitulo">{element.titulo}</h4>
-                <p className="inversionista__contenido">
-                  {element.contenido}
-                </p>
-              </div>
+              <li className="inversionista__item" key={element.id}>
+                <h4 className="inversionista__subtitulo">
+                  <span className="inversionista__icono">
+                    {item.titulo}
+                    <FontAwesomeIcon
+                      icon={["fas", "eye"]}
+                      fixedWidth
+                      size="1.5x"
+                    />
+                  </span>
+                  {element.titulo}
+                </h4>
+                <p className="inversionista__texto">{element.contenido}</p>
+              </li>
             ))}
-          </li>
-        ))}
-      </ul>
+          </ul>
+        </div>
+      ))}
     </section>
   </Layout>
 )

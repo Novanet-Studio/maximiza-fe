@@ -14,6 +14,10 @@ const Header = () => (
         aria-label="Ir al vínculo de Nosotros"
       >
         <span>•</span>Nosotros
+        <ul className="cabecera__menudrop">
+          <li className="cabecera__droplink">Empresas</li>
+          <li className="cabecera__droplink">Servicios</li>
+        </ul>
       </AniLink>
       <AniLink
         cover
@@ -23,7 +27,12 @@ const Header = () => (
         // activeStyle={linkActivo}
         aria-label="Ir al vínculo de Comunidad"
       >
-       <span>•</span>Comunidad
+        <span>•</span>Comunidad
+        <ul className="cabecera__menudrop">
+          <li className="cabecera__droplink">Private equity</li>
+          <li className="cabecera__droplink">Educación</li>
+          <li className="cabecera__droplink">Responsabilidad</li>
+        </ul>
       </AniLink>
       <AniLink
         cover
@@ -33,7 +42,12 @@ const Header = () => (
         // activeStyle={linkActivo}
         aria-label="Ir al vínculo de Asesoria"
       >
-       <span>•</span>Asesorías
+        <span>•</span>Asesorías
+        <ul className="cabecera__menudrop">
+          <li className="cabecera__droplink">Balances</li>
+          <li className="cabecera__droplink">Blog</li>
+          <li className="cabecera__droplink">Legal</li>
+        </ul>
       </AniLink>
     </nav>
   </header>
