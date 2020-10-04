@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Email from "../assets/images/email.png";
 
 const IndexPage = ({ data }) => (
   <Layout>
@@ -55,7 +56,7 @@ const IndexPage = ({ data }) => (
     </section>
     <section className="contacto">
       <h2>{data.strapiInicio.contacto_titulo}</h2>
-      <p className="contacto__descripcion">
+      <p className="descripcion">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit.
       </p>
       <form className="form">
@@ -77,9 +78,11 @@ const IndexPage = ({ data }) => (
             className="form__textarea"
           ></textarea>
         </div>
-        
+
         <div className="columna--right">
-          <button className="form__button">Enviar mensaje</button>
+          <button className="form__button">
+          <img src={Email} alt="email" /> Enviar mensaje
+          </button>
         </div>
       </form>
     </section>
@@ -113,7 +116,7 @@ export const query = graphql`
         contenido
         imagen {
           childImageSharp {
-            fluid(maxWidth: 300) {
+            fluid(maxWidth: 390) {
               ...GatsbyImageSharpFluid
             }
           }

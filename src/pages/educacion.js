@@ -8,7 +8,6 @@ const IndexPage = ({ data }) => (
   <Layout>
     <SEO title="Inicio" />
     <section className="principal">
-
       <div className="columna--left">
         <Img
           fluid={data.strapiEducacion.principal.imagen.childImageSharp.fluid}
@@ -23,7 +22,6 @@ const IndexPage = ({ data }) => (
           {data.strapiEducacion.principal.contenido}
         </p>
       </div>
-
     </section>
 
     <section className="innovar">
@@ -31,7 +29,10 @@ const IndexPage = ({ data }) => (
       <ul className="innovar__lista">
         {data.strapiEducacion.items.map((item) => (
           <li className="innovar__item" key={item.id}>
-            <Img className="innovar__imagen" fluid={item.imagen.childImageSharp.fluid} />
+            <Img
+              className="innovar__imagen"
+              fluid={item.imagen.childImageSharp.fluid}
+            />
             <h3 className="innovar__subtitulo">{item.titulo}</h3>
             <p className="innovar__descripcion">{item.contenido}</p>
           </li>
@@ -40,13 +41,14 @@ const IndexPage = ({ data }) => (
     </section>
 
     <section className="programas">
-      <h2>
-        {data.strapiEducacion.programas_titulo}
-      </h2>
-      <ul className="programas__secciones">
+      <h2>{data.strapiEducacion.programas_titulo}</h2>
+      <div className="programas__secciones">
         {data.strapiEducacion.programas.map((item) => (
-          <li className="programas__ficha" key={item.id}>
-            <Img className="programas__imagen" fluid={item.imagen.childImageSharp.fluid} />
+          <div className="programas__grupos" key={item.id}>
+            <Img
+              className="programas__imagen"
+              fluid={item.imagen.childImageSharp.fluid}
+            />
             <ul className="programas__lista">
               {item.mercados.map((mercado) => (
                 <li className="programas__item" key={mercado.id}>
@@ -55,10 +57,12 @@ const IndexPage = ({ data }) => (
                 </li>
               ))}
             </ul>
-          </li>
+          </div>
         ))}
-      </ul>
-      <Link className="programas__boton" to="/educacion">Necesito más información</Link>
+      </div>
+      <Link className="programas__boton" to="/educacion">
+        Necesito más información
+      </Link>
     </section>
   </Layout>
 )
@@ -73,7 +77,7 @@ export const query = graphql`
         contenido
         imagen {
           childImageSharp {
-            fluid(maxWidth: 450) {
+            fluid(maxWidth: 630) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -86,7 +90,7 @@ export const query = graphql`
         contenido
         imagen {
           childImageSharp {
-            fluid(maxWidth: 450) {
+            fluid(maxWidth: 157) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -103,7 +107,7 @@ export const query = graphql`
         }
         imagen {
           childImageSharp {
-            fluid(maxWidth: 450) {
+            fluid(maxWidth: 390) {
               ...GatsbyImageSharpFluid
             }
           }

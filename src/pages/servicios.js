@@ -1,6 +1,6 @@
 import React from "react"
-import Img from "gatsby-image"
 import { graphql } from "gatsby"
+import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -8,15 +8,15 @@ const Servicios = ({ data }) => (
   <Layout>
     <SEO title="Servicios" />
     <section className="principal">
-      <div className="contenido contenido--left">
-        <h2 className="principal__titulo">
+      <div className="columna--left">
+        <h1 className="principal__titulo">
           {data.strapiServicios.principal.titulo}
-        </h2>
-        <p className="principal__descripcion">
+        </h1>
+        <p className="principal__texto">
           {data.strapiServicios.principal.contenido}
         </p>
       </div>
-      <div className="contenido contenido--derecha">
+      <div className="columna--right">
         <Img
           fluid={data.strapiServicios.principal.imagen.childImageSharp.fluid}
         />
@@ -52,7 +52,7 @@ export const query = graphql`
         contenido
         imagen {
           childImageSharp {
-            fluid(maxWidth: 450) {
+            fluid(maxWidth: 630) {
               ...GatsbyImageSharpFluid
             }
           }

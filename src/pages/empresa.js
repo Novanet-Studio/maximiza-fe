@@ -1,47 +1,55 @@
-import React from 'react'
-import { graphql } from 'gatsby'
+import React from "react"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import Layout from '../components/layout'
+import Layout from "../components/layout"
 
 const Empresa = ({ data }) => (
   <Layout>
     <section className="principal">
-      <div className="contenido contenido--left">
-        <Img fluid={data.strapiEmpresa.principal.imagen.childImageSharp.fluid} />
+      <div className="columna--left">
+        <Img
+          fluid={data.strapiEmpresa.principal.imagen.childImageSharp.fluid}
+        />
       </div>
-      <div className="contenido contenido--derecha">
-        <h2 className="principal__titulo">
+
+      <div className="columna--right">
+        <h1 className="principal__titulo">
           {data.strapiEmpresa.principal.titulo}
-        </h2>
-        <p className="principal__descripcion">
+        </h1>
+        <p className="principal__texto">
           {data.strapiEmpresa.principal.contenido}
         </p>
       </div>
     </section>
+
     <section className="historia">
       <ul className="historia__lista">
         {data.strapiEmpresa.historia.map((item) => (
           <li className="historia__item" key={item.id}>
-            <Img 
+            <Img
+              className="historia__image"
               fluid={item.imagen.childImageSharp.fluid}
             />
-            <h3 className="historia__titulo">{item.titulo}</h3>
-            <p className="historia__descripcion">{item.contenido}</p>
-            <button className="historia__button">Conocer más</button>
+            <div className="historia__descripcion">
+              <h3 className="historia__titulo">{item.titulo}</h3>
+              <p className="historia__texto">{item.contenido}</p>
+              <button className="historia__button">Conocer más</button>
+            </div>
           </li>
         ))}
       </ul>
     </section>
+
     <section className="aliados">
-      <h3 className="aliados__titulo">{data.strapiEmpresa.aliados.titulo}</h3>
-      <p className="aliados__descripcion">
-        {data.strapiEmpresa.aliados.contenido}
-      </p>
+      <h2>{data.strapiEmpresa.aliados.titulo}</h2>
+      <p className="descripcion">{data.strapiEmpresa.aliados.contenido}</p>
     </section>
+
     <section className="nosotros">
       <ul className="nosotros__lista">
         {data.strapiEmpresa.nosotros.map((item) => (
           <li className="nosotros__item" key={item.id}>
+            <div className="nosotros__imagen"></div>
             <h3 className="nosotros__titulo">{item.titulo}</h3>
             <p className="nosotros__descripcion">{item.contenido}</p>
           </li>
@@ -61,7 +69,7 @@ export const query = graphql`
         contenido
         imagen {
           childImageSharp {
-            fluid(maxWidth: 450) {
+            fluid(maxWidth: 630) {
               ...GatsbyImageSharpFluid
             }
           }

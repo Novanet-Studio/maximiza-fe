@@ -1,7 +1,6 @@
 import React from "react"
-import Img from "gatsby-image"
 import { graphql } from "gatsby"
-
+import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
@@ -10,34 +9,41 @@ const IndexPage = ({ data }) => (
     <SEO title="Inicio" />
     <section className="principal">
       {console.log(data)}
-      <div className="contenido contenido--left">
-        <h2 className="principal__titulo">
+      <div className="columna--left">
+        <h1 className="principal__titulo">
           {data.strapiLegal.principal.titulo}
-        </h2>
+        </h1>
         <p className="principal__texto">
           {data.strapiLegal.principal.contenido}
         </p>
       </div>
-      <div className="contenido contenido--right">
+      <div className="columna--right">
         <Img fluid={data.strapiLegal.principal.imagen.childImageSharp.fluid} />
       </div>
     </section>
+
     <section className="etica">
       <Img
         className="etica__imagen"
         fluid={data.strapiLegal.codigo.imagen.childImageSharp.fluid}
       />
-      <h3 className="etica__titulo">{data.strapiLegal.codigo.titulo}</h3>
-      <p className="etica__contenido">{data.strapiLegal.codigo.contenido}</p>
+      <div className="etica__contenido">
+        <h2 className="etica__titulo">{data.strapiLegal.codigo.titulo}</h2>
+        <p className="etica__texto">{data.strapiLegal.codigo.contenido}</p>
+      </div>
     </section>
+
     <section className="normativas">
-      <h3 className="normativas__titulo">
+      <h2>
         {data.strapiLegal.normativas_titulo}
-      </h3>
+      </h2>
       <ul className="normativas__lista">
         {data.strapiLegal.descargas.map((item) => (
           <li className="normativas__item" key={item.id}>
-            <div className="normativas__descarga"></div>
+            <div className="normativas__descarga">
+            <button className="normativas__ver">más</button>
+            <button className="normativas__down">más</button>
+            </div>
             <p className="normativas__contenido">{item.documento}</p>
           </li>
         ))}
@@ -56,7 +62,7 @@ export const query = graphql`
         contenido
         imagen {
           childImageSharp {
-            fluid(maxWidth: 460) {
+            fluid(maxWidth: 630) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -67,7 +73,7 @@ export const query = graphql`
         contenido
         imagen {
           childImageSharp {
-            fluid(maxWidth: 460) {
+            fluid(maxWidth: 430) {
               ...GatsbyImageSharpFluid
             }
           }
