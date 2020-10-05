@@ -43,6 +43,7 @@ const Servicios = ({ data }) => (
                 />
                 <h4 className="inversionista__subtitulo">{element.titulo}</h4>
                 <p className="inversionista__texto">
+                <strong>{element.titulo}</strong>
                   {element.contenido.substring(0, 150).concat("...")}
                   <button className="inversionista__boton">Leer más</button>
                 </p>
