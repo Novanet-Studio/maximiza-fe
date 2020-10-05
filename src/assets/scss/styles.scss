@@ -117,6 +117,9 @@ img {
 		opacity: 1;
 	}
 }
+ main {
+  margin-bottom: 5vh;
+ }
 
 /*------Cabecera------*/
 
@@ -244,7 +247,7 @@ header {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  height: 46vh;
+  height: 46vh;  
   .columna--left {
     width: 50%;
     padding-right: 2vw;

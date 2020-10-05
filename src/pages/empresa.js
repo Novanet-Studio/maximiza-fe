@@ -42,18 +42,11 @@ const Empresa = ({ data }) => (
         ))}
       </ul>
     </section>
-
-    <section className="aliados">
-      <h2>{data.strapiEmpresa.aliados.titulo}</h2>
-      <p className="descripcion">{data.strapiEmpresa.aliados.contenido}</p>
-      <ul className="aliados__carrusel">
-        <li className="aliados__carrusel-item"></li>
-        <li className="aliados__carrusel-item"></li>
-        <li className="aliados__carrusel-item"></li>
-        <li className="aliados__carrusel-item"></li>
-        <li className="aliados__carrusel-item"></li>
-        <li className="aliados__carrusel-item"></li>
-      </ul>
+    <section className="equipo">
+      <h2>{data.strapiEmpresa.equipo.titulo}</h2>
+      <p className="equipo__descripcion">
+        {data.strapiEmpresa.equipo.contenido}
+      </p>
     </section>
 
     <section className="nosotros">
@@ -68,6 +61,19 @@ const Empresa = ({ data }) => (
             />
           </li>
         ))}
+      </ul>
+    </section>
+
+    <section className="aliados">
+      <h2>{data.strapiEmpresa.aliados.titulo}</h2>
+      <p className="descripcion">{data.strapiEmpresa.aliados.contenido}</p>
+      <ul className="aliados__carrusel">
+        <li className="aliados__carrusel-item"></li>
+        <li className="aliados__carrusel-item"></li>
+        <li className="aliados__carrusel-item"></li>
+        <li className="aliados__carrusel-item"></li>
+        <li className="aliados__carrusel-item"></li>
+        <li className="aliados__carrusel-item"></li>
       </ul>
     </section>
   </LayoutInterno>
@@ -104,6 +110,10 @@ export const query = graphql`
             }
           }
         }
+      }
+      equipo {
+        titulo
+        contenido
       }
       aliados {
         id

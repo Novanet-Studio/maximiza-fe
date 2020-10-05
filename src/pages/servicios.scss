@@ -7,8 +7,7 @@
 /*------Inversionista------*/
 .inversionista {
   &__grupo {
-    margin-top: 16vh;
-    @extend .flex;
+        @extend .flex;
     justify-content: space-between;
     position: relative;
     &:last-child {
@@ -27,6 +26,9 @@
           order: 1;
         }
       }
+    }
+    &:nth-child(2) {
+      margin-top: 8vh;
     }
   }
   &__cabecera {

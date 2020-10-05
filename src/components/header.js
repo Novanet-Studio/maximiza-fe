@@ -1,15 +1,9 @@
 import React from "react"
-import { Link } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import Logo from "../assets/images/logo-maximiza.svg"
+
 
 const Header = () => (
   <header>
-    <div className="logo--interno">
-      <Link to="/">
-        <img src={Logo} alt="logo" />
-      </Link>
-    </div>
     <nav>
       <div>
         <p className="bala">•</p>

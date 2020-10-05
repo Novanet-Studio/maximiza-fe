@@ -1,13 +1,12 @@
 @import "../assets/scss/normalize";
 @import "../assets/scss/variables";
 
-
 /* Empresas
 ========================================================================== */
 
 /*------Historia------*/
 .historia {
-  margin-top: 14vh;
+  margin-top: 12vh;
   &__item {
     width: 50%;
     @extend .flex;
@@ -57,24 +56,32 @@
     padding: 1vh 1.5vh;
   }
 }
+.equipo {
+  margin-top: 12vh;
+  &__descripcion {
+    color: #707071;
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+  }
+}
 
 /*------Aliados------*/
 .aliados {
-  margin-top: 14vh;
+  margin-top: 12vh;
   padding: 3vh 7vh 5vh;
   background: #f1f1f1;
   .descripcion {
-    text-align: center;    
-  }  
-  &__carrusel {    
+    text-align: center;
+  }
+  &__carrusel {
     @extend .flex;
     justify-content: space-between;
     width: 100%;
     height: 20vh;
     padding-top: 4vh;
     &-item {
-      width: 10%;
-      height: 16vh;
+      width: 13%;
+      height: 16.5vh;
       clip-path: circle(50% at 50% 50%);
       background-color: gainsboro;
     }
@@ -83,7 +90,7 @@
 
 /*------Nosotros------*/
 .nosotros {
-  margin: 14vh 9vh 17vh;
+  margin: 10vh 9vh 17vh;
   &__lista {
   }
   &__item {
@@ -96,6 +103,7 @@
       .nosotros__descripcion {
         opacity: 1;
         transition: all 0.5s;
+        visibility: visible;
       }
       .nosotros__imagen {
         filter: grayscale(100%);
