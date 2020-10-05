@@ -1,11 +1,13 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
-import Layout from "../components/layout"
+import LayoutInterno from "../components/layoutInterno"
 import SEO from "../components/seo"
+import "./educacion.scss"
+
 
 const IndexPage = ({ data }) => (
-  <Layout>
+  <LayoutInterno>
     <SEO title="Inicio" />
     <section className="principal">
       <div className="columna--left">
@@ -64,7 +66,7 @@ const IndexPage = ({ data }) => (
         Necesito más información
       </Link>
     </section>
-  </Layout>
+  </LayoutInterno>
 )
 
 export default IndexPage

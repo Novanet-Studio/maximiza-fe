@@ -1,14 +1,13 @@
 import React from "react"
-import { Link } from "gatsby"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import Logo from "../assets/images/logo-maximiza.svg"
 
-const Header = () => (
+const HeaderInterno = () => (
   <header>
     <div className="logo--interno">
-      <Link to="/">
+      <AniLink cover direction="right" duration={0.55} bg="#006648" to="/">
         <img src={Logo} alt="logo" />
-      </Link>
+      </AniLink>
     </div>
     <nav>
       <div>
@@ -108,4 +107,4 @@ const Header = () => (
   </header>
 )
 
-export default Header
+export default HeaderInterno

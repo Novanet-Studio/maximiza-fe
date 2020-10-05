@@ -1,10 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import Layout from "../components/layout"
+import LayoutInterno from "../components/layoutInterno"
+import "./empresa.scss"
 
 const Empresa = ({ data }) => (
-  <Layout>
+  <LayoutInterno>
     <section className="principal">
       <div className="columna--left">
         <Img
@@ -32,7 +33,9 @@ const Empresa = ({ data }) => (
             />
             <div className="historia__descripcion">
               <h3 className="historia__titulo">{item.titulo}</h3>
-              <p className="historia__texto">{item.contenido}</p>
+              <p className="historia__texto">
+                {item.contenido.substring(0, 150).concat("...")}
+              </p>
               <button className="historia__button">Conocer más</button>
             </div>
           </li>
@@ -43,20 +46,31 @@ const Empresa = ({ data }) => (
     <section className="aliados">
       <h2>{data.strapiEmpresa.aliados.titulo}</h2>
       <p className="descripcion">{data.strapiEmpresa.aliados.contenido}</p>
+      <ul className="aliados__carrusel">
+        <li className="aliados__carrusel-item"></li>
+        <li className="aliados__carrusel-item"></li>
+        <li className="aliados__carrusel-item"></li>
+        <li className="aliados__carrusel-item"></li>
+        <li className="aliados__carrusel-item"></li>
+        <li className="aliados__carrusel-item"></li>
+      </ul>
     </section>
 
     <section className="nosotros">
       <ul className="nosotros__lista">
         {data.strapiEmpresa.nosotros.map((item) => (
           <li className="nosotros__item" key={item.id}>
-            <div className="nosotros__imagen"></div>
             <h3 className="nosotros__titulo">{item.titulo}</h3>
             <p className="nosotros__descripcion">{item.contenido}</p>
+            <Img
+              className="nosotros__imagen"
+              fluid={item.imagen.childImageSharp.fluid}
+            />
           </li>
         ))}
       </ul>
     </section>
-  </Layout>
+  </LayoutInterno>
 )
 
 export default Empresa
@@ -100,6 +114,13 @@ export const query = graphql`
         id
         titulo
         contenido
+        imagen {
+          childImageSharp {
+            fluid(maxWidth: 375) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }

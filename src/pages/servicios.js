@@ -1,18 +1,12 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import Layout from "../components/layout"
+import LayoutInterno from "../components/layoutInterno"
 import SEO from "../components/seo"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-// @fortawesome libraries
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { fab } from "@fortawesome/free-brands-svg-icons"
-import { fas } from "@fortawesome/free-solid-svg-icons"
-// add fas and fab to the library
-library.add(fab, fas)
+import "./servicios.scss"
 
 const Servicios = ({ data }) => (
-  <Layout>
+  <LayoutInterno>
     <SEO title="Servicios" />
     <section className="principal">
       <div className="columna--left">
@@ -34,31 +28,31 @@ const Servicios = ({ data }) => (
       {data.strapiServicios.inversionista.map((item) => (
         <div className="inversionista__grupo" key={item.id}>
           <div className="inversionista__cabecera">
-            <h3 className="inversionista__titulo">lorem ipsum dolor</h3>
-            <div className="inversionista__imagen"></div>
+            <h3 className="inversionista__titulo">{item.nombre}</h3>
+            <Img
+              className="inversionista__imagen"
+              fluid={item.imagen.childImageSharp.fluid}
+            />
           </div>
           <ul className="inversionista__contenido">
             {item.items.map((element) => (
               <li className="inversionista__item" key={element.id}>
-                <h4 className="inversionista__subtitulo">
-                  <span className="inversionista__icono">
-                    {item.titulo}
-                    <FontAwesomeIcon
-                      icon={["fas", "eye"]}
-                      fixedWidth
-                      size="1.5x"
-                    />
-                  </span>
-                  {element.titulo}
-                </h4>
-                <p className="inversionista__texto">{element.contenido}</p>
+                <Img
+                  className="inversionista__icono"
+                  fluid={element.icono.childImageSharp.fluid}
+                />
+                <h4 className="inversionista__subtitulo">{element.titulo}</h4>
+                <p className="inversionista__texto">
+                  {element.contenido.substring(0, 150).concat("...")}
+                  <button className="inversionista__boton">Leer más</button>
+                </p>
               </li>
             ))}
           </ul>
         </div>
       ))}
     </section>
-  </Layout>
+  </LayoutInterno>
 )
 
 export default Servicios
@@ -80,10 +74,24 @@ export const query = graphql`
       inversionista {
         id
         nombre
+        imagen {
+          childImageSharp {
+            fluid(maxWidth: 320) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
         items {
           id
           titulo
           contenido
+          icono {
+            childImageSharp {
+              fluid(maxWidth: 320) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
     }

@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fab } from "@fortawesome/free-brands-svg-icons"
 import { fas } from "@fortawesome/free-solid-svg-icons"
+import "./legal.scss"
 // add fas and fab to the library
 library.add(fab, fas)
 
@@ -61,7 +62,7 @@ const IndexPage = ({ data }) => (
                 />
               </button>
             </div>
-            <p className="normativas__contenido">{item.documento}</p>
+            <p className="normativas__contenido">{item.documento.substring(0, 130).concat("...")}</p>
           </li>
         ))}
       </ul>

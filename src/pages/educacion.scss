@@ -1,0 +1,95 @@
+@import "../assets/scss/normalize";
+@import "../assets/scss/variables";
+
+/* Educación
+========================================================================== */
+
+/*------Innovar------*/
+.innovar {
+   margin-top: 14vh;
+   &__lista {
+     justify-content: space-between;
+     margin-top: 5vh;
+   }
+   &__item {
+     width: 30%;
+   }
+   &__imagen {
+     width: 17vh;
+     &:hover {
+       transition: 0.5s;
+       filter: grayscale(100%);
+     }
+   }
+   &__subtitulo {
+     margin: 1vh 0 0.5vh 0;
+   }
+   &__descripcion {
+     font-size: 1rem;
+     line-height: 1.4rem;
+   }
+ }
+ 
+ /*------Programas------*/
+ .programas {
+   margin-top: 16vh;
+   &__secciones {
+     margin-top: 9vh;
+   }
+   &__grupos {
+     @extend .flex;
+     margin-bottom: 9vh;
+     justify-content: space-between;
+     &:nth-child(2) {
+       text-align: right;
+       .programas__imagen {
+         order: 2;
+       }
+       .programas__lista {
+         order: 1;
+       }
+     }
+   }
+   &__imagen {
+     width: 30%;
+   }
+   &__lista {
+     width: 67%;
+   }
+   &__item {
+     padding-top: 3.5vh;
+     padding-bottom: 3.5vh;
+     border-bottom: #d1d2d1 3px solid;
+     &:nth-child(1) {
+       padding-top: 0;
+       .programas__titulo {
+         color: #00735f;
+       }
+     }
+     &:nth-child(2) {
+       .programas__titulo {
+         color: #007e43;
+       }
+     }
+     &:nth-child(3) {
+       .programas__titulo {
+         color: #18b24b;
+       }
+     }
+   }
+   &__descripcion {
+     color: #707071;
+     font-size: 1.2rem;
+     line-height: 1.7rem;
+   }
+   &__boton {
+     display: inline-block;
+     font-size: 1.1rem;
+     background: #307439;
+     font-weight: 700;
+     color: #fff;
+     padding: 1.5vh 8vh;
+     margin-bottom: 10vh;
+     cursor: pointer;
+   }
+ }

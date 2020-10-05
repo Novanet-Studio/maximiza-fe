@@ -4,6 +4,7 @@ import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Email from "../assets/images/email.png"
+import "./contacto.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // @fortawesome libraries
 import { library } from "@fortawesome/fontawesome-svg-core"

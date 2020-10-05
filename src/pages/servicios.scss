@@ -1,0 +1,106 @@
+@import "../assets/scss/normalize";
+@import "../assets/scss/variables";
+
+/* Servicios
+========================================================================== */
+
+/*------Inversionista------*/
+.inversionista {
+  &__grupo {
+    margin-top: 16vh;
+    @extend .flex;
+    justify-content: space-between;
+    position: relative;
+    &:last-child {
+      margin-bottom: 16vh;
+      .inversionista__cabecera {
+        order: 2;
+        .inversionista__titulo {
+          text-align: right;
+        }
+      }
+      .inversionista__contenido {
+        .inversionista__icono {
+          background: #09b333;
+        }
+        .inversionista__contenido {
+          order: 1;
+        }
+      }
+    }
+  }
+  &__cabecera {
+    width: 25%;
+    height: 320px;
+    position: relative;
+  }
+  &__titulo {
+    text-align: right;
+    padding: 3vh;
+    font-weight: 900;
+    color: #fff;
+    z-index: 3;
+    text-shadow: 2px 2px 2px #000;
+  }
+  &__imagen {
+    width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
+    position: absolute !important;
+    z-index: -5;
+  }
+  &__contenido {
+    width: 72%;
+    @extend .flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 15vh;
+  }
+  &__item {
+    @extend .flex;
+    width: 48%;
+    height: 5.85vh;
+    background: #f1f1f1;
+    position: relative;
+    background-image: url(../assets/images/dropdown.png);
+    background-repeat: no-repeat;
+    background-size: 12px;
+    background-position: 96% 50%;
+    &:hover {
+      cursor: pointer;
+      .inversionista__texto {
+        opacity: 1;
+        transition: all 0.5s;
+      }
+    }
+  }
+  &__subtitulo {
+    font-size: 1.1rem;
+    font-weight: 300;
+    padding-top: 1vh;
+  }
+  &__icono {
+    width: 10%;
+    background: #007d43;
+    color: #fff;
+    padding: 1.5vh;
+    margin-right: 2vh;
+  }
+  &__texto {
+    @extend .flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 2vh;
+    margin-top: 0;
+    font-size: 0.85rem;
+    line-height: 1.4rem;
+    background: #f1f1f1;
+    z-index: 3;
+    opacity: 0;
+  }
+  &__boton {
+    margin-top: 2vh;
+    padding: 0.5vh;
+  }
+}

@@ -1,0 +1,125 @@
+@import "../assets/scss/normalize";
+@import "../assets/scss/variables";
+
+/* Legal
+========================================================================== */
+
+/*------Etica------*/
+.etica {
+  margin-top: 14vh;
+  @extend .flex;
+  justify-content: space-between;
+  &__imagen {
+    width: 31%;
+  }
+  &__contenido {
+    width: 67%;
+  }
+  &__titulo {
+    color: #007d43;
+    margin-bottom: 1vh;
+    text-align: left;
+  }
+  &__texto {
+    color: #050505;
+    font-size: 1rem;
+    line-height: 1.4rem;
+    font-weight: 300;
+    padding-bottom: 2vh;
+    border-bottom: #d1d2d1 3px solid;
+    -webkit-column-count: 2;
+    column-count: 2;
+    -webkit-column-gap: 3em;
+    column-gap: 3em;
+  }
+}
+
+/*------Normativas------*/
+.normativas {
+  margin-top: 14vh;
+  margin-bottom: 14vh;
+  &__lista {
+    margin-top: 6vh;
+  }
+  &__item {
+    width: 33.333333%;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    @extend .flex;
+    justify-content: space-between;
+    &:nth-child(1) {
+      .normativas__descarga {
+        .normativas__ver {
+          background: #00735f;
+        }
+        .normativas__down {
+          color: #00735f;
+        }
+      }
+    }
+    &:nth-child(2) {
+      .normativas__descarga {
+        .normativas__ver {
+          background: #007e43;
+        }
+        .normativas__down {
+          color: #007e43;
+        }
+      }
+    }
+    &:nth-child(3) {
+      .normativas__descarga {
+        .normativas__ver {
+          background: #18b24b;
+        }
+        .normativas__down {
+          color: #18b24b;
+        }
+      }
+    }
+    &:nth-child(4) {
+      .normativas__descarga {
+        .normativas__ver {
+          background: #2d7300;
+        }
+        .normativas__down {
+          color: #2d7300;
+        }
+      }
+    }
+    &:nth-child(5) {
+      .normativas__descarga {
+        .normativas__ver {
+          background: #00a385;
+        }
+        .normativas__down {
+          color: #00a385;
+        }
+      }
+    }
+  }
+  &__descarga {
+    width: 14%;
+  }
+  &__ver {
+    cursor: pointer;
+    padding: 0.7vh 0;
+    width: 100%;
+    color: #f1f1f1;
+    border: none;
+  }
+  &__down {
+    cursor: pointer;
+    padding: 0.7vh 0;
+    width: 100%;
+    background: #f1f1f1;
+    border: none;
+  }
+  &__contenido {
+    width: 83%;
+    padding-right: 3vh;
+    font-weight: 500;
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+  }
+}

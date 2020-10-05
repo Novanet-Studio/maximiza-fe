@@ -4,6 +4,8 @@ import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Email from "../assets/images/email.png";
+import Logo from "../assets/images/logo-maximiza.svg";
+import "./index.scss"
 
 const IndexPage = ({ data }) => (
   <Layout>
@@ -11,9 +13,9 @@ const IndexPage = ({ data }) => (
     <section className="principal">
       <div className="columna--left">
         <img
-          src={data.strapiInicio.principal.logo.url}
+          src={Logo}
           alt="logo"
-          className="principal__logo"
+          className="logo--interno"
         />
         <p className="principal__texto principal__texto--pequeño">
           {data.strapiInicio.principal.logo_texto}
@@ -95,9 +97,6 @@ export const query = graphql`
   query HomeQuery {
     strapiInicio {
       principal {
-        logo {
-          url
-        }
         imagen {
           url
         }
