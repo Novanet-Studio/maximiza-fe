@@ -119,11 +119,7 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
-        }
-        seo_imagen {
-          titulo
-          texto_alternativo
-        }
+        }    
       }
       contacto_titulo
     }
