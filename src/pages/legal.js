@@ -12,7 +12,7 @@ import "./legal.scss"
 // add fas and fab to the library
 library.add(fab, fas)
 
-const IndexPage = ({ data }) => (
+const Legal = ({ data }) => (
   <Layout>
     <SEO title="Inicio" />
     <section className="principal">
@@ -70,7 +70,7 @@ const IndexPage = ({ data }) => (
   </Layout>
 )
 
-export default IndexPage
+export default Legal
 
 export const query = graphql`
   query LegalQuery {

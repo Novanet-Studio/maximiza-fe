@@ -46,7 +46,7 @@ module.exports = {
       options: {
         apiURL: process.env.API_URL,
         contentTypes: ["articulo"],
-        singleTypes: ["blog", "contacto", "educacion", "empresa", "inicio", "legal", "servicios"],
+        singleTypes: ["blog", "contacto", "educacion", "empresa", "inicio", "legal", "servicios", "private-equity", "responsabilidad"],
         queryLimit: 1000,
       },
     },

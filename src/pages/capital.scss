@@ -1,0 +1,49 @@
+@import "../assets/scss/normalize";
+@import "../assets/scss/variables";
+
+/* Private equity
+========================================================================== */
+
+/*------Programas------*/
+.partners {
+  margin-top: 14vh;
+  width: 100%;
+  @extend .flex;
+  justify-content: center;
+  &__lista {
+    width: 90%;
+    padding-top: 12vh;
+  }
+  &__item {
+    @extend .flex;
+    margin-bottom: 8vh;
+    &:nth-child(even) {
+      .partners__imagen {
+        order: 2;
+      }
+      .partners__descripcion {
+        order: 1;
+        text-align: right;
+      }
+    }
+  }
+  &__imagen {
+    width: 25%;
+  }
+  &__descripcion {
+    width: 75%;
+    color: $gris1;
+    padding: 1.5vw;
+    line-height: 1.5rem;
+  }
+  &__boton {     
+    background: $verde4;
+    font-weight: 700;
+    color: $blanco1;
+    text-align: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 1.5vh 8vh;
+    margin-bottom: 10vh;
+  }
+}

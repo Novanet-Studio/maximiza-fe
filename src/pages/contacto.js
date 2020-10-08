@@ -13,7 +13,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons"
 // add fas and fab to the library
 library.add(fab, fas)
 
-const ContactoPage = ({ data }) => (
+const Contacto = ({ data }) => (
   <Layout>
     <SEO title="Inicio" />
     <section className="principal">
@@ -80,7 +80,7 @@ const ContactoPage = ({ data }) => (
   </Layout>
 )
 
-export default ContactoPage
+export default Contacto
 
 export const query = graphql`
   query ContactoQuery {

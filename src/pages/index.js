@@ -7,7 +7,7 @@ import Email from "../assets/images/email.png";
 import Logo from "../assets/images/logo-maximiza.svg";
 import "./index.scss"
 
-const IndexPage = ({ data }) => (
+const Index = ({ data }) => (
   <Layout>
     <SEO title="Inicio" />
     <section className="principal">
@@ -91,10 +91,10 @@ const IndexPage = ({ data }) => (
   </Layout>
 )
 
-export default IndexPage
+export default Index
 
 export const query = graphql`
-  query HomeQuery {
+  query IndexQuery {
     strapiInicio {
       principal {
         imagen {

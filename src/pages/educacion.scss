@@ -19,6 +19,8 @@
 
 /*------Programas------*/
 .programas {
+  @extend .flex;
+  justify-content: center;
   &__grupos {
     @extend .flex;
     justify-content: space-between;
@@ -54,6 +56,7 @@
     font-weight: 700;
     color: $blanco1;
     cursor: pointer;
+    text-align: center;
   }
 }
 

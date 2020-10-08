@@ -54,7 +54,15 @@ const HeaderInterno = () => (
         <p className="texto">Comunidad</p>
         <ul className="cabecera__menudrop">
           <li className="cabecera__droplink">
-            <AniLink to="/">Private equity</AniLink>
+            <AniLink
+              cover
+              direction="right"
+              duration={0.55}
+              bg="#006648"
+              to="/capital"
+            >
+              Private equity
+            </AniLink>
           </li>
           <li className="cabecera__droplink">
             <AniLink
@@ -68,7 +76,15 @@ const HeaderInterno = () => (
             </AniLink>
           </li>
           <li className="cabecera__droplink">
-            <AniLink to="/">Responsabilidad</AniLink>
+            <AniLink
+              cover
+              direction="right"
+              duration={0.55}
+              bg="#006648"
+              to="/responsabilidad"
+            >
+              Responsabilidad
+            </AniLink>
           </li>
         </ul>
       </div>

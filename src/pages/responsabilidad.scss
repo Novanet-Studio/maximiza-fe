@@ -1,0 +1,52 @@
+@import "../assets/scss/normalize";
+@import "../assets/scss/variables";
+
+/* Responsabilidad
+========================================================================== */
+
+.contribuciones {
+  margin-top: 14vh;
+  width: 100%;
+  @extend .flex;
+  justify-content: center;
+  &__lista {
+    @extend .flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 7vh;
+  }
+  &__item {
+     flex: 1 1 0;
+     margin: 0 1vw;    
+    &:nth-child(1) {
+      .contribuciones__titulo {
+        color: $verde1;
+      }
+       border-bottom: $verde1 2px solid;
+    }
+    &:nth-child(2) {
+      .contribuciones__titulo {
+        color: $verde2;
+        
+      }
+      border-bottom: $verde2 2px solid;
+    }
+    &:nth-child(3) {
+      .contribuciones__titulo {
+        color: $verde3;
+      }
+      border-bottom: $verde3 2px solid;
+    }
+  }
+  &__descripcion {
+    font-size: 1rem;
+    line-height: 1.7rem;
+  }
+}
+
+.causas {
+   margin-top: 14vh;   
+}
+
+

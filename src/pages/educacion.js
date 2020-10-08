@@ -5,24 +5,22 @@ import LayoutInterno from "../components/layoutInterno"
 import SEO from "../components/seo"
 import "./educacion.scss"
 
-
-const IndexPage = ({ data }) => (
+const Educacion = ({ data }) => (
   <LayoutInterno>
     <SEO title="Inicio" />
     <section className="principal">
       <div className="columna--left">
-        <Img
-          fluid={data.strapiEducacion.principal.imagen.childImageSharp.fluid}
-        />
-      </div>
-
-      <div className="columna--right">
         <h1 className="principal__titulo">
           {data.strapiEducacion.principal.titulo}
         </h1>
         <p className="principal__texto">
           {data.strapiEducacion.principal.contenido}
         </p>
+      </div>
+      <div className="columna--right">
+        <Img
+          fluid={data.strapiEducacion.principal.imagen.childImageSharp.fluid}
+        />
       </div>
     </section>
 
@@ -69,7 +67,7 @@ const IndexPage = ({ data }) => (
   </LayoutInterno>
 )
 
-export default IndexPage
+export default Educacion
 
 export const query = graphql`
   query EducacionQuery {
