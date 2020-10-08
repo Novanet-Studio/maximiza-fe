@@ -6,51 +6,40 @@
 
 /*------Beneficios------*/
 .beneficios {
-  margin-top: 10vh;
   &__lista {
     justify-content: space-between;
-    margin-top: 7vh;
   }
 
   &__item {
-    width: 30%;
-    border-bottom: #d1d1d1 3px solid;
+    border-bottom: $gris5 3px solid;
     &:nth-child(1) {
       .beneficios__subtitulo {
-        color: #00735e;
+        color: $verde1;
       }
     }
     &:nth-child(2) {
       .beneficios__subtitulo {
-        color: #007d43;
+        color: $verde2;
       }
     }
     &:nth-child(3) {
       .beneficios__subtitulo {
-        color: #09b333;
+        color: $verde3;
       }
     }
   }
 
   &__descripcion {
-    color: #050505;
-    font-size: 1rem;
-    line-height: 1.4rem;
-    padding-top: 0.25vh;
-    padding-bottom: 1.5vh;
+    color: $negro1;
   }
 }
 
 /*------Servicios------*/
 .servicios {
-  margin-top: 14vh;
   &__lista {
-    margin-top: 4vh;
     justify-content: space-between;
   }
   &__item {
-    width: 30%;
-    height: 37vh;
     cursor: pointer;
     display: flex;
     align-items: flex-end;
@@ -61,38 +50,34 @@
         display: block;
       }
       &:nth-child(1) {
-        background-color: #00735e;
+        background-color: $verde1;
         .servicios__descripcion {
-          background-color: #00735e;
+          background-color: $verde1;
         }
       }
       &:nth-child(2) {
-        background-color: #007d43;
+        background-color: $verde2;
         .servicios__descripcion {
-          background-color: #007d43;
+          background-color: $verde2;
         }
       }
       &:nth-child(3) {
-        background-color: #09b333;
+        background-color: $verde3;
         .servicios__descripcion {
-          background-color: #09b333;
+          background-color: $verde3;
         }
       }
     }
     .servicios__subtitulo {
-      color: #fff;
-      padding: 2.5vh;
+      color: $blanco1;
       z-index: 3;
-      text-shadow: 2px 2px 2px #000;
+      text-shadow: 2px 2px 2px $negro2;
     }
   }
   &__descripcion {
     display: none;
-    color: #fff;
-    font-size: 1rem;
+    color: $blanco1;
     font-weight: 400;
-    line-height: 1.5rem;
-    padding: 2.5vh;
     transition: 2s;
     width: 100%;
     position: absolute;
@@ -102,7 +87,6 @@
 
   &__imagen {
     width: 100%;
-    height: 37vh;
     position: absolute !important;
     z-index: 1;
     top: 0;
@@ -116,62 +100,212 @@
 
 /*------Contacto------*/
 .contacto {
-  margin-top: 14vh;
-  margin-bottom: 14vh;
   .form {
-    margin: 10vh 2vh;
     @extend .flex;
     .columna--left {
-      width: 82%;
       input {
-        width: 47%;
-        margin-right: 3%;
-        margin-bottom: 1.5%;
-        color: #5f5f5f;
-        font-size: 1rem;
+        color: $gris2;
         font-weight: 500;
-        padding: 0.7vh 0.5vh;
         border: none;
-        border-bottom: #00735e 2px solid;
+        border-bottom: $verde1 2px solid;
       }
       textarea {
-        width: 97%;
-        color: #5f5f5f;
-        font-size: 1rem;
+        color: $gris2;
         font-weight: 500;
-        padding: 1vh 0.5vh;
         border: none;
-        border-bottom: #00735e 2px solid;
-        margin-right: 3%;
+        border-bottom: $verde1 2px solid;
       }
     }
     .columna--right {
-      width: 18%;
       .form__button {
-        
         cursor: pointer;
-        font-size: 1rem;
         font-weight: 400;
-        color: #fff;
-        background: #04661d;
-        padding: 4vh 3vh;
+        color: $blanco1;
+        background: $verde5;
         border: none;
-        margin-top: 3.5vh;
-        img {          
-          width: 3vh;        
-          margin-bottom: -0.5vh;
-          margin-right: 0.5vw;
-        }
       }
     }
 
     &__descripcion {
-      color: #050505;
+      color:$negro1;
+    }
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+  /*------Beneficios------*/
+  .beneficios {
+    margin-top: 2vh;
+    &__lista {
+      margin-top: 5vh;
+    }
+
+    &__item {
+      margin-bottom: 4vh;
+    }
+
+    &__descripcion {
+      font-size: 0.9rem;
+      line-height: 1.3rem;
+      padding-top: 0.5vh;
+      padding-bottom: 2vh;
+    }
+  }
+
+  /*------Servicios------*/
+  .servicios {
+    margin-top: 7vh;
+    &__lista {
+      margin-top: 4vh;
+    }
+    &__item {
+      width: 100%;
+      margin-bottom: 3vh;
+      height: 37vh;
+      .servicios__subtitulo {
+        padding: 2.5vh;
+      }
+    }
+    &__descripcion {
+      font-size: 0.77rem;
+      line-height: 1.3rem;
+      padding: 2vh;
+    }
+
+    &__imagen {
+      height: 37vh;
+    }
+  }
+
+  /*------Contacto------*/
+  .contacto {
+    margin-top: 6vh;
+    margin-bottom: 9vh;
+    .form {
+      margin: 4vh 0 0 0;
+      .columna--left {
+        width: 100%;
+        input {
+          width: 100%;
+          margin-bottom: 10%;
+          font-size: 0.85rem;
+          padding: 0.7vh 0.5vh;
+        }
+        textarea {
+          width: 100%;
+          font-size: 0.85rem;
+          padding: 1vh 0.5vh;
+          margin-bottom: 8%;
+        }
+      }
+      .columna--right {
+        .form__button {
+          font-size: 0.8rem;
+          padding: 2.5vh 3vh 3vh 3vh;
+          margin-top: 2.5vh;
+          img {
+            width: 3.5vh;
+            margin-bottom: -0.5vh;
+            margin-right: 0.5vw;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*-------------------------------------------- Mobile Landscape --------------------------------------------*/
+@media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+}
+
+/*-------------------------------------------- Tablet Portrait --------------------------------------------*/
+@media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+}
+
+/*-------------------------------------------- Tablet Landscape --------------------------------------------*/
+@media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+}
+
+/*-------------------------------------------- Desktop responsive --------------------------------------------*/
+@media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
+  /*------Beneficios------*/
+  .beneficios {
+    margin-top: 10vh;
+    &__lista {
+      margin-top: 7vh;
+    }
+
+    &__item {
+      width: 30%;
+    }
+
+    &__descripcion {
       font-size: 1rem;
       line-height: 1.4rem;
       padding-top: 0.25vh;
       padding-bottom: 1.5vh;
     }
   }
-  
+
+  /*------Servicios------*/
+  .servicios {
+    margin-top: 14vh;
+    &__lista {
+      margin-top: 4vh;
+    }
+    &__item {
+      width: 30%;
+      height: 37vh;
+      .servicios__subtitulo {
+        padding: 2.5vh;
+      }
+    }
+    &__descripcion {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      padding: 2.5vh;
+    }
+
+    &__imagen {
+      height: 37vh;
+    }
+  }
+
+  /*------Contacto------*/
+  .contacto {
+    margin-top: 14vh;
+    margin-bottom: 14vh;
+    .form {
+      margin: 10vh 2vh;
+      .columna--left {
+        width: 83%;
+        input {
+          width: 47%;
+          margin-right: 3%;
+          margin-bottom: 1.5%;
+          font-size: 1rem;
+          padding: 0.7vh 0.5vh;
+        }
+        textarea {
+          width: 97%;
+          font-size: 1rem;
+          padding: 1vh 0.5vh;
+          margin-right: 3%;
+        }
+      }
+      .columna--right {
+        width: 17%;
+        .form__button {
+          font-size: 1rem;
+          padding: 4vh 3vh;
+          margin-top: 3.5vh;
+          img {
+            width: 3vh;
+            margin-bottom: -0.5vh;
+            margin-right: 0.5vw;
+          }
+        }
+      }
+    }
+  }
 }

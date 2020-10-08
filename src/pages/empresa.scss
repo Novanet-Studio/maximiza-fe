@@ -1,101 +1,50 @@
 @import "../assets/scss/normalize";
 @import "../assets/scss/variables";
 
+
 /* Empresas
 ========================================================================== */
 
 /*------Historia------*/
 .historia {
-  margin-top: 12vh;
   &__item {
-    width: 50%;
     @extend .flex;
     &:first-child {
       .historia__descripcion {
         .historia__titulo {
-          color: #007d43;
+          color: $verde1;
         }
         .historia__button {
-          background: #007d43;
+          background: $verde1;
         }
       }
     }
     &:last-child {
       .historia__descripcion {
         .historia__titulo {
-          color: #09b333;
+          color: $verde3;
         }
         .historia__button {
-          background: #09b333;
+          background: $verde3;
         }
       }
     }
   }
-  &__image {
-    width: 33%;
-  }
-  &__descripcion {
-    width: 67%;
-    padding: 0 6vh 0 4vh;
-  }
-  &__titulo {
-    padding-bottom: 1vh;
-  }
   &__texto {
-    font-size: 1rem;
-    line-height: 1.6rem;
-    padding-bottom: 2vh;
-    color: #050505;
+    color: $negro1;
     font-weight: 300;
   }
   &__button {
     cursor: pointer;
-    font-size: 0.8rem;
     border: none;
-    color: #fff;
-    padding: 1vh 1.5vh;
-  }
-}
-.equipo {
-  margin-top: 12vh;
-  &__descripcion {
-    color: #707071;
-    font-size: 1.2rem;
-    line-height: 1.7rem;
+    color: $blanco1;
   }
 }
 
-/*------Aliados------*/
-.aliados {
-  margin-top: 12vh;
-  padding: 3vh 7vh 5vh;
-  background: #f1f1f1;
-  .descripcion {
-    text-align: center;
-  }
-  &__carrusel {
-    @extend .flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 20vh;
-    padding-top: 4vh;
-    &-item {
-      width: 13%;
-      height: 16.5vh;
-      clip-path: circle(50% at 50% 50%);
-      background-color: gainsboro;
-    }
-  }
-}
 
 /*------Nosotros------*/
 .nosotros {
-  margin: 10vh 9vh 17vh;
-  &__lista {
-  }
   &__item {
-    width: 33.3333333%;
-    height: 30vh;
     cursor: pointer;
     position: relative;
     &:hover {
@@ -111,32 +60,30 @@
     }
     &:nth-child(1) {
       .nosotros__titulo {
-        background-color: #00735e;
+        background-color: $verde1;
       }
       .nosotros__descripcion {
-        border-bottom: #00735e solid 2px;
+        border-bottom: $verde1 solid 2px;
       }
     }
     &:nth-child(2) {
       .nosotros__titulo {
-        background-color: #007d43;
+        background-color: $verde2;
       }
       .nosotros__descripcion {
-        border-bottom: #007d43 solid 2px;
+        border-bottom: $verde2 solid 2px;
       }
     }
     &:nth-child(3) {
       .nosotros__titulo {
-        background-color: #007d43;
+        background-color:$verde3;
       }
       .nosotros__descripcion {
-        border-bottom: #007d43 solid 2px;
+        border-bottom: $verde3 solid 2px;
       }
     }
   }
   &__imagen {
-    width: 100%;
-    height: 30vh;
     position: absolute !important;
     z-index: -1;
     top: 0;
@@ -144,19 +91,192 @@
   }
   &__titulo {
     text-align: center;
+    color: $blanco1;
+  }
+  &__descripcion {
+    font-weight: 300;
+    color: $negro1;
+    background: $blanco2;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 2;
+    position: absolute;
+  }
+}
+
+/*------Aliados------*/
+.aliados {
+  background: $blanco2;
+  .descripcion {
+    text-align: center;
+  }
+  &__carrusel {
+    @extend .flex;
+    justify-content: space-between;
+    &-item {
+      clip-path: circle(50% at 50% 50%);
+      background-color: $gris5;
+    }
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+  /* Empresas
+========================================================================== */
+
+  /*------Historia------*/
+  .historia {
+    margin-top: 6vh;
+    &__item {
+      width: 100%;
+      padding-bottom: 7vh;
+    }
+    &__image {
+      width: 50%;
+    }
+    &__descripcion {
+      width: 100%;
+      padding: 2vh 0 0 0;
+    }
+    &__texto {
+      font-size: 0.85rem;
+      line-height: 1.4rem;
+      padding-bottom: 1vh;
+    }
+    &__button {
+      font-size: 0.7rem;
+      padding: 1vh 1.5vh;
+    }
+  }
+  .equipo {
+    margin-top: 6vh;
+  }
+
+  /*------Nosotros------*/
+.nosotros {
+  margin: 7vh 0 10vh 0;
+  &__item {
+    width: 100%;
+    height: 30vh;
+  }
+  &__imagen {
+    width: 100%;
+    height: 30vh;
+  }
+  &__titulo {
     padding: 1.5vh 0;
-    color: #fff;
+    margin-top: 12vh;
+  }
+  &__descripcion {
+    min-height: 12.5vh;
+    padding: 2vh;
+    font-size: 0.8rem;
+    line-height: 1.3rem;
+  }
+}
+
+  /*------Aliados------*/
+  .aliados {
+    margin-bottom: 7vh;
+    padding: 3vh;
+    &__carrusel {
+      padding-top: 4vh;
+      &-item {
+        width: 40%;
+        height: 20vh;
+        margin: 2vh;
+      }
+    }
+  }
+}
+
+/*-------------------------------------------- Mobile Landscape --------------------------------------------*/
+@media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+}
+
+/*-------------------------------------------- Tablet Portrait --------------------------------------------*/
+@media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+}
+
+/*-------------------------------------------- Tablet Landscape --------------------------------------------*/
+@media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+}
+
+/*-------------------------------------------- Desktop responsive --------------------------------------------*/
+@media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
+  /* Empresas
+========================================================================== */
+
+  /*------Historia------*/
+  .historia {
+    margin-top: 12vh;
+    &__item {
+      width: 50%;
+    }
+    &__image {
+      width: 33%;
+    }
+    &__descripcion {
+      width: 67%;
+      padding: 0 6vh 0 4vh;
+    }
+    &__titulo {
+      padding-bottom: 1vh;
+    }
+    &__texto {
+      font-size: 1rem;
+      line-height: 1.6rem;
+      padding-bottom: 2vh;
+    }
+    &__button {
+      font-size: 0.8rem;
+      padding: 1vh 1.5vh;
+    }
+  }
+
+  .equipo {
+    margin-top: 12vh;
+    &__descripcion {
+      font-size: 1.2rem;
+      line-height: 1.7rem;
+    }
+  }
+
+/*------Nosotros------*/
+.nosotros {
+  margin: 10vh 9vh 17vh;
+  &__item {
+    width: 33.3333333%;
+    height: 30vh;
+  }
+  &__imagen {
+    width: 100%;
+    height: 30vh;
+  }
+  &__titulo {
+    padding: 1.5vh 0;
     margin-top: 12vh;
   }
   &__descripcion {
     min-height: 12.5vh;
     padding: 2vh;
     font-size: 0.95rem;
-    font-weight: 300;
     line-height: 1.4rem;
-    color: #050505;
-    background: #f1f1f1;
-    opacity: 0;
-    visibility: hidden;
+  }
+}
+
+  /*------Aliados------*/
+  .aliados {
+    margin-bottom: 12vh;
+    padding: 3vh 7vh 5vh;
+    &__carrusel {
+      width: 100%;
+      height: 20vh;
+      padding-top: 4vh;
+      &-item {
+        width: 13%;
+        height: 16.5vh;
+      }
+    }
   }
 }

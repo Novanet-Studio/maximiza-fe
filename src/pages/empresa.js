@@ -44,7 +44,7 @@ const Empresa = ({ data }) => (
     </section>
     <section className="equipo">
       <h2>{data.strapiEmpresa.equipo.titulo}</h2>
-      <p className="equipo__descripcion">
+      <p className="descripcion">
         {data.strapiEmpresa.equipo.contenido}
       </p>
     </section>
