@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import LayoutInterno from "../components/layoutInterno"
 import SEO from "../components/seo"
-import Email from "../assets/images/email.png"
+import Email from "../assets/images/email.svg"
 import "./contacto.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // @fortawesome libraries

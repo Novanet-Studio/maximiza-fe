@@ -9,7 +9,7 @@ const Servicios = ({ data }) => (
   <LayoutInterno>
     <SEO title="Servicios" />
     <section className="principal">
-      <div className="columna--left">
+      <div className="columna--left columna--left-movil">
         <h1 className="principal__titulo">
           {data.strapiServicios.principal.titulo}
         </h1>
@@ -17,7 +17,7 @@ const Servicios = ({ data }) => (
           {data.strapiServicios.principal.contenido}
         </p>
       </div>
-      <div className="columna--right">
+      <div className="columna--right columna--right-movil">
         <Img
           fluid={data.strapiServicios.principal.imagen.childImageSharp.fluid}
         />

@@ -29,7 +29,7 @@
     }
   }
   &__item {
-    border-bottom: $gris5 3px solid;
+    border-bottom: $gris5 2px solid;
     &:nth-child(1) {
       padding-top: 0;
       .programas__titulo {
@@ -63,7 +63,7 @@
 @media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
   /*------Innovar------*/
   .innovar {
-    margin-top: 6vh;
+    margin-top: 8vh;
     &__lista {
       margin-top: 5vh;
     }

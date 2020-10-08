@@ -126,21 +126,21 @@
 
   /*------Historia------*/
   .historia {
-    margin-top: 6vh;
+    margin-top: 8vh;
     &__item {
       width: 100%;
-      padding-bottom: 7vh;
+      padding-bottom: 10vh;
     }
     &__image {
-      width: 50%;
+      width: 45%;
     }
     &__descripcion {
       width: 100%;
-      padding: 2vh 0 0 0;
+      padding:1.5vh 0 0 0;
     }
     &__texto {
       font-size: 0.85rem;
-      line-height: 1.4rem;
+      line-height: 1.3rem;
       padding-bottom: 1vh;
     }
     &__button {
@@ -149,7 +149,7 @@
     }
   }
   .equipo {
-    margin-top: 6vh;
+    margin-top: 2vh;
   }
 
   /*------Nosotros------*/
@@ -218,7 +218,7 @@
     }
     &__descripcion {
       width: 67%;
-      padding: 0 6vh 0 4vh;
+      padding: 0 6vh 0 3vh;
     }
     &__titulo {
       padding-bottom: 1vh;

@@ -191,7 +191,7 @@ header {
     .cabecera__menudrop {
       display: none;
       position: absolute;
-      top: 4vh;
+      top: 5vh;
       left: 0;
     }
     .cabecera__droplink {
@@ -335,7 +335,7 @@ footer {
     .columna--left,
     .columna--right {
       width: 100%;
-      padding:2vh 0;
+      padding: 1.5vh 0;
     }
     .columna--left {
       text-align: left;
@@ -367,7 +367,7 @@ footer {
         height: 3.5vh;
         margin-right: 2vh;
         svg {
-          width:0.7rem !important
+          width: 0.7rem !important;
         }
       }
     }
@@ -380,6 +380,19 @@ footer {
         padding-left: 0.4vw;
         margin-bottom: -0.9vh;
       }
+    }
+  }
+}
+
+/*-------------------------------------------- Mobile Portrait --------------------------------------------*/
+@media only screen and (max-device-width: 500px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+  /*----- Secciones------*/
+  .principal {
+    .columna--left-movil {
+      order: 2;
+    }
+    .columna--right-movil {
+      order: 1;
     }
   }
 }
@@ -505,7 +518,7 @@ footer {
         width: 4vh;
         height: 4vh;
         margin-right: 1.5vh;
-        svg {    
+        svg {
           width: 2rem !important;
         }
       }

@@ -40,7 +40,7 @@
           background: $verde2;
         }
         .normativas__down {
-          color: $verde3;
+          color: $verde2;
         }
       }
     }
@@ -179,14 +179,13 @@
   /*------Normativas------*/
   .normativas {
     margin-top: 14vh;
-    margin-bottom: 14vh;
+    margin-bottom: 10vh;
     &__lista {
       margin-top: 6vh;
     }
     &__item {
       width: 33.333333%;
-      margin-top: 2vh;
-      margin-bottom: 2vh;
+      padding: 3vh 2vh;
     }
     &__descarga {
       width: 14%;

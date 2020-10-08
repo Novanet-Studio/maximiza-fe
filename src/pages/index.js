@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Email from "../assets/images/email.png";
+import Email from "../assets/images/email.svg";
 import Logo from "../assets/images/logo-maximiza.svg";
 import "./index.scss"
 

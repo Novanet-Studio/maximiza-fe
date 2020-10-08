@@ -17,7 +17,7 @@ const Legal = ({ data }) => (
     <SEO title="Inicio" />
     <section className="principal">
       {console.log(data)}
-      <div className="columna--left">
+      <div className="columna--left columna--left-movil">
         <h1 className="principal__titulo">
           {data.strapiLegal.principal.titulo}
         </h1>
@@ -25,7 +25,7 @@ const Legal = ({ data }) => (
           {data.strapiLegal.principal.contenido}
         </p>
       </div>
-      <div className="columna--right">
+      <div className="columna--right columna--right-movil">
         <Img fluid={data.strapiLegal.principal.imagen.childImageSharp.fluid} />
       </div>
     </section>
