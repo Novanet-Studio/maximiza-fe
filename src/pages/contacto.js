@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import Layout from "../components/layout"
+import LayoutInterno from "../components/layoutInterno"
 import SEO from "../components/seo"
 import Email from "../assets/images/email.png"
 import "./contacto.scss"
@@ -14,7 +14,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons"
 library.add(fab, fas)
 
 const Contacto = ({ data }) => (
-  <Layout>
+  <LayoutInterno>
     <SEO title="Inicio" />
     <section className="principal">
       {console.log(data)}
@@ -37,15 +37,29 @@ const Contacto = ({ data }) => (
       <div className="columna--left">
         <ul className="datos__lista">
           <li className="datos__item">
-            <span class="datos__icono"><FontAwesomeIcon icon={["fas", "envelope"]} fixedWidth size="1x" /></span>
+            <span class="datos__icono">
+              <FontAwesomeIcon
+                icon={["fas", "envelope"]}
+                fixedWidth
+                size="1x"
+              />
+            </span>
             <p class="datos__texto">medios@maximiza.com.ve</p>
           </li>
           <li className="datos__item">
-          <span class="datos__icono"><FontAwesomeIcon icon={["fas", "phone"]} fixedWidth size="1x" /></span>
+            <span class="datos__icono">
+              <FontAwesomeIcon icon={["fas", "phone"]} fixedWidth size="1x" />
+            </span>
             <p class="datos__texto">0000-000-00-00</p>
           </li>
           <li className="datos__item">
-          <span class="datos__icono"><FontAwesomeIcon icon={["fas", "map-marker-alt"]} fixedWidth size="1x" /></span>
+            <span class="datos__icono">
+              <FontAwesomeIcon
+                icon={["fas", "map-marker-alt"]}
+                fixedWidth
+                size="1x"
+              />
+            </span>
             <p class="datos__texto">
               Av Lorem ipsum, edif sed do esiumund, por incumd incid N°2
             </p>
@@ -77,7 +91,7 @@ const Contacto = ({ data }) => (
         </form>
       </div>
     </section>
-  </Layout>
+  </LayoutInterno>
 )
 
 export default Contacto

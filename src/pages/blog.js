@@ -1,18 +1,16 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import Layout from "../components/layout"
+import LayoutInterno from "../components/layoutInterno"
 import SEO from "../components/seo"
 
 const IndexPage = ({ data }) => (
-  <Layout>
+  <LayoutInterno>
     <SEO title="Inicio" />
     <section className="principal">
       {console.log(data)}
       <div className="columna--left">
-        <Img
-          fluid={data.strapiBlog.principal.imagen.childImageSharp.fluid}
-        />
+        <Img fluid={data.strapiBlog.principal.imagen.childImageSharp.fluid} />
       </div>
       <div className="columna--right">
         <h1 className="principal__titulo">
@@ -23,7 +21,18 @@ const IndexPage = ({ data }) => (
         </p>
       </div>
     </section>
-  </Layout>
+
+    <section className="blog">
+      <ul className="blog__lista">
+        <li className="blog__item">
+          <img className="blog__imagen"></img>
+          <h3 className="blog__titulo"></h3>
+          <p className="blog__texto"></p>
+          <button className="blog__botton">ver post completo</button>
+        </li>
+      </ul>
+    </section>
+  </LayoutInterno>
 )
 
 export default IndexPage

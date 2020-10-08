@@ -5,8 +5,6 @@
 ========================================================================== */
 
 .contribuciones {
-  margin-top: 14vh;
-  width: 100%;
   @extend .flex;
   justify-content: center;
   &__lista {
@@ -14,39 +12,186 @@
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    margin-top: 7vh;
   }
   &__item {
-     flex: 1 1 0;
-     margin: 0 1vw;    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
     &:nth-child(1) {
       .contribuciones__titulo {
         color: $verde1;
       }
-       border-bottom: $verde1 2px solid;
+      .contribuciones__descripcion {
+        border-bottom: $verde1 2px solid;
+      }
+      .contribuciones__icono {
+        color: $verde1;
+      }
     }
     &:nth-child(2) {
       .contribuciones__titulo {
         color: $verde2;
-        
       }
-      border-bottom: $verde2 2px solid;
+      .contribuciones__descripcion {
+        border-bottom: $verde2 2px solid;
+      }
+      .contribuciones__icono {
+        color: $verde2;
+      }
     }
     &:nth-child(3) {
       .contribuciones__titulo {
         color: $verde3;
       }
-      border-bottom: $verde3 2px solid;
+      .contribuciones__descripcion {
+        border-bottom: $verde3 2px solid;
+      }
+      .contribuciones__icono {
+        color: $verde3;
+      }
     }
   }
+  &__titulo {
+    width:100%
+  }
   &__descripcion {
-    font-size: 1rem;
-    line-height: 1.7rem;
+    p:nth-child(2n) {
+      display: none;
+    }
+  }
+  &__icono {
+    cursor: pointer;
   }
 }
 
 .causas {
-   margin-top: 14vh;   
+  .descripcion a {
+    color: $verde1;
+  }
+  &__lista {
+    justify-content: space-between;
+  }
+  &__item {
+    @extend .flex;
+    justify-content: space-between;
+    &:nth-child(1) {
+      .causas__imagen {
+        border: $verde1 3px solid;
+      }
+    }
+    &:nth-child(2) {
+      .causas__imagen {
+        border: $verde2 3px solid;
+      }
+    }
+    &:nth-child(3) {
+      .causas__imagen {
+        border: $verde3 3px solid;
+      }
+    }
+  }
+  &__imagen {
+    border-radius:50%;
+  }
+  &__texto {
+    color:$gris2;
+    font-weight: 800;
+  }
 }
 
+/*-------------------------------------------- Mobile Portrait --------------------------------------------*/
+@media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+  .contribuciones {
+    margin-top: 6vh;
+    width: 100%;
+    &__lista {
+      margin-top: 2vh;
+    }
+    &__item {
+      margin-bottom: 5vh;
+    }
+    &__descripcion {
+      font-size: 0.85rem;
+      line-height: 1.3rem;
+      padding-top: 0.5vh;
+      padding-bottom: 2vh;
+    }
+    &__icono {
+      margin-top: 0.5vh;
+    }
+  }
 
+  .causas {
+    margin-top: 6vh;
+    &__lista {
+      margin-top: 4vh;
+    }
+    &__item {
+      margin-bottom: 7vh;
+    }
+    &__imagen {
+      width: 25%;
+      height: 12.5vh;
+      margin: 0 auto;
+    }
+    &__texto {
+      text-align: center;
+      padding-top: 1vh;
+      font-size: 0.9rem;
+      line-height: 1.2rem;
+    }
+  }
+}
+
+/*-------------------------------------------- Mobile Landscape --------------------------------------------*/
+@media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+}
+
+/*-------------------------------------------- Tablet Portrait --------------------------------------------*/
+@media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+}
+
+/*-------------------------------------------- Tablet Landscape --------------------------------------------*/
+@media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+}
+
+/*-------------------------------------------- Desktop responsive --------------------------------------------*/
+@media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
+  .contribuciones {
+    margin-top: 14vh;
+    width: 100%;
+    &__lista {
+      margin-top: 7vh;
+    }
+    &__item {
+      flex: 1 1;
+      margin: 0 1.5vw;
+    }
+    &__descripcion {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      padding-bottom: 2vh;
+    }
+  }
+
+  .causas {
+    margin-top: 14vh;
+    margin-bottom: 14vh;
+    &__lista {
+      margin: 6vh 0;
+    }
+    &__item {
+      width: 30%;
+      align-items: center;
+    }
+    &__imagen {
+      width: 23%;
+      height: 11.2vh;
+    }
+    &__texto {
+      width: 72%;
+      font-size: 1.1rem;
+      line-height: 1.5rem;
+    }
+  }
+}

@@ -5,6 +5,13 @@ import LayoutInterno from "../components/layoutInterno"
 import SEO from "../components/seo"
 import ReactMarkdown from "react-markdown"
 import "./responsabilidad.scss"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+// @fortawesome libraries
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { fab } from "@fortawesome/free-brands-svg-icons"
+import { fas } from "@fortawesome/free-solid-svg-icons"
+// add fas and fab to the library
+library.add(fab, fas)
 
 const Responsabilidad = ({ data }) => (
   <LayoutInterno>
@@ -39,17 +46,37 @@ const Responsabilidad = ({ data }) => (
               source={item.contenido.substring(0, 150).concat("...")}
               escapeHtml={false}
             />
+            <FontAwesomeIcon
+              className="contribuciones__icono"
+              icon={["fas", "caret-down"]}
+              fixedWidth
+              size="2x"
+            />
           </li>
         ))}
       </ul>
-      <section className="causas">
-        <h2>Causas que apoyamos</h2>
-        <ReactMarkdown
-          className="descripcion"
-          source={data.strapiResponsabilidad.colaboracion_texto}
-          escapeHtml={false}
-        />
-      </section>
+    </section>
+    <section className="causas">
+      <h2>Causas que apoyamos</h2>
+      <ReactMarkdown
+        className="descripcion"
+        source={data.strapiResponsabilidad.colaboracion_texto}
+        escapeHtml={false}
+      />
+      <ul className="causas__lista">
+        <li className="causas__item">
+          <div className="causas__imagen"></div>
+          <p className="causas__texto">Lorem ipsum is place holder  text commonly</p>
+        </li>
+        <li className="causas__item">
+          <div className="causas__imagen"></div>
+          <p className="causas__texto">Lorem ipsum is place holder  text commonly</p>
+        </li>
+        <li className="causas__item">
+          <div className="causas__imagen"></div>
+          <p className="causas__texto">Lorem ipsum is place holder  text commonly</p>
+        </li>
+      </ul>
     </section>
   </LayoutInterno>
 )

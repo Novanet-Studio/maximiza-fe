@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import Layout from "../components/layout"
+import LayoutInterno from "../components/layoutInterno"
 import SEO from "../components/seo"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // @fortawesome libraries
@@ -13,7 +13,7 @@ import "./legal.scss"
 library.add(fab, fas)
 
 const Legal = ({ data }) => (
-  <Layout>
+  <LayoutInterno>
     <SEO title="Inicio" />
     <section className="principal">
       {console.log(data)}
@@ -48,11 +48,7 @@ const Legal = ({ data }) => (
           <li className="normativas__item" key={item.id}>
             <div className="normativas__descarga">
               <button className="normativas__ver">
-                <FontAwesomeIcon
-                  icon={["fas", "eye"]}
-                  fixedWidth
-                  size="1.5x"
-                />
+                <FontAwesomeIcon icon={["fas", "eye"]} fixedWidth size="1.5x" />
               </button>
               <button className="normativas__down">
                 <FontAwesomeIcon
@@ -62,12 +58,14 @@ const Legal = ({ data }) => (
                 />
               </button>
             </div>
-            <p className="normativas__contenido">{item.documento.substring(0, 130).concat("...")}</p>
+            <p className="normativas__contenido">
+              {item.documento.substring(0, 130).concat("...")}
+            </p>
           </li>
         ))}
       </ul>
     </section>
-  </Layout>
+  </LayoutInterno>
 )
 
 export default Legal
