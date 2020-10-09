@@ -11,8 +11,13 @@ const Modal = ({ data, id, onClose }) =>
   data.map(
     (item) =>
       item.id === id && (
-        <div className="modal">
-          <span onClick={onClose}>&times;</span>
+        <div className="modal" key={item.id}>
+          <button onClick={onClose}>&times;</button>
+          <Img 
+            fluid={item.icono.childImageSharp.fluid}
+            title={item.titulo}
+            alt={''}
+          />
           <div className="modal__body">
             <h2 className="modal__title">{item.titulo}</h2>
             <p className="modal__content">{item.contenido}</p>
