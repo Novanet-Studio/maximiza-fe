@@ -61,7 +61,7 @@ const Contacto = ({ data }) => (
               />
             </span>
             <p class="datos__texto">
-              Av Lorem ipsum, edif sed do esiumund, por incumd incid N°2
+              Av Lorem ipsum, edif sed do esiumund, por incumd incidN2
             </p>
           </li>
         </ul>

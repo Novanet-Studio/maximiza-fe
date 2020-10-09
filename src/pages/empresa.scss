@@ -1,7 +1,6 @@
 @import "../assets/scss/normalize";
 @import "../assets/scss/variables";
 
-
 /* Empresas
 ========================================================================== */
 
@@ -41,7 +40,6 @@
   }
 }
 
-
 /*------Nosotros------*/
 .nosotros {
   &__item {
@@ -76,7 +74,7 @@
     }
     &:nth-child(3) {
       .nosotros__titulo {
-        background-color:$verde3;
+        background-color: $verde3;
       }
       .nosotros__descripcion {
         border-bottom: $verde3 solid 2px;
@@ -136,7 +134,7 @@
     }
     &__descripcion {
       width: 100%;
-      padding:1.5vh 0 0 0;
+      padding: 1.5vh 0 0 0;
     }
     &__texto {
       font-size: 0.85rem;
@@ -153,27 +151,27 @@
   }
 
   /*------Nosotros------*/
-.nosotros {
-  margin: 7vh 0 10vh 0;
-  &__item {
-    width: 100%;
-    height: 30vh;
+  .nosotros {
+    margin: 7vh 0 10vh 0;
+    &__item {
+      width: 100%;
+      height: 30vh;
+    }
+    &__imagen {
+      width: 100%;
+      height: 30vh;
+    }
+    &__titulo {
+      padding: 1.5vh 0;
+      margin-top: 12vh;
+    }
+    &__descripcion {
+      min-height: 12.5vh;
+      padding: 2vh;
+      font-size: 0.8rem;
+      line-height: 1.3rem;
+    }
   }
-  &__imagen {
-    width: 100%;
-    height: 30vh;
-  }
-  &__titulo {
-    padding: 1.5vh 0;
-    margin-top: 12vh;
-  }
-  &__descripcion {
-    min-height: 12.5vh;
-    padding: 2vh;
-    font-size: 0.8rem;
-    line-height: 1.3rem;
-  }
-}
 
   /*------Aliados------*/
   .aliados {
@@ -196,6 +194,68 @@
 
 /*-------------------------------------------- Tablet Portrait --------------------------------------------*/
 @media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+  /* Empresas
+========================================================================== */
+
+  /*------Historia------*/
+  .historia {
+    &__item {
+      padding-bottom: 7vh;
+    }
+    &__image {
+      width: 20%;
+    }
+    &__descripcion {
+      width: 80%;
+      padding: 0 0 0 2vh;
+    }
+    &__texto {
+      font-size: 0.95rem;
+      line-height: 1.5rem;
+    }
+    &__button {
+      font-size: 0.8rem;
+      padding: 1vh;
+    }
+  }
+
+  .equipo {
+    margin-top: 3vh;
+  }
+
+  /*------Nosotros------*/
+  .nosotros {
+    margin: 4vh 0vh 8vh 0vh;
+    &__item {
+      width: 33.3333333%;
+      height: 23.67vh;
+    }
+    &__imagen {
+      width: 100%;
+      height: 23.67vh;
+    }
+    &__titulo {
+      padding: 1vh 0;
+      margin-top: 09vh;
+    }
+    &__descripcion {
+      min-height: 12.5vh;
+    }
+  }
+
+  /*------Aliados------*/
+  .aliados {
+    margin-bottom: 8vh;
+    padding:3vh 7vh;
+    &__carrusel {
+      padding-top: 2vh;
+      &-item {
+        width: 10%;
+        height: 5vh;
+        margin: 1vh;
+      }
+    }
+  }
 }
 
 /*-------------------------------------------- Tablet Landscape --------------------------------------------*/
@@ -236,34 +296,30 @@
 
   .equipo {
     margin-top: 12vh;
-    &__descripcion {
-      font-size: 1.2rem;
-      line-height: 1.7rem;
-    }
   }
 
-/*------Nosotros------*/
-.nosotros {
-  margin: 10vh 9vh 17vh;
-  &__item {
-    width: 33.3333333%;
-    height: 30vh;
+  /*------Nosotros------*/
+  .nosotros {
+    margin: 10vh 9vh 17vh;
+    &__item {
+      width: 33.3333333%;
+      height: 30vh;
+    }
+    &__imagen {
+      width: 100%;
+      height: 30vh;
+    }
+    &__titulo {
+      padding: 1.5vh 0;
+      margin-top: 12vh;
+    }
+    &__descripcion {
+      min-height: 12.5vh;
+      padding: 2vh;
+      font-size: 0.95rem;
+      line-height: 1.4rem;
+    }
   }
-  &__imagen {
-    width: 100%;
-    height: 30vh;
-  }
-  &__titulo {
-    padding: 1.5vh 0;
-    margin-top: 12vh;
-  }
-  &__descripcion {
-    min-height: 12.5vh;
-    padding: 2vh;
-    font-size: 0.95rem;
-    line-height: 1.4rem;
-  }
-}
 
   /*------Aliados------*/
   .aliados {

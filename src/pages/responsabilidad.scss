@@ -52,7 +52,7 @@
     }
   }
   &__titulo {
-    width:100%
+    width: 100%;
   }
   &__descripcion {
     p:nth-child(2n) {
@@ -91,10 +91,10 @@
     }
   }
   &__imagen {
-    border-radius:50%;
+    border-radius: 50%;
   }
   &__texto {
-    color:$gris2;
+    color: $gris2;
     font-weight: 800;
   }
 }
@@ -149,6 +149,44 @@
 
 /*-------------------------------------------- Tablet Portrait --------------------------------------------*/
 @media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+  .contribuciones {
+    margin-top: 6vh;
+    width: 100%;
+    &__lista {
+      margin-top: 3vh;
+    }
+    &__item {
+      margin: 0 4vw 4vw;
+    }
+    &__descripcion {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      padding-bottom: 2vh;
+    }
+  }
+
+  .causas {
+    margin-top: 6vh;
+    margin-bottom: 6vh;
+    &__lista {
+      margin: 4vh 8vh 0;
+    }
+    &__item {
+      width: 100%;
+      align-items: center;
+      margin-bottom: 5vh;
+    }
+    &__imagen {
+      width: 15%;
+      height: 8.2vh;
+    }
+    &__texto {
+      width: 75%;
+      font-size: 1.15rem;
+      line-height: 1.7rem;
+      text-align: left;
+    }
+  }
 }
 
 /*-------------------------------------------- Tablet Landscape --------------------------------------------*/

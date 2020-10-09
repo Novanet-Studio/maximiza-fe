@@ -93,7 +93,7 @@
 }
 
 @media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
-    /* Legal
+  /* Legal
 ========================================================================== */
 
   /*------Etica------*/
@@ -142,6 +142,58 @@
 
 /*-------------------------------------------- Tablet Portrait --------------------------------------------*/
 @media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+  /* Legal
+========================================================================== */
+
+  /*------Etica------*/
+  .etica {
+    margin-top: 6vh;
+    &__imagen {
+      width: 40%;
+      margin-bottom: 1vh;
+    }
+    &__titulo {
+      margin-bottom: 1vh;
+    }
+    &__texto {
+      font-size: 0.9rem;
+      line-height: 1.4rem;
+      padding-bottom: 2vh;
+      -webkit-column-count: 2;
+      column-count: 2;
+      -webkit-column-gap: 3em;
+      column-gap: 3em;
+    }
+  }
+
+  /*------Normativas------*/
+  .normativas {
+    margin-top: 6vh;
+    margin-bottom: 5vh;
+    &__lista {
+      margin-top: 3vh;
+    }
+    &__item {
+      margin-top: 2vh;
+      margin-bottom: 2vh;
+      padding-left: 2vh;
+      padding-right: 2vh;
+      width: 50%;
+    }
+    &__descarga {
+      width: 14%;
+    }
+    &__ver,
+    &__down {
+      padding: 0.7vh 0;
+    }
+    &__contenido {
+      width: 83%;
+      padding-right: 3vh;
+      font-size: 0.8rem;
+      line-height: 1.2rem;
+    }
+  }
 }
 
 /*-------------------------------------------- Tablet Landscape --------------------------------------------*/
