@@ -33,8 +33,10 @@ const Educacion = ({ data }) => (
               className="innovar__imagen"
               fluid={item.imagen.childImageSharp.fluid}
             />
-            <h3 className="innovar__subtitulo">{item.titulo}</h3>
-            <p className="innovar__descripcion">{item.contenido}</p>
+            <div className="innovar__textos">
+              <h3 className="innovar__subtitulo">{item.titulo}</h3>
+              <p className="innovar__descripcion">{item.contenido}</p>
+            </div>
           </li>
         ))}
       </ul>

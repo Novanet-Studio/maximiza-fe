@@ -403,6 +403,118 @@ footer {
 
 /*-------------------------------------------- Tablet Portrait --------------------------------------------*/
 @media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+  h1 {
+    font-size: 1.4rem;
+    margin-bottom: 0;
+  }
+  h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1vh;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    line-height: 1.5rem;
+  }
+
+  h4 {
+    font-size: 1.25rem;
+    line-height: 1.8rem;
+  }
+
+  .descripcion {
+    font-size: 0.9rem;
+    line-height: 1.6rem;
+  }
+
+  .contenedor {
+    margin: 0 2vh;
+  }
+
+  /*------Cabecera------*/
+  header {
+    .logo--interno {
+      width: 50%;
+      img {
+        width: 33.3333333%;
+      }
+    }
+    nav {
+      width: 50%;
+      div {
+        padding-left: 2vw;
+        padding-right: 0;
+        &:nth-child(2) {
+          padding-left: 0.5vw;
+        }
+        .texto {
+          font-size: 0.85rem;
+        }
+        .cabecera__menudrop {
+          padding-top: 1vh;
+          padding-bottom: 1vh;
+          top: 3vh;
+        }
+        .cabecera__droplink {
+          a {
+            font-size: 0.75rem;
+            line-height: 1.8rem;
+            padding-left: 1vw;
+          }
+        }
+      }
+    }
+  }
+
+  /*----- Secciones------*/
+  .principal {
+    .columna--left {
+      width: 50%;
+      padding: 0 2vw 0 0;
+      text-align: right;
+    }
+    .columna--right {
+      width: 50%;
+      padding: 0 0 0 2vw;
+    }
+    .logo--interno {
+      width: 18vh;
+    }
+    &__texto {
+      font-size: 1.1rem;
+      line-height: 1.4rem;
+      &--pequeño {
+        font-size: 1.05rem;
+        line-height: 1.3rem;
+      }
+    }
+    &__button {
+      padding: 1vh 1.5vh;
+      margin-top: 1vh;
+    }
+  }
+
+  /*------Pie------*/
+  footer {
+    ul {
+      li {
+        width: 2.8vh;
+        height: 2.8vh;
+        margin-right: 1.5vh;
+        svg {
+          width: 2rem !important;
+        }
+      }
+    }
+    p {
+      font-size: 0.85rem;
+      padding-top: 0;
+      img {
+        width: 11vw;
+        margin-bottom: -0.5vh;
+      }
+    }
+  }
 }
 
 /*-------------------------------------------- Tablet Landscape --------------------------------------------*/

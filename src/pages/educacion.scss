@@ -122,6 +122,71 @@
 
 /*-------------------------------------------- Tablet Portrait --------------------------------------------*/
 @media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+  /*------Innovar------*/
+  .innovar {
+    margin-top: 6h;
+    &__lista {
+      margin-top: 5vh;
+      margin-left: 5vh;
+      margin-right: 5vh;
+    }
+    &__item {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+    &__imagen {
+      width: 10vh;
+      margin: 0;
+    }
+    &__textos {
+      width: 80%;
+    }
+    &__subtitulo {
+      text-align: left;
+      margin: 1vh 0 0.5vh 0;
+    }
+    &__descripcion {
+      text-align: left;
+      font-size: 1rem;
+      line-height: 1.4rem;
+    }
+  }
+
+  /*------Programas------*/
+  .programas {
+    &__grupos {
+      &:nth-child(2) {
+        text-align: right;
+        .programas__imagen {
+          order: 2;
+        }
+        .programas__lista {
+          order: 1;
+        }
+      }
+    }
+    &__imagen {
+      width: 37%;
+    }
+    &__lista {
+      width: 60%;
+    }
+    &__item {
+      padding-top: 2vh;
+      padding-bottom: 2vh;
+    }
+    &__descripcion {
+      font-size: 0.9rem;
+    }
+    &__boton {
+      font-size: 0.9rem;
+      padding: 1vh 3vh;
+      margin-bottom: 6vh;
+    }
+  }
 }
 
 /*-------------------------------------------- Tablet Landscape --------------------------------------------*/
