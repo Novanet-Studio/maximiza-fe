@@ -4,6 +4,7 @@
 /* Servicios
 ========================================================================== */
 
+
 /*------Inversionista------*/
 .inversionista {
   &__grupo {
@@ -49,10 +50,8 @@
     @extend .flex;
     background: $blanco2;
     position: relative;
-    background-image: url(../assets/images/dropdown.svg);
-    background-repeat: no-repeat;
-    background-position: 96% 50%;
     &:hover {
+      z-index: 10;
       cursor: pointer;
       .inversionista__texto {
         opacity: 1;
@@ -67,14 +66,21 @@
     background: $verde2;
     color: $blanco1;
   }
+  &__flecha {
+    width: 1vw;
+    position: absolute;
+    right: 1vw;
+    top: 2vh;
+  }
   &__texto {
     @extend .flex;
-    flex-direction: column;
     width: 100%;
+    flex-direction: column;
     background: $blanco2;
     position: absolute;
     opacity: 0;
     z-index: 5;
+    box-shadow: 1px 1px 1px #444;
   }
   &__boton {
     cursor: pointer;
@@ -83,6 +89,18 @@
 
 /*-------------------------------------------- Mobile Portrait --------------------------------------------*/
 @media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+  
+  /*------Excepción para invertir orden-----*/
+  .principal {
+    .columna--left {
+      text-align: left;
+      order: 2
+    }
+    .columna--right {
+      text-align: left;
+      order: 1
+    }
+  }
   /*------Inversionista------*/
   .inversionista {
     &__grupo {
