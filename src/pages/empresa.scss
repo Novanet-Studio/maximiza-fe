@@ -122,6 +122,16 @@
   /* Empresas
 ========================================================================== */
 
+.principal {
+  flex-direction: column;
+  .columna--left {
+    order: 2;
+  }
+  .columna--right {
+    order: 1;
+  }
+}
+
   /*------Historia------*/
   .historia {
     margin-top: 8vh;
@@ -246,7 +256,7 @@
   /*------Aliados------*/
   .aliados {
     margin-bottom: 8vh;
-    padding:3vh 7vh;
+    padding: 3vh 7vh;
     &__carrusel {
       padding-top: 2vh;
       &-item {

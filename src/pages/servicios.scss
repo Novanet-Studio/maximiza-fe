@@ -4,7 +4,6 @@
 /* Servicios
 ========================================================================== */
 
-
 /*------Inversionista------*/
 .inversionista {
   &__grupo {
@@ -92,13 +91,12 @@
   
   /*------Excepción para invertir orden-----*/
   .principal {
+    flex-direction: column;
     .columna--left {
-      text-align: left;
-      order: 2
+      order: 1;
     }
     .columna--right {
-      text-align: left;
-      order: 1
+      order: 2;
     }
   }
   /*------Inversionista------*/

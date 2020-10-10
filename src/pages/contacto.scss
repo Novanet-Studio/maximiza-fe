@@ -57,7 +57,7 @@
     cursor: pointer;
     font-weight: 400;
     color: $blanco1;
-    background: $verde5;
+    background: $verde1;
     border: none;
   }
 }
@@ -79,6 +79,8 @@
       margin-bottom: 5vh;
     }
     &__icono {
+      display: flex;
+      align-self: flex-start;;
       width: 5vh;
       height: 5vh;
     }

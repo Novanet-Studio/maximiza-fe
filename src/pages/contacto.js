@@ -44,7 +44,7 @@ const Contacto = ({ data }) => (
                 size="1x"
               />
             </span>
-            <p class="datos__texto">medios@maximiza.com.ve</p>
+            <p class="datos__texto">info@maximiza.com.ve</p>
           </li>
           <li className="datos__item">
             <span class="datos__icono">
@@ -61,7 +61,7 @@ const Contacto = ({ data }) => (
               />
             </span>
             <p class="datos__texto">
-              Av Lorem ipsum, edif sed do esiumund, por incumd incidN2
+              Francisco de Miranda Avenue, Europe Tower, 3rd Floor, 3-B3 Offices. El Rosal. Caracas – Venezuela.
             </p>
           </li>
         </ul>

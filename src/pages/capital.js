@@ -43,8 +43,9 @@ const Capital = ({ data }) => (
           </li>
         ))}
       </ul>
+      <h3 className="texto-cta">¡Gracias por preferirnos!</h3>
       <Link className="partners__boton" to="/capital">
-        Necesito más información
+        Obtenga más información
       </Link>
     </section>
   </LayoutInterno>

@@ -77,7 +77,7 @@ const Servicios = ({ data }) => {
                   <p className="inversionista__texto">
                     <strong>{element.titulo}</strong>
                     {element.contenido}
-                    <button
+                    {/* <button
                       style={{
                         width: "100%",
                         cursor: "pointer",
@@ -87,7 +87,7 @@ const Servicios = ({ data }) => {
                       onClick={() => setTargetModal(element.id)}
                     >
                       Ver mas
-                    </button>
+                    </button> */}
                   </p>
                 </li>
               ))}

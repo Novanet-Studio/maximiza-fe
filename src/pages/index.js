@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import ReactMarkdown from "react-markdown"
 import Email from "../assets/images/email.svg";
 import Logo from "../assets/images/logo-maximiza.svg";
 import "./index.scss"
@@ -36,7 +37,11 @@ const Index = ({ data }) => (
         {data.strapiInicio.beneficios.map((item) => (
           <li className="beneficios__item" key={item.id}>
             <h3 className="beneficios__subtitulo">{item.titulo}</h3>
-            <p className="beneficios__descripcion">{item.contenido}</p>
+            <ReactMarkdown
+              className="beneficios__descripcion"
+              source={item.contenido}
+              escapeHtml={false}
+            />         
           </li>
         ))}
       </ul>
@@ -59,7 +64,7 @@ const Index = ({ data }) => (
     <section className="contacto">
       <h2>{data.strapiInicio.contacto_titulo}</h2>
       <p className="descripcion">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+      Si desea mayor información de nuestros servicios, escríbanos y nos comunicaremos con usted a la brevedad posible.
       </p>
       <form className="form">
         <div className="columna--left">

@@ -62,8 +62,9 @@ const Educacion = ({ data }) => (
           </div>
         ))}
       </div>
+      <h3 className="texto-cta">¡Gracias por preferirnos!</h3>
       <Link className="programas__boton" to="/educacion">
-        Necesito más información
+        Obtenga más información
       </Link>
     </section>
   </LayoutInterno>

@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import LayoutInterno from "../components/layoutInterno"
 import SEO from "../components/seo"
@@ -66,17 +66,26 @@ const Responsabilidad = ({ data }) => (
       <ul className="causas__lista">
         <li className="causas__item">
           <div className="causas__imagen"></div>
-          <p className="causas__texto">Lorem ipsum is place holder  text commonly</p>
+          <p className="causas__texto">
+            Lorem ipsum is place holder text commonly
+          </p>
         </li>
         <li className="causas__item">
           <div className="causas__imagen"></div>
-          <p className="causas__texto">Lorem ipsum is place holder  text commonly</p>
+          <p className="causas__texto">
+            Lorem ipsum is place holder text commonly
+          </p>
         </li>
         <li className="causas__item">
           <div className="causas__imagen"></div>
-          <p className="causas__texto">Lorem ipsum is place holder  text commonly</p>
+          <p className="causas__texto">
+            Lorem ipsum is place holder text commonly
+          </p>
         </li>
       </ul>
+      <Link className="programas__boton" to="/educacion">
+        Obtenga más información
+      </Link>
     </section>
   </LayoutInterno>
 )
