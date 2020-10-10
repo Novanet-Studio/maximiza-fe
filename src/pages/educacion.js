@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
+import ReactMarkdown from "react-markdown"
 import LayoutInterno from "../components/layoutInterno"
 import SEO from "../components/seo"
 import "./educacion.scss"
@@ -13,9 +14,11 @@ const Educacion = ({ data }) => (
         <h1 className="principal__titulo">
           {data.strapiEducacion.principal.titulo}
         </h1>
-        <p className="principal__texto">
-          {data.strapiEducacion.principal.contenido}
-        </p>
+        <ReactMarkdown
+          className="principal__texto"
+          source={data.strapiEducacion.principal.contenido}
+          escapeHtml={false}
+        />
       </div>
       <div className="columna--right">
         <Img
