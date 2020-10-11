@@ -1,37 +1,12 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import LayoutInterno from "../components/layoutInterno"
-import SEO from "../components/seo"
 import ReactMarkdown from "react-markdown"
+import LayoutInterno from "../components/layoutInterno"
+import Modal from "../components/modal"
+import SEO from "../components/seo"
 import Flecha from "../assets/images/dropdown.svg"
 import "./servicios.scss"
-import { useState } from "react"
-
-const Modal = ({ data, id, onClose }) =>
-  data.map(
-    (item) =>
-      item.id === id && (
-        <div className="modal" key={item.id}>
-          <div className="modal__content">
-            <button onClick={onClose}>&times;</button>
-            <div className="modal__body">
-              <Img
-                fluid={item.icono.childImageSharp.fluid}
-                title={item.titulo}
-                alt={""}
-              />
-              <h2 className="modal__title">{item.titulo}</h2>
-              <ReactMarkdown
-                className="inversionista__descripcion"
-                source={item.contenido}
-                escapeHtml={false}
-              />
-            </div>
-          </div>
-        </div>
-      )
-  )
 
 const Servicios = ({ data }) => {
   const [targetModal, setTargetModal] = useState("")
@@ -97,9 +72,10 @@ const Servicios = ({ data }) => {
               ))}
             </ul>
             <Modal
-              data={item.items}
-              onClose={() => setTargetModal("")}
               id={targetModal}
+              data={item.items}
+              imageFieldName="icono"
+              onClose={() => setTargetModal("")}
             />
           </div>
         ))}

@@ -1,37 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
+import ReactMarkdown from "react-markdown"
 import LayoutInterno from "../components/layoutInterno"
 import Aliados from "../components/aliados"
-import ReactMarkdown from "react-markdown"
+import Modal from "../components/modal"
 import "./empresa.scss"
-import { useState } from "react"
-
-const Modal = ({ data, id, onClose }) =>
-  data.map(
-    (item) =>
-      item.id === id && (
-        <div className="modal" key={id}>
-          {console.log(item)}
-          <div className="modal__content">
-            <button onClick={onClose}>&times;</button>
-            <div className="modal__body">
-              <Img
-                fluid={item.imagen.childImageSharp.fluid}
-                title={item.titulo}
-                alt={""}
-              />
-              <h2 className="modal__title">{item.titulo}</h2>
-              <ReactMarkdown
-                className="contribuciones__descripcion"
-                source={item.contenido}
-                escapeHtml={false}
-              />
-            </div>
-          </div>
-        </div>
-      )
-  )
 
 const Empresa = ({ data }) => {
   const [targetModal, setTargetModal] = useState("")
@@ -56,7 +30,6 @@ const Empresa = ({ data }) => {
 
       <section className="historia">
         <ul className="historia__lista">
-          {console.log(data.strapiEmpresa.historia)}
           {data.strapiEmpresa.historia.map((item) => (
             <li className="historia__item" key={item.id}>
               <Img
@@ -79,9 +52,10 @@ const Empresa = ({ data }) => {
             </li>
           ))}
           <Modal
-            data={data.strapiEmpresa.historia}
-            onClose={() => setTargetModal("")}
             id={targetModal}
+            data={data.strapiEmpresa.historia}
+            imageFieldName="imagen"
+            onClose={() => setTargetModal("")}
           />
         </ul>
       </section>
