@@ -1,9 +1,9 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import ReactMarkdown from "react-markdown"
 import LayoutInterno from "../components/layoutInterno"
 import SEO from "../components/seo"
+import ReactMarkdown from "react-markdown"
 import Flecha from "../assets/images/dropdown.svg"
 import "./servicios.scss"
 import { useState } from "react"
@@ -13,15 +13,21 @@ const Modal = ({ data, id, onClose }) =>
     (item) =>
       item.id === id && (
         <div className="modal" key={item.id}>
-          <button onClick={onClose}>&times;</button>
-          <Img
-            fluid={item.icono.childImageSharp.fluid}
-            title={item.titulo}
-            alt={""}
-          />
-          <div className="modal__body">
-            <h2 className="modal__title">{item.titulo}</h2>
-            <p className="modal__content">{item.contenido}</p>
+          <div className="modal__content">
+            <button onClick={onClose}>&times;</button>
+            <div className="modal__body">
+              <Img
+                fluid={item.icono.childImageSharp.fluid}
+                title={item.titulo}
+                alt={""}
+              />
+              <h2 className="modal__title">{item.titulo}</h2>
+              <ReactMarkdown
+                className="contribuciones__descripcion"
+                source={item.contenido}
+                escapeHtml={false}
+              />
+            </div>
           </div>
         </div>
       )
@@ -75,23 +81,17 @@ const Servicios = ({ data }) => {
                     src={Flecha}
                     alt="Desplegar más"
                   />
-                  <div className="inversionista__texto">            
+
+                  <div className="inversionista__texto">
+                    <strong>{element.titulo}</strong>
                     <ReactMarkdown
-                      className="inversionista__descripcion"
-                      source={element.contenido}
+                      className="contribuciones__descripcion"
+                      source={element.contenido.substring(0, 200).concat("...")}
                       escapeHtml={false}
                     />
-                    {/* <button
-                      style={{
-                        width: "100%",
-                        cursor: "pointer",
-                        background: "green",
-                        color: "#fff",
-                      }}
-                      onClick={() => setTargetModal(element.id)}
-                    >
-                      Ver mas
-                    </button> */}
+                    <button className="inversionista__boton" onClick={() => setTargetModal(element.id)}>
+                      Leer más
+                    </button>
                   </div>
                 </li>
               ))}

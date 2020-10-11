@@ -4,24 +4,13 @@
 /* Servicios
 ========================================================================== */
 
+
 /*------Inversionista------*/
 .inversionista {
   &__grupo {
     @extend .flex;
     justify-content: space-between;
     position: relative;
-    &:last-child {
-      .inversionista__cabecera {
-        .inversionista__titulo {
-          text-align: right;
-        }
-      }
-      .inversionista__contenido {
-        .inversionista__icono {
-          background: $verde3;
-        }
-      }
-    }
   }
   &__cabecera {
     position: relative;
@@ -83,6 +72,8 @@
   }
   &__boton {
     cursor: pointer;
+    padding: 0.5vh;
+    font-size: 0.9rem;
   }
 }
 
@@ -91,12 +82,13 @@
   
   /*------Excepción para invertir orden-----*/
   .principal {
-    flex-direction: column;
     .columna--left {
-      order: 1;
+      text-align: left;
+      order: 2
     }
     .columna--right {
-      order: 2;
+      text-align: left;
+      order: 1
     }
   }
   /*------Inversionista------*/
@@ -273,24 +265,11 @@
       margin-right: 2vh;
     }
     &__texto {
-      margin-top: 5vh;
       padding: 2vh;
-      font-size: 0.8rem;
-      line-height: 1.4rem;
-      max-height: 25vh;
-      overflow-x: hidden;
-      overflow-y: scroll;
       p {
-        width: 100%;
+        font-size: 0.85rem;
+      line-height: 1.4rem;
       }
-      &__descripcion {
-        width: 100%;
-    }
-    }
-    
-    &__boton {
-      margin-top: 2vh;
-      padding: 0.5vh;
     }
   }
 }

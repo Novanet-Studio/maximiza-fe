@@ -12,20 +12,8 @@
 
   &__item {
     border-bottom: $gris5 3px solid;
-    &:nth-child(1) {
-      .beneficios__subtitulo {
-        color: $verde1;
-      }
-    }
-    &:nth-child(2) {
-      .beneficios__subtitulo {
-        color: $verde2;
-      }
-    }
-    &:nth-child(3) {
-      .beneficios__subtitulo {
-        color: $verde3;
-      }
+    .beneficios__subtitulo {
+      color: $verde1;
     }
   }
 
@@ -49,24 +37,10 @@
       .servicios__descripcion {
         opacity: 1;
       }
-      &:nth-child(1) {
-        background-color: $verde1;
+      background-color: $verde1;
         .servicios__descripcion {
           background-color: $verde1;
         }
-      }
-      &:nth-child(2) {
-        background-color: $verde2;
-        .servicios__descripcion {
-          background-color: $verde2;
-        }
-      }
-      &:nth-child(3) {
-        background-color: $verde3;
-        .servicios__descripcion {
-          background-color: $verde3;
-        }
-      }
     }
     .servicios__subtitulo {
       color: $blanco1;
@@ -382,6 +356,9 @@
           }
         }
       }
+    }
+    .descripcion {
+      margin-top: 4vh;
     }
   }
 }

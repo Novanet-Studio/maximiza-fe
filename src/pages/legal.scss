@@ -9,7 +9,7 @@
   @extend .flex;
   justify-content: space-between;
   &__titulo {
-    color: $verde2;
+    color: $verde1;
     text-align: left;
   }
   &__texto {
@@ -24,54 +24,12 @@
   &__item {
     @extend .flex;
     justify-content: space-between;
-    &:nth-child(1) {
-      .normativas__descarga {
-        .normativas__ver {
-          background: $verde1;
-        }
-        .normativas__down {
-          color: $verde1;
-        }
+    .normativas__descarga {
+      .normativas__ver {
+        background: $verde1;
       }
-    }
-    &:nth-child(2) {
-      .normativas__descarga {
-        .normativas__ver {
-          background: $verde2;
-        }
-        .normativas__down {
-          color: $verde2;
-        }
-      }
-    }
-    &:nth-child(3) {
-      .normativas__descarga {
-        .normativas__ver {
-          background: $verde3;
-        }
-        .normativas__down {
-          color: $verde3;
-        }
-      }
-    }
-    &:nth-child(4) {
-      .normativas__descarga {
-        .normativas__ver {
-          background: $verde4;
-        }
-        .normativas__down {
-          color: $verde4;
-        }
-      }
-    }
-    &:nth-child(5) {
-      .normativas__descarga {
-        .normativas__ver {
-          background: $verde5;
-        }
-        .normativas__down {
-          color: $verde5;
-        }
+      .normativas__down {
+        color: $verde1;
       }
     }
   }

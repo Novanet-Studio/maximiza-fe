@@ -8,24 +8,12 @@
 .historia {
   &__item {
     @extend .flex;
-    &:first-child {
-      .historia__descripcion {
-        .historia__titulo {
-          color: $verde1;
-        }
-        .historia__button {
-          background: $verde1;
-        }
+    .historia__descripcion {
+      .historia__titulo {
+        color: $verde1;
       }
-    }
-    &:last-child {
-      .historia__descripcion {
-        .historia__titulo {
-          color: $verde3;
-        }
-        .historia__button {
-          background: $verde3;
-        }
+      .historia__button {
+        background: $verde1;
       }
     }
   }
@@ -56,29 +44,11 @@
         filter: grayscale(100%);
       }
     }
-    &:nth-child(1) {
-      .nosotros__titulo {
-        background-color: $verde1;
-      }
-      .nosotros__descripcion {
-        border-bottom: $verde1 solid 2px;
-      }
+    .nosotros__titulo {
+      background-color: $verde1;
     }
-    &:nth-child(2) {
-      .nosotros__titulo {
-        background-color: $verde2;
-      }
-      .nosotros__descripcion {
-        border-bottom: $verde2 solid 2px;
-      }
-    }
-    &:nth-child(3) {
-      .nosotros__titulo {
-        background-color: $verde3;
-      }
-      .nosotros__descripcion {
-        border-bottom: $verde3 solid 2px;
-      }
+    .nosotros__descripcion {
+      border-bottom: $verde1 solid 2px;
     }
   }
   &__imagen {
@@ -111,9 +81,7 @@
   &__carrusel {
     @extend .flex;
     justify-content: space-between;
-    &-item {
-      clip-path: circle(50% at 50% 50%);
-      background-color: $gris5;
+    &-item {    
     }
   }
 }
@@ -261,8 +229,7 @@
       padding-top: 2vh;
       &-item {
         width: 10%;
-        height: 5vh;
-        margin: 1vh;
+       
       }
     }
   }
@@ -303,12 +270,12 @@
       padding: 1vh 1.5vh;
     }
     &__descripcion p  {
-      font-size: 0.85rem;
+      margin-bottom: 4vh;
+      line-height: 1.4rem;
       color: $negro1;
     }
   
-  }
-  
+  }  
   .equipo {
     margin-top: 12vh;
   }
@@ -341,11 +308,15 @@
     margin-bottom: 12vh;
     padding: 3vh 7vh 5vh;
     &__carrusel {
-      width: 100%;
+      margin: 0 auto;
+      width: 90%;
       height: 20vh;
       padding-top: 4vh;
       &-item {
-        width: 13%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 10%;
         height: 16.5vh;
       }
     }

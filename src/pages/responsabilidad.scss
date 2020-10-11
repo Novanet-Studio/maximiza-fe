@@ -17,39 +17,15 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    &:nth-child(1) {
-      .contribuciones__titulo {
-        color: $verde1;
-      }
-      .contribuciones__descripcion {
-        border-bottom: $verde1 2px solid;
-      }
-      .contribuciones__icono {
-        color: $verde1;
-      }
+    .contribuciones__titulo {
+      color: $verde1;
     }
-    &:nth-child(2) {
-      .contribuciones__titulo {
-        color: $verde2;
-      }
-      .contribuciones__descripcion {
-        border-bottom: $verde2 2px solid;
-      }
-      .contribuciones__icono {
-        color: $verde2;
-      }
+    .contribuciones__descripcion {
+      border-bottom: $verde1 2px solid;
     }
-    &:nth-child(3) {
-      .contribuciones__titulo {
-        color: $verde3;
-      }
-      .contribuciones__descripcion {
-        border-bottom: $verde3 2px solid;
-      }
-      .contribuciones__icono {
-        color: $verde3;
-      }
-    }
+    .contribuciones__icono {
+      color: $verde1;
+    }    
   }
   &__titulo {
     width: 100%;
@@ -78,20 +54,8 @@
   &__item {
     @extend .flex;
     justify-content: space-between;
-    &:nth-child(1) {
-      .causas__imagen {
-        border: $verde1 3px solid;
-      }
-    }
-    &:nth-child(2) {
-      .causas__imagen {
-        border: $verde2 3px solid;
-      }
-    }
-    &:nth-child(3) {
-      .causas__imagen {
-        border: $verde3 3px solid;
-      }
+    .causas__imagen {
+      border: $verde1 3px solid;
     }
   }
   &__imagen {

@@ -12,21 +12,9 @@
     @extend .flex;
     justify-content: space-between;
     align-items: center;
-    &:nth-child(1) {
-      .datos__icono {
-        background: $verde1;
-      }
-    }
-    &:nth-child(2) {
-      .datos__icono {
-        background: $verde2;
-      }
-    }
-    &:nth-child(3) {
-      .datos__icono {
-        background: $verde3;
-      }
-    }
+    .datos__icono {
+      background: $verde1;
+    }    
   }
   &__icono {
     color: $blanco1;

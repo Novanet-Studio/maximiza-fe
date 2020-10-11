@@ -1,0 +1,10 @@
+@import "../assets/scss/normalize";
+@import "../assets/scss/variables";
+
+
+.medios {
+   margin-top: 14vh;
+   @extend .flex;
+   justify-content: center;
+
+}

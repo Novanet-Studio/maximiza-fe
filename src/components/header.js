@@ -87,7 +87,7 @@ const Header = () => (
         <p className="texto">Comunidad</p>
         <ul className="cabecera__menudrop">
           <li className="cabecera__droplink">
-            <AniLink to="/">Medios</AniLink>
+            <AniLink to="/medios">Medios</AniLink>
           </li>
           <li className="cabecera__droplink">
             <AniLink
