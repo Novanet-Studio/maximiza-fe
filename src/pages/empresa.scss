@@ -37,7 +37,7 @@
     cursor: pointer;
     border: none;
     color: $blanco1;
-  }
+  }  
 }
 
 /*------Nosotros------*/
@@ -302,8 +302,13 @@
       font-size: 0.8rem;
       padding: 1vh 1.5vh;
     }
+    &__descripcion p  {
+      font-size: 0.85rem;
+      color: $negro1;
+    }
+  
   }
-
+  
   .equipo {
     margin-top: 12vh;
   }

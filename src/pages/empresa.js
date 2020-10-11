@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import LayoutInterno from "../components/layoutInterno"
+import ReactMarkdown from "react-markdown"
 import "./empresa.scss"
 
 const Empresa = ({ data }) => (
@@ -33,10 +34,7 @@ const Empresa = ({ data }) => (
             />
             <div className="historia__descripcion">
               <h3 className="historia__titulo">{item.titulo}</h3>
-              <p className="historia__texto">
-                {item.contenido.substring(0, 150).concat("...")}
-              </p>
-              <button className="historia__button">Conocer más</button>
+              <ReactMarkdown source={item.contenido} escapeHtml={false} />
             </div>
           </li>
         ))}
@@ -44,9 +42,7 @@ const Empresa = ({ data }) => (
     </section>
     <section className="equipo">
       <h2>{data.strapiEmpresa.equipo.titulo}</h2>
-      <p className="descripcion">
-        {data.strapiEmpresa.equipo.contenido}
-      </p>
+      <p className="descripcion">{data.strapiEmpresa.equipo.contenido}</p>
     </section>
 
     <section className="nosotros">
@@ -93,7 +89,7 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
-        }    
+        }
       }
       historia {
         id

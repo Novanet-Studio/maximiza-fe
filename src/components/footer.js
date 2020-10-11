@@ -35,21 +35,23 @@ const Footer = () => (
       <footer>
         <ul className="footer__rrssbtn">
           {data.strapiContacto.info_contacto.map((document) => (
-            <li
-              key={document.id}
-              href={document.vinculo}
-              rel="noopener noreferrer"
-              target="_blank"
-              aria-label={`Ir a ${document.contenido}`}
-            >
-              <FontAwesomeIcon
-                icon={[
-                  (faprefix = document.prefijo.replace(/'/g, "")),
-                  (faicon = document.icono.replace(/'/g, "")),
-                ]}
-                fixedWidth
-                size="1x"
-              />
+            <li>
+              <a
+                key={document.id}
+                href={document.vinculo}
+                rel="noopener noreferrer"
+                target="_blank"
+                aria-label={`Ir a ${document.contenido}`}
+              >
+                <FontAwesomeIcon
+                  icon={[
+                    (faprefix = document.prefijo.replace(/'/g, "")),
+                    (faicon = document.icono.replace(/'/g, "")),
+                  ]}
+                  fixedWidth
+                  size="1x"
+                />
+              </a>
             </li>
           ))}
         </ul>

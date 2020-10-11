@@ -15,8 +15,8 @@
   }
   &__item {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: flex-start;
     &:nth-child(1) {
       .contribuciones__titulo {
         color: $verde1;
@@ -55,6 +55,7 @@
     width: 100%;
   }
   &__descripcion {
+    margin-top: 0.5vh;
     p:nth-child(2n) {
       display: none;
     }
@@ -65,11 +66,14 @@
 }
 
 .causas {
+  @extend .flex;
+  justify-content: center;
   .descripcion a {
     color: $verde1;
   }
   &__lista {
     justify-content: space-between;
+    padding-bottom: 8vh;
   }
   &__item {
     @extend .flex;
@@ -96,6 +100,9 @@
   &__texto {
     color: $gris2;
     font-weight: 800;
+  }
+  h2 {
+    width: 100%;
   }
 }
 
@@ -201,7 +208,7 @@
     &__lista {
       margin-top: 7vh;
     }
-    &__item {
+    &__item {   
       flex: 1 1;
       margin: 0 1.5vw;
     }

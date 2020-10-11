@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
+import ReactMarkdown from "react-markdown"
 import LayoutInterno from "../components/layoutInterno"
 import SEO from "../components/seo"
 import Flecha from "../assets/images/dropdown.svg"
@@ -13,10 +14,10 @@ const Modal = ({ data, id, onClose }) =>
       item.id === id && (
         <div className="modal" key={item.id}>
           <button onClick={onClose}>&times;</button>
-          <Img 
+          <Img
             fluid={item.icono.childImageSharp.fluid}
             title={item.titulo}
-            alt={''}
+            alt={""}
           />
           <div className="modal__body">
             <h2 className="modal__title">{item.titulo}</h2>
@@ -27,7 +28,7 @@ const Modal = ({ data, id, onClose }) =>
   )
 
 const Servicios = ({ data }) => {
-  const [targetModal, setTargetModal] = useState('')
+  const [targetModal, setTargetModal] = useState("")
 
   return (
     <LayoutInterno>
@@ -74,9 +75,12 @@ const Servicios = ({ data }) => {
                     src={Flecha}
                     alt="Desplegar más"
                   />
-                  <p className="inversionista__texto">
-                    <strong>{element.titulo}</strong>
-                    {element.contenido}
+                  <div className="inversionista__texto">            
+                    <ReactMarkdown
+                      className="inversionista__descripcion"
+                      source={element.contenido}
+                      escapeHtml={false}
+                    />
                     {/* <button
                       style={{
                         width: "100%",
@@ -88,11 +92,15 @@ const Servicios = ({ data }) => {
                     >
                       Ver mas
                     </button> */}
-                  </p>
+                  </div>
                 </li>
               ))}
             </ul>
-            <Modal data={item.items} onClose={() => setTargetModal('')} id={targetModal} />
+            <Modal
+              data={item.items}
+              onClose={() => setTargetModal("")}
+              id={targetModal}
+            />
           </div>
         ))}
       </section>

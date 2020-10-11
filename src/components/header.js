@@ -45,7 +45,7 @@ const Header = () => (
       </div>
       <div>
         <p className="bala">•</p>
-        <p className="texto">Comunidad</p>
+        <p className="texto">Impacto ESG</p>
         <ul className="cabecera__menudrop">
           <li className="cabecera__droplink">
             <AniLink
@@ -84,10 +84,10 @@ const Header = () => (
       </div>
       <div>
         <p className="bala">•</p>
-        <p className="texto">Asesorías</p>
+        <p className="texto">Comunidad</p>
         <ul className="cabecera__menudrop">
           <li className="cabecera__droplink">
-            <AniLink to="/">Balances</AniLink>
+            <AniLink to="/">Medios</AniLink>
           </li>
           <li className="cabecera__droplink">
             <AniLink

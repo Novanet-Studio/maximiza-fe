@@ -5,13 +5,6 @@ import LayoutInterno from "../components/layoutInterno"
 import SEO from "../components/seo"
 import ReactMarkdown from "react-markdown"
 import "./responsabilidad.scss"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-// @fortawesome libraries
-import { library } from "@fortawesome/fontawesome-svg-core"
-import { fab } from "@fortawesome/free-brands-svg-icons"
-import { fas } from "@fortawesome/free-solid-svg-icons"
-// add fas and fab to the library
-library.add(fab, fas)
 
 const Responsabilidad = ({ data }) => (
   <LayoutInterno>
@@ -43,15 +36,9 @@ const Responsabilidad = ({ data }) => (
             <h3 className="contribuciones__titulo">{item.titulo}</h3>
             <ReactMarkdown
               className="contribuciones__descripcion"
-              source={item.contenido.substring(0, 150).concat("...")}
+              source={item.contenido}
               escapeHtml={false}
-            />
-            <FontAwesomeIcon
-              className="contribuciones__icono"
-              icon={["fas", "caret-down"]}
-              fixedWidth
-              size="2x"
-            />
+            />           
           </li>
         ))}
       </ul>
