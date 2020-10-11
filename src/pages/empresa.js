@@ -7,28 +7,31 @@ import ReactMarkdown from "react-markdown"
 import "./empresa.scss"
 import { useState } from "react"
 
-const Modal = ({ data, id, onClose }) => (
-  data.id === id && (
-    <div className="modal" key={id}>
-      <div className="modal__content">
-        <button onClick={onClose}>&times;</button>
-        <div className="modal__body">
-          <Img
-            fluid={data.imagen.childImageSharp.fluid}
-            title={data.titulo}
-            alt={""}
-          />
-          <h2 className="modal__title">{data.titulo}</h2>
-          <ReactMarkdown
-            className="contribuciones__descripcion"
-            source={data.contenido}
-            escapeHtml={false}
-          />
+const Modal = ({ data, id, onClose }) =>
+  data.map(
+    (item) =>
+      item.id === id && (
+        <div className="modal" key={id}>
+          {console.log(item)}
+          <div className="modal__content">
+            <button onClick={onClose}>&times;</button>
+            <div className="modal__body">
+              <Img
+                fluid={item.imagen.childImageSharp.fluid}
+                title={item.titulo}
+                alt={""}
+              />
+              <h2 className="modal__title">{item.titulo}</h2>
+              <ReactMarkdown
+                className="contribuciones__descripcion"
+                source={item.contenido}
+                escapeHtml={false}
+              />
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )
   )
-)
 
 const Empresa = ({ data }) => {
   const [targetModal, setTargetModal] = useState("")
@@ -53,6 +56,7 @@ const Empresa = ({ data }) => {
 
       <section className="historia">
         <ul className="historia__lista">
+          {console.log(data.strapiEmpresa.historia)}
           {data.strapiEmpresa.historia.map((item) => (
             <li className="historia__item" key={item.id}>
               <Img
@@ -65,16 +69,20 @@ const Empresa = ({ data }) => {
                   source={item.contenido.substring(0, 190).concat("...")}
                   escapeHtml={false}
                 />
-                <button className="historia__button">Conocer más</button>
-                
+                <button
+                  className="historia__button"
+                  onClick={() => setTargetModal(item.id)}
+                >
+                  Conocer más
+                </button>
               </div>
-              <Modal
-                  data={item}
-                  onClose={() => setTargetModal("")}
-                  id={targetModal}
-                />
             </li>
           ))}
+          <Modal
+            data={data.strapiEmpresa.historia}
+            onClose={() => setTargetModal("")}
+            id={targetModal}
+          />
         </ul>
       </section>
       <section className="equipo">
