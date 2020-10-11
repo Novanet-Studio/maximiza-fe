@@ -38,7 +38,11 @@ const Educacion = ({ data }) => (
             />
             <div className="innovar__textos">
               <h3 className="innovar__subtitulo">{item.titulo}</h3>
-              <p className="innovar__descripcion">{item.contenido}</p>
+              <ReactMarkdown
+                className="innovar__descripcion"
+                source={item.contenido}
+                escapeHtml={false}
+              />
             </div>
           </li>
         ))}
