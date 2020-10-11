@@ -23,7 +23,7 @@ const Modal = ({ data, id, onClose }) =>
               />
               <h2 className="modal__title">{item.titulo}</h2>
               <ReactMarkdown
-                className="contribuciones__descripcion"
+                className="inversionista__descripcion"
                 source={item.contenido}
                 escapeHtml={false}
               />
@@ -85,7 +85,7 @@ const Servicios = ({ data }) => {
                   <div className="inversionista__texto">
                     <strong>{element.titulo}</strong>
                     <ReactMarkdown
-                      className="contribuciones__descripcion"
+                      className="inversionista__descripcion"
                       source={element.contenido.substring(0, 200).concat("...")}
                       escapeHtml={false}
                     />

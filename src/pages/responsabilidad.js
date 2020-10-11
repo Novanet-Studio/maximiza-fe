@@ -4,6 +4,7 @@ import Img from "gatsby-image"
 import LayoutInterno from "../components/layoutInterno"
 import SEO from "../components/seo"
 import ReactMarkdown from "react-markdown"
+import Flecha from "../assets/images/dropdown.svg"
 import "./responsabilidad.scss"
 
 const Responsabilidad = ({ data }) => (
@@ -38,7 +39,13 @@ const Responsabilidad = ({ data }) => (
               className="contribuciones__descripcion"
               source={item.contenido}
               escapeHtml={false}
-            />           
+            />  
+             <img
+              className="contribuciones__flecha"
+              src={Flecha}
+              alt="Desplegar más"
+             />  
+                   
           </li>
         ))}
       </ul>
@@ -70,7 +77,7 @@ const Responsabilidad = ({ data }) => (
           </p>
         </li>
       </ul>
-      <Link className="programas__boton" to="/educacion">
+      <Link className="botonBottom" to="/educacion">
         Obtenga más información
       </Link>
     </section>
