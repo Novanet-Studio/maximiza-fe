@@ -111,6 +111,7 @@ img {
   padding: 1vh 2vw 5vh;
 }
 
+/* CTA antes del footer */
 .botonBottom {
   display: inline-block;
   background: $verde1;
@@ -122,6 +123,7 @@ img {
   padding: 1.5vh 2.5vh;
   margin-bottom: 6vh;
 }
+
 /* The Modal (background) */
 .modal {
   display: block; /* Hidden by default */
@@ -139,7 +141,7 @@ img {
   animation-name: fadeInOpacity;
   animation-iteration-count: 1;
   animation-timing-function: ease-in;
-  animation-duration: 200ms;  
+  animation-duration: 200ms;
 }
 
 /* Modal Content/Box */
@@ -172,7 +174,7 @@ img {
       padding-top: 2vh;
       line-height: 1.6rem;
     }
-    ul {      
+    ul {
       list-style-type: disc;
       margin-top: 2vh;
       li {
@@ -218,6 +220,43 @@ img {
   text-decoration: none;
   cursor: pointer;
   transition: 1s;
+}
+
+/* Tabs */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent,
+.tabcontentDefault {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
 }
 
 /*------Cabecera------*/
