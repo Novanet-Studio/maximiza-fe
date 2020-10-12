@@ -25,6 +25,9 @@
     cursor: pointer;
     border: none;
     color: $blanco1;
+  }   
+  .modal__body .gatsby-image-wrapper { 
+    display:none;
   }  
 }
 

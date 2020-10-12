@@ -51,7 +51,7 @@ const Empresa = ({ data }) => {
               </div>
             </li>
           ))}
-          <Modal
+          <Modal            
             id={targetModal}
             data={data.strapiEmpresa.historia}
             imageFieldName="imagen"

@@ -3,7 +3,6 @@ import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import LayoutInterno from "../components/layoutInterno"
 import SEO from "../components/seo"
-import ReactMarkdown from "react-markdown"
 import "./medios.scss"
 
 const Medios = ({ data }) => (
