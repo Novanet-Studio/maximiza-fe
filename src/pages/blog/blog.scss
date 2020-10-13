@@ -165,5 +165,10 @@
   /*Articulo*/
   .articulo {
     margin:12vh 0;
+    .descripcion {
+      font-size: 0.95rem;
+      column-count:2 ;
+      column-gap: 15px;
+    }
   }
 }
