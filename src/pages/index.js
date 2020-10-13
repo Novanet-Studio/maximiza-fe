@@ -13,11 +13,7 @@ const Index = ({ data }) => (
     <SEO title="Inicio" />
     <section className="principal">
       <div className="columna--left">
-        <img
-          src={Logo}
-          alt="logo"
-          className="logo--interno"
-        />
+        <img src={Logo} alt="logo" className="logo--interno" />
         <p className="principal__texto principal__texto--pequeño">
           {data.strapiInicio.principal_inicio.logo_texto}
         </p>
@@ -39,7 +35,7 @@ const Index = ({ data }) => (
               className="beneficios__descripcion"
               source={item.contenido}
               escapeHtml={false}
-            />         
+            />
           </li>
         ))}
       </ul>
@@ -62,7 +58,8 @@ const Index = ({ data }) => (
     <section className="contacto">
       <h2>{data.strapiInicio.contacto_titulo}</h2>
       <p className="descripcion">
-      Si desea mayor información de nuestros servicios, escríbanos y nos comunicaremos con usted a la brevedad posible.
+        Si desea mayor información de nuestros servicios, escríbanos y nos
+        comunicaremos con usted a la brevedad posible.
       </p>
       <form className="form">
         <div className="columna--left">
@@ -86,7 +83,7 @@ const Index = ({ data }) => (
 
         <div className="columna--right">
           <button className="form__button">
-          <img src={Email} alt="email" /> Enviar mensaje
+            <img src={Email} alt="email" /> Enviar mensaje
           </button>
         </div>
       </form>
@@ -126,7 +123,7 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
-        }    
+        }
       }
       contacto_titulo
     }
