@@ -353,6 +353,9 @@ header {
     border: none;
     background: $verde1;
   }
+  &--img-gris {
+    filter: grayscale(100%);
+  }
 }
 
 /*------Pie------*/
@@ -655,6 +658,13 @@ footer {
   h4 {
     font-size: 1.25rem;
     line-height: 1.8rem;
+  }
+
+  
+  h5 {
+    font-size: 1.05rem;
+    line-height: 1.3rem;
+    padding-bottom:0.5vh;
   }
 
   .descripcion {

@@ -25,10 +25,10 @@
     cursor: pointer;
     border: none;
     color: $blanco1;
-  }   
-  .modal__body .gatsby-image-wrapper { 
-    display:none;
-  }  
+  }
+  .modal__body .gatsby-image-wrapper {
+    display: none;
+  }
 }
 
 /*------Nosotros------*/
@@ -87,19 +87,51 @@
   }
 }
 
+/*------Balances------*/
+.balances {
+  &__grupo {
+    @extend .flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__subtitulo {
+    color: $gris1;
+  }
+  &__item {
+    background: $blanco2;
+    border-right: $verde1 solid 2px;
+    border-bottom: $verde1 solid 2px;
+    &:nth-child(2n) {
+      background: $gris5;
+    }
+  }
+  &__boton {
+    cursor: pointer;
+    color: $gris2;
+    width: 100%;
+    display: block;
+    text-align: center;
+    &:hover {
+      transition: 0.5s;
+      color: $blanco1;
+      background: $verde1;
+    }
+  }
+}
+
 @media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
   /* Empresas
 ========================================================================== */
 
-.principal {
-  flex-direction: column;
-  .columna--left {
-    order: 2;
+  .principal {
+    flex-direction: column;
+    .columna--left {
+      order: 2;
+    }
+    .columna--right {
+      order: 1;
+    }
   }
-  .columna--right {
-    order: 1;
-  }
-}
 
   /*------Historia------*/
   .historia {
@@ -165,6 +197,44 @@
       }
     }
   }
+
+  /*------Balances------*/
+  .balances {
+    margin-bottom: 7vh;
+    &__grupo {
+      margin-top: 2vh;
+    }
+    &__subtitulo {
+      width: 100%;
+      text-align: center;
+    }
+    &__lista {
+      margin-top: 1vh;
+      width: 100%;
+    }
+    &__item {
+      width: 50%;
+      &:nth-child(11),
+      &:nth-child(12) {
+        border-bottom: none;
+      }
+      &:nth-child(2),
+      &:nth-child(4),
+      &:nth-child(6),
+      &:nth-child(8),
+      &:nth-child(10),
+      &:nth-child(12) {
+        border-right: none;
+      }
+    }
+    &__boton {
+      font-size: 0.85rem;
+      padding: 1.5vh;
+      svg {
+        margin-right: 1vh;
+      }
+    }
+  }
 }
 
 /*-------------------------------------------- Mobile Landscape --------------------------------------------*/
@@ -195,6 +265,7 @@
     &__button {
       font-size: 0.8rem;
       padding: 1vh;
+      margin-top: 1vh;
     }
   }
 
@@ -230,7 +301,40 @@
       padding-top: 2vh;
       &-item {
         width: 10%;
-       
+        height: 6vh;
+      }
+    }
+  }
+
+  /*------Balances------*/
+  .balances {
+    margin-bottom: 7vh;
+    &__grupo {
+      margin-top: 4vh;
+    }
+    &__item {
+      width: 16.6666666%;
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(5),
+      &:nth-child(6) {
+        border-bottom: none;
+      }
+      &:nth-child(6),
+      &:nth-child(12) {
+        border-right: none;
+      }
+      &:nth-child(3) {
+        border-right: $verde1 solid 2px;
+      }
+    }
+    &__boton {
+      padding: 1vh 0.5vh;
+      font-size: 0.83rem;
+      svg {
+        margin-right: 0.5vh;
       }
     }
   }
@@ -270,13 +374,12 @@
       font-size: 0.8rem;
       padding: 1vh 1.5vh;
     }
-    &__descripcion p  {
+    &__descripcion p {
       margin-bottom: 4vh;
       line-height: 1.4rem;
       color: $negro1;
     }
-  
-  }  
+  }
   .equipo {
     margin-top: 12vh;
   }
@@ -306,7 +409,7 @@
 
   /*------Aliados------*/
   .aliados {
-    margin-bottom: 12vh;
+    margin-bottom: 14vh;
     padding: 3vh 7vh 5vh;
     &__carrusel {
       margin: 0 auto;
@@ -319,6 +422,42 @@
         justify-content: center;
         width: 10%;
         height: 16.5vh;
+      }
+    }
+  }
+
+  /*------Balances------*/
+  .balances {
+    margin-bottom: 13vh;
+    &__grupo {
+      margin-top: 6vh;
+    }
+    &__subtitulo {
+      width: 13%;
+      text-align: right;
+    }
+    &__lista {
+      width: 85%;
+    }
+    &__item {
+      width: 16%;
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(5),
+      &:nth-child(6) {
+        border-bottom: none;
+      }
+      &:nth-child(6),
+      &:nth-child(12) {
+        border-right: none;
+      }
+    }
+    &__boton {
+      padding: 1.5vh;
+      svg {
+        margin-right: 1vh;
       }
     }
   }

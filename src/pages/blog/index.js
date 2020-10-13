@@ -27,12 +27,20 @@ const IndexPage = ({ data }) => (
         {console.log(data)}
         {data.articulos.edges.map(({ node: articulo }) => (
           <li className="blog__item" key={articulo.id}>
-            <div className="blog__imagen"></div>
-            <h3 className="blog__titulo">{articulo.titulo}</h3>
+            <div className="blog__cabecera">
+              <Img
+                className="blog__imagen"
+                fluid={articulo.imagen.childImageSharp.fluid}
+              />
+              <h4 className="blog__titulo">{articulo.titulo}</h4>
+            </div>
             <p className="blog__texto">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut, doloribus aperiam repellendus iste tempore ab, blanditiis veniam aliquid, excepturi illo vero. In animi laudantium illo rerum. Maxime architecto commodi voluptatum.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut,
+              doloribus aperiam repellendus iste tempore ab, blanditiis veniam
+              aliquid, excepturi illo vero. In animi laudantium illo rerum.
+              Maxime architecto commodi voluptatum.
             </p>
-            <Link to={articulo.Slug}>
+            <Link className="blog__botton" to={articulo.Slug}>
               Ver post
               {/* <button className="blog__botton"></button> */}
             </Link>
@@ -66,6 +74,13 @@ export const query = graphql`
         node {
           id
           titulo
+          imagen {
+            childImageSharp {
+              fluid(maxWidth: 375) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
           Slug
         }
       }
