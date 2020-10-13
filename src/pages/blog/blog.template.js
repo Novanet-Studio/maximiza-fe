@@ -3,15 +3,14 @@ import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
 
 const BlogTemplate = ({ data }) => (
-  <section>
-    <article className="articulo">
-      <h2>{data.strapiArticulo.titulo}</h2>
-      <Img 
-        fluid={data.strapiArticulo.imagen.childImageSharp.fluid}
-      />
-      <p>{data.strapiArticulo.descripcion}</p>
-    </article>
-  </section>
+  <article className="articulo">
+    <h2 className="articulo__titulo">{data.strapiArticulo.titulo}</h2>
+    <Img
+      className="articulo__imagen"
+      fluid={data.strapiArticulo.imagen.childImageSharp.fluid}
+    />
+    <p className="articulo__contenido">{data.strapiArticulo.descripcion}</p>
+  </article>
 )
 
 export default BlogTemplate
