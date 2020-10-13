@@ -15,20 +15,13 @@ const Index = ({ data }) => (
       <div className="columna--left">
         <img src={Logo} alt="logo" className="logo--interno" />
         <p className="principal__texto principal__texto--pequeño">
-          {data.strapiInicio.principal.logo_texto}
+          {data.strapiInicio.principal_inicio.logo_texto}
         </p>
         <button className="principal__button">Quiero saber más</button>
       </div>
       <div className="columna--right">
-        {/* <img
-          src={data.strapiInicio.principal.imagen.url}
-          alt="logo"
-          className="principal__imagen"
-        /> */}
-        <Img
-          className="principal__imagen"
-          fluid={data.strapiInicio.principal.imagen.childImageSharp.fluid}
-          alt="logo"
+      <Img className="principal__imagen" fluid={data.strapiInicio.principal_inicio.imagen.childImageSharp.fluid}     
+          
         />
       </div>
     </section>
@@ -103,10 +96,10 @@ export default Index
 export const query = graphql`
   query IndexQuery {
     strapiInicio {
-      principal {
+      principal_inicio {
         imagen {
           childImageSharp {
-            fluid(maxWidth: 390) {
+            fluid(maxWidth: 630) {
               ...GatsbyImageSharpFluid
             }
           }
