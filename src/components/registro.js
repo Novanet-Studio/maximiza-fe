@@ -26,7 +26,7 @@ const openCity = (evt, cityName) => {
 
 const serviciosRegistro = (e) => {
   return (
-    <section classNameName="registro">
+    <section className="registro">
       <h2>Registros</h2>
       <div className="tab">
         <button className="tablinks" onClick={(e) => openCity(e, "Individual")}>
@@ -54,22 +54,22 @@ const serviciosRegistro = (e) => {
           Es importante llenar correctamente las siguientes planillas y
           enviarlas a Maximiza Casa de Bolsa, junto con los recaudos.
         </p>
-        <h4>
+        <h5>
           Demandantes u oferentes residenciados en el territorio venezolano
-        </h4>
+        </h5>
         <p>
           ✓ Persona Natural Demandantes u oferentes residenciados en el
           territorio de la República Bolivariana de Venezuela.
         </p>
-        <h4>Oferentes no residenciados en territorio venezolano</h4>
+        <h5>Oferentes no residenciados en territorio venezolano</h5>
         <p>
           ✓ Persona Natural Oferentes no residenciados en el territorio de la
           República Bolivariana de Venezuela.
         </p>
-        <h4>Requisitos comunes</h4>
+        <h5>Requisitos comunes</h5>
         <p>Archivos a descargar:</p>
       </div>
-      <div id="Individual">
+      <div id="Individual" className="content--default">
         <h3>Inversionista Individual</h3>
         <ul className="registro__lista--archivos">
           <li>

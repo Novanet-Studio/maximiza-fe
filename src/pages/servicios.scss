@@ -4,7 +4,6 @@
 /* Servicios
 ========================================================================== */
 
-
 /*------Inversionista------*/
 .inversionista {
   &__grupo {
@@ -87,16 +86,15 @@
 
 /*-------------------------------------------- Mobile Portrait --------------------------------------------*/
 @media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
-  
   /*------Excepción para invertir orden-----*/
   .principal {
     .columna--left {
       text-align: left;
-      order: 2
+      order: 2;
     }
     .columna--right {
       text-align: left;
-      order: 1
+      order: 1;
     }
   }
   /*------Inversionista------*/
@@ -276,7 +274,68 @@
       padding: 2vh;
       p {
         font-size: 0.85rem;
-      line-height: 1.4rem;
+        line-height: 1.4rem;
+      }
+    }
+  }
+
+  /*------Registro------*/
+  .registro {
+    margin-bottom: 12vh;
+    display: flex;
+    flex-wrap: wrap;
+    h2 {
+      width: 100%;
+    }
+    &__lista--archivos {
+      li {padding: 1vh 0;}
+    }
+    .tab {
+      width: 100%;
+      background: none;
+      border: none;
+      &links {
+        text-align: center;
+        background: $blanco2;
+        margin-right: 1vh;
+        margin-bottom: 1vh;
+        padding: 1.5vh 3.5vh;
+        &:hover {
+          cursor: pointer;
+          transition: 0.5s;
+          background: $verde1;
+          color: $blanco1;
+        }
+      }
+    }
+    .Informacion {
+      width: 50%;
+      border-left: $verde1 3px solid;
+      background: $blanco2;
+      padding: 2vh 2vh 0 2vh;
+      color: $gris1;
+      font-size: 0.9rem;
+      line-height: 1.3rem;
+      p {
+        padding-bottom: 2vh;
+      }
+    }
+    .tabcontent,
+    .content--default {
+      h3 {
+        color: $gris1;
+      }
+      width: 50%;
+      padding: 2vh;
+      background: $blanco2;
+      padding: 2vh 2vh 0 2vh;
+      color: $gris1;
+      font-size: 0.9rem;
+      line-height: 1.3rem;
+      border: none;
+      a {
+        color: $gris1;
+        padding-bottom: 1vh;
       }
     }
   }

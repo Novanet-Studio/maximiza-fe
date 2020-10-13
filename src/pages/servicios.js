@@ -5,7 +5,7 @@ import ReactMarkdown from "react-markdown"
 import LayoutInterno from "../components/layoutInterno"
 import Modal from "../components/modal"
 import SEO from "../components/seo"
-import Registro from "../components/resgistro"
+import Registro from "../components/registro"
 import Flecha from "../assets/images/dropdown.svg"
 import "./servicios.scss"
 

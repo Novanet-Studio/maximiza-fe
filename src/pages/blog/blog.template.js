@@ -1,16 +1,28 @@
-import React from 'react'
-import Img from 'gatsby-image'
-import { graphql } from 'gatsby'
+import React from "react"
+import Img from "gatsby-image"
+import { graphql } from "gatsby"
+import LayoutInterno from "../../components/layoutInterno"
+import "./blog.scss"
 
 const BlogTemplate = ({ data }) => (
-  <article className="articulo">
-    <h2 className="articulo__titulo">{data.strapiArticulo.titulo}</h2>
-    <Img
-      className="articulo__imagen"
-      fluid={data.strapiArticulo.imagen.childImageSharp.fluid}
-    />
-    <p className="articulo__contenido">{data.strapiArticulo.descripcion}</p>
-  </article>
+  <LayoutInterno>
+    <section className="principal">
+      <div className="columna--left">
+      <Img 
+        fluid={data.strapiArticulo.imagen.childImageSharp.fluid}
+      />
+      </div>
+      <div className="columna--right">
+        <h1 className="principal__titulo">
+        {data.strapiArticulo.titulo}
+        </h1>
+      </div>
+    </section>
+
+    <article className="articulo">
+      <p className="descripcion">{data.strapiArticulo.descripcion}</p>
+    </article>
+  </LayoutInterno>
 )
 
 export default BlogTemplate
