@@ -9,6 +9,14 @@
   &__lista {
     justify-content: space-between;
   }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__subtitulo {
+    text-align: center;
+  }
   &__imagen {
     &:hover {
       transition: 0.5s;
@@ -36,7 +44,7 @@
   }
   &__descripcion {
     color: $gris1;
-  }  
+  }
 }
 
 @media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
@@ -171,7 +179,7 @@
 @media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
   /*------Innovar------*/
   .innovar {
-    margin-top: 14vh;
+    margin-top: 10vh;
     &__lista {
       margin-top: 5vh;
     }
@@ -192,7 +200,7 @@
 
   /*------Programas------*/
   .programas {
-    margin-top: 16vh;
+    margin-top: 10vh;
     &__secciones {
       margin-top: 9vh;
     }

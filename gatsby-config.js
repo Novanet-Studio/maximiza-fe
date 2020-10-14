@@ -5,12 +5,12 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Maximiza - Asesoría de inversión`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    description: `Somos una casa de bolsa que ofrece innovadoras herramientas para la inversión, gestión y estructuración de activos financieros.`,
+    author: `@novanetstudio`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-transformer-sharp`, 
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-transition-link`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
@@ -25,29 +25,57 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `novanet-project-template`,
-        short_name: `starter`,
+        name: `Maximiza`,
+        short_name: `Maximiza`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#663399`,
+        theme_color: `#00735f`,
         display: `standalone`,
-        // icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        orientation: `portrait`,
+        icon: `src/assets/images/icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    {
+      resolve: `gatsby-plugin-favicon`,
+      options: {
+        logo: "./src/assets/images/icon.png",
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: true,
+          coast: false,
+          favicons: true,
+          firefox: true,
+          yandex: false,
+          windows: false,
+        },
+      },
+    },
+
+    {
+      resolve: "gatsby-source-strapi",
+      options: {
+        apiURL: process.env.API_URL,
+        contentTypes: ["articulo"],
+        singleTypes: [
+          "blog",
+          "contacto",
+          "educacion",
+          "empresa",
+          "inicio",
+          "legal",
+          "servicios",
+          "private-equity",
+          "responsabilidad",
+          "medios",
+        ],
+        queryLimit: 1000,
       },
     },
     {
       resolve: "gatsby-plugin-sass",
       otions: {
         useResolveUrlLoader: true,
-      },
-    },
-    // Uncomment to use
-    {
-      resolve: "gatsby-source-strapi",
-      options: {
-        apiURL: process.env.API_URL,
-        contentTypes: ["articulo"],
-        singleTypes: ["blog", "contacto", "educacion", "empresa", "inicio", "legal", "servicios", "private-equity", "responsabilidad", "medios"],
-        queryLimit: 1000,
       },
     },
     {

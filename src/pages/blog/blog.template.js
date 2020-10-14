@@ -1,26 +1,47 @@
 import React from "react"
 import Img from "gatsby-image"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
 import LayoutInterno from "../../components/layoutInterno"
+import { window } from "browser-monads"
+import ReactMarkdown from "react-markdown"
+import {
+  LinkedinShareButton,
+  LinkedinIcon,
+  TwitterShareButton,
+  TwitterIcon,
+} from "react-share"
 import "./blog.scss"
+
+const shareUrl = window.location.href
 
 const BlogTemplate = ({ data }) => (
   <LayoutInterno>
-    <section className="principal">
-      <div className="columna--left">
-      <Img 
+    <section className="articulo__principal">
+      <Link className="articulo__boton-regreso" to="../../blog">
+        « Volver al blog
+      </Link>
+      <Img
+        className="articulo__imagen"
         fluid={data.strapiArticulo.imagen.childImageSharp.fluid}
       />
-      </div>
-      <div className="columna--right">
-        <h1 className="principal__titulo">
-        {data.strapiArticulo.titulo}
-        </h1>
-      </div>
+      <h1 className="articulo__titulo">{data.strapiArticulo.titulo}</h1>
     </section>
 
     <article className="articulo">
-      <p className="descripcion">{data.strapiArticulo.descripcion}</p>
+      <ReactMarkdown
+        className="articulo__descripcion"
+        source={data.strapiArticulo.descripcion}
+        escapeHtml={false}
+      />
+      <div className="articulo__compartir">
+        <h3>Comparte este artículo</h3>
+        <LinkedinShareButton url={shareUrl} children="a">
+          <LinkedinIcon size={28} />
+        </LinkedinShareButton>
+        <TwitterShareButton url={shareUrl} children="a">
+          <TwitterIcon size={28} />
+        </TwitterShareButton>
+      </div>
     </article>
   </LayoutInterno>
 )

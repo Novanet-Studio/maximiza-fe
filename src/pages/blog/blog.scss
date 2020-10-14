@@ -1,6 +1,34 @@
 @import "../../assets/scss/normalize";
 @import "../../assets/scss/variables";
 
+.articulo {
+  &__titulo {
+    padding: 2vh;
+    background-color: $verde1;
+    color: $blanco1;
+    text-align: center;
+  }
+  &__descripcion {
+    font-size: 0.95rem;
+    line-height: 1.4rem;
+  }
+  &__boton-regreso {
+    line-height: 2rem;
+    font-weight: 700;
+    color: $verde1;
+  }
+  &__compartir {
+    width: 100%;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    button {
+      margin-right: 1vh;
+    }
+    h3 {
+      margin-bottom: 1vh;
+    }
+  }
+}
 /* Blog
 ========================================================================== */
 .blog {
@@ -111,7 +139,7 @@
 /*-------------------------------------------- Desktop responsive --------------------------------------------*/
 @media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
   .blog {
-    margin-top: 14vh;
+    margin-top: 10vh;
     &__lista {
       justify-content: space-between;
     }
@@ -155,6 +183,8 @@
     }
     &__botton {
       background: $verde1;
+      margin-top: -3vh;
+      margin-right: 1.5vh;
       padding: 1.5vh;
       font-size: 0.82rem;
       font-weight: 600;
@@ -164,11 +194,19 @@
 
   /*Articulo*/
   .articulo {
-    margin:12vh 0;
-    .descripcion {
+    margin: 5vh 0;
+    &__descripcion {
       font-size: 0.95rem;
-      column-count:2 ;
+      line-height: 1.4rem;
+      column-count: 2;
       column-gap: 15px;
+    }
+    &__boton-regreso {
+      font-size: 1rem;
+      line-height: 2rem;
+    }
+    &__imagen {
+      height: 45vh;
     }
   }
 }

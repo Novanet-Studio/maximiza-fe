@@ -14,11 +14,13 @@
     border-bottom: $gris5 3px solid;
     .beneficios__subtitulo {
       color: $verde1;
+      text-align: center;
     }
   }
 
   &__descripcion {
     color: $negro1;
+    text-align: center;
   }
 }
 
@@ -38,9 +40,9 @@
         opacity: 1;
       }
       background-color: $verde1;
-        .servicios__descripcion {
-          background-color: $verde1;
-        }
+      .servicios__descripcion {
+        background-color: $verde1;
+      }
     }
     .servicios__subtitulo {
       color: $blanco1;
@@ -299,7 +301,7 @@
 
   /*------Servicios------*/
   .servicios {
-    margin-top: 14vh;
+    margin-top: 10vh;
     &__lista {
       margin-top: 4vh;
     }
@@ -323,8 +325,8 @@
 
   /*------Contacto------*/
   .contacto {
-    margin-top: 14vh;
-    margin-bottom: 14vh;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
     .form {
       margin: 10vh 2vh;
       .columna--left {

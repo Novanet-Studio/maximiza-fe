@@ -5,7 +5,6 @@ import ReactMarkdown from "react-markdown"
 import LayoutInterno from "../components/layoutInterno"
 import Modal from "../components/modal"
 import SEO from "../components/seo"
-import Registro from "../components/registro"
 import Flecha from "../assets/images/dropdown.svg"
 import "./servicios.scss"
 
@@ -18,7 +17,10 @@ const Servicios = ({ data }) => {
       <section className="principal">
         <div className="columna--left">
           <h1 className="principal__titulo">
-            {data.strapiServicios.principal.titulo}
+          <ReactMarkdown            
+            source= {data.strapiServicios.principal.titulo}
+            escapeHtml={false}
+          />           
           </h1>
           <p className="principal__texto">
             {data.strapiServicios.principal.contenido}
@@ -81,7 +83,6 @@ const Servicios = ({ data }) => {
           </div>
         ))}
       </section>
-      <Registro />
     </LayoutInterno>
   )
 }

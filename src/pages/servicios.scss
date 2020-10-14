@@ -74,6 +74,11 @@
     padding: 0.5vh;
     font-size: 0.9rem;
   }
+  &__descripcion {
+    a {
+      color: $verde1
+    }
+  }
 }
 
 .registro {
@@ -222,9 +227,9 @@
   /*------Inversionista------*/
   .inversionista {
     &__grupo {
-      margin-top: 10vh;
+      margin-top: 8vh;
       &:last-child {
-        margin-bottom: 16vh;
+        margin-bottom: 8vh;
         .inversionista__cabecera {
           order: 2;
           .inversionista__titulo {
@@ -281,7 +286,7 @@
 
   /*------Registro------*/
   .registro {
-    margin-bottom: 12vh;
+    margin-bottom: 10vh;
     display: flex;
     flex-wrap: wrap;
     h2 {

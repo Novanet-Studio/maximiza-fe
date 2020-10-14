@@ -175,10 +175,12 @@ img {
       line-height: 1.6rem;
     }
     ul {
-      list-style-type: disc;
+      list-style-type: "🗎 ";
+      list-style-position: inside;
       margin-top: 2vh;
       li {
         width: 100%;
+        line-height: 1.6rem;
       }
     }
   }
@@ -660,11 +662,10 @@ footer {
     line-height: 1.8rem;
   }
 
-  
   h5 {
     font-size: 1.05rem;
     line-height: 1.3rem;
-    padding-bottom:0.5vh;
+    padding-bottom: 0.5vh;
   }
 
   .descripcion {
