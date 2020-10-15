@@ -119,7 +119,7 @@ img {
   color: $blanco1;
   cursor: pointer;
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 0.95rem;
   padding: 1.5vh 2.5vh;
   margin-bottom: 6vh;
 }
@@ -146,11 +146,7 @@ img {
 
 /* Modal Content/Box */
 .modal__content {
-  margin: 1% auto; /* 15% from the top and centered */
-  padding: 5vh;
-  top: 3%;
   background-color: $blanco1;
-  width: 60vw;
   position: relative;
   .modal__body {
     @extend .flex;
@@ -160,41 +156,35 @@ img {
       justify-content: center;
       text-align: left;
       margin-bottom: 0;
-      padding-left: 0.5vw;
     }
     .gatsby-image-wrapper {
-      width: 5%;
       height: auto;
       background-color: $verde1;
     }
-    .modal__title {
-      width: 95%;
+    a {
+      color: $gris4;
     }
-    p {
+    h4 {
       padding-top: 2vh;
-      line-height: 1.6rem;
     }
     ul {
-      list-style-type: "🗎 ";
+      list-style-type: "• ";
       list-style-position: inside;
-      margin-top: 2vh;
       li {
         width: 100%;
-        line-height: 1.6rem;
       }
     }
   }
   button {
     cursor: pointer;
     position: absolute;
-    right: 2vh;
-    top: 2vh;
     background-color: $gris5;
     color: $gris4;
     border: 0;
-    font-size: 2rem;
     font-weight: 600;
-    padding: 0 0.5vw;
+  }
+  br {
+    display: none;
   }
 }
 
@@ -272,11 +262,6 @@ header {
     @extend .flex;
     justify-content: flex-end;
     z-index: 10;
-    .logo--interno {
-      img {
-        display: none;
-      }
-    }
     div {
       @extend .flex;
       cursor: pointer;
@@ -307,23 +292,20 @@ header {
       .cabecera__menudrop {
         border-bottom: 1px solid $verde1;
       }
-      .cabecera__droplink a:hover {
-        font-weight: 700;
-        color: $verde1;
-      }
     }
     .cabecera__menudrop {
       @extend .flex;
       flex-direction: column;
       opacity: 0;
       position: absolute;
-      top: 5vh;
       left: 0;
     }
     .cabecera__droplink {
-      a {
-        color: $gris3;
-        font-weight: 500;
+      color: $gris3;
+      font-weight: 500;
+      &:hover {
+        font-weight: 700;
+        color: $verde1;
       }
     }
   }
@@ -444,13 +426,11 @@ footer {
           padding-top: 0.5vh;
           padding-bottom: 0.5vh;
           width: 100%;
+          top: 4vh;
         }
         .cabecera__droplink {
-          a {
-            font-size: 0.6rem;
-            line-height: 1.2rem;
-            padding-left: 2vw;
-          }
+          font-size: 0.68rem;
+          line-height: 1.2rem;
         }
       }
     }
@@ -511,6 +491,44 @@ footer {
       }
     }
   }
+
+  /* Modal Content/Box */
+  .modal__content {
+    margin: 1% auto; /* 15% from the top and centered */
+    padding: 2vh;
+    top: 3%;
+    width: 90vw;
+    .modal__body {
+      h2 {
+        padding-top: 3vw;
+      }
+      .gatsby-image-wrapper {
+        width: 12%;
+      }
+      .modal__title {
+        width: 10%;
+      }
+      p {
+        padding-top: 1.5vh;
+        font-size: 0.8rem;
+        line-height: 1.3rem;
+      }
+      ul {
+        margin-top: 2vh;
+        li {
+          font-size: 0.8rem;
+          line-height: 1.4rem;
+          margin-bottom: 1vh;
+        }
+      }
+    }
+    button {
+      right: 2vh;
+      top: 2vh;
+      font-size: 1.5rem;
+      padding: 0 1.3vw;
+    }
+  }
 }
 
 /*-------------------------------------------- Mobile Portrait --------------------------------------------*/
@@ -553,6 +571,9 @@ footer {
 
   /*------Cabecera------*/
   header {
+    .header--vacio {
+      height: 4.02vh;
+    }
     .logo--interno {
       width: 50%;
       img {
@@ -571,16 +592,13 @@ footer {
           font-size: 0.85rem;
         }
         .cabecera__menudrop {
-          padding-top: 1vh;
-          padding-bottom: 1vh;
-          top: 3vh;
+          padding-top: 0.5vh;
+          padding-bottom: 0.5vh;
         }
         .cabecera__droplink {
-          a {
-            font-size: 0.75rem;
-            line-height: 1.8rem;
-            padding-left: 1vw;
-          }
+          font-size: 0.75rem;
+          line-height: 1.8rem;
+          padding-left: 1vw;
         }
       }
     }
@@ -635,6 +653,41 @@ footer {
       }
     }
   }
+
+  /* Modal Content/Box */
+  .modal__content {
+    .modal__body {
+      h2 {
+        padding-left: 2vw;
+        padding-top: 0;
+      }
+      .gatsby-image-wrapper {
+        width: 6%;
+      }
+      .modal__title {
+        width: 90%;
+      }
+      p {
+        font-size: 0.9rem;
+        padding-top: 1vh;
+        line-height: 1.6rem;
+        -webkit-column-count: 2;
+        column-count: 2;
+        -webkit-column-gap: 2rem;
+        column-gap: 2rem;
+      }
+      ul {
+        margin-top: 2vh;
+        li {
+          font-size: 0.9rem;
+          line-height: 1.3rem;
+        }
+      }
+    }
+    button {
+      padding: 0 0.8vw;
+    }
+  }
 }
 
 /*-------------------------------------------- Tablet Landscape --------------------------------------------*/
@@ -684,6 +737,9 @@ footer {
   /*------Cabecera------*/
   header {
     padding: 5vh 0;
+    .header--vacio {
+      height: 8.8vh;
+    }
     .logo--interno {
       width: 50%;
       img {
@@ -708,13 +764,12 @@ footer {
           padding-left: 1vh;
           padding-bottom: 1vh;
           width: 100%;
+          top: 5.5vh;
         }
         .cabecera__droplink {
-          a {
-            font-size: 0.85rem;
-            line-height: 1.8rem;
-            padding-left: 2.5vw;
-          }
+          font-size: 0.85rem;
+          line-height: 1.8rem;
+          padding-left: 2.5vw;
         }
       }
     }
@@ -722,7 +777,7 @@ footer {
 
   /*----- Secciones------*/
   .principal {
-    height: 46vh;
+    min-height: 46vh;
     .columna--left {
       width: 50%;
       padding-right: 2vw;
@@ -769,6 +824,47 @@ footer {
         padding-left: 0.4vw;
         margin-bottom: -0.8vh;
       }
+    }
+  }
+
+  /* Modal Content/Box */
+  .modal__content {
+    margin: 1% auto; /* 15% from the top and centered */
+    padding: 3vh;
+    top: 3%;
+    width: 70vw;
+    .modal__body {
+      h2 {
+        padding-left: 1vw;
+      }
+      .gatsby-image-wrapper {
+        width: 5%;
+        height: auto;
+      }
+      .modal__title {
+        width: 95%;
+      }
+      p {
+        padding-top: 2vh;
+        line-height: 1.6rem;
+        column-count: 2;
+        column-gap: 2rem;
+      }
+      ul {
+        margin-top: 2vh;
+        li {
+          line-height: 1.6rem;
+          width: 49%;
+          margin-bottom: 1vh;
+          margin-left: 1vh;
+        }
+      }
+    }
+    button {
+      right: 2vh;
+      top: 2vh;
+      font-size: 2rem;
+      padding: 0 0.5vw;
     }
   }
 }

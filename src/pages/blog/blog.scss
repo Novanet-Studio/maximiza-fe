@@ -1,6 +1,47 @@
 @import "../../assets/scss/normalize";
 @import "../../assets/scss/variables";
 
+/* Blog
+========================================================================== */
+.blog {
+  &__lista {
+    justify-content: space-between;
+  }
+  &__item {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  }
+  &__cabecera {
+    width: 100%;
+    position: relative;
+  }
+  &__imagen {
+    width: 100%;
+    position: absolute !important;
+    z-index: 1;
+    top: 0;
+    left: 0;
+  }
+  &__titulo {
+    width: 90%;
+    position: absolute;
+    bottom: 0px;
+    z-index: 2;
+    color: $blanco1;
+    background-color: $verde1;
+  }
+  &__texto {
+    background: $blanco2;
+  }
+  &__botton {
+    background: $verde1;
+    font-weight: 600;
+    color: $blanco1;
+  }
+}
+
+/*Articulo*/
 .articulo {
   &__titulo {
     padding: 2vh;
@@ -29,67 +70,54 @@
     }
   }
 }
-/* Blog
-========================================================================== */
-.blog {
-  &__lista {
-  }
-  &__item {
-  }
-  &__cabecera {
-  }
-  &__imagen {
-  }
-  &__titulo {
-  }
-  &__texto {
-  }
-  &__botton {
-  }
-}
-
-/*Articulo*/
-.articulo {
-  &__imagen {
-  }
-  &__titulo {
-  }
-  &__contenido {
-  }
-  &__boton {
-  }
-}
 
 /*-------------------------------------------- Mobile Portrait --------------------------------------------*/
 @media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
-  /* Blog
-========================================================================== */
   .blog {
-    &__lista {
-    }
+    margin-top: 8vh;
     &__item {
+      width: 100%;
+      margin-bottom: 10vh;
     }
     &__cabecera {
+      height: 23vh;
     }
     &__imagen {
+      height: 23vh;
     }
     &__titulo {
+      padding: 1vh 2vh;
     }
     &__texto {
+      font-size: 0.8rem;
+      line-height: 1.35rem;
+      padding: 2vh;
     }
     &__botton {
+      margin-top: -3vh;
+      margin-right: 1.5vh;
+      padding: 1.5vh;
+      font-size: 0.82rem;
     }
   }
 
   /*Articulo*/
   .articulo {
-    &__imagen {
-    }
+    margin: 5vh 0;
     &__titulo {
+      font-size: 1.1rem;
+      line-height: 1.6rem;
     }
-    &__contenido {
+    &__descripcion {
+      font-size: 0.8rem;
+      line-height: 1.4rem;
     }
-    &__boton {
+    &__boton-regreso {
+      font-size: 0.8rem;
+    }
+    &__imagen {
+      height: 35vh;
+      margin-top: 0.5rem;
     }
   }
 }
@@ -100,34 +128,47 @@
 
 /*-------------------------------------------- Tablet Portrait --------------------------------------------*/
 @media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
-  /* Blog
-========================================================================== */
   .blog {
-    &__lista {
-    }
     &__item {
+      width: 48.5%;
+      margin-bottom: 5vh;
     }
     &__cabecera {
+      height: 17vh;
     }
     &__imagen {
+      height: 17vh;
     }
     &__titulo {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      padding: 1vh;
     }
     &__texto {
+      font-size: 0.85rem;
+      line-height: 1.4rem;
+      padding: 1vh 1vh 2vh 1vh;
     }
     &__botton {
+      margin-top: -1.5vh;
+      padding: 0.8vh 1vh;
     }
   }
 
   /*Articulo*/
   .articulo {
-    &__imagen {
-    }
+    margin: 3vh 0;
     &__titulo {
+      font-size: 1.2rem;
+      line-height: 1.8rem;
     }
-    &__contenido {
+    &__descripcion {
+      font-size: 0.85rem;
+      column-count: 2;
+      column-gap: 15px;
     }
-    &__boton {
+    &__imagen {
+      height: 25vh;
     }
   }
 }
@@ -139,56 +180,32 @@
 /*-------------------------------------------- Desktop responsive --------------------------------------------*/
 @media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
   .blog {
-    margin-top: 10vh;
-    &__lista {
-      justify-content: space-between;
-    }
+    margin-top: 12vh;
     &__item {
       width: 30%;
-      margin-bottom: 10vh;
-      display: flex;
-      justify-content: flex-end;
-      flex-wrap: wrap;
+      margin-bottom: 8vh;
     }
     &__cabecera {
-      width: 100%;
       height: 19.4vh;
-      position: relative;
     }
     &__imagen {
-      width: 100%;
       height: 19.4vh;
-      position: absolute !important;
-      z-index: 1;
-      top: 0;
-      left: 0;
     }
     &__titulo {
-      width: 90%;
-      position: absolute;
-      bottom: 0px;
-      z-index: 2;
       font-size: 1rem;
       line-height: 1.5rem;
       padding: 1vh 2vh;
-      color: $blanco1;
-      background-color: $verde1;
-      opacity: 0.92;
     }
     &__texto {
       font-size: 0.85rem;
       line-height: 1.4rem;
       padding: 2vh;
-      background: $blanco2;
     }
     &__botton {
-      background: $verde1;
-      margin-top: -3vh;
+      margin-top: -2vh;
       margin-right: 1.5vh;
-      padding: 1.5vh;
+      padding: 1vh 1.5vh;
       font-size: 0.82rem;
-      font-weight: 600;
-      color: $blanco1;
     }
   }
 
@@ -199,7 +216,7 @@
       font-size: 0.95rem;
       line-height: 1.4rem;
       column-count: 2;
-      column-gap: 15px;
+      column-gap: 3rem;
     }
     &__boton-regreso {
       font-size: 1rem;
@@ -207,6 +224,7 @@
     }
     &__imagen {
       height: 45vh;
+      margin-top: 1rem;
     }
   }
 }

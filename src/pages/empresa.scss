@@ -99,28 +99,28 @@
   }
   &__item {
     background: $blanco2;
-    border-right: $blanco1 solid 4px;    
+    border-right: $blanco1 solid 4px;
+    border-bottom: $blanco1 solid 4px;
   }
   &__boton {
     cursor: pointer;
     color: $gris2;
     width: 100%;
     display: block;
-    text-align: center;    
     &:hover {
       transition: 0.5s;
       color: $blanco1;
       background: $verde1;
       .svg-inline--fa {
         path {
-          fill: $blanco1;        
-        }      
+          fill: $blanco1;
+        }
       }
     }
     .svg-inline--fa {
       path {
-        fill: $verde1;        
-      }      
+        fill: $verde1;
+      }
     }
   }
 }
@@ -160,7 +160,7 @@
     }
     &__button {
       font-size: 0.7rem;
-      padding: 1vh 1.5vh;
+      padding: 1.5vh;
     }
   }
   .equipo {
@@ -173,6 +173,7 @@
     &__item {
       width: 100%;
       height: 30vh;
+      margin-bottom: 3vh;
     }
     &__imagen {
       width: 100%;
@@ -192,7 +193,7 @@
 
   /*------Aliados------*/
   .aliados {
-    margin-bottom: 7vh;
+    margin-bottom: 10vh;
     padding: 3vh;
     &__carrusel {
       padding-top: 4vh;
@@ -206,7 +207,7 @@
 
   /*------Balances------*/
   .balances {
-    margin-bottom: 7vh;
+    margin-bottom: 10vh;
     &__grupo {
       margin-top: 2vh;
     }
@@ -215,23 +216,11 @@
       text-align: center;
     }
     &__lista {
-      margin-top: 1vh;
+      margin: 1vh 3vh;
       width: 100%;
     }
     &__item {
       width: 50%;
-      &:nth-child(11),
-      &:nth-child(12) {
-        border-bottom: none;
-      }
-      &:nth-child(2),
-      &:nth-child(4),
-      &:nth-child(6),
-      &:nth-child(8),
-      &:nth-child(10),
-      &:nth-child(12) {
-        border-right: none;
-      }
     }
     &__boton {
       font-size: 0.85rem;
@@ -285,6 +274,7 @@
     &__item {
       width: 33.3333333%;
       height: 23.67vh;
+      margin-bottom: 0;
     }
     &__imagen {
       width: 100%;
@@ -318,27 +308,16 @@
     &__grupo {
       margin-top: 4vh;
     }
+    &__lista {
+      margin: 1vh 0;
+    }
     &__item {
       width: 16.6666666%;
-      &:nth-child(1),
-      &:nth-child(2),
-      &:nth-child(3),
-      &:nth-child(4),
-      &:nth-child(5),
-      &:nth-child(6) {
-        border-bottom: none;
-      }
-      &:nth-child(6),
-      &:nth-child(12) {
-        border-right: none;
-      }
-      &:nth-child(3) {
-        border-right: $verde1 solid 2px;
-      }
     }
     &__boton {
       padding: 1vh 0.5vh;
       font-size: 0.83rem;
+      text-align: center;
       svg {
         margin-right: 0.5vh;
       }
@@ -415,7 +394,7 @@
 
   /*------Aliados------*/
   .aliados {
-    margin-bottom: 10vh;
+    margin-bottom: 12vh;
     padding: 3vh 7vh 5vh;
     &__carrusel {
       margin: 0 auto;
@@ -434,7 +413,7 @@
 
   /*------Balances------*/
   .balances {
-    margin-bottom: 10vh;
+    margin-bottom: 12vh;
     &__grupo {
       margin-top: 6vh;
     }
@@ -446,10 +425,11 @@
       width: 85%;
     }
     &__item {
-      width: 16%;     
+      width: 16%;
     }
     &__boton {
       padding: 1.5vh;
+      text-align: center;
       svg {
         margin-right: 1vh;
       }

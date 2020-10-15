@@ -24,8 +24,8 @@
       z-index: 10;
       cursor: pointer;
       .contribuciones__descripcion {
-        opacity: 1;
-        transition: all 0.5s;
+        visibility: visible;
+        transition: all 1s;
       }
     }
     .contribuciones__titulo {
@@ -36,7 +36,7 @@
     }
     .contribuciones__icono {
       color: $verde1;
-    }    
+    }
   }
   &__titulo {
     width: 100%;
@@ -46,17 +46,14 @@
     margin-top: 4vh;
     padding: 2.5vh;
     position: absolute;
-    opacity: 0;   
-    background: $blanco2;    
-  }
-  &__icono {
-    cursor: pointer;
+    visibility: hidden;
+    background: $blanco2;
   }
   &__flecha {
-    width: 1vw;
     position: absolute;
     right: 1vw;
-    top: 1vh;     
+    top: 1vh;
+    cursor: pointer;
   }
 }
 
@@ -68,7 +65,6 @@
   }
   &__lista {
     justify-content: space-between;
-    padding-bottom: 8vh;
   }
   &__item {
     @extend .flex;
@@ -95,10 +91,11 @@
     margin-top: 8vh;
     width: 100%;
     &__lista {
-      margin-top: 1vh;
+      margin-top: 2vh;
     }
     &__item {
-      margin-bottom: 5vh;
+      width: 100%;
+      margin-bottom: 7vh;
     }
     &__descripcion {
       font-size: 0.85rem;
@@ -106,8 +103,8 @@
       padding-top: 0.5vh;
       padding-bottom: 2vh;
     }
-    &__icono {
-      margin-top: 0.5vh;
+    &__flecha {
+      width: 3vw;
     }
   }
 
@@ -146,12 +143,15 @@
       margin-top: 3vh;
     }
     &__item {
-      margin: 0 4vw 4vw;
+      margin: 0 4vw 6vw;
     }
     &__descripcion {
       font-size: 1rem;
       line-height: 1.5rem;
       padding-bottom: 2vh;
+    }
+    &__flecha {
+      width: 2vw;
     }
   }
 
@@ -191,7 +191,7 @@
     &__lista {
       margin-top: 7vh;
     }
-    &__item {   
+    &__item {
       flex: 1 1;
       margin: 0 1.5vw;
     }
@@ -200,11 +200,14 @@
       line-height: 1.5rem;
       padding-bottom: 2vh;
     }
+    &__flecha {
+      width: 1vw;
+    }
   }
 
   .causas {
-    margin-top: 10vh;
-    margin-bottom: 14vh;
+    margin-top: 12vh;
+    margin-bottom: 8vh;
     &__lista {
       margin: 6vh 0;
     }

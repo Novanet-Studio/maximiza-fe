@@ -45,7 +45,8 @@ const Empresa = ({ data }) => {
               />
               <div className="historia__descripcion">
                 <h3 className="historia__titulo">{item.titulo}</h3>
-                <ReactMarkdown className="historia__texto"
+                <ReactMarkdown
+                  className="historia__texto"
                   source={item.contenido.substring(0, 190).concat("...")}
                   escapeHtml={false}
                 />

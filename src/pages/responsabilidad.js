@@ -39,13 +39,12 @@ const Responsabilidad = ({ data }) => (
               className="contribuciones__descripcion"
               source={item.contenido}
               escapeHtml={false}
-            />  
-             <img
+            />
+            <img
               className="contribuciones__flecha"
               src={Flecha}
               alt="Desplegar más"
-             />  
-                   
+            />
           </li>
         ))}
       </ul>

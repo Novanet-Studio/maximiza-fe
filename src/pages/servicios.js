@@ -17,10 +17,10 @@ const Servicios = ({ data }) => {
       <section className="principal">
         <div className="columna--left">
           <h1 className="principal__titulo">
-          <ReactMarkdown            
-            source= {data.strapiServicios.principal.titulo}
-            escapeHtml={false}
-          />           
+            <ReactMarkdown
+              source={data.strapiServicios.principal.titulo}
+              escapeHtml={false}
+            />
           </h1>
           <p className="principal__texto">
             {data.strapiServicios.principal.contenido}
@@ -67,7 +67,10 @@ const Servicios = ({ data }) => {
                       source={element.contenido.substring(0, 200).concat("...")}
                       escapeHtml={false}
                     />
-                    <button className="inversionista__boton" onClick={() => setTargetModal(element.id)}>
+                    <button
+                      className="inversionista__boton"
+                      onClick={() => setTargetModal(element.id)}
+                    >
                       Leer más
                     </button>
                   </div>
