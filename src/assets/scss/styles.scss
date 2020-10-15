@@ -287,7 +287,7 @@ header {
         transition: 0.25s;
         opacity: 1;
         background-color: $blanco2;
-        border-bottom: 1px solid $gris3;
+        border-bottom: 1px solid $verde1;
       }
       .cabecera__menudrop {
         border-bottom: 1px solid $verde1;
@@ -425,12 +425,13 @@ footer {
         .cabecera__menudrop {
           padding-top: 0.5vh;
           padding-bottom: 0.5vh;
-          width: 100%;
+          width: 110%;
           top: 4vh;
         }
         .cabecera__droplink {
-          font-size: 0.68rem;
+          font-size: 0.8rem;
           line-height: 1.2rem;
+          padding: 1vh 0 1vh 0;
         }
       }
     }
@@ -500,13 +501,13 @@ footer {
     width: 90vw;
     .modal__body {
       h2 {
-        padding-top: 3vw;
+        padding-left: 3vw;
       }
       .gatsby-image-wrapper {
         width: 12%;
       }
       .modal__title {
-        width: 10%;
+        width: 88%;
       }
       p {
         padding-top: 1.5vh;

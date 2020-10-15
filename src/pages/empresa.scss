@@ -29,6 +29,11 @@
   .modal__body .gatsby-image-wrapper {
     display: none;
   }
+  .modal__body {
+    h2 {
+      padding-left: 0vw;
+    }
+  }
 }
 
 /*------Nosotros------*/
@@ -126,19 +131,8 @@
 }
 
 @media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
-  /* Empresas
+  /* Empresa
 ========================================================================== */
-
-  .principal {
-    flex-direction: column;
-    .columna--left {
-      order: 2;
-    }
-    .columna--right {
-      order: 1;
-    }
-  }
-
   /*------Historia------*/
   .historia {
     margin-top: 8vh;

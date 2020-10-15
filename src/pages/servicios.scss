@@ -91,17 +91,6 @@
 
 /*-------------------------------------------- Mobile Portrait --------------------------------------------*/
 @media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
-  /*------Excepción para invertir orden-----*/
-  .principal {
-    .columna--left {
-      text-align: left;
-      order: 2;
-    }
-    .columna--right {
-      text-align: left;
-      order: 1;
-    }
-  }
   /*------Inversionista------*/
   .inversionista {
     &__grupo {
