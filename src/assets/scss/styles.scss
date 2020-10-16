@@ -336,6 +336,9 @@ header {
     color: $blanco1;
     border: none;
     background: $verde1;
+    a {
+      color: $blanco1;
+    }
   }
   &--img-gris {
     filter: grayscale(100%);
@@ -468,6 +471,11 @@ footer {
     }
   }
 
+  /*------Pagina 404------*/
+  .perdido {
+    margin-top: 6vh;
+  }
+
   /*------Pie------*/
   footer {
     padding-bottom: 2vh;
@@ -544,7 +552,7 @@ footer {
 @media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
   h1 {
     font-size: 1.4rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
   h2 {
     font-size: 1.3rem;
@@ -599,7 +607,7 @@ footer {
         .cabecera__droplink {
           font-size: 0.75rem;
           line-height: 1.8rem;
-          padding-left: 1vw;
+          padding: 0.5vh 0;
         }
       }
     }
@@ -623,7 +631,7 @@ footer {
       font-size: 1.1rem;
       line-height: 1.4rem;
       &--pequeño {
-        font-size: 1.05rem;
+        font-size: 0.95rem;
         line-height: 1.3rem;
       }
     }
@@ -631,6 +639,11 @@ footer {
       padding: 1vh 1.5vh;
       margin-top: 1vh;
     }
+  }
+
+  /*------Pagina 404------*/
+  .perdido {
+    margin-top: 7vh;
   }
 
   /*------Pie------*/
@@ -695,6 +708,7 @@ footer {
 @media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
   h1 {
     font-size: 1.8rem;
+    margin-bottom: 0.5rem;
   }
 
   h2 {
@@ -733,7 +747,7 @@ footer {
 
   /*------Cabecera------*/
   header {
-    padding: 5vh 0;
+    padding: 4vh 0;
     .header--vacio {
       height: 8.8vh;
     }
@@ -799,6 +813,11 @@ footer {
       padding: 1.8vh 2vh;
       margin-top: 2vh;
     }
+  }
+
+  /*------Pagina 404------*/
+  .perdido {
+    margin-top: 14vh;
   }
 
   /*------Pie------*/
