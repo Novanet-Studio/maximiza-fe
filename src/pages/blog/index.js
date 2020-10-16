@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
+import ReactMarkdown from "react-markdown"
 import LayoutInterno from "../../components/layoutInterno"
 import SEO from "../../components/seo"
 import "./blog.scss"
@@ -34,12 +35,11 @@ const IndexPage = ({ data }) => (
               />
               <h4 className="blog__titulo">{articulo.titulo}</h4>
             </div>
-            <p className="blog__texto">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut,
-              doloribus aperiam repellendus iste tempore ab, blanditiis veniam
-              aliquid, excepturi illo vero. In animi laudantium illo rerum.
-              Maxime architecto commodi voluptatum.
-            </p>
+            <ReactMarkdown
+              className="blog__texto"
+              source={articulo.descripcion.substring(0, 220).concat("...")}
+              escapeHtml={false}
+            />
             <Link className="blog__botton" to={articulo.Slug}>
               Ver post
               {/* <button className="blog__botton"></button> */}
@@ -74,6 +74,7 @@ export const query = graphql`
         node {
           id
           titulo
+          descripcion
           imagen {
             childImageSharp {
               fluid(maxWidth: 375) {
