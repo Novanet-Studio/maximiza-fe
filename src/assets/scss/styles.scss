@@ -162,16 +162,19 @@ img {
       background-color: $verde1;
     }
     a {
-      color: $gris4;
+      color: $verde1;
+      font-weight: 500;
     }
     h4 {
       padding-top: 2vh;
     }
-    ul {
-      list-style-type: "• ";
+    .lista-descarga {
+      list-style-type: disc;
       list-style-position: inside;
+      margin-top: 2vh;
       li {
         width: 100%;
+        line-height: 1.6rem;
       }
     }
   }
@@ -182,9 +185,6 @@ img {
     color: $gris4;
     border: 0;
     font-weight: 600;
-  }
-  br {
-    display: none;
   }
 }
 
@@ -672,10 +672,6 @@ footer {
         font-size: 0.9rem;
         padding-top: 1vh;
         line-height: 1.6rem;
-        -webkit-column-count: 2;
-        column-count: 2;
-        -webkit-column-gap: 2rem;
-        column-gap: 2rem;
       }
       ul {
         margin-top: 2vh;
@@ -853,7 +849,6 @@ footer {
         margin-top: 2vh;
         li {
           line-height: 1.6rem;
-          width: 49%;
           margin-bottom: 1vh;
           margin-left: 1vh;
         }

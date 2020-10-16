@@ -24,8 +24,8 @@
       z-index: 10;
       cursor: pointer;
       .contribuciones__descripcion {
-        visibility: visible;
-        transition: all 1s;
+        opacity: 1;
+        transition: all 0.5s;
       }
     }
     .contribuciones__titulo {
@@ -46,8 +46,9 @@
     margin-top: 4vh;
     padding: 2.5vh;
     position: absolute;
-    visibility: hidden;
+    opacity:0;
     background: $blanco2;
+    z-index: -5;
   }
   &__flecha {
     position: absolute;
