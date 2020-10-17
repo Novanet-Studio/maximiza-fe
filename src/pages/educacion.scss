@@ -232,10 +232,6 @@
 
 /*-------------------------------------------- Tablet Landscape --------------------------------------------*/
 @media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
-}
-
-/*-------------------------------------------- Desktop responsive --------------------------------------------*/
-@media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
   /*------Innovar------*/
   .innovar {
     margin-top: 10vh;
@@ -246,20 +242,20 @@
       width: 30%;
     }
     &__imagen {
-      width: 17vh;
+      width: 14vh;
     }
     &__subtitulo {
       margin: 1vh 0 0.5vh 0;
     }
     &__descripcion {
-      font-size: 1rem;
-      line-height: 1.4rem;
+      font-size: 0.9rem;
+      line-height: 1.3rem;
     }
   }
 
   /*------Programas------*/
   .programas {
-    margin-top: 10vh;
+    margin-top: 0vh;
     &__grupos {
       margin-top: 6vh;
       margin-bottom: 6vh;
@@ -284,13 +280,36 @@
       padding-bottom: 3.5vh;
     }
     &__descripcion {
-      font-size: 1.2rem;
-      line-height: 1.7rem;
+      font-size: 1rem;
+      line-height: 1.5rem;
     }
     &__boton {
       font-size: 1.1rem;
       padding: 1.5vh 8vh;
       margin-bottom: 10vh;
+    }
+  }
+}
+
+/*-------------------------------------------- Desktop responsive --------------------------------------------*/
+@media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
+  /*------Innovar------*/
+  .innovar {
+    &__imagen {
+      width: 17vh;
+    }
+    &__descripcion {
+      font-size: 1rem;
+      line-height: 1.4rem;
+    }
+  }
+
+  /*------Programas------*/
+  .programas {
+    margin-top: 10vh;
+    &__descripcion {
+      font-size: 1.2rem;
+      line-height: 1.7rem;
     }
   }
 }

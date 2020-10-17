@@ -119,16 +119,16 @@
     }
     &__item {
       width: 100%;
-      margin-bottom: 8vh;
+      margin-bottom: 10vh;
     }
     &__icono {
       display: flex;
       align-self: flex-start;
-      width: 8vh;
-      height: 8vh;
+      width: 10vh;
+      height: 10vh;
     }
     &__texto {
-      width: 94%;
+      width: 92%;
       line-height: 1.4rem;
       font-size: 0.9rem;
     }
@@ -191,14 +191,14 @@
     }
     &__input {
       width: 47%;
-      margin-right: 3%;
+      margin-right: 2%;
       margin-bottom: 2%;
       padding: 0.7vh 0.5vh;
     }
     &__textarea {
       width: 97%;
       padding: 1vh 0.5vh;
-      margin-right: 3%;
+      margin-right: 2%;
       margin-bottom: 2%;
     }
     &__button {
@@ -216,16 +216,66 @@
 
 /*-------------------------------------------- Tablet Landscape --------------------------------------------*/
 @media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+  /*------datos------*/
+  .datos {
+    margin-top: 10vh;
+    margin-bottom: 14vh;
+    .columna--left {
+      margin-bottom: 10vh;
+    }
+    &__item {
+      width: 33.333333%;
+      margin-bottom: 0;
+      align-items: flex-start;
+    }
+    &__icono {
+      width: 3.5vh;
+      height: 3.5vh;
+    }
+    &__texto {
+      width: 89%;
+      font-size: 0.95rem;
+      line-height: 1.3rem;
+    }
+    &__form {
+      justify-content: flex-end;
+      margin: 0;
+    }
+    &__input {
+      width: 47%;
+      margin-right: 2%;
+      margin-bottom: 2.5%;
+      font-size: 1rem;
+      padding: 0.7vh 0.5vh;
+    }
+    &__textarea {
+      width: 97%;
+      font-size: 1rem;
+      padding: 1vh 0.5vh;
+      margin-right: 2%;
+      margin-bottom: 1%;
+    }
+    &__button {
+      font-size: 1rem;
+      padding: 3vh 3.3vh 3vh;
+      margin-top: 3.5vh;
+      margin-right: 2%;
+      img {
+        width: 4vh;
+        padding-right: 1vh;
+        margin-bottom: -0.5vh;
+      }
+    }
+  }
 }
 
 /*-------------------------------------------- Desktop responsive --------------------------------------------*/
 @media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
   /*------datos------*/
   .datos {
-    margin-top: 10vh;
-    margin-bottom: 14vh;
     .columna--left {
       width: 30%;
+      margin-bottom: 0;
     }
     .columna--right {
       width: 67%;
@@ -243,32 +293,16 @@
       font-size: 1rem;
       line-height: 1.4rem;
     }
-    &__form {
-      justify-content: flex-end;
-      margin: 0;
-    }
     &__input {
-      width: 47%;
       margin-left: 3%;
-      margin-bottom: 2.5%;
-      font-size: 1rem;
-      padding: 0.7vh 0.5vh;
+      margin-right: 0;
     }
     &__textarea {
-      width: 97%;
-      font-size: 1rem;
-      padding: 1vh 0.5vh;
       margin-left: 3%;
-      margin-bottom: 1%;
+      margin-right: 0;
     }
     &__button {
-      font-size: 1rem;
-      padding: 2vh 3.3vh 3vh;
-      margin-top: 3.5vh;
-      img {
-        width: 4vh;
-        padding-right: 1vh;
-      }
+      margin-right: 0;
     }
   }
 }

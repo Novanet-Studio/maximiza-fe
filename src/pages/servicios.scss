@@ -262,16 +262,12 @@
 
 /*-------------------------------------------- Tablet Landscape --------------------------------------------*/
 @media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
-}
-
-/*-------------------------------------------- Desktop responsive --------------------------------------------*/
-@media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
   /*------Inversionista------*/
   .inversionista {
     &__grupo {
-      margin: 8vh 0;
+      margin: 10vh 0;
       &:last-child {
-        margin: 8vh 0 12vh;
+        margin: 10vh 0 12vh;
         .inversionista__cabecera {
           order: 2;
           .inversionista__titulo {
@@ -287,13 +283,13 @@
     }
     &__cabecera {
       width: 23%;
-      height: 300px;
     }
     &__imagen {
-      height: auto;
+      height: 31vh;
     }
     &__titulo {
       padding: 3vh;
+      bottom: 4px;
     }
     &__contenido {
       width: 74%;
@@ -307,17 +303,119 @@
     }
     &__subtitulo {
       margin-top: 1vh;
+      font-size: 1rem;
+    }
+    &__flecha {
+      width: 1.1vw;
+      right: 1vw;
+      top: 2.5vh;
+    }
+    &__icono {
+      width: 13%;
+      padding: 1.5vh;
+      margin-right: 2vh;
+    }
+    &__texto {
+      padding: 2vh;
+      p {
+        font-size: 0.85rem;
+        line-height: 1.4rem;
+      }
+    }
+  }
+
+  /*------Registro------*/
+  .registro {
+    margin-bottom: 10vh;
+    display: flex;
+    flex-wrap: wrap;
+    h2 {
+      width: 100%;
+    }
+    &__lista--archivos {
+      li {
+        padding: 1vh 0;
+      }
+    }
+    .tab {
+      width: 100%;
+      background: none;
+      border: none;
+      &links {
+        text-align: center;
+        background: $blanco2;
+        margin-right: 1vh;
+        margin-bottom: 1vh;
+        padding: 1.5vh 3.5vh;
+        &:hover {
+          cursor: pointer;
+          transition: 0.5s;
+          background: $verde1;
+          color: $blanco1;
+        }
+      }
+    }
+    .Informacion {
+      width: 50%;
+      border-left: $verde1 3px solid;
+      background: $blanco2;
+      padding: 2vh 2vh 0 2vh;
+      color: $gris1;
+      font-size: 0.9rem;
+      line-height: 1.3rem;
+      p {
+        padding-bottom: 2vh;
+      }
+    }
+    .tabcontent,
+    .content--default {
+      h3 {
+        color: $gris1;
+      }
+      width: 50%;
+      padding: 2vh;
+      background: $blanco2;
+      padding: 2vh 2vh 0 2vh;
+      color: $gris1;
+      font-size: 0.9rem;
+      line-height: 1.3rem;
+      border: none;
+      a {
+        color: $gris1;
+        padding-bottom: 1vh;
+      }
+    }
+  }
+}
+
+/*-------------------------------------------- Desktop responsive --------------------------------------------*/
+@media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
+  /*------Inversionista------*/
+  .inversionista {
+    &__grupo {
+      margin: 8vh 0;
+      &:last-child {
+        margin: 8vh 0 12vh;
+      }
+    }
+    &__cabecera {
+      height: 300px;
+    }
+    &__imagen {
+      height: auto;
+    }
+    &__subtitulo {
       font-size: 1.1rem;
     }
     &__flecha {
-      width: 1vw;
-      right: 1vw;
       top: 2vh;
     }
     &__icono {
       width: 10%;
-      padding: 1.5vh;
-      margin-right: 2vh;
+    }
+    &__descripcion {
+      font-size: 0.8rem;
+      line-height: 1.3rem;
     }
     &__texto {
       padding: 2vh;

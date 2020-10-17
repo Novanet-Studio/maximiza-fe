@@ -226,21 +226,17 @@
 
 /*-------------------------------------------- Tablet Landscape --------------------------------------------*/
 @media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
-}
-
-/*-------------------------------------------- Desktop responsive --------------------------------------------*/
-@media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
   .blog {
-    margin: 12vh 0 0;
+    margin: 7vh 3vh 0;
     &__item {
-      width: 30%;
+      width: 47%;
       margin-bottom: 8vh;
     }
     &__cabecera {
-      height: 19.4vh;
+      height: 22vh;
     }
     &__imagen {
-      height: 19.4vh;
+      height: 22vh;
     }
     &__titulo {
       font-size: 1rem;
@@ -251,7 +247,7 @@
       font-size: 0.85rem;
       line-height: 1.4rem;
       padding: 2vh 2vh 4vh;
-      height: 20vh;
+      height: 18vh;
     }
     &__botton {
       margin-top: -2vh;
@@ -263,14 +259,13 @@
 
   /*Articulo*/
   .articulo {
-    margin: 5vh 0;
+    margin: 3vh 0;
     &__titulo {
       padding: 2vh;
-      font-size: 1.7rem;
+      font-size: 1.5rem;
     }
     &__descripcion {
       font-size: 0.95rem;
-      line-height: 1.4rem;
       column-count: 2;
       column-gap: 3rem;
     }
@@ -280,6 +275,37 @@
     }
     &__imagen {
       height: 45vh;
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+/*-------------------------------------------- Desktop responsive --------------------------------------------*/
+@media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
+  .blog {
+    margin: 12vh 0 0;
+    &__item {
+      width: 30%;
+    }
+    &__cabecera {
+      height: 19.4vh;
+    }
+    &__imagen {
+      height: 19.4vh;
+    }
+    &__texto {
+      height: 20vh;
+    }
+  }
+
+  /*Articulo*/
+  .articulo {
+    margin: 5vh 0;
+    &__titulo {
+      padding: 2.5vh;
+      font-size: 1.7rem;
+    }
+    &__imagen {
       margin-top: 1rem;
     }
   }

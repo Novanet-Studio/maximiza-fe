@@ -196,6 +196,49 @@
 
 /*-------------------------------------------- Tablet Landscape --------------------------------------------*/
 @media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+  /* Legal
+========================================================================== */
+
+  /*------Etica------*/
+  .etica {
+    margin-top: 10vh;
+    &__contenido {
+      width: 58%;
+    }
+    &__titulo {
+      margin-bottom: 1vh;
+    }
+    &__texto {
+      font-size: 1rem;
+      line-height: 1.4rem;
+      padding-bottom: 2vh;
+    }
+  }
+
+  /*------Normativas------*/
+  .normativas {
+    margin: 10vh 0;
+    &__lista {
+      margin-top: 4vh;
+    }
+    &__item {
+      width: 33.333333%;
+      padding: 3vh 2vh 3vh;
+    }
+    &__descarga {
+      width: 14%;
+    }
+    &__ver,
+    &__down {
+      padding: 0.7vh 0;
+    }
+    &__contenido {
+      width: 83%;
+      padding-right: 3vh;
+      font-size: 0.8rem;
+      line-height: 1.2rem;
+    }
+  }
 }
 
 /*-------------------------------------------- Desktop responsive --------------------------------------------*/
@@ -212,13 +255,7 @@
     &__contenido {
       width: 67%;
     }
-    &__titulo {
-      margin-bottom: 1vh;
-    }
     &__texto {
-      font-size: 1rem;
-      line-height: 1.4rem;
-      padding-bottom: 2vh;
       -webkit-column-count: 2;
       column-count: 2;
       -webkit-column-gap: 3em;
@@ -228,26 +265,11 @@
 
   /*------Normativas------*/
   .normativas {
-    margin: 10vh 0;
     &__lista {
       margin-top: 6vh;
     }
     &__item {
-      width: 33.333333%;
       padding: 3vh 2vh 5vh;
-    }
-    &__descarga {
-      width: 14%;
-    }
-    &__ver,
-    &__down {
-      padding: 0.7vh 0;
-    }
-    &__contenido {
-      width: 83%;
-      padding-right: 3vh;
-      font-size: 0.8rem;
-      line-height: 1.2rem;
     }
   }
 }

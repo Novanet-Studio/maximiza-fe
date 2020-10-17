@@ -78,7 +78,7 @@ const Index = ({ data }) => (
           />
           <textarea
             cols="30"
-            rows="2"
+            rows="3"
             placeholder="Mensaje"
             className="form__textarea"
           ></textarea>

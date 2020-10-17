@@ -414,6 +414,105 @@
 
 /*-------------------------------------------- Tablet Landscape --------------------------------------------*/
 @media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+  /* Empresas
+========================================================================== */
+
+  /*------Historia------*/
+  .historia {
+    margin-top: 10vh;
+    &__item {
+      padding-bottom: 9vh;
+    }
+    &__image {
+      width: 20%;
+    }
+    &__descripcion {
+      width: 80%;
+      padding: 0 0 0 3vh;
+    }
+    &__titulo {
+      padding-bottom: 1vh;
+    }
+    &__texto {
+      font-size: 1rem;
+      line-height: 1.6rem;
+    }
+    &__button {
+      font-size: 0.8rem;
+      padding: 1vh 1.5vh;
+    }
+    &__descripcion p {
+      line-height: 1.4rem;
+    }
+  }
+  .equipo {
+    margin: 6vh 0 0;
+  }
+
+  /*------Nosotros------*/
+  .nosotros {
+    margin: 7vh 0 15vh;
+    &__item {
+      width: 33.3333333%;
+      height: 30vh;
+      margin-bottom: 0;
+    }
+    &__imagen {
+      width: 100%;
+      height: 30vh;
+    }
+    &__titulo {
+      padding: 1.5vh 0;
+      margin-top: 12vh;
+    }
+    &__descripcion {
+      min-height: 12.5vh;
+      padding: 1.7vh;
+      font-size: 0.95rem;
+      line-height: 1.4rem;
+    }
+  }
+
+  /*------Aliados------*/
+  .aliados {
+    margin-bottom: 14vh;
+    padding: 3vh 3vh 5vh;
+    &__carrusel {
+      margin: 0;
+      width: 100%;
+      height: 22vh;
+      &-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 12%;
+        height: 16.5vh;
+      }
+    }
+  }
+
+  /*------Balances------*/
+  .balances {
+    margin-bottom: 10vh;
+    &__grupo {
+      margin-top: 6vh;
+    }
+    &__subtitulo {
+      width: 12%;
+      text-align: right;
+    }
+    &__lista {
+      width: 86%;
+      margin: 0;
+    }
+    &__item {
+      width: 16%;
+    }
+    &__boton {
+      padding: 1.5vh;
+      text-align: center;
+    }
+  }
 }
 
 /*-------------------------------------------- Desktop responsive --------------------------------------------*/
@@ -423,7 +522,7 @@
 
   /*------Historia------*/
   .historia {
-    margin-top: 10vh;
+    margin-top: 12vh;
     &__item {
       width: 50%;
     }
@@ -434,12 +533,7 @@
       width: 67%;
       padding: 0 6vh 0 3vh;
     }
-    &__titulo {
-      padding-bottom: 1vh;
-    }
     &__texto {
-      font-size: 1rem;
-      line-height: 1.6rem;
       padding-bottom: 2vh;
     }
     &__button {
@@ -459,66 +553,24 @@
   /*------Nosotros------*/
   .nosotros {
     margin: 10vh 9vh 17vh;
-    &__item {
-      width: 33.3333333%;
-      height: 30vh;
-    }
     &__imagen {
       width: 100%;
       height: 30vh;
     }
-    &__titulo {
-      padding: 1.5vh 0;
-      margin-top: 12vh;
-    }
     &__descripcion {
-      min-height: 12.5vh;
       padding: 2vh;
-      font-size: 0.95rem;
-      line-height: 1.4rem;
     }
   }
 
   /*------Aliados------*/
   .aliados {
-    margin-bottom: 12vh;
     padding: 3vh 7vh 5vh;
     &__carrusel {
       margin: 0 auto;
       width: 90%;
       height: 20vh;
-      padding-top: 4vh;
       &-item {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
         width: 10%;
-        height: 16.5vh;
-      }
-    }
-  }
-
-  /*------Balances------*/
-  .balances {
-    margin-bottom: 12vh;
-    &__grupo {
-      margin-top: 6vh;
-    }
-    &__subtitulo {
-      width: 10%;
-      text-align: right;
-    }
-    &__lista {
-      width: 85%;
-    }
-    &__item {
-      width: 16%;
-    }
-    &__boton {
-      padding: 1.5vh;
-      text-align: center;
-      svg {
-        margin-right: 1vh;
       }
     }
   }

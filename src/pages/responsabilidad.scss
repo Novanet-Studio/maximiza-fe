@@ -143,7 +143,7 @@
       margin: 12vh 0 0;
     }
     &__descripcion {
-      margin-top: 10vh;
+      margin-top: 8vh;
       font-size: 0.85rem;
       line-height: 1.3rem;
       padding-top: 1.5vh;
@@ -224,23 +224,19 @@
 
 /*-------------------------------------------- Tablet Landscape --------------------------------------------*/
 @media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
-}
-
-/*-------------------------------------------- Desktop responsive --------------------------------------------*/
-@media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
   .contribuciones {
     margin: 10vh 0 0;
     &__lista {
-      margin-top: 7vh;
+      margin: 0 15vh;
     }
     &__item {
-      flex: 1 1;
-      margin: 0 1.5vw;
+      margin: 3vh 0;
     }
     &__descripcion {
-      font-size: 1rem;
-      line-height: 1.5rem;
-      padding-bottom: 2vh;
+      margin-top: 4.5vh;
+      font-size: 0.9rem;
+      line-height: 1.4rem;
+      padding-bottom: 1.5vh;
     }
     &__flecha {
       width: 1vw;
@@ -260,10 +256,41 @@
     }
     &__imagen {
       width: 23%;
-      height: 11.2vh;
+      height: 8.6vh;
     }
     &__texto {
       width: 72%;
+    }
+  }
+}
+
+/*-------------------------------------------- Desktop responsive --------------------------------------------*/
+@media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
+  .contribuciones {
+    margin: 10vh 0 0;
+    &__lista {
+      margin: 7vh 0 0;
+    }
+    &__item {
+      flex: 1 1;
+      margin: 0 1.5vw;
+    }
+    &__descripcion {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      padding-bottom: 2vh;
+    }
+    &__flecha {
+      width: 1vw;
+    }
+  }
+
+  .causas {
+    margin-bottom: 10vh;
+    &__imagen {
+      height: 11.2vh;
+    }
+    &__texto {
       font-size: 1.1rem;
       line-height: 1.5rem;
     }
