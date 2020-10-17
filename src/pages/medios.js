@@ -11,9 +11,8 @@ const Medios = ({ data }) => (
     <section className="principal">
       <div className="columna--left">
         <Img
-          fluid={
-            data.strapiMedios.principal.imagen.childImageSharp.fluid
-          }
+          className="principal__imagen"
+          fluid={data.strapiMedios.principal.imagen.childImageSharp.fluid}
         />
       </div>
       <div className="columna--right">

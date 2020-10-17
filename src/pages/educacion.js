@@ -22,6 +22,7 @@ const Educacion = ({ data }) => (
       </div>
       <div className="columna--right">
         <Img
+          className="principal__imagen"
           fluid={data.strapiEducacion.principal.imagen.childImageSharp.fluid}
         />
       </div>

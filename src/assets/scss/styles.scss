@@ -431,9 +431,9 @@ footer {
           padding: 0.7vh;
         }
         .cabecera__droplink {
-          font-size:0.73rem;
+          font-size: 0.73rem;
           line-height: 1.2rem;
-          padding:1vh 0;
+          padding: 1vh 0;
         }
       }
     }
@@ -540,12 +540,178 @@ footer {
   }
 }
 
-/*-------------------------------------------- Mobile Portrait --------------------------------------------*/
-@media only screen and (max-device-width: 500px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
-}
-
 /*-------------------------------------------- Mobile Landscape --------------------------------------------*/
 @media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+  h1 {
+    font-size: 1.27rem;
+    margin-bottom: 0.5vh;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    margin-bottom: 2vh;
+  }
+
+  h3 {
+    font-size: 1.07rem;
+    line-height: 1.3rem;
+  }
+
+  h4 {
+    font-size: 0.9rem;
+    line-height: 1.4rem;
+  }
+
+  .descripcion {
+    font-size: 0.82rem;
+    line-height: 1.2rem;
+  }
+
+  .contenedor {
+    margin: 0 4vh;
+  }
+
+  /*------Cabecera------*/
+  header {
+    padding: 3vh 0;
+    .logo--interno {
+      width: 50%;
+      img {
+        width: 40%;
+      }
+    }
+    .header--vacio {
+      width: 50%;
+      height: 10.4vh;
+    }
+    nav {
+      width: 50%;
+      div {
+        padding: 0 1vw;
+        width: 33.3333333%;
+        &:nth-child(2) {
+          padding: 0;
+        }
+        .bala {
+          font-size: 1rem;
+          padding-bottom: 0.4vh;
+        }
+        .texto {
+          padding-left: 0.5vh;
+          font-size: 0.6rem;
+        }
+        .cabecera__menudrop {
+          width: 105%;
+          top: 9vh;
+          padding: 1.5vh;
+        }
+        .cabecera__droplink {
+          font-size: 0.61rem;
+          line-height: 1.2rem;
+          padding: 1vh 0;
+        }
+      }
+    }
+  }
+
+  /*----- Secciones------*/
+  .principal {
+    .columna--left,
+    .columna--right {
+      width: 100%;
+      padding: 2.5vh 0;
+      text-align: left;
+    }
+    .logo--interno {
+      width: 55vh;
+      margin-bottom: 2vh;
+    }
+    &__texto {
+      font-size: 0.98rem;
+      line-height: 1.35rem;
+      &--pequeño {
+        font-size: 0.9rem;
+        line-height: 1.2rem;
+      }
+    }
+    &__button {
+      font-size: 0.7rem;
+      padding: 3vh 2.5vh;
+      margin-top: 2vh;
+    }
+    &__imagen {
+      width: 60%;
+    }
+  }
+
+  /*------Pagina 404------*/
+  .perdido {
+    margin-top: 8vh;
+  }
+
+  /*------Pie------*/
+  footer {
+    padding-bottom: 3vh;
+    ul {
+      li {
+        width: 5.5vh;
+        height: 5.5vh;
+        margin-right: 2vh;
+        svg {
+          width: 0.63rem !important;
+        }
+      }
+    }
+    p {
+      padding-top: 1vh;
+      font-size: 0.65rem;
+      line-height: 1.2rem;
+      img {
+        width: 11vw;
+        padding-left: 0.4vw;
+        margin-bottom: -1.5vh;
+      }
+    }
+  }
+
+  /* Modal Content/Box */
+  .modal__content {
+    margin: 1% auto; /* 15% from the top and centered */
+    padding: 4vh;
+    top: 3%;
+    width: 85vw;
+    .modal__body {
+      h2 {
+        padding-left: 2vw;
+      }
+      .gatsby-image-wrapper {
+        width: 6%;
+      }
+      .modal__title {
+        width: 94%;
+      }
+      p {
+        padding-top: 3vh;
+        font-size: 0.8rem;
+        line-height: 1.3rem;
+      }
+      ul {
+        margin-top: 2vh;
+        li {
+          font-size: 0.8rem;
+          line-height: 1.4rem;
+          margin-bottom: 1vh;
+        }
+      }
+    }
+    button {
+      right: 2vh;
+      top: 2vh;
+      font-size: 1.5rem;
+      padding: 0 1.3vw;
+    }
+  }
 }
 
 /*-------------------------------------------- Tablet Portrait --------------------------------------------*/
@@ -771,16 +937,14 @@ footer {
           font-size: 1.1rem;
         }
         .cabecera__menudrop {
-          padding-top: 1vh;
-          padding-left: 1vh;
-          padding-bottom: 1vh;
+          padding: 1vh;
           width: 100%;
           top: 5.5vh;
         }
         .cabecera__droplink {
           font-size: 0.85rem;
           line-height: 1.8rem;
-          padding-left: 2.5vw;
+          padding: 0 2.5vw;
         }
       }
     }
@@ -792,10 +956,12 @@ footer {
     .columna--left {
       width: 50%;
       padding-right: 2vw;
+      text-align: right;
     }
     .columna--right {
       width: 50%;
       padding-left: 2vw;
+      text-align: left;
     }
     .logo--interno {
       width: 40vh;
@@ -814,6 +980,9 @@ footer {
       padding: 1.8vh 2vh;
       margin-top: 2vh;
     }
+    &__imagen {
+      width: 100%;
+    }
   }
 
   /*------Pagina 404------*/
@@ -826,15 +995,16 @@ footer {
     padding-bottom: 4vh;
     ul {
       li {
-        width: 4vh;
-        height: 4vh;
+        width: 4.5vh;
+        height: 4.5vh;
         margin-right: 1.5vh;
         svg {
-          width: 2rem !important;
+          width: 2.3rem !important;
         }
       }
     }
     p {
+      padding-top: 0;
       font-size: 0.9rem;
       img {
         width: 6vw;
@@ -863,6 +1033,7 @@ footer {
       }
       p {
         padding-top: 2vh;
+        font-size: 1rem;
         line-height: 1.6rem;
       }
       ul {

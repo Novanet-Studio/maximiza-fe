@@ -23,6 +23,7 @@ const Responsabilidad = ({ data }) => (
       </div>
       <div className="columna--right">
         <Img
+          className="principal__imagen"
           fluid={
             data.strapiResponsabilidad.principal.imagen.childImageSharp.fluid
           }

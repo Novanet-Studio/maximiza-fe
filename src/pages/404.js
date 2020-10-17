@@ -9,7 +9,7 @@ const NotFoundPage = () => (
     <SEO title="404: Not found" />
     <section className="principal">
       <div className="columna--left">
-        <img className="perdido__imagen" src={Perdido} alt="404" />
+        <img className="principal__imagen" src={Perdido} alt="404" />
       </div>
 
       <div className="columna--right">

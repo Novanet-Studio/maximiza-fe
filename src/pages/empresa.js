@@ -15,6 +15,7 @@ const Empresa = ({ data }) => {
       <section className="principal">
         <div className="columna--left">
           <Img
+            className="principal__imagen"
             fluid={data.strapiEmpresa.principal.imagen.childImageSharp.fluid}
           />
         </div>
@@ -87,7 +88,6 @@ const Empresa = ({ data }) => {
         <Aliados />
       </section>
       <Balances />
-      
     </LayoutInterno>
   )
 }

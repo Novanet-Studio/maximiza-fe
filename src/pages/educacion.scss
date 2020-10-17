@@ -100,6 +100,65 @@
 
 /*-------------------------------------------- Mobile Landscape --------------------------------------------*/
 @media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+  /*------Innovar------*/
+  .innovar {
+    margin-top: 12vh;
+    &__lista {
+      margin: 5vh 20vh;
+    }
+    &__item {
+      text-align: center;
+      padding-bottom: 10vh;
+    }
+    &__imagen {
+      width: 25vh;
+      margin: 0 auto;
+    }
+    &__subtitulo {
+      margin: 1vh 0 0.5vh 0;
+    }
+    &__descripcion {
+      font-size: 0.8rem;
+      line-height: 1.3rem;
+    }
+  }
+
+  /*------Programas------*/
+  .programas {
+    margin-top: 12vh;
+    &__grupos {
+      margin-top: 12vh;
+      &:nth-child(2) {
+        margin-bottom: 12vh;
+        text-align: right;
+        .programas__imagen {
+          order: 2;
+        }
+        .programas__lista {
+          order: 1;
+        }
+      }
+    }
+    &__imagen {
+      width: 37%;
+    }
+    &__lista {
+      width: 59%;
+    }
+    &__item {
+      padding-top: 2vh;
+      padding-bottom: 2vh;
+    }
+    &__descripcion {
+      font-size: 0.8rem;
+      line-height: 1rem;
+    }
+    &__boton {
+      font-size: 0.9rem;
+      padding: 1vh 3vh;
+      margin-bottom: 6vh;
+    }
+  }
 }
 
 /*-------------------------------------------- Tablet Portrait --------------------------------------------*/
@@ -181,7 +240,7 @@
   .innovar {
     margin-top: 10vh;
     &__lista {
-      margin-top: 5vh;
+      margin: 5vh 0;
     }
     &__item {
       width: 30%;
@@ -201,11 +260,9 @@
   /*------Programas------*/
   .programas {
     margin-top: 10vh;
-    &__secciones {
-      margin-top: 9vh;
-    }
     &__grupos {
-      margin-bottom: 9vh;
+      margin-top: 6vh;
+      margin-bottom: 6vh;
       &:nth-child(2) {
         text-align: right;
         .programas__imagen {

@@ -26,7 +26,10 @@ const Legal = ({ data }) => (
         </p>
       </div>
       <div className="columna--right">
-        <Img fluid={data.strapiLegal.principal.imagen.childImageSharp.fluid} />
+        <Img
+          className="principal__imagen"
+          fluid={data.strapiLegal.principal.imagen.childImageSharp.fluid}
+        />
       </div>
     </section>
 

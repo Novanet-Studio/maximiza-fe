@@ -12,6 +12,7 @@ const Capital = ({ data }) => (
     <section className="principal">
       <div className="columna--left">
         <Img
+          className="principal__imagen"
           fluid={
             data.strapiPrivateEquity.principal.imagen.childImageSharp.fluid
           }

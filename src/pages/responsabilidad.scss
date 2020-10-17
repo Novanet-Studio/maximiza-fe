@@ -46,7 +46,7 @@
     margin-top: 4vh;
     padding: 2.5vh;
     position: absolute;
-    opacity:0;
+    opacity: 0;
     background: $blanco2;
     z-index: -5;
   }
@@ -123,7 +123,7 @@
       margin: 0 auto;
     }
     &__texto {
-      text-align: center;
+      text-align: left;
       padding-top: 1vh;
       font-size: 0.9rem;
       line-height: 1.2rem;
@@ -133,13 +133,55 @@
 
 /*-------------------------------------------- Mobile Landscape --------------------------------------------*/
 @media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+  .contribuciones {
+    margin: 8vh 15vh;
+    &__lista {
+      margin-top: 3vh;
+    }
+    &__item {
+      width: 100%;
+      margin: 12vh 0 0;
+    }
+    &__descripcion {
+      margin-top: 10vh;
+      font-size: 0.85rem;
+      line-height: 1.3rem;
+      padding-top: 1.5vh;
+      padding-bottom: 2vh;
+    }
+    &__flecha {
+      width: 2vw;
+    }
+  }
+
+  .causas {
+    margin-top: 18vh;
+    margin-bottom: 10vh;
+    &__lista {
+      margin: 6vh 15vh 0;
+    }
+    &__item {
+      width: 100%;
+      align-items: center;
+      margin-bottom: 14vh;
+    }
+    &__imagen {
+      width: 20%;
+      height: 28vh;
+    }
+    &__texto {
+      width: 75%;
+      font-size: 1rem;
+      line-height: 1.3rem;
+      text-align: left;
+    }
+  }
 }
 
 /*-------------------------------------------- Tablet Portrait --------------------------------------------*/
 @media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
   .contribuciones {
-    margin-top: 6vh;
-    width: 100%;
+    margin: 10vh 0 0 0;
     &__lista {
       margin-top: 3vh;
     }
@@ -187,8 +229,7 @@
 /*-------------------------------------------- Desktop responsive --------------------------------------------*/
 @media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
   .contribuciones {
-    margin-top: 10vh;
-    width: 100%;
+    margin: 10vh 0 0;
     &__lista {
       margin-top: 7vh;
     }
@@ -207,14 +248,15 @@
   }
 
   .causas {
-    margin-top: 12vh;
-    margin-bottom: 8vh;
+    margin-top: 14vh;
+    margin-bottom: 6vh;
     &__lista {
       margin: 6vh 0;
     }
     &__item {
       width: 30%;
       align-items: center;
+      margin-bottom: 0vh;
     }
     &__imagen {
       width: 23%;

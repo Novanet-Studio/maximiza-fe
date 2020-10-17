@@ -20,6 +20,7 @@ const Contacto = ({ data }) => (
       {console.log(data)}
       <div className="columna--left">
         <Img
+          className="principal__imagen"
           fluid={data.strapiContacto.principal.imagen.childImageSharp.fluid}
         />
       </div>
@@ -61,7 +62,8 @@ const Contacto = ({ data }) => (
               />
             </span>
             <p class="datos__texto">
-              Francisco de Miranda Avenue, Europe Tower, 3rd Floor, 3-B3 Offices. El Rosal. Caracas – Venezuela.
+              Francisco de Miranda Avenue, Europe Tower, 3rd Floor, 3-B3
+              Offices. El Rosal. Caracas – Venezuela.
             </p>
           </li>
         </ul>

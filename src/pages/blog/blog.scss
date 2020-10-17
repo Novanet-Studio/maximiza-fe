@@ -44,7 +44,6 @@
 /*Articulo*/
 .articulo {
   &__titulo {
-    padding: 2vh;
     background-color: $verde1;
     color: $blanco1;
     text-align: center;
@@ -54,7 +53,6 @@
     line-height: 1.4rem;
   }
   &__boton-regreso {
-    line-height: 2rem;
     font-weight: 700;
     color: $verde1;
   }
@@ -91,7 +89,7 @@
     &__texto {
       font-size: 0.8rem;
       line-height: 1.35rem;
-      padding:2vh 2vh 4vh;
+      padding: 2vh 2vh 4vh;
     }
     &__botton {
       margin-top: -3vh;
@@ -107,6 +105,7 @@
     &__titulo {
       font-size: 1.1rem;
       line-height: 1.6rem;
+      padding: 2vh;
     }
     &__descripcion {
       font-size: 0.8rem;
@@ -124,6 +123,58 @@
 
 /*-------------------------------------------- Mobile Landscape --------------------------------------------*/
 @media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+  .blog {
+    margin: 12vh 0;
+    &__item {
+      width: 48.5%;
+      margin-bottom: 7vh;
+    }
+    &__cabecera {
+      height: 40vh;
+    }
+    &__imagen {
+      height: 40vh;
+    }
+    &__titulo {
+      font-size: 0.8rem;
+      line-height: 1.2rem;
+      padding: 1vh;
+    }
+    &__texto {
+      font-size: 0.8rem;
+      line-height: 1.3rem;
+      padding: 2vh 3vh 5vh 3vh;
+      height: 52vh;
+    }
+    &__botton {
+      margin-top: -3.5vh;
+      margin-right: 3.5vh;
+      padding: 4vh;
+      font-size: 0.6rem;
+      line-height: 0;
+    }
+  }
+
+  /*Articulo*/
+  .articulo {
+    margin: 5vh 0;
+    &__titulo {
+      padding: 2.5vh 2vh;
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+    &__descripcion {
+      font-size: 0.8rem;
+      line-height: 1.4rem;
+    }
+    &__boton-regreso {
+      font-size: 0.8rem;
+    }
+    &__imagen {
+      height: 55vh;
+      margin-top: 0.5rem;
+    }
+  }
 }
 
 /*-------------------------------------------- Tablet Portrait --------------------------------------------*/
@@ -180,7 +231,7 @@
 /*-------------------------------------------- Desktop responsive --------------------------------------------*/
 @media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
   .blog {
-    margin-top: 12vh;
+    margin: 12vh 0 0;
     &__item {
       width: 30%;
       margin-bottom: 8vh;
@@ -199,12 +250,13 @@
     &__texto {
       font-size: 0.85rem;
       line-height: 1.4rem;
-      padding:2vh 2vh 4vh;
+      padding: 2vh 2vh 4vh;
+      height: 20vh;
     }
     &__botton {
       margin-top: -2vh;
-      margin-right: 1.5vh;
-      padding: 1vh 1.5vh;
+      margin-right: 2vh;
+      padding: 2vh 1.5vh;
       font-size: 0.82rem;
     }
   }
@@ -212,6 +264,10 @@
   /*Articulo*/
   .articulo {
     margin: 5vh 0;
+    &__titulo {
+      padding: 2vh;
+      font-size: 1.7rem;
+    }
     &__descripcion {
       font-size: 0.95rem;
       line-height: 1.4rem;

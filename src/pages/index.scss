@@ -191,6 +191,85 @@
 
 /*-------------------------------------------- Mobile Landscape --------------------------------------------*/
 @media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+  /*------Beneficios------*/
+  .beneficios {
+    margin-top: 7vh;
+    &__lista {
+      margin: 5vh 28vh;
+    }
+
+    &__item {
+      margin-bottom: 6vh;
+    }
+
+    &__descripcion {
+      font-size: 0.9rem;
+      line-height: 1.3rem;
+      padding-top: 0.5vh;
+      padding-bottom: 2vh;
+    }
+  }
+
+  /*------Servicios------*/
+  .servicios {
+    margin-top: 9vh;
+    &__lista {
+      margin: 5vh 40vh;
+    }
+    &__item {
+      width: 100%;
+      margin-bottom: 5vh;
+      height: 52vh;
+      .servicios__subtitulo {
+        padding: 2vh;
+      }
+    }
+    &__descripcion {
+      top: 52vh;
+      font-size: 0.77rem;
+      line-height: 1.3rem;
+      padding: 2vh;
+    }
+
+    &__imagen {
+      height: 52vh;
+    }
+  }
+
+  /*------Contacto------*/
+  .contacto {
+    margin-top: 9vh;
+    margin-bottom: 14vh;
+    .form {
+      margin: 5vh 0 0 0;
+      .columna--left {
+        width: 100%;
+        input {
+          width: 100%;
+          margin-bottom: 6%;
+          font-size: 0.85rem;
+          padding: 0.7vh 0.5vh;
+        }
+        textarea {
+          width: 100%;
+          font-size: 0.85rem;
+          padding: 1vh 0.5vh;
+          margin-bottom: 4%;
+        }
+      }
+      .columna--right {
+        .form__button {
+          font-size: 0.8rem;
+          padding: 4.5vh 5vh 5vh 5vh;
+          img {
+            width: 6.5vh;
+            margin-bottom: -1.5vh;
+            margin-right: 0.5vw;
+          }
+        }
+      }
+    }
+  }
 }
 
 /*-------------------------------------------- Tablet Portrait --------------------------------------------*/
@@ -284,7 +363,7 @@
   .beneficios {
     margin-top: 10vh;
     &__lista {
-      margin-top: 7vh;
+      margin: 7vh 0 0 0;
     }
 
     &__item {
@@ -303,7 +382,7 @@
   .servicios {
     margin-top: 10vh;
     &__lista {
-      margin-top: 4vh;
+      margin: 4vh 0 0 0;
     }
     &__item {
       width: 30%;
@@ -313,6 +392,7 @@
       }
     }
     &__descripcion {
+      top: 37vh;
       font-size: 1rem;
       line-height: 1.5rem;
       padding: 2.5vh;

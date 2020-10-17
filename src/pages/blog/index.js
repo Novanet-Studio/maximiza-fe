@@ -19,7 +19,10 @@ const IndexPage = ({ data }) => (
         </p>
       </div>
       <div className="columna--right">
-        <Img fluid={data.strapiBlog.principal.imagen.childImageSharp.fluid} />
+        <Img
+          className="principal__imagen"
+          fluid={data.strapiBlog.principal.imagen.childImageSharp.fluid}
+        />
       </div>
     </section>
 

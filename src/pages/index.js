@@ -4,8 +4,8 @@ import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import ReactMarkdown from "react-markdown"
-import Email from "../assets/images/email.svg";
-import Logo from "../assets/images/logo-maximiza.svg";
+import Email from "../assets/images/email.svg"
+import Logo from "../assets/images/logo-maximiza.svg"
 import "./index.scss"
 
 const Index = ({ data }) => (
@@ -20,8 +20,11 @@ const Index = ({ data }) => (
         <button className="principal__button">Quiero saber más</button>
       </div>
       <div className="columna--right">
-      <Img className="principal__imagen" fluid={data.strapiInicio.principal_inicio.imagen.childImageSharp.fluid}     
-          
+        <Img
+          className="principal__imagen"
+          fluid={
+            data.strapiInicio.principal_inicio.imagen.childImageSharp.fluid
+          }
         />
       </div>
     </section>
@@ -75,7 +78,7 @@ const Index = ({ data }) => (
           />
           <textarea
             cols="30"
-            rows="3"
+            rows="2"
             placeholder="Mensaje"
             className="form__textarea"
           ></textarea>

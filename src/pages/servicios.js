@@ -28,6 +28,7 @@ const Servicios = ({ data }) => {
         </div>
         <div className="columna--right">
           <Img
+            className="principal__imagen"
             fluid={data.strapiServicios.principal.imagen.childImageSharp.fluid}
           />
         </div>
