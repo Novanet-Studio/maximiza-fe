@@ -9,58 +9,71 @@ const Layout = ({ children }) => {
 
 
   // Opcion nro 1
-  useEffect(() => {
-    const onToggleMenu = () => {
-      const nav = document.querySelector('#myNav')
-      const main = document.querySelector("main")
+  // useEffect(() => {
+  //   const onToggleMenu = () => {
+  //     const nav = document.querySelector('#myNav')
+  //     const main = document.querySelector("main")
 
-      if (!isToggled) {
-        nav.style.width = "50%"
-        main.style.opacity = 0.3
-        setIsToggled(true)
-      } else {
-        nav.style.width = "0"
-        main.style.opacity = 1
-        setIsToggled(false)
-      }
-    }
+  //     if (!isToggled) {
+  //       nav.style.width = "50%"
+  //       main.style.opacity = 0.3
+  //       setIsToggled(true)
+  //     } else {
+  //       nav.style.width = "0"
+  //       main.style.opacity = 1
+  //       setIsToggled(false)
+  //     }
+  //   }
 
-    document.querySelector(".mobileMenu").addEventListener("click", onToggleMenu)
+  //   document.querySelector(".mobileMenu").addEventListener("click", onToggleMenu)
 
-    // Clean up
-    return () => 
-      document
-        .querySelector(".mobileMenu")
-        .removeEventListener("click", onToggleMenu)
-  })
+  //   // Clean up
+  //   return () => 
+  //     document
+  //       .querySelector(".mobileMenu")
+  //       .removeEventListener("click", onToggleMenu)
+  // })
 
   // Opcion nro 2
-  // const toggleMenu = () => {
-  //   const nav = document.getElementById("myNav")
-  //   const main = document.querySelector("main")
+  const toggleMenu = () => {
+    const nav = document.getElementById("myNav")
+    const main = document.querySelector("main")
 
-  //   if (!isToggled) {
-  //     nav.style.width = "50%"
-  //     main.style.opacity = 0.3
-  //     setIsToggled(true)
-  //   } else {
-  //     nav.style.width = "0"
-  //     main.style.opacity = 1
-  //     setIsToggled(false)
-  //   }
-  // }
+    console.log('It works toggle? ', isToggled)
+
+    console.log('-'.repeat(30))
+    console.log({
+      nav,
+      main,
+      toggle: isToggled
+    })
+
+    if (!isToggled) {
+      nav.style.width = "50%"
+      main.style.opacity = 0.3
+      setIsToggled(true)
+      console.log('menu is open')
+    } else {
+      nav.style.width = "0"
+      main.style.opacity = 1
+      setIsToggled(false)
+      console.log('menu is close')
+    }
+
+    console.log('-'.repeat(30))
+  }
 
   return (
     <div className="contenedor">
       {/* Funciona con la opcion 1 (useEffect) */}
-      <button className="mobileMenu">
-        ☰
-      </button>
-
-      {/* Opcion 2  */}
-      {/* <button className="mobileMenu" onClick={toggleMenu}>
+      {/* <button className="mobileMenu">
         ☰
       </button> */}
+
+      {/* Opcion 2  */}
+      <button className="mobileMenu" onClick={toggleMenu}>
+        ☰
+      </button>
       <Header />
       <Navigation />
       <main>{children}</main>
