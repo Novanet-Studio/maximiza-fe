@@ -81,13 +81,6 @@
   }
 }
 
-.registro {
-  &__lista--archivos {
-    li {
-      width: 100%;
-    }
-  }
-}
 
 /*-------------------------------------------- Mobile Portrait --------------------------------------------*/
 @media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
