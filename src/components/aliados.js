@@ -20,7 +20,7 @@ const aliadosLogos = () => (
             }
           }
         }
-        morval: file(relativePath: { eq: "aliados-banque-morval.png" }) {
+        vitral: file(relativePath: { eq: "aliados-vitral.jpeg" }) {
           childImageSharp {
             fluid(maxHeight: 200) {
               ...GatsbyImageSharpFluid
@@ -56,20 +56,22 @@ const aliadosLogos = () => (
           <Img fluid={data.morgan.childImageSharp.fluid} />
         </li>
         <li className="aliados__carrusel-item">
-          <Img fluid={data.oppenheimer.childImageSharp.fluid} />
-        </li>
-        <li className="aliados__carrusel-item">
-          <Img fluid={data.morval.childImageSharp.fluid} />
-        </li>
-        <li className="aliados__carrusel-item">
           <Img fluid={data.intesa.childImageSharp.fluid} />
         </li>
         <li className="aliados__carrusel-item">
-          <Img fluid={data.silk.childImageSharp.fluid} />
+          <Img fluid={data.vitral.childImageSharp.fluid} />
         </li>
         <li className="aliados__carrusel-item">
           <Img fluid={data.suisse.childImageSharp.fluid} />
         </li>
+        <li className="aliados__carrusel-item">
+          <Img fluid={data.oppenheimer.childImageSharp.fluid} />
+        </li>        
+        
+        <li className="aliados__carrusel-item">
+          <Img fluid={data.silk.childImageSharp.fluid} />
+        </li>
+        
       </ul>
     )}
   />

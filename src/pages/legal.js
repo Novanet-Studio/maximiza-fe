@@ -61,7 +61,7 @@ const Legal = ({ data }) => (
               </button>
             </div>
             <p className="normativas__contenido">
-              {item.documento.substring(0, 130).concat("...")}
+              {item.documento}
             </p>
           </li>
         ))}

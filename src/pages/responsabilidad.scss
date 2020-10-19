@@ -69,17 +69,15 @@
   }
   &__item {
     @extend .flex;
-    justify-content: space-between;
-    .causas__imagen {
-      border: $verde1 3px solid;
-    }
-  }
-  &__imagen {
-    border-radius: 50%;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
   }
   &__texto {
     color: $gris2;
-    font-weight: 800;
+    font-weight: 700;
+    text-align: center;
   }
   h2 {
     width: 100%;
@@ -118,12 +116,11 @@
       margin-bottom: 7vh;
     }
     &__imagen {
-      width: 25%;
-      height: 12.5vh;
       margin: 0 auto;
+      width: 22vw;
+      height: 22vw;      
     }
     &__texto {
-      text-align: left;
       padding-top: 1vh;
       font-size: 0.9rem;
       line-height: 1.2rem;
@@ -173,7 +170,6 @@
       width: 75%;
       font-size: 1rem;
       line-height: 1.3rem;
-      text-align: left;
     }
   }
 }
@@ -201,22 +197,23 @@
   .causas {
     margin-top: 6vh;
     &__lista {
-      margin: 4vh 8vh 0;
+      width: 100%;
+      margin-top:4vh ;
     }
     &__item {
-      width: 100%;
+      width: 33.3333333%;
       align-items: center;
       margin-bottom: 5vh;
     }
     &__imagen {
-      width: 15%;
-      height: 8.2vh;
+      margin: 0 auto;
+      width: 12.5vw;
+      height: 12.5vw;      
     }
     &__texto {
       width: 75%;
-      font-size: 1.15rem;
-      line-height: 1.7rem;
-      text-align: left;
+      font-size: 0.9rem;
+      line-height: 1.1rem;
     }
   }
 }
@@ -254,8 +251,8 @@
       margin-bottom: 0vh;
     }
     &__imagen {
-      width: 23%;
-      height: 8.6vh;
+      width: 5.4vw;
+      height: 5.4vw;
     }
     &__texto {
       width: 72%;
@@ -283,15 +280,15 @@
       width: 1vw;
     }
   }
-
   .causas {
     margin-bottom: 10vh;
     &__imagen {
-      height: 11.2vh;
+      width: 5.4vw;
+      height: 5.4vw;
     }
     &__texto {
-      font-size: 1.1rem;
-      line-height: 1.5rem;
+      font-size: 0.85rem;
+      line-height: 1.2rem;
     }
   }
 }
