@@ -71,7 +71,6 @@
     &__lista {
       width: 100%;
       padding-top: 3vh;
-      padding-bottom: 7vh;
     }
     &__item {
       margin-bottom: 12vh;
@@ -86,16 +85,16 @@
     }
     &__imagen {
       width: 30%;
-      height: 38vh;
+      height: 28vh;
     }
     &__descripcion {
       width: 70%;
-      padding: 1.5vw 3.5vw 1.5vw;
-      font-size: 0.7rem;
+      padding: 0 3.5vw ;
+      font-size: 0.75rem;
       line-height: 1.1rem;
     }
     &__boton {
-      font-size: 1.1rem;
+      font-size: 0.9rem;
       padding: 1.5vh 8vh;
       margin-bottom: 10vh;
     }

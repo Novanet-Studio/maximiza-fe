@@ -138,46 +138,60 @@
 @media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
   /*------Inversionista------*/
   .inversionista {
+    margin-top: 20vh;
+    margin-bottom: 24vh;
     &__grupo {
-      margin-top: 15vh;
+      &:last-child {
+        margin-top: 20vh;
+        .inversionista__cabecera {
+          order: 2;
+          .inversionista__titulo {
+            text-align: right;
+          }
+        }
+        .inversionista__contenido {
+          .inversionista__contenido {
+            order: 1;
+          }
+        }
+      }
     }
     &__cabecera {
-      width: 100%;
-      height: 32vh;
-      position: relative;
+      width: 35%;
     }
     &__imagen {
-      height: 27vh;
+      height: auto;
     }
     &__titulo {
-      padding: 2vh;
-      position: absolute;
-      bottom: 20px;
-      right: 0;
+      padding: 3vh 2vh;
+      position: inherit;
+    }
+    &__contenido {
+      width: 64%;
     }
     &__item {
       width: 100%;
-      height: 14vh;
-      margin-bottom: 4vh;
-    }
-    &__subtitulo {
-      margin-top: 3.5vh;
-      font-size: 1rem;
+      height: 8.4vh;
+      margin-top: 0;
+      margin-bottom: 1.29vh;
     }
     &__flecha {
       width: 2vw;
       right: 2vw;
-      top: 5vh;
+      top: 3vh;
+    }
+    &__subtitulo {
+      margin-top: 1.3vh;
     }
     &__icono {
-      width: 10%;
+      width: 8%;
       padding: 1vh;
-      margin-right: 3vh;
+      margin-right: 1vh;
     }
     &__texto {
       padding: 2vh;
-      font-size: 0.8rem;
-      line-height: 1.3rem;
+      font-size: 0.75rem;
+      line-height: 1.2rem;
     }
     &__boton {
       margin-top: 2vh;

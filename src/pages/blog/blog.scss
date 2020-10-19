@@ -124,7 +124,7 @@
 /*-------------------------------------------- Mobile Landscape --------------------------------------------*/
 @media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
   .blog {
-    margin: 12vh 0;
+    margin: 12vh 0 5vh 0;
     &__item {
       width: 48.5%;
       margin-bottom: 7vh;
@@ -136,15 +136,15 @@
       height: 40vh;
     }
     &__titulo {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       line-height: 1.2rem;
-      padding: 1vh;
-    }
+      padding: 2vh;
+  }
     &__texto {
-      font-size: 0.8rem;
-      line-height: 1.3rem;
+      font-size: 0.74rem;
+      line-height: 1.2rem;
       padding: 2vh 3vh 5vh 3vh;
-      height: 52vh;
+      height: 40vh;
     }
     &__botton {
       margin-top: -3.5vh;

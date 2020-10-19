@@ -125,11 +125,11 @@
 
   /*------Programas------*/
   .programas {
-    margin-top: 12vh;
+    margin-top: 10vh;
     &__grupos {
-      margin-top: 12vh;
+      margin-top: 10vh;
       &:nth-child(2) {
-        margin-bottom: 12vh;
+        margin-bottom: 10vh;
         text-align: right;
         .programas__imagen {
           order: 2;
@@ -150,7 +150,7 @@
       padding-bottom: 2vh;
     }
     &__descripcion {
-      font-size: 0.8rem;
+      font-size: 0.65rem;
       line-height: 1rem;
     }
     &__boton {

@@ -131,45 +131,45 @@
 /*-------------------------------------------- Mobile Landscape --------------------------------------------*/
 @media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
   .contribuciones {
-    margin: 8vh 15vh;
-    &__lista {
-      margin-top: 3vh;
-    }
+    margin:15vh 0;
     &__item {
-      width: 100%;
-      margin: 12vh 0 0;
+      width: 30%;
+      margin: 5vh 0 0;
+    }
+    &__titulo {
+      font-size: 0.8rem;
     }
     &__descripcion {
-      margin-top: 8vh;
-      font-size: 0.85rem;
-      line-height: 1.3rem;
+      margin-top: 7vh;
+      font-size: 0.55rem;
+      line-height: 1rem;
       padding-top: 1.5vh;
       padding-bottom: 2vh;
     }
     &__flecha {
-      width: 2vw;
+      width: 1.3vw;
+      top: 1.5vh;
     }
   }
 
   .causas {
     margin-top: 18vh;
-    margin-bottom: 10vh;
+    margin-bottom: 18vh;
     &__lista {
-      margin: 6vh 15vh 0;
+      margin: 6vh 0 0;
+      width: 100%;
     }
     &__item {
-      width: 100%;
+      width: 32%;
       align-items: center;
-      margin-bottom: 14vh;
     }
     &__imagen {
-      width: 20%;
-      height: 28vh;
+      width: 40%;
+      height: 20vh;
     }
     &__texto {
-      width: 75%;
-      font-size: 1rem;
-      line-height: 1.3rem;
+      margin-top: 2vh;
+      font-size: 0.7rem;
     }
   }
 }

@@ -109,8 +109,8 @@
 @media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
   /*------datos------*/
   .datos {
-    margin-top: 6vh;
-    margin-bottom: 6vh;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
     .columna--left {
       width: 100%;
     }
@@ -124,11 +124,11 @@
     &__icono {
       display: flex;
       align-self: flex-start;
-      width: 10vh;
-      height: 10vh;
+      width: 8vh;
+      height: 8vh;
     }
     &__texto {
-      width: 92%;
+      width: 93%;
       line-height: 1.4rem;
       font-size: 0.9rem;
     }

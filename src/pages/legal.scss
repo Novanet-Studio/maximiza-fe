@@ -119,22 +119,22 @@
 
   /*------Normativas------*/
   .normativas {
-    margin: 17vh 12vh 12vh;
+    margin: 17vh 0 14vh 0;
     &__item {
-      width: 100%;
-      padding: 6vh;
+      width: 50%;
+      padding: 6vh 3vh;
     }
     &__descarga {
-      width: 10%;
+      width: 12%;
     }
     &__ver,
     &__down {
       padding: 0.7vh 0;
     }
     &__contenido {
-      width: 87%;
-      font-size: 0.85rem;
-      line-height: 1.4rem;
+      width: 84%;
+      font-size: 0.8rem;
+      line-height: 1.3rem;
     }
   }
 }
