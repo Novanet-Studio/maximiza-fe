@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import HeaderIndex from "./headerIndex"
 import Navigation from "./navigation"
@@ -7,34 +7,6 @@ import Footer from "./footer"
 const Layout = ({ children }) => {
   const [isToggled, setIsToggled] = useState(false)
 
-  // Opcion nro 1
-  // useEffect(() => {
-  //   const onToggleMenu = () => {
-  //     const nav = document.querySelector("#myNav")
-  //     const main = document.querySelector("main")
-
-  //     if (!isToggled) {
-  //       nav.style.width = "50%"
-  //       main.style.opacity = 0.3
-  //       setIsToggled(true)
-  //     } else {
-  //       nav.style.width = "5"
-  //       main.style.opacity = 1
-  //       setIsToggled(false)
-  //     }
-  //   }
-
-  //   document.querySelector('.mobileMenu').addEventListener("click", onToggleMenu)
-
-  //   // Limpia | remueve el listener
-  //   return () => 
-  //     document
-  //       .querySelector(".mobileMenu")
-  //       .removeEventListener("click", onToggleMenu)
-  // })
-
-  // Si la opcion nro 1 no funciona
-  // descomenta las siguientes lineas
   const toggleMenu = () => {
     const nav = document.querySelector('#myNav')
     const main = document.querySelector("main")
@@ -65,14 +37,7 @@ const Layout = ({ children }) => {
   }
 
   return (
-    <div className="contenedor">
-      {/* Siguiente linea funciona con la opcion nro 1 (useEffect) */}
-      {/* <button className="mobileMenu">
-        ☰
-      </button> */}
-
-      {/* Esta manera funciona con la opcion nro 2 (callback) */}
-      {/* NOTA! Borra las lineas de codigo que no se usen */}
+    <div className="contenedor">    
       <button className="mobileMenu" onClick={toggleMenu}>
         ☰
       </button>
