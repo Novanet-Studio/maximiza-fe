@@ -1,11 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
-import LayoutInterno from "../components/layoutInterno"
+import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Perdido from "../assets/images/max-404-sec1.jpg"
 
 const NotFoundPage = () => (
-  <LayoutInterno>
+  <Layout>
     <SEO title="404: Not found" />
     <section className="principal">
       <div className="columna--left">
@@ -26,7 +26,7 @@ const NotFoundPage = () => (
     </section>
 
     <section className="perdido"></section>
-  </LayoutInterno>
+  </Layout>
 )
 
 export default NotFoundPage

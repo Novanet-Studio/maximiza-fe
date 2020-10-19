@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import ReactMarkdown from "react-markdown"
-import LayoutInterno from "../components/layoutInterno"
+import Layout from "../components/layout"
 import Modal from "../components/modal"
 import SEO from "../components/seo"
 import Flecha from "../assets/images/dropdown.svg"
@@ -12,7 +12,7 @@ const Servicios = ({ data }) => {
   const [targetModal, setTargetModal] = useState("")
 
   return (
-    <LayoutInterno>
+    <Layout>
       <SEO title="Servicios" />
       <section className="principal">
         <div className="columna--left">
@@ -87,7 +87,7 @@ const Servicios = ({ data }) => {
           </div>
         ))}
       </section>
-    </LayoutInterno>
+    </Layout>
   )
 }
 

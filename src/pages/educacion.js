@@ -2,12 +2,12 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import ReactMarkdown from "react-markdown"
-import LayoutInterno from "../components/layoutInterno"
+import Layout from "../components/layout"
 import SEO from "../components/seo"
 import "./educacion.scss"
 
 const Educacion = ({ data }) => (
-  <LayoutInterno>
+  <Layout>
     <SEO title="Inicio" />
     <section className="principal">
       <div className="columna--left">
@@ -75,7 +75,7 @@ const Educacion = ({ data }) => (
         Obtenga más información
       </Link>
     </section>
-  </LayoutInterno>
+  </Layout>
 )
 
 export default Educacion

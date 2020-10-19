@@ -1,7 +1,7 @@
 import React from "react"
 import Img from "gatsby-image"
 import { Link, graphql } from "gatsby"
-import LayoutInterno from "../../components/layoutInterno"
+import Layout from "../../components/layout"
 import { window } from "browser-monads"
 import ReactMarkdown from "react-markdown"
 import {
@@ -15,7 +15,7 @@ import "./blog.scss"
 const shareUrl = window.location.href
 
 const BlogTemplate = ({ data }) => (
-  <LayoutInterno>
+  <Layout>
     <section className="articulo__principal">
       <Link className="articulo__boton-regreso" to="../../blog">
         « Volver al blog
@@ -43,7 +43,7 @@ const BlogTemplate = ({ data }) => (
         </TwitterShareButton>
       </div>
     </article>
-  </LayoutInterno>
+  </Layout>
 )
 
 export default BlogTemplate

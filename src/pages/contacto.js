@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import LayoutInterno from "../components/layoutInterno"
+import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Email from "../assets/images/email.svg"
 import "./contacto.scss"
@@ -14,7 +14,7 @@ import { fas } from "@fortawesome/free-solid-svg-icons"
 library.add(fab, fas)
 
 const Contacto = ({ data }) => (
-  <LayoutInterno>
+  <Layout>
     <SEO title="Inicio" />
     <section className="principal">
       {console.log(data)}
@@ -93,7 +93,7 @@ const Contacto = ({ data }) => (
         </form>
       </div>
     </section>
-  </LayoutInterno>
+  </Layout>
 )
 
 export default Contacto

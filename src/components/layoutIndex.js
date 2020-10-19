@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Header from "./header"
+import HeaderIndex from "./headerIndex"
 import Navigation from "./navigation"
 import Footer from "./footer"
 
@@ -26,7 +26,7 @@ const Layout = ({ children }) => {
       <button className="mobileMenu" onClick={() => toggleMenu()}>
         ☰
       </button>
-      <Header />
+      <HeaderIndex />
       <Navigation />
       <main>{children}</main>
       <Footer />

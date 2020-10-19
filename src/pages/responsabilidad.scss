@@ -89,7 +89,7 @@
 /*-------------------------------------------- Mobile Portrait --------------------------------------------*/
 @media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
   .contribuciones {
-    margin-top: 8vh;
+    margin-top: 6vh;
     width: 100%;
     &__lista {
       margin-top: 2vh;
@@ -200,7 +200,6 @@
 
   .causas {
     margin-top: 6vh;
-    margin-bottom: 6vh;
     &__lista {
       margin: 4vh 8vh 0;
     }

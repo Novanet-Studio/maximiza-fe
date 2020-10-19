@@ -1,7 +1,7 @@
-const path = require('path')
+const path = require("path")
 
-exports.createPages = async ({ actions:{ createPage }, graphql }) => {
-  const blogTemplate = path.resolve('./src/pages/blog/blog.template.js')
+exports.createPages = async ({ actions: { createPage }, graphql }) => {
+  const blogTemplate = path.resolve("./src/pages/blog/blog.template.js")
   const { data } = await graphql(`
     {
       allStrapiArticulo {
@@ -22,7 +22,7 @@ exports.createPages = async ({ actions:{ createPage }, graphql }) => {
 
   data.allStrapiArticulo.edges.forEach(({ node: articulo }) => {
     const slug = articulo.Slug
-  
+
     createPage({
       path: `/blog/${slug}`,
       component: blogTemplate,

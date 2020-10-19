@@ -1,2 +1,3 @@
-# gatsby-template 
+# gatsby-template
+
 starter template for Gatsby

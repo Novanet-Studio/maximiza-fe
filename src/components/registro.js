@@ -87,7 +87,9 @@ const serviciosRegistro = (e) => {
             </a>
           </li>
           <li>
-            <a href="/servicios">Adjunto Poder y Apertura de Manejo Cuenta Custodia</a>
+            <a href="/servicios">
+              Adjunto Poder y Apertura de Manejo Cuenta Custodia
+            </a>
           </li>
           <li>
             <a href="/servicios">
@@ -115,7 +117,9 @@ const serviciosRegistro = (e) => {
             </a>
           </li>
           <li>
-            <a href="/servicios">Adjunto Poder y Apertura de Manejo Cuenta Custodia</a>
+            <a href="/servicios">
+              Adjunto Poder y Apertura de Manejo Cuenta Custodia
+            </a>
           </li>
           <li>
             <a href="/servicios">

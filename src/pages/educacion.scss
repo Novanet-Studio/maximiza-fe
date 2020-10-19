@@ -165,11 +165,9 @@
 @media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
   /*------Innovar------*/
   .innovar {
-    margin-top: 6h;
+    margin-top: 6vh;
     &__lista {
       margin-top: 5vh;
-      margin-left: 5vh;
-      margin-right: 5vh;
     }
     &__item {
       width: 100%;
@@ -186,11 +184,9 @@
       width: 80%;
     }
     &__subtitulo {
-      text-align: left;
       margin: 1vh 0 0.5vh 0;
     }
     &__descripcion {
-      text-align: left;
       font-size: 1rem;
       line-height: 1.4rem;
     }

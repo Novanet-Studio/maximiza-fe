@@ -91,11 +91,18 @@ img {
   justify-content: center;
 }
 
+main {
+  transition: 0.5s;
+}
+
 .contenedor {
+  @extend .flex;
+  min-height: 100vh;
   animation-name: fadeInOpacity;
   animation-iteration-count: 1;
   animation-timing-function: ease-in;
   animation-duration: 1.5s;
+  margin: 0 4vw 3vh;
 }
 
 @keyframes fadeInOpacity {
@@ -122,6 +129,11 @@ img {
   font-size: 0.95rem;
   padding: 1.5vh 2.5vh;
   margin-bottom: 6vh;
+}
+
+/* Botón menú mobile */
+.mobileMenu {
+  display: none;
 }
 
 /* The Modal (background) */
@@ -253,16 +265,27 @@ img {
 
 /*------Cabecera------*/
 header {
-  @extend .flex;
-  justify-content: flex-end;
+  width: 50%;
+  justify-self: flex-start;
   .logo--interno {
     justify-self: flex-start;
   }
-  nav {
+  .logo--header {
+    visibility: hidden;
+  }
+}
+nav {
+  @extend .flex;
+  width: 50%;
+  flex-direction: row;
+  justify-self: flex-end;
+  z-index: 10;
+  .overlay-content {
     @extend .flex;
-    justify-content: flex-end;
-    z-index: 10;
-    div {
+    justify-content: space-between;
+    width: 100%;
+    .cabecera__menugrupo {
+      width: 33.3333333%;
       @extend .flex;
       cursor: pointer;
       font-weight: 800;
@@ -318,10 +341,17 @@ header {
   .columna--left {
     text-align: right;
     order: 1;
+    .logo--principal {
+      width: 25vw;
+      padding-bottom: 2vh;
+    }
   }
   .columna--right {
     text-align: left;
     order: 2;
+  }
+  &__imagen {
+    width: 100%;
   }
   &__texto {
     font-weight: 400;
@@ -393,46 +423,12 @@ footer {
     line-height: 1.2rem;
   }
 
-  .contenedor {
-    margin: 0 3vh;
-  }
-
   /*------Cabecera------*/
   header {
     padding: 2vh 0;
-    .logo--interno {
-      width: 100%;
-      img {
-        width: 40%;
-      }
-    }
-    nav {
-      width: 100%;
-      div {
-        padding: 0 2vw;
-        width: 33.3333333%;
-        &:nth-child(2) {
-          padding: 0;
-        }
-        .bala {
-          font-size: 1.5rem;
-          padding-bottom: 0.25vh;
-        }
-        .texto {
-          padding-left: 0.5vh;
-          font-size: 0.7rem;
-        }
-        .cabecera__menudrop {
-          width: 116%;
-          top: 4vh;
-          padding: 0.7vh;
-        }
-        .cabecera__droplink {
-          font-size: 0.73rem;
-          line-height: 1.2rem;
-          padding: 1vh 0;
-        }
-      }
+    position: relative;
+    .logo--header {
+      visibility: visible;
     }
   }
 
@@ -450,7 +446,6 @@ footer {
       text-align: left;
     }
     .logo--interno {
-      width: 30vh;
       margin-bottom: 2vh;
     }
     &__texto {
@@ -475,7 +470,7 @@ footer {
 
   /*------Pie------*/
   footer {
-    padding-bottom: 2vh;
+    margin-top: 4vh;
     ul {
       li {
         width: 3.5vh;
@@ -537,6 +532,72 @@ footer {
   }
 }
 
+@media only screen and (min-device-width: 320px) and (max-device-width: 767px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+  nav {
+    margin-top: 10vh;
+    padding: 1.5vh 0 1.5vh 2.5vh;
+    position: absolute;
+    background-color: $blanco2;
+    .overlay-content {
+      position: relative;
+      width: 100%;
+      padding-top: 1.5vh;
+      .cabecera__menugrupo {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 90%;
+        .bala {
+          position: absolute;
+          font-size: 1.5rem;
+          margin-top: -1vh;
+        }
+        .texto {
+          overflow: hidden;
+          white-space: nowrap;
+          padding-left: 1.8vh;
+          padding-bottom: 1vh;
+          font-size: 0.8rem;
+        }
+        .cabecera__menudrop {
+          opacity: 1;
+          position: relative;
+        }
+        .cabecera__droplink {
+          font-size: 0.73rem;
+          line-height: 1.2rem;
+          padding: 0 0 1vh 1vw;
+        }
+      }
+    }
+  }
+
+  /* The Overlay (background) */
+  .overlay {
+    /* Height & width depends on how you want to reveal the overlay (see JS below) */
+    height: 55vh;
+    width: 0;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    right: -3.5vw;
+    top: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+  }
+
+  .mobileMenu {
+    display: block;
+    position: absolute;
+    top: 4vh;
+    right: 4vh;
+    z-index: 2;
+    border: 0;
+    background-color: transparent;
+    font-size: 1.6rem;
+    color: $verde1;
+  }
+}
+
 /*-------------------------------------------- Mobile Landscape --------------------------------------------*/
 @media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
   h1 {
@@ -565,42 +626,29 @@ footer {
     line-height: 1.2rem;
   }
 
-  .contenedor {
-    margin: 0 4vh;
-  }
-
   /*------Cabecera------*/
   header {
     padding: 3vh 0;
+    .logo--header,
     .logo--interno {
-      width: 50%;
-      img {
-        width: 40%;
-      }
+      visibility: visible;
+      width: 20vw;
     }
-    .header--vacio {
-      width: 50%;
-      height: 10.4vh;
-    }
-    nav {
-      width: 50%;
-      div {
-        padding: 0 1vw;
-        width: 33.3333333%;
-        &:nth-child(2) {
-          padding: 0;
-        }
+  }
+  nav {
+    .overlay-content {
+      .cabecera__menugrupo {
         .bala {
           font-size: 1rem;
           padding-bottom: 0.4vh;
         }
         .texto {
           padding-left: 0.5vh;
-          font-size: 0.6rem;
+          font-size: 0.75rem;
         }
         .cabecera__menudrop {
-          width: 105%;
-          top: 9vh;
+          width: 100%;
+          margin-top: 12.5vh;
           padding: 1.5vh;
         }
         .cabecera__droplink {
@@ -620,10 +668,7 @@ footer {
       padding: 2.5vh 0;
       text-align: left;
     }
-    .logo--interno {
-      width: 55vh;
-      margin-bottom: 2vh;
-    }
+
     &__texto {
       font-size: 0.98rem;
       line-height: 1.35rem;
@@ -649,7 +694,6 @@ footer {
 
   /*------Pie------*/
   footer {
-    padding-bottom: 3vh;
     ul {
       li {
         width: 5.5vh;
@@ -737,39 +781,29 @@ footer {
     line-height: 1.6rem;
   }
 
-  .contenedor {
-    margin: 0 2vh;
-  }
-
   /*------Cabecera------*/
   header {
-    .header--vacio {
-      height: 4.02vh;
-    }
+    .logo--header,
     .logo--interno {
-      width: 50%;
-      img {
-        width: 33.3333333%;
-      }
+      width: 20vw;
     }
-    nav {
-      width: 50%;
-      div {
-        padding-left: 2vw;
-        padding-right: 0;
-        &:nth-child(2) {
+  }
+  nav {
+    padding-left: 2vw;
+    .overlay-content {
+      .cabecera__menugrupo {
+        .texto {
+          font-size: 0.8rem;
           padding-left: 0.5vw;
         }
-        .texto {
-          font-size: 0.85rem;
-        }
         .cabecera__menudrop {
+          margin-top: 6vh;
           width: 100%;
         }
         .cabecera__droplink {
           font-size: 0.75rem;
           line-height: 1.8rem;
-          padding: 0.3vh 0;
+          padding: 0.3vh 1vw;
         }
       }
     }
@@ -787,7 +821,6 @@ footer {
       padding: 0 0 0 2vw;
     }
     .logo--interno {
-      width: 18vh;
       margin-bottom: 1vh;
     }
     &__texto {
@@ -865,6 +898,10 @@ footer {
 
 /*-------------------------------------------- Tablet Landscape --------------------------------------------*/
 @media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+}
+
+/*-------------------------------------------- Desktop responsive --------------------------------------------*/
+@media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
   h1 {
     font-size: 1.8rem;
     margin-bottom: 0.5rem;
@@ -872,11 +909,11 @@ footer {
 
   h2 {
     font-size: 1.5rem;
-    margin-bottom: 2vh;
+    margin-bottom: 2.5vh;
   }
 
   h3 {
-    font-size: 1.3rem;
+    font-size: 1.35rem;
     line-height: 1.7rem;
   }
 
@@ -896,41 +933,43 @@ footer {
     line-height: 1.6rem;
   }
 
-  main {
-    margin-bottom: 5vh;
+  .contenedor {
+    width: 1280px;
   }
 
   /*------Cabecera------*/
   header {
-    .header--vacio {
-      height: 8.8vh;
-    }
+    padding: 4vh 0;
     .logo--interno {
-      width: 50%;
       img {
-        width: 33.3333333%;
+        width: 15vw;
       }
     }
-    nav {
-      div {
-        padding-left: 2vw;
+    .logo--header {
+      visibility: hidden;
+    }
+  }
+  nav {
+    padding-left: 2vw;
+    .overlay-content {
+      .cabecera__menugrupo {
         .bala {
-          font-size: 1.5rem;
+          font-size: 2rem;
           padding-bottom: 0.25vh;
         }
         .texto {
           padding-left: 1vh;
-          font-size: 1rem;
+          font-size: 1.1rem;
         }
         .cabecera__menudrop {
           padding: 1vh;
           width: 100%;
-          top: 6vh;
+          margin-top: 12vh;
         }
         .cabecera__droplink {
+          padding-left: 1vw;
           font-size: 0.85rem;
           line-height: 1.8rem;
-          padding: 0 1vw;
         }
       }
     }
@@ -938,31 +977,32 @@ footer {
 
   /*----- Secciones------*/
   .principal {
-    min-height: 38vh;
+    min-height: 46vh;
     .columna--left {
       width: 50%;
-      padding: 0 2vw;
+      padding-right: 2vw;
       text-align: right;
     }
     .columna--right {
       width: 50%;
-      padding: 0 2vw;
+      padding-left: 2vw;
       text-align: left;
     }
     .logo--interno {
-      width: 40vh;
+      margin-bottom: 2.2vh;
     }
     &__texto {
-      font-size: 1.3rem;
-      line-height: 1.8rem;
+      font-size: 1.4rem;
+      line-height: 2rem;
       &--pequeño {
-        font-size: 1.2rem;
-        line-height: 1.6rem;
+        font-size: 1.3rem;
+        line-height: 1.8rem;
       }
     }
     &__button {
       font-size: 1rem;
       padding: 1.8vh 2vh;
+      margin-top: 2vh;
     }
     &__imagen {
       width: 100%;
@@ -978,8 +1018,8 @@ footer {
   footer {
     ul {
       li {
-        width: 4vh;
-        height: 4vh;
+        width: 4.5vh;
+        height: 4.5vh;
         margin-right: 1.5vh;
         svg {
           width: 2.3rem !important;
@@ -990,7 +1030,8 @@ footer {
       padding-top: 0;
       font-size: 0.9rem;
       img {
-        width: 8vw;
+        width: 6vw;
+        padding-left: 0.4vw;
         margin-bottom: -0.8vh;
       }
     }
@@ -998,13 +1039,20 @@ footer {
 
   /* Modal Content/Box */
   .modal__content {
+    margin: 1% auto; /* 15% from the top and centered */
     padding: 3vh;
+    top: 3%;
+    width: 70vw;
     .modal__body {
       h2 {
         padding-left: 1vw;
       }
       .gatsby-image-wrapper {
         width: 5%;
+        height: auto;
+      }
+      .modal__title {
+        width: 95%;
       }
       p {
         padding-top: 2vh;
@@ -1014,7 +1062,6 @@ footer {
       ul {
         margin-top: 2vh;
         li {
-          font-size: 1rem;
           line-height: 1.6rem;
           margin-bottom: 1vh;
           margin-left: 1vh;
@@ -1022,79 +1069,10 @@ footer {
       }
     }
     button {
+      right: 2vh;
+      top: 2vh;
       font-size: 2rem;
       padding: 0 0.5vw;
     }
-  }
-}
-
-/*-------------------------------------------- Desktop responsive --------------------------------------------*/
-@media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
-  h2 {
-    margin-bottom: 2.5vh;
-  }
-
-  .contenedor {
-    width: 1280px;
-  }
-
-  main {
-    margin-bottom: 5vh;
-  }
-
-  /*------Cabecera------*/
-  header {
-    nav {
-      div {
-        .bala {
-          font-size: 2rem;
-        }
-        .texto {
-          font-size: 1.1rem;
-        }
-        .cabecera__menudrop {
-          top: 5.5vh;
-        }
-        .cabecera__droplink {
-          padding: 0 2.5vw;
-        }
-      }
-    }
-  }
-
-  /*----- Secciones------*/
-  .principal {
-    min-height: 46vh;
-    .logo--interno {
-      margin-bottom: 2.2vh;
-    }
-    &__texto {
-      font-size: 1.4rem;
-      line-height: 2rem;
-      &--pequeño {
-        font-size: 1.3rem;
-        line-height: 1.8rem;
-      }
-    }
-  }
-
-  /*------Pie------*/
-  footer {
-    ul {
-      li {
-        width: 4.5vh;
-        height: 4.5vh;
-      }
-    }
-    p {
-      img {
-        width: 6vw;
-      }
-    }
-  }
-
-  /* Modal Content/Box */
-  .modal__content {
-    width: 70vw;
   }
 }

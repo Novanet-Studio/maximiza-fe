@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import ReactMarkdown from "react-markdown"
-import LayoutInterno from "../components/layoutInterno"
+import Layout from "../components/layout"
 import Aliados from "../components/aliados"
 import Balances from "../components/balances"
 import Modal from "../components/modal"
@@ -11,7 +11,7 @@ import "./empresa.scss"
 const Empresa = ({ data }) => {
   const [targetModal, setTargetModal] = useState("")
   return (
-    <LayoutInterno>
+    <Layout>
       <section className="principal">
         <div className="columna--left">
           <Img
@@ -72,7 +72,11 @@ const Empresa = ({ data }) => {
           {data.strapiEmpresa.nosotros.map((item) => (
             <li className="nosotros__item" key={item.id}>
               <h3 className="nosotros__titulo">{item.titulo}</h3>
-              <p className="nosotros__descripcion">{item.contenido}</p>
+              <ReactMarkdown
+                className="nosotros__descripcion"
+                source={item.contenido}
+                escapeHtml={false}
+              />
               <Img
                 className="nosotros__imagen"
                 fluid={item.imagen.childImageSharp.fluid}
@@ -88,7 +92,7 @@ const Empresa = ({ data }) => {
         <Aliados />
       </section>
       <Balances />
-    </LayoutInterno>
+    </Layout>
   )
 }
 

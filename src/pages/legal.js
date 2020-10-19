@@ -1,19 +1,18 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import LayoutInterno from "../components/layoutInterno"
+import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // @fortawesome libraries
 import { library } from "@fortawesome/fontawesome-svg-core"
-import { fab } from "@fortawesome/free-brands-svg-icons"
 import { fas } from "@fortawesome/free-solid-svg-icons"
 import "./legal.scss"
 // add fas and fab to the library
-library.add(fab, fas)
+library.add(fas)
 
 const Legal = ({ data }) => (
-  <LayoutInterno>
+  <Layout>
     <SEO title="Inicio" />
     <section className="principal">
       {console.log(data)}
@@ -68,7 +67,7 @@ const Legal = ({ data }) => (
         ))}
       </ul>
     </section>
-  </LayoutInterno>
+  </Layout>
 )
 
 export default Legal

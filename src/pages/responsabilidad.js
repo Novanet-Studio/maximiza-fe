@@ -1,14 +1,14 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
-import LayoutInterno from "../components/layoutInterno"
+import Layout from "../components/layout"
 import SEO from "../components/seo"
 import ReactMarkdown from "react-markdown"
 import Flecha from "../assets/images/dropdown.svg"
 import "./responsabilidad.scss"
 
 const Responsabilidad = ({ data }) => (
-  <LayoutInterno>
+  <Layout>
     <SEO title="Inicio" />
     <section className="principal">
       <div className="columna--left">
@@ -81,7 +81,7 @@ const Responsabilidad = ({ data }) => (
         Obtenga más información
       </Link>
     </section>
-  </LayoutInterno>
+  </Layout>
 )
 
 export default Responsabilidad

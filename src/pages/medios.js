@@ -1,12 +1,12 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
-import LayoutInterno from "../components/layoutInterno"
+import Layout from "../components/layout"
 import SEO from "../components/seo"
 import "./medios.scss"
 
 const Medios = ({ data }) => (
-  <LayoutInterno>
+  <Layout>
     <SEO title="Inicio" />
     <section className="principal">
       <div className="columna--left">
@@ -30,7 +30,7 @@ const Medios = ({ data }) => (
         Contáctanos de manera directa a medios@maximiza.com.ve
       </Link>
     </section>
-  </LayoutInterno>
+  </Layout>
 )
 
 export default Medios

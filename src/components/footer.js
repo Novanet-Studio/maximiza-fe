@@ -36,7 +36,7 @@ const Footer = () => (
         <ul className="footer__rrssbtn">
           {data.strapiContacto.info_contacto.map((document) => (
             <li key={document.id}>
-              <a                
+              <a
                 href={document.vinculo}
                 rel="noopener noreferrer"
                 target="_blank"

@@ -5,7 +5,7 @@ import Logo from "../assets/images/logo-maximiza.svg"
 
 const Header = () => (
   <header>
-    <div className="logo--interno">
+    <div className="logo--header">
       <AniLink cover direction="right" duration={0.55} bg="#006648" to="/">
         <img src={Logo} alt="logo" />
       </AniLink>
