@@ -104,7 +104,7 @@
   .etica {
     margin-top: 15vh;
     &__imagen {
-      width: 40%;
+      width: 35%;
       margin-bottom: 3vh;
     }
     &__titulo {
@@ -121,18 +121,18 @@
   .normativas {
     margin: 17vh 0 14vh 0;
     &__item {
-      width: 50%;
-      padding: 6vh 3vh;
+      width: 100%;
+      padding: 7vh 0;
     }
     &__descarga {
-      width: 12%;
+      width: 8%;
     }
     &__ver,
     &__down {
       padding: 0.7vh 0;
     }
     &__contenido {
-      width: 84%;
+      width: 89%;
       font-size: 0.8rem;
       line-height: 1.3rem;
     }
@@ -158,10 +158,6 @@
       font-size: 0.9rem;
       line-height: 1.4rem;
       padding-bottom: 2vh;
-      -webkit-column-count: 2;
-      column-count: 2;
-      -webkit-column-gap: 3em;
-      column-gap: 3em;
     }
   }
 
@@ -203,21 +199,17 @@
   .etica {
     margin-top: 10vh;
     &__contenido {
-      width: 58%;
-    }
-    &__titulo {
-      margin-bottom: 1vh;
+      width: 63%;
     }
     &__texto {
-      font-size: 1rem;
-      line-height: 1.4rem;
+      font-size: 0.9rem;
       padding-bottom: 2vh;
     }
   }
 
   /*------Normativas------*/
   .normativas {
-    margin: 10vh 0;
+    margin: 12vh 0;
     &__lista {
       margin-top: 4vh;
     }
@@ -226,17 +218,10 @@
       padding: 3vh 2vh 3vh;
     }
     &__descarga {
-      width: 14%;
-    }
-    &__ver,
-    &__down {
-      padding: 0.7vh 0;
+      width: 12%;
     }
     &__contenido {
-      width: 83%;
-      padding-right: 3vh;
-      font-size: 0.8rem;
-      line-height: 1.2rem;
+      width: 84%;
     }
   }
 }
@@ -248,9 +233,9 @@
 
   /*------Etica------*/
   .etica {
-    margin-top: 10vh;
     &__imagen {
       width: 31%;
+      margin-bottom: 0;
     }
     &__contenido {
       width: 67%;
@@ -260,16 +245,15 @@
       column-count: 2;
       -webkit-column-gap: 3em;
       column-gap: 3em;
+      font-size: 0.98rem;
+      line-height: 1.4rem;
     }
   }
 
   /*------Normativas------*/
   .normativas {
-    &__lista {
-      margin-top: 6vh;
-    }
-    &__item {
-      padding: 3vh 2vh 5vh;
+    &__contenido {
+      font-size: 0.9rem;
     }
   }
 }

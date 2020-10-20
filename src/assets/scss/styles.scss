@@ -128,7 +128,7 @@ main {
   text-align: center;
   font-size: 0.9rem;
   padding: 1.5vh 2.5vh;
-  margin-bottom: 6vh;
+  margin-bottom: 8vh;
 }
 
 /* Botón menú mobile */
@@ -629,7 +629,8 @@ footer {
   /*------Cabecera------*/
   header {
     padding: 3vh 0;
-    .logo--header, .logo--interno {
+    .logo--header,
+    .logo--interno {
       visibility: visible;
       width: 20vw;
     }
@@ -670,18 +671,18 @@ footer {
       width: 50%;
     }
     .columna--left {
-      padding-right:2vw;
+      padding-right: 2vw;
       text-align: right;
     }
     .columna--right {
-      padding-left:2vw;
+      padding-left: 2vw;
     }
     &__texto {
       font-size: 0.8rem;
-      line-height: 1.2rem;  
+      line-height: 1.2rem;
       &--pequeño {
-    font-size: 0.75rem;
-    line-height: 1.1rem;
+        font-size: 0.75rem;
+        line-height: 1.1rem;
       }
     }
     &__button {
@@ -709,7 +710,7 @@ footer {
       }
     }
     p {
-      padding-top:0;
+      padding-top: 0;
       font-size: 0.66rem;
       line-height: 1.2rem;
       img {
@@ -906,13 +907,10 @@ footer {
 
   h2 {
     font-size: 1.2rem;
-    line-height: 1.5rem;
-    margin-bottom: 2vh;
   }
 
   h3 {
-    font-size: 1.07rem;
-    line-height: 1.3rem;
+    font-size: 1.1rem;
   }
 
   h4 {
@@ -921,12 +919,12 @@ footer {
   }
 
   .descripcion {
-    font-size: 0.82rem;
-    line-height: 1.2rem;
+    font-size: 0.95rem;
   }
 
   /*------Cabecera------*/
   nav {
+    padding-left: 2vw;
     .overlay-content {
       .cabecera__menugrupo {
         .bala {
@@ -947,14 +945,6 @@ footer {
 
   /*----- Secciones------*/
   .principal {
-    .columna--left,
-    .columna--right {
-      width: 50%;
-      padding: 0 2vw;
-    }
-    .columna--left {
-      text-align: right;
-    }
     &__texto {
       font-size: 1.1rem;
       line-height: 1.6rem;
@@ -964,7 +954,7 @@ footer {
       }
     }
     &__button {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
     }
   }
 
@@ -996,12 +986,12 @@ footer {
 /*-------------------------------------------- Desktop responsive --------------------------------------------*/
 @media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
   h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin-bottom: 0.5rem;
   }
 
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.45rem;
     margin-bottom: 2.5vh;
   }
 
@@ -1032,7 +1022,6 @@ footer {
 
   /*------Cabecera------*/
   header {
-    padding: 4vh 0;
     .logo--interno {
       img {
         width: 15vw;
@@ -1040,15 +1029,12 @@ footer {
     }
   }
   nav {
-    padding-left: 2vw;
     .overlay-content {
       .cabecera__menugrupo {
         .bala {
           font-size: 2rem;
-          padding-bottom: 0.25vh;
         }
         .texto {
-          padding-left: 1vh;
           font-size: 1.1rem;
         }
         .cabecera__menudrop {
@@ -1126,9 +1112,6 @@ footer {
 
   /* Modal Content/Box */
   .modal__content {
-    margin: 1% auto; /* 15% from the top and centered */
-    padding: 3vh;
-    top: 3%;
     width: 70vw;
     .modal__body {
       h2 {
@@ -1136,13 +1119,8 @@ footer {
       }
       .gatsby-image-wrapper {
         width: 5%;
-        height: auto;
-      }
-      .modal__title {
-        width: 95%;
       }
       p {
-        padding-top: 2vh;
         font-size: 1rem;
         line-height: 1.6rem;
       }

@@ -81,7 +81,6 @@
   }
 }
 
-
 /*-------------------------------------------- Mobile Portrait --------------------------------------------*/
 @media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
   /*------Inversionista------*/
@@ -269,16 +268,9 @@
 @media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
   /*------Inversionista------*/
   .inversionista {
+    margin-bottom: 15vh;
     &__grupo {
-      margin-top: 10vh;
-      &:last-child {
-        .inversionista__cabecera {
-          order: 2;
-          .inversionista__titulo {
-            text-align: right;
-          }
-        }
-      }
+      margin-top: 14vh;
     }
     &__cabecera {
       width: 23%;
@@ -287,7 +279,6 @@
       height: 31vh;
     }
     &__titulo {
-      padding: 3vh;
       bottom: 4px;
     }
     &__contenido {
@@ -298,10 +289,9 @@
       width: 48%;
       height: 5.85vh;
       margin-top: 1.25vh;
-      margin-bottom: 1.25vh;
     }
     &__subtitulo {
-      margin-top: 1vh;
+      margin-top: 1.5vh;
       font-size: 1rem;
     }
     &__flecha {
@@ -311,15 +301,6 @@
     }
     &__icono {
       width: 13%;
-      padding: 1.5vh;
-      margin-right: 2vh;
-    }
-    &__texto {
-      padding: 2vh;
-      p {
-        font-size: 0.85rem;
-        line-height: 1.4rem;
-      }
     }
   }
 }
@@ -328,36 +309,27 @@
 @media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
   /*------Inversionista------*/
   .inversionista {
-    margin-bottom: 10vh;
     &__grupo {
-      margin-top: 8vh;
+      margin-top: 10vh;
+    }
+    &__item {
+      margin-top: 1.8vh;
     }
     &__cabecera {
-      width: 16vw;
+      width: 20%;
       height: 16vw;
     }
     &__imagen {
       height: auto;
     }
     &__subtitulo {
-      font-size: 1.1rem;
+      margin-top: 1.2vh;
     }
     &__flecha {
       top: 2vh;
     }
     &__icono {
       width: 10%;
-    }
-    &__descripcion {
-      font-size: 0.8rem;
-      line-height: 1.3rem;
-    }
-    &__texto {
-      padding: 2vh;
-      p {
-        font-size: 0.85rem;
-        line-height: 1.4rem;
-      }
     }
   }
 }

@@ -125,7 +125,7 @@
 
   /*------Programas------*/
   .programas {
-    margin-top: 10vh;
+    margin-top: 12vh;
     &__grupos {
       margin-top: 10vh;
       &:nth-child(2) {
@@ -144,6 +144,9 @@
     }
     &__lista {
       width: 59%;
+    }
+    &__titulo {
+      margin-bottom: 0.5vh;
     }
     &__item {
       padding-top: 2vh;
@@ -236,22 +239,19 @@
     }
     &__item {
       width: 30%;
+      padding-bottom: 0vh;
     }
     &__imagen {
       width: 14vh;
     }
-    &__subtitulo {
-      margin: 1vh 0 0.5vh 0;
-    }
     &__descripcion {
-      font-size: 0.9rem;
-      line-height: 1.3rem;
+      font-size: 1rem;
     }
   }
 
   /*------Programas------*/
   .programas {
-    margin-top: 0vh;
+    margin-top: 14vh;
     &__grupos {
       margin-top: 6vh;
       margin-bottom: 6vh;
@@ -270,10 +270,6 @@
     }
     &__lista {
       width: 67%;
-    }
-    &__item {
-      padding-top: 3.5vh;
-      padding-bottom: 3.5vh;
     }
     &__descripcion {
       font-size: 1rem;
@@ -294,18 +290,16 @@
     &__imagen {
       width: 17vh;
     }
-    &__descripcion {
-      font-size: 1rem;
-      line-height: 1.4rem;
-    }
   }
 
   /*------Programas------*/
   .programas {
-    margin-top: 10vh;
     &__descripcion {
       font-size: 1.2rem;
-      line-height: 1.7rem;
+    }
+    &__item {
+      padding-top: 3.5vh;
+      padding-bottom: 3.5vh;
     }
   }
 }

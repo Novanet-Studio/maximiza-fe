@@ -70,7 +70,7 @@ const Educacion = ({ data }) => (
           </div>
         ))}
       </div>
-      <h3 className="texto-cta">¡Gracias por preferirnos!</h3>
+      <h4 className="texto-cta">¡Gracias por preferirnos!</h4>
       <Link className="botonBottom" to="/educacion">
         Obtenga más información
       </Link>

@@ -238,7 +238,7 @@
     margin-top: 12vh;
     &__item {
       width: 100%;
-      padding-bottom: 12vh;
+      padding-bottom: 9vh;
     }
     &__image {
       width: 25%;
@@ -264,7 +264,7 @@
 
   /*------Nosotros------*/
   .nosotros {
-    margin-top: 10vh;
+    margin: 10vh 0 0 0;
     &__item {
       width: 33.3333333%;
       height: 30vh;
@@ -293,15 +293,20 @@
     padding: 3vh;
     &__carrusel {
       padding-top: 2vh;
+      margin: 0;
+      width: 100%;
       &-item {
-        width: 13vw;
+        width: 15%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
     }
   }
 
   /*------Balances------*/
   .balances {
-    margin-bottom: 10vh;
+    margin-bottom: 13vh;
     &__grupo {
       margin-top: 2vh;
     }
@@ -424,15 +429,7 @@
 
   /*------Historia------*/
   .historia {
-    margin-top: 10vh;
-    &__item {
-      padding-bottom: 9vh;
-    }
-    &__image {
-      width: 20%;
-    }
     &__descripcion {
-      width: 80%;
       padding: 0 0 0 3vh;
     }
     &__titulo {
@@ -440,72 +437,48 @@
     }
     &__texto {
       font-size: 1rem;
-      line-height: 1.6rem;
+      line-height: 1.5rem;
     }
     &__button {
-      font-size: 0.8rem;
-      padding: 1vh 1.5vh;
+      font-size: 0.9rem;
+      padding: 1.5vh;
     }
-    &__descripcion p {
-      line-height: 1.4rem;
+    &__image {
+      width: 20%;
     }
-  }
-  .equipo {
-    margin: 6vh 0 0;
   }
 
   /*------Nosotros------*/
   .nosotros {
-    margin: 7vh 0 15vh;
-    &__item {
-      width: 33.3333333%;
-      height: 30vh;
-      margin-bottom: 0;
-    }
-    &__imagen {
-      width: 100%;
-      height: 30vh;
-    }
+    margin: 4vh 0 10vh;
     &__titulo {
-      padding: 1.5vh 0;
       margin-top: 12vh;
     }
     &__descripcion {
-      min-height: 12.5vh;
-      padding: 1.7vh;
       font-size: 0.95rem;
       line-height: 1.4rem;
+      padding: 2vh;
     }
   }
 
   /*------Aliados------*/
   .aliados {
-    padding: 3vh 3vh 5vh;
+    margin-top: 12vh;
+    margin-bottom: 12vh;
     &__carrusel {
-      margin: 0;
-      width: 100%;
       height: 22vh;
-      &-item {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 12%;
-        height: 16.5vh;
-      }
     }
   }
 
   /*------Balances------*/
   .balances {
-    &__grupo {
-      margin-top: 6vh;
-    }
+    margin-bottom: 10vh;
     &__subtitulo {
-      width: 12%;
+      width: 10%;
       text-align: right;
     }
     &__lista {
-      width: 86%;
+      width: 88%;
       margin: 0;
     }
     &__item {
@@ -524,53 +497,36 @@
 
   /*------Historia------*/
   .historia {
-    margin-top: 10vh;
     &__item {
       width: 50%;
+      padding-bottom: 0;
     }
     &__image {
       width: 33%;
     }
     &__descripcion {
       width: 67%;
-      padding: 0 6vh 0 3vh;
+      padding: 0 6vh 0 2vh;
     }
-    &__texto {
-      padding-bottom: 2vh;
-    }
-    &__button {
-      font-size: 0.8rem;
-      padding: 1vh 1.5vh;
-    }
-    &__descripcion p {
-      margin-bottom: 4vh;
-      line-height: 1.4rem;
-      color: $negro1;
-    }
-  }
-  .equipo {
-    margin-top: 10vh;
   }
 
-  /*------Nosotros------*/
-  .nosotros {
-    margin: 10vh 0 0;
-    &__imagen {
-      width: 100%;
-      height: 30vh;
-    }
-    &__descripcion {
-      padding: 2vh;
-    }
+  .equipo {
+    margin: 12vh 0 0 0;
   }
 
   /*------Aliados------*/
   .aliados {
-    margin-top: 10vh;
-    padding: 5vh 0 10vh;
     &__carrusel {
       margin: 0 auto;
       width: 90%;
+      height: 26vh;
+    }
+  }
+
+  /*------Balances------*/
+  .balances {
+    &__boton {
+      font-size: 1rem;
     }
   }
 }

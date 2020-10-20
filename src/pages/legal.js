@@ -60,9 +60,7 @@ const Legal = ({ data }) => (
                 />
               </button>
             </div>
-            <p className="normativas__contenido">
-              {item.documento}
-            </p>
+            <p className="normativas__contenido">{item.documento}</p>
           </li>
         ))}
       </ul>
