@@ -8,9 +8,7 @@
     justify-content: space-between;
   }
   &__item {
-    display: flex;
-    justify-content: flex-end;
-    flex-wrap: wrap;
+    position: relative;
   }
   &__cabecera {
     width: 100%;
@@ -35,6 +33,7 @@
     background: $blanco2;
   }
   &__botton {
+    position: absolute;
     background: $verde1;
     font-weight: 600;
     color: $blanco1;
@@ -75,13 +74,13 @@
     margin-top: 6vh;
     &__item {
       width: 100%;
-      margin-bottom: 4vh;
+      margin-bottom: 9vh;
     }
     &__cabecera {
-      height: 33vh;
+      height: 28vh;
     }
     &__imagen {
-      height: 33vh;
+      height: 28vh;
     }
     &__titulo {
       padding: 1vh 2vh;
@@ -92,10 +91,10 @@
       padding: 2vh 2vh 4vh;
     }
     &__botton {
-      margin-top: -3vh;
-      margin-right: 1.5vh;
       padding: 1.5vh;
-      font-size: 0.82rem;
+      font-size: 0.75rem;
+      bottom: -2.5vh;
+      right: 2.5vh;
     }
   }
 
@@ -143,15 +142,14 @@
     &__texto {
       font-size: 0.8rem;
       line-height: 1.1rem;
-      padding: 2vh 2vh 5vh 2vh;
-      min-height: 50vh;
+      padding: 2vh 2vh 7vh 2vh;
     }
     &__botton {
-      margin-top: -3.5vh;
-      margin-right: 3.5vh;
       padding: 4vh;
       font-size: 0.6rem;
       line-height: 0;
+      bottom: -3.5vh;
+      right: 3.5vh;
     }
   }
 
@@ -196,13 +194,13 @@
       padding: 1vh;
     }
     &__texto {
-      font-size: 0.85rem;
-      line-height: 1.4rem;
-      padding: 2vh 2vh 3vh;
+      line-height: 1.3rem;
+      padding: 1vh 1vh 3vh;
     }
     &__botton {
-      margin-top: -1.5vh;
-      padding: 0.8vh 1vh;
+      padding: 1vh;
+      bottom: -1.5vh;
+      right: 1.5vh;
     }
   }
 
@@ -244,12 +242,12 @@
       font-size: 0.9rem;
       line-height: 1.3rem;
       padding: 2vh 2vh 4vh;
-      min-height: 20vh;
     }
     &__botton {
-      margin-top: -2vh;
       padding: 2vh 1.5vh;
       font-size: 0.82rem;
+      bottom: -2.5vh;
+      right: 2.5vh;
     }
   }
 
@@ -278,9 +276,6 @@
   .blog {
     &__item {
       width: 30%;
-    }
-    &__texto {
-      min-height: 22vh;
     }
   }
 

@@ -109,7 +109,7 @@ Los estilos del bloque .información están en empresa.scss ya que comparte las 
   .etica {
     margin-top: 15vh;
     &__imagen {
-      width: 35%;
+      width: 45%;
       margin-bottom: 3vh;
     }
     &__titulo {
@@ -202,10 +202,14 @@ Los estilos del bloque .información están en empresa.scss ya que comparte las 
 
   /*------Etica------*/
   .etica {
-    margin-top: 10vh;
+    margin-top: 6vh;
+    &__imagen {
+      width: 35%;
+      margin-bottom: 0;
+    }
     &__contenido {
       width: 63%;
-    }
+    }  
     &__titulo {
       margin-bottom: 0.5vh;
     }
@@ -213,6 +217,13 @@ Los estilos del bloque .información están en empresa.scss ya que comparte las 
       font-size: 0.9rem;
       padding-bottom: 2vh;
       line-height: 1.2rem;
+    }
+  }
+
+  .informacion {
+    &__descripcion {
+      width: 100%;
+      padding:0;
     }
   }
 
@@ -247,14 +258,14 @@ Los estilos del bloque .información están en empresa.scss ya que comparte las 
   }
   &__descripcion {
     width: 100%;
-    padding-left:2vh;
+    padding-right: 4vh;
   }
 }
   /*------Etica------*/
   .etica {
+    margin-top: 15vh;
     &__imagen {
       width: 31%;
-      margin-bottom: 0;
     }
     &__contenido {
       width: 67%;

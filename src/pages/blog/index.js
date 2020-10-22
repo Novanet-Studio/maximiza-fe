@@ -39,7 +39,7 @@ const IndexPage = ({ data }) => (
             </div>
             <ReactMarkdown
               className="blog__texto"
-              source={articulo.descripcion.substring(0, 220).concat("...")}
+              source={articulo.descripcion.substring(0, 200).concat("...")}
               escapeHtml={false}
             />
             <Link className="blog__botton" to={articulo.Slug}>

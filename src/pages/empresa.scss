@@ -244,6 +244,12 @@ Los estilos del bloque .informacion correspondientes a la vista legal, están en
   /* Empresa
 ========================================================================== */
   /*------Historia------*/
+  .historia {
+    &__descripcion {
+      width: 75%;
+      padding: 0 0 0 4vh;
+    }
+  }
   .historia,
   .informacion {
     margin-top: 12vh;
@@ -253,10 +259,6 @@ Los estilos del bloque .informacion correspondientes a la vista legal, están en
     }
     &__image {
       width: 25%;
-    }
-    &__descripcion {
-      width: 75%;
-      padding: 0 0 0 4vh;
     }
     &__texto {
       font-size: 0.8rem;
