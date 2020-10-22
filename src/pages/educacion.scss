@@ -111,7 +111,7 @@
       padding-bottom: 10vh;
     }
     &__imagen {
-      width: 25vh;
+      width: 20vh;
       margin: 0 auto;
     }
     &__subtitulo {
@@ -119,7 +119,7 @@
     }
     &__descripcion {
       font-size: 0.8rem;
-      line-height: 1.3rem;
+      line-height: 1.1rem;
     }
   }
 
@@ -140,10 +140,10 @@
       }
     }
     &__imagen {
-      width: 37%;
+      width: 35%;
     }
     &__lista {
-      width: 59%;
+      width: 62%;
     }
     &__titulo {
       margin-bottom: 0.5vh;
@@ -153,8 +153,8 @@
       padding-bottom: 2vh;
     }
     &__descripcion {
-      font-size: 0.65rem;
-      line-height: 1rem;
+      font-size: 0.8rem;
+      line-height: 1.1rem;
     }
     &__boton {
       font-size: 0.9rem;
@@ -245,7 +245,8 @@
       width: 14vh;
     }
     &__descripcion {
-      font-size: 1rem;
+      font-size: 0.9rem;
+      line-height: 1.2rem;
     }
   }
 
@@ -272,11 +273,11 @@
       width: 67%;
     }
     &__descripcion {
-      font-size: 1rem;
-      line-height: 1.5rem;
+      font-size: 0.9rem;
+      line-height: 1.3rem;
     }
     &__boton {
-      font-size: 1.1rem;
+      font-size: 1rem;
       padding: 1.5vh 8vh;
       margin-bottom: 10vh;
     }
@@ -288,14 +289,15 @@
   /*------Innovar------*/
   .innovar {
     &__imagen {
-      width: 17vh;
+      width: 16vh;
     }
   }
 
   /*------Programas------*/
   .programas {
     &__descripcion {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
+      line-height: 1.5rem;
     }
     &__item {
       padding-top: 3.5vh;

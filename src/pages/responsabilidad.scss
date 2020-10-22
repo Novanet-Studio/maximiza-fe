@@ -145,9 +145,8 @@
     &__descripcion {
       margin-top: 7vh;
       font-size: 0.55rem;
-      line-height: 0.9rem;
-      padding-top: 1.5vh;
-      padding-bottom: 1.5vh;
+      line-height: 0.8rem;
+      padding: 2vh;
     }
     &__flecha {
       width: 1.3vw;
@@ -172,7 +171,7 @@
     }
     &__texto {
       margin-top: 2vh;
-      font-size: 0.7rem;
+      font-size: 0.8rem;
     }
   }
 }
@@ -234,8 +233,7 @@
     &__descripcion {
       margin-top: 4vh;
       font-size: 0.8rem;
-      line-height: 1.2rem;
-      padding: 2vh;
+      line-height: 1.1rem;
     }
     &__flecha {
       width: 1vw;
@@ -254,7 +252,7 @@
       height: 12vh;
     }
     &__texto {
-      font-size: 1.1rem;
+      font-size: 0.9rem;
     }
   }
 }
@@ -267,12 +265,15 @@
     }
     &__descripcion {
       font-size: 0.9rem;
-      line-height: 1.4rem;
+      line-height: 1.3rem;
     }
   }
   .causas {
     &__imagen {
       height: 15vh;
+    }
+    &__texto {
+      font-size: 1.1rem;
     }
   }
 }

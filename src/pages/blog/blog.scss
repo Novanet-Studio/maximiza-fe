@@ -141,10 +141,10 @@
       padding: 2vh;
     }
     &__texto {
-      font-size: 0.72rem;
-      line-height: 1.2rem;
-      padding: 2vh 3vh 5vh 3vh;
-      height: 40vh;
+      font-size: 0.8rem;
+      line-height: 1.1rem;
+      padding: 2vh 2vh 5vh 2vh;
+      min-height: 50vh;
     }
     &__botton {
       margin-top: -3.5vh;
@@ -239,13 +239,12 @@
     &__titulo {
       font-size: 1rem;
       line-height: 1.5rem;
-      padding: 1vh 2vh;
     }
     &__texto {
-      font-size: 0.85rem;
-      line-height: 1.4rem;
+      font-size: 0.9rem;
+      line-height: 1.3rem;
       padding: 2vh 2vh 4vh;
-      height: 18vh;
+      min-height: 20vh;
     }
     &__botton {
       margin-top: -2vh;
@@ -281,7 +280,7 @@
       width: 30%;
     }
     &__texto {
-      height: 21vh;
+      min-height: 22vh;
     }
   }
 

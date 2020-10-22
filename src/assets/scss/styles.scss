@@ -606,18 +606,18 @@ footer {
   }
 
   h2 {
-    font-size: 1.12rem;
+    font-size: 1.11rem;
     line-height: 1.5rem;
     margin-bottom: 2vh;
   }
 
   h3 {
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1.3rem;
   }
 
   h4 {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     line-height: 1.4rem;
   }
 
@@ -640,6 +640,7 @@ footer {
   }
 
   nav {
+    padding-left: 2vw;
     .overlay-content {
       .cabecera__menugrupo {
         .bala {
@@ -692,11 +693,6 @@ footer {
     }
   }
 
-  /*------Pagina 404------*/
-  .perdido {
-    margin-top: 8vh;
-  }
-
   /*------Pie------*/
   footer {
     ul {
@@ -739,12 +735,14 @@ footer {
       p {
         padding-top: 3vh;
         font-size: 0.8rem;
-        line-height: 1.3rem;
+        line-height: 1.1rem;
       }
       ul {
         margin-top: 2vh;
         li {
-          margin-bottom: 1vh;
+          font-size: 0.8rem;
+          line-height: 1.1rem;
+          margin-bottom: 4vh;
         }
       }
     }
@@ -841,7 +839,7 @@ footer {
 
   /*------Pagina 404------*/
   .perdido {
-    margin-top: 7vh;
+    min-height: 60vh;
   }
 
   /*------Pie------*/
@@ -924,7 +922,6 @@ footer {
 
   /*------Cabecera------*/
   nav {
-    padding-left: 2vw;
     .overlay-content {
       .cabecera__menugrupo {
         .bala {
@@ -960,7 +957,7 @@ footer {
 
   /*------Pagina 404------*/
   .perdido {
-    margin-top: 8vh;
+    min-height: 60vh;
   }
 
   /*------Pie------*/
@@ -979,6 +976,26 @@ footer {
         width: 6vw;
         margin-bottom: -0.5vh;
       }
+    }
+  }
+
+  /* Modal Content/Box */
+  .modal__content {
+    .modal__body {
+      p {
+        font-size: 0.9rem;
+        line-height: 1.2rem;
+      }
+      ul {
+        li {
+          font-size: 0.9rem;
+          line-height: 1.2rem;
+        }
+      }
+    }
+    button {
+      font-size: 2rem;
+      padding: 0 0.5vw;
     }
   }
 }
@@ -1087,7 +1104,7 @@ footer {
 
   /*------Pagina 404------*/
   .perdido {
-    margin-top: 14vh;
+    min-height: 30vh;
   }
 
   /*------Pie------*/
@@ -1120,24 +1137,6 @@ footer {
       .gatsby-image-wrapper {
         width: 5%;
       }
-      p {
-        font-size: 1rem;
-        line-height: 1.6rem;
-      }
-      ul {
-        margin-top: 2vh;
-        li {
-          line-height: 1.6rem;
-          margin-bottom: 1vh;
-          margin-left: 1vh;
-        }
-      }
-    }
-    button {
-      right: 2vh;
-      top: 2vh;
-      font-size: 2rem;
-      padding: 0 0.5vw;
     }
   }
 }

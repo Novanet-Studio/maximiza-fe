@@ -91,11 +91,11 @@
     &__descripcion {
       width: 70%;
       padding: 0 2vw;
-      font-size: 0.7rem;
-      line-height: 1rem;
+      font-size: 0.8rem;
+      line-height: 1.1rem;
     }
     &__boton {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       padding: 1.5vh 8vh;
       margin-bottom: 10vh;
     }
@@ -158,8 +158,8 @@
       height: 19vh;
     }
     &__descripcion {
-      font-size: 1.15rem;
-      line-height: 1.6rem;
+      font-size: 0.95rem;
+      line-height: 1.4rem;
     }
     &__boton {
       font-size: 1rem;
@@ -176,6 +176,9 @@
   .partners {
     &__lista {
       width: 90%;
+    }
+    &__descripcion {
+      font-size: 1.05rem;
     }
   }
 }

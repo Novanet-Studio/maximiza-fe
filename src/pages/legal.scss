@@ -111,8 +111,8 @@
       margin-bottom: 1.5vh;
     }
     &__texto {
-      font-size: 0.85rem;
-      line-height: 1.3rem;
+      font-size: 0.8rem;
+      line-height: 1.1rem;
       padding-bottom: 3vh;
     }
   }
@@ -125,16 +125,16 @@
       padding: 7vh 0;
     }
     &__descarga {
-      width: 8%;
+      width: 6%;
     }
     &__ver,
     &__down {
       padding: 0.7vh 0;
     }
     &__contenido {
-      width: 89%;
+      width: 92%;
       font-size: 0.8rem;
-      line-height: 1.3rem;
+      line-height: 1.1rem;
     }
   }
 }
@@ -201,9 +201,13 @@
     &__contenido {
       width: 63%;
     }
+    &__titulo {
+      margin-bottom: 0.5vh;
+    }
     &__texto {
       font-size: 0.9rem;
       padding-bottom: 2vh;
+      line-height: 1.2rem;
     }
   }
 
@@ -254,6 +258,7 @@
   .normativas {
     &__contenido {
       font-size: 0.9rem;
+      line-height: 1.2rem;
     }
   }
 }

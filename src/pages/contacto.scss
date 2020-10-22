@@ -95,7 +95,7 @@
     &__button {
       font-size: 0.8rem;
       padding: 2.5vh 3vh 3vh 3vh;
-      margin-top: 2.5vh;
+      margin: 2.5vh auto;
       img {
         width: 3.5vh;
         margin-bottom: -0.5vh;
@@ -149,7 +149,8 @@
     }
     &__button {
       font-size: 0.8rem;
-      padding: 4.5vh 5vh 5vh 5vh;
+      padding: 5.5vh 5vh 6vh 5vh;
+      margin: 0 auto;
       img {
         width: 6.5vh;
         margin-bottom: -1.5vh;
@@ -203,7 +204,7 @@
     &__button {
       padding: 2vh 2vh 2.5vh 2vh;
       font-size: 0.95rem;
-      margin-right: 2vh;
+      margin: 0 auto;
       img {
         width: 2.2vh;
         margin-bottom: -0.5vh;
@@ -251,8 +252,7 @@
     &__button {
       font-size: 1rem;
       padding: 3vh 3.3vh 3.5vh;
-      margin-top: 3.5vh;
-      margin-right: 3%;
+      margin: 3.5vh auto;
       img {
         width: 4vh;
         padding-right: 1vh;
@@ -279,6 +279,9 @@
     }
     &__texto {
       font-size: 1rem;
+    }
+    &__button {
+      margin: 3.5vh 3vh 0 0;
     }
   }
 }

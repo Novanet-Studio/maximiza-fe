@@ -68,9 +68,7 @@
   }
   &__boton {
     cursor: pointer;
-    padding: 0.5vh;
-    font-size: 0.9rem;
-    margin-top: 1vh;
+    margin-top: 2vh;
     background-color: $blanco2;
     border: $gris2 1px solid;
   }
@@ -185,16 +183,20 @@
     &__icono {
       width: 8%;
       padding: 1vh;
-      margin-right: 1vh;
+      margin-right: 2vh;
     }
     &__texto {
       padding: 2vh;
-      font-size: 0.75rem;
-      line-height: 1.2rem;
+      font-size: 0.8rem;
+      line-height: 1.1rem;
+      strong {
+        font-size: 0.85rem;
+      }
     }
     &__boton {
       margin-top: 2vh;
       padding: 0.5vh;
+      font-size: 0.75rem;
     }
   }
 }
@@ -292,7 +294,6 @@
     }
     &__subtitulo {
       margin-top: 1.5vh;
-      font-size: 1rem;
     }
     &__flecha {
       width: 1.1vw;
@@ -301,6 +302,7 @@
     }
     &__icono {
       width: 13%;
+      margin-right: 1vh;
     }
   }
 }
@@ -324,6 +326,14 @@
     }
     &__subtitulo {
       margin-top: 1.2vh;
+      font-size: 1rem;
+    }
+    &__texto {
+      font-size: 0.9rem;
+      line-height: 1.2rem;
+      strong {
+        font-size: 0.95rem;
+      }
     }
     &__flecha {
       top: 2vh;
