@@ -1,18 +1,27 @@
 @import "../assets/scss/normalize";
 @import "../assets/scss/variables";
 
+/* 
+IMPORTANTE 
+Los estilos del bloque .informacion correspondientes a la vista legal, están en esta hoja ya que comparte las características gráficas con el bloque .historia de esta vista. El único estilo de .informacion que se controla en legal.scss, es el ancho de los items de la lista dado que en empresas son 3 y en al vista legal son 2
+*/
+
 /* Empresa
 ========================================================================== */
 
 /*------Historia------*/
-.historia {
+.historia,
+.informacion {
   &__item {
     @extend .flex;
-    .historia__descripcion {
-      .historia__titulo {
+    .historia__descripcion,
+    .informacion__descripcion {
+      .historia__titulo,
+      .informacion__titulo {
         color: $verde1;
       }
-      .historia__button {
+      .historia__button,
+      .informacion__button {
         background: $verde1;
       }
     }
@@ -137,7 +146,8 @@
   /* Empresa
 ========================================================================== */
   /*------Historia------*/
-  .historia {
+  .historia,
+  .informacion {
     margin-top: 7vh;
     &__item {
       width: 100%;
@@ -234,7 +244,8 @@
   /* Empresa
 ========================================================================== */
   /*------Historia------*/
-  .historia {
+  .historia,
+  .informacion {
     margin-top: 12vh;
     &__item {
       width: 100%;
@@ -337,7 +348,8 @@
 ========================================================================== */
 
   /*------Historia------*/
-  .historia {
+  .historia,
+  .informacion {
     margin-top: 5vh;
     &__item {
       padding-bottom: 3vh;
@@ -428,7 +440,8 @@
 ========================================================================== */
 
   /*------Historia------*/
-  .historia {
+  .historia,
+  .informacion {
     &__descripcion {
       padding: 0 0 0 3vh;
     }

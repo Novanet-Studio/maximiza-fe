@@ -1,6 +1,11 @@
 @import "../assets/scss/normalize";
 @import "../assets/scss/variables";
 
+/* 
+IMPORTANTE 
+Los estilos del bloque .información están en empresa.scss ya que comparte las características gráficas con el bloque .historia de esa vista. El único estilo que se controla en esta hoja, es el ancho de los items de la lista dado que en empresas son 3 y en al vista legal son 2
+*/
+
 /* Legal
 ========================================================================== */
 
@@ -235,6 +240,16 @@
   /* Legal
 ========================================================================== */
 
+.informacion {
+  &__item {
+    flex: 1 1 0;
+    padding-bottom: 0;
+  }
+  &__descripcion {
+    width: 100%;
+    padding-left:2vh;
+  }
+}
   /*------Etica------*/
   .etica {
     &__imagen {

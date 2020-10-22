@@ -1,11 +1,11 @@
 import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
-import ReactMarkdown from "react-markdown"
 import Layout from "../components/layout"
 import Aliados from "../components/aliados"
 import Balances from "../components/balances"
 import Modal from "../components/modal"
+import ReactMarkdown from "react-markdown"
 import "./empresa.scss"
 
 const Empresa = ({ data }) => {
