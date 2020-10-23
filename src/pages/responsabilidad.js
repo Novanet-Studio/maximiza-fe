@@ -47,7 +47,7 @@ const Responsabilidad = ({ data }) => (
         }
         ccc: file(relativePath: { eq: "causas-ccc.jpeg" }) {
           childImageSharp {
-            fluid(maxHeight: 85) {
+            fluid(maxHeight: 115) {
               ...GatsbyImageSharpFluid
             }
           }

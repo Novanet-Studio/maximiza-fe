@@ -3,10 +3,15 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import Aliados from "../components/aliados"
-import Balances from "../components/balances"
 import Modal from "../components/modal"
 import ReactMarkdown from "react-markdown"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+// @fortawesome libraries
+import { library } from "@fortawesome/fontawesome-svg-core"
+import { fas } from "@fortawesome/free-solid-svg-icons"
 import "./empresa.scss"
+// add fas and fab to the library
+library.add(fas)
 
 const Empresa = ({ data }) => {
   const [targetModal, setTargetModal] = useState("")
@@ -91,7 +96,33 @@ const Empresa = ({ data }) => {
         <p className="descripcion">{data.strapiEmpresa.aliados.contenido}</p>
         <Aliados />
       </section>
-      <Balances />
+
+      <section className="balances">
+        <h2>Balances mensuales</h2>
+        {data.strapiEmpresa.balances.map((item) => (
+          <div className="balances__grupo">
+            <h3 className="balances__subtitulo">{item.ano}</h3>
+            <ul className="balances__lista" key={item.id}>
+              {item.mes.map((element) => (
+                <li className="balances__item" key={element.id}>
+                  <a
+                    className="balances__boton"
+                    href={element.archivo_descarga}
+                    download
+                  >
+                    <FontAwesomeIcon
+                      icon={["fas", "download"]}
+                      fixedWidth
+                      size="1x"
+                    />
+                    {element.mes}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </section>
     </Layout>
   )
 }
@@ -143,6 +174,15 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+        }
+      }
+      balances {
+        id
+        ano
+        mes {
+          id
+          mes
+          archivo_descarga
         }
       }
     }

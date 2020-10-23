@@ -39,16 +39,18 @@ Los estilos del bloque .información están en empresa.scss ya que comparte las 
     }
   }
   &__ver {
-    cursor: pointer;
     width: 100%;
     color: $blanco2;
     border: none;
+    text-align: center;
   }
   &__down {
+    display: block;
     cursor: pointer;
     width: 100%;
     background: $blanco2;
     border: none;
+    text-align: center;
   }
   &__contenido {
     font-weight: 500;

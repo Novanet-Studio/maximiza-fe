@@ -80,20 +80,20 @@ const Legal = ({ data }) => {
           {data.strapiLegal.descargas.map((item) => (
             <li className="normativas__item" key={item.id}>
               <div className="normativas__descarga">
-                <button className="normativas__ver">
+                <div className="normativas__ver">
                   <FontAwesomeIcon
                     icon={["fas", "eye"]}
                     fixedWidth
                     size="1.5x"
                   />
-                </button>
-                <button className="normativas__down">
+                </div>
+                <a className="normativas__down" href={item.vinculo} download>
                   <FontAwesomeIcon
                     icon={["fas", "download"]}
                     fixedWidth
                     size="1.5x"
                   />
-                </button>
+                </a>
               </div>
               <p className="normativas__contenido">{item.documento}</p>
             </li>
@@ -140,6 +140,7 @@ export const query = graphql`
       descargas {
         id
         documento
+        vinculo
       }
     }
   }
