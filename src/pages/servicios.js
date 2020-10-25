@@ -6,6 +6,7 @@ import Layout from "../components/layout"
 import Modal from "../components/modal"
 import SEO from "../components/seo"
 import Flecha from "../assets/images/dropdown.svg"
+import CTA from "../components/ctaInformacion"
 import "./servicios.scss"
 
 const Servicios = ({ data }) => {
@@ -87,6 +88,10 @@ const Servicios = ({ data }) => {
           </div>
         ))}
       </section>
+      <CTA
+        mensaje="¡Gracias por preferirnos!"
+        textoBoton="Obtenga más información"
+      />
     </Layout>
   )
 }

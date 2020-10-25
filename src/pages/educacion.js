@@ -1,9 +1,10 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import ReactMarkdown from "react-markdown"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import CTA from "../components/ctaInformacion"
 import "./educacion.scss"
 
 const Educacion = ({ data }) => (
@@ -70,11 +71,11 @@ const Educacion = ({ data }) => (
           </div>
         ))}
       </div>
-      <h4 className="texto-cta">¡Gracias por preferirnos!</h4>
-      <Link className="botonBottom" to="/educacion">
-        Obtenga más información
-      </Link>
     </section>
+    <CTA
+      mensaje="¡Gracias por preferirnos!"
+      textoBoton="Obtenga más información"
+    />
   </Layout>
 )
 

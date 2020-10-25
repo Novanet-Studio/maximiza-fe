@@ -1,8 +1,9 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import CTA from "../components/ctaInformacion"
 import "./medios.scss"
 
 const Medios = ({ data }) => (
@@ -24,12 +25,11 @@ const Medios = ({ data }) => (
         </p>
       </div>
     </section>
-    <section className="medios">
-      <h3 className="texto-cta">¡Gracias por preferirnos!</h3>
-      <Link className="botonBottom" to="/educacion">
-        Contáctanos de manera directa a medios@maximiza.com.ve
-      </Link>
-    </section>
+    {/* <section className="medios"></section> */}
+    <CTA
+      mensaje="¡Gracias por preferirnos!"
+      textoBoton="Contáctanos de manera directa a medios@maximiza.com.ve"
+    />
   </Layout>
 )
 

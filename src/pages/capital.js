@@ -1,8 +1,9 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import CTA from "../components/ctaInformacion"
 import ReactMarkdown from "react-markdown"
 import "./capital.scss"
 
@@ -44,11 +45,11 @@ const Capital = ({ data }) => (
           </li>
         ))}
       </ul>
-      <h4 className="texto-cta">¡Gracias por preferirnos!</h4>
-      <Link className="partners__boton" to="/capital">
-        Obtenga más información
-      </Link>
     </section>
+    <CTA
+      mensaje="¡Gracias por preferirnos!"
+      textoBoton="Obtenga más información"
+    />
   </Layout>
 )
 

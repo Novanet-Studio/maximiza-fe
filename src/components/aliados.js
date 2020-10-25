@@ -70,8 +70,7 @@ const aliadosLogos = () => (
         
         <li className="aliados__carrusel-item">
           <Img fluid={data.silk.childImageSharp.fluid} />
-        </li>
-        
+        </li>        
       </ul>
     )}
   />

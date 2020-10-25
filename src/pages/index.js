@@ -16,7 +16,7 @@ const Index = ({ data }) => {
         <div className="columna--left">
           <img src={Logo} alt="logo" className="logo--principal" />
           <p className="principal__texto principal__texto--pequeño">
-            {data.strapiInicio.principal_inicio.logo_texto}
+            {data.strapiHome.principal.logo_texto}
           </p>
           <button className="principal__button">Quiero saber más</button>
         </div>
@@ -24,15 +24,15 @@ const Index = ({ data }) => {
           <Img
             className="principal__imagen"
             fluid={
-              data.strapiInicio.principal_inicio.imagen.childImageSharp.fluid
+              data.strapiHome.principal.imagen.childImageSharp.fluid
             }
           />
         </div>
       </section>
       <section className="beneficios">
-        <h2>{data.strapiInicio.beneficios_titulo}</h2>
+        <h2>{data.strapiHome.beneficios_titulo}</h2>
         <ul className="beneficios__lista">
-          {data.strapiInicio.beneficios.map((item) => (
+          {data.strapiHome.beneficios.map((item) => (
             <li className="beneficios__item" key={item.id}>
               <h3 className="beneficios__subtitulo">{item.titulo}</h3>
               <ReactMarkdown
@@ -45,9 +45,9 @@ const Index = ({ data }) => {
         </ul>
       </section>
       <section className="servicios">
-        <h2>{data.strapiInicio.servicios_titulo}</h2>
+        <h2>{data.strapiHome.servicios_titulo}</h2>
         <ul className="servicios__lista">
-          {data.strapiInicio.servicios.map((item) => (
+          {data.strapiHome.servicios.map((item) => (
             <li className="servicios__item" key={item.id}>
               <h3 className="servicios__subtitulo">{item.titulo}</h3>
               <p className="servicios__descripcion">{item.contenido}</p>
@@ -60,7 +60,7 @@ const Index = ({ data }) => {
         </ul>
       </section>
       <section className="contacto">
-        <h2>{data.strapiInicio.contacto_titulo}</h2>
+        <h2>{data.strapiHome.contacto_titulo}</h2>
         <p className="descripcion">
           Si desea mayor información de nuestros servicios, escríbanos y nos
           comunicaremos con usted a la brevedad posible.
@@ -88,7 +88,7 @@ const Index = ({ data }) => {
           <div className="columna--right">
             <button className="form__button">
               <img src={Email} alt="email" /> Enviar mensaje
-            </button>
+            </button>strapiInicio
           </div>
         </form>
       </section>
@@ -100,8 +100,8 @@ export default Index
 
 export const query = graphql`
   query IndexQuery {
-    strapiInicio {
-      principal_inicio {
+    strapiHome {
+      principal {
         imagen {
           childImageSharp {
             fluid(maxWidth: 630) {

@@ -62,7 +62,7 @@ module.exports = {
           "contacto",
           "educacion",
           "empresa",
-          "inicio",
+          "home",
           "legal",
           "servicios",
           "private-equity",
