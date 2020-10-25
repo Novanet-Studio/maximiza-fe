@@ -88,7 +88,7 @@ const Index = ({ data }) => {
           <div className="columna--right">
             <button className="form__button">
               <img src={Email} alt="email" /> Enviar mensaje
-            </button>strapiInicio
+            </button>
           </div>
         </form>
       </section>
