@@ -168,7 +168,7 @@ main {
     h4 {
       padding-top: 2vh;
     }
-    .lista-descarga {
+    ul {
       list-style-type: disc;
       list-style-position: inside;
       margin-top: 2vh;
@@ -485,11 +485,13 @@ footer {
         line-height: 1.3rem;
       }
       ul {
-        margin-top: 2vh;
+        margin-top: 2vh;  
+        list-style: circle;      
         li {
           font-size: 0.8rem;
           line-height: 1.4rem;
           margin-bottom: 1vh;
+          list-style: disc !important;
         }
       }
     }
@@ -712,7 +714,7 @@ footer {
         li {
           font-size: 0.8rem;
           line-height: 1.1rem;
-          margin-bottom: 4vh;
+          margin-bottom: 1.5vh;
         }
       }
     }
