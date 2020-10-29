@@ -10,7 +10,7 @@ const Modal = ({ data, id, onClose, imageFieldName }) =>
           <div className="modal__content">
             <button onClick={onClose}>&times;</button>
             <div className="modal__body">
-              {imageFieldName === undefined ? null : (
+              {imageFieldName === undefined || (
                 <Img
                   fluid={item[imageFieldName].childImageSharp.fluid}
                   title={item.titulo}
