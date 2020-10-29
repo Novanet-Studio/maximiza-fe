@@ -27,7 +27,7 @@ const navigation = () => (
         <p className="texto">Comunidad</p>
         <div className="cabecera__menudrop">
           <LinkNav text="Medios" to="/medios" />
-          <LinkNav text="Blog" to="/blog" />
+          <LinkNav text="Blog" to="/blog" direction="left" />
           <LinkNav text="Legal" to="/legal" />
         </div>
       </div>
