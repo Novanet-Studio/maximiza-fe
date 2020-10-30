@@ -10,7 +10,7 @@ const linkStyles = {}
 
 const LinkNav = ({ text, direction = "right", to = "/" }) => (
   <AniLink
-    className="cabecera__droplink"
+    className="nav__link"
     cover
     direction={direction}
     duration={0.55}
