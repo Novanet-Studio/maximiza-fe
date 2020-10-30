@@ -1,0 +1,242 @@
+/* The Modal (background) */
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 50; /* Sit on top */
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 200ms;
+}
+
+/* Modal Content/Box */
+.modal__content {
+  background-color: $blanco1;
+  position: relative;
+  .modal__body {
+    @extend .flex;
+    h2 {
+      @extend .flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+      margin-bottom: 0;
+    }
+    .gatsby-image-wrapper {
+      height: auto;
+      background-color: $verde1;
+    }
+    a {
+      color: $verde1;
+      font-weight: 500;
+    }
+    h4 {
+      padding-top: 2vh;
+    }
+    ul {
+      list-style-type: disc;
+      list-style-position: inside;
+      margin-top: 2vh;
+      li {
+        width: 100%;
+        line-height: 1.6rem;
+      }
+    }
+  }
+  button {
+    cursor: pointer;
+    position: absolute;
+    background-color: $gris5;
+    color: $gris4;
+    border: 0;
+    font-weight: 600;
+  }
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* The Close Button */
+.close {
+  float: right;
+  font-size: 25px;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.close:hover,
+.close:focus {
+  text-decoration: none;
+  cursor: pointer;
+  transition: 1s;
+}
+
+/*-------------------------------------------- Mobile Portrait --------------------------------------------*/
+
+@include min-media(320px, portrait) {
+  .modal__content {
+    margin: 1% auto; /* 15% from the top and centered */
+    padding: 2vh;
+    top: 3%;
+    width: 90vw;
+    .modal__body {
+      h2 {
+        padding-left: 3vw;
+      }
+      .gatsby-image-wrapper {
+        width: 12%;
+      }
+      .modal__title {
+        width: 88%;
+      }
+      p {
+        padding-top: 1.5vh;
+        font-size: 0.8rem;
+        line-height: 1.3rem;
+      }
+      ul {
+        margin-top: 2vh;  
+        list-style: circle;      
+        li {
+          font-size: 0.8rem;
+          line-height: 1.4rem;
+          margin-bottom: 1vh;
+          list-style: disc !important;
+        }
+      }
+    }
+    button {
+      right: 2vh;
+      top: 2vh;
+      font-size: 1.5rem;
+      padding: 0 1.3vw;
+    }
+  }
+}
+
+/*-------------------------------------------- Mobile Landscape --------------------------------------------*/
+@include min-media(568px, landscape) {
+  .modal__content {
+    margin: 1% auto; /* 15% from the top and centered */
+    padding: 4vh;
+    top: 3%;
+    width: 85vw;
+    .modal__body {
+      h2 {
+        padding-left: 2vw;
+      }
+      .gatsby-image-wrapper {
+        width: 6%;
+      }
+      .modal__title {
+        width: 94%;
+      }
+      p {
+        padding-top: 3vh;
+        font-size: 0.8rem;
+        line-height: 1.1rem;
+      }
+      ul {
+        margin-top: 2vh;
+        li {
+          font-size: 0.8rem;
+          line-height: 1.1rem;
+          margin-bottom: 1.5vh;
+        }
+      }
+    }
+    button {
+      right: 2vh;
+      top: 2vh;
+      font-size: 1.5rem;
+      padding: 0 1.3vw;
+    }
+  }
+}
+
+/*-------------------------------------------- Tablet Portrait --------------------------------------------*/
+@include min-media(768px, portrait) {
+  .modal__content {
+    .modal__body {
+      h2 {
+        padding-left: 2vw;
+        padding-top: 0;
+      }
+      .gatsby-image-wrapper {
+        width: 6%;
+      }
+      .modal__title {
+        width: 90%;
+      }
+      p {
+        font-size: 0.9rem;
+        padding-top: 1vh;
+        line-height: 1.6rem;
+      }
+      ul {
+        margin-top: 2vh;
+        li {
+          font-size: 0.9rem;
+          line-height: 1.3rem;
+        }
+      }
+    }
+    button {
+      padding: 0 0.8vw;
+    }
+  }
+}
+
+/*-------------------------------------------- Tablet Landscape --------------------------------------------*/
+@include min-media(1024px, landscape) {
+  .modal__content {
+    .modal__body {
+      p {
+        font-size: 0.9rem;
+        line-height: 1.2rem;
+      }
+      ul {
+        li {
+          font-size: 0.9rem;
+          line-height: 1.2rem;
+        }
+      }
+    }
+    button {
+      font-size: 2rem;
+      padding: 0 0.5vw;
+    }
+  }
+}
+
+/*-------------------------------------------- Desktop responsive --------------------------------------------*/
+@include min-media(1280px) {
+  .modal__content {
+    width: 70vw;
+    .modal__body {
+      h2 {
+        padding-left: 1vw;
+      }
+      .gatsby-image-wrapper {
+        width: 5%;
+      }
+    }
+  }
+}

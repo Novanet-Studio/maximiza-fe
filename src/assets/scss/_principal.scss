@@ -1,0 +1,203 @@
+/*----- Secciones------*/
+.principal {
+  @extend .flex;
+  align-items: center;
+  .columna--left {
+    text-align: right;
+    order: 1;
+    .logo--principal {
+      width: 25vw;
+      padding-bottom: 2vh;
+    }
+  }
+  .columna--right {
+    text-align: left;
+    order: 2;
+  }
+  &__imagen {
+    width: 100%;
+  }
+  &__texto {
+    font-weight: 400;
+    color: $gris1;
+  }
+  &__button {
+    cursor: pointer;
+    font-weight: 300;
+    color: $blanco1;
+    border: none;
+    background: $verde1;
+    a {
+      color: $blanco1;
+    }
+  }
+  &--img-gris {
+    filter: grayscale(100%);
+  }
+}
+
+.cta-informacion {
+  @extend .flex;
+  justify-content: center;
+  margin: 6vh 0 10vh 0;
+  &__mensaje {
+    padding: 0.5vh 3vh 0 0;
+  }
+  &__boton {
+    cursor: pointer;
+    display: inline-block;
+    padding: 1.5vh 2vh;    
+    font-size: 0.8rem;
+    font-weight: 700;  
+    text-align: center;
+    background: $verde1;   
+    color: $blanco1; 
+  }
+}
+
+/*-------------------------------------------- Mobile Portrait --------------------------------------------*/
+
+@include min-media(320px, portrait) {
+  .principal {
+    .columna--left,
+    .columna--right {
+      width: 100%;
+      padding: 1.5vh 0;
+    }
+    .columna--left {
+      text-align: left;
+    }
+    .columna--right {
+      text-align: left;
+    }
+    .logo--interno {
+      margin-bottom: 2vh;
+    }
+    &__texto {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      &--pequeño {
+        font-size: 0.9rem;
+        line-height: 1.4rem;
+      }
+    }
+    &__button {
+      font-size: 0.8rem;
+      padding: 1.8vh 2vh;
+      margin-top: 2vh;
+    }
+  }
+}
+
+/*-------------------------------------------- Mobile Landscape --------------------------------------------*/
+@include min-media(568px, landscape) {
+  .principal {
+    .columna--left,
+    .columna--right {
+      width: 50%;
+    }
+    .columna--left {
+      padding-right: 2vw;
+      text-align: right;
+    }
+    .columna--right {
+      padding-left: 2vw;
+    }
+    &__texto {
+      font-size: 0.8rem;
+      line-height: 1.2rem;
+      &--pequeño {
+        font-size: 0.75rem;
+        line-height: 1.1rem;
+      }
+    }
+    &__button {
+      font-size: 0.7rem;
+      padding: 2vh;
+      margin-top: 2vh;
+    }
+  }
+}
+
+/*-------------------------------------------- Tablet Portrait --------------------------------------------*/
+@include min-media(768px, portrait) {
+  .principal {
+    .columna--left {
+      width: 50%;
+      padding: 0 2vw 0 0;
+      text-align: right;
+    }
+    .columna--right {
+      width: 50%;
+      padding: 0 0 0 2vw;
+    }
+    .logo--interno {
+      margin-bottom: 1vh;
+    }
+    &__texto {
+      font-size: 1.1rem;
+      line-height: 1.4rem;
+      &--pequeño {
+        font-size: 0.95rem;
+        line-height: 1.3rem;
+      }
+    }
+    &__button {
+      padding: 1vh 1.5vh;
+      margin-top: 1vh;
+    }
+  }
+}
+
+/*-------------------------------------------- Tablet Landscape --------------------------------------------*/
+@include min-media(1024px, landscape) {
+  .principal {
+    &__texto {
+      font-size: 1.1rem;
+      line-height: 1.6rem;
+      &--pequeño {
+        font-size: 0.95rem;
+        line-height: 1.4rem;
+      }
+    }
+    &__button {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+/*-------------------------------------------- Desktop responsive --------------------------------------------*/
+@include min-media(1280px) {
+  .principal {
+    min-height: 46vh;
+    .columna--left {
+      width: 50%;
+      padding-right: 2vw;
+      text-align: right;
+    }
+    .columna--right {
+      width: 50%;
+      padding-left: 2vw;
+      text-align: left;
+    }
+    .logo--interno {
+      margin-bottom: 2.2vh;
+    }
+    &__texto {
+      font-size: 1.4rem;
+      line-height: 2rem;
+      &--pequeño {
+        font-size: 1.3rem;
+        line-height: 1.8rem;
+      }
+    }
+    &__button {
+      font-size: 1rem;
+      padding: 1.8vh 2vh;
+      margin-top: 2vh;
+    }
+    &__imagen {
+      width: 100%;
+    }
+  }
+}
