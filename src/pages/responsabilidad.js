@@ -52,6 +52,13 @@ const Responsabilidad = ({ data }) => (
             }
           }
         }
+        acide: file(relativePath: { eq: "causas-acide.jpeg" }) {
+          childImageSharp {
+            fluid(maxHeight: 115) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     `}
     render={(data) => (
@@ -126,6 +133,13 @@ const Responsabilidad = ({ data }) => (
                 fluid={data.fa.childImageSharp.fluid}
               />
               <p className="causas__texto">Fe y Alegría</p>
+            </li>
+            <li className="causas__item">
+              <Img
+                className="causas__imagen"
+                fluid={data.acide.childImageSharp.fluid}
+              />
+              <p className="causas__texto">Acide</p>
             </li>
           </ul>
         </section>
