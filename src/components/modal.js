@@ -7,19 +7,20 @@ const Modal = ({ data, id, onClose, imageFieldName }) =>
     (item) =>
       item.id === id && (
         <div className="modal" key={item.id}>
-          <div className="modal__content">
-            <button onClick={onClose}>&times;</button>
-            <div className="modal__body">
+          <div className="modal__content modal__contenido">
+            <button className="modal__boton" onClick={onClose}>&times;</button>
+            <div className="modal__body modal__cuerpo">
               {imageFieldName === undefined || (
                 <Img
+                  className="modal__imagen"
                   fluid={item[imageFieldName].childImageSharp.fluid}
                   title={item.titulo}
                   alt={""}
                 />
               )}
-              <h2 className="modal__title">{item.titulo}</h2>
+              <h2 className="modal__titulo">{item.titulo}</h2>
               <ReactMarkdown
-                className="inversionista__descripcion"
+                className="modal__descripcion"
                 source={item.contenido}
                 escapeHtml={false}
               />
