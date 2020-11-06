@@ -23,9 +23,7 @@ const Index = ({ data }) => {
         <div className="columna columna--der">
           <Img
             className="principal__imagen"
-            fluid={
-              data.strapiHome.principal.imagen.childImageSharp.fluid
-            }
+            fluid={data.strapiHome.principal.imagen.childImageSharp.fluid}
           />
         </div>
       </section>
@@ -61,13 +59,13 @@ const Index = ({ data }) => {
         </ul>
       </section>
       <section className="contacto">
-        <h2>{data.strapiHome.contacto_titulo}</h2>
-        <p className="descripcion">
+        <h2 className="contacto__titulo">{data.strapiHome.contacto_titulo}</h2>
+        <p className="contacto__descripcion">
           Si desea mayor información de nuestros servicios, escríbanos y nos
           comunicaremos con usted a la brevedad posible.
         </p>
         <form className="form">
-          <div className="columna--left">
+          <div className="form__grupo-izq">
             <input
               type="text"
               placeholder="Nombre y apellido"
@@ -86,9 +84,9 @@ const Index = ({ data }) => {
             ></textarea>
           </div>
 
-          <div className="columna--right">
+          <div className="form__grupo-der">
             <button className="form__button">
-              <img src={Email} alt="email" /> Enviar mensaje
+              <img src={Email} className="form__icono" alt="email" /> Enviar mensaje
             </button>
           </div>
         </form>
