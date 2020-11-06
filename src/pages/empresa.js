@@ -93,7 +93,7 @@ const Empresa = ({ data }) => {
 
       <section className="aliados">
         <h2>{data.strapiEmpresa.aliados.titulo}</h2>
-        <p className="descripcion">{data.strapiEmpresa.aliados.contenido}</p>
+        <p className="aliados__descripcion">{data.strapiEmpresa.aliados.contenido}</p>
         <Aliados />
       </section>
 
