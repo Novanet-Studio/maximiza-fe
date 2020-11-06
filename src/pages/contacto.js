@@ -88,7 +88,7 @@ const Contacto = ({ data }) => (
           ></textarea>
 
           <button className="datos__button">
-            <img src={Email} alt="email" /> Enviar mensaje
+            <img className="datos__button-icon" src={Email} alt="email" /> Enviar mensaje
           </button>
         </form>
       </div>
