@@ -1,5 +1,6 @@
 @import "../assets/scss/normalize";
 @import "../assets/scss/variables";
+@import "../assets/scss/mixins";
 
 /* 
 IMPORTANTE 
@@ -29,16 +30,9 @@ Los estilos del bloque .información están en empresa.scss ya que comparte las 
   &__item {
     @extend .flex;
     justify-content: space-between;
-    .normativas__descarga {
-      .normativas__ver {
-        background: $verde1;
-      }
-      .normativas__down {
-        color: $verde1;
-      }
-    }
   }
   &__ver {
+    background-color: $verde1;
     width: 100%;
     color: $blanco2;
     border: none;
@@ -47,6 +41,7 @@ Los estilos del bloque .información están en empresa.scss ya que comparte las 
   &__down {
     display: block;
     cursor: pointer;
+    color: $verde1;
     width: 100%;
     background: $blanco2;
     border: none;
@@ -57,7 +52,7 @@ Los estilos del bloque .información están en empresa.scss ya que comparte las 
   }
 }
 
-@media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+@include min-media(320px, portrait) {
   /* Legal
 ========================================================================== */
 
@@ -103,7 +98,7 @@ Los estilos del bloque .información están en empresa.scss ya que comparte las 
 }
 
 /*-------------------------------------------- Mobile Landscape --------------------------------------------*/
-@media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+@include min-media(568px, landscape) {
   /* Legal
 ========================================================================== */
 
@@ -147,7 +142,7 @@ Los estilos del bloque .información están en empresa.scss ya que comparte las 
 }
 
 /*-------------------------------------------- Tablet Portrait --------------------------------------------*/
-@media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+@include min-media(768px, portrait) {
   /* Legal
 ========================================================================== */
 
@@ -198,7 +193,7 @@ Los estilos del bloque .información están en empresa.scss ya que comparte las 
 }
 
 /*-------------------------------------------- Tablet Landscape --------------------------------------------*/
-@media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+@include min-media(1024px, landscape) {
   /* Legal
 ========================================================================== */
 
@@ -249,20 +244,21 @@ Los estilos del bloque .información están en empresa.scss ya que comparte las 
 }
 
 /*-------------------------------------------- Desktop responsive --------------------------------------------*/
-@media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
+@include min-media(1280px) {
   /* Legal
 ========================================================================== */
 
-.informacion {
-  &__item {
-    flex: 1 1 0;
-    padding-bottom: 0;
+  .informacion {
+    &__item {
+      flex: 1 1 0;
+      padding-bottom: 0;
+    }
+    &__descripcion {
+      width: 100%;
+      padding-right: 4vh;
+    }
   }
-  &__descripcion {
-    width: 100%;
-    padding-right: 4vh;
-  }
-}
+
   /*------Etica------*/
   .etica {
     margin-top: 15vh;
