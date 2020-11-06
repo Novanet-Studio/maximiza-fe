@@ -1,5 +1,6 @@
 @import "../assets/scss/normalize";
 @import "../assets/scss/variables";
+@import "../assets/scss/mixins";
 
 /* Private equity
 ========================================================================== */
@@ -30,7 +31,8 @@
 }
 
 /*-------------------------------------------- Mobile Portrait --------------------------------------------*/
-@media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+// @media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+@include min-media(320, portrait) {
   /* Private equity
 ========================================================================== */
 
@@ -56,7 +58,8 @@
 }
 
 /*-------------------------------------------- Mobile Landscape --------------------------------------------*/
-@media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+// @media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+@include min-media(568px, landscape) {
   /* Private equity
 ========================================================================== */
 
@@ -98,7 +101,8 @@
 }
 
 /*-------------------------------------------- Tablet Portrait --------------------------------------------*/
-@media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+// @media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+@include min-media(768px, portrait) {
   /* Private equity
 ========================================================================== */
 
@@ -136,7 +140,8 @@
 }
 
 /*-------------------------------------------- Tablet Landscape --------------------------------------------*/
-@media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+// @media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+@include min-media(1024px, landscape) {
   /* Private equity
 ========================================================================== */
 
@@ -163,7 +168,8 @@
 }
 
 /*-------------------------------------------- Desktop responsive --------------------------------------------*/
-@media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
+// @media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
+@include min-media(1280px) {
   /* Private equity
 ========================================================================== */
 

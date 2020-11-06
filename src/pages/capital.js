@@ -29,7 +29,7 @@ const Capital = ({ data }) => (
       </div>
     </section>
     <section className="partners">
-      <h2>{data.strapiPrivateEquity.partners_titulo}</h2>
+      <h2 className="partners__titulo">{data.strapiPrivateEquity.partners_titulo}</h2>
       <ul className="partners__lista">
         {data.strapiPrivateEquity.partners_secciones.map((item) => (
           <li className="partners__item" key={item.id}>
