@@ -16,7 +16,7 @@ const Servicios = ({ data }) => {
     <Layout>
       <SEO title="Servicios" />
       <section className="principal">
-        <div className="columna--left">
+        <div className="columna columna--izq">
           <h1 className="principal__titulo">
             <ReactMarkdown
               source={data.strapiServicios.principal.titulo}
@@ -27,7 +27,7 @@ const Servicios = ({ data }) => {
             {data.strapiServicios.principal.contenido}
           </p>
         </div>
-        <div className="columna--right">
+        <div className="columna columna--der">
           <Img
             className="principal__imagen"
             fluid={data.strapiServicios.principal.imagen.childImageSharp.fluid}

@@ -18,14 +18,14 @@ const Empresa = ({ data }) => {
   return (
     <Layout>
       <section className="principal">
-        <div className="columna--left">
+        <div className="columna columna--izq">
           <Img
             className="principal__imagen"
             fluid={data.strapiEmpresa.principal.imagen.childImageSharp.fluid}
           />
         </div>
 
-        <div className="columna--right">
+        <div className="columna columna--der">
           <h1 className="principal__titulo">
             {data.strapiEmpresa.principal.titulo}
           </h1>

@@ -18,13 +18,13 @@ const Contacto = ({ data }) => (
     <SEO title="Inicio" />
     <section className="principal">
       {console.log(data)}
-      <div className="columna--left">
+      <div className="columna columna--izq">
         <Img
           className="principal__imagen"
           fluid={data.strapiContacto.principal.imagen.childImageSharp.fluid}
         />
       </div>
-      <div className="columna--right">
+      <div className="columna columna--der">
         <h1 className="principal__titulo">
           {data.strapiContacto.principal.titulo}
         </h1>
@@ -35,7 +35,7 @@ const Contacto = ({ data }) => (
     </section>
 
     <section className="datos">
-      <div className="columna--left">
+      <div className="columna columna--izq">
         <ul className="datos__lista">
           <li className="datos__item">
             <span class="datos__icono">
@@ -68,7 +68,7 @@ const Contacto = ({ data }) => (
           </li>
         </ul>
       </div>
-      <div className="columna--right">
+      <div className="columna columna--der">
         <form className="datos__form">
           <input
             type="text"

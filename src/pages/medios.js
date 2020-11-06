@@ -10,13 +10,13 @@ const Medios = ({ data }) => (
   <Layout>
     <SEO title="Inicio" />
     <section className="principal">
-      <div className="columna--left">
+      <div className="columna columna--izq">
         <Img
           className="principal__imagen"
           fluid={data.strapiMedios.principal.imagen.childImageSharp.fluid}
         />
       </div>
-      <div className="columna--right">
+      <div className="columna columna--der">
         <h1 className="principal__titulo">
           {data.strapiMedios.principal.titulo}
         </h1>
