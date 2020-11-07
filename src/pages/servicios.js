@@ -62,8 +62,8 @@ const Servicios = ({ data }) => {
                     alt="Desplegar más"
                   />
 
-                  <div className="inversionista__texto">
-                    <strong>{element.titulo}</strong>
+                  <div className="inversionista__dropdown">
+                    <strong className="inversionista__texto">{element.titulo}</strong>
                     <ReactMarkdown
                       className="inversionista__descripcion"
                       source={element.contenido.substring(0, 200).concat("...")}
