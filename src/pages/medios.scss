@@ -1,39 +1,33 @@
 @import "../assets/scss/normalize";
 @import "../assets/scss/variables";
+@import "../assets/scss/mixins";
 
 .medios {
   @extend .flex;
   justify-content: center;
-}
 
-/*-------------------------------------------- Mobile Portrait --------------------------------------------*/
-@media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
-  .medios {
+  /* ------------- Mobile Portrait ------------- */
+  @include min-media(320px, portrait) {
     margin-top: 3vh;
   }
-}
 
-/*-------------------------------------------- Mobile Landscape --------------------------------------------*/
-@media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
-  .medios {
+  /* ------------- Mobile Landscape ------------- */
+  @include min-media(568px, landscape) {
     margin-top: 7vh;
   }
-}
 
-/*-------------------------------------------- Tablet Portrait --------------------------------------------*/
-@media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
-  .medios {
+  /* ------------- Tablet Portrait ------------- */
+  @include min-media(768px, portrait) {
     margin-top: 7vh;
   }
-}
 
-/*-------------------------------------------- Tablet Landscape --------------------------------------------*/
-@media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
-}
+  /* ------------- Tablet Landscape ------------- */
+  @include min-media(1024px, landscape) {
 
-/*-------------------------------------------- Desktop responsive --------------------------------------------*/
-@media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
-  .medios {
+  }
+
+  /* ------------- Desktop Responsive ------------- */
+  @include min-media(1280px) {
     margin-top: 14vh;
   }
 }
