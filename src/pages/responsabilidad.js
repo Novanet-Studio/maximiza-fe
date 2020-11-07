@@ -99,7 +99,7 @@ const Responsabilidad = ({ data }) => (
           </ul>
         </section>
         <section className="causas">
-          <h2>Causas que apoyamos</h2>
+          <h2 className="causas__titulo">Causas que apoyamos</h2>
           <ReactMarkdown
             className="descripcion"
             source={data.strapiResponsabilidad.colaboracion_texto}
