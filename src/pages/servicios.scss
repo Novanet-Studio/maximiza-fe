@@ -1,5 +1,6 @@
 @import "../assets/scss/normalize";
 @import "../assets/scss/variables";
+@import "../assets/scss/mixins";
 
 /* Servicios
 ========================================================================== */
@@ -40,7 +41,7 @@
     &:hover {
       z-index: 10;
       cursor: pointer;
-      .inversionista__texto {
+      .inversionista__dropdown {
         opacity: 1;
         transition: all 0.5s;
       }
@@ -56,7 +57,7 @@
   &__flecha {
     position: absolute;
   }
-  &__texto {
+  &__dropdown {
     @extend .flex;
     width: 100%;
     flex-direction: column;
@@ -80,7 +81,7 @@
 }
 
 /*-------------------------------------------- Mobile Portrait --------------------------------------------*/
-@media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+@include min-media(320px, portrait) {
   /*------Inversionista------*/
   .inversionista {
     margin-bottom: 8vh;
@@ -119,7 +120,7 @@
       padding: 1vh;
       margin-right: 2vh;
     }
-    &__texto {
+    &__dropdown {
       padding: 2vh;
       font-size: 0.8rem;
       line-height: 1.3rem;
@@ -132,7 +133,7 @@
 }
 
 /*-------------------------------------------- Mobile Landscape --------------------------------------------*/
-@media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+@include min-media(568px, landscape) {
   /*------Inversionista------*/
   .inversionista {
     margin-top: 20vh;
@@ -146,6 +147,7 @@
             text-align: right;
           }
         }
+        // --- Revisar --- //
         .inversionista__contenido {
           .inversionista__contenido {
             order: 1;
@@ -185,13 +187,13 @@
       padding: 1vh;
       margin-right: 2vh;
     }
-    &__texto {
+    &__dropdown {
       padding: 2vh;
       font-size: 0.8rem;
       line-height: 1.1rem;
-      strong {
-        font-size: 0.85rem;
-      }
+    }
+    &__texto {
+      font-size: 0.85rem;
     }
     &__boton {
       margin-top: 2vh;
@@ -202,7 +204,7 @@
 }
 
 /*-------------------------------------------- Tablet Portrait --------------------------------------------*/
-@media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
+@include min-media(768px, portrait) {
   /*------Inversionista------*/
   .inversionista {
     margin-bottom: 12vh;
@@ -254,7 +256,7 @@
       padding: 1vh;
       margin-right: 1vh;
     }
-    &__texto {
+    &__dropdown {
       padding: 2vh;
       font-size: 0.85rem;
       line-height: 1.4rem;
@@ -267,7 +269,7 @@
 }
 
 /*-------------------------------------------- Tablet Landscape --------------------------------------------*/
-@media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
+@include min-media(1024px, landscape) {
   /*------Inversionista------*/
   .inversionista {
     margin-bottom: 15vh;
@@ -308,7 +310,7 @@
 }
 
 /*-------------------------------------------- Desktop responsive --------------------------------------------*/
-@media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
+@include min-media(1280px) {
   /*------Inversionista------*/
   .inversionista {
     &__grupo {
@@ -328,12 +330,12 @@
       margin-top: 1.2vh;
       font-size: 1rem;
     }
-    &__texto {
+    &__dropdown {
       font-size: 0.9rem;
       line-height: 1.2rem;
-      strong {
-        font-size: 0.95rem;
-      }
+    }
+    &__texto {
+      font-size: 0.95rem;
     }
     &__flecha {
       top: 2vh;

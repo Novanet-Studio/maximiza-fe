@@ -32,12 +32,13 @@ const Footer = () => (
       }
     `}
     render={(data) => (
-      <footer>
-        <ul className="footer__rrssbtn">
+      <footer className="footer">
+        <ul className="footer__grupo-rrss">
           {data.strapiContacto.info_contacto.map((document) => (
-            <li key={document.id}>
+            <li className="footer__rrss" key={document.id}>
               <a
                 href={document.vinculo}
+                className="footer__link"
                 rel="noopener noreferrer"
                 target="_blank"
                 aria-label={`Ir a ${document.contenido}`}
@@ -54,9 +55,9 @@ const Footer = () => (
             </li>
           ))}
         </ul>
-        <p>
+        <p className="footer__derechos">
           © {new Date().getFullYear()} Maximiza Casa de Bolsa - Derechos
-          reservados | Diseñado por: <img src={data.logonn.publicURL} />
+          reservados | Diseñado por: <img className="footer__imagen" src={data.logonn.publicURL} />
         </p>
       </footer>
     )}

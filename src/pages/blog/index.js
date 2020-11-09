@@ -10,7 +10,7 @@ const IndexPage = ({ data }) => (
   <Layout>
     <SEO title="Inicio" />
     <section className="principal">
-      <div className="columna--left">
+      <div className="columna columna--izq">
         <h1 className="principal__titulo">
           {data.strapiBlog.principal.titulo}
         </h1>
@@ -18,7 +18,7 @@ const IndexPage = ({ data }) => (
           {data.strapiBlog.principal.contenido}
         </p>
       </div>
-      <div className="columna--right">
+      <div className="columna columna--der">
         <Img
           className="principal__imagen"
           fluid={data.strapiBlog.principal.imagen.childImageSharp.fluid}

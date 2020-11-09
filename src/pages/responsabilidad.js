@@ -58,7 +58,7 @@ const Responsabilidad = ({ data }) => (
       <Layout>
         <SEO title="Inicio" />
         <section className="principal">
-          <div className="columna--left">
+          <div className="columna columna--izq">
             <h1 className="principal__titulo">
               {data.strapiResponsabilidad.principal.titulo}
             </h1>
@@ -68,7 +68,7 @@ const Responsabilidad = ({ data }) => (
               escapeHtml={false}
             />
           </div>
-          <div className="columna--right">
+          <div className="columna columna--der">
             <Img
               className="principal__imagen"
               fluid={
@@ -99,7 +99,7 @@ const Responsabilidad = ({ data }) => (
           </ul>
         </section>
         <section className="causas">
-          <h2>Causas que apoyamos</h2>
+          <h2 className="causas__titulo">Causas que apoyamos</h2>
           <ReactMarkdown
             className="descripcion"
             source={data.strapiResponsabilidad.colaboracion_texto}
