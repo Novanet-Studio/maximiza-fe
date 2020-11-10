@@ -246,7 +246,8 @@
 }
 
 /*-------------------------------------------- Desktop responsive --------------------------------------------*/
-@media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
+// @media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
+@include min-media(1280px) {
   .header {
     &__imagen {
       width: 15vw;

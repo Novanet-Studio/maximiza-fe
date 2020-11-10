@@ -151,7 +151,7 @@ img {
 }
 
 /*-------------------------------------------- Desktop responsive --------------------------------------------*/
-@media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
+@include min-media(1280px) {
   h1 {
     font-size: 1.6rem;
     margin-bottom: 0.5rem;
