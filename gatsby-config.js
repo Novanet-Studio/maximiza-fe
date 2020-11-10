@@ -51,7 +51,6 @@ module.exports = {
         },
       },
     },
-
     {
       resolve: "gatsby-source-strapi",
       options: {

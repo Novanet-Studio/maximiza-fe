@@ -38,7 +38,7 @@ const Legal = ({ data }) => {
       <section className="informacion">
         <ul className="informacion__lista">
           {data.strapiLegal.informacion.map((item) => (
-            <li className="informacion__item" key={item.id}>        
+            <li className="informacion__item" key={item.id}>
               <div className="informacion__descripcion">
                 <h3 className="informacion__titulo">{item.titulo}</h3>
                 <ReactMarkdown
@@ -57,7 +57,7 @@ const Legal = ({ data }) => {
           ))}
           <Modal
             id={targetModal}
-            data={data.strapiLegal.informacion}            
+            data={data.strapiLegal.informacion}
             onClose={() => setTargetModal("")}
           />
         </ul>

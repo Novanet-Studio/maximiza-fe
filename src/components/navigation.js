@@ -3,7 +3,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 const linkActivo = {
   fontWeight: 700,
-  color: '#00735f',
+  color: "#00735f",
 }
 
 const linkStyles = {}

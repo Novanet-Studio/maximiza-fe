@@ -117,7 +117,7 @@ const Responsabilidad = ({ data }) => (
               <Img
                 className="causas__imagen"
                 fluid={data.as.childImageSharp.fluid}
-              />       
+              />
               <p className="causas__texto">Alimenta la solidaridad</p>
             </li>
             <li className="causas__item">

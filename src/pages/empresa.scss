@@ -154,7 +154,7 @@ Los estilos del bloque .informacion correspondientes a la vista legal, están en
       padding-bottom: 5vh;
     }
     &__image {
-      width: 45%;
+      width: 55%;
     }
     &__descripcion {
       width: 100%;
@@ -205,8 +205,7 @@ Los estilos del bloque .informacion correspondientes a la vista legal, están en
       padding-top: 4vh;
       &-item {
         width: 40%;
-
-        margin: 2vh;
+        margin: 2vh 1.5vh 2vh 1.5vh;
       }
     }
   }
@@ -238,6 +237,7 @@ Los estilos del bloque .informacion correspondientes a la vista legal, están en
     }
   }
 }
+
 
 /*-------------------------------------------- Mobile Landscape --------------------------------------------*/
 @media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {

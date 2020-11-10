@@ -23,9 +23,7 @@ const Index = ({ data }) => {
         <div className="columna--right">
           <Img
             className="principal__imagen"
-            fluid={
-              data.strapiHome.principal.imagen.childImageSharp.fluid
-            }
+            fluid={data.strapiHome.principal.imagen.childImageSharp.fluid}
           />
         </div>
       </section>

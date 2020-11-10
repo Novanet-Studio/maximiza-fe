@@ -8,36 +8,36 @@ const Layout = ({ children }) => {
   const [isToggled, setIsToggled] = useState(false)
 
   const toggleMenu = () => {
-    const nav = document.querySelector('#myNav')
+    const nav = document.querySelector("#myNav")
     const main = document.querySelector("main")
 
-    console.log('It works toggle? (layoutIndex) ', isToggled)
+    console.log("It works toggle? (layoutIndex) ", isToggled)
 
-    console.log('-'.repeat(30))
+    console.log("-".repeat(30))
     console.log({
       nav,
       main,
-      toggle: isToggled
+      toggle: isToggled,
     })
 
     if (!isToggled) {
       nav.style.width = "50%"
       main.style.opacity = 0.3
       setIsToggled(true)
-      console.log('Menu is open (LaIx)')
+      console.log("Menu is open (LaIx)")
     } else {
       nav.style.width = "0%"
       main.style.opacity = 1
-      console.log('Menu is close (LaIx)')
+      console.log("Menu is close (LaIx)")
       setIsToggled(false)
     }
 
-    console.log('end layoutIndex')
-    console.log('-'.repeat(30))
+    console.log("end layoutIndex")
+    console.log("-".repeat(30))
   }
 
   return (
-    <div className="contenedor">    
+    <div className="contenedor">
       <button className="mobileMenu" onClick={toggleMenu}>
         ☰
       </button>
