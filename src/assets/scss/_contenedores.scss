@@ -1,0 +1,49 @@
+/*------Contenedores princiales------*/
+
+#___gatsby {
+  @extend .flex;
+  justify-content: center;
+}
+
+main {
+  transition: 0.5s;
+}
+
+.contenedor {
+  @extend .flex;
+  min-height: 100vh;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 1.5s;
+  margin: 0 4vw 3vh;
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Botón menú mobile */
+.mobileMenu {
+  display: none;
+}
+
+/*-------------------------------------------- Mobile Portrait --------------------------------------------*/
+@include min-max-media(320px, 767px, portrait) {
+  .mobileMenu {
+    display: block;
+    position: absolute;
+    top: 4vh;
+    right: 4vh;
+    z-index: 2;
+    border: 0;
+    background-color: transparent;
+    font-size: 1.6rem;
+    color: $verde1;
+  }
+}

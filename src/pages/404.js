@@ -8,18 +8,18 @@ const NotFoundPage = () => (
   <Layout>
     <SEO title="404: Not found" />
     <section className="principal">
-      <div className="columna--left">
+      <div className="columna columna--izq">
         <img className="principal__imagen" src={Perdido} alt="404" />
       </div>
 
-      <div className="columna--right">
+      <div className="columna columna--der">
         <h1 className="principal__titulo">Página no encontrada</h1>
-        <p className="principal__texto principal__texto--pequeño">
+        <p className="principal__texto principal__texto--corto">
           La página que estás intentando ver, no existe o ha sido cambiada de
           lugar. Usa el menú de navegación para volver al sitio o haz click en
           el botón de abajo para volver al inicio.
         </p>
-        <button className="principal__button">
+        <button className="principal__boton">
           <Link to="/">Ir al inicio</Link>
         </button>
       </div>
