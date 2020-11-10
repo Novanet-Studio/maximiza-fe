@@ -143,7 +143,6 @@ Los estilos del bloque .informacion correspondientes a la vista legal, están en
   }
 }
 
-// @media only screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
 @include min-media(320px, portrait) {
   /* Empresa
 ========================================================================== */
@@ -240,9 +239,7 @@ Los estilos del bloque .informacion correspondientes a la vista legal, están en
   }
 }
 
-
 /*-------------------------------------------- Mobile Landscape --------------------------------------------*/
-// @media only screen and (min-device-width: 568px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
 @include min-media(568px, landscape) {
   /* Empresa
 ========================================================================== */
@@ -348,7 +345,6 @@ Los estilos del bloque .informacion correspondientes a la vista legal, están en
 }
 
 /*-------------------------------------------- Tablet Portrait --------------------------------------------*/
-// @media only screen and (min-device-width: 768px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: portrait) {
 @include min-media(768px, portrait) {
   /* Empresas
 ========================================================================== */
@@ -441,7 +437,6 @@ Los estilos del bloque .informacion correspondientes a la vista legal, están en
 }
 
 /*-------------------------------------------- Tablet Landscape --------------------------------------------*/
-// @media only screen and (min-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) and (orientation: landscape) {
 @include min-media(1024px, landscape) {
   /* Empresas
 ========================================================================== */
@@ -518,7 +513,6 @@ Los estilos del bloque .informacion correspondientes a la vista legal, están en
 }
 
 /*-------------------------------------------- Desktop responsive --------------------------------------------*/
-// @media only screen and (min-device-width: 1280px) and (-webkit-min-device-pixel-ratio: 1) {
 @include min-media(1280px) {
   /* Empresas
 ========================================================================== */
