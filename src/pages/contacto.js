@@ -51,7 +51,9 @@ const Contacto = ({ data }) => (
             <span class="datos__icono">
               <FontAwesomeIcon icon={["fas", "phone"]} fixedWidth size="1x" />
             </span>
-            <p class="datos__texto">0000-000-00-00</p>
+            <p class="datos__texto">
+              Master +58 (212) 9539447 <br /> Fax +58 (212) 9573365 / 3366
+            </p>
           </li>
           <li className="datos__item">
             <span class="datos__icono">
@@ -62,8 +64,8 @@ const Contacto = ({ data }) => (
               />
             </span>
             <p class="datos__texto">
-              Francisco de Miranda Avenue, Europe Tower, 3rd Floor, 3-B3
-              Offices. El Rosal. Caracas – Venezuela.
+              Avenida Francisco de Miranda, Torre Europa, Piso 3, Oficinas 3-B3.
+              El Rosal, Caracas, Venezuela.
             </p>
           </li>
         </ul>
@@ -88,7 +90,8 @@ const Contacto = ({ data }) => (
           ></textarea>
 
           <button className="datos__button">
-            <img className="datos__button-icon" src={Email} alt="email" /> Enviar mensaje
+            <img className="datos__button-icon" src={Email} alt="email" />{" "}
+            Enviar mensaje
           </button>
         </form>
       </div>
