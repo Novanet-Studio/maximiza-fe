@@ -117,6 +117,11 @@ export default Legal
 export const query = graphql`
   query LegalQuery {
     strapiLegal {
+      seo {
+        titulo
+        descripcion
+        imagen
+      }
       principal {
         titulo
         contenido
