@@ -7,6 +7,11 @@ module.exports = {
     title: `Maximiza - Asesoría de inversión`,
     description: `Somos una casa de bolsa que ofrece innovadoras herramientas para la inversión, gestión y estructuración de activos financieros.`,
     author: `@novanetstudio`,
+    image: `https://res.cloudinary.com/novanet-studio/image/upload/v1605300652/maximiza/uploads/maximiza_com_ve_inicio_289286fe23.jpg`,
+    type: "website",
+    siteUrl: "https://viarte.net",
+    titleTemplate: " Viarte",
+    twitterUsername: "@novanetstudio",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

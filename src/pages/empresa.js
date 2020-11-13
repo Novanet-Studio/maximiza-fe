@@ -19,9 +19,9 @@ const Empresa = ({ data }) => {
   return (
     <Layout>
       <SEO
-        title={data.strapiEmpresa.seo.title}
-        description={data.strapiEmpresa.seo.description}
-        image={data.strapiEmpresa.seo.image}
+        title={data.strapiEmpresa.seo.titulo}
+        description={data.strapiEmpresa.seo.descripcion}
+        image={data.strapiEmpresa.seo.imagen}
       />
       <section className="principal">
         <div className="columna columna--izq">
@@ -30,8 +30,6 @@ const Empresa = ({ data }) => {
             fluid={data.strapiEmpresa.principal.imagen.childImageSharp.fluid}
             alt={data.strapiEmpresa.principal.seo_imagen.texto_alternativo}
             title={data.strapiEmpresa.principal.seo_imagen.titulo}
-
-
           />
         </div>
 
@@ -105,7 +103,9 @@ const Empresa = ({ data }) => {
 
       <section className="aliados">
         <h2>{data.strapiEmpresa.aliados.titulo}</h2>
-        <p className="aliados__descripcion">{data.strapiEmpresa.aliados.contenido}</p>
+        <p className="aliados__descripcion">
+          {data.strapiEmpresa.aliados.contenido}
+        </p>
         <Aliados />
       </section>
 

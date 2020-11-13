@@ -73,10 +73,10 @@ const Responsabilidad = ({ data }) => (
     render={(data) => (
       <Layout>
         <SEO
-        title={data.strapiResponsabilidad.seo.title}
-        description={data.strapiResponsabilidad.seo.description}
-        image={data.strapiResponsabilidad.seo.image}
-      />
+          title={data.strapiResponsabilidad.seo.titulo}
+          description={data.strapiResponsabilidad.seo.descripcion}
+          image={data.strapiResponsabilidad.seo.imagen}
+        />
         <section className="principal">
           <div className="columna columna--izq">
             <h1 className="principal__titulo">
@@ -91,8 +91,14 @@ const Responsabilidad = ({ data }) => (
           <div className="columna columna--der">
             <Img
               className="principal__imagen"
-              fluid={data.strapiResponsabilidad.principal.imagen.childImageSharp.fluid}
-              alt={data.strapiResponsabilidad.principal.seo_imagen.texto_alternativo}
+              fluid={
+                data.strapiResponsabilidad.principal.imagen.childImageSharp
+                  .fluid
+              }
+              alt={
+                data.strapiResponsabilidad.principal.seo_imagen
+                  .texto_alternativo
+              }
               title={data.strapiResponsabilidad.principal.seo_imagen.titulo}
             />
           </div>

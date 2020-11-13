@@ -12,9 +12,9 @@ const Index = ({ data }) => {
   return (
     <LayoutIndex>
       <SEO
-        title={data.strapiHome.seo.title}
-        description={data.strapiHome.seo.description}
-        image={data.strapiHome.seo.image}
+        title={data.strapiHome.seo.titulo}
+        description={data.strapiHome.seo.descripcion}
+        image={data.strapiHome.seo.imagen}
       />
       <section className="principal">
         <div className="columna columna--izq">

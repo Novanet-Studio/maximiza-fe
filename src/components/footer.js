@@ -57,7 +57,8 @@ const Footer = () => (
         </ul>
         <p className="footer__derechos">
           © {new Date().getFullYear()} Maximiza Casa de Bolsa - Derechos
-          reservados | Diseñado por: <img className="footer__imagen" src={data.logonn.publicURL} />
+          reservados | Diseñado por:{" "}
+          <img className="footer__imagen" src={data.logonn.publicURL} />
         </p>
       </footer>
     )}

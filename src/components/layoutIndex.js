@@ -20,7 +20,6 @@ const Layout = ({ children }) => {
       main.style.opacity = 1
       setIsToggled(false)
     }
-
   }
 
   return (

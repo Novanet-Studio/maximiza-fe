@@ -8,7 +8,11 @@ import "./medios.scss"
 
 const Medios = ({ data }) => (
   <Layout>
-    <SEO title="Inicio" />
+    <SEO
+      title={data.strapiMedios.seo.titulo}
+      description={data.strapiMedios.descripcion}
+      image={data.strapiMedios.seo.imagen}
+    />
     <section className="principal">
       <div className="columna columna--izq">
         <Img
@@ -27,7 +31,6 @@ const Medios = ({ data }) => (
         </p>
       </div>
     </section>
-    {/* <section className="medios"></section> */}
     <CTA
       mensaje="¡Gracias por preferirnos!"
       textoBoton="Contáctanos de manera directa a medios@maximiza.com.ve"
@@ -40,6 +43,11 @@ export default Medios
 export const query = graphql`
   query MedioslQuery {
     strapiMedios {
+      seo {
+        titulo
+        descripcion
+        imagen
+      }
       principal {
         titulo
         contenido

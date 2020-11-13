@@ -10,15 +10,17 @@ import "./capital.scss"
 const Capital = ({ data }) => (
   <Layout>
     <SEO
-        title={data.strapiPrivateEquity.seo.title}
-        description={data.strapiPrivateEquity.seo.description}
-        image={data.strapiPrivateEquity.seo.image}
-      />
+      title={data.strapiPrivateEquity.seo.titulo}
+      description={data.strapiPrivateEquity.seo.descripcion}
+      image={data.strapiPrivateEquity.seo.imagen}
+    />
     <section className="principal">
       <div className="columna columna--izq">
         <Img
           className="principal__imagen"
-          fluid={data.strapiPrivateEquity.principal.imagen.childImageSharp.fluid}
+          fluid={
+            data.strapiPrivateEquity.principal.imagen.childImageSharp.fluid
+          }
           alt={data.strapiPrivateEquity.principal.seo_imagen.texto_alternativo}
           title={data.strapiPrivateEquity.principal.seo_imagen.titulo}
         />

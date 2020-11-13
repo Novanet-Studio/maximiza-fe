@@ -8,7 +8,9 @@ const Modal = ({ data, id, onClose, imageFieldName }) =>
       item.id === id && (
         <div className="modal" key={item.id}>
           <div className="modal__content modal__contenido">
-            <button className="modal__boton" onClick={onClose}>&times;</button>
+            <button className="modal__boton" onClick={onClose}>
+              &times;
+            </button>
             <div className="modal__body modal__cuerpo">
               {imageFieldName === undefined || (
                 <Img

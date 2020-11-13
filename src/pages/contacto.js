@@ -15,10 +15,10 @@ library.add(fab)
 const Contacto = ({ data }) => (
   <Layout>
     <SEO
-        title={data.strapiContact.seo.title}
-        description={data.strapiContact.seo.description}
-        image={data.strapiContact.seo.image}
-      />
+      title={data.strapiContact.seo.titulo}
+      description={data.strapiContact.seo.descripcion}
+      image={data.strapiContact.seo.imagen}
+    />
     <SEO title="Inicio" />
     <section className="principal">
       {console.log(data)}
@@ -28,7 +28,6 @@ const Contacto = ({ data }) => (
           fluid={data.strapiContact.principal.imagen.childImageSharp.fluid}
           title={data.strapiContact.principal.seo_imagen.titulo}
           alt={data.strapiContact.principal.seo_imagen.texto_alternativo}
-
         />
       </div>
       <div className="columna columna--der">
@@ -123,7 +122,7 @@ export const query = graphql`
           childImageSharp {
             fluid(maxWidth: 630) {
               ...GatsbyImageSharpFluid
-            }            
+            }
           }
         }
         seo_imagen {

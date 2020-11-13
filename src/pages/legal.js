@@ -17,7 +17,11 @@ const Legal = ({ data }) => {
   const [targetModal, setTargetModal] = useState("")
   return (
     <Layout>
-      <SEO title="Inicio" />
+      <SEO
+        title={data.strapiLegal.seo.titulo}
+        description={data.strapiLegal.descripcion}
+        image={data.strapiLegal.seo.imagen}
+      />
       <section className="principal">
         <div className="columna columna--izq">
           <h1 className="principal__titulo">
@@ -33,7 +37,6 @@ const Legal = ({ data }) => {
             fluid={data.strapiLegal.principal.imagen.childImageSharp.fluid}
             alt={data.strapiLegal.principal.seo_imagen.texto_alternativo}
             title={data.strapiLegal.principal.seo_imagen.titulo}
-
           />
         </div>
       </section>
@@ -72,7 +75,6 @@ const Legal = ({ data }) => {
           fluid={data.strapiLegal.codigo.imagen.childImageSharp.fluid}
           alt={data.strapiLegal.codigo.seo_imagen.texto_alternativo}
           title={data.strapiLegal.codigo.seo_imagen.titulo}
-
         />
         <div className="etica__contenido">
           <h2 className="etica__titulo">{data.strapiLegal.codigo.titulo}</h2>

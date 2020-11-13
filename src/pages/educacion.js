@@ -10,10 +10,10 @@ import "./educacion.scss"
 const Educacion = ({ data }) => (
   <Layout>
     <SEO
-        title={data.strapiEducacion.seo.title}
-        description={data.strapiEducacion.seo.description}
-        image={data.strapiEducacion.seo.image}
-      />
+      title={data.strapiEducacion.seo.titulo}
+      description={data.strapiEducacion.seo.descripcion}
+      image={data.strapiEducacion.seo.imagen}
+    />
     <section className="principal">
       <div className="columna columna--izq">
         <h1 className="principal__titulo">

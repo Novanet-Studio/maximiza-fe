@@ -8,7 +8,11 @@ import "./blog.scss"
 
 const IndexPage = ({ data }) => (
   <Layout>
-    <SEO title="Inicio" />
+    <SEO
+      title={data.strapiBlog.seo.titulo}
+      description={data.strapiBlog.descripcion}
+      image={data.strapiBlog.seo.imagen}
+    />
     <section className="principal">
       <div className="columna columna--izq">
         <h1 className="principal__titulo">
@@ -24,8 +28,6 @@ const IndexPage = ({ data }) => (
           fluid={data.strapiBlog.principal.imagen.childImageSharp.fluid}
           alt={data.strapiBlog.principal.seo_imagen.texto_alternativo}
           title={data.strapiBlog.principal.seo_imagen.titulo}
-
-
         />
       </div>
     </section>
@@ -64,6 +66,11 @@ export default IndexPage
 export const query = graphql`
   query BlogQuery {
     strapiBlog {
+      seo {
+        titulo
+        descripcion
+        imagen
+      }
       principal {
         titulo
         contenido

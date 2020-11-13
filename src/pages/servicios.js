@@ -15,9 +15,9 @@ const Servicios = ({ data }) => {
   return (
     <Layout>
       <SEO
-        title={data.strapiServicios.seo.title}
-        description={data.strapiServicios.seo.description}
-        image={data.strapiServicios.seo.image}
+        title={data.strapiServicios.seo.titulo}
+        description={data.strapiServicios.seo.descripcion}
+        image={data.strapiServicios.seo.imagen}
       />
       <section className="principal">
         <div className="columna columna--izq">
@@ -50,7 +50,6 @@ const Servicios = ({ data }) => {
                 fluid={item.imagen.childImageSharp.fluid}
                 title={item.seo_imagen.titulo}
                 alt={item.seo_imagen.textp_alternativo}
-                
               />
             </div>
             <ul className="inversionista__contenido">
@@ -72,7 +71,9 @@ const Servicios = ({ data }) => {
                   />
 
                   <div className="inversionista__dropdown">
-                    <strong className="inversionista__texto">{element.titulo}</strong>
+                    <strong className="inversionista__texto">
+                      {element.titulo}
+                    </strong>
                     <ReactMarkdown
                       className="inversionista__descripcion"
                       source={element.contenido.substring(0, 200).concat("...")}

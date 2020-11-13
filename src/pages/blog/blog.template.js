@@ -2,6 +2,7 @@ import React from "react"
 import Img from "gatsby-image"
 import { Link, graphql } from "gatsby"
 import Layout from "../../components/layout"
+import SEO from "../../components/seo"
 import { window } from "browser-monads"
 import ReactMarkdown from "react-markdown"
 import {
@@ -16,6 +17,11 @@ const shareUrl = window.location.href
 
 const BlogTemplate = ({ data }) => (
   <Layout>
+    <SEO
+      title={data.strapiArticulo.titulo}
+      description={data.strapiArticulo.descripcion}
+      image={data.strapiArticulo.imagen.publicURL}
+    />
     <section className="articulo__principal">
       <Link className="articulo__boton-regreso" to="../../blog">
         « Volver al blog
@@ -56,6 +62,7 @@ export const query = graphql`
       titulo
       descripcion
       imagen {
+        publicURL
         childImageSharp {
           fluid(maxWidth: 630) {
             ...GatsbyImageSharpFluid
