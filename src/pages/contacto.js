@@ -9,27 +9,34 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // @fortawesome libraries
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fab } from "@fortawesome/free-brands-svg-icons"
-import { fas } from "@fortawesome/free-solid-svg-icons"
 // add fas and fab to the library
-library.add(fab, fas)
+library.add(fab)
 
 const Contacto = ({ data }) => (
   <Layout>
+    <SEO
+        title={data.strapiContact.seo.title}
+        description={data.strapiContact.seo.description}
+        image={data.strapiContact.seo.image}
+      />
     <SEO title="Inicio" />
     <section className="principal">
       {console.log(data)}
       <div className="columna columna--izq">
         <Img
           className="principal__imagen"
-          fluid={data.strapiContacto.principal.imagen.childImageSharp.fluid}
+          fluid={data.strapiContact.principal.imagen.childImageSharp.fluid}
+          title={data.strapiContact.principal.seo_imagen.titulo}
+          alt={data.strapiContact.principal.seo_imagen.texto_alternativo}
+
         />
       </div>
       <div className="columna columna--der">
         <h1 className="principal__titulo">
-          {data.strapiContacto.principal.titulo}
+          {data.strapiContact.principal.titulo}
         </h1>
         <p className="principal__texto">
-          {data.strapiContacto.principal.contenido}
+          {data.strapiContact.principal.contenido}
         </p>
       </div>
     </section>
@@ -102,8 +109,13 @@ const Contacto = ({ data }) => (
 export default Contacto
 
 export const query = graphql`
-  query ContactoQuery {
-    strapiContacto {
+  query ContactQuery {
+    strapiContact {
+      seo {
+        titulo
+        descripcion
+        imagen
+      }
       principal {
         titulo
         contenido
@@ -111,8 +123,12 @@ export const query = graphql`
           childImageSharp {
             fluid(maxWidth: 630) {
               ...GatsbyImageSharpFluid
-            }
+            }            
           }
+        }
+        seo_imagen {
+          titulo
+          texto_alternativo
         }
       }
     }

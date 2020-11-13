@@ -22,6 +22,10 @@ const IndexPage = ({ data }) => (
         <Img
           className="principal__imagen"
           fluid={data.strapiBlog.principal.imagen.childImageSharp.fluid}
+          alt={data.strapiBlog.principal.seo_imagen.texto_alternativo}
+          title={data.strapiBlog.principal.seo_imagen.titulo}
+
+
         />
       </div>
     </section>
@@ -34,6 +38,8 @@ const IndexPage = ({ data }) => (
               <Img
                 className="blog__imagen"
                 fluid={articulo.imagen.childImageSharp.fluid}
+                alt={articulo.seo_imagen.texto_alternativo}
+                title={articulo.seo_imagen.titulo}
               />
               <h4 className="blog__titulo">{articulo.titulo}</h4>
             </div>
@@ -68,6 +74,10 @@ export const query = graphql`
             }
           }
         }
+        seo_imagen {
+          texto_alternativo
+          titulo
+        }
       }
     }
 
@@ -83,6 +93,10 @@ export const query = graphql`
                 ...GatsbyImageSharpFluid
               }
             }
+          }
+          seo_imagen {
+            texto_alternativo
+            titulo
           }
           Slug
         }

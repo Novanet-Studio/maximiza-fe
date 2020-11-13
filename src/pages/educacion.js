@@ -9,7 +9,11 @@ import "./educacion.scss"
 
 const Educacion = ({ data }) => (
   <Layout>
-    <SEO title="Inicio" />
+    <SEO
+        title={data.strapiEducacion.seo.title}
+        description={data.strapiEducacion.seo.description}
+        image={data.strapiEducacion.seo.image}
+      />
     <section className="principal">
       <div className="columna columna--izq">
         <h1 className="principal__titulo">
@@ -25,6 +29,8 @@ const Educacion = ({ data }) => (
         <Img
           className="principal__imagen"
           fluid={data.strapiEducacion.principal.imagen.childImageSharp.fluid}
+          alt={data.strapiEducacion.principal.seo_imagen.texto_alternativo}
+          title={data.strapiEducacion.principal.seo_imagen.titulo}
         />
       </div>
     </section>
@@ -37,6 +43,8 @@ const Educacion = ({ data }) => (
             <Img
               className="innovar__imagen"
               fluid={item.imagen.childImageSharp.fluid}
+              alt={item.seo_imagen.texto_alternativo}
+              title={item.seo_imagen.titulo}
             />
             <div className="innovar__textos">
               <h3 className="innovar__subtitulo">{item.titulo}</h3>
@@ -59,6 +67,8 @@ const Educacion = ({ data }) => (
             <Img
               className="programas__imagen"
               fluid={item.imagen.childImageSharp.fluid}
+              alt={item.seo_imagen.texto_alternativo}
+              title={item.seo_imagen.titulo}
             />
             <ul className="programas__lista">
               {item.mercados.map((mercado) => (
@@ -84,6 +94,11 @@ export default Educacion
 export const query = graphql`
   query EducacionQuery {
     strapiEducacion {
+      seo {
+        titulo
+        descripcion
+        imagen
+      }
       principal {
         titulo
         contenido
@@ -93,6 +108,10 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+        }
+        seo_imagen {
+          titulo
+          texto_alternativo
         }
       }
       items_titulo
@@ -106,6 +125,10 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+        }
+        seo_imagen {
+          titulo
+          texto_alternativo
         }
       }
       programas_titulo
@@ -123,6 +146,10 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+        }
+        seo_imagen {
+          titulo
+          texto_alternativo
         }
       }
     }

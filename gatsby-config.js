@@ -58,7 +58,7 @@ module.exports = {
         contentTypes: ["articulo"],
         singleTypes: [
           "blog",
-          "contacto",
+          "contact",
           "educacion",
           "empresa",
           "home",

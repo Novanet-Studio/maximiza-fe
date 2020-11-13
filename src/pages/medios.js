@@ -14,6 +14,8 @@ const Medios = ({ data }) => (
         <Img
           className="principal__imagen"
           fluid={data.strapiMedios.principal.imagen.childImageSharp.fluid}
+          alt={data.strapiMedios.principal.seo_imagen.texto_alternativo}
+          title={data.strapiMedios.principal.seo_imagen.titulo}
         />
       </div>
       <div className="columna columna--der">
@@ -47,6 +49,10 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+        }
+        seo_imagen {
+          texto_alternativo
+          titulo
         }
       }
     }

@@ -12,6 +12,11 @@ const Responsabilidad = ({ data }) => (
     query={graphql`
       query ResponsabilidadQuery {
         strapiResponsabilidad {
+          seo {
+            titulo
+            descripcion
+            imagen
+          }
           principal {
             titulo
             contenido
@@ -21,6 +26,10 @@ const Responsabilidad = ({ data }) => (
                   ...GatsbyImageSharpFluid
                 }
               }
+            }
+            seo_imagen {
+              titulo
+              texto_alternativo
             }
           }
           contribucion_titulo
@@ -63,7 +72,11 @@ const Responsabilidad = ({ data }) => (
     `}
     render={(data) => (
       <Layout>
-        <SEO title="Inicio" />
+        <SEO
+        title={data.strapiResponsabilidad.seo.title}
+        description={data.strapiResponsabilidad.seo.description}
+        image={data.strapiResponsabilidad.seo.image}
+      />
         <section className="principal">
           <div className="columna columna--izq">
             <h1 className="principal__titulo">
@@ -78,10 +91,9 @@ const Responsabilidad = ({ data }) => (
           <div className="columna columna--der">
             <Img
               className="principal__imagen"
-              fluid={
-                data.strapiResponsabilidad.principal.imagen.childImageSharp
-                  .fluid
-              }
+              fluid={data.strapiResponsabilidad.principal.imagen.childImageSharp.fluid}
+              alt={data.strapiResponsabilidad.principal.seo_imagen.texto_alternativo}
+              title={data.strapiResponsabilidad.principal.seo_imagen.titulo}
             />
           </div>
         </section>
@@ -117,6 +129,8 @@ const Responsabilidad = ({ data }) => (
               <Img
                 className="causas__imagen"
                 fluid={data.as.childImageSharp.fluid}
+                alt="Alimenta la solidaridad logo"
+                title="Alimenta la solidaridad"
               />
               <p className="causas__texto">Alimenta la solidaridad</p>
             </li>
@@ -124,6 +138,8 @@ const Responsabilidad = ({ data }) => (
               <Img
                 className="causas__imagen"
                 fluid={data.ccc.childImageSharp.fluid}
+                alt="Logo Cámara de Comercio de Caracas"
+                title="Logo Cámara de Comercio de Caracas"
               />
               <p className="causas__texto">Cámara de Comercio de Caracas</p>
             </li>
@@ -131,6 +147,8 @@ const Responsabilidad = ({ data }) => (
               <Img
                 className="causas__imagen"
                 fluid={data.fa.childImageSharp.fluid}
+                alt="Fe Y Alegría logo"
+                title="Fe Y Alegría logo"
               />
               <p className="causas__texto">Fe y Alegría</p>
             </li>
@@ -138,6 +156,8 @@ const Responsabilidad = ({ data }) => (
               <Img
                 className="causas__imagen"
                 fluid={data.acide.childImageSharp.fluid}
+                alt="Acide logo"
+                title="Acide logo"
               />
               <p className="causas__texto">Acide</p>
             </li>

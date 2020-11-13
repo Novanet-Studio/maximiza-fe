@@ -11,10 +11,19 @@ import "./index.scss"
 const Index = ({ data }) => {
   return (
     <LayoutIndex>
-      <SEO title="Inicio" />
+      <SEO
+        title={data.strapiHome.seo.title}
+        description={data.strapiHome.seo.description}
+        image={data.strapiHome.seo.image}
+      />
       <section className="principal">
         <div className="columna columna--izq">
-          <img src={Logo} alt="logo" className="principal__logo" />
+          <img
+            src={Logo}
+            title="Maximiza logo"
+            alt="Maximiza logo"
+            className="principal__logo"
+          />
           <p className="principal__texto principal__texto--corto">
             {data.strapiHome.principal.logo_texto}
           </p>
@@ -24,6 +33,8 @@ const Index = ({ data }) => {
           <Img
             className="principal__imagen"
             fluid={data.strapiHome.principal.imagen.childImageSharp.fluid}
+            title={data.strapiHome.principal.seo_imagen.titulo}
+            alt={data.strapiHome.principal.seo_imagen.texto_alternativo}
           />
         </div>
       </section>
@@ -48,11 +59,15 @@ const Index = ({ data }) => {
         <ul className="servicios__lista">
           {data.strapiHome.servicios.map((item) => (
             <li className="servicios__item" key={item.id}>
-              <h3 className="servicios__subtitulo">{item.titulo}</h3>
-              <p className="servicios__descripcion">{item.contenido}</p>
+              <h3 className="servicios__subtitulo">{item.seo_imagen.titulo}</h3>
+              <p className="servicios__descripcion">
+                {item.seo_imagen.contenido}
+              </p>
               <Img
                 className="servicios__imagen"
                 fluid={item.imagen.childImageSharp.fluid}
+                title={item.seo_imagen.titulo}
+                alt={item.seo_imagen.texto_alternativo}
               />
             </li>
           ))}
@@ -86,7 +101,8 @@ const Index = ({ data }) => {
 
           <div className="form__grupo-der">
             <button className="form__button">
-              <img src={Email} className="form__icono" alt="email" /> Enviar mensaje
+              <img src={Email} className="form__icono" alt="email" /> Enviar
+              mensaje
             </button>
           </div>
         </form>
@@ -100,6 +116,11 @@ export default Index
 export const query = graphql`
   query IndexQuery {
     strapiHome {
+      seo {
+        titulo
+        descripcion
+        imagen
+      }
       principal {
         imagen {
           childImageSharp {
@@ -107,6 +128,10 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+        }
+        seo_imagen {
+          titulo
+          texto_alternativo
         }
         logo_texto
       }
@@ -127,6 +152,10 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+        }
+        seo_imagen {
+          titulo
+          texto_alternativo
         }
       }
       contacto_titulo

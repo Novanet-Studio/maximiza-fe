@@ -31,6 +31,9 @@ const Legal = ({ data }) => {
           <Img
             className="principal__imagen"
             fluid={data.strapiLegal.principal.imagen.childImageSharp.fluid}
+            alt={data.strapiLegal.principal.seo_imagen.texto_alternativo}
+            title={data.strapiLegal.principal.seo_imagen.titulo}
+
           />
         </div>
       </section>
@@ -67,6 +70,9 @@ const Legal = ({ data }) => {
         <Img
           className="etica__imagen"
           fluid={data.strapiLegal.codigo.imagen.childImageSharp.fluid}
+          alt={data.strapiLegal.codigo.seo_imagen.texto_alternativo}
+          title={data.strapiLegal.codigo.seo_imagen.titulo}
+
         />
         <div className="etica__contenido">
           <h2 className="etica__titulo">{data.strapiLegal.codigo.titulo}</h2>
@@ -119,6 +125,10 @@ export const query = graphql`
             }
           }
         }
+        seo_imagen {
+          texto_alternativo
+          titulo
+        }
       }
       informacion {
         id
@@ -134,6 +144,10 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+        }
+        seo_imagen {
+          texto_alternativo
+          titulo
         }
       }
       normativas_titulo

@@ -9,14 +9,18 @@ import "./capital.scss"
 
 const Capital = ({ data }) => (
   <Layout>
-    <SEO title="Inicio" />
+    <SEO
+        title={data.strapiPrivateEquity.seo.title}
+        description={data.strapiPrivateEquity.seo.description}
+        image={data.strapiPrivateEquity.seo.image}
+      />
     <section className="principal">
       <div className="columna columna--izq">
         <Img
           className="principal__imagen"
-          fluid={
-            data.strapiPrivateEquity.principal.imagen.childImageSharp.fluid
-          }
+          fluid={data.strapiPrivateEquity.principal.imagen.childImageSharp.fluid}
+          alt={data.strapiPrivateEquity.principal.seo_imagen.texto_alternativo}
+          title={data.strapiPrivateEquity.principal.seo_imagen.titulo}
         />
       </div>
       <div className="columna columna--der">
@@ -29,13 +33,17 @@ const Capital = ({ data }) => (
       </div>
     </section>
     <section className="partners">
-      <h2 className="partners__titulo">{data.strapiPrivateEquity.partners_titulo}</h2>
+      <h2 className="partners__titulo">
+        {data.strapiPrivateEquity.partners_titulo}
+      </h2>
       <ul className="partners__lista">
         {data.strapiPrivateEquity.partners_secciones.map((item) => (
           <li className="partners__item" key={item.id}>
             <Img
               className="partners__imagen"
               fluid={item.imagen.childImageSharp.fluid}
+              alt={item.seo_imagen.texto_alternativo}
+              title={item.seo_imagen.titulo}
             />
             <ReactMarkdown
               className="partners__descripcion"
@@ -58,6 +66,11 @@ export default Capital
 export const query = graphql`
   query CapitalQuery {
     strapiPrivateEquity {
+      seo {
+        titulo
+        descripcion
+        imagen
+      }
       principal {
         titulo
         contenido
@@ -67,6 +80,10 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+        }
+        seo_imagen {
+          titulo
+          texto_alternativo
         }
       }
       partners_titulo
@@ -78,6 +95,10 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+        }
+        seo_imagen {
+          titulo
+          texto_alternativo
         }
         contenido
       }

@@ -17,7 +17,7 @@ const Footer = () => (
   <StaticQuery
     query={graphql`
       query FooterQuery {
-        strapiContacto {
+        strapiContact {
           info_contacto {
             icono
             id
@@ -34,7 +34,7 @@ const Footer = () => (
     render={(data) => (
       <footer className="footer">
         <ul className="footer__grupo-rrss">
-          {data.strapiContacto.info_contacto.map((document) => (
+          {data.strapiContact.info_contacto.map((document) => (
             <li className="footer__rrss" key={document.id}>
               <a
                 href={document.vinculo}

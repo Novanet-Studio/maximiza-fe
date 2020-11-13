@@ -53,23 +53,34 @@ const aliadosLogos = () => (
     render={(data) => (
       <ul className="aliados__carrusel">
         <li className="aliados__carrusel-item">
-          <Img fluid={data.morgan.childImageSharp.fluid} />
+          <Img
+            fluid={data.morgan.childImageSharp.fluid}
+            title="Logo Morgan Stanley"
+          />
         </li>
         <li className="aliados__carrusel-item">
-          <Img fluid={data.intesa.childImageSharp.fluid} />
+          <Img
+            fluid={data.intesa.childImageSharp.fluid}
+            title="Logo Intesa San Paolo"
+          />
         </li>
         <li className="aliados__carrusel-item">
-          <Img fluid={data.vitral.childImageSharp.fluid} />
+          <Img fluid={data.vitral.childImageSharp.fluid} title="Logo Vitral" />
         </li>
         <li className="aliados__carrusel-item">
-          <Img fluid={data.suisse.childImageSharp.fluid} />
+          <Img
+            fluid={data.suisse.childImageSharp.fluid}
+            title="Logo Credit Suisse"
+          />
         </li>
         <li className="aliados__carrusel-item">
-          <Img fluid={data.oppenheimer.childImageSharp.fluid} />
+          <Img
+            fluid={data.oppenheimer.childImageSharp.fluid}
+            title="Logo Oppenheimer"
+          />
         </li>
-
         <li className="aliados__carrusel-item">
-          <Img fluid={data.silk.childImageSharp.fluid} />
+          <Img fluid={data.silk.childImageSharp.fluid} title="Logo Silk" />
         </li>
       </ul>
     )}

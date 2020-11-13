@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 import Aliados from "../components/aliados"
 import Modal from "../components/modal"
 import ReactMarkdown from "react-markdown"
@@ -17,11 +18,20 @@ const Empresa = ({ data }) => {
   const [targetModal, setTargetModal] = useState("")
   return (
     <Layout>
+      <SEO
+        title={data.strapiEmpresa.seo.title}
+        description={data.strapiEmpresa.seo.description}
+        image={data.strapiEmpresa.seo.image}
+      />
       <section className="principal">
         <div className="columna columna--izq">
           <Img
             className="principal__imagen"
             fluid={data.strapiEmpresa.principal.imagen.childImageSharp.fluid}
+            alt={data.strapiEmpresa.principal.seo_imagen.texto_alternativo}
+            title={data.strapiEmpresa.principal.seo_imagen.titulo}
+
+
           />
         </div>
 
@@ -42,6 +52,8 @@ const Empresa = ({ data }) => {
               <Img
                 className="historia__image"
                 fluid={item.imagen.childImageSharp.fluid}
+                alt={item.seo_imagen.texto_alternativo}
+                title={item.seo_imagen.titulo}
               />
               <div className="historia__descripcion">
                 <h3 className="historia__titulo">{item.titulo}</h3>
@@ -132,6 +144,11 @@ export default Empresa
 export const query = graphql`
   query EmpresaQuery {
     strapiEmpresa {
+      seo {
+        titulo
+        descripcion
+        imagen
+      }
       principal {
         titulo
         contenido
@@ -141,6 +158,10 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+        }
+        seo_imagen {
+          texto_alternativo
+          titulo
         }
       }
       historia {
@@ -153,6 +174,10 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+        }
+        seo_imagen {
+          texto_alternativo
+          titulo
         }
       }
       equipo {
@@ -174,6 +199,10 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+        }
+        seo_imagen {
+          texto_alternativo
+          titulo
         }
       }
       balances {

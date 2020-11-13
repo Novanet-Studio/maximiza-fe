@@ -14,7 +14,11 @@ const Servicios = ({ data }) => {
 
   return (
     <Layout>
-      <SEO title="Servicios" />
+      <SEO
+        title={data.strapiServicios.seo.title}
+        description={data.strapiServicios.seo.description}
+        image={data.strapiServicios.seo.image}
+      />
       <section className="principal">
         <div className="columna columna--izq">
           <h1 className="principal__titulo">
@@ -31,6 +35,8 @@ const Servicios = ({ data }) => {
           <Img
             className="principal__imagen"
             fluid={data.strapiServicios.principal.imagen.childImageSharp.fluid}
+            title={data.strapiServicios.principal.seo_imagen.titulo}
+            alt={data.strapiServicios.principal.seo_imagen.texto_alternativo}
           />
         </div>
       </section>
@@ -42,6 +48,9 @@ const Servicios = ({ data }) => {
               <Img
                 className="inversionista__imagen"
                 fluid={item.imagen.childImageSharp.fluid}
+                title={item.seo_imagen.titulo}
+                alt={item.seo_imagen.textp_alternativo}
+                
               />
             </div>
             <ul className="inversionista__contenido">
@@ -101,6 +110,11 @@ export default Servicios
 export const query = graphql`
   query ServiciosQuery {
     strapiServicios {
+      seo {
+        titulo
+        descripcion
+        imagen
+      }
       principal {
         titulo
         contenido
@@ -110,6 +124,10 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+        }
+        seo_imagen {
+          titulo
+          texto_alternativo
         }
       }
       inversionista {
@@ -121,6 +139,10 @@ export const query = graphql`
               ...GatsbyImageSharpFluid
             }
           }
+        }
+        seo_imagen {
+          titulo
+          texto_alternativo
         }
         items {
           id

@@ -23,6 +23,8 @@ const BlogTemplate = ({ data }) => (
       <Img
         className="articulo__imagen"
         fluid={data.strapiArticulo.imagen.childImageSharp.fluid}
+        alt={data.strapiArticulo.seo_imagen.texto_alternativo}
+        title={data.strapiArticulo.seo_imagen.titulo}
       />
       <h1 className="articulo__titulo">{data.strapiArticulo.titulo}</h1>
     </section>
@@ -59,6 +61,10 @@ export const query = graphql`
             ...GatsbyImageSharpFluid
           }
         }
+      }
+      seo_imagen {
+        texto_alternativo
+        titulo
       }
     }
   }
