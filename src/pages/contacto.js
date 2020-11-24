@@ -1,5 +1,6 @@
-import React, { useState } from "react"
-import { graphql, navigate } from "gatsby"
+import React from "react"
+import { graphql } from "gatsby"
+import { init, send } from "emailjs-com"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -10,44 +11,32 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fab } from "@fortawesome/free-brands-svg-icons"
 
-import { Form } from "react-final-form"
-import { Field } from "react-final-form-html5-validation"
+import { useForm } from "react-hook-form"
+
+init(process.env.GATSBY_EMAILJS_USERID)
 
 // add fas and fab to the library
 library.add(fab)
 
-function encode(data) {
-  return Object.keys(data)
-    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-    .join("&")
-}
-
 const Contacto = ({ data }) => {
-  const [state, setState] = useState({})
+  const { register, handleSubmit, errors } = useForm()
 
-  const onChange = (e) =>
-    setState({ ...state, [e.target.value]: e.target.value })
-
-  const onHandleSubmit = async (e) => {
-    e.preventDefault()
-    const form = e.target
-    const request = {
-      method: "POST",
-      headers: { "Content-Type": "application/x-form-urlencoded" },
-      body: encode({
-        "form-name": form.getAttribute("name"),
-        ...state,
-      }),
-    }
-
+  const onHandleSubmit = async (data) => {
     try {
-      await fetch("/", request)
-      navigate(form.getAttribute("action"))
-    } catch (err) {
-      alert(err)
+      const result = await send(
+        process.env.GATSBY_EMAILJS_SERVICEID, 
+        process.env.GATSBY_EMAILJS_TEMPLATEID, 
+        data
+      )
+      console.log(result.text)
+
+      document.querySelector("form").reset()
+    } catch (e) {
+      console.error(e)
     }
   }
 
+  console.log(errors)
 
   return (
     <Layout>
@@ -58,7 +47,6 @@ const Contacto = ({ data }) => {
       />
       <SEO title="Inicio" />
       <section className="principal">
-        {console.log(data)}
         <div className="columna columna--izq">
           <Img
             className="principal__imagen"
@@ -114,60 +102,47 @@ const Contacto = ({ data }) => {
           </ul>
         </div>
         <div className="columna columna--der">
-          <Form
-            onSubmit={onHandleSubmit}
-            render={({ handleSubmit, pristine, invalid }) => (
-              <form
-                id="contact-form"
-                className="datos__form"
-                name="contact"
-                method="post"
-                // action="/"
-                // Netlify
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
-              >
-                {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-                <input type="hidden" name="form-name" value="contact" />
-                <p hidden>
-                  <label>
-                    Don't fill this out:{" "}
-                    <input type="bot-field" onChange={onChange} />
-                  </label>
-                </p>
-                <Field
-                  name="name"
-                  type="text"
-                  component="input"
-                  className="datos__input"
-                  maxLength={20}
-                  tooLong="El nombre es demasiado largo"
-                  pattern="[A-Z].+"
-                  placeholder="Nombre y apellido"
-                  required
-                />
-                <Field
-                  name="email"
-                  type="email"
-                  component="input"
-                  className="datos__input"
-                  placeholder="Correo"
-                  typeMismatch="Esta no es una dirección de correo válida"
-                  required
-                />
-                <Field
-                  name="message"
-                  component="textarea"
-                  className="datos__textarea"
-                  required
-                />
-                <button className="datos__button">
-                  <img className="datos__button-icon" src={Email} alt="email" />{" "}
-                  Enviar mensaje
-                </button>
-              </form>
-            )}
-          />
+          <form className="datos__form" onSubmit={handleSubmit(onHandleSubmit)}>
+            <input
+              type="text"
+              name="name"
+              placeholder="Nombre y apellido"
+              className="datos__input"
+              ref={register({
+                required: true,
+                maxLength: {
+                  value: 20,
+                  message: "El nombre es demasiado largo",
+                },
+                pattern: {
+                  value: "[A-Z].+",
+                  message: "Carácteres no válidos"
+                },
+              })}
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Correo"
+              className="datos__input"
+              ref={register({
+                required: true,
+                pattern: {
+                  value: /^\S+@\S+$/i,
+                  message: "Esta no es una dirección de correo válida" 
+                },
+              })}
+            />
+            <textarea
+              name="message"
+              className="datos__textarea"
+              ref={register({ required: true })}
+            />
+            <button className="datos__button">
+              <img src={Email} alt="email" className="datos__button-icon" />{" "}
+              Enviar Mensaje
+            </button>
+          </form>
         </div>
       </section>
     </Layout>
