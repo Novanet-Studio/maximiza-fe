@@ -24,8 +24,8 @@ const Contacto = ({ data }) => {
   const onHandleSubmit = async (data) => {
     try {
       const result = await send(
-        process.env.GATSBY_EMAILJS_SERVICEID, 
-        process.env.GATSBY_EMAILJS_TEMPLATEID, 
+        process.env.GATSBY_EMAILJS_SERVICEID,
+        process.env.GATSBY_EMAILJS_TEMPLATEID,
         data
       )
       console.log(result.text)
@@ -102,7 +102,21 @@ const Contacto = ({ data }) => {
           </ul>
         </div>
         <div className="columna columna--der">
-          <form className="datos__form" onSubmit={handleSubmit(onHandleSubmit)}>
+          <form
+            name="contact"
+            className="datos__form"
+            onSubmit={handleSubmit(onHandleSubmit)}
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+          >
+            {/* Netlify Bot */}
+            <input type="hidden" name="form-name" value="contact"/>
+            <p hidden>
+              <label>
+                Don't fill this out:{" "}
+                <input name="bot-field" />
+              </label>
+            </p>
             <input
               type="text"
               name="name"
@@ -116,7 +130,7 @@ const Contacto = ({ data }) => {
                 },
                 pattern: {
                   value: "[A-Z].+",
-                  message: "Carácteres no válidos"
+                  message: "Carácteres no válidos",
                 },
               })}
             />
@@ -129,7 +143,7 @@ const Contacto = ({ data }) => {
                 required: true,
                 pattern: {
                   value: /^\S+@\S+$/i,
-                  message: "Esta no es una dirección de correo válida" 
+                  message: "Esta no es una dirección de correo válida",
                 },
               })}
             />
