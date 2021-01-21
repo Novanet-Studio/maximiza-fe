@@ -52,7 +52,13 @@
     line-height: 1.4rem;
     h2 {
       text-align: left;
-      margin: 4.5vh 0 0.5vh 0;
+      margin: 4.5vh 0 0 0;
+    }
+    p {
+      margin: 1vh 0 1vh 0;
+      &:first-child {
+        margin-top: 0;
+      }
     }
   }
   &__boton-regreso {
