@@ -58,7 +58,7 @@ export default BlogTemplate
 
 export const query = graphql`
   query BlogTemplateQuery($id: String) {
-    strapiArticulo(id: { eq: $id }) {
+    strapiArticulo(id: { eq: $id } ) {
       titulo
       descripcion
       imagen {

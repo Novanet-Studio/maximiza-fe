@@ -88,7 +88,7 @@ export const query = graphql`
       }
     }
 
-    articulos: allStrapiArticulo {
+    articulos: allStrapiArticulo(sort: { fields: [createdAt], order: DESC }) {
       edges {
         node {
           id

@@ -50,6 +50,10 @@
   &__descripcion {
     font-size: 0.95rem;
     line-height: 1.4rem;
+    h2 {
+      text-align: left;
+      margin: 4.5vh 0 0.5vh 0;
+    }
   }
   &__boton-regreso {
     font-weight: 700;
