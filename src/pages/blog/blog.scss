@@ -9,6 +9,7 @@
   }
   &__item {
     position: relative;
+    background: $blanco2;
   }
   &__cabecera {
     width: 100%;
@@ -29,9 +30,10 @@
     color: $blanco1;
     background-color: $verde1;
   }
-  &__texto {
-    background: $blanco2;
+  &__fecha {
+    color: $gris1;
   }
+
   &__botton {
     position: absolute;
     background: $verde1;
@@ -94,6 +96,10 @@
     }
     &__titulo {
       padding: 1vh 2vh;
+    }
+    &__fecha {
+      font-size: 0.7rem;
+      padding: 2vh 0 0 2vh;
     }
     &__texto {
       font-size: 0.8rem;
@@ -203,6 +209,9 @@
       line-height: 1.5rem;
       padding: 1vh;
     }
+    &__fecha {
+      padding: 2vh 0 0 1vh;
+    }
     &__texto {
       line-height: 1.3rem;
       padding: 1vh 1vh 3vh;
@@ -247,6 +256,10 @@
     &__titulo {
       font-size: 1rem;
       line-height: 1.5rem;
+    }
+    &__fecha {
+      font-size: 0.85rem;
+      padding: 2vh 0 0 2vh;
     }
     &__texto {
       font-size: 0.9rem;

@@ -45,6 +45,7 @@ const IndexPage = ({ data }) => (
               />
               <h4 className="blog__titulo">{articulo.titulo}</h4>
             </div>
+            <p className="blog__fecha">{articulo.fecha}</p>
             <ReactMarkdown
               className="blog__texto"
               source={articulo.descripcion.substring(0, 200).concat("...")}
@@ -93,6 +94,7 @@ export const query = graphql`
         node {
           id
           titulo
+          fecha(formatString: "DD MMMM YYYY")
           descripcion
           imagen {
             childImageSharp {
