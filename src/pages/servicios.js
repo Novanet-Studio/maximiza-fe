@@ -98,6 +98,23 @@ const Servicios = ({ data }) => {
           </div>
         ))}
       </section>
+      <section className="comisiones">
+        <h2 className="comisiones__titulo">Comisiones vigentes</h2>
+        <ul className="comisiones__lista">
+          <li className="comisiones__lista__item">
+            <h4>Compra/Venta de títulos valores</h4>
+            <p> Hasta 5% del monto transado</p>
+          </li>
+          <li className="comisiones__lista__item">
+            <h4>Estructuración de instrumentos de deuda</h4>
+            <p>Hasta 5% del monto emitido</p>
+          </li>
+          <li className="comisiones__lista__item">
+            <h4>Colocación de instrumentos de deuda</h4>
+            <p>Hasta 5% del monto colocado</p>
+          </li>
+        </ul>
+      </section>
       <CTA
         mensaje="¡Gracias por preferirnos!"
         textoBoton="Obtenga más información"

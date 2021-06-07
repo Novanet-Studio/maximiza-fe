@@ -80,6 +80,54 @@
   }
 }
 
+.comisiones {
+  @extend .flex;
+  justify-content: center;
+  margin-bottom: 6em ;
+
+  &__titulo {
+    width: 100%;
+  }
+
+  &__lista {
+    @extend .flex;
+    width: 90%;
+
+    &__item {
+      @extend .flex;
+      width: 100%;
+
+      &:nth-child(1) {
+        border-bottom: 2px solid $gris5;
+      }
+
+      &:nth-child(2) {
+        background-color: $blanco2;
+      }
+
+      &:nth-child(3) {
+        border-top: 2px solid $gris5;
+      }
+
+      h4,
+      p {
+        width: 50%;
+        padding: 1em;
+      }
+
+      h4 {
+        color: $verde1;
+        border-right: 2px solid $gris5;
+      }
+
+      p {
+        @extend .flex;
+        align-content: center;
+      }
+    }
+  }
+}
+
 /*-------------------------------------------- Mobile Portrait --------------------------------------------*/
 @include min-media(320px, portrait) {
   /*------Inversionista------*/
@@ -129,6 +177,10 @@
       margin-top: 2vh;
       padding: 0.5vh;
     }
+  }
+
+  .comisiones {
+    margin-bottom: 4em ;
   }
 }
 
@@ -200,6 +252,10 @@
       padding: 0.5vh;
       font-size: 0.75rem;
     }
+  }
+
+  .comisiones {
+    margin-bottom: 4em ;
   }
 }
 
