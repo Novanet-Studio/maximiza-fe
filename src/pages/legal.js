@@ -95,7 +95,7 @@ const Legal = ({ data }) => {
                     size="1.5x"
                   />
                 </div>
-                <a className="normativas__down" href={item.vinculo} download>
+                <a className="normativas__down" href={item.vinculo} target="_blank" rel="noreferrer" download>
                   <FontAwesomeIcon
                     icon={["fas", "download"]}
                     fixedWidth
