@@ -67,7 +67,7 @@ const Legal = ({ data }) => {
             onClose={() => setTargetModal("")}
           />
         </ul>
-      </section>
+      </section>about/
 
       <section className="etica">
         <Img
@@ -95,7 +95,7 @@ const Legal = ({ data }) => {
                     size="1.5x"
                   />
                 </div>
-                <a className="normativas__down" href={item.vinculo} target="_blank" rel="noreferrer" download>
+                <a className="normativas__down" href={item.vinculo} download>
                   <FontAwesomeIcon
                     icon={["fas", "download"]}
                     fixedWidth
