@@ -3,7 +3,6 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Email from "../assets/images/email.svg"
 import "./contacto.scss"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // @fortawesome libraries
@@ -100,10 +99,7 @@ const Contacto = ({ data }) => {
               className="datos__input"
             />
             <textarea name="message" className="datos__textarea" />
-            <button type="submit" className="datos__button">
-              <img src={Email} alt="email" className="datos__button-icon" />{" "}
-              Enviar Mensaje
-            </button>
+            <input type="submit" className="datos__button" value="Enviar mensaje ➤"  />              
           </form>
         </div>
       </section>

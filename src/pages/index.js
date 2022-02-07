@@ -4,7 +4,6 @@ import Img from "gatsby-image"
 import LayoutIndex from "../components/layoutIndex"
 import SEO from "../components/seo"
 import ReactMarkdown from "react-markdown"
-import Email from "../assets/images/email.svg"
 import Logo from "../assets/images/logo-maximiza.svg"
 import "./index.scss"
 
@@ -102,10 +101,7 @@ const Index = ({ data }) => {
             <textarea name="message" className="form__textarea" />
           </div>
           <div className="form__grupo-der">
-            <button type="submit" className="form__button">
-              <img src={Email} alt="email" className="form__icono" /> Enviar
-              Mensaje
-            </button>
+          <input type="submit" className="datos__button" value="Enviar mensaje ➤"  />   
           </div>
         </form>
       </section>
