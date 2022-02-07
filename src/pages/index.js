@@ -84,7 +84,7 @@ const Index = ({ data }) => {
           className="form"
           data-netlify="true"
           data-netlify-honeypot="bot-field"
-          action="/gracias/"
+          action="/gracias"
         >
           <div className="form__grupo-izq">
             {/* Netlify Bot */}
@@ -109,7 +109,7 @@ const Index = ({ data }) => {
             <textarea name="message" className="form__textarea" />
           </div>
           <div className="form__grupo-der">
-            <button className="form__button">
+            <button type="submit"  className="form__button">
               <img src={Email} alt="email" className="form__icono" /> Enviar
               Mensaje
             </button>

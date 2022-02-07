@@ -84,7 +84,7 @@ const Contacto = ({ data }) => {
             data-netlify="true"
             name="contacto"
             className="datos__form"
-            action="/gracias/"
+            action="/gracias"
           >
             {/* Netlify Bot */}
             <input type="hidden" name="form-name" value="contact" />
@@ -106,7 +106,7 @@ const Contacto = ({ data }) => {
               className="datos__input"
             />
             <textarea name="message" className="datos__textarea" />
-            <button className="datos__button">
+            <button type="submit" className="datos__button">
               <img src={Email} alt="email" className="datos__button-icon" />{" "}
               Enviar Mensaje
             </button>
