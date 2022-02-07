@@ -1,7 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { useForm } from 'react-hook-form';
-import { init, send } from "emailjs-com"
 import Img from "gatsby-image"
 import LayoutIndex from "../components/layoutIndex"
 import SEO from "../components/seo"
@@ -10,28 +8,7 @@ import Email from "../assets/images/email.svg"
 import Logo from "../assets/images/logo-maximiza.svg"
 import "./index.scss"
 
-init(process.env.GATSBY_EMAILJS_USERID)
-
 const Index = ({ data }) => {
-  const { register, handleSubmit, errors } = useForm()
-
-  const onHandleSubmit = async (data) => {
-    try {
-      const result = await send(
-        process.env.GATSBY_EMAILJS_SERVICEID,
-        process.env.GATSBY_EMAILJS_TEMPLATEID,
-        data
-      )
-      console.log(result.text)
-
-      document.querySelector("form").reset()
-    } catch (e) {
-      console.error(e)
-    }
-  }
-
-  console.log(errors)
-
   return (
     <LayoutIndex>
       <SEO
@@ -103,11 +80,11 @@ const Index = ({ data }) => {
           comunicaremos con usted a la brevedad posible.
         </p>
         <form
-          name="contact"
+          name="inicio"
           className="form"
-          onSubmit={handleSubmit(onHandleSubmit)}
           data-netlify="true"
           data-netlify-honeypot="bot-field"
+          action="/gracias/"
         >
           <div className="form__grupo-izq">
             {/* Netlify Bot */}
@@ -122,41 +99,19 @@ const Index = ({ data }) => {
               name="name"
               placeholder="Nombre y apellido"
               className="form__input"
-              ref={register({
-                required: true,
-                maxLength: {
-                  value: 20,
-                  message: "El nombre es demasiado largo",
-                },
-                pattern: {
-                  value: "[A-Z].+",
-                  message: "Carácteres no válidos",
-                },
-              })}
             />
             <input
               type="email"
               name="email"
               placeholder="Correo"
               className="form__input"
-              ref={register({
-                required: true,
-                pattern: {
-                  value: /^\S+@\S+$/i,
-                  message: "Esta no es una dirección de correo válida",
-                },
-              })}
             />
-            <textarea
-              name="message"
-              className="form__textarea"
-              ref={register({ required: true })}
-            />
+            <textarea name="message" className="form__textarea" />
           </div>
           <div className="form__grupo-der">
             <button className="form__button">
-              <img src={Email} alt="email" className="form__icono" />{" "}
-              Enviar Mensaje
+              <img src={Email} alt="email" className="form__icono" /> Enviar
+              Mensaje
             </button>
           </div>
         </form>

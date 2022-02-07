@@ -28,7 +28,7 @@ const navigation = () => (
         <div className="nav__dropdown">
           <LinkNav text="Medios" to="/medios" />
           <LinkNav text="Blog" to="/blog" direction="left" />
-          <LinkNav text="Legal" to="/legal" />
+          <LinkNav text="Cumplimiento" to="/cumplimiento" />
         </div>
       </div>
     </div>

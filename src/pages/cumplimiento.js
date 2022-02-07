@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // @fortawesome libraries
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fas } from "@fortawesome/free-solid-svg-icons"
-import "./legal.scss"
+import "./cumplimiento.scss"
 // add fas and fab to the library
 library.add(fas)
 

@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { init, send } from "emailjs-com"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -11,33 +10,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fab } from "@fortawesome/free-brands-svg-icons"
 
-import { useForm } from "react-hook-form"
-
-init(process.env.GATSBY_EMAILJS_USERID)
-
 // add fas and fab to the library
 library.add(fab)
 
 const Contacto = ({ data }) => {
-  const { register, handleSubmit, errors } = useForm()
-
-  const onHandleSubmit = async (data) => {
-    try {
-      const result = await send(
-        process.env.GATSBY_EMAILJS_SERVICEID,
-        process.env.GATSBY_EMAILJS_TEMPLATEID,
-        data
-      )
-      console.log(result.text)
-
-      document.querySelector("form").reset()
-    } catch (e) {
-      console.error(e)
-    }
-  }
-
-  console.log(errors)
-
   return (
     <Layout>
       <SEO
@@ -103,18 +79,18 @@ const Contacto = ({ data }) => {
         </div>
         <div className="columna columna--der">
           <form
-            name="contact"
-            className="datos__form"
-            onSubmit={handleSubmit(onHandleSubmit)}
+            method="post"
+            netlify-honeypot="bot-field"
             data-netlify="true"
-            data-netlify-honeypot="bot-field"
+            name="contacto"
+            className="datos__form"
+            action="/gracias/"
           >
             {/* Netlify Bot */}
-            <input type="hidden" name="form-name" value="contact"/>
+            <input type="hidden" name="form-name" value="contact" />
             <p hidden>
               <label>
-                Don't fill this out:{" "}
-                <input name="bot-field" />
+                Don't fill this out: <input name="bot-field" />
               </label>
             </p>
             <input
@@ -122,36 +98,14 @@ const Contacto = ({ data }) => {
               name="name"
               placeholder="Nombre y apellido"
               className="datos__input"
-              ref={register({
-                required: true,
-                maxLength: {
-                  value: 20,
-                  message: "El nombre es demasiado largo",
-                },
-                pattern: {
-                  value: "[A-Z].+",
-                  message: "Carácteres no válidos",
-                },
-              })}
             />
             <input
               type="email"
               name="email"
               placeholder="Correo"
               className="datos__input"
-              ref={register({
-                required: true,
-                pattern: {
-                  value: /^\S+@\S+$/i,
-                  message: "Esta no es una dirección de correo válida",
-                },
-              })}
             />
-            <textarea
-              name="message"
-              className="datos__textarea"
-              ref={register({ required: true })}
-            />
+            <textarea name="message" className="datos__textarea" />
             <button className="datos__button">
               <img src={Email} alt="email" className="datos__button-icon" />{" "}
               Enviar Mensaje
