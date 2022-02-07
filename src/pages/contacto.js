@@ -79,15 +79,14 @@ const Contacto = ({ data }) => {
         </div>
         <div className="columna columna--der">
           <form
-            method="post"
-            netlify-honeypot="bot-field"
-            data-netlify="true"
-            name="contacto"
             className="datos__form"
+            method="POST"
+            data-netlify="true"
+            name="contacto"            
             action="/gracias"
           >
             <input type="hidden" name="bot-field" />
-            <input type="hidden" name="contacto" value="contacto" />
+            <input type="hidden" name="form-name" value="contacto" />
             <input
               type="text"
               name="name"

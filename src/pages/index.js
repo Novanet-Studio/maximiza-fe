@@ -80,15 +80,13 @@ const Index = ({ data }) => {
           comunicaremos con usted a la brevedad posible.
         </p>
         <form
-          name="inicio"
           className="form"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
+            
           action="/gracias"
         >
           <div className="form__grupo-izq">
             <input type="hidden" name="bot-field" />
-            <input type="hidden" name="inicio" value="inicio" />
+            <input type="hidden" name="form-name" value="inicio" />
             <input
               type="text"
               name="name"
