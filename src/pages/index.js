@@ -80,12 +80,17 @@ const Index = ({ data }) => {
         </p>
         <form
           className="form"
-            
-          action="/gracias"
+          method="POST"
+          data-netlify="true"
+          name="inicio"
+          action="/gracias/"
         >
           <div className="form__grupo-izq">
-            <input type="hidden" name="bot-field" />
-            <input type="hidden" name="form-name" value="inicio" />
+            <label>
+              <input type="hidden" name="bot-field" />
+              <input type="hidden" name="form-name" value="inicio" />
+            </label>
+
             <input
               type="text"
               name="name"
@@ -101,7 +106,11 @@ const Index = ({ data }) => {
             <textarea name="message" className="form__textarea" />
           </div>
           <div className="form__grupo-der">
-          <input type="submit" className="datos__button" value="Enviar mensaje ➤"  />   
+            <input
+              type="submit"
+              className="datos__button"
+              value="Enviar mensaje ➤"
+            />
           </div>
         </form>
       </section>

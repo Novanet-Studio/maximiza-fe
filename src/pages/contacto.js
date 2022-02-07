@@ -81,11 +81,14 @@ const Contacto = ({ data }) => {
             className="datos__form"
             method="POST"
             data-netlify="true"
-            name="contacto"            
-            action="/gracias"
+            name="contacto"
+            action="/gracias/"
           >
-            <input type="hidden" name="bot-field" />
-            <input type="hidden" name="form-name" value="contacto" />
+            <label>
+              <input type="hidden" name="bot-field" />
+              <input type="hidden" name="form-name" value="contacto" />
+            </label>
+
             <input
               type="text"
               name="name"
@@ -99,7 +102,11 @@ const Contacto = ({ data }) => {
               className="datos__input"
             />
             <textarea name="message" className="datos__textarea" />
-            <input type="submit" className="datos__button" value="Enviar mensaje ➤"  />              
+            <input
+              type="submit"
+              className="datos__button"
+              value="Enviar mensaje ➤"
+            />
           </form>
         </div>
       </section>
