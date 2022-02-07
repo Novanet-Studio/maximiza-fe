@@ -87,7 +87,7 @@ const Contacto = ({ data }) => {
             action="/gracias"
           >
             <input type="hidden" name="bot-field" />
-            <input type="hidden" name="form-name" value="contact" />
+            <input type="hidden" name="contacto" value="contacto" />
             <input
               type="text"
               name="name"

@@ -88,7 +88,7 @@ const Index = ({ data }) => {
         >
           <div className="form__grupo-izq">
             <input type="hidden" name="bot-field" />
-            <input type="hidden" name="form-name" value="contact" />
+            <input type="hidden" name="inicio" value="inicio" />
             <input
               type="text"
               name="name"
