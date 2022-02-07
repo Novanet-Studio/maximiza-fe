@@ -87,13 +87,8 @@ const Index = ({ data }) => {
           action="/gracias"
         >
           <div className="form__grupo-izq">
-            {/* Netlify Bot */}
+            <input type="hidden" name="bot-field" />
             <input type="hidden" name="form-name" value="contact" />
-            <p hidden>
-              <label>
-                Don't fill this out: <input name="bot-field" />
-              </label>
-            </p>
             <input
               type="text"
               name="name"
@@ -109,7 +104,7 @@ const Index = ({ data }) => {
             <textarea name="message" className="form__textarea" />
           </div>
           <div className="form__grupo-der">
-            <button type="submit"  className="form__button">
+            <button type="submit" className="form__button">
               <img src={Email} alt="email" className="form__icono" /> Enviar
               Mensaje
             </button>
