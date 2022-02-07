@@ -51,7 +51,7 @@ const Contacto = ({ data }) => {
                   size="1x"
                 />
               </span>
-              <p className="datos__texto">info@maximiza.com.ve</p>
+              <p className="datos__texto">contacto@maximiza.com.ve</p>
             </li>
             <li className="datos__item">
               <span className="datos__icono">
