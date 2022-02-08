@@ -67,7 +67,7 @@ const Legal = ({ data }) => {
             onClose={() => setTargetModal("")}
           />
         </ul>
-      </section>about/
+      </section>
 
       <section className="etica">
         <Img
