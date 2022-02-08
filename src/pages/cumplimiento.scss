@@ -250,7 +250,7 @@ Los estilos del bloque .información están en empresa.scss ya que comparte las 
 
   .informacion {
     &__item {
-      flex: 1 1 0;
+      flex: 1 1 33%;
       padding-bottom: 0;
     }
     &__descripcion {
