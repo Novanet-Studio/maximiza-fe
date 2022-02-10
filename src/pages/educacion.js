@@ -83,8 +83,10 @@ const Educacion = ({ data }) => (
       </div>
     </section>
     <CTA
+      estilo="cta-informacion__boton"
       mensaje="¡Gracias por preferirnos!"
       textoBoton="Obtenga más información"
+      link="/contacto"
     />
   </Layout>
 )

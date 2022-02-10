@@ -8,9 +8,9 @@ const linkActivo = {
 
 const linkStyles = {}
 
-const LinkNav = ({ text, direction = "right", to = "/" }) => (
+const LinkNav = ({ estilo, text, direction = "right", to = "/" }) => (
   <AniLink
-    className="nav__link"
+    className={estilo}
     cover
     direction={direction}
     duration={0.55}

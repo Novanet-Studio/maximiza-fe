@@ -1,12 +1,11 @@
 import React from "react"
-import { Link } from "gatsby"
+import LinkNav from "./linkNav"
 
-const ctaInformacion = ({ mensaje, textoBoton }) => (
+
+const ctaInformacion = ({ estilo, link, mensaje, textoBoton }) => (
   <section className="cta-informacion">
-    <h4 className="cta-informacion__mensaje">{mensaje}</h4>
-    <Link className="cta-informacion__boton" to="/capital">
-      {textoBoton}
-    </Link>
+    <h4 className="cta-informacion__mensaje">{mensaje}</h4>   
+    <LinkNav estilo={estilo} text={textoBoton} to={link} />
   </section>
 )
 

@@ -21,10 +21,10 @@
     font-weight: 300;
     color: $blanco1;
     border: none;
-    background: $verde1;
-    a {
-      color: $blanco1;
-    }
+    background: $verde1; 
+    display: inline-block;  
+
+    
   }
   /* Por revisar */
   &--img-gris {

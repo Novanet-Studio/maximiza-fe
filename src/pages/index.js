@@ -5,6 +5,7 @@ import LayoutIndex from "../components/layoutIndex"
 import SEO from "../components/seo"
 import ReactMarkdown from "react-markdown"
 import Logo from "../assets/images/logo-maximiza.svg"
+import LinkNav from "../components/linkNav"
 import "./index.scss"
 
 const Index = ({ data }) => {
@@ -25,8 +26,8 @@ const Index = ({ data }) => {
           />
           <p className="principal__texto principal__texto--corto">
             {data.strapiHome.principal.logo_texto}
-          </p>
-          <button className="principal__boton">Quiero saber más</button>
+          </p>          
+          <LinkNav text="Quiero saber más" to="/empresa" />
         </div>
         <div className="columna columna--der">
           <Img

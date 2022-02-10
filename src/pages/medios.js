@@ -32,8 +32,10 @@ const Medios = ({ data }) => (
       </div>
     </section>
     <CTA
+      estilo="cta-informacion__boton"
       mensaje="¡Gracias por preferirnos!"
-      textoBoton="Contáctanos de manera directa a medios@maximiza.com.ve"
+      textoBoton="Contáctanos de manera directa a contacto@maximiza.com.ve"
+      link="/contacto"
     />
   </Layout>
 )
