@@ -27,7 +27,7 @@ const Index = ({ data }) => {
           <p className="principal__texto principal__texto--corto">
             {data.strapiHome.principal.logo_texto}
           </p>          
-          <LinkNav text="Quiero saber más" to="/empresa" />
+          <LinkNav estilo="principal__boton" text="Quiero saber más" to="/empresa" />
         </div>
         <div className="columna columna--der">
           <Img
