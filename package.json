@@ -1,0 +1,42 @@
+{
+  "name": "gatsbyv5",
+  "version": "1.0.0",
+  "private": true,
+  "description": "gatsbyv5",
+  "author": "Fredy Polania",
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-brands-svg-icons": "^6.2.1",
+    "@fortawesome/free-regular-svg-icons": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "gatsby": "^5.3.3",
+    "gatsby-plugin-google-gtag": "^5.4.0",
+    "gatsby-plugin-image": "^3.4.0",
+    "gatsby-plugin-manifest": "^5.4.0",
+    "gatsby-plugin-sass": "^6.4.0",
+    "gatsby-plugin-sharp": "^5.4.0",
+    "gatsby-plugin-sitemap": "^6.4.0",
+    "gatsby-plugin-transition-link": "^1.20.5",
+    "gatsby-source-filesystem": "^5.4.0",
+    "gatsby-source-strapi": "^3.0.4",
+    "gatsby-transformer-remark": "^6.4.0",
+    "gatsby-transformer-sharp": "^5.4.0",
+    "gsap": "^3.11.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-markdown": "^8.0.4",
+    "remark-gfm": "^3.0.1",
+    "sass": "^1.57.1"
+  }
+}
