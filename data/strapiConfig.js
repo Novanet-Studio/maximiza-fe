@@ -8,15 +8,15 @@ const strapiConfig = {
     "contacto",
     "directiva",
     "educacion",
-    "empresa",
     "legal",
     "medio",
     "responsabilidad",
     "servicio",
     "sugerencia",
+
     {
       singularName: "home",
-      queryParams: {  
+      queryParams: {
         populate: {
           principal: {
             populate: {
@@ -24,7 +24,7 @@ const strapiConfig = {
               imagen: {
                 populate: {
                   alternativeText: "*",
-                  localfile: "*"
+                  localfile: "*",
                 },
               },
             },
@@ -39,7 +39,7 @@ const strapiConfig = {
               imagen: {
                 populate: {
                   alternativeText: "*",
-                  localfile: "*"
+                  localfile: "*",
                 },
               },
             },
@@ -54,6 +54,91 @@ const strapiConfig = {
           },
           contacto_titulo: "*",
           contacto_descripcion: "*",
+        },
+      },
+    },
+
+    {
+      singularName: "empresa",
+      queryParams: {
+        populate: {
+          principal: {
+            populate: {
+              titulo: "*",
+              contenido: "*",
+              imagen: {
+                populate: {
+                  alternativeText: "*",
+                  localfile: "*",
+                },
+              },
+            },
+          },
+          historia: {
+            populate: {
+              id: "*",
+              tutulo: "*",
+              contenido: "*",
+              imagen: {
+                populate: {
+                  alternativeText: "*",
+                  localfile: "*",
+                },
+              },
+            },
+          },
+          equipo: {
+            populate: {
+              titulo: "*",
+              contenido: "*",
+            },
+          },
+          aliados: {
+            populate: {
+              id: "*",
+              titulo: "*",
+              contenido: "*",
+            },
+          },
+          nosotros: {
+            populate: {
+              id: "*",
+              tutulo: "*",
+              contenido: "*",
+              imagen: {
+                populate: {
+                  alternativeText: "*",
+                  localfile: "*",
+                },
+              },
+            },
+          },
+          balances: {
+            populate: {
+              id: "*",
+              ano: "*",
+              mes: {
+                populate: {
+                  id: "*",
+                 mes: "*",
+                 descarga: "*"
+                },
+              },
+            },
+          },
+          balances_auditados: {
+            populate: {
+              id: "*",
+              ano: "*",
+              mes: {
+                populate: {
+                  id: "*",
+                 mes: "*",
+                 descarga: "*"
+                },
+              },
+            },
+          },
         },
       },
     },
