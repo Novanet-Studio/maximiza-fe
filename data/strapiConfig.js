@@ -4,12 +4,6 @@ const strapiConfig = {
   collectionTypes: ["articulo"],
   singleTypes: [
     "blog",
-    "educacion",
-    "legal",
-    "medio",
-    "responsabilidad",
-    "sugerencia",
-
     {
       singularName: "home",
       queryParams: {
@@ -274,7 +268,7 @@ const strapiConfig = {
               },
             },
           },
-          partners_titulo:"*",
+          partners_titulo: "*",
           partners_secciones: {
             populate: {
               id: "*",
@@ -287,6 +281,176 @@ const strapiConfig = {
               },
             },
           },
+        },
+      },
+    },
+
+    {
+      singularName: "educacion",
+      queryParams: {
+        populate: {
+          principal: {
+            populate: {
+              titulo: "*",
+              contenido: "*",
+              imagen: {
+                populate: {
+                  alternativeText: "*",
+                  localfile: "*",
+                },
+              },
+            },
+          },
+          items_titulo: "*",
+          items: {
+            populate: {
+              id: "*",
+              contenido: "*",
+              imagen: {
+                populate: {
+                  alternativeText: "*",
+                  localfile: "*",
+                },
+              },
+            },
+          },
+          programas_titulo: "*",
+          programas: {
+            populate: {
+              id: "*",
+              seccion: "*",
+              mercados: {
+                populate: {
+                  id: "*",
+                  titulo: "*",
+                  contenido: "*",
+                },
+              },
+              imagen: {
+                populate: {
+                  alternativeText: "*",
+                  localfile: "*",
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+
+    {
+      singularName: "responsabilidad",
+      queryParams: {
+        populate: {
+          principal: {
+            populate: {
+              titulo: "*",
+              contenido: "*",
+              imagen: {
+                populate: {
+                  alternativeText: "*",
+                  localfile: "*",
+                },
+              },
+            },
+          },
+          contribucion: "*",
+          contribuciones_secciones: {
+            populate: {
+              id: "*",
+              titulo: "*",
+              contenido: "*",
+            },
+          },
+          colaboracion_texto: "*",
+        },
+      },
+    },
+
+    {
+      singularName: "medio",
+      queryParams: {
+        populate: {
+          principal: {
+            populate: {
+              titulo: "*",
+              contenido: "*",
+              imagen: {
+                populate: {
+                  alternativeText: "*",
+                  localfile: "*",
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+
+    {
+      singularName: "legal",
+      queryParams: {
+        populate: {
+          principal: {
+            populate: {
+              titulo: "*",
+              contenido: "*",
+              imagen: {
+                populate: {
+                  alternativeText: "*",
+                  localfile: "*",
+                },
+              },
+            },
+          },
+          informacion: {
+            populate: {
+              id: "*",
+              titulo: "*",
+              contenido: "*",
+            },
+          },
+          codigo: {
+            populate: {
+              titulo: "*",
+              contenido: "*",
+              imagen: {
+                populate: {
+                  alternativeText: "*",
+                  localfile: "*",
+                },
+              },
+            },
+          },
+          normativas_titulo: "*",
+          descargas: {
+            populate: {
+              id: "*",
+              documento: "*",
+              titulo: "*",
+            },
+          },
+        },
+      },
+    },
+
+    {
+      singularName: "sugerencia",
+      queryParams: {
+        populate: {
+          principal: {
+            populate: {
+              titulo: "*",
+              contenido: "*",
+              imagen: {
+                populate: {
+                  alternativeText: "*",
+                  localfile: "*",
+                },
+              },
+            },
+          },
+          info_sugerencias: "*",
         },
       },
     },
