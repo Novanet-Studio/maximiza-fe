@@ -6,7 +6,6 @@ const strapiConfig = {
     "blog",
     "capital",
     "contacto",
-    "directiva",
     "educacion",
     "legal",
     "medio",
@@ -178,6 +177,51 @@ const strapiConfig = {
                     populate: {
                       alternativeText: "*",
                       localfile: "*",
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+
+    {
+      singularName: "directiva",
+      queryParams: {
+        populate: {
+          principal: {
+            populate: {
+              titulo: "*",
+              contenido: "*",
+              imagen: {
+                populate: {
+                  alternativeText: "*",
+                  localfile: "*",
+                },
+              },
+            },
+          },
+
+          secciones: {
+            populate: {
+              seccion: {
+                populate: {
+                  id: "*",
+                  titulo: "*",
+                  imagen: {
+                    populate: {
+                      alternativeText: "*",
+                      localfile: "*",
+                    },
+                  },
+                  personas: {
+                    populate: {
+                      cargo: "*",
+                      descripcion: "*",
+                      id: "*",
+                      persona: "*",
                     },
                   },
                 },
