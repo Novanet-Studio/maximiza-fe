@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import Default from "../layout/default";
+import Page from "../layout/page";
 import Modal from "../components/modal";
 import Seo from "../components/seo";
 import Flecha from "../assets/images/dropdown.svg";
@@ -15,7 +15,7 @@ const Servicios = ({ data }) => {
   const [targetModal, setTargetModal] = useState("");
 
   return (
-    <Default>
+    <Page>
       <Seo
         title="Maximiza inversiones en la bolsa"
         description="Ofrecemos diferentes estrategias financieras para gestionar sus inversiones  en la bolsa de valores."
@@ -133,7 +133,7 @@ const Servicios = ({ data }) => {
         textoBoton="Obtenga más información"
         link="/contacto"
       />
-    </Default>
+    </Page>
   );
 };
 

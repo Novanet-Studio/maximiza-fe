@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import Default from "../layout/default";
+import Page from "../layout/page";
 import Seo from "../components/seo";
 import Aliados from "../components/aliados";
 import Modal from "../components/modal";
@@ -19,7 +19,7 @@ const Empresa = ({ data }) => {
   const [targetModal, setTargetModal] = useState("");
   const dataSource = data.strapiEmpresa;
   return (
-    <Default>
+    <Page>
       <Seo
         title="Maximiza para invertir en la bolsa"
         description="Somos una casa de bolsa que ofrece herramientas para invertir en la bolsa y gestionar instrumentos financieros."
@@ -169,7 +169,7 @@ const Empresa = ({ data }) => {
           </div>
         ))}
       </section>
-    </Default>
+    </Page>
   );
 };
 

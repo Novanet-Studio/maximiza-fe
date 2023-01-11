@@ -4,8 +4,6 @@ const strapiConfig = {
   collectionTypes: ["articulo"],
   singleTypes: [
     "blog",
-    "capital",
-    "contacto",
     "educacion",
     "legal",
     "medio",
@@ -224,6 +222,67 @@ const strapiConfig = {
                       persona: "*",
                     },
                   },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+
+    {
+      singularName: "contacto",
+      queryParams: {
+        populate: {
+          principal: {
+            populate: {
+              titulo: "*",
+              contenido: "*",
+              imagen: {
+                populate: {
+                  alternativeText: "*",
+                  localfile: "*",
+                },
+              },
+            },
+          },
+          info_contacto: {
+            populate: {
+              icono: "*",
+              prefijo: "*",
+              contenido: "*",
+              vinculo: "*",
+            },
+          },
+        },
+      },
+    },
+
+    {
+      singularName: "capital",
+      queryParams: {
+        populate: {
+          principal: {
+            populate: {
+              titulo: "*",
+              contenido: "*",
+              imagen: {
+                populate: {
+                  alternativeText: "*",
+                  localfile: "*",
+                },
+              },
+            },
+          },
+          partners_titulo:"*",
+          partners_secciones: {
+            populate: {
+              id: "*",
+              contenido: "*",
+              imagen: {
+                populate: {
+                  alternativeText: "*",
+                  localfile: "*",
                 },
               },
             },

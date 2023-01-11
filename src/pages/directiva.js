@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import Default from "../layout/default";
+import Page from "../layout/page";
 import Seo from "../components/seo";
 import {
   Accordion,
@@ -18,7 +18,7 @@ const Directiva = ({ data }) => {
   const secciones = data.strapiDirectiva.secciones.seccion;
 
   return (
-    <Default>
+    <Page>
       <Seo
         title="Junta directiva"
         description={principal.contenido}
@@ -75,7 +75,7 @@ const Directiva = ({ data }) => {
           ))}
         </Accordion>
       </section>
-    </Default>
+    </Page>
   );
 };
 
