@@ -94,7 +94,7 @@ const Empresa = ({ data }) => {
               <h3 className="nosotros__titulo">{item.titulo}</h3>
               <ReactMarkdown
                 className="nosotros__descripcion"
-                children={item.contenido}
+                children={item.contenido.data.contenido}
                 remarkPlugins={[remarkGfm]}
                 skipHtml={false}
               />

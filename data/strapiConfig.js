@@ -11,7 +11,6 @@ const strapiConfig = {
     "legal",
     "medio",
     "responsabilidad",
-    "servicio",
     "sugerencia",
 
     {
@@ -77,7 +76,7 @@ const strapiConfig = {
           historia: {
             populate: {
               id: "*",
-              tutulo: "*",
+              titulo: "*",
               contenido: "*",
               imagen: {
                 populate: {
@@ -103,7 +102,7 @@ const strapiConfig = {
           nosotros: {
             populate: {
               id: "*",
-              tutulo: "*",
+              titulo: "*",
               contenido: "*",
               imagen: {
                 populate: {
@@ -120,8 +119,8 @@ const strapiConfig = {
               mes: {
                 populate: {
                   id: "*",
-                 mes: "*",
-                 descarga: "*"
+                  mes: "*",
+                  descarga: "*",
                 },
               },
             },
@@ -133,8 +132,54 @@ const strapiConfig = {
               mes: {
                 populate: {
                   id: "*",
-                 mes: "*",
-                 descarga: "*"
+                  mes: "*",
+                  descarga: "*",
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+
+    {
+      singularName: "servicio",
+      queryParams: {
+        populate: {
+          principal: {
+            populate: {
+              titulo: "*",
+              contenido: "*",
+              imagen: {
+                populate: {
+                  alternativeText: "*",
+                  localfile: "*",
+                },
+              },
+            },
+          },
+          inversionista: {
+            populate: {
+              id: "*",
+              nombre: "*",
+              identidad: "*",
+              imagen: {
+                populate: {
+                  alternativeText: "*",
+                  localfile: "*",
+                },
+              },
+              items: {
+                populate: {
+                  id: "*",
+                  titulo: "*",
+                  contenido: "*",
+                  icono: {
+                    populate: {
+                      alternativeText: "*",
+                      localfile: "*",
+                    },
+                  },
                 },
               },
             },
