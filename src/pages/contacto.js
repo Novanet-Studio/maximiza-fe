@@ -16,11 +16,6 @@ const Contacto = ({ data }) => {
   const dataSource = data.strapiContacto;
   return (
     <Page>
-      <Seo
-        title="Maximiza: contacto"
-        description="Somos una casa de bolsa que ofrece innovadoras herramientas para la inversión, gestión y estructuración de activos financieros."
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847320/maximiza/v4/maximiza_contacto_miniatura_7e7d7d94e8.webp"
-      />
       <section className="principal">
         <div className="columna columna--izq">
           <GatsbyImage
@@ -112,6 +107,14 @@ const Contacto = ({ data }) => {
 };
 
 export default Contacto;
+
+export const Head = () => (
+  <Seo
+    title="Maximiza: contacto"
+    description="Somos una casa de bolsa que ofrece innovadoras herramientas para la inversión, gestión y estructuración de activos financieros."
+    image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847320/maximiza/v4/maximiza_contacto_miniatura_7e7d7d94e8.webp"
+  />
+);
 
 export const query = graphql`
   query ContactQuery {

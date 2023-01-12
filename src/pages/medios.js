@@ -10,11 +10,6 @@ const Medios = ({ data }) => {
   const dataSource = data.strapiMedio;
   return (
     <Page>
-      <Seo
-        title="Medios de Comunicacion"
-        description="Exposicion de Maximiza en los medios de comunicacion tradicionales"
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_medios_miniatura_488c08a954.webp"
-      />
       <section className="principal">
         <div className="columna columna--izq">
           <GatsbyImage
@@ -41,6 +36,14 @@ const Medios = ({ data }) => {
 };
 
 export default Medios;
+
+export const Head = () => (
+  <Seo
+    title="Medios de Comunicacion"
+    description="Exposicion de Maximiza en los medios de comunicacion tradicionales"
+    image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_medios_miniatura_488c08a954.webp"
+  />
+);
 
 export const query = graphql`
   query MediosQuery {

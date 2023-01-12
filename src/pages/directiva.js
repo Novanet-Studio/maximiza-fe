@@ -19,12 +19,6 @@ const Directiva = ({ data }) => {
 
   return (
     <Page>
-      <Seo
-        title="Junta directiva"
-        description={principal.contenido}
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847321/maximiza/v4/maximiza_directiva_miniatura_c37955065e.webp"
-      />
-
       <section className="principal">
         <div className="columna columna--izq">
           <GatsbyImage
@@ -80,6 +74,18 @@ const Directiva = ({ data }) => {
 };
 
 export default Directiva;
+
+export const Head = ({ data }) => {
+  const principal = data.strapiDirectiva.principal;
+
+  return (
+    <Seo
+      title="Junta directiva"
+      description={principal.contenido.data.contenido}
+      image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847321/maximiza/v4/maximiza_directiva_miniatura_c37955065e.webp"
+    />
+  );
+};
 
 export const query = graphql`
   query DirectivaQuery {

@@ -12,11 +12,6 @@ const Capital = ({ data }) => {
   const dataSource = data.strapiCapital;
   return (
     <Page>
-      <Seo
-        title="Inversión de capital en empresas venezolanas"
-        description="Sabemos que Venezuela es un gran lugar para invertir y, cuando sea el momento, será necesario el capital para reactivar el país. ¡Conoce nuestra iniciativa!"
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847320/maximiza/v4/maximiza_capital_miniatura_b983816160.webp"
-      />
       <section className="principal">
         <div className="columna columna--izq">
           <GatsbyImage
@@ -63,6 +58,14 @@ const Capital = ({ data }) => {
 };
 
 export default Capital;
+
+export const Head = () => (
+  <Seo
+    title="Inversión de capital en empresas venezolanas"
+    description="Sabemos que Venezuela es un gran lugar para invertir y, cuando sea el momento, será necesario el capital para reactivar el país. ¡Conoce nuestra iniciativa!"
+    image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847320/maximiza/v4/maximiza_capital_miniatura_b983816160.webp"
+  />
+);
 
 export const query = graphql`
   query CapitalQuery {

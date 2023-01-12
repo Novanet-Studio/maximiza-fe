@@ -2,18 +2,13 @@ import React from "react";
 import Page from "../layout/page";
 import Seo from "../components/seo";
 import { StaticImage } from "gatsby-plugin-image";
-import "../assets/scss/pages/404.scss"
+import "../assets/scss/pages/404.scss";
 
 const NotFoundPage = () => (
   <Page>
     <Seo title="404: Not found" />
     <section className="principal">
-      <div className="columna columna--izq">
-        <StaticImage
-          src="../assets/images/max-404-sec1.jpg"
-          alt="Persona buscando en pila de pila de papeles"
-        />
-      </div>
+      <div className="columna columna--izq"></div>
 
       <div className="columna columna--der">
         <h1 className="principal__titulo">Página no encontrada</h1>
@@ -36,3 +31,10 @@ const NotFoundPage = () => (
 );
 
 export default NotFoundPage;
+
+export const Head = () => (
+  <StaticImage
+    src="../assets/images/max-404-sec1.jpg"
+    alt="Persona buscando en pila de pila de papeles"
+  />
+);

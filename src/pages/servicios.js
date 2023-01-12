@@ -16,11 +16,6 @@ const Servicios = ({ data }) => {
 
   return (
     <Page>
-      <Seo
-        title="Maximiza inversiones en la bolsa"
-        description="Ofrecemos diferentes estrategias financieras para gestionar sus inversiones  en la bolsa de valores."
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847320/maximiza/v4/maximiza_servicios_miniatura_98daf48fa5.webp"
-      />
       <section className="principal">
         <div className="columna columna--izq">
           <h1 className="principal__titulo">
@@ -138,6 +133,14 @@ const Servicios = ({ data }) => {
 };
 
 export default Servicios;
+
+export const Head = () => (
+  <Seo
+    title="Maximiza inversiones en la bolsa"
+    description="Ofrecemos diferentes estrategias financieras para gestionar sus inversiones  en la bolsa de valores."
+    image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847320/maximiza/v4/maximiza_servicios_miniatura_98daf48fa5.webp"
+  />
+);
 
 export const query = graphql`
   query ServiciosQuery {

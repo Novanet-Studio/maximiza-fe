@@ -12,11 +12,6 @@ const Responsabilidad = ({ data }) => {
   const dataSource = data.strapiResponsabilidad;
   return (
     <Page>
-      <Seo
-        title="Responsabilidad"
-        description="Contamos con la generación de dividendos para la empresa y el planteamiento del impacto social."
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_responsabilidad_miniatura_cd2b3fa7fc.webp"
-      />
       <section className="principal">
         <div className="columna columna--izq">
           <h1 className="principal__titulo">{dataSource.principal.titulo}</h1>
@@ -32,7 +27,7 @@ const Responsabilidad = ({ data }) => {
             image={getImage(dataSource.principal.imagen?.localFile)}
             alt={dataSource.principal.imagen.alternativeText}
           />
-          { console.log(dataSource.principal.imagen)}
+          {console.log(dataSource.principal.imagen)}
         </div>
       </section>
       <section className="contribuciones">
@@ -107,6 +102,14 @@ const Responsabilidad = ({ data }) => {
 };
 
 export default Responsabilidad;
+
+export const Head = () => (
+  <Seo
+    title="Responsabilidad"
+    description="Contamos con la generación de dividendos para la empresa y el planteamiento del impacto social."
+    image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_responsabilidad_miniatura_cd2b3fa7fc.webp"
+  />
+);
 
 export const query = graphql`
   query ResponsabilidadQuery {

@@ -12,11 +12,6 @@ const Educacion = ({ data }) => {
   const dataSource = data.strapiEducacion;
   return (
     <Page>
-      <Seo
-        title="Educación en corretaje de títulos valores"
-        description="Somos pioneros en ofrecer programas de capacitación para mejorar la educación financiera en Venezuela."
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_educacion_miniatura_5a3e3b347e.webp"
-      />
       <section className="principal">
         <div className="columna columna--izq">
           <h1 className="principal__titulo">{dataSource.principal.titulo}</h1>
@@ -30,9 +25,7 @@ const Educacion = ({ data }) => {
         <div className="columna columna--der">
           <GatsbyImage
             className="principal__imagen"
-            image={getImage(
-              dataSource.principal.imagen?.localFile
-            )}
+            image={getImage(dataSource.principal.imagen?.localFile)}
             alt={dataSource.principal.imagen.alternativeText}
           />
         </div>
@@ -97,6 +90,14 @@ const Educacion = ({ data }) => {
 };
 
 export default Educacion;
+
+export const Head = () => (
+  <Seo
+    title="Educación en corretaje de títulos valores"
+    description="Somos pioneros en ofrecer programas de capacitación para mejorar la educación financiera en Venezuela."
+    image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_educacion_miniatura_5a3e3b347e.webp"
+  />
+);
 
 export const query = graphql`
   query EducacionQuery {

@@ -17,11 +17,6 @@ const Sugerencias = ({ data }) => {
 
   return (
     <Page>
-      <Seo
-        title="Maximiza - Sugerencias"
-        description="Envienos sus quejas, reclamos y/o sugerencias sobre temas de nuestra competencia."
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_sugerencias_miniatura_3f6598f24d.webp"
-      />
       <section className="principal">
         <div className="columna columna--izq">
           <GatsbyImage
@@ -187,6 +182,14 @@ const Sugerencias = ({ data }) => {
 };
 
 export default Sugerencias;
+
+export const Head = () => (
+  <Seo
+    title="Maximiza - Sugerencias"
+    description="Envienos sus quejas, reclamos y/o sugerencias sobre temas de nuestra competencia."
+    image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_sugerencias_miniatura_3f6598f24d.webp"
+  />
+);
 
 export const query = graphql`
   query SugerenciasQuery {

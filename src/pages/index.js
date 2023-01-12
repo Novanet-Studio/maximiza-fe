@@ -7,19 +7,13 @@ import Default from "../layout/default";
 import Seo from "../components/seo";
 import Logo from "../assets/images/logo-maximiza.svg";
 import LinkNav from "../components/linkNav";
-import "../assets/scss/pages/index.scss"
+import "../assets/scss/pages/index.scss";
 
 const Index = ({ data }) => {
   const dataSource = data.strapiHome;
 
-
   return (
     <Default>
-      <Seo
-        title="Maximiza Casa de Bolsa"
-        description="Casa de bolsa dedicada a la asesoría financiera y a la gestión de activos transados en el mercado bursátil."
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847323/maximiza/v4/maximiza_inicio_miniatura_7b38641a3d.webp"
-      />
       <section className="principal">
         <div className="columna columna--izq">
           <img
@@ -70,7 +64,9 @@ const Index = ({ data }) => {
           {dataSource.servicios.map((item) => (
             <li className="servicios__item" key={item.id}>
               <h3 className="servicios__subtitulo">{item.titulo}</h3>
-              <p className="servicios__descripcion">{item.contenido.data.contenido}</p>
+              <p className="servicios__descripcion">
+                {item.contenido.data.contenido}
+              </p>
               <Link to={item.link}>
                 <GatsbyImage
                   className="servicios__imagen"
@@ -129,6 +125,14 @@ const Index = ({ data }) => {
 };
 
 export default Index;
+
+export const Head = () => (
+  <Seo
+    title="Maximiza Casa de Bolsa"
+    description="Casa de bolsa dedicada a la asesoría financiera y a la gestión de activos transados en el mercado bursátil."
+    image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847323/maximiza/v4/maximiza_inicio_miniatura_7b38641a3d.webp"
+  />
+);
 
 export const query = graphql`
   query IndexQuery {

@@ -19,11 +19,6 @@ const Legal = ({ data }) => {
   const [targetModal, setTargetModal] = useState("");
   return (
     <Page>
-      <Seo
-        title="Maximiza: Legitimación de capitales"
-        description="Las instituciones financieras pueden usarse para la legitimación de capitales, ¿cómo prevenir que eso ocurra?"
-        image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_cumplimiento_miniatura_3c4db9b532.webp"
-      />
       <section className="principal">
         <div className="columna columna--izq">
           <h1 className="principal__titulo">{dataSource.principal.titulo}</h1>
@@ -112,6 +107,14 @@ const Legal = ({ data }) => {
 };
 
 export default Legal;
+
+export const Head = () => (
+  <Seo
+    title="Maximiza: Legitimación de capitales"
+    description="Las instituciones financieras pueden usarse para la legitimación de capitales, ¿cómo prevenir que eso ocurra?"
+    image="https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_cumplimiento_miniatura_3c4db9b532.webp"
+  />
+);
 
 export const query = graphql`
   query LegalQuery {

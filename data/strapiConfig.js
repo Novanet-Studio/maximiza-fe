@@ -1,9 +1,46 @@
 const strapiConfig = {
   apiURL: process.env.STRAPI_API_URL,
   accessToken: process.env.STRAPI_TOKEN,
-  collectionTypes: ["articulo"],
+  collectionTypes: [
+    {
+      singularName: "articulo",
+      queryParams: {
+        populate: {
+          titulo: "*",
+          fecha: "*",
+          descripcion: "*",
+          slug: "*",
+          imagen: {
+            populate: {
+              alternativeText: "*",
+              localfile: "*",
+            },
+          },
+        },
+      },
+    },
+  ],
+
   singleTypes: [
-    "blog",
+    {
+      singularName: "blog",
+      queryParams: {
+        populate: {
+          principal: {
+            populate: {
+              titulo: "*",
+              contenido: "*",
+              imagen: {
+                populate: {
+                  alternativeText: "*",
+                  localfile: "*",
+                },
+              },
+            },
+          },
+        },
+      },
+    },
     {
       singularName: "home",
       queryParams: {
