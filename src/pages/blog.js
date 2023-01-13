@@ -29,7 +29,6 @@ const Blog = ({ data }) => {
       </section>
 
       <section className="blog">
-        { console.log(articlesSource) }
         <ul className="blog__lista">
           {articlesSource.map((articulo) => (
             <li className="blog__item" key={articulo.id}>
