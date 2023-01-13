@@ -9,7 +9,7 @@ import "../assets/scss/pages/blog.scss";
 
 const Blog = ({ data }) => {
   const dataSource = data.strapiBlog;
-  const articlesSource = data.articulos.edges;
+  const articlesSource = data.allStrapiArticulo.edges;
   return (
     <Default>
       <section className="principal">
@@ -95,7 +95,7 @@ export const query = graphql`
       }
     }
 
-    articulos: allStrapiArticulo {
+    allStrapiArticulo {
       edges {
         node {
           id
