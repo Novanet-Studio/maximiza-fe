@@ -35,7 +35,6 @@ const Empresa = ({ data }) => {
             {dataSource.principal.contenido.data.contenido}
           </p>
         </div>
-        {console.log(dataSource)}
       </section>
 
       <section className="historia">
