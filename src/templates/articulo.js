@@ -30,16 +30,16 @@ const ArticuloTemplate = ({ pageContext }) => {
         </Link>
         <GatsbyImage
           className="articulo__imagen"
-          image={getImage(articulo.node.imagen?.localFile)}
+          image={getImage(articulo.imagen?.localFile)}
           alt="hello"
         />
-        <h1 className="articulo__titulo">{articulo.node.titulo}</h1>
+        <h1 className="articulo__titulo">{articulo.titulo}</h1>
       </section>
 
       <article className="articulo">
         <ReactMarkdown
           className="articulo__descripcion"
-          children={articulo.node.descripcion.data.descripcion}
+          children={articulo.descripcion.data.descripcion}
           remarkPlugins={[remarkGfm]}
           skipHtml={false}
         />
@@ -64,11 +64,11 @@ export const Head = ({ pageContext }) => {
 
   return (
     <Seo
-      title={articulo.node.titulo}
-      description={articulo.node.descripcion.data.descripcion
+      title={articulo.titulo}
+      description={articulo.descripcion.data.descripcion
         .replace(/(?:__|[*#])|\[(.*?)\]\(.*?\)/gm, "$1")
         .substring(0, 158)}
-      image={articulo.node.url}
+      image={articulo.url}
     />
   );
 };

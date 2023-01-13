@@ -9,7 +9,7 @@ import "../assets/scss/pages/blog.scss";
 
 const Blog = ({ data }) => {
   const dataSource = data.strapiBlog;
-  const articlesSource = data.allStrapiArticulo.edges;
+  const articlesSource = data.articulos.nodes;
   return (
     <Default>
       <section className="principal">
@@ -29,27 +29,28 @@ const Blog = ({ data }) => {
       </section>
 
       <section className="blog">
+        { console.log(articlesSource) }
         <ul className="blog__lista">
           {articlesSource.map((articulo) => (
-            <li className="blog__item" key={articulo.node.id}>
+            <li className="blog__item" key={articulo.id}>
               <div className="blog__cabecera">
                 <GatsbyImage
                   className="blog__imagen"
-                  image={getImage(articulo.node.imagen?.localFile)}
-                  alt={articulo.node.imagen.alternativeText}
+                  image={getImage(articulo.imagen?.localFile)}
+                  alt={articulo.imagen.alternativeText}
                 />
-                <h4 className="blog__titulo">{articulo.node.titulo}</h4>
+                <h4 className="blog__titulo">{articulo.titulo}</h4>
               </div>
-              <p className="blog__fecha">{articulo.node.fecha}</p>
+              <p className="blog__fecha">{articulo.fecha}</p>
               <ReactMarkdown
                 className="blog__texto"
-                children={articulo.node.descripcion.data.descripcion
+                children={articulo.descripcion.data.descripcion
                   .substring(0, 200)
                   .concat("...")}
                 remarkPlugins={[remarkGfm]}
                 skipHtml={false}
               />
-              <Link className="blog__botton" to={articulo.node.slug}>
+              <Link className="blog__botton" to={articulo.slug}>
                 Ver post
               </Link>
             </li>
@@ -95,24 +96,22 @@ export const query = graphql`
       }
     }
 
-    allStrapiArticulo {
-      edges {
-        node {
-          id
-          titulo
-          fecha
-          descripcion {
-            data {
-              descripcion
-            }
+    articulos: allStrapiArticulo {
+      nodes {
+        id
+        titulo
+        fecha
+        descripcion {
+          data {
+            descripcion
           }
-          slug
-          imagen {
-            alternativeText
-            localFile {
-              childImageSharp {
-                gatsbyImageData(width: 375)
-              }
+        }
+        slug
+        imagen {
+          alternativeText
+          localFile {
+            childImageSharp {
+              gatsbyImageData(width: 375)
             }
           }
         }
