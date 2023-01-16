@@ -1,3 +1,7 @@
+console.log("-".repeat(20));
+console.log(process.env.STRAPI_API_URL);
+console.log("-".repeat(20));
+
 const strapiConfig = {
   apiURL: process.env.STRAPI_API_URL,
   accessToken: process.env.STRAPI_TOKEN,
