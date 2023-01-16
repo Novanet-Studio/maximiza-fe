@@ -25,24 +25,6 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-transition-link",
     "gatsby-transformer-remark",
-    // {
-    //   resolve: "gatsby-plugin-google-gtag",
-    //   // You can add multiple tracking ids and a pageview event will be fired for all of them.
-    //   trackingIds: [
-    //     "UA-190348677-1", // GA4
-    //     "GA-TRACKING_ID",
-    //     "AW-CONVERSION_ID"
-    //   ],
-    //   gtagConfig: {
-    //     optimize_id: "GTM-5LFLQGT",
-    //     anonymize_ip: true,
-    //     cookie_expires: 0,
-    //   },
-    //   pluginConfig: {
-    //     head: true,
-    //     delayOnRouteUpdate: 1000,
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
