@@ -38,7 +38,6 @@ const Index = ({ data }) => {
             alt={dataSource.principal.imagen.alternativeText}
           />
         </div>
-        {console.log(dataSource.principal.imagen)}
       </section>
 
       <section className="beneficios">

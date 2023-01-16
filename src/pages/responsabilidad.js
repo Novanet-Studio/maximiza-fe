@@ -27,7 +27,6 @@ const Responsabilidad = ({ data }) => {
             image={getImage(dataSource.principal.imagen?.localFile)}
             alt={dataSource.principal.imagen.alternativeText}
           />
-          {console.log(dataSource.principal.imagen)}
         </div>
       </section>
       <section className="contribuciones">
