@@ -21,7 +21,7 @@ module.exports = {
     twitterUsername: "@novanetstudio",
   },
   plugins: [
-    "gatsby-plugin-google-gtag",
+    // "gatsby-plugin-google-gtag",
     "gatsby-plugin-image",
     "gatsby-plugin-sitemap",
     "gatsby-transformer-sharp",

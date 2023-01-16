@@ -1,27 +1,13 @@
-exports.createPages = async ({ graphql, actions }) => {
+const path = require('path');
+
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
   const result = await graphql(
     `
       {
         allStrapiArticulo {
           nodes {
-            id
-            titulo
-            fecha
-            descripcion {
-              data {
-                descripcion
-              }
-            }
             slug
-            imagen {
-              alternativeText
-              localFile {
-                childImageSharp {
-                  gatsbyImageData(width: 1280)
-                }
-              }
-            }
           }
         }
       }
@@ -29,18 +15,28 @@ exports.createPages = async ({ graphql, actions }) => {
   );
 
   if (result.errors) {
-    throw result.errors;
+    reporter.panicOnBuild(
+      `There was an error loading your Strapi articles`,
+      result.errors
+    );
+
+    return;
   }
 
   const articulos = result.data.allStrapiArticulo.nodes;
-  const articuloTemplate = require.resolve("./src/templates/articulo.js");
+  const articuloTemplate = path.resolve("./src/templates/articulo.js");
+
+  if (articulos.length < 1) {
+    reporter.panicOnBuild("An error ocurred!");
+    return;
+  }
 
   articulos.forEach((item) => {
     createPage({
       path: `/blog/${item.slug}`,
       component: articuloTemplate,
       context: {
-        articulo: item,
+        slug: item.slug,
       },
     });
   });
