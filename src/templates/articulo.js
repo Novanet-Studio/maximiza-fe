@@ -1,6 +1,6 @@
 import React from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { Link } from "gatsby";
+import { graphql, Link } from "gatsby";
 import Default from "../layout/page";
 import Seo from "../components/seo";
 import ReactMarkdown from "react-markdown";
@@ -13,8 +13,8 @@ import {
 } from "react-share";
 import "../assets/scss/pages/blog.scss";
 
-const ArticuloTemplate = ({ pageContext }) => {
-  const { articulo } = pageContext;
+const ArticuloTemplate = ({ data }) => {
+  const articulo = data.strapiArticulo;
   const isBrowser = typeof window !== "undefined";
   const viewUrl = () => {
     if (!isBrowser) {
@@ -30,16 +30,16 @@ const ArticuloTemplate = ({ pageContext }) => {
         </Link>
         <GatsbyImage
           className="articulo__imagen"
-          image={getImage(articulo.imagen?.localFile)}
+          image={getImage(articulo?.imagen?.localFile)}
           alt="hello"
         />
-        <h1 className="articulo__titulo">{articulo.titulo}</h1>
+        <h1 className="articulo__titulo">{articulo?.titulo}</h1>
       </section>
 
       <article className="articulo">
         <ReactMarkdown
           className="articulo__descripcion"
-          children={articulo.descripcion.data.descripcion}
+          children={articulo?.descripcion.data.descripcion}
           remarkPlugins={[remarkGfm]}
           skipHtml={false}
         />
@@ -57,18 +57,42 @@ const ArticuloTemplate = ({ pageContext }) => {
   );
 };
 
-export default ArticuloTemplate;
-
-export const Head = ({ pageContext }) => {
-  const { articulo } = pageContext;
+export const Head = ({ data }) => {
+  const articulo = data.strapiArticulo;
 
   return (
     <Seo
-      title={articulo.titulo}
-      description={articulo.descripcion.data.descripcion
+      title={articulo?.titulo}
+      description={articulo?.descripcion.data.descripcion
         .replace(/(?:__|[*#])|\[(.*?)\]\(.*?\)/gm, "$1")
         .substring(0, 158)}
-      image={articulo.url}
+      image={articulo?.url}
     />
   );
 };
+
+export const pageQuery = graphql`
+  query ($slug: String) {
+    strapiArticulo(slug: { eq: $slug }) {
+      id
+      titulo
+      fecha
+      descripcion {
+        data {
+          descripcion
+        }
+      }
+      slug
+      imagen {
+        alternativeText
+        localFile {
+          childImageSharp {
+            gatsbyImageData(width: 1280)
+          }
+        }
+      }
+    }
+  }
+`;
+
+export default ArticuloTemplate;
