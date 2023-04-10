@@ -16,6 +16,14 @@ main {
   transition: 0.5s;
 }
 
+.opacity-on {
+  opacity: 0.3;
+}
+
+.opacity-off {
+  opacity: 1;
+}
+
 .contenedor {
   @extend .flex;
   min-height: 100vh;
@@ -276,7 +284,7 @@ img {
   .mobileMenu {
     display: none;
   }
-  
+
   .principal {
     // Por revisar
     .logo--interno {

@@ -97,17 +97,25 @@
       padding: 1.5vh 0 1.5vh 2.5vh;
       position: absolute;
       background-color: $blanco2;
+      width: 0;
   
       &--overlay {
         /* Height & width depends on how you want to reveal the overlay (see JS below) */
-        height: 55vh;
-        width: 0;
+        height: 55vh;        
         position: fixed; /* Stay in place */
         z-index: 1; /* Sit on top */
         right: -3.5vw;
         top: 0;
         overflow-x: hidden; /* Disable horizontal scroll */
         transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+
+        &-off {
+          width: 0;
+        }
+
+        &-on {
+          width: 50%;
+        }
       }
   
       &__contenido {
