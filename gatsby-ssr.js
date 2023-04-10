@@ -1,26 +1,7 @@
 import * as React from "react";
 
-const trackingId = "UA-190348677-1";
-const gtagConfig = {};
-
 export const onRenderBody = ({ setHeadComponents }) => {
-  const origin = `https://www.googletagmanager.com`
-  const renderHtml = () => `
-    gtag('config', '${trackingId}', ${JSON.stringify(gtagConfig)});
-  `;
-  
   setHeadComponents([
-    // Analytics
-    <script
-      key={`maximiza-google-gtag`}
-      async
-      src={`${origin}/gtag/js?id=${trackingId}`}
-    />,
-    <script
-      key={`maximiza-google-gtag-config`}
-      dangerouslySetInnerHTML={{ __html: renderHtml() }}
-    />,
-
     // Fonts
     <link
       rel="preload"
