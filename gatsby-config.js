@@ -59,16 +59,19 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-gtag`,
+      resolve: `gatsby-plugin-google-analytics`,
       options: {
-        // You can add multiple tracking ids and a pageview event will be fired for all of them.
-        trackingIds: [
-          "G-4W17JXKS6P",
-          "2334570890", // Google Analytics / GA
-        ],
-        pluginConfig: {
-          head: true,
-        },
+        // The property ID; the tracking code won't be generated without it
+        trackingId: "G-4W17JXKS6P",
+        // Defines where to place the tracking script - `true` in the head and `false` in the body
+        head: true,
+        // Delays sending pageview hits on route update (in milliseconds)
+        pageTransitionDelay: 0,
+        // Defers execution of google analytics script after page load
+        defer: false,
+        cookieDomain: "maximiza.com.ve",
+        // defaults to false
+        enableWebVitalsTracking: true,
       },
     },
     {
