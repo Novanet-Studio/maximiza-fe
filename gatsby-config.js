@@ -7,6 +7,7 @@ require("dotenv").config({
 });
 
 const strapiConfig = require("./data/strapiConfig");
+const adapter = require("gatsby-adapter-netlify")
 
 module.exports = {
   siteMetadata: {
@@ -19,6 +20,10 @@ module.exports = {
     titleTemplate: " Maximiza",
     twitterUsername: "@novanetstudio",
   },
+  adapter: adapter({
+    excludeDatastoreFromEngineFunction: false,
+    imageCDN: false,
+  }),
   plugins: [
     "gatsby-plugin-image",
     "gatsby-plugin-sitemap",

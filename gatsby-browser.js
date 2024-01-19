@@ -9,5 +9,8 @@ export const replaceHydrateFunction = () => {
 
 // Replace this by your own page wrapper:
 exports.wrapPageElement = ({ element, props }) => {
-  return <Layout {...props}>{element}</Layout>;
+  return (
+    (<Default {...props}>{element}</Default>),
+    (<Page {...props}>{element}</Page>)
+  );
 };
