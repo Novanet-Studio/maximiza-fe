@@ -35,7 +35,7 @@ module.exports = {
         theme_color: `#00735f`,
         display: `standalone`,
         orientation: `portrait`,
-        icon: "icon.png",
+        icon: `src/assets/images/icon.png`,
         cache_busting_mode: "none",
       },
     },
