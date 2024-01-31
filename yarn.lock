@@ -6557,6 +6557,11 @@ header-case@^2.0.4:
     capital-case "^1.0.4"
     tslib "^2.0.3"
 
+headless-stepper@^1.10.0:
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/headless-stepper/-/headless-stepper-1.10.0.tgz#ffdbdd571e9df11926b93f5be8bbe260d73aac8e"
+  integrity sha512-l4DAoSq58vSMgMbz9sxug2CA1ZgKSUdT7EE639VNEKEqrEu9mGi7b5wa1RFtfKJ4ttbwt8z3s0C893/zbzxJ6A==
+
 hosted-git-info@^3.0.8:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-3.0.8.tgz#6e35d4cc87af2c5f816e4cb9ce350ba87a3f370d"
