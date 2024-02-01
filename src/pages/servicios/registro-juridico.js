@@ -15,6 +15,7 @@ import EnterpriseIdentificationStep from "../../components/formSteps/enterpriseI
 import FinancialInformationStep from "../../components/formSteps/financialInformationStep";
 import InvestorProfileStep from "../../components/formSteps/investorProfileStep";
 import ProductInformationStep from "../../components/formSteps/ProductInformationStep";
+import AcceptContractStep from "../../components/formSteps/AcceptContractStep";
 
 const RegistroJuridico = ({ data }) => {
   const dataSource = data.strapiServicio;
@@ -210,7 +211,8 @@ const RegistroJuridico = ({ data }) => {
         {/* <EnterpriseIdentificationStep /> */}
         {/* <FinancialInformationStep /> */}
         {/* <InvestorProfileStep /> */}
-        <ProductInformationStep />
+        {/* <ProductInformationStep /> */}
+        <AcceptContractStep />
 
         <footer className="steps-form__footer">
           <button className="historia__button">Regresar</button>
