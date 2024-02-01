@@ -160,6 +160,20 @@
     background: $verde6;
   }
 
+  .checkbox-label {
+    color: $gris1;
+
+    & input[type="checkbox"] {
+      margin-right: 1rem;
+      padding: 1rem;
+      accent-color: $verde6;
+    }
+  }
+
+  &__checkbox {
+    flex: 1 0 auto;
+  }
+
   &__input {
     flex: 1 0 auto;
     padding-top: .5rem;
