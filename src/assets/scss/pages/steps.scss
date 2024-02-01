@@ -198,6 +198,27 @@
     line-height: 22.5px;
     color: $gris1;
   }
+
+  .status {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h4 {
+      margin-top: 1rem;
+      line-height: 1.1;
+      color: #2D2D2D;
+    }
+
+    p {
+      margin-top: 0.4rem;
+      line-height: 1.1;
+      color: $gris1;
+      font-weight: 600;
+    }
+  }
 }
 
 .accept-text {
