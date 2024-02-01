@@ -134,6 +134,32 @@
     gap: 1rem;
   }
 
+  &__collection {
+    padding: 1.5rem;
+    background-color: $blanco1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+
+    & .delete-action {
+      position: absolute;
+      right: 2rem;
+      border: none;
+      background: transparent;
+      color: rgb(185, 35, 35);
+    }
+  }
+
+  .add-action {
+    padding: .4rem;
+    border: 1px solid $verde6;
+    font-size: 14px;
+    color: $blanco1;
+    // align-self: center;
+    background: $verde6;
+  }
+
   &__input {
     flex: 1 0 auto;
     padding-top: .5rem;

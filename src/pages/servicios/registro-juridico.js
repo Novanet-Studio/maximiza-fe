@@ -12,6 +12,7 @@ import DatosInstitucionStep from "../../components/formSteps/datosInstitucionSte
 import "../../assets/scss/pages/servicios.scss";
 import "../../assets/scss/pages/steps.scss";
 import EnterpriseIdentificationStep from "../../components/formSteps/enterpriseIdentificationStep";
+import FinancialInformationStep from "../../components/formSteps/financialInformationStep";
 
 const RegistroJuridico = ({ data }) => {
   const dataSource = data.strapiServicio;
@@ -204,7 +205,8 @@ const RegistroJuridico = ({ data }) => {
         </header>
 
         {/* <DatosInstitucionStep /> */}
-        <EnterpriseIdentificationStep />
+        {/* <EnterpriseIdentificationStep /> */}
+        <FinancialInformationStep />
 
         <footer className="steps-form__footer">
           <button className="historia__button">Regresar</button>
