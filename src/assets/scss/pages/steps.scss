@@ -89,7 +89,7 @@
 .steps-form-wrapper {
   background-color: $blanco2;
   padding: 3rem;
-  height: 30rem;
+  // height: 30rem;
   margin-bottom: 2rem;
   margin-top: 2rem;
   display: flex;
@@ -100,6 +100,7 @@
 .steps-form__header {
   text-align: center;
   margin-top: 1rem;
+  margin-bottom: 2rem;
 
   & h1:first-child {
     color: #2D2D2D;
@@ -111,6 +112,7 @@
   display: flex;
   gap: 1rem;
   align-self: flex-end;
+  margin-top: 2rem;
 
   & button {
     padding-left: 1.5rem;
@@ -148,5 +150,12 @@
     font-size: 1.25rem;
     color: $gris1;
     text-align: center;
+  }
+
+  h6 {
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 22.5px;
+    color: $gris1;
   }
 }
