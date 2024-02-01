@@ -3,6 +3,8 @@ import React from "react";
 export default function EnterpriseIdentificationStep() {
   return (
     <form className="steps-form">
+      <h4>Datos de identificación de la empresa</h4>
+
       <div className="steps-form__group">
         <input className="steps-form__input" type="text" placeholder="Registro información fiscal" />
         <input className="steps-form__input" type="text" placeholder="Razón social" />
