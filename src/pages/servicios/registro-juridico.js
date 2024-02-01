@@ -143,75 +143,27 @@ const RegistroJuridico = ({ data }) => {
       </section> */}
 
       <nav
-        style={{
-          marginTop: 1,
-          marginBottom: 1,
-          width: "100%",
-          display: "grid",
-          gridTemplateColumns: "repeat(6, 1fr)",
-          position: "relative",
-        }}
         className="steps-nav my-4 w-100 grid grid-cols-6 relative"
         {...stepperProps}
       >
-        <ol
-          style={{
-            gridColumn: "1 / -1",
-            display: "flex",
-            flexDirection: "row",
-            zIndex: 1,
-            listStyle: 'none'
-          }}
-          className="col-span-full flex flex-row z-1"
-        >
+        <ol className="steps-ol col-span-full flex flex-row z-1">
           {stepsProps?.map((step, index) => (
-            <li
-              style={{ textAlign: "center", flex: "1 0 auto" }}
-              className="text-center flex-[1_0_auto]"
-              key={index}
-            >
+            <li className="steps-li text-center flex-[1_0_auto]" key={index}>
               <a
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  cursor: "pointer",
-                }}
-                className="group flex flex-col items-center cursor-pointer focus:outline-0"
+                className="steps-link group flex flex-col items-center cursor-pointer focus:outline-0"
                 {...step}
               >
                 <span
-                  style={{
-                    width: "2rem",
-                    height: "2rem",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    background: "white",
-                    color: "black",
-                    borderRadius: "50%",
-                    border: "1px solid black",
-                    transition: "all 0.2s ease-in-out",
-                    ...((state?.currentStep === index && {
-                      background: "#00735F",
-                      color: "white",
-                      border: "1px solid #00735F",
-                    }) ||
-                      {}),
-                  }}
-                  className={`flex items-center justify-center bg-white text-black w-8 h-8 border border-full rounded-full group-focus:ring-2 group-focus:ring-offset-2 transition-colors ease-in-out ${
-                    state?.currentStep === index
-                      ? "bg-sky-500 text-white ring-2 ring-offset-2"
-                      : ""
+                  className={`steps-span ${
+                    state?.currentStep === index ? "active" : ""
                   }`}
                 >
                   {index + 1}
                 </span>
                 <span
                   style={{
-                    fontWeight:
-                      state?.currentStep === index ? "500" : "400",
-                    fontSize: 12
+                    fontWeight: state?.currentStep === index ? "500" : "400",
+                    fontSize: 12,
                   }}
                   className={`${
                     state?.currentStep === index ? "font-bold" : ""
@@ -224,40 +176,15 @@ const RegistroJuridico = ({ data }) => {
           ))}
         </ol>
         <div
-          style={{
-            gridColumn: "1 / -1",
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            zIndex: "-1",
-            top: "1rem",
-            right: "0rem",
-            position: "relative",
-            border: "0.5px solid #f2f2f2",
-            backgroundColor: "#f2f2f2",
-            pointerEvents: "none",
-            gridRow: "1 / -1",
-            width: "100%",
-            height: "0.1rem",
-          }}
-          className="flex items-center flex-row top-4 right-16 relative border-0.5 bg-gray-300 z-[-1] pointer-events-none row-span-full w-full h-0.5"
+          className="progress flex items-center flex-row top-4 right-16 relative border-0.5 bg-gray-300 z-[-1] pointer-events-none row-span-full w-full h-0.5"
           {...progressProps}
         >
-          <span style={{ height: "100%", width: "100%", display: "flex" }} className="h-full w=full flex" />
+          <span className="progress-span h-full w=full flex" />
           <div
             style={{
               width: `${barSize}%`,
-              gridColumn: "1 / -1",
-              gridRow: "1 / -1",
-              display: "grid",
-              flexDirection: "row",
-              height: "100%",
-              overflow: "hidden",
-              border: "1px solid #00735F",
-              borderWidth: "1.5px",
-              backgroundColor: "red",
             }}
-            className="flex flex-row h-full overflow-hidden border-solid border-0 bg-sky-500"
+            className="progress-bar flex flex-row h-full overflow-hidden border-solid border-0 bg-sky-500"
           />
         </div>
       </nav>
@@ -266,7 +193,7 @@ const RegistroJuridico = ({ data }) => {
         {JSON.stringify(state, null, 2)}
       </pre> */}
 
-      <div style={{ background: '#f1f1f1', padding: '1rem', height: "30rem" }}>
+      <div style={{ background: "#f1f1f1", padding: "1rem", height: "30rem" }}>
         <p>Form</p>
       </div>
     </Page>
@@ -334,4 +261,3 @@ export const query = graphql`
     }
   }
 `;
-
