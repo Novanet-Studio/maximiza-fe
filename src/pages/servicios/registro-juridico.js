@@ -6,6 +6,9 @@ import Page from "../../layout/page";
 import Seo from "../../components/seo";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+
+import DatosInstitucionStep from "../../components/formSteps/datosInstitucionStep";
+
 import "../../assets/scss/pages/servicios.scss";
 import "../../assets/scss/pages/steps.scss";
 
@@ -193,9 +196,19 @@ const RegistroJuridico = ({ data }) => {
         {JSON.stringify(state, null, 2)}
       </pre> */}
 
-      <div style={{ background: "#f1f1f1", padding: "1rem", height: "30rem" }}>
-        <p>Form</p>
-      </div>
+      <section className="steps-form-wrapper">
+        <header className="steps-form__header">
+          <h1>Ficha de identificación del inversionista</h1>
+          <h1>Persona Jurídica</h1>
+        </header>
+
+        <DatosInstitucionStep />
+
+        <footer className="steps-form__footer">
+          <button className="historia__button">Regresar</button>
+          <button className="historia__button">Siguiente</button>
+        </footer>
+      </section>
     </Page>
   );
 };
