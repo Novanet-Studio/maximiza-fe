@@ -4,7 +4,7 @@ const FormContext = React.createContext();
 
 export const useFormContext = () => React.useContext(FormContext);
 
-export const FormProvider = ({ children }) => {
+export const FormProvider = ({ children, value }) => {
   const [formData, setFormData] = React.useState({});
 
   const updateFormData = (updatedData) => {
@@ -12,7 +12,7 @@ export const FormProvider = ({ children }) => {
   };
 
   return (
-    <FormContext.Provider value={{ formData, updateFormData }}>
+    <FormContext.Provider value={{ formData, updateFormData, ...value }}>
       {children}
     </FormContext.Provider>
   )

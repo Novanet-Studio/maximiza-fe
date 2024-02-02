@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { graphql } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { useStepper } from "headless-stepper";
@@ -22,6 +22,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const RegistroJuridico = ({ data }) => {
   const dataSource = data.strapiServicio;
+  const currentInput = useRef()
   const steps = React.useMemo(
     () => [
       {
@@ -47,20 +48,24 @@ const RegistroJuridico = ({ data }) => {
 
   const getStepComponent = () => {
     if (state.currentStep === 0) {
-      return <DatosInstitucionStep />;
+      return <DatosInstitucionStep formRef={currentInput} />;
     } else if (state.currentStep === 1) {
-      return <EnterpriseIdentificationStep />;
+      return <EnterpriseIdentificationStep formRef={currentInput} />;
     } else if (state.currentStep === 2) {
-      return <FinancialInformationStep />;
+      return <FinancialInformationStep formRef={currentInput} />;
     } else if (state.currentStep === 3) {
-      return <InvestorProfileStep />;
+      return <InvestorProfileStep formRef={currentInput} />;
     } else if (state.currentStep === 4) {
-      return <ProductInformationStep />;
+      return <ProductInformationStep formRef={currentInput} />;
     } else if (state.currentStep === 5) {
-      return <AcceptContractStep />;
+      return <AcceptContractStep formRef={currentInput} />;
     } else if (state.currentStep === 6) {
-      return <FinalStep />;
+      return <FinalStep ref={currentInput} />;
     }
+  }
+
+  function handleNextStep() {
+    currentInput.current.requestSubmit()
   }
 
   return (
@@ -140,7 +145,7 @@ const RegistroJuridico = ({ data }) => {
           <h1>Persona Jurídica</h1>
         </header>
 
-        <FormProvider>
+        <FormProvider value={{ nextStep, prevStep, state }}>
           {getStepComponent()}
           {/* <DatosInstitucionStep /> */}
           {/* <EnterpriseIdentificationStep /> */}
@@ -155,7 +160,7 @@ const RegistroJuridico = ({ data }) => {
 
         <footer className="steps-form__footer">
           <button className="historia__button" onClick={prevStep}>Regresar</button>
-          <button className="historia__button" onClick={nextStep}>Siguiente</button>
+          <button className="historia__button" onClick={handleNextStep}>Siguiente</button>
         </footer>
       </section>
     </Page>
