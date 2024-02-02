@@ -17,6 +17,7 @@ import InvestorProfileStep from "../../components/formSteps/investorProfileStep"
 import ProductInformationStep from "../../components/formSteps/ProductInformationStep";
 import AcceptContractStep from "../../components/formSteps/AcceptContractStep";
 import FinalStep from "../../components/formSteps/finalStep";
+import Loader from "../../components/loader";
 
 const RegistroJuridico = ({ data }) => {
   const dataSource = data.strapiServicio;
@@ -67,89 +68,6 @@ const RegistroJuridico = ({ data }) => {
           />
         </div>
       </section>
-
-      {/* <section className="inversionista">
-        {dataSource.inversionista.map((item) => (
-          <div
-            className="inversionista__grupo"
-            key={item.id}
-            id={item.identidad}
-          >
-            <div className="inversionista__cabecera">
-              <h3 className="inversionista__titulo">{item.nombre}</h3>
-              <GatsbyImage
-                className="inversionista__imagen"
-                image={getImage(item.imagen?.localFile)}
-                alt={item.imagen.alternativeText}
-              />
-            </div>
-            <ul className="inversionista__contenido">
-              {item.items.map((element) => (
-                <li
-                  className="inversionista__item"
-                  key={element.id}
-                  data-id={element.id}
-                >
-                  <GatsbyImage
-                    className="inversionista__icono"
-                    image={getImage(element.icono?.localFile)}
-                    alt="Iconos servicos"
-                  />
-                  <h4 className="inversionista__subtitulo">{element.titulo}</h4>
-                  <img
-                    className="inversionista__flecha"
-                    src={Flecha}
-                    alt="Desplegar más"
-                  />
-
-                  <div className="inversionista__dropdown">
-                    <strong className="inversionista__texto">
-                      {element.titulo}
-                    </strong>
-                    <ReactMarkdown
-                      className="inversionista__descripcion"
-                      children={element.contenido.data.contenido
-                        .substring(0, 200)
-                        .concat("...")}
-                      skipHtml={false}
-                    />
-                    <button
-                      className="inversionista__boton"
-                      onClick={() => setTargetModal(element.id)}
-                    >
-                      Leer más
-                    </button>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <Modal
-              id={targetModal}
-              data={item.items}
-              imageFieldName="icono"
-              onClose={() => setTargetModal("")}
-            />
-          </div>
-        ))}
-      </section>
-
-      <section className="comisiones">
-        <h2 className="comisiones__titulo">Comisiones vigentes</h2>
-        <ul className="comisiones__lista">
-          <li className="comisiones__lista__item">
-            <h4>Compra/Venta de títulos valores</h4>
-            <p> Hasta 5% del monto transado</p>
-          </li>
-          <li className="comisiones__lista__item">
-            <h4>Estructuración de instrumentos de deuda</h4>
-            <p>Hasta 5% del monto emitido</p>
-          </li>
-          <li className="comisiones__lista__item">
-            <h4>Colocación de instrumentos de deuda</h4>
-            <p>Hasta 5% del monto colocado</p>
-          </li>
-        </ul>
-      </section> */}
 
       <nav
         className="steps-nav my-4 w-100 grid grid-cols-6 relative"
@@ -214,7 +132,8 @@ const RegistroJuridico = ({ data }) => {
         {/* <InvestorProfileStep /> */}
         {/* <ProductInformationStep /> */}
         {/* <AcceptContractStep /> */}
-        <FinalStep />
+        {/* <FinalStep /> */}
+        <Loader />
 
         <footer className="steps-form__footer">
           <button className="historia__button">Regresar</button>

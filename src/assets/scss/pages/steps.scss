@@ -227,3 +227,30 @@
   line-height: 22.5px;
   color: $gris1;
 }
+
+/* HTML: <div class="loader"></div> */
+.steps-form-loader {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  .loader {
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: 
+      radial-gradient(farthest-side,$verde1 94%,#0000) top/8px 8px no-repeat,
+      conic-gradient(#0000 30%,$verde1);
+    -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
+    animation: spinner 1s infinite linear;
+  
+    &-text {
+      margin-top: 1rem;
+    }
+  }
+}
+
+@keyframes spinner { 
+  100%{transform: rotate(1turn)}
+}
