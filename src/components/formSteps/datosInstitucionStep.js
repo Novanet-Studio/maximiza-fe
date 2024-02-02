@@ -1,17 +1,26 @@
 import React from "react";
-import { useFormContext } from "../../context/formContext";
 import { useForm } from "react-hook-form";
+import { useFormContext } from "../../context/formContext";
 
-export default function DatosInstitucionStep({ formRef }) {
-  // const { nextStep } = useFormContext();
-  const { register, handleSubmit } = useForm();
+const DatosInstitucionStep = React.forwardRef((props, ref) => {
+  const { nextStep } = useFormContext();
+  const { register, trigger } = useForm();
 
-  function submit(valid, invalid) {
-    console.log(valid, invalid);
+  async function validate() {
+    console.log('Validating DatosInstitucionStep')
+    const valid = await trigger()
+
+    if (valid) {
+      nextStep();
+    }
   }
 
+  React.useImperativeHandle(ref, () => ({
+    validate,
+  }));
+
   return (
-    <form className="steps-form" onSubmit={handleSubmit(submit)} ref={formRef}>
+    <form className="steps-form">
       <div className="steps-form__group">
         <input {...register('place', { required: true })} className="steps-form__input" type="text" placeholder="Lugar" />
         <input {...register('productionDate', { required: true })} className="steps-form__input" type="text" placeholder="Fechas de elaboración" />
@@ -29,8 +38,8 @@ export default function DatosInstitucionStep({ formRef }) {
         <input className="steps-form__input" type="text" placeholder="Registro información fiscal" />
       </div>
       <input className="steps-form__input" type="text" placeholder="Dirección" />
-
-      {/* <button type="submit" hidden onClick={nextStep} {...props}></button> */}
     </form>
   );
-}
+})
+
+export default DatosInstitucionStep;

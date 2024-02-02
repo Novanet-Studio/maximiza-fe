@@ -48,24 +48,26 @@ const RegistroJuridico = ({ data }) => {
 
   const getStepComponent = () => {
     if (state.currentStep === 0) {
-      return <DatosInstitucionStep formRef={currentInput} />;
+      return <DatosInstitucionStep ref={currentInput} />;
     } else if (state.currentStep === 1) {
-      return <EnterpriseIdentificationStep formRef={currentInput} />;
+      return <EnterpriseIdentificationStep ref={currentInput} />;
     } else if (state.currentStep === 2) {
-      return <FinancialInformationStep formRef={currentInput} />;
+      return <FinancialInformationStep ref={currentInput} />;
     } else if (state.currentStep === 3) {
-      return <InvestorProfileStep formRef={currentInput} />;
+      return <InvestorProfileStep ref={currentInput} />;
     } else if (state.currentStep === 4) {
-      return <ProductInformationStep formRef={currentInput} />;
+      return <ProductInformationStep ref={currentInput} />;
     } else if (state.currentStep === 5) {
-      return <AcceptContractStep formRef={currentInput} />;
+      return <AcceptContractStep ref={currentInput} />;
     } else if (state.currentStep === 6) {
       return <FinalStep ref={currentInput} />;
     }
   }
 
-  function handleNextStep() {
-    currentInput.current.requestSubmit()
+  function handleNextStep(e) {
+    e.preventDefault();
+
+    currentInput.current.validate();
   }
 
   return (
