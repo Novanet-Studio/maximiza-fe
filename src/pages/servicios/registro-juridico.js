@@ -8,9 +8,6 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 import DatosInstitucionStep from "../../components/formSteps/datosInstitucionStep";
-
-import "../../assets/scss/pages/servicios.scss";
-import "../../assets/scss/pages/steps.scss";
 import EnterpriseIdentificationStep from "../../components/formSteps/enterpriseIdentificationStep";
 import FinancialInformationStep from "../../components/formSteps/financialInformationStep";
 import InvestorProfileStep from "../../components/formSteps/investorProfileStep";
@@ -18,6 +15,10 @@ import ProductInformationStep from "../../components/formSteps/ProductInformatio
 import AcceptContractStep from "../../components/formSteps/AcceptContractStep";
 import FinalStep from "../../components/formSteps/finalStep";
 import Loader from "../../components/loader";
+import { FormProvider } from "../../context/formContext";
+import "../../assets/scss/pages/servicios.scss";
+import "../../assets/scss/pages/steps.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const RegistroJuridico = ({ data }) => {
   const dataSource = data.strapiServicio;
@@ -35,7 +36,7 @@ const RegistroJuridico = ({ data }) => {
     []
   );
 
-  const { state, stepperProps, stepsProps, progressProps } = useStepper({
+  const { state, stepperProps, stepsProps, progressProps, nextStep, prevStep } = useStepper({
     steps,
   });
 
@@ -43,6 +44,24 @@ const RegistroJuridico = ({ data }) => {
     () => Math.ceil((state.currentStep / (steps?.length - 1)) * 100),
     [state, steps]
   );
+
+  const getStepComponent = () => {
+    if (state.currentStep === 0) {
+      return <DatosInstitucionStep />;
+    } else if (state.currentStep === 1) {
+      return <EnterpriseIdentificationStep />;
+    } else if (state.currentStep === 2) {
+      return <FinancialInformationStep />;
+    } else if (state.currentStep === 3) {
+      return <InvestorProfileStep />;
+    } else if (state.currentStep === 4) {
+      return <ProductInformationStep />;
+    } else if (state.currentStep === 5) {
+      return <AcceptContractStep />;
+    } else if (state.currentStep === 6) {
+      return <FinalStep />;
+    }
+  }
 
   return (
     <Page>
@@ -82,10 +101,10 @@ const RegistroJuridico = ({ data }) => {
               >
                 <span
                   className={`steps-span ${
-                    state?.currentStep === index ? "active" : ""
+                    state?.currentStep === index || state?.currentStep >= index ? "active" : ""
                   }`}
                 >
-                  {index + 1}
+                  {state?.currentStep <= index ? index + 1 : <FontAwesomeIcon icon="check" />}
                 </span>
                 <span
                   style={{
@@ -115,29 +134,28 @@ const RegistroJuridico = ({ data }) => {
           />
         </div>
       </nav>
-      {/* <p>state: </p>
-      <pre style={{ backgroundColor: "#f2f2f2" }}>
-        {JSON.stringify(state, null, 2)}
-      </pre> */}
-
       <section className="steps-form-wrapper">
         <header className="steps-form__header">
           <h1>Ficha de identificación del inversionista</h1>
           <h1>Persona Jurídica</h1>
         </header>
 
-        {/* <DatosInstitucionStep /> */}
-        {/* <EnterpriseIdentificationStep /> */}
-        {/* <FinancialInformationStep /> */}
-        {/* <InvestorProfileStep /> */}
-        {/* <ProductInformationStep /> */}
-        {/* <AcceptContractStep /> */}
-        {/* <FinalStep /> */}
-        <Loader />
+        <FormProvider>
+          {getStepComponent()}
+          {/* <DatosInstitucionStep /> */}
+          {/* <EnterpriseIdentificationStep /> */}
+          {/* <FinancialInformationStep /> */}
+          {/* <InvestorProfileStep /> */}
+          {/* <ProductInformationStep /> */}
+          {/* <AcceptContractStep /> */}
+          {/* <FinalStep /> */}
+          {/* <Loader /> */}
+        </FormProvider>
+
 
         <footer className="steps-form__footer">
-          <button className="historia__button">Regresar</button>
-          <button className="historia__button">Siguiente</button>
+          <button className="historia__button" onClick={prevStep}>Regresar</button>
+          <button className="historia__button" onClick={nextStep}>Siguiente</button>
         </footer>
       </section>
     </Page>
