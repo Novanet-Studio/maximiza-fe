@@ -1,15 +1,24 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function InvestorProfileStep() {
+const InvestorProfileStep = React.forwardRef((props, ref) => {
+
+  async function validate() {
+    console.log('Validating InvestorProfileStep')
+    // const valid = await trigger()
+  }
+
+  React.useImperativeHandle(ref, () => ({
+    validate,
+  }));
+
   return (
     <form className="steps-form">
       <h4>Perfíl del inversionista</h4>
-
+  
       <p>
         El propósito del siguiente cuestionario es informar a <b>MAXIMIZA CASA DE BOLSA</b> los objetivos de inversión del cliente, y debe ser completado en el espacio indicado. En ningún caso la Casa de bolsa se hace responsable de las ganancias o pérdidas producto de las operaciones realizadas bajo dicho perfil.
       </p>
-
+  
       <h6>Conocimiento como inversionista</h6>
       <div className="steps-form__collection">
         <div className="steps-form__group">
@@ -39,7 +48,7 @@ export default function InvestorProfileStep() {
           </div>
         </div>
       </div>
-
+  
       <h6>Experiencia como inversionista</h6>
       <div className="steps-form__collection">
         <div className="steps-form__group">
@@ -63,7 +72,7 @@ export default function InvestorProfileStep() {
           </div>
         </div>
       </div>
-
+  
       <h6>Nivel de inversiones en operaciones bursátiles</h6>
       <div className="steps-form__collection">
         <div className="steps-form__group">
@@ -93,7 +102,7 @@ export default function InvestorProfileStep() {
           </div>
         </div>
       </div>
-
+  
       <h6>Inversiones anuales</h6>
       <div className="steps-form__collection">
         <div className="steps-form__group">
@@ -137,7 +146,7 @@ export default function InvestorProfileStep() {
           </div>
         </div>
       </div>
-
+  
       <h6>Total activos líquidos (Dinero e inversiones)</h6>
       <div className="steps-form__collection">
         <div className="steps-form__group">
@@ -181,7 +190,7 @@ export default function InvestorProfileStep() {
           </div>
         </div>
       </div>
-
+  
       <h6>Patrimonio total</h6>
       <div className="steps-form__collection">
         <div className="steps-form__group">
@@ -225,7 +234,9 @@ export default function InvestorProfileStep() {
           </div>
         </div>
       </div>
-
+  
     </form>
   );
-}
+});
+
+export default InvestorProfileStep;

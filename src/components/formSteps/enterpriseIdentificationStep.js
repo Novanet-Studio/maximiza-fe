@@ -1,6 +1,16 @@
 import React from "react";
 
-export default function EnterpriseIdentificationStep() {
+const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
+
+  async function validate() {
+    console.log('Validating EnterpriseIdentificationStep')
+    // const valid = await trigger()
+  }
+
+  React.useImperativeHandle(ref, () => ({
+    validate,
+  }));
+  
   return (
     <form className="steps-form">
       <h4>Datos de identificación de la empresa</h4>
@@ -83,4 +93,6 @@ export default function EnterpriseIdentificationStep() {
       </div>
     </form>
   );
-}
+})
+
+export default EnterpriseIdentificationStep;
