@@ -243,19 +243,15 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
           </div>
         </div>
       ))}
-  
-  
-      <button type="button" className="add-action" disabled={providers.length >= 3} onClick={(e) => {
-        e.preventDefault();
-        appendProviders({
-          name: '',
-          location: ''
-        }, {
-          shouldFocus: true
-        })
-      }}>
-        <FontAwesomeIcon icon={["fas", "plus"]} fixedWidth size="1x" /> 
-      Agregar</button>
+
+      <AddButton disabled={providers.length >= 2} onClick={(e) => {
+          e.preventDefault();
+          appendClients({
+            name: '',
+            location: ''
+          })
+        }} 
+      />
   
       <div style={{ marginTop: "1rem" }}></div>
 
