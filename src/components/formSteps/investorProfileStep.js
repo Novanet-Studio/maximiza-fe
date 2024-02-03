@@ -1,10 +1,13 @@
 import React from "react";
+import { useFormContext } from "../../context/formContext";
 
 const InvestorProfileStep = React.forwardRef((props, ref) => {
+  const { nextStep } = useFormContext();
 
   async function validate() {
     console.log('Validating InvestorProfileStep')
     // const valid = await trigger()
+    nextStep()
   }
 
   React.useImperativeHandle(ref, () => ({
@@ -24,25 +27,25 @@ const InvestorProfileStep = React.forwardRef((props, ref) => {
         <div className="steps-form__group">
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Ninguno
             </label>
           </div>
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Limitado
             </label>
           </div>
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Bueno
             </label>
           </div>
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Excelente
             </label>
           </div>
@@ -54,19 +57,19 @@ const InvestorProfileStep = React.forwardRef((props, ref) => {
         <div className="steps-form__group">
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               De 5 a 10 años
             </label>
           </div>
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Entre 5 y 10 años
             </label>
           </div>
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Mayor de 10 años
             </label>
           </div>
@@ -78,25 +81,25 @@ const InvestorProfileStep = React.forwardRef((props, ref) => {
         <div className="steps-form__group">
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Agresivo
             </label>
           </div>
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Medio
             </label>
           </div>
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Moderado
             </label>
           </div>
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Conservador
             </label>
           </div>
@@ -108,19 +111,19 @@ const InvestorProfileStep = React.forwardRef((props, ref) => {
         <div className="steps-form__group">
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Menos de 5.000
             </label>
           </div>
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Entre 5.001 y 10.000
             </label>
           </div>
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Entre 10.001 y 50.000
             </label>
           </div>
@@ -128,19 +131,19 @@ const InvestorProfileStep = React.forwardRef((props, ref) => {
         <div className="steps-form__group">
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Entre 50.001 y 100.000
             </label>
           </div>
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Entre 100.001 y 300.000
             </label>
           </div>
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Más de 300.000
             </label>
           </div>
@@ -152,19 +155,19 @@ const InvestorProfileStep = React.forwardRef((props, ref) => {
         <div className="steps-form__group">
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Menos de 5.000
             </label>
           </div>
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Entre 5.001 y 10.000
             </label>
           </div>
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Entre 10.001 y 50.000
             </label>
           </div>
@@ -172,19 +175,19 @@ const InvestorProfileStep = React.forwardRef((props, ref) => {
         <div className="steps-form__group">
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Entre 50.001 y 100.000
             </label>
           </div>
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Entre 100.001 y 300.000
             </label>
           </div>
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Más de 300.000
             </label>
           </div>
@@ -196,19 +199,19 @@ const InvestorProfileStep = React.forwardRef((props, ref) => {
         <div className="steps-form__group">
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Menos de 5.000
             </label>
           </div>
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Entre 5.001 y 10.000
             </label>
           </div>
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Entre 10.001 y 50.000
             </label>
           </div>
@@ -216,19 +219,19 @@ const InvestorProfileStep = React.forwardRef((props, ref) => {
         <div className="steps-form__group">
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Entre 50.001 y 100.000
             </label>
           </div>
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Entre 100.001 y 300.000
             </label>
           </div>
           <div className="steps-form__checkbox">
             <label className="checkbox-label" htmlFor="none">
-              <input id="none" className="steps-form__input" type="checkbox" placeholder="Nombre" />
+              <input id="none" className="steps-form__input" type="radio" />
               Más de 300.000
             </label>
           </div>

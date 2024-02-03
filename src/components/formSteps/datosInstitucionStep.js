@@ -10,9 +10,9 @@ const DatosInstitucionStep = React.forwardRef((props, ref) => {
     console.log('Validating DatosInstitucionStep')
     const valid = await trigger()
 
-    if (valid) {
-      nextStep();
-    }
+    nextStep();
+    // if (valid) {
+    // }
   }
 
   React.useImperativeHandle(ref, () => ({
@@ -31,13 +31,14 @@ const DatosInstitucionStep = React.forwardRef((props, ref) => {
 
       <div className="steps-form__group">
         <input
+          {...register('brokerageHouseName', { required: true })}
           className="steps-form__input steps-form__input--2"
           type="text"
           placeholder="Nombre de casa de bolsa o sociedades de corretaje de valores"
         />
-        <input className="steps-form__input" type="text" placeholder="Registro información fiscal" />
+        <input {...register('taxInformationRegistration', { required: true })} className="steps-form__input" type="text" placeholder="Registro información fiscal" />
       </div>
-      <input className="steps-form__input" type="text" placeholder="Dirección" />
+      <input {...register('address', { required: true })}  className="steps-form__input" type="text" placeholder="Dirección" />
     </form>
   );
 })

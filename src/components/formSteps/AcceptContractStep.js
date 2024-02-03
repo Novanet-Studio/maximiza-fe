@@ -1,10 +1,15 @@
 import React from "react";
+import { useForm } from "react-hook-form";
+import { useFormContext } from "../../context/formContext";
 
 const AcceptContractStep = React.forwardRef((props, ref) => {
+  const { register, trigger } = useForm();
+  const { nextStep } = useFormContext();
 
   async function validate() {
     console.log('Validating AcceptContractStep')
     // const valid = await trigger()
+    nextStep()
   }
 
   React.useImperativeHandle(ref, () => ({
@@ -21,7 +26,7 @@ const AcceptContractStep = React.forwardRef((props, ref) => {
   
       <div className="steps-form__checkbox">
         <label className="checkbox-label" htmlFor="none">
-          <input id="none" className="steps-form__input" type="checkbox" />
+          <input {...register('accept', { required: true })} id="none" className="steps-form__input" type="checkbox" />
           Acepto los términos y condiciones
         </label>
       </div>
