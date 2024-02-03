@@ -126,6 +126,16 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
     });
   }
 
+  function handleAppendPoliticalPerson(e) {
+    e.preventDefault();
+    appendPoliticalPerson({
+      name: '',
+      cargo: '',
+      country: '',
+      pepIdentification: ''
+    });
+  }
+
 
   return (
     <form className="steps-form">
@@ -170,22 +180,6 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
       ))}
 
       <AddButton onClick={handleAppendLegal} disabled={legalFields.length >= 3} />
-
-      {/* <button type="button" className="add-action" disabled={legalFields.length >= 3} onClick={(e) => {
-        e.preventDefault();
-        appendLegal({
-          name: '',
-          dni: '',
-          sharePercentage: '',
-          cargo: '',
-          esPep: '',
-          relatedWithPep: ''
-        }, {
-          shouldFocus: true
-        })
-      }}>
-        <FontAwesomeIcon icon={["fas", "plus"]} fixedWidth size="1x" /> 
-      Agregar</button> */}
   
       <div style={{ marginTop: "1rem" }}></div>
   
@@ -194,7 +188,7 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
       {politicalPersonFields.map((field, index) => (
         <div className="steps-form__collection" key={field.id}>
           <h6>Persona expuesta politicamente</h6>
-          {index > 0 && <button className="delete-action" onClick={() => removePoliticalPerson(index)}><FontAwesomeIcon icon={["fas", "trash"]} fixedWidth size="1x" /></button>}
+          {index > 0 && <RemoveButton onClick={() => removePoliticalPerson(index)} />}
           <div className="steps-form__group">
             <input {...register(`politicalPerson.${index}.name`, { required: true })} className="steps-form__input" type="text" placeholder="Nombre de la institución o ente de adscripción" />
             <input {...register(`politicalPerson.${index}.cargo`, { required: true })} className="steps-form__input" type="text" placeholder="Cargo que desempeña" />
@@ -205,37 +199,21 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
           </div>
         </div>
       ))}
-  
-      <button type="button" className="add-action" disabled={politicalPersonFields.length >= 3} onClick={(e) => {
-        e.preventDefault();
-        appendPoliticalPerson({
-          name: '',
-          cargo: '',
-          country: '',
-          pepIdentification: ''
-        }, {
-          shouldFocus: true
-        })
-      }}>
-        <FontAwesomeIcon icon={["fas", "plus"]} fixedWidth size="1x" /> 
-      Agregar</button>
+
+      <AddButton onClick={handleAppendPoliticalPerson} disabled={politicalPersonFields.length >= 3} />
   
       <div style={{ marginTop: "1rem" }}></div>
   
       <div className="steps-form__group">
-        <input className="steps-form__input" type="text" placeholder="Nº de subsidiarias / Oficinas" />
-        <input className="steps-form__input" type="text" placeholder="País con mayor presencia" />
-        <input className="steps-form__input" type="text" placeholder="Nº de empleados" />
+        <input {...register('officeNumber', { required: true })} className="steps-form__input" type="text" placeholder="Nº de subsidiarias / Oficinas" />
+        <input {...register('countryWithGreaterPresence', { required: true })} className="steps-form__input" type="text" placeholder="País con mayor presencia" />
+        <input {...register('employeesNumber', { required: true })} className="steps-form__input" type="text" placeholder="Nº de empleados" />
       </div>
   
       <div className="steps-form__group">
-        <input
-          className="steps-form__input"
-          type="text"
-          placeholder="Ventas mensuales"
-        />
-        <input className="steps-form__input" type="text" placeholder="Ingresos mensuales" />
-        <input className="steps-form__input" type="text" placeholder="Egresos mensuales" />
+        <input {...register('monthlySales', { required: true })} className="steps-form__input" type="text" placeholder="Ventas mensuales" />
+        <input {...register('monthlyIncome', { required: true })} className="steps-form__input" type="text" placeholder="Ingresos mensuales" />
+        <input {...register('monthlyExpenses', { required: true })} className="steps-form__input" type="text" placeholder="Egresos mensuales" />
       </div>
   
       <div style={{ marginTop: "1rem" }}></div>
@@ -243,18 +221,14 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
       <h6>Última declaración ISLR</h6>
   
       <div className="steps-form__group">
-        <input
-          className="steps-form__input"
-          type="text"
-          placeholder="Año"
-        />
-        <input className="steps-form__input" type="text" placeholder="Monto" />
+        <input {...register('islrYear', { required: true })} className="steps-form__input" type="text" placeholder="Año" />
+        <input {...register('islrAmount', { required: true })} className="steps-form__input" type="text" placeholder="Monto" />
       </div>
   
       <div className="steps-form__group">
-        <input className="steps-form__input" type="text" placeholder="Condición" />
-        <input className="steps-form__input" type="text" placeholder="ES PEP" />
-        <input className="steps-form__input" type="text" placeholder="Relacionado con PEP" />
+        <input {...register('islrCondition', { required: true })} className="steps-form__input" type="text" placeholder="Condición" />
+        <input {...register('islrIsPep', { required: true })} className="steps-form__input" type="text" placeholder="ES PEP" />
+        <input {...register('islrRelatedWithPep', { required: true })} className="steps-form__input" type="text" placeholder="Relacionado con PEP" />
       </div>
   
       <div style={{ marginTop: "1rem" }}></div>
@@ -288,7 +262,7 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
       {clients.map((field, index) => (
         <div className="steps-form__collection" key={field.id}>
           <h6>Principales clientes</h6>
-          {index > 0 && <button className="delete-action" onClick={() => removeClients(index)}><FontAwesomeIcon icon={["fas", "trash"]} fixedWidth size="1x" /></button>}
+          {index > 0 && <RemoveButton onClick={() => removeClients(index)} />}
           <div className="steps-form__group">
             <input {...register(`clients.${index}.name`, { required: true })} className="steps-form__input" type="text" placeholder="Nombre o razón social" />
             <input {...register(`clients.${index}.name`, { required: true })} className="steps-form__input" type="text" placeholder="Ubicación" />
@@ -296,25 +270,21 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
         </div>
       ))}
   
-  
-      <button type="button" className="add-action" disabled={providers.length >= 3} onClick={(e) => {
-        e.preventDefault();
-        appendClients({
-          name: '',
-          location: ''
-        }, {
-          shouldFocus: true
-        })
-      }}>
-        <FontAwesomeIcon icon={["fas", "plus"]} fixedWidth size="1x" /> 
-      Agregar</button>
+      <AddButton disabled={clients.length >= 2} onClick={(e) => {
+          e.preventDefault();
+          appendClients({
+            name: '',
+            location: ''
+          })
+        }} 
+      />
   
       <div style={{ marginTop: "1rem" }}></div>
   
       {relatedCompanies.map((field, index) => (
         <div className="steps-form__collection" key={field.id}>
           <h6>Empresas relacionadas</h6>
-          {index > 0 && <button className="delete-action" onClick={() => removeRelatedCompanies(index)}><FontAwesomeIcon icon={["fas", "trash"]} fixedWidth size="1x" /></button>}
+          {index > 0 && <RemoveButton onClick={() => removeRelatedCompanies(index)} />}
           <div className="steps-form__group">
             <input {...register(`relatedCompanies.${index}.name`, { required: true })} className="steps-form__input" type="text" placeholder="Nombre o razón social" />
             <input {...register(`relatedCompanies.${index}.economicActivity`, { required: true })} className="steps-form__input" type="text" placeholder="Actividad económica" />
@@ -322,32 +292,28 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
           </div>
         </div>
       ))}
-  
-      <button type="button" className="add-action" disabled={providers.length >= 3} onClick={(e) => {
-        e.preventDefault();
-        appendRelatedCompanies({
-          name: '',
-          economicActivity: '',
-          taxInformationRegistry: ''
-        }, {
-          shouldFocus: true
-        })
-      }}>
-        <FontAwesomeIcon icon={["fas", "plus"]} fixedWidth size="1x" /> 
-      Agregar</button>
-  
+
+      <AddButton disabled={relatedCompanies.length >= 2} onClick={(e) => {
+          e.preventDefault();
+          appendRelatedCompanies({
+            name: '',
+            economicActivity: '',
+            taxInformationRegistry: ''
+          })
+        }} 
+      />
       <div style={{ marginTop: "1rem" }}></div>
   
       <h6>Referencias bancarias</h6>
   
       <div className="steps-form__group">
-        <input className="steps-form__input" type="text" placeholder="Institución del sector bancario" />
-        <input className="steps-form__input" type="text" placeholder="Nombre del producto" />
+        <input {...register('bankReferencesInstitution', { required: true })} className="steps-form__input" type="text" placeholder="Institución del sector bancario" />
+        <input {...register('bankReferencesProductName', { required: true })} className="steps-form__input" type="text" placeholder="Nombre del producto" />
       </div>
   
       <div className="steps-form__group">
-        <input className="steps-form__input" type="text" placeholder="Número del producto" />
-        <input className="steps-form__input" type="text" placeholder="Cifras promedio" />
+        <input {...register('bankReferencesProductNumber', { required: true })} className="steps-form__input" type="text" placeholder="Número del producto" />
+        <input {...register('bankReferencesAverage', { required: true })} className="steps-form__input" type="text" placeholder="Cifras promedio" />
       </div>
     </form>
   );
