@@ -16,8 +16,6 @@ const AddButton = ({ onClick, disabled }) => (
   </button>
 )
 
-
-
 const FinancialInformationStep = React.forwardRef((props, ref) => {
   const { nextStep } = useFormContext();
   const { register, trigger, control } = useForm({
@@ -246,7 +244,7 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
 
       <AddButton disabled={providers.length >= 2} onClick={(e) => {
           e.preventDefault();
-          appendClients({
+          appendProviders({
             name: '',
             location: ''
           })
