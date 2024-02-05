@@ -187,7 +187,120 @@
   border-bottom-right-radius: 1rem;
 }
 
-.seccion3__line8-item:last-child {
-  border-bottom-left-radius: 1rem;
+// PLANILLA SECCION 3
+.planilla__seccion3 {
+  margin-top: 1rem;
+  width: 100%;
+  display: grid;
+  border-radius: 1rem;
+  font-size: 12px;
+  border: 1px solid #006548;
+
+  & .planilla__titulo {
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: .8rem;
+    background: #006548;
+    color: white;
+    border-top-left-radius: 0.8rem;
+    border-top-right-radius: 0.8rem;
+    max-width: 100%;
+  }
+
+  .planilla__contenedor {
+    display: grid;
+    grid-template-columns: 13% 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .seccion__col {
+    grid-row: span 1;
+    background: #006548;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    padding-left: .5rem;
+  }
+
+  .seccion__group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
+  }
+
+  .seccion__item {
+    border: 1px solid #006548;
+    width: 100%;
+    font-size: 12px;
+    padding: .4rem .8rem 1rem;
+  }
+}
+
+.planilla__seccion4 {
+  margin-top: 1rem;
+  width: 100%;
+  display: grid;
+  border-radius: 1rem;
+  font-size: 12px;
+  border: 1px solid #006548;
+
+
+  & .planilla__titulo {
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: .8rem;
+    background: #006548;
+    color: white;
+    border-top-left-radius: 0.8rem;
+    border-top-right-radius: 0.8rem;
+    max-width: 100%;
+  }
+
+  .planilla__contenedor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .seccion__item {
+    border: 1px solid #006548;
+    width: 100%;
+    font-size: 12px;
+    padding: .4rem .8rem 1rem;
+  }
+}
+
+// ----------------------------------------------
+// UTILS
+// ----------------------------------------------
+.border-tl-rounded {
+  border-top-left-radius: 1rem;
+}
+
+.border-tr-rounded {
+  border-top-right-radius: 1rem;
+}
+
+.border-br-rounded {
   border-bottom-right-radius: 1rem;
 }
+
+.border-bl-rounded {
+  border-bottom-left-radius: 1rem;
+}
+
+.border-b-rounded {
+  @extend .border-br-rounded;
+  @extend .border-bl-rounded;
+}
+
+.border-t-rounded {
+  @extend .border-tl-rounded;
+  @extend .border-tr-rounded;
+}
+

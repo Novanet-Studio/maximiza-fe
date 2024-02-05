@@ -1,8 +1,5 @@
-import React, { useState } from "react";
-import { graphql } from "gatsby";
-import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import React from "react";
 import Logo from "../assets/images/logo-maximiza.svg"
-import Page from "../layout/page";
 import Seo from "../components/seo";
 import "../assets/scss/pages/planilla.scss";
 
@@ -18,7 +15,7 @@ const Planilla = ({ data }) => {
           </header>
           <div className="planilla__cuerpo">
             <div className="planilla__seccion1">
-              <div>Lugar:</div>
+              <div>Lugar: </div>
               <div>Fechas de elaboración:</div>
               <div>Número o código del inversionista:</div>
             </div>
@@ -35,7 +32,7 @@ const Planilla = ({ data }) => {
 
             {/* Datos personales */}
             <div className="planilla__seccion2">
-              <h5 className="planilla__seccion2-titulo" >datos personales del inversionista</h5>
+              <h5 className="planilla__seccion2-titulo">datos personales del inversionista</h5>
               <div className="seccion3__line1">
                 <div className="seccion3__line1-item">Registro de información fiscal:</div>
                 <div className="seccion3__line1-item">Nombres:</div>
@@ -100,9 +97,38 @@ const Planilla = ({ data }) => {
                 <div className="seccion3__line8-item"></div>
                 <div className="seccion3__line8-item"></div>
                 <div className="seccion3__line8-item"></div>
-                <div className="seccion3__line8-item"></div>
+                <div className="seccion3__line8-item border-br-rounded"></div>
               </div>
             </div>
+
+            <div className="planilla__seccion3">
+              <h5 className="planilla__titulo">Referencias del inversionista</h5>
+              <div className="planilla__contenedor">
+                <div className="seccion__col border-bl-rounded">
+                  Referencias bancarias
+                </div>
+                <div className="seccion__group">
+                  <div className="seccion__item">Institución del sector bancario: </div>
+                  <div className="seccion__item">Nombre del producto:</div>
+                  <div className="seccion__item"></div>
+                  <div className="seccion__item"></div>
+                  <div className="seccion__item">Número del producto:</div>
+                  <div className="seccion__item">Cifras promedio:</div>
+                  <div className="seccion__item"></div>
+                  <div className="seccion__item border-br-rounded"></div>
+                </div>
+              </div>
+            </div> 
+
+            <div className="planilla__seccion4">
+              <h5 className="planilla__titulo">Información económico financiera del inversionista</h5>
+              <div className="planilla__contenedor">
+                <div className="seccion__item">Institución del sector bancario: </div>
+                <div className="seccion__item">Nombre del producto:</div>
+                <div className="seccion__item border-bl-rounded"></div>
+                <div className="seccion__item border-br-rounded"></div>
+              </div>
+            </div>  
           </div>
         </div>
       </section>
