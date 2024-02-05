@@ -21,51 +21,108 @@ const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
       <h4>Datos de identificación de la empresa</h4>
 
       <div className="steps-form__group">
-        <input {...register('taxInformationRegistration', { required: true })} className="steps-form__input" type="text" placeholder="Registro información fiscal" />
-        <input {...register('socialReason', { required: true })} className="steps-form__input" type="text" placeholder="Razón social" />
-        <input {...register('tradename', { required: true })} className="steps-form__input" type="text" placeholder="Nombre comercial" />
+        <div className="steps-form__group-item">
+          <label htmlFor="taxInformationRegistration">Registro información fiscal</label>
+          <input {...register('taxInformationRegistration', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="socialReason">Razón social</label>
+          <input {...register('socialReason', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="tradename">Nombre comercial</label>
+          <input {...register('tradename', { required: true })} className="steps-form__input" type="text" />
+        </div>
       </div>
 
       <div className="steps-form__group">
-        <input {...register('economicActivity', { required: true })} className="steps-form__input" type="text" placeholder="Actividad económica" />
-        <input {...register('specificActivity', { required: true })} className="steps-form__input" type="text" placeholder="Actividad específica" />
+        <div className="steps-form__group-item">
+          <label htmlFor="economicActivity">Actividad económica</label>
+          <input {...register('economicActivity', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="specificActivity">Actividad específica</label>
+          <input {...register('specificActivity', { required: true })} className="steps-form__input" type="text" />
+        </div>
       </div>
 
       <h6>Datos del registro</h6>
 
       <div className="steps-form__group">
-        <input {...register('recordName', { required: true })} className="steps-form__input" type="text" placeholder="Nombre del registro" />
-        <input {...register('number', { required: true })} className="steps-form__input" type="text" placeholder="Número" />
-        <input {...register('took', { required: true })} className="steps-form__input" type="text" placeholder="Tomo" />
+        <div className="steps-form__group-item">
+          <label htmlFor="recordName">Nombre del registro</label>
+          <input {...register('recordName', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="number">Número</label>
+          <input {...register('number', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="took">Tomo</label>
+          <input {...register('took', { required: true })} className="steps-form__input" type="text" />
+        </div>
       </div>
 
       <div className="steps-form__group">
-        <input {...register('fol', { required: true })} className="steps-form__input" type="text" placeholder="Folio" />
-        <input {...register('date', { required: true })} className="steps-form__input" type="text" placeholder="Fecha" />
-        <input {...register('socialCapital', { required: true })} className="steps-form__input" type="text" placeholder="Capital social" />
+        <div className="steps-form__group-item">
+          <label htmlFor="fol">Folio</label>
+          <input {...register('fol', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="date">Fecha</label>
+          <input {...register('date', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="socialCapital">Capital social</label>
+          <input {...register('socialCapital', { required: true })} className="steps-form__input" type="text" />
+        </div>
       </div>
 
       <h6>Entes públicos</h6>
 
       <div className="steps-form__group">
-        <input {...register('officialGazetteNumber', { required: true })} className="steps-form__input" type="text" placeholder="Número de gaceta oficial" />
-        <input {...register('publicEntitiesDate', { required: true })} className="steps-form__input" type="text" placeholder="Fecha" />
+        <div className="steps-form__group-item">
+          <label htmlFor="officialGazetteNumber">Número de gaceta oficial</label>
+          <input {...register('officialGazetteNumber', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="publicEntitiesDate">Fecha</label>
+          <input {...register('publicEntitiesDate', { required: true })} className="steps-form__input" type="text" />
+        </div>
       </div>
 
       <div className="steps-form__group">
-        <input {...register('authority', { required: true })} className="steps-form__input" type="text" placeholder="Autoridad / Ente de adscripción" />
-        <input {...register('ontCode', { required: true })} className="steps-form__input" type="text" placeholder="Códico ONT" />
+        <div className="steps-form__group-item">
+          <label htmlFor="authority">Autoridad / Ente de adscripción</label>
+          <input {...register('authority', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="ontCode">Códico ONT</label>
+          <input {...register('ontCode', { required: true })} className="steps-form__input" type="text" />
+        </div>
       </div>
 
       <div style={{ paddingTop: '2rem' }}></div>
 
       <div className="steps-form__group">
-        <input {...register('publicPhones', { required: true })} className="steps-form__input" type="text" placeholder="Teléfonos" />
-        <input {...register('website', { required: true })} className="steps-form__input" type="text" placeholder="Sitio web" />
-        <input {...register('publicEntityEmail', { required: true })} className="steps-form__input" type="text" placeholder="Correo electrónico" />
+        <div className="steps-form__group-item">
+          <label htmlFor="publicPhones">Teléfonos</label>
+          <input {...register('publicPhones', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="website">Sitio web</label>
+          <input {...register('website', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="publicEntityEmail">Correo electrónico</label>
+          <input {...register('publicEntityEmail', { required: true })} className="steps-form__input" type="text" />
+        </div>
       </div>
 
-      <input {...register('publicEntityAddress', { required: true })} className="steps-form__input" type="text" placeholder="Dirección" />
+      <div className="steps-form__group-item">
+        <label htmlFor="publicEntityAddress">Dirección</label>
+        <input {...register('publicEntityAddress', { required: true })} className="steps-form__input" type="text" />
+      </div>
 
       {/* <div className="steps-form__group">
         <input {...register('place', { required: true })}{...register('place', { required: true })} className="steps-form__input" type="text" placeholder="Teléfonos" />
