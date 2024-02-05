@@ -144,14 +144,32 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
           <h6>Accionista {index + 1} / Junta directiva</h6>
           {index > 0 && <RemoveButton onClick={() => remove(index)} />}
           <div className="steps-form__group">
-            <input {...register(`stockholder.${index}.name`, { required: true })} className="steps-form__input" type="text" placeholder="Nombre" />
-            <input {...register(`stockholder.${index}.dni`, { required: true })}  className="steps-form__input" type="text" placeholder="Documento de identidad" />
-            <input {...register(`stockholder.${index}.sharePercentage`, { required: true })} className="steps-form__input" type="text" placeholder="Porcentaje accionario" />
+            <div className="steps-form__group-item">
+              <label htmlFor={`stockholder.${index}.name`}>Nombre</label>
+              <input {...register(`stockholder.${index}.name`, { required: true })} className="steps-form__input" type="text" />
+            </div>
+            <div className="steps-form__group-item">
+              <label htmlFor={`stockholder.${index}.dni`}>Documento de identidad</label>
+              <input {...register(`stockholder.${index}.dni`, { required: true })}  className="steps-form__input" type="text" />
+            </div>
+            <div className="steps-form__group-item">
+              <label htmlFor={`stockholder.${index}.sharePercentage`}>Porcentaje accionario</label>
+              <input {...register(`stockholder.${index}.sharePercentage`, { required: true })} className="steps-form__input" type="text" />
+            </div>
           </div>
           <div className="steps-form__group">
-            <input {...register(`stockholder.${index}.cargo`, { required: true })} className="steps-form__input" type="text" placeholder="Cargo" />
-            <input {...register(`stockholder.${index}.esPep`, { required: true })} className="steps-form__input" type="text" placeholder="ES PEP" />
-            <input {...register(`stockholder.${index}.relatedWithPep`, { required: true })} className="steps-form__input" type="text" placeholder="Relacionado con PEP" />
+            <div className="steps-form__group-item">
+              <label htmlFor={`stockholder.${index}.cargo`}>Cargo</label>
+              <input {...register(`stockholder.${index}.cargo`, { required: true })} className="steps-form__input" type="text" />
+            </div>
+            <div className="steps-form__group-item">
+              <label htmlFor={`stockholder.${index}.esPep`}>ES PEP</label>
+              <input {...register(`stockholder.${index}.esPep`, { required: true })} className="steps-form__input" type="text" />
+            </div>
+            <div className="steps-form__group-item">
+              <label htmlFor={`stockholder.${index}.relatedWithPep`}>Relacionado con PEP</label>
+              <input {...register(`stockholder.${index}.relatedWithPep`, { required: true })} className="steps-form__input" type="text" />
+            </div>
           </div>
         </div>
       ))}
@@ -165,14 +183,32 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
           <h6>Representante legal {index + 1} / Autorizado para realizar operaciones bursatiles</h6>
           {index > 0 && <RemoveButton onClick={() => removeLegal(index)} />}
           <div className="steps-form__group">
-            <input {...register(`legalRepresentative.${index}.name`, { required: true })} className="steps-form__input" type="text" placeholder="Nombre" />
-            <input {...register(`legalRepresentative.${index}.dni`, { required: true })} className="steps-form__input" type="text" placeholder="Documento de identidad" />
-            <input {...register(`legalRepresentative.${index}.sharePercentage`, { required: true })} className="steps-form__input" type="text" placeholder="Porcentaje accionario" />
+            <div className="steps-form__group-item">
+              <label htmlFor={`legalRepresentative.${index}.name`}>Nombre</label>
+              <input {...register(`legalRepresentative.${index}.name`, { required: true })} className="steps-form__input" type="text" />
+            </div>
+            <div className="steps-form__group-item">
+              <label htmlFor={`legalRepresentative.${index}.dni`}>Documento de identidad</label>
+              <input {...register(`legalRepresentative.${index}.dni`, { required: true })} className="steps-form__input" type="text" />
+            </div>
+            <div className="steps-form__group-item">
+              <label htmlFor={`legalRepresentative.${index}.sharePercentage`}>Porcentaje accionario</label>
+              <input {...register(`legalRepresentative.${index}.sharePercentage`, { required: true })} className="steps-form__input" type="text" />
+            </div>
           </div>
           <div className="steps-form__group">
-            <input {...register(`legalRepresentative.${index}.cargo`, { required: true })} className="steps-form__input" type="text" placeholder="Cargo" />
-            <input {...register(`legalRepresentative.${index}.esPep`, { required: true })} className="steps-form__input" type="text" placeholder="ES PEP" />
-            <input {...register(`legalRepresentative.${index}.relatedWithPep`, { required: true })} className="steps-form__input" type="text" placeholder="Relacionado con PEP" />
+            <div className="steps-form__group-item">
+              <label htmlFor={`legalRepresentative.${index}.cargo`}>Cargo</label>
+              <input {...register(`legalRepresentative.${index}.cargo`, { required: true })} className="steps-form__input" type="text" />
+            </div>
+            <div className="steps-form__group-item">
+              <label htmlFor={`legalRepresentative.${index}.esPep`}>ES PEP</label>
+              <input {...register(`legalRepresentative.${index}.esPep`, { required: true })} className="steps-form__input" type="text" />
+            </div>
+            <div className="steps-form__group-item">
+              <label htmlFor={`legalRepresentative.${index}.relatedWithPep`}>Relacionado con PEP</label>
+              <input {...register(`legalRepresentative.${index}.relatedWithPep`, { required: true })} className="steps-form__input" type="text" />
+            </div>
           </div>
         </div>
       ))}
@@ -188,12 +224,24 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
           <h6>Persona expuesta politicamente</h6>
           {index > 0 && <RemoveButton onClick={() => removePoliticalPerson(index)} />}
           <div className="steps-form__group">
-            <input {...register(`politicalPerson.${index}.name`, { required: true })} className="steps-form__input" type="text" placeholder="Nombre de la institución o ente de adscripción" />
-            <input {...register(`politicalPerson.${index}.cargo`, { required: true })} className="steps-form__input" type="text" placeholder="Cargo que desempeña" />
+            <div className="steps-form__group-item">
+              <label htmlFor={`politicalPerson.${index}.name`}>Nombre de la institución o ente de adscripción</label>
+              <input {...register(`politicalPerson.${index}.name`, { required: true })} className="steps-form__input" type="text" />
+            </div>
+            <div className="steps-form__group-item">
+              <label htmlFor={`politicalPerson.${index}.cargo`}>Cargo que desempeña</label>
+              <input {...register(`politicalPerson.${index}.cargo`, { required: true })} className="steps-form__input" type="text" />
+            </div>
           </div>
           <div className="steps-form__group">
-            <input {...register(`politicalPerson.${index}.country`, { required: true })} className="steps-form__input" type="text" placeholder="País" />
-            <input {...register(`politicalPerson.${index}.pepIdentification`, { required: true })} className="steps-form__input" type="text" placeholder="Identificación del PEP en caso relacionado" />
+            <div className="steps-form__group-item">
+              <label htmlFor={`politicalPerson.${index}.country`}>País</label>
+              <input {...register(`politicalPerson.${index}.country`, { required: true })} className="steps-form__input" type="text" />
+            </div>
+            <div className="steps-form__group-item">
+              <label htmlFor={`politicalPerson.${index}.pepIdentification`}>Identificación del PEP en caso relacionado</label>
+              <input {...register(`politicalPerson.${index}.pepIdentification`, { required: true })} className="steps-form__input" type="text" />
+            </div>
           </div>
         </div>
       ))}
@@ -203,15 +251,33 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
       <div style={{ marginTop: "1rem" }}></div>
   
       <div className="steps-form__group">
-        <input {...register('officeNumber', { required: true })} className="steps-form__input" type="text" placeholder="Nº de subsidiarias / Oficinas" />
-        <input {...register('countryWithGreaterPresence', { required: true })} className="steps-form__input" type="text" placeholder="País con mayor presencia" />
-        <input {...register('employeesNumber', { required: true })} className="steps-form__input" type="text" placeholder="Nº de empleados" />
+        <div className="steps-form__group-item">
+          <label htmlFor="officeNumber">Nº de subsidiarias / Oficinas</label>
+          <input {...register('officeNumber', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="countryWithGreaterPresence">País con mayor presencia</label>
+          <input {...register('countryWithGreaterPresence', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="employeesNumber">Nº de empleados</label>
+          <input {...register('employeesNumber', { required: true })} className="steps-form__input" type="text" />
+        </div>
       </div>
   
       <div className="steps-form__group">
-        <input {...register('monthlySales', { required: true })} className="steps-form__input" type="text" placeholder="Ventas mensuales" />
-        <input {...register('monthlyIncome', { required: true })} className="steps-form__input" type="text" placeholder="Ingresos mensuales" />
-        <input {...register('monthlyExpenses', { required: true })} className="steps-form__input" type="text" placeholder="Egresos mensuales" />
+        <div className="steps-form__group-item">
+          <label htmlFor="monthlySales">Ventas mensuales</label>
+          <input {...register('monthlySales', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="monthlyIncome">Ingresos mensuales</label>
+          <input {...register('monthlyIncome', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="monthlyExpenses">Egresos mensuales</label>
+          <input {...register('monthlyExpenses', { required: true })} className="steps-form__input" type="text" />
+        </div>
       </div>
   
       <div style={{ marginTop: "1rem" }}></div>
@@ -219,14 +285,29 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
       <h6>Última declaración ISLR</h6>
   
       <div className="steps-form__group">
-        <input {...register('islrYear', { required: true })} className="steps-form__input" type="text" placeholder="Año" />
-        <input {...register('islrAmount', { required: true })} className="steps-form__input" type="text" placeholder="Monto" />
+        <div className="steps-form__group-item">
+          <label htmlFor="islrYear">Año</label>
+          <input {...register('islrYear', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="islrAmount">Monto</label>
+          <input {...register('islrAmount', { required: true })} className="steps-form__input" type="text" />
+        </div>
       </div>
   
       <div className="steps-form__group">
-        <input {...register('islrCondition', { required: true })} className="steps-form__input" type="text" placeholder="Condición" />
-        <input {...register('islrIsPep', { required: true })} className="steps-form__input" type="text" placeholder="ES PEP" />
-        <input {...register('islrRelatedWithPep', { required: true })} className="steps-form__input" type="text" placeholder="Relacionado con PEP" />
+        <div className="steps-form__group-item">
+          <label htmlFor="islrCondition">Condición</label>
+          <input {...register('islrCondition', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="islrIsPep">ES PEP</label>
+          <input {...register('islrIsPep', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="islrRelatedWithPep">Relacionado con PEP</label>
+          <input {...register('islrRelatedWithPep', { required: true })} className="steps-form__input" type="text" />
+        </div>
       </div>
   
       <div style={{ marginTop: "1rem" }}></div>
@@ -236,8 +317,14 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
           <h6>Principales proveedores</h6>
           {index > 0 && <button className="delete-action" onClick={() => removeProviders(index)}><FontAwesomeIcon icon={["fas", "trash"]} fixedWidth size="1x" /></button>}
           <div className="steps-form__group">
-            <input {...register(`providers.${index}.name`, { required: true })} className="steps-form__input" type="text" placeholder="Nombre o razón social" />
-            <input {...register(`providers.${index}.location`, { required: true })} className="steps-form__input" type="text" placeholder="Ubicación" />
+            <div className="steps-form__group-item">
+              <label htmlFor={`providers.${index}.name`}>Nombre o razón social</label>
+              <input {...register(`providers.${index}.name`, { required: true })} className="steps-form__input" type="text" />
+            </div>
+            <div className="steps-form__group-item">
+              <label htmlFor={`providers.${index}.location`}>Ubicación</label>
+              <input {...register(`providers.${index}.location`, { required: true })} className="steps-form__input" type="text" />
+            </div>
           </div>
         </div>
       ))}
@@ -258,8 +345,14 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
           <h6>Principales clientes</h6>
           {index > 0 && <RemoveButton onClick={() => removeClients(index)} />}
           <div className="steps-form__group">
-            <input {...register(`clients.${index}.name`, { required: true })} className="steps-form__input" type="text" placeholder="Nombre o razón social" />
-            <input {...register(`clients.${index}.name`, { required: true })} className="steps-form__input" type="text" placeholder="Ubicación" />
+            <div className="steps-form__group-item">
+              <label htmlFor={`clients.${index}.name`}>Nombre o razón social</label>
+              <input {...register(`clients.${index}.name`, { required: true })} className="steps-form__input" type="text" />
+            </div>
+            <div className="steps-form__group-item">
+              <label htmlFor={`clients.${index}.name`}>Ubicación</label>
+              <input {...register(`clients.${index}.location`, { required: true })} className="steps-form__input" type="text" />
+            </div>
           </div>
         </div>
       ))}
@@ -280,9 +373,18 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
           <h6>Empresas relacionadas</h6>
           {index > 0 && <RemoveButton onClick={() => removeRelatedCompanies(index)} />}
           <div className="steps-form__group">
-            <input {...register(`relatedCompanies.${index}.name`, { required: true })} className="steps-form__input" type="text" placeholder="Nombre o razón social" />
-            <input {...register(`relatedCompanies.${index}.economicActivity`, { required: true })} className="steps-form__input" type="text" placeholder="Actividad económica" />
-            <input {...register(`relatedCompanies.${index}.taxInformationRegistry`, { required: true })} className="steps-form__input" type="text" placeholder="Registro de información fiscal" />
+            <div className="steps-form__group-item">
+              <label htmlFor={`relatedCompanies.${index}.name`}>Nombre o razón social</label>
+              <input {...register(`relatedCompanies.${index}.name`, { required: true })} className="steps-form__input" type="text" />
+            </div>
+            <div className="steps-form__group-item">
+              <label htmlFor={`relatedCompanies.${index}.economicActivity`}>Actividad económica</label>
+              <input {...register(`relatedCompanies.${index}.economicActivity`, { required: true })} className="steps-form__input" type="text" />
+            </div>
+            <div className="steps-form__group-item">
+              <label htmlFor={`relatedCompanies.${index}.taxInformationRegistry`}>Registro de información fiscal</label>
+              <input {...register(`relatedCompanies.${index}.taxInformationRegistry`, { required: true })} className="steps-form__input" type="text" />
+            </div>
           </div>
         </div>
       ))}
@@ -301,13 +403,25 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
       <h6>Referencias bancarias</h6>
   
       <div className="steps-form__group">
-        <input {...register('bankReferencesInstitution', { required: true })} className="steps-form__input" type="text" placeholder="Institución del sector bancario" />
-        <input {...register('bankReferencesProductName', { required: true })} className="steps-form__input" type="text" placeholder="Nombre del producto" />
+        <div className="steps-form__group-item">
+          <label htmlFor="bankReferencesInstitution">Institución del sector bancario</label>
+          <input {...register('bankReferencesInstitution', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="bankReferencesProductName">Nombre del producto</label>
+          <input {...register('bankReferencesProductName', { required: true })} className="steps-form__input" type="text" />
+        </div>
       </div>
   
       <div className="steps-form__group">
-        <input {...register('bankReferencesProductNumber', { required: true })} className="steps-form__input" type="text" placeholder="Número del producto" />
-        <input {...register('bankReferencesAverage', { required: true })} className="steps-form__input" type="text" placeholder="Cifras promedio" />
+        <div className="steps-form__group-item">
+          <label htmlFor="bankReferencesProductNumber">Número del producto</label>
+          <input {...register('bankReferencesProductNumber', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="bankReferencesAverage">Cifras promedio</label>
+          <input {...register('bankReferencesAverage', { required: true })} className="steps-form__input" type="text" />
+        </div>
       </div>
     </form>
   );

@@ -24,35 +24,77 @@ const ProductInformationStep = React.forwardRef((props, ref) => {
       <h4>Información del producto o servicio bursátil</h4>
   
       <div className="steps-form__group">
-        <input {...register('productName', { required: true })} className="steps-form__input" type="text" placeholder="Nombre del producto" />
-        <input {...register('productAmount', { required: true })} className="steps-form__input" type="text" placeholder="Monto del producto adquirido" />
-        <input {...register('currency', { required: true })} className="steps-form__input" type="text" placeholder="Moneda" />
+        <div className="steps-form__group-item">
+          <label htmlFor="productName">Nombre del producto</label>
+          <input {...register('productName', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="productAmount">Monto del producto adquirido</label>
+          <input {...register('productAmount', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="currency">Moneda</label>
+          <input {...register('currency', { required: true })} className="steps-form__input" type="text" />
+        </div>
       </div>
   
       <div style={{ paddingTop: '0.3rem' }}></div>
   
       <h6>Información sobre movilización de fondos</h6>
       <div className="steps-form__group">
-        <input {...register('monthlyAmount', { required: true })} className="steps-form__input" type="text" placeholder="Monto promedio mensual" />
-        <input {...register('numberOfTransactionsByTransfers', { required: true })} className="steps-form__input" type="text" placeholder="N° transacciones por transferencias" />
-        <input {...register('sendOrReceiveFundsFromAbroad', { required: true })} className="steps-form__input" type="text" placeholder="Enviar o recibir fondos del exterior" />
+        <div className="steps-form__group-item">
+          <label htmlFor="monthlyAmount">Monto promedio mensual</label>
+          <input {...register('monthlyAmount', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="numberOfTransactionsByTransfers">N° transacciones por transferencias</label>
+          <input {...register('numberOfTransactionsByTransfers', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="sendOrReceiveFundsFromAbroad">Enviar o recibir fondos del exterior</label>
+          <input {...register('sendOrReceiveFundsFromAbroad', { required: true })} className="steps-form__input" type="text" />
+        </div>
       </div>
   
       <div className="steps-form__group">
-        <input {...register('purchase', { required: true })} className="steps-form__input" type="text" placeholder="Compra" />
-        <input {...register('sale', { required: true })} className="steps-form__input" type="text" placeholder="Venta" />
-        <input {...register('originCountry', { required: true })} className="steps-form__input" type="text" placeholder="País origen" />
+        <div className="steps-form__group-item">
+          <label htmlFor="purchase">Compra</label>
+          <input {...register('purchase', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="sale">Venta</label>
+          <input {...register('sale', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="originCountry">País origen</label>
+          <input {...register('originCountry', { required: true })} className="steps-form__input" type="text" />
+        </div>
       </div>
   
       <div className="steps-form__group">
-        <input {...register('destinationCountry', { required: true })} className="steps-form__input" type="text" placeholder="País destino" />
-        <input {...register('virtualCurrencyUse', { required: true })} className="steps-form__input" type="text" placeholder="Uso moneda virtual" />
+        <div className="steps-form__group-item">
+          <label htmlFor="destinationCountry">País destino</label>
+          <input {...register('destinationCountry', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="virtualCurrencyUse">Uso moneda virtual</label>
+          <input {...register('virtualCurrencyUse', { required: true })} className="steps-form__input" type="text" />
+        </div>
       </div>
   
       <div className="steps-form__group">
-        <input {...register('motives', { required: true })} className="steps-form__input" type="text" placeholder="Motivos por los que solicita los servicios" />
-        <input {...register('fundsSource', { required: true })} className="steps-form__input" type="text" placeholder="Origen de los fondos" />
-        <input {...register('fundsDestination', { required: true })} className="steps-form__input" type="text" placeholder="Destino de los fondos" />
+        <div className="steps-form__group-item">
+          <label htmlFor="">Motivos por los que solicita los servicios</label>
+          <input {...register('motives', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="">Origen de los fondos</label>
+          <input {...register('fundsSource', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="">Destino de los fondos</label>
+          <input {...register('fundsDestination', { required: true })} className="steps-form__input" type="text" />
+        </div>
       </div>
   
     </form>
