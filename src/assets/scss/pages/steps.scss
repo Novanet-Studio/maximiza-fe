@@ -134,6 +134,13 @@
     gap: 1rem;
   }
 
+  &__group-item {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    flex: 1 0 auto;
+  }
+
   &__collection {
     padding: 1.5rem;
     background-color: $blanco1;
