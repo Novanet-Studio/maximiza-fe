@@ -8,10 +8,11 @@ const ProductInformationStep = React.forwardRef((props, ref) => {
 
 
   async function validate() {
-    console.log('Validating ProductInformationStep')
     const valid = await trigger()
-
-    nextStep()
+    
+    if (valid) {
+      nextStep()
+    }
   }
 
   React.useImperativeHandle(ref, () => ({

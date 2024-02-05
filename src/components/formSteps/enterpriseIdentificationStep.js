@@ -7,9 +7,11 @@ const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
   const { register, trigger } = useForm();
 
   async function validate() {
-    console.log('Validating EnterpriseIdentificationStep')
-    // const valid = await trigger()
-    nextStep()
+    const valid = await trigger()
+    
+    if (valid) {
+      nextStep();
+    }
   }
 
   React.useImperativeHandle(ref, () => ({

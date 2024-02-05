@@ -7,9 +7,11 @@ const AcceptContractStep = React.forwardRef((props, ref) => {
   const { nextStep } = useFormContext();
 
   async function validate() {
-    console.log('Validating AcceptContractStep')
-    // const valid = await trigger()
-    nextStep()
+    const valid = await trigger()
+    
+    if (valid) {
+      nextStep();
+    }
   }
 
   React.useImperativeHandle(ref, () => ({

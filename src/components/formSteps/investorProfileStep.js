@@ -4,12 +4,14 @@ import { useForm } from "react-hook-form";
 
 const InvestorProfileStep = React.forwardRef((props, ref) => {
   const { nextStep } = useFormContext();
-  const { register } = useForm();
+  const { register, trigger } = useForm();
 
   async function validate() {
-    console.log('Validating InvestorProfileStep')
-    // const valid = await trigger()
-    nextStep()
+    const valid = await trigger()
+
+    if (valid) {
+      nextStep()
+    }
   }
 
   React.useImperativeHandle(ref, () => ({

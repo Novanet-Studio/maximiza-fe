@@ -89,9 +89,11 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
   });
 
   async function validate() {
-    console.log('Validating FinancialInformationStep')
-    // const valid = await trigger()
-    nextStep()
+    const valid = await trigger()
+
+    if (valid) {
+      nextStep();
+    }
   }
 
   React.useImperativeHandle(ref, () => ({

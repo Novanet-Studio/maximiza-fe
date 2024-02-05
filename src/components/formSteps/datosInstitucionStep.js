@@ -7,12 +7,11 @@ const DatosInstitucionStep = React.forwardRef((props, ref) => {
   const { register, trigger } = useForm();
 
   async function validate() {
-    console.log('Validating DatosInstitucionStep')
     const valid = await trigger()
 
-    nextStep();
-    // if (valid) {
-    // }
+    if (valid) {
+      nextStep();
+    }
   }
 
   React.useImperativeHandle(ref, () => ({
