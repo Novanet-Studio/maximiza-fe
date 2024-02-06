@@ -19,6 +19,7 @@ import { FormProvider } from "../../context/formContext";
 import "../../assets/scss/pages/servicios.scss";
 import "../../assets/scss/pages/steps.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import LegalEntityFormPdf from "../../components/legalEntityFormPdf";
 
 const RegistroJuridico = ({ data }) => {
   const dataSource = data.strapiServicio;
@@ -164,6 +165,9 @@ const RegistroJuridico = ({ data }) => {
           <button className="historia__button" onClick={prevStep}>Regresar</button>
           <button className="historia__button" onClick={handleNextStep}>Siguiente</button>
         </footer>
+      </section>
+      <section style={{ width: '100%' }}>
+        {/* <LegalEntityFormPdf /> */}
       </section>
     </Page>
   );

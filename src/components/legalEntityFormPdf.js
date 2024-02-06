@@ -8,7 +8,7 @@ const LegalEntityFormPdf = () => {
       <header className="spreadsheet__header">
         <img className="spreadsheet__image" src={MaximizaLogo} alt="logo" />
 
-        <h5 className="spreadsheet__title">
+        <h5 className="spreadsheet__main-title">
           Ficha de identificación del inversionista persona jurídica
         </h5>
       </header>
@@ -64,7 +64,7 @@ const LegalEntityFormPdf = () => {
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
-                  <label htmlFor="">Dirección: </label>
+                  <label htmlFor="">Dir<LegalEntityFormPdf />ección: </label>
                   <input
                     type="text"
                     value="Av. Francisco de Miranda. Edificio Torre Europa. Piso 3. Ofic 3-B. Urb. Campo Alegre. Caracas"

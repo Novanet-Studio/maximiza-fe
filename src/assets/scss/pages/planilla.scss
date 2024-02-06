@@ -6,7 +6,7 @@
   margin-top: 2rem;
   min-width: 54.375rem;
   width: 100%;
-  max-width: 70%;
+  max-width: 100%;
   min-height: 80vh;
   border: 1px solid $gris5;
   padding: 2rem;
@@ -22,7 +22,7 @@
   width: 20%;
 }
 
-.spreadsheet__title {
+.spreadsheet__main-title {
   text-transform: uppercase;
   text-wrap: balance;
   max-width: 50%;
