@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import { useFormContext } from "../../context/formContext";
 
 const ProductInformationStep = React.forwardRef((props, ref) => {
-  const { register, trigger, updateFormData } = useForm();
-  const { nextStep, getValues } = useFormContext();
+  const { nextStep, updateFormData } = useFormContext();
+  const { register, trigger, getValues } = useForm();
 
 
   async function validate() {
