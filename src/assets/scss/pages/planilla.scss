@@ -6,7 +6,7 @@
   margin-top: 2rem;
   min-width: 54.375rem;
   width: 100%;
-  max-width: 100%;
+  max-width: 70%;
   min-height: 80vh;
   border: 1px solid $gris5;
   padding: 2rem;
@@ -39,254 +39,6 @@
 .border-l {
   border-left: 2px solid #006548;
 }
-
-// .planilla__seccion1 {
-//   width: 100%;
-//   display: grid;
-//   grid-template-columns: 1fr 30% 1fr;
-//   border: 2px solid #006548;
-//   padding: .8rem;
-//   border-radius: 1rem;
-//   font-size: 12px;
-//   padding-bottom: 1rem;
-//   padding-top: 0.5rem;
-// }
-
-// .planilla__seccion2 {
-//   margin-top: 1rem;
-//   width: 100%;
-//   display: grid;
-//   border-radius: 1rem;
-//   font-size: 12px;
-// } 
-
-// .planilla__seccion2-titulo {
-//   text-align: center;
-//   text-transform: uppercase;
-//   font-size: .8rem;
-//   background: #006548;
-//   color: white;
-//   border-top-left-radius: 1rem;
-//   border-top-right-radius: 1rem;
-// }
-
-// .planilla__seccion2-contenedor {
-//   border: 1px solid #006548;
-//   width: 100%;
-//   display: grid;
-//   grid-template-columns: 1fr 30%;
-//   grid-template-rows: 1fr 1fr;
-//   font-size: 12px;
-//   border-bottom-left-radius: 1rem;
-//   border-bottom-right-radius: 1rem;
-// }
-
-// .seccion2__item {
-//   padding: .4rem .8rem 1rem;
-//   border: 1px solid #006548;
-// }
-
-// .seccion2__item::first-letter {
-//   text-transform: uppercase;
-// }
-
-// .seccion2__item:last-child {
-//   grid-column: span 2;
-//   border-bottom-left-radius: 1rem;
-//   border-bottom-right-radius: 1rem;
-// }
-
-// .seccion3__line1 {
-//   border: 1px solid #006548;
-//   width: 100%;
-//   display: grid;
-//   grid-template-columns: repeat(3, 1fr);
-//   grid-template-rows: 1fr 1fr;
-//   font-size: 12px;
-//   border-bottom: none;
-// }
-
-// .seccion3__line1-item {
-//   padding: .4rem .8rem 1rem;
-//   border: 1px solid #006548;
-// }
-
-// .seccion3__line2 {
-//   border: 1px solid #006548;
-//   width: 100%;
-//   display: grid;
-//   grid-template-columns: 33.3% 40.5% 1fr;
-//   font-size: 12px;
-//   border-bottom: none;
-// }
-
-// .seccion3__line3 {
-//   border: 1px solid #006548;
-//   width: 100%;
-//   display: grid;
-//   grid-template-columns: 40.3% 33.5% 1fr;
-//   font-size: 12px;
-// }
-
-// .seccion3__line2-item, .seccion3__line3-item, .seccion3__line5-item, .seccion3__line6-item, .seccion3__line8-item {
-//   padding: .4rem .8rem 1rem;
-//   border: 1px solid #006548;
-// }
-
-// .seccion3__line2-item {
-//   border-top: none;
-// }
-
-
-// .seccion3__line3-item {
-//   border-top: none;
-//   border-bottom: none;
-// }
-
-// .seccion3__line4 {
-//   border: 1px solid #006548;
-//   width: 100%;
-//   font-size: 12px;
-//   padding: .4rem .8rem 1rem;
-//   border-left: 2px solid #006548;
-//   border-right: 2px solid #006548;
-// }
-
-// .seccion3__line5 {
-//   border: 1px solid #006548;
-//   width: 100%;
-//   display: grid;
-//   grid-template-columns: 33.3% 20.5% 1fr;
-//   font-size: 12px;
-//   border-bottom: none;
-// }
-
-// .seccion3__line5-item {
-//   border-top: none;
-// }
-
-// .seccion3__line6 {
-//   border: 1px solid #006548;
-//   width: 100%;
-//   display: grid;
-//   grid-template-columns: 24.3% 33.5% 1fr 1fr 1fr;
-//   grid-template-rows: repeat(4, 1fr);
-//   font-size: 12px;
-//   text-wrap: balance;
-//   border-top: none;
-// }
-
-// .seccion3__line7 {
-//   border: 1px solid #006548;
-//   width: 100%;
-//   font-size: 12px;
-//   padding: .4rem;
-//   border-left: 2px solid #006548;
-//   border-right: 2px solid #006548;
-//   border-top: none;
-//   text-align: center;
-// }
-
-// .seccion3__line8 {
-//   border: 1px solid #006548;
-//   width: 100%;
-//   display: grid;
-//   grid-template-columns: 24.3% 33.5% 1fr 1fr 1fr;
-//   grid-template-rows: repeat(2, 1fr);
-//   font-size: 12px;
-//   text-wrap: balance;
-//   border-top: none;
-//   border-bottom-left-radius: 1rem;
-//   border-bottom-right-radius: 1rem;
-// }
-
-// // PLANILLA SECCION 3
-// .planilla__seccion3 {
-//   margin-top: 1rem;
-//   width: 100%;
-//   display: grid;
-//   border-radius: 1rem;
-//   font-size: 12px;
-//   border: 1px solid #006548;
-
-//   & .planilla__titulo {
-//     width: 100%;
-//     text-align: center;
-//     text-transform: uppercase;
-//     font-size: .8rem;
-//     background: #006548;
-//     color: white;
-//     border-top-left-radius: 0.8rem;
-//     border-top-right-radius: 0.8rem;
-//     max-width: 100%;
-//   }
-
-//   .planilla__contenedor {
-//     display: grid;
-//     grid-template-columns: 13% 1fr;
-//     grid-template-rows: 1fr;
-//   }
-
-//   .seccion__col {
-//     grid-row: span 1;
-//     background: #006548;
-//     color: white;
-//     font-weight: 600;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     font-size: 1rem;
-//     padding-left: .5rem;
-//   }
-
-//   .seccion__group {
-//     display: grid;
-//     grid-template-columns: 1fr 1fr;
-//     grid-template-rows: repeat(4, 1fr);
-//   }
-
-//   .seccion__item {
-//     border: 1px solid #006548;
-//     width: 100%;
-//     font-size: 12px;
-//     padding: .4rem .8rem 1rem;
-//   }
-// }
-
-// .planilla__seccion4 {
-//   margin-top: 1rem;
-//   width: 100%;
-//   display: grid;
-//   border-radius: 1rem;
-//   font-size: 12px;
-//   border: 1px solid #006548;
-
-
-//   & .planilla__titulo {
-//     width: 100%;
-//     text-align: center;
-//     text-transform: uppercase;
-//     font-size: .8rem;
-//     background: #006548;
-//     color: white;
-//     border-top-left-radius: 0.8rem;
-//     border-top-right-radius: 0.8rem;
-//     max-width: 100%;
-//   }
-
-//   .planilla__contenedor {
-//     display: grid;
-//     grid-template-columns: 1fr 1fr;
-//     grid-template-rows: 1fr 1fr;
-//   }
-
-//   .seccion__item {
-//     border: 1px solid #006548;
-//     width: 100%;
-//     font-size: 12px;
-//     padding: .4rem .8rem 1rem;
-//   }
-// }
 
 // ----------------------------------------------------------
 // Informacion economico financiera del inversionista
@@ -505,6 +257,11 @@
     }
   }
 
+  &__contract {
+    padding: 1rem;
+    line-height: 1.3;
+  }
+
   // Page 2
   &__section1 {
     width: 100%;
@@ -514,6 +271,46 @@
       flex: 1 0 auto;
     }
   }
+
+
+  &__sign {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__sign-item {
+    border: 1px solid #006548;
+    font-size: 12px;
+    padding: .4rem .8rem 0.5rem;
+    min-height: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 0.8rem;
+  }
+
+  &__list {
+    padding: 1rem;
+    list-style-type: decimal;
+    margin-left: 1rem;
+
+    li {
+      margin-bottom: .2rem;
+    }
+  }
+
+}
+
+.simple-text {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.copy {
+  display: block;
+  margin-top: 1rem;
+  margin-left: .6rem;
+  font-size: .8rem;
 }
 
 
