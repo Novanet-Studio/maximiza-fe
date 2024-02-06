@@ -736,6 +736,130 @@ const Planilla = ({ data }) => {
               </div>
             </div>
           </div>
+
+          {/* Datos economico financieros */}
+          <div className="spreadsheet__section">
+            <h5 className="spreadsheet__title">INFORMACIÓN DEL PRODUCTO O SERVICIO BURSATIL</h5>
+            <div className="spreadsheet__services">
+              <div className="spreadsheet__services-section">
+                <div className="spreadsheet__item">
+                  <div className="spreadsheet__form-item">
+                    <label htmlFor="">Nombre del producto: </label>
+                    <input type="text" />
+                  </div>
+                </div>
+                <div className="spreadsheet__item">
+                  <div className="spreadsheet__form-item">
+                    <label htmlFor="">Monto del producto adquirido: </label>
+                    <input type="text" />
+                  </div>
+                </div>
+                <div className="spreadsheet__item">
+                  <div className="spreadsheet__form-item">
+                    <label htmlFor="">Moneda: </label>
+                    <input type="text" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="spreadsheet__item text-center">Información sobre movilización de fondos</div>
+
+              <div className="spreadsheet__services-section-1">
+                <div className="spreadsheet__item">
+                  <div className="spreadsheet__form-item">
+                    <label htmlFor="">Monto promedio mensual: </label>
+                    <input type="text" />
+                  </div>
+                </div>
+                <div className="spreadsheet__item">
+                  <div className="spreadsheet__form-item">
+                    <label htmlFor="">N° transacciones por transferencias: </label>
+                    <input type="text" />
+                  </div>
+                </div>
+                <div className="spreadsheet__item">
+                  <div className="spreadsheet__form-item">
+                    <label htmlFor="">Enviar o recibir fondos del exterior: </label>
+                    <input type="text" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="spreadsheet__services-section-2">
+                <div className="spreadsheet__item">
+                  <div className="spreadsheet__form-item">
+                    <input type="text" />
+                  </div>
+                </div>
+                <div className="spreadsheet__item">
+                  <div className="spreadsheet__form-item">
+                    <label htmlFor="">Compra: </label>
+                    <input type="text" />
+                  </div>
+                </div>
+                <div className="spreadsheet__item">
+                  <div className="spreadsheet__form-item">
+                    <label htmlFor="">Venta: </label>
+                    <input type="text" />
+                  </div>
+                </div>
+                <div className="spreadsheet__item">
+                  <div className="spreadsheet__form-item">
+                    <label htmlFor="">País origen: </label>
+                    <input type="text" />
+                  </div>
+                </div>
+                <div className="spreadsheet__item">
+                  <div className="spreadsheet__form-item">
+                    <label htmlFor="">País destino: </label>
+                    <input type="text" />
+                  </div>
+                </div>
+                <div className="spreadsheet__item">
+                  <div className="spreadsheet__form-item">
+                    <label htmlFor="">Uso moneda virtual: </label>
+                    <input type="text" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="spreadsheet__services-section">
+                <div className="spreadsheet__item">
+                  <div className="spreadsheet__form-item min-h">
+                    <label htmlFor="">Motivos por los cuales solicita los servicios: </label>
+                    {/* <input type="text" /> */}
+                  </div>
+                </div>
+                <div className="spreadsheet__item">
+                  <div className="spreadsheet__form-item min-h">
+                    <label htmlFor="">Origen de los fondos: </label>
+                    {/* <input type="text" /> */}
+                  </div>
+                </div>
+                <div className="spreadsheet__item">
+                  <div className="spreadsheet__form-item min-h">
+                    <label htmlFor="">Destino de los fondos: </label>
+                    {/* <input type="text" /> */}
+                  </div>
+                </div>
+                <div className="spreadsheet__item border-bl-rounded">
+                  <div className="spreadsheet__form-item min-h">
+                    <input type="text" />
+                  </div>
+                </div>
+                <div className="spreadsheet__item">
+                  <div className="spreadsheet__form-item min-h">
+                    <input type="text" />
+                  </div>
+                </div>
+                <div className="spreadsheet__item border-br-rounded">
+                  <div className="spreadsheet__form-item min-h">
+                    <input type="text" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
