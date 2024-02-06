@@ -23,7 +23,8 @@ import LegalEntityFormPdf from "../../components/legalEntityFormPdf";
 
 const RegistroJuridico = ({ data }) => {
   const dataSource = data.strapiServicio;
-  const currentInput = useRef()
+  const [showPreview, setShowPreview] = React.useState(false);
+  const currentInput = useRef();
   const steps = React.useMemo(
     () => [
       {
@@ -34,6 +35,7 @@ const RegistroJuridico = ({ data }) => {
       { label: "Perfil del inversionista" },
       { label: "Producto o servicio bursátil" },
       { label: "Aceptación del contrato" },
+      { label: "Finalizado" },
     ],
     []
   );
@@ -68,12 +70,16 @@ const RegistroJuridico = ({ data }) => {
   function handleNextStep(e) {
     e.preventDefault();
 
+    if (state.currentStep === 6) {
+      setShowPreview(true);
+    }
+
     currentInput.current.validate();
   }
 
   return (
     <Page>
-      <FormProvider value={{ nextStep, prevStep, state }}>
+      <FormProvider value={{ nextStep, prevStep, state, showPreview, setShowPreview }}>
         <section className="principal">
           <div className="columna columna--izq">
             <h1 className="principal__titulo">
@@ -165,9 +171,11 @@ const RegistroJuridico = ({ data }) => {
             <button className="historia__button" onClick={handleNextStep}>Siguiente</button>
           </footer>
         </section>
-      <section style={{ width: '100%' }}>
-        {/* <LegalEntityFormPdf /> */}
-      </section>
+        {showPreview && (
+          <section style={{ width: '100%' }}>
+            <LegalEntityFormPdf />
+          </section>
+        )}
       </FormProvider>
     </Page>
   );

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import MaximizaLogo from "../assets/images/logo-maximiza.svg";
-import "../assets/scss/pages/planilla.scss";
 import { useFormContext } from "../context/formContext";
+import "../assets/scss/pages/planilla.scss";
 
 const LegalEntityFormPdf = () => {
   const { formData } = useFormContext();
@@ -28,19 +28,19 @@ const LegalEntityFormPdf = () => {
               <div className="spreadsheet__item border-l-rounded">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Lugar: </label>
-                  <input type="text" value={formData.institutionData.place} />
+                  <input type="text" defaultValue={formData.institutionData.place} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Fechas de elaboración: </label>
-                  <input type="text" value={formData.institutionData.productionDate} />
+                  <input type="text" defaultValue={formData.institutionData.productionDate} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Moneda: </label>
-                  <input type="text" value={formData.institutionData.place} />
+                  <input type="text" defaultValue={formData.institutionData.place} />
                 </div>
               </div>
             </div>
@@ -60,13 +60,13 @@ const LegalEntityFormPdf = () => {
                     Nombre de casa de bolsa o sociedades de corretaje de
                     valores:{" "}
                   </label>
-                  <input type="text" value="Maximiza Casa de Bolsa, C.A." />
+                  <input type="text" defaultValue="Maximiza Casa de Bolsa, C.A." />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Registro información fiscal: </label>
-                  <input type="text" value="Rif: J-300254492" />
+                  <input type="text" defaultValue="Rif: J-300254492" />
                 </div>
               </div>
               <div className="spreadsheet__item">
@@ -74,7 +74,7 @@ const LegalEntityFormPdf = () => {
                   <label htmlFor="">Dir<LegalEntityFormPdf />ección: </label>
                   <input
                     type="text"
-                    value="Av. Francisco de Miranda. Edificio Torre Europa. Piso 3. Ofic 3-B. Urb. Campo Alegre. Caracas"
+                    defaultValue="Av. Francisco de Miranda. Edificio Torre Europa. Piso 3. Ofic 3-B. Urb. Campo Alegre. Caracas"
                   />
                 </div>
               </div>
@@ -92,19 +92,19 @@ const LegalEntityFormPdf = () => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Registro de información ﬁscal: </label>
-                  <input type="text" value={formData.enterpriseIdentification.taxInformationRegistration} />
+                  <input type="text" defaultValue={formData.enterpriseIdentification.taxInformationRegistration} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Razón Social: </label>
-                  <input type="text" value={formData.enterpriseIdentification.socialReason} />
+                  <input type="text" defaultValue={formData.enterpriseIdentification.socialReason} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Nombre Comercial: </label>
-                  <input type="text" value={formData.enterpriseIdentification.tradename} />
+                  <input type="text" defaultValue={formData.enterpriseIdentification.tradename} />
                 </div>
               </div>
             </div>
@@ -112,13 +112,13 @@ const LegalEntityFormPdf = () => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Actividad económica: </label>
-                  <input type="text" value={formData.enterpriseIdentification.economicActivity} />
+                  <input type="text" defaultValue={formData.enterpriseIdentification.economicActivity} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Actividad especiﬁca: </label>
-                  <input type="text" value={formData.enterpriseIdentification.specificActivity} />
+                  <input type="text" defaultValue={formData.enterpriseIdentification.specificActivity} />
                 </div>
               </div>
             </div>
@@ -131,37 +131,37 @@ const LegalEntityFormPdf = () => {
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Nombre del registro: </label>
-                    <input type="text" value={formData.enterpriseIdentification.recordName} />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.recordName} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Número: </label>
-                    <input type="text" value={formData.enterpriseIdentification.number} />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.number} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Tomo: </label>
-                    <input type="text" value={formData.enterpriseIdentification.took} />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.took} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Folio: </label>
-                    <input type="text" value={formData.enterpriseIdentification.fol} />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.fol} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Fecha: </label>
-                    <input type="text" value={formData.enterpriseIdentification.date} />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.date} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Capital social: </label>
-                    <input type="text" value={formData.enterpriseIdentification.socialCapital} />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.socialCapital} />
                   </div>
                 </div>
               </div>
@@ -217,25 +217,25 @@ const LegalEntityFormPdf = () => {
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Número de gaceta oﬁcial: </label>
-                    <input type="text" value={formData.enterpriseIdentification.officialGazetteNumber} />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.officialGazetteNumber} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Fecha: </label>
-                    <input type="text" value={formData.enterpriseIdentification.publicEntitiesDate} />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.publicEntitiesDate} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Autoridad / Ente de adscripción: </label>
-                    <input type="text" value={formData.enterpriseIdentification.authority} />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.authority} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Código ONT: </label>
-                    <input type="text" value={formData.enterpriseIdentification.ontCode} />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.ontCode} />
                   </div>
                 </div>
               </div>
@@ -245,19 +245,19 @@ const LegalEntityFormPdf = () => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Teléfonos: </label>
-                  <input type="text" value={formData.enterpriseIdentification.publicPhones} />
+                  <input type="text" defaultValue={formData.enterpriseIdentification.publicPhones} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Sitio Web: </label>
-                  <input type="text" value={formData.enterpriseIdentification.website} />
+                  <input type="text" defaultValue={formData.enterpriseIdentification.website} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Correo electrónico: </label>
-                  <input type="text" value={formData.enterpriseIdentification.publicEntityEmail} />
+                  <input type="text" defaultValue={formData.enterpriseIdentification.publicEntityEmail} />
                 </div>
               </div>
             </div>
@@ -265,7 +265,7 @@ const LegalEntityFormPdf = () => {
             <div className="spreadsheet__item">
               <div className="spreadsheet__form-item">
                 <label htmlFor="">Dirección: </label>
-                  <input type="text" value={formData.enterpriseIdentification.publicEntityAddress} />
+                  <input type="text" defaultValue={formData.enterpriseIdentification.publicEntityAddress} />
               </div>
             </div>
 
@@ -273,19 +273,19 @@ const LegalEntityFormPdf = () => {
               <div className="spreadsheet__item border-bl-rounded">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Teléfonos: </label>
-                  <input type="text" value={formData.enterpriseIdentification.publicPhones} />
+                  <input type="text" defaultValue={formData.enterpriseIdentification.publicPhones} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Sitio Web: </label>
-                  <input type="text" value={formData.enterpriseIdentification.website} />
+                  <input type="text" defaultValue={formData.enterpriseIdentification.website} />
                 </div>
               </div>
               <div className="spreadsheet__item border-br-rounded">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Correo electrónico: </label>
-                  <input type="text" value={formData.enterpriseIdentification.publicEntityEmail} />
+                  <input type="text" defaultValue={formData.enterpriseIdentification.publicEntityEmail} />
                 </div>
               </div>
             </div>
@@ -426,22 +426,22 @@ const LegalEntityFormPdf = () => {
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" value={formData.financialInformation.financialInformation.politicalPerson[0].name} />
+                    <input type="text" defaultValue={formData.financialInformation.financialInformation.politicalPerson[0].name} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" value={formData.financialInformation.financialInformation.politicalPerson[0].cargo} />
+                    <input type="text" defaultValue={formData.financialInformation.financialInformation.politicalPerson[0].cargo} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" value={formData.financialInformation.financialInformation.politicalPerson[0].country} />
+                    <input type="text" defaultValue={formData.financialInformation.financialInformation.politicalPerson[0].country} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" value={formData.financialInformation.financialInformation.politicalPerson[0].pepIdentification} />
+                    <input type="text" defaultValue={formData.financialInformation.financialInformation.politicalPerson[0].pepIdentification} />
                   </div>
                 </div>
                 {/* <div className="spreadsheet__item">
@@ -491,37 +491,37 @@ const LegalEntityFormPdf = () => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">N° de subsidiarias / Oﬁcinas: </label>
-                  <input type="text" value={formData.financialInformation.financialInformation.officeNumber} />
+                  <input type="text" defaultValue={formData.financialInformation.financialInformation.officeNumber} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">País con mayor presencia: </label>
-                  <input type="text" value={formData.financialInformation.countryWithGreaterPresence} />
+                  <input type="text" defaultValue={formData.financialInformation.countryWithGreaterPresence} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">N° de empleados: </label>
-                  <input type="text" value={formData.financialInformation.employeesNumber} />
+                  <input type="text" defaultValue={formData.financialInformation.employeesNumber} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Ventas mensuales: </label>
-                  <input type="text" value={formData.financialInformation.monthlySales} />
+                  <input type="text" defaultValue={formData.financialInformation.monthlySales} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Ingresos mensuales: </label>
-                  <input type="text" value={formData.financialInformation.monthlyIncome} />
+                  <input type="text" defaultValue={formData.financialInformation.monthlyIncome} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Egresos mensuales: </label>
-                  <input type="text" value={formData.financialInformation.monthlyExpenses} />
+                  <input type="text" defaultValue={formData.financialInformation.monthlyExpenses} />
                 </div>
               </div>
             </div>
@@ -534,13 +534,13 @@ const LegalEntityFormPdf = () => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Año: </label>
-                  <input type="text" value={formData.financialInformation.islrYear} />
+                  <input type="text" defaultValue={formData.financialInformation.islrYear} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Monto: </label>
-                  <input type="text" value={formData.financialInformation.islrAmount} />
+                  <input type="text" defaultValue={formData.financialInformation.islrAmount} />
                 </div>
               </div>
             </div>
@@ -562,25 +562,25 @@ const LegalEntityFormPdf = () => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Nombre o razón social: </label>
-                  <input type="text" value={formData.financialInformation.providers[0].name} />
+                  <input type="text" defaultValue={formData.financialInformation.providers[0].name} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Ubicación: </label>
-                  <input type="text" value={formData.financialInformation.providers[0].location} />
+                  <input type="text" defaultValue={formData.financialInformation.providers[0].location} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Nombre o razón social: </label>
-                  <input type="text" value={formData.financialInformation.clients[0].name} />
+                  <input type="text" defaultValue={formData.financialInformation.clients[0].name} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Ubicación: </label>
-                  <input type="text" value={formData.financialInformation.clients[0].location}  />
+                  <input type="text" defaultValue={formData.financialInformation.clients[0].location}  />
                 </div>
               </div>
             </div>
@@ -588,45 +588,22 @@ const LegalEntityFormPdf = () => {
             <div className="spreadsheet__content">
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
-                  <input type="text" value="" />
+                  <input type="text" defaultValue="" />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
-                  <input type="text" value="" />
+                  <input type="text" defaultValue="" />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
-                  <input type="text" value="" />
+                  <input type="text" defaultValue="" />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
-                  <input type="text" value="" />
-                </div>
-              </div>
-            </div>
-
-            <div className="spreadsheet__content">
-              <div className="spreadsheet__item">
-                <div className="spreadsheet__form-item">
-                  <input type="text" value="" />
-                </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div className="spreadsheet__form-item">
-                  <input type="text" value="" />
-                </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div className="spreadsheet__form-item">
-                  <input type="text" value="" />
-                </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div className="spreadsheet__form-item">
-                  <input type="text" value="" />
+                  <input type="text" defaultValue="" />
                 </div>
               </div>
             </div>
@@ -634,22 +611,45 @@ const LegalEntityFormPdf = () => {
             <div className="spreadsheet__content">
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
-                  <input type="text" value="" />
+                  <input type="text" defaultValue="" />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
-                  <input type="text" value="" />
+                  <input type="text" defaultValue="" />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
-                  <input type="text" value="" />
+                  <input type="text" defaultValue="" />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
-                  <input type="text" value="" />
+                  <input type="text" defaultValue="" />
+                </div>
+              </div>
+            </div>
+
+            <div className="spreadsheet__content">
+              <div className="spreadsheet__item">
+                <div className="spreadsheet__form-item">
+                  <input type="text" defaultValue="" />
+                </div>
+              </div>
+              <div className="spreadsheet__item">
+                <div className="spreadsheet__form-item">
+                  <input type="text" defaultValue="" />
+                </div>
+              </div>
+              <div className="spreadsheet__item">
+                <div className="spreadsheet__form-item">
+                  <input type="text" defaultValue="" />
+                </div>
+              </div>
+              <div className="spreadsheet__item">
+                <div className="spreadsheet__form-item">
+                  <input type="text" defaultValue="" />
                 </div>
               </div>
             </div>
@@ -676,47 +676,47 @@ const LegalEntityFormPdf = () => {
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" value={formData.financialInformation.relatedCompanies[0].name} />
+                    <input type="text" defaultValue={formData.financialInformation.relatedCompanies[0].name} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" value={formData.financialInformation.relatedCompanies[0].economicActivity} />
+                    <input type="text" defaultValue={formData.financialInformation.relatedCompanies[0].economicActivity} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" value={formData.financialInformation.relatedCompanies[0].taxInformationRegistry} />
+                    <input type="text" defaultValue={formData.financialInformation.relatedCompanies[0].taxInformationRegistry} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" value="" />
+                    <input type="text" defaultValue="" />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" value="" />
+                    <input type="text" defaultValue="" />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" value="" />
+                    <input type="text" defaultValue="" />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" value="" />
+                    <input type="text" defaultValue="" />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" value="" />
+                    <input type="text" defaultValue="" />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" value="" />
+                    <input type="text" defaultValue="" />
                   </div>
                 </div>
               </div>
@@ -730,45 +730,45 @@ const LegalEntityFormPdf = () => {
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Institución del sector bancario: </label>
-                    <input type="text" value={formData.financialInformation.bankReferencesInstitution} />
+                    <input type="text" defaultValue={formData.financialInformation.bankReferencesInstitution} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Nombre del producto: </label>
-                    <input type="text" value={formData.financialInformation.bankReferencesProductName} />
+                    <input type="text" defaultValue={formData.financialInformation.bankReferencesProductName} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" value="" />
+                    <input type="text" defaultValue="" />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" value="" />
+                    <input type="text" defaultValue="" />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Número del producto: </label>
-                    <input type="text" value={formData.financialInformation.bankReferencesProductNumber} />
+                    <input type="text" defaultValue={formData.financialInformation.bankReferencesProductNumber} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Cifras promedio: </label>
-                    <input type="text" value={formData.financialInformation.bankReferencesAverage} />
+                    <input type="text" defaultValue={formData.financialInformation.bankReferencesAverage} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" value="" />
+                    <input type="text" defaultValue="" />
                   </div>
                 </div>
                 <div className="spreadsheet__item border-br-rounded">
                   <div className="spreadsheet__form-item">
-                    <input type="text" value="" />
+                    <input type="text" defaultValue="" />
                   </div>
                 </div>
               </div>
@@ -786,19 +786,19 @@ const LegalEntityFormPdf = () => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Nombre del producto: </label>
-                  <input type="text" value={formData.productInformation.productName} />
+                  <input type="text" defaultValue={formData.productInformation.productName} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Monto del producto adquirido: </label>
-                  <input type="text" value={formData.productInformation.productAmount} />
+                  <input type="text" defaultValue={formData.productInformation.productAmount} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Moneda: </label>
-                  <input type="text" value={formData.productInformation.currency} />
+                  <input type="text" defaultValue={formData.productInformation.currency} />
                 </div>
               </div>
             </div>
@@ -811,7 +811,7 @@ const LegalEntityFormPdf = () => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Monto promedio mensual: </label>
-                  <input type="text" value={formData.productInformation.monthlyAmount} />
+                  <input type="text" defaultValue={formData.productInformation.monthlyAmount} />
                 </div>
               </div>
               <div className="spreadsheet__item">
@@ -819,7 +819,7 @@ const LegalEntityFormPdf = () => {
                   <label htmlFor="">
                     N° transacciones por transferencias:{" "}
                   </label>
-                  <input type="text" value={formData.productInformation.numberOfTransactionsByTransfers} />
+                  <input type="text" defaultValue={formData.productInformation.numberOfTransactionsByTransfers} />
                 </div>
               </div>
               <div className="spreadsheet__item">
@@ -827,7 +827,7 @@ const LegalEntityFormPdf = () => {
                   <label htmlFor="">
                     Enviar o recibir fondos del exterior:{" "}
                   </label>
-                  <input type="text" value={formData.productInformation.sendOrReceiveFundsFromAbroad} />
+                  <input type="text" defaultValue={formData.productInformation.sendOrReceiveFundsFromAbroad} />
                 </div>
               </div>
             </div>
@@ -835,37 +835,37 @@ const LegalEntityFormPdf = () => {
             <div className="spreadsheet__services-section-2">
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
-                  <input type="text" value="" />
+                  <input type="text" defaultValue="" />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Compra: </label>
-                  <input type="text" value={formData.productInformation.purchase} />
+                  <input type="text" defaultValue={formData.productInformation.purchase} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Venta: </label>
-                  <input type="text" value={formData.productInformation.sale} />
+                  <input type="text" defaultValue={formData.productInformation.sale} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">País origen: </label>
-                  <input type="text" value={formData.productInformation.originCountry} />
+                  <input type="text" defaultValue={formData.productInformation.originCountry} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">País destino: </label>
-                  <input type="text" value={formData.productInformation.destinationCountry} />
+                  <input type="text" defaultValue={formData.productInformation.destinationCountry} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Uso moneda virtual: </label>
-                  <input type="text" value={formData.productInformation.virtualCurrencyUse} />
+                  <input type="text" defaultValue={formData.productInformation.virtualCurrencyUse} />
                 </div>
               </div>
             </div>
@@ -890,17 +890,17 @@ const LegalEntityFormPdf = () => {
               </div>
               <div className="spreadsheet__item border-bl-rounded">
                 <div className="spreadsheet__form-item min-h">
-                  <input type="text" value={formData.productInformation.motives} />
+                  <input type="text" defaultValue={formData.productInformation.motives} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item min-h">
-                  <input type="text" value={formData.productInformation.fundsSource} />
+                  <input type="text" defaultValue={formData.productInformation.fundsSource} />
                 </div>
               </div>
               <div className="spreadsheet__item border-br-rounded">
                 <div className="spreadsheet__form-item min-h">
-                  <input type="text" value={formData.productInformation.fundsDestination} />
+                  <input type="text" defaultValue={formData.productInformation.fundsDestination} />
                 </div>
               </div>
             </div>

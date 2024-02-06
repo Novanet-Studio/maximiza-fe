@@ -3,12 +3,13 @@ import { useForm } from "react-hook-form";
 import { useFormContext } from "../../context/formContext";
 
 const AcceptContractStep = React.forwardRef((props, ref) => {
-  const { nextStep, updateFormData } = useFormContext();
+  const { nextStep, updateFormData, setShowPreview } = useFormContext();
   const { register, trigger, getValues } = useForm();
 
   async function validate() {
     const valid = await trigger();
     const values = getValues();
+
     
     if (valid) {
       updateFormData({ accepted: values.accept });
