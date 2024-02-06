@@ -2,7 +2,7 @@
   flex-direction: column;
 }
 
-.planilla {
+.spreadsheet {
   margin-top: 2rem;
   min-width: 54.375rem;
   width: 100%;
@@ -12,17 +12,17 @@
   padding: 2rem;
 }
 
-.planilla__cabecera {
+.spreadsheet__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.planilla__imagen {
+.spreadsheet__image {
   width: 20%;
 }
 
-.planilla__titulo {
+.spreadsheet__title {
   text-transform: uppercase;
   text-wrap: balance;
   max-width: 50%;
@@ -32,7 +32,7 @@
   padding-left: 1rem;
 }
 
-.planilla__cuerpo {
+.spreadsheet__body {
   margin-top: 1.5rem;
 }
 

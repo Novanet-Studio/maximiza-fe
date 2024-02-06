@@ -4,16 +4,16 @@ import "../assets/scss/pages/planilla.scss";
 
 const LegalEntityFormPdf = () => {
   return (
-    <div className="planilla">
-      <header className="planilla__cabecera">
-        <img className="header__imagen" src={MaximizaLogo} alt="logo" />
+    <div className="spreadsheet">
+      <header className="spreadsheet__header">
+        <img className="spreadsheet__image" src={MaximizaLogo} alt="logo" />
 
-        <h5 className="planilla__titulo">
+        <h5 className="spreadsheet__title">
           Ficha de identificación del inversionista persona jurídica
         </h5>
       </header>
 
-      <div className="planilla__cuerpo">
+      <div className="spreadsheet__body">
         {/* Datos basicos */}
         <div className="spreadsheet__section">
           <div className="spreadsheet__container">
