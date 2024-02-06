@@ -7,7 +7,7 @@ const DatosInstitucionStep = React.forwardRef((props, ref) => {
   const { register, trigger, getValues } = useForm();
 
   async function validate() {
-    const valid = await trigger()
+    const valid = await trigger();
     const values = getValues();
 
     if (valid) {

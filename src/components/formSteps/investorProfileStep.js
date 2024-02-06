@@ -116,40 +116,40 @@ const InvestorProfileStep = React.forwardRef((props, ref) => {
       <div className="steps-form__collection">
         <div className="steps-form__group">
           <div className="steps-form__checkbox">
-            <label className="checkbox-label" htmlFor="lessThan5_000">
-              <input {...register('investorProfile.annualInversion', { required: true })} id="lessThan5_000" className="steps-form__input" type="radio" value="lessThan5_000" />
+            <label className="checkbox-label" htmlFor="i_lessThan5_000">
+              <input {...register('investorProfile.annualInversion', { required: true })} id="i_lessThan5_000" className="steps-form__input" type="radio" value="lessThan5_000" />
               Menos de 5.000
             </label>
           </div>
           <div className="steps-form__checkbox">
-            <label className="checkbox-label" htmlFor="5_000and10_000">
-              <input {...register('investorProfile.annualInversion', { required: true })} id="5_000and10_000" className="steps-form__input" type="radio" value="5_000and10_000" />
+            <label className="checkbox-label" htmlFor="i_5_000and10_000">
+              <input {...register('investorProfile.annualInversion', { required: true })} id="i_5_000and10_000" className="steps-form__input" type="radio" value="5_000and10_000" />
               Entre 5.001 y 10.000
             </label>
           </div>
           <div className="steps-form__checkbox">
-            <label className="checkbox-label" htmlFor="10_000and50_000">
-              <input {...register('investorProfile.annualInversion', { required: true })} id="10_000and50_000" className="steps-form__input" type="radio" value="10_000and50_000" />
+            <label className="checkbox-label" htmlFor="i_10_000and50_000">
+              <input {...register('investorProfile.annualInversion', { required: true })} id="i_10_000and50_000" className="steps-form__input" type="radio" value="10_000and50_000" />
               Entre 10.001 y 50.000
             </label>
           </div>
         </div>
         <div className="steps-form__group">
           <div className="steps-form__checkbox">
-            <label className="checkbox-label" htmlFor="50_000and100_000">
-              <input {...register('investorProfile.annualInversion', { required: true })} id="50_000and100_000" className="steps-form__input" type="radio" value="50_000and100_000" />
+            <label className="checkbox-label" htmlFor="i_50_000and100_000">
+              <input {...register('investorProfile.annualInversion', { required: true })} id="i_50_000and100_000" className="steps-form__input" type="radio" value="50_000and100_000" />
               Entre 50.001 y 100.000
             </label>
           </div>
           <div className="steps-form__checkbox">
-            <label className="checkbox-label" htmlFor="100_000and300_000">
-              <input {...register('investorProfile.annualInversion', { required: true })} id="100_000and300_000" className="steps-form__input" type="radio" value="100_000and300_000" />
+            <label className="checkbox-label" htmlFor="i_100_000and300_000">
+              <input {...register('investorProfile.annualInversion', { required: true })} id="i_100_000and300_000" className="steps-form__input" type="radio" value="100_000and300_000" />
               Entre 100.001 y 300.000
             </label>
           </div>
           <div className="steps-form__checkbox">
-            <label className="checkbox-label" htmlFor="moreThan300_000">
-              <input {...register('investorProfile.annualInversion', { required: true })} id="moreThan300_000" className="steps-form__input" type="radio" value="moreThan300_000" />
+            <label className="checkbox-label" htmlFor="i_moreThan300_000">
+              <input {...register('investorProfile.annualInversion', { required: true })} id="i_moreThan300_000" className="steps-form__input" type="radio" value="moreThan300_000" />
               Más de 300.000
             </label>
           </div>
@@ -160,40 +160,40 @@ const InvestorProfileStep = React.forwardRef((props, ref) => {
       <div className="steps-form__collection">
         <div className="steps-form__group">
           <div className="steps-form__checkbox">
-            <label className="checkbox-label" htmlFor="lessThan5_000">
-              <input {...register('investorProfile.totalLiquidAssets', { required: true })} id="lessThan5_000" className="steps-form__input" type="radio" value="lessThan5_000" />
+            <label className="checkbox-label" htmlFor="t_lessThan5_000">
+              <input {...register('investorProfile.totalLiquidAssets', { required: true })} id="t_lessThan5_000" className="steps-form__input" type="radio" value="lessThan5_000" />
               Menos de 5.000
             </label>
           </div>
           <div className="steps-form__checkbox">
-            <label className="checkbox-label" htmlFor="5_000and10_000">
-              <input {...register('investorProfile.totalLiquidAssets', { required: true })} id="5_000and10_000" className="steps-form__input" type="radio" value="5_000and10_000" />
+            <label className="checkbox-label" htmlFor="t_5_000and10_000">
+              <input {...register('investorProfile.totalLiquidAssets', { required: true })} id="t_5_000and10_000" className="steps-form__input" type="radio" value="5_000and10_000" />
               Entre 5.001 y 10.000
             </label>
           </div>
           <div className="steps-form__checkbox">
-            <label className="checkbox-label" htmlFor="10_000and50_000">
-              <input {...register('investorProfile.totalLiquidAssets', { required: true })} id="10_000and50_000" className="steps-form__input" type="radio" value="10_000and50_000" />
+            <label className="checkbox-label" htmlFor="t_10_000and50_000">
+              <input {...register('investorProfile.totalLiquidAssets', { required: true })} id="t_10_000and50_000" className="steps-form__input" type="radio" value="10_000and50_000" />
               Entre 10.001 y 50.000
             </label>
           </div>
         </div>
         <div className="steps-form__group">
           <div className="steps-form__checkbox">
-            <label className="checkbox-label" htmlFor="50_000and100_000">
-              <input {...register('investorProfile.totalLiquidAssets', { required: true })} id="50_000and100_000" className="steps-form__input" type="radio" value="50_000and100_000" />
+            <label className="checkbox-label" htmlFor="t_50_000and100_000">
+              <input {...register('investorProfile.totalLiquidAssets', { required: true })} id="t_50_000and100_000" className="steps-form__input" type="radio" value="50_000and100_000" />
               Entre 50.001 y 100.000
             </label>
           </div>
           <div className="steps-form__checkbox">
-            <label className="checkbox-label" htmlFor="100_000and300_000">
-              <input {...register('investorProfile.totalLiquidAssets', { required: true })} id="100_000and300_000" className="steps-form__input" type="radio" value="100_000and300_000" />
+            <label className="checkbox-label" htmlFor="t_100_000and300_000">
+              <input {...register('investorProfile.totalLiquidAssets', { required: true })} id="t_100_000and300_000" className="steps-form__input" type="radio" value="100_000and300_000" />
               Entre 100.001 y 300.000
             </label>
           </div>
           <div className="steps-form__checkbox">
-            <label className="checkbox-label" htmlFor="moreThan300_000">
-              <input {...register('investorProfile.totalLiquidAssets', { required: true })} id="moreThan300_000" className="steps-form__input" type="radio" value="moreThan300_000" />
+            <label className="checkbox-label" htmlFor="t_moreThan300_000">
+              <input {...register('investorProfile.totalLiquidAssets', { required: true })} id="t_moreThan300_000" className="steps-form__input" type="radio" value="moreThan300_000" />
               Más de 300.000
             </label>
           </div>
@@ -204,40 +204,40 @@ const InvestorProfileStep = React.forwardRef((props, ref) => {
       <div className="steps-form__collection">
         <div className="steps-form__group">
           <div className="steps-form__checkbox">
-            <label className="checkbox-label" htmlFor="lessThan5_000">
-              <input {...register('investorProfile.totalLiquidAssets', { required: true })} id="lessThan5_000" className="steps-form__input" type="radio" value="lessThan5_000" />
+            <label className="checkbox-label" htmlFor="p_lessThan5_000">
+              <input {...register('investorProfile.totalAssets', { required: true })} id="p_lessThan5_000" className="steps-form__input" type="radio" value="lessThan5_000" />
               Menos de 5.000
             </label>
           </div>
           <div className="steps-form__checkbox">
-            <label className="checkbox-label" htmlFor="5_000and10_000">
-              <input {...register('investorProfile.totalLiquidAssets', { required: true })} id="5_000and10_000" className="steps-form__input" type="radio" value="5_000and10_000" />
+            <label className="checkbox-label" htmlFor="p_5_000and10_000">
+              <input {...register('investorProfile.totalAssets', { required: true })} id="p_5_000and10_000" className="steps-form__input" type="radio" value="5_000and10_000" />
               Entre 5.001 y 10.000
             </label>
           </div>
           <div className="steps-form__checkbox">
-            <label className="checkbox-label" htmlFor="10_000and50_000">
-              <input {...register('investorProfile.totalLiquidAssets', { required: true })} id="10_000and50_000" className="steps-form__input" type="radio" value="10_000and50_000" />
+            <label className="checkbox-label" htmlFor="p_10_000and50_000">
+              <input {...register('investorProfile.totalAssets', { required: true })} id="p_10_000and50_000" className="steps-form__input" type="radio" value="10_000and50_000" />
               Entre 10.001 y 50.000
             </label>
           </div>
         </div>
         <div className="steps-form__group">
           <div className="steps-form__checkbox">
-            <label className="checkbox-label" htmlFor="50_000and100_000">
-              <input {...register('investorProfile.totalLiquidAssets', { required: true })} id="50_000and100_000" className="steps-form__input" type="radio" value="50_000and100_000" />
+            <label className="checkbox-label" htmlFor="p_50_000and100_000">
+              <input {...register('investorProfile.totalAssets', { required: true })} id="p_50_000and100_000" className="steps-form__input" type="radio" value="50_000and100_000" />
               Entre 50.001 y 100.000
             </label>
           </div>
           <div className="steps-form__checkbox">
-            <label className="checkbox-label" htmlFor="100_000and300_000">
-              <input {...register('investorProfile.totalLiquidAssets', { required: true })} id="100_000and300_000" className="steps-form__input" type="radio" value="100_000and300_000" />
+            <label className="checkbox-label" htmlFor="p_100_000and300_000">
+              <input {...register('investorProfile.totalAssets', { required: true })} id="p_100_000and300_000" className="steps-form__input" type="radio" value="100_000and300_000" />
               Entre 100.001 y 300.000
             </label>
           </div>
           <div className="steps-form__checkbox">
-            <label className="checkbox-label" htmlFor="moreThan300_000">
-              <input {...register('investorProfile.totalLiquidAssets', { required: true })} id="moreThan300_000" className="steps-form__input" type="radio" value="moreThan300_000" />
+            <label className="checkbox-label" htmlFor="p_moreThan300_000">
+              <input {...register('investorProfile.totalAssets', { required: true })} id="p_moreThan300_000" className="steps-form__input" type="radio" value="moreThan300_000" />
               Más de 300.000
             </label>
           </div>
