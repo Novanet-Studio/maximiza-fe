@@ -166,7 +166,7 @@ const RegistroJuridico = ({ data }) => {
           </footer>
         </section>
       <section style={{ width: '100%' }}>
-        <LegalEntityFormPdf />
+        {/* <LegalEntityFormPdf /> */}
       </section>
       </FormProvider>
     </Page>
