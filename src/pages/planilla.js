@@ -109,7 +109,7 @@ const Planilla = ({ data }) => {
               </div>
 
               <div className="spreadsheet__column-wrapper">
-                <div className="spreadsheet__col  spreadsheet__col-border">
+                <div className="spreadsheet__col spreadsheet__col-border">
                   Datos del registro
                 </div>
                 <div className="spreadsheet__content">
@@ -463,28 +463,40 @@ const Planilla = ({ data }) => {
 
               <div className="spreadsheet__economic2-section">
                 <div className="spreadsheet__item">
-                  <label htmlFor="">N° de subsidiarias / Oﬁcinas: </label>
-                  <input type="text" />
+                  <div className="spreadsheet__form-item">
+                    <label htmlFor="">N° de subsidiarias / Oﬁcinas: </label>
+                    <input type="text" />
+                  </div>
                 </div>
                 <div className="spreadsheet__item">
-                  <label htmlFor="">País con mayor presencia: </label>
-                  <input type="text" />
+                  <div className="spreadsheet__form-item">
+                    <label htmlFor="">País con mayor presencia: </label>
+                    <input type="text" />
+                  </div>
                 </div>
                 <div className="spreadsheet__item">
-                  <label htmlFor="">N° de empleados: </label>
-                  <input type="text" />
+                  <div className="spreadsheet__form-item">
+                    <label htmlFor="">N° de empleados: </label>
+                    <input type="text" />
+                  </div>
                 </div>
                 <div className="spreadsheet__item">
-                  <label htmlFor="">Ventas mensuales: </label>
-                  <input type="text" />
+                  <div className="spreadsheet__form-item">
+                    <label htmlFor="">Ventas mensuales: </label>
+                    <input type="text" />
+                  </div>
                 </div>
                 <div className="spreadsheet__item">
-                  <label htmlFor="">Ingresos mensuales: </label>
-                  <input type="text" />
+                  <div className="spreadsheet__form-item">
+                    <label htmlFor="">Ingresos mensuales: </label>
+                    <input type="text" />
+                  </div>
                 </div>
                 <div className="spreadsheet__item">
-                  <label htmlFor="">Egresos mensuales: </label>
-                  <input type="text" />
+                  <div className="spreadsheet__form-item">
+                    <label htmlFor="">Egresos mensuales: </label>
+                    <input type="text" />
+                  </div>
                 </div>
               </div>
 
@@ -827,19 +839,16 @@ const Planilla = ({ data }) => {
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item min-h">
                     <label htmlFor="">Motivos por los cuales solicita los servicios: </label>
-                    {/* <input type="text" /> */}
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item min-h">
                     <label htmlFor="">Origen de los fondos: </label>
-                    {/* <input type="text" /> */}
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item min-h">
                     <label htmlFor="">Destino de los fondos: </label>
-                    {/* <input type="text" /> */}
                   </div>
                 </div>
                 <div className="spreadsheet__item border-bl-rounded">
