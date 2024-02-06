@@ -404,6 +404,50 @@
     }
   }
 
+  &__economic2 {
+    &-section {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .min-h {
+      min-height: 2.5rem;
+    }
+
+    .spreadsheet__column-wrapper {
+      display: grid;
+      grid-template-columns: 15% 1fr;
+    }
+
+    .spreadsheet__col {
+      background: #006548;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 600;
+      padding-left: 1rem;
+    }
+
+    .spreadsheet__col-border {
+      border-bottom: 1px solid #fff;
+    }
+
+    .spreadsheet__content {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      &--1-2 {
+        grid-template-columns: 2fr repeat(2, 1fr);
+      }
+
+      &--2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+
+
   // Page 2
   &__section1 {
     width: 100%;
