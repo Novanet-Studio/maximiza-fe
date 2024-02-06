@@ -73,102 +73,102 @@ const RegistroJuridico = ({ data }) => {
 
   return (
     <Page>
-      <section className="principal">
-        <div className="columna columna--izq">
-          <h1 className="principal__titulo">
-            <ReactMarkdown
-              children={dataSource.principal.titulo}
-              remarkPlugins={[remarkGfm]}
-              skipHtml={false}
-              linkTarget="_blank"
+      <FormProvider value={{ nextStep, prevStep, state }}>
+        <section className="principal">
+          <div className="columna columna--izq">
+            <h1 className="principal__titulo">
+              <ReactMarkdown
+                children={dataSource.principal.titulo}
+                remarkPlugins={[remarkGfm]}
+                skipHtml={false}
+                linkTarget="_blank"
+              />
+            </h1>
+            <p className="principal__texto">
+              {dataSource.principal.contenido.data.contenido}
+            </p>
+          </div>
+          <div className="columna columna--der">
+            <GatsbyImage
+              className="principal__imagen"
+              image={getImage(dataSource.principal.imagen?.localFile)}
+              alt={dataSource.principal.imagen.alternativeText}
             />
-          </h1>
-          <p className="principal__texto">
-            {dataSource.principal.contenido.data.contenido}
-          </p>
-        </div>
-        <div className="columna columna--der">
-          <GatsbyImage
-            className="principal__imagen"
-            image={getImage(dataSource.principal.imagen?.localFile)}
-            alt={dataSource.principal.imagen.alternativeText}
-          />
-        </div>
-      </section>
+          </div>
+        </section>
 
-      <nav
-        className="steps-nav my-4 w-100 grid grid-cols-6 relative"
-        {...stepperProps}
-      >
-        <ol className="steps-ol col-span-full flex flex-row z-1">
-          {stepsProps?.map((step, index) => (
-            <li className="steps-li text-center flex-[1_0_auto]" key={index}>
-              <a
-                className="steps-link group flex flex-col items-center cursor-pointer focus:outline-0"
-                {...step}
-              >
-                <span
-                  className={`steps-span ${
-                    state?.currentStep === index || state?.currentStep >= index ? "active" : ""
-                  }`}
-                >
-                  {state?.currentStep <= index ? index + 1 : <FontAwesomeIcon icon="check" />}
-                </span>
-                <span
-                  style={{
-                    fontWeight: state?.currentStep === index ? "500" : "400",
-                    fontSize: 12,
-                  }}
-                  className={`${
-                    state?.currentStep === index ? "font-bold" : ""
-                  }`}
-                >
-                  {steps[index].label}
-                </span>
-              </a>
-            </li>
-          ))}
-        </ol>
-        <div
-          className="progress flex items-center flex-row top-4 right-16 relative border-0.5 bg-gray-300 z-[-1] pointer-events-none row-span-full w-full h-0.5"
-          {...progressProps}
+        <nav
+          className="steps-nav my-4 w-100 grid grid-cols-6 relative"
+          {...stepperProps}
         >
-          <span className="progress-span h-full w=full flex" />
+          <ol className="steps-ol col-span-full flex flex-row z-1">
+            {stepsProps?.map((step, index) => (
+              <li className="steps-li text-center flex-[1_0_auto]" key={index}>
+                <a
+                  className="steps-link group flex flex-col items-center cursor-pointer focus:outline-0"
+                  {...step}
+                >
+                  <span
+                    className={`steps-span ${
+                      state?.currentStep === index || state?.currentStep >= index ? "active" : ""
+                    }`}
+                  >
+                    {state?.currentStep <= index ? index + 1 : <FontAwesomeIcon icon="check" />}
+                  </span>
+                  <span
+                    style={{
+                      fontWeight: state?.currentStep === index ? "500" : "400",
+                      fontSize: 12,
+                    }}
+                    className={`${
+                      state?.currentStep === index ? "font-bold" : ""
+                    }`}
+                  >
+                    {steps[index].label}
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ol>
           <div
-            style={{
-              width: `${barSize}%`,
-            }}
-            className="progress-bar flex flex-row h-full overflow-hidden border-solid border-0 bg-sky-500"
-          />
-        </div>
-      </nav>
-      <section className="steps-form-wrapper">
-        <header className="steps-form__header">
-          <h1>Ficha de identificación del inversionista</h1>
-          <h1>Persona Jurídica</h1>
-        </header>
+            className="progress flex items-center flex-row top-4 right-16 relative border-0.5 bg-gray-300 z-[-1] pointer-events-none row-span-full w-full h-0.5"
+            {...progressProps}
+          >
+            <span className="progress-span h-full w=full flex" />
+            <div
+              style={{
+                width: `${barSize}%`,
+              }}
+              className="progress-bar flex flex-row h-full overflow-hidden border-solid border-0 bg-sky-500"
+            />
+          </div>
+        </nav>
+        <section className="steps-form-wrapper">
+          <header className="steps-form__header">
+            <h1>Ficha de identificación del inversionista</h1>
+            <h1>Persona Jurídica</h1>
+          </header>
 
-        <FormProvider value={{ nextStep, prevStep, state }}>
-          {getStepComponent()}
-          {/* <DatosInstitucionStep /> */}
-          {/* <EnterpriseIdentificationStep /> */}
-          {/* <FinancialInformationStep /> */}
-          {/* <InvestorProfileStep /> */}
-          {/* <ProductInformationStep /> */}
-          {/* <AcceptContractStep /> */}
-          {/* <FinalStep /> */}
-          {/* <Loader /> */}
-        </FormProvider>
+            {getStepComponent()}
+            {/* <DatosInstitucionStep /> */}
+            {/* <EnterpriseIdentificationStep /> */}
+            {/* <FinancialInformationStep /> */}
+            {/* <InvestorProfileStep /> */}
+            {/* <ProductInformationStep /> */}
+            {/* <AcceptContractStep /> */}
+            {/* <FinalStep /> */}
+            {/* <Loader /> */}
 
 
-        <footer className="steps-form__footer">
-          <button className="historia__button" onClick={prevStep}>Regresar</button>
-          <button className="historia__button" onClick={handleNextStep}>Siguiente</button>
-        </footer>
-      </section>
-      <section style={{ width: '100%' }}>
-        {/* <LegalEntityFormPdf /> */}
-      </section>
+          <footer className="steps-form__footer">
+            <button className="historia__button" onClick={prevStep}>Regresar</button>
+            <button className="historia__button" onClick={handleNextStep}>Siguiente</button>
+          </footer>
+        </section>
+      {/* <section style={{ width: '100%' }}>
+        <LegalEntityFormPdf />
+      </section> */}
+      </FormProvider>
     </Page>
   );
 };
