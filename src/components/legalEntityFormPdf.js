@@ -65,13 +65,13 @@ const LegalEntityFormPdf = () => {
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
-                  <label htmlFor="">Registro información fiscal: </label>
-                  <input type="text" defaultValue="Rif: J-300254492" />
+                  <div>Registro información fiscal:</div>
+                  <div>Rif: J-300254492</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
-                  <label htmlFor="">Dir<LegalEntityFormPdf />ección: </label>
+                  <label htmlFor="">Dirección: </label>
                   <input
                     type="text"
                     defaultValue="Av. Francisco de Miranda. Edificio Torre Europa. Piso 3. Ofic 3-B. Urb. Campo Alegre. Caracas"
