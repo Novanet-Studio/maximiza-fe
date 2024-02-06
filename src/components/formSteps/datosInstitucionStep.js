@@ -3,13 +3,15 @@ import { useForm } from "react-hook-form";
 import { useFormContext } from "../../context/formContext";
 
 const DatosInstitucionStep = React.forwardRef((props, ref) => {
-  const { nextStep } = useFormContext();
-  const { register, trigger } = useForm();
+  const { nextStep, updateFormData } = useFormContext();
+  const { register, trigger, getValues } = useForm();
 
   async function validate() {
     const valid = await trigger()
+    const values = getValues();
 
     if (valid) {
+      updateFormData({ institutionData: values.institutionData });
       nextStep();
     }
   }
@@ -23,15 +25,15 @@ const DatosInstitucionStep = React.forwardRef((props, ref) => {
       <div className="steps-form__group">
         <div className="steps-form__group-item">
           <label htmlFor="place">Lugar</label>
-          <input {...register('place', { required: true })} className="steps-form__input" type="text" placeholder="Lugar" />
+          <input {...register('institutionData.place', { required: true })} className="steps-form__input" type="text" placeholder="Lugar" />
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="productionDate">Fechas de elaboración</label>
-          <input {...register('productionDate', { required: true })} className="steps-form__input" type="text" placeholder="Fechas de elaboración" />
+          <input {...register('institutionData.productionDate', { required: true })} className="steps-form__input" type="text" placeholder="Fechas de elaboración" />
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="inverstorNumber">N° o código del inversionista</label>
-          <input {...register('inverstorNumber', { required: true })} className="steps-form__input" type="text" placeholder="N° o código del inversionista" />
+          <input {...register('institutionData.inverstorNumber', { required: true })} className="steps-form__input" type="text" placeholder="N° o código del inversionista" />
         </div>
       </div>
 
@@ -41,7 +43,7 @@ const DatosInstitucionStep = React.forwardRef((props, ref) => {
         <div className="steps-form__group-item">
           <label htmlFor="brokerageHouseName">Nombre de casa de bolsa o sociedades de corretaje de valores</label>
           <input
-            {...register('brokerageHouseName', { required: true })}
+            {...register('institutionData.brokerageHouseName', { required: true })}
             className="steps-form__input steps-form__input--2"
             type="text"
           />
@@ -49,12 +51,12 @@ const DatosInstitucionStep = React.forwardRef((props, ref) => {
 
         <div className="steps-form__group-item">
           <label htmlFor="taxInformationRegistration">Registro información fiscal</label>
-          <input {...register('taxInformationRegistration', { required: true })} className="steps-form__input" type="text" placeholder="" />
+          <input {...register('institutionData.taxInformationRegistration', { required: true })} className="steps-form__input" type="text" placeholder="" />
         </div>
       </div>
       <div className="steps-form__group-item">
         <label htmlFor="address">Dirección</label>
-        <input {...register('address', { required: true })}  className="steps-form__input" type="text" placeholder="Dirección" />
+        <input {...register('institutionData.address', { required: true })}  className="steps-form__input" type="text" placeholder="Dirección" />
       </div>
     </form>
   );

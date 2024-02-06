@@ -165,9 +165,9 @@ const RegistroJuridico = ({ data }) => {
             <button className="historia__button" onClick={handleNextStep}>Siguiente</button>
           </footer>
         </section>
-      {/* <section style={{ width: '100%' }}>
+      <section style={{ width: '100%' }}>
         <LegalEntityFormPdf />
-      </section> */}
+      </section>
       </FormProvider>
     </Page>
   );
