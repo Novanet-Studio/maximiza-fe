@@ -17,8 +17,8 @@ const AddButton = ({ onClick, disabled }) => (
 )
 
 const FinancialInformationStep = React.forwardRef((props, ref) => {
-  const { nextStep } = useFormContext();
-  const { register, trigger, control } = useForm({
+  const { nextStep, updateFormData } = useFormContext();
+  const { register, trigger, control, getValues } = useForm({
     defaultValues: {
       stockholder: [{
         name: '',
@@ -90,8 +90,10 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
 
   async function validate() {
     const valid = await trigger()
+    const values = getValues();
 
     if (valid) {
+      updateFormData({ financialInformation: values.financialInformation });
       nextStep();
     }
   }
@@ -148,29 +150,29 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
           <div className="steps-form__group">
             <div className="steps-form__group-item">
               <label htmlFor={`stockholder.${index}.name`}>Nombre</label>
-              <input {...register(`finalcialInformation.financialInformation.stockholder.${index}.name`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.financialInformation.stockholder.${index}.name`, { required: true })} className="steps-form__input" type="text" />
             </div>
             <div className="steps-form__group-item">
               <label htmlFor={`stockholder.${index}.dni`}>Documento de identidad</label>
-              <input {...register(`finalcialInformation.financialInformation.stockholder.${index}.dni`, { required: true })}  className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.financialInformation.stockholder.${index}.dni`, { required: true })}  className="steps-form__input" type="text" />
             </div>
             <div className="steps-form__group-item">
               <label htmlFor={`stockholder.${index}.sharePercentage`}>Porcentaje accionario</label>
-              <input {...register(`finalcialInformation.financialInformation.stockholder.${index}.sharePercentage`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.financialInformation.stockholder.${index}.sharePercentage`, { required: true })} className="steps-form__input" type="text" />
             </div>
           </div>
           <div className="steps-form__group">
             <div className="steps-form__group-item">
               <label htmlFor={`stockholder.${index}.cargo`}>Cargo</label>
-              <input {...register(`finalcialInformation.financialInformation.stockholder.${index}.cargo`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.financialInformation.stockholder.${index}.cargo`, { required: true })} className="steps-form__input" type="text" />
             </div>
             <div className="steps-form__group-item">
               <label htmlFor={`stockholder.${index}.esPep`}>ES PEP</label>
-              <input {...register(`finalcialInformation.financialInformation.stockholder.${index}.esPep`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.financialInformation.stockholder.${index}.esPep`, { required: true })} className="steps-form__input" type="text" />
             </div>
             <div className="steps-form__group-item">
               <label htmlFor={`stockholder.${index}.relatedWithPep`}>Relacionado con PEP</label>
-              <input {...register(`finalcialInformation.financialInformation.stockholder.${index}.relatedWithPep`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.financialInformation.stockholder.${index}.relatedWithPep`, { required: true })} className="steps-form__input" type="text" />
             </div>
           </div>
         </div>
@@ -187,29 +189,29 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
           <div className="steps-form__group">
             <div className="steps-form__group-item">
               <label htmlFor={`legalRepresentative.${index}.name`}>Nombre</label>
-              <input {...register(`finalcialInformation.finalcialInformation.legalRepresentative.${index}.name`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.financialInformation.legalRepresentative.${index}.name`, { required: true })} className="steps-form__input" type="text" />
             </div>
             <div className="steps-form__group-item">
               <label htmlFor={`legalRepresentative.${index}.dni`}>Documento de identidad</label>
-              <input {...register(`finalcialInformation.finalcialInformation.legalRepresentative.${index}.dni`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.financialInformation.legalRepresentative.${index}.dni`, { required: true })} className="steps-form__input" type="text" />
             </div>
             <div className="steps-form__group-item">
               <label htmlFor={`legalRepresentative.${index}.sharePercentage`}>Porcentaje accionario</label>
-              <input {...register(`finalcialInformation.finalcialInformation.legalRepresentative.${index}.sharePercentage`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.financialInformation.legalRepresentative.${index}.sharePercentage`, { required: true })} className="steps-form__input" type="text" />
             </div>
           </div>
           <div className="steps-form__group">
             <div className="steps-form__group-item">
               <label htmlFor={`legalRepresentative.${index}.cargo`}>Cargo</label>
-              <input {...register(`finalcialInformation.finalcialInformation.legalRepresentative.${index}.cargo`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.financialInformation.legalRepresentative.${index}.cargo`, { required: true })} className="steps-form__input" type="text" />
             </div>
             <div className="steps-form__group-item">
               <label htmlFor={`legalRepresentative.${index}.esPep`}>ES PEP</label>
-              <input {...register(`finalcialInformation.finalcialInformation.legalRepresentative.${index}.esPep`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.financialInformation.legalRepresentative.${index}.esPep`, { required: true })} className="steps-form__input" type="text" />
             </div>
             <div className="steps-form__group-item">
               <label htmlFor={`legalRepresentative.${index}.relatedWithPep`}>Relacionado con PEP</label>
-              <input {...register(`finalcialInformation.finalcialInformation.legalRepresentative.${index}.relatedWithPep`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.financialInformation.legalRepresentative.${index}.relatedWithPep`, { required: true })} className="steps-form__input" type="text" />
             </div>
           </div>
         </div>
@@ -228,21 +230,21 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
           <div className="steps-form__group">
             <div className="steps-form__group-item">
               <label htmlFor={`politicalPerson.${index}.name`}>Nombre de la institución o ente de adscripción</label>
-              <input {...register(`finalcialInformation.finalcialInformation.politicalPerson.${index}.name`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.financialInformation.politicalPerson.${index}.name`, { required: true })} className="steps-form__input" type="text" />
             </div>
             <div className="steps-form__group-item">
               <label htmlFor={`politicalPerson.${index}.cargo`}>Cargo que desempeña</label>
-              <input {...register(`finalcialInformation.finalcialInformation.politicalPerson.${index}.cargo`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.financialInformation.politicalPerson.${index}.cargo`, { required: true })} className="steps-form__input" type="text" />
             </div>
           </div>
           <div className="steps-form__group">
             <div className="steps-form__group-item">
               <label htmlFor={`politicalPerson.${index}.country`}>País</label>
-              <input {...register(`finalcialInformation.finalcialInformation.politicalPerson.${index}.country`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.financialInformation.politicalPerson.${index}.country`, { required: true })} className="steps-form__input" type="text" />
             </div>
             <div className="steps-form__group-item">
               <label htmlFor={`politicalPerson.${index}.pepIdentification`}>Identificación del PEP en caso relacionado</label>
-              <input {...register(`finalcialInformation.finalcialInformation.politicalPerson.${index}.pepIdentification`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.financialInformation.politicalPerson.${index}.pepIdentification`, { required: true })} className="steps-form__input" type="text" />
             </div>
           </div>
         </div>
@@ -255,30 +257,30 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
       <div className="steps-form__group">
         <div className="steps-form__group-item">
           <label htmlFor="officeNumber">Nº de subsidiarias / Oficinas</label>
-          <input {...register('finalcialInformation.finalcialInformation.officeNumber', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('financialInformation.financialInformation.officeNumber', { required: true })} className="steps-form__input" type="text" />
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="countryWithGreaterPresence">País con mayor presencia</label>
-          <input {...register('finalcialInformation.countryWithGreaterPresence', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('financialInformation.countryWithGreaterPresence', { required: true })} className="steps-form__input" type="text" />
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="employeesNumber">Nº de empleados</label>
-          <input {...register('finalcialInformation.employeesNumber', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('financialInformation.employeesNumber', { required: true })} className="steps-form__input" type="text" />
         </div>
       </div>
   
       <div className="steps-form__group">
         <div className="steps-form__group-item">
           <label htmlFor="monthlySales">Ventas mensuales</label>
-          <input {...register('finalcialInformation.monthlySales', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('financialInformation.monthlySales', { required: true })} className="steps-form__input" type="text" />
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="monthlyIncome">Ingresos mensuales</label>
-          <input {...register('finalcialInformation.monthlyIncome', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('financialInformation.monthlyIncome', { required: true })} className="steps-form__input" type="text" />
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="monthlyExpenses">Egresos mensuales</label>
-          <input {...register('finalcialInformation.monthlyExpenses', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('financialInformation.monthlyExpenses', { required: true })} className="steps-form__input" type="text" />
         </div>
       </div>
   
@@ -289,26 +291,26 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
       <div className="steps-form__group">
         <div className="steps-form__group-item">
           <label htmlFor="islrYear">Año</label>
-          <input {...register('finalcialInformation.islrYear', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('financialInformation.islrYear', { required: true })} className="steps-form__input" type="text" />
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="islrAmount">Monto</label>
-          <input {...register('finalcialInformation.islrAmount', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('financialInformation.islrAmount', { required: true })} className="steps-form__input" type="text" />
         </div>
       </div>
   
       <div className="steps-form__group">
         <div className="steps-form__group-item">
           <label htmlFor="islrCondition">Condición</label>
-          <input {...register('finalcialInformation.islrCondition', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('financialInformation.islrCondition', { required: true })} className="steps-form__input" type="text" />
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="islrIsPep">ES PEP</label>
-          <input {...register('finalcialInformation.islrIsPep', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('financialInformation.islrIsPep', { required: true })} className="steps-form__input" type="text" />
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="islrRelatedWithPep">Relacionado con PEP</label>
-          <input {...register('finalcialInformation.islrRelatedWithPep', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('financialInformation.islrRelatedWithPep', { required: true })} className="steps-form__input" type="text" />
         </div>
       </div>
   
@@ -321,11 +323,11 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
           <div className="steps-form__group">
             <div className="steps-form__group-item">
               <label htmlFor={`providers.${index}.name`}>Nombre o razón social</label>
-              <input {...register(`finalcialInformation.providers.${index}.name`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.providers.${index}.name`, { required: true })} className="steps-form__input" type="text" />
             </div>
             <div className="steps-form__group-item">
               <label htmlFor={`providers.${index}.location`}>Ubicación</label>
-              <input {...register(`finalcialInformation.providers.${index}.location`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.providers.${index}.location`, { required: true })} className="steps-form__input" type="text" />
             </div>
           </div>
         </div>
@@ -349,11 +351,11 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
           <div className="steps-form__group">
             <div className="steps-form__group-item">
               <label htmlFor={`clients.${index}.name`}>Nombre o razón social</label>
-              <input {...register(`finalcialInformation.clients.${index}.name`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.clients.${index}.name`, { required: true })} className="steps-form__input" type="text" />
             </div>
             <div className="steps-form__group-item">
               <label htmlFor={`clients.${index}.name`}>Ubicación</label>
-              <input {...register(`finalcialInformation.clients.${index}.location`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.clients.${index}.location`, { required: true })} className="steps-form__input" type="text" />
             </div>
           </div>
         </div>
@@ -377,15 +379,15 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
           <div className="steps-form__group">
             <div className="steps-form__group-item">
               <label htmlFor={`relatedCompanies.${index}.name`}>Nombre o razón social</label>
-              <input {...register(`finalcialInformation.relatedCompanies.${index}.name`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.relatedCompanies.${index}.name`, { required: true })} className="steps-form__input" type="text" />
             </div>
             <div className="steps-form__group-item">
               <label htmlFor={`relatedCompanies.${index}.economicActivity`}>Actividad económica</label>
-              <input {...register(`finalcialInformation.relatedCompanies.${index}.economicActivity`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.relatedCompanies.${index}.economicActivity`, { required: true })} className="steps-form__input" type="text" />
             </div>
             <div className="steps-form__group-item">
               <label htmlFor={`relatedCompanies.${index}.taxInformationRegistry`}>Registro de información fiscal</label>
-              <input {...register(`finalcialInformation.relatedCompanies.${index}.taxInformationRegistry`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.relatedCompanies.${index}.taxInformationRegistry`, { required: true })} className="steps-form__input" type="text" />
             </div>
           </div>
         </div>
@@ -407,22 +409,22 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
       <div className="steps-form__group">
         <div className="steps-form__group-item">
           <label htmlFor="bankReferencesInstitution">Institución del sector bancario</label>
-          <input {...register('finalcialInformation.bankReferencesInstitution', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('financialInformation.bankReferencesInstitution', { required: true })} className="steps-form__input" type="text" />
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="bankReferencesProductName">Nombre del producto</label>
-          <input {...register('finalcialInformation.bankReferencesProductName', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('financialInformation.bankReferencesProductName', { required: true })} className="steps-form__input" type="text" />
         </div>
       </div>
   
       <div className="steps-form__group">
         <div className="steps-form__group-item">
           <label htmlFor="bankReferencesProductNumber">Número del producto</label>
-          <input {...register('finalcialInformation.bankReferencesProductNumber', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('financialInformation.bankReferencesProductNumber', { required: true })} className="steps-form__input" type="text" />
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="bankReferencesAverage">Cifras promedio</label>
-          <input {...register('finalcialInformation.bankReferencesAverage', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('financialInformation.bankReferencesAverage', { required: true })} className="steps-form__input" type="text" />
         </div>
       </div>
     </form>
