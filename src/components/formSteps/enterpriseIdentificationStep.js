@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useFormContext } from "../../context/formContext";
+import { economicActivity } from "./fieldsOptions";
 
 const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
   const { nextStep, updateFormData } = useFormContext();
@@ -39,10 +40,16 @@ const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
         </div>
       </div>
 
-      <div className="steps-form__group">
-        <div className="steps-form__group-item">
+      <div className="steps-form__group" style={{ maxWidth: "74rem" }}>
+        <div className="steps-form__group-item" style={{ maxWidth: "50%" }}>
           <label htmlFor="economicActivity">Actividad económica</label>
-          <input {...register('enterpriseIdentification.economicActivity', { required: true })} className="steps-form__input" type="text" />
+          <select {...register('enterpriseIdentification.economicActivity', { required: true })} className="steps-form__input"  id="economicActivity">
+            <option value="" selected>SELECCIONA</option>
+            {economicActivity.map((activity) => (
+              <option key={activity} value={activity}>{activity}</option>
+            ))}
+          </select>
+          {/* <input {...register('enterpriseIdentification.economicActivity', { required: true })} className="steps-form__input" type="text" /> */}
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="specificActivity">Actividad específica</label>
