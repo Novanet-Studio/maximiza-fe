@@ -2,6 +2,7 @@ import React from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useFormContext } from "../../context/formContext";
+import { bankingInstitute, condition, countries, economicActivity, isPep, relatedWithPep } from "./fieldsOptions";
 
 const RemoveButton = ({ onClick }) => (
   <button className="delete-action" onClick={onClick}>
@@ -168,11 +169,23 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
             </div>
             <div className="steps-form__group-item">
               <label htmlFor={`stockholder.${index}.esPep`}>ES PEP</label>
-              <input {...register(`financialInformation.financialInformation.stockholder.${index}.esPep`, { required: true })} className="steps-form__input" type="text" />
+              {/* <input {...register(`financialInformation.financialInformation.stockholder.${index}.esPep`, { required: true })} className="steps-form__input" type="text" /> */}
+              <select id={`stockholder.${index}.esPep`} {...register(`financialInformation.financialInformation.stockholder.${index}.esPep`, { required: true })} className="steps-form__input">
+                <option value="" selected disabled>SELECCIONA</option>
+                {isPep.map((item) => (
+                  <option key={item} value={item}>{item}</option>
+                ))}
+              </select>
             </div>
             <div className="steps-form__group-item">
               <label htmlFor={`stockholder.${index}.relatedWithPep`}>Relacionado con PEP</label>
-              <input {...register(`financialInformation.financialInformation.stockholder.${index}.relatedWithPep`, { required: true })} className="steps-form__input" type="text" />
+              {/* <input {...register(`financialInformation.financialInformation.stockholder.${index}.relatedWithPep`, { required: true })} className="steps-form__input" type="text" /> */}
+              <select id={`stockholder.${index}.relatedWithPep`} {...register(`financialInformation.financialInformation.stockholder.${index}.relatedWithPep`, { required: true })} className="steps-form__input">
+                <option value="" selected disabled>SELECCIONA</option>
+                {relatedWithPep.map((item) => (
+                  <option key={item} value={item}>{item}</option>
+                ))}
+              </select>
             </div>
           </div>
         </div>
@@ -196,22 +209,48 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
               <input {...register(`financialInformation.financialInformation.legalRepresentative.${index}.dni`, { required: true })} className="steps-form__input" type="text" />
             </div>
             <div className="steps-form__group-item">
-              <label htmlFor={`legalRepresentative.${index}.sharePercentage`}>Porcentaje accionario</label>
-              <input {...register(`financialInformation.financialInformation.legalRepresentative.${index}.sharePercentage`, { required: true })} className="steps-form__input" type="text" />
-            </div>
-          </div>
-          <div className="steps-form__group">
-            <div className="steps-form__group-item">
               <label htmlFor={`legalRepresentative.${index}.cargo`}>Cargo</label>
               <input {...register(`financialInformation.financialInformation.legalRepresentative.${index}.cargo`, { required: true })} className="steps-form__input" type="text" />
             </div>
+            {/* <div className="steps-form__group-item">
+              <label htmlFor={`legalRepresentative.${index}.sharePercentage`}>Porcentaje accionario</label>
+              <input {...register(`financialInformation.financialInformation.legalRepresentative.${index}.sharePercentage`, { required: true })} className="steps-form__input" type="text" />
+            </div> */}
+          </div>
+          <div className="steps-form__group">
+            {/* <div className="steps-form__group-item">
+              <label htmlFor={`legalRepresentative.${index}.cargo`}>Cargo</label>
+              <input {...register(`financialInformation.financialInformation.legalRepresentative.${index}.cargo`, { required: true })} className="steps-form__input" type="text" />
+            </div> */}
+            <div className="steps-form__group-item">
+              <label htmlFor={`legalRepresentative.${index}.sharePercentage`}>Condición: </label>
+              {/* <input {...register(`financialInformation.financialInformation.legalRepresentative.${index}.condition`, { required: true })} className="steps-form__input" type="text" /> */}
+              <select id={`legalRepresentative.${index}.sharePercentage`} {...register(`financialInformation.financialInformation.legalRepresentative.${index}.condition`, { required: true })} className="steps-form__input">
+                <option value="" selected disabled>SELECCIONA</option>
+                {condition.map((item) => (
+                  <option key={item} value={item}>{item}</option>
+                ))}
+              </select>
+            </div>
             <div className="steps-form__group-item">
               <label htmlFor={`legalRepresentative.${index}.esPep`}>ES PEP</label>
-              <input {...register(`financialInformation.financialInformation.legalRepresentative.${index}.esPep`, { required: true })} className="steps-form__input" type="text" />
+              {/* <input {...register(`financialInformation.financialInformation.legalRepresentative.${index}.esPep`, { required: true })} className="steps-form__input" type="text" /> */}
+              <select id={`legalRepresentative.${index}.esPep`} {...register(`financialInformation.financialInformation.legalRepresentative.${index}.esPep`, { required: true })} className="steps-form__input">
+                <option value="" selected disabled>SELECCIONA</option>
+                {isPep.map((item) => (
+                  <option key={item} value={item}>{item}</option>
+                ))}
+              </select>
             </div>
             <div className="steps-form__group-item">
               <label htmlFor={`legalRepresentative.${index}.relatedWithPep`}>Relacionado con PEP</label>
-              <input {...register(`financialInformation.financialInformation.legalRepresentative.${index}.relatedWithPep`, { required: true })} className="steps-form__input" type="text" />
+              {/* <input {...register(`financialInformation.financialInformation.legalRepresentative.${index}.relatedWithPep`, { required: true })} className="steps-form__input" type="text" /> */}
+              <select id={`legalRepresentative.${index}.relatedWithPep`} {...register(`financialInformation.financialInformation.legalRepresentative.${index}.relatedWithPep`, { required: true })} className="steps-form__input">
+                <option value="" selected disabled>SELECCIONA</option>
+                {relatedWithPep.map((item) => (
+                  <option key={item} value={item}>{item}</option>
+                ))}
+              </select>
             </div>
           </div>
         </div>
@@ -240,7 +279,13 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
           <div className="steps-form__group">
             <div className="steps-form__group-item">
               <label htmlFor={`politicalPerson.${index}.country`}>País</label>
-              <input {...register(`financialInformation.financialInformation.politicalPerson.${index}.country`, { required: true })} className="steps-form__input" type="text" />
+              {/* <input {...register(`financialInformation.financialInformation.politicalPerson.${index}.country`, { required: true })} className="steps-form__input" type="text" /> */}
+              <select id={`politicalPerson.${index}.country`} {...register(`financialInformation.financialInformation.politicalPerson.${index}.country`, { required: true })} className="steps-form__input">
+                <option value="" selected disabled>SELECCIONE</option>
+                {countries.map((item) => (
+                  <option key={item} value={item}>{item}</option>
+                ))}
+              </select>
             </div>
             <div className="steps-form__group-item">
               <label htmlFor={`politicalPerson.${index}.pepIdentification`}>Identificación del PEP en caso relacionado</label>
@@ -261,7 +306,13 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="countryWithGreaterPresence">País con mayor presencia</label>
-          <input {...register('financialInformation.countryWithGreaterPresence', { required: true })} className="steps-form__input" type="text" />
+          {/* <input {...register('financialInformation.countryWithGreaterPresence', { required: true })} className="steps-form__input" type="text" /> */}
+          <select id="countryWithGreaterPresence" {...register(`inancialInformation.countryWithGreaterPresence`, { required: true })} className="steps-form__input">
+            <option value="" selected disabled>SELECCIONE</option>
+            {countries.map((item) => (
+              <option key={item} value={item}>{item}</option>
+            ))}
+          </select>
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="employeesNumber">Nº de empleados</label>
@@ -381,9 +432,15 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
               <label htmlFor={`relatedCompanies.${index}.name`}>Nombre o razón social</label>
               <input {...register(`financialInformation.relatedCompanies.${index}.name`, { required: true })} className="steps-form__input" type="text" />
             </div>
-            <div className="steps-form__group-item">
+            <div className="steps-form__group-item" style={{ maxWidth: "25rem" }}>
               <label htmlFor={`relatedCompanies.${index}.economicActivity`}>Actividad económica</label>
-              <input {...register(`financialInformation.relatedCompanies.${index}.economicActivity`, { required: true })} className="steps-form__input" type="text" />
+              {/* <input {...register(`financialInformation.relatedCompanies.${index}.economicActivity`, { required: true })} className="steps-form__input" type="text" /> */}
+              <select id={`relatedCompanies.${index}.economicActivity`} {...register(`financialInformation.relatedCompanies.${index}.economicActivity`, { required: true })} className="steps-form__input">
+                <option value="" selected disabled>SELECCIONE</option>
+                {economicActivity.map((item) => (
+                  <option key={item} value={item}>{item}</option>
+                ))}
+              </select>
             </div>
             <div className="steps-form__group-item">
               <label htmlFor={`relatedCompanies.${index}.taxInformationRegistry`}>Registro de información fiscal</label>
@@ -407,9 +464,15 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
       <h6>Referencias bancarias</h6>
   
       <div className="steps-form__group">
-        <div className="steps-form__group-item">
+        <div className="steps-form__group-item" style={{ maxWidth: "36.5rem" }}>
           <label htmlFor="bankReferencesInstitution">Institución del sector bancario</label>
-          <input {...register('financialInformation.bankReferencesInstitution', { required: true })} className="steps-form__input" type="text" />
+          {/* <input {...register('financialInformation.bankReferencesInstitution', { required: true })} className="steps-form__input" type="text" /> */}
+          <select id={`bankReferencesInstitution`} {...register(`financialInformation.bankReferencesInstitution`, { required: true })} className="steps-form__input">
+            <option value="" selected disabled>SELECCIONE</option>
+            {bankingInstitute.map((item) => (
+              <option key={item} value={item}>{item}</option>
+            ))}
+          </select>
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="bankReferencesProductName">Nombre del producto</label>
