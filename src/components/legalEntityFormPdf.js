@@ -3,7 +3,7 @@ import MaximizaLogo from "../assets/images/logo-maximiza.svg";
 import { useFormContext } from "../context/formContext";
 import "../assets/scss/pages/planilla.scss";
 
-const LegalEntityFormPdf = () => {
+const LegalEntityFormPdf = React.forwardRef((props, ref) => {
   const { formData } = useFormContext();
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const LegalEntityFormPdf = () => {
   }, [formData])
   
   return (
-    <div className="spreadsheet">
+    <div className="spreadsheet" ref={ref}>
       <header className="spreadsheet__header">
         <img className="spreadsheet__image" src={MaximizaLogo} alt="logo" />
 
@@ -1066,6 +1066,6 @@ const LegalEntityFormPdf = () => {
       </div>
     </div>
   );
-};
+});
 
 export default LegalEntityFormPdf;

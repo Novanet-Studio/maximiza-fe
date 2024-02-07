@@ -20,10 +20,12 @@ import "../../assets/scss/pages/servicios.scss";
 import "../../assets/scss/pages/steps.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import LegalEntityFormPdf from "../../components/legalEntityFormPdf";
+import { useReactToPrint } from "react-to-print";
 
 const RegistroJuridico = ({ data }) => {
   const dataSource = data.strapiServicio;
   const [showPreview, setShowPreview] = React.useState(false);
+  const printRef = React.useRef();
   const currentInput = useRef();
   const steps = React.useMemo(
     () => [
@@ -48,6 +50,10 @@ const RegistroJuridico = ({ data }) => {
     () => Math.ceil((state.currentStep / (steps?.length - 1)) * 100),
     [state, steps]
   );
+
+  const handlePrint = useReactToPrint({
+    content: () => printRef.current,
+  })
 
   const getStepComponent = () => {
     if (state.currentStep === 0) {
@@ -172,8 +178,10 @@ const RegistroJuridico = ({ data }) => {
           </footer>
         </section>
         {showPreview && (
-          <section style={{ width: '100%' }}>
-            <LegalEntityFormPdf />
+          <section style={{ width: '100%', marginTop: '2rem' }}>
+            <LegalEntityFormPdf ref={printRef} />
+
+            <button onClick={handlePrint}>Descargar</button>
           </section>
         )}
       </FormProvider>
