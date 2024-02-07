@@ -273,19 +273,19 @@ const LegalEntityFormPdf = () => {
               <div className="spreadsheet__item border-bl-rounded">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Teléfonos: </label>
-                  <input type="text" defaultValue={formData.enterpriseIdentification.publicPhones} />
+                  <input type="text" defaultValue={formData.enterpriseIdentification.publicPhones2} />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Sitio Web: </label>
-                  <input type="text" defaultValue={formData.enterpriseIdentification.website} />
+                  <input type="text" defaultValue={formData.enterpriseIdentification.website2} />
                 </div>
               </div>
               <div className="spreadsheet__item border-br-rounded">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Correo electrónico: </label>
-                  <input type="text" defaultValue={formData.enterpriseIdentification.publicEntityEmail} />
+                  <input type="text" defaultValue={formData.enterpriseIdentification.publicEntityEmail2} />
                 </div>
               </div>
             </div>

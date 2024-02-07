@@ -82,7 +82,7 @@ const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
         </div>
       </div>
 
-      <h6>Datos del registro</h6>
+      <h6>Última modificación</h6>
 
       <div className="steps-form__group">
         <div className="steps-form__group-item">
@@ -160,11 +160,20 @@ const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
         <input {...register('enterpriseIdentification.publicEntityAddress', { required: true })} className="steps-form__input" type="text" />
       </div>
 
-      {/* <div className="steps-form__group">
-        <input {...register('enterpriseIdentification.place', { required: true })}{...register('enterpriseIdentification.place', { required: true })} className="steps-form__input" type="text" placeholder="Teléfonos" />
-        <input {...register('enterpriseIdentification.place', { required: true })} className="steps-form__input" type="text" placeholder="Sitio web" />
-        <input {...register('enterpriseIdentification.place', { required: true })} className="steps-form__input" type="text" placeholder="Correo electrónico" />
-      </div> */}
+      <div className="steps-form__group">
+        <div className="steps-form__group-item">
+          <label htmlFor="publicPhones">Teléfonos</label>
+          <input {...register('enterpriseIdentification.publicPhones2', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="website">Sitio web</label>
+          <input {...register('enterpriseIdentification.website2', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="publicEntityEmail">Correo electrónico</label>
+          <input {...register('enterpriseIdentification.publicEntityEmail2', { required: true })} className="steps-form__input" type="text" />
+        </div>
+      </div>
     </form>
   );
 })
