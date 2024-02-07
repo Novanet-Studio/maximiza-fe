@@ -605,7 +605,7 @@ export const virtualCurrency = [
   "RIPPLE",
 ];
 
-export const serviceRequireMotive = ["INVERSION", "FINANCIAMIENTO"];
+export const motives = ["INVERSION", "FINANCIAMIENTO"];
 
 export const fundsSource = [
   "ACTIVIDAD COMERCIAL DE EMPRESA PROPIA",
