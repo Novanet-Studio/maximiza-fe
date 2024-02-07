@@ -66,7 +66,10 @@ const LegalEntityFormPdf = () => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Registro información fiscal:</div>
-                  <div>Rif: J-300254492</div>
+                  <input
+                    type="text"
+                    defaultValue="Rif: J-300254492"
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">

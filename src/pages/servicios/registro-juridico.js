@@ -167,7 +167,7 @@ const RegistroJuridico = ({ data }) => {
 
 
           <footer className="steps-form__footer">
-            <button className="historia__button" onClick={prevStep}>Regresar</button>
+           {state.hasPreviousStep && <button className="historia__button" onClick={prevStep}>Regresar</button>}
             <button className="historia__button" onClick={handleNextStep}>Siguiente</button>
           </footer>
         </section>
