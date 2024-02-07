@@ -131,37 +131,37 @@ const LegalEntityFormPdf = () => {
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Nombre del registro: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.recordName} />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.registerData.recordName} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Número: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.number} />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.registerData.number} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Tomo: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.took} />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.registerData.took} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Folio: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.fol} />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.registerData.fol} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Fecha: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.date} />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.registerData.date} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Capital social: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.socialCapital} />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.registerData.socialCapital} />
                   </div>
                 </div>
               </div>
@@ -175,37 +175,37 @@ const LegalEntityFormPdf = () => {
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Nombre del registro: </label>
-                    <input type="text" />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.lastModification.recordName} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Número: </label>
-                    <input type="text" />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.lastModification.number} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Tomo: </label>
-                    <input type="text" />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.lastModification.took} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Folio: </label>
-                    <input type="text" />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.lastModification.fol} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Fecha: </label>
-                    <input type="text" />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.lastModification.date} />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Capital social: </label>
-                    <input type="text" />
+                    <input type="text" defaultValue={formData.enterpriseIdentification.lastModification.socialCapital} />
                   </div>
                 </div>
               </div>

@@ -55,30 +55,62 @@ const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
       <div className="steps-form__group">
         <div className="steps-form__group-item">
           <label htmlFor="recordName">Nombre del registro</label>
-          <input {...register('enterpriseIdentification.recordName', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('enterpriseIdentification.registerData.recordName', { required: true })} className="steps-form__input" type="text" />
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="number">Número</label>
-          <input {...register('enterpriseIdentification.number', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('enterpriseIdentification.registerData.number', { required: true })} className="steps-form__input" type="text" />
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="took">Tomo</label>
-          <input {...register('enterpriseIdentification.took', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('enterpriseIdentification.registerData.took', { required: true })} className="steps-form__input" type="text" />
         </div>
       </div>
 
       <div className="steps-form__group">
         <div className="steps-form__group-item">
           <label htmlFor="fol">Folio</label>
-          <input {...register('enterpriseIdentification.fol', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('enterpriseIdentification.registerData.fol', { required: true })} className="steps-form__input" type="text" />
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="date">Fecha</label>
-          <input {...register('enterpriseIdentification.date', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('enterpriseIdentification.registerData.date', { required: true })} className="steps-form__input" type="text" />
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="socialCapital">Capital social</label>
-          <input {...register('enterpriseIdentification.socialCapital', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('enterpriseIdentification.registerData.socialCapital', { required: true })} className="steps-form__input" type="text" />
+        </div>
+      </div>
+
+      <h6>Datos del registro</h6>
+
+      <div className="steps-form__group">
+        <div className="steps-form__group-item">
+          <label htmlFor="recordName">Nombre del registro</label>
+          <input {...register('enterpriseIdentification.lastModification.recordName', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="number">Número</label>
+          <input {...register('enterpriseIdentification.lastModification.number', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="took">Tomo</label>
+          <input {...register('enterpriseIdentification.lastModification.took', { required: true })} className="steps-form__input" type="text" />
+        </div>
+      </div>
+
+      <div className="steps-form__group">
+        <div className="steps-form__group-item">
+          <label htmlFor="fol">Folio</label>
+          <input {...register('enterpriseIdentification.lastModification.fol', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="date">Fecha</label>
+          <input {...register('enterpriseIdentification.lastModification.date', { required: true })} className="steps-form__input" type="text" />
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="socialCapital">Capital social</label>
+          <input {...register('enterpriseIdentification.lastModification.socialCapital', { required: true })} className="steps-form__input" type="text" />
         </div>
       </div>
 
