@@ -119,7 +119,7 @@
     padding-right: 1.5rem;
   }
 
-  & button:first-child {
+  & button.prev {
     background: $gris1;
   }
 }
@@ -224,6 +224,18 @@
       line-height: 1.1;
       color: $gris1;
       font-weight: 600;
+    }
+
+    button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      display: flex;
+      gap: 0.5rem;
+      background-color: $verde1;
+      color: #fff;
+      border: none;
+      outline: none;
+      cursor: pointer;
     }
   }
 }

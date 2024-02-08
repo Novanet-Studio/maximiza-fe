@@ -25,7 +25,6 @@ import { useReactToPrint } from "react-to-print";
 const RegistroJuridico = ({ data }) => {
   const dataSource = data.strapiServicio;
   const [showPreview, setShowPreview] = React.useState(false);
-  const printRef = React.useRef();
   const currentInput = useRef();
   const steps = React.useMemo(
     () => [
@@ -51,10 +50,6 @@ const RegistroJuridico = ({ data }) => {
     [state, steps]
   );
 
-  const handlePrint = useReactToPrint({
-    content: () => printRef.current,
-  })
-
   const getStepComponent = () => {
     if (state.currentStep === 0) {
       return <DatosInstitucionStep ref={currentInput} />;
@@ -76,8 +71,9 @@ const RegistroJuridico = ({ data }) => {
   function handleNextStep(e) {
     e.preventDefault();
 
-    if (state.currentStep === 6) {
-      setShowPreview(true);
+    if (!state.hasNextStep) {
+      console.log('redirecting...')
+      // setShowPreview(true);
     }
 
     currentInput.current.validate();
@@ -173,17 +169,19 @@ const RegistroJuridico = ({ data }) => {
 
 
           <footer className="steps-form__footer">
-           {state.hasPreviousStep && <button className="historia__button" onClick={prevStep}>Regresar</button>}
-            <button className="historia__button" onClick={handleNextStep}>Siguiente</button>
+           {(state.hasPreviousStep && state.hasNextStep) && <button className="historia__button prev" onClick={prevStep}>Regresar</button>}
+            <button className="historia__button" onClick={handleNextStep}>
+              {state.hasNextStep ? "Siguiente" : "Volver al inicio"}
+            </button>
           </footer>
         </section>
-        {showPreview && (
+        {/* {showPreview && (
           <section style={{ width: '100%', marginTop: '2rem' }}>
             <LegalEntityFormPdf ref={printRef} />
 
             <button onClick={handlePrint}>Descargar</button>
           </section>
-        )}
+        )} */}
       </FormProvider>
     </Page>
   );
