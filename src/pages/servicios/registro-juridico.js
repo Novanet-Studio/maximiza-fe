@@ -154,18 +154,7 @@ const RegistroJuridico = ({ data }) => {
             <h1>Ficha de identificación del inversionista</h1>
             <h1>Persona Jurídica</h1>
           </header>
-
-            {getStepComponent()}
-            {/* <DatosInstitucionStep /> */}
-            {/* <EnterpriseIdentificationStep /> */}
-            {/* <FinancialInformationStep /> */}
-            {/* <InvestorProfileStep /> */}
-            {/* <ProductInformationStep /> */}
-            {/* <AcceptContractStep /> */}
-            {/* <FinalStep /> */}
-            {/* <Loader /> */}
-
-
+          {getStepComponent()}
           <footer className="steps-form__footer">
            {(state.hasPreviousStep && state.hasNextStep) && <button className="historia__button prev" onClick={prevStep}>Regresar</button>}
             <button className="historia__button" onClick={handleNextStep}>
@@ -173,13 +162,6 @@ const RegistroJuridico = ({ data }) => {
             </button>
           </footer>
         </section>
-        {/* {showPreview && (
-          <section style={{ width: '100%', marginTop: '2rem' }}>
-            <LegalEntityFormPdf ref={printRef} />
-
-            <button onClick={handlePrint}>Descargar</button>
-          </section>
-        )} */}
       </FormProvider>
     </Page>
   );
