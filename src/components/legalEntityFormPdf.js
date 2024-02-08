@@ -3,6 +3,166 @@ import MaximizaLogo from "../assets/images/logo-maximiza.svg";
 import { useFormContext } from "../context/formContext";
 import "../assets/scss/pages/planilla.scss";
 
+const FinancialInformationFields = (props) => {
+  const { formData } = useFormContext();
+  const options = ["stockholder", "legalRepresentative"];
+
+  if (!options.includes(props.field)) return null;
+  
+  const selected = formData.financialInformation.financialInformation[props.field];
+  const MAX_LENGTH = 3;
+  const isStockholder = props.field === "stockholder";
+  const stockholderHeaders = ["Nombre", "Documento de identidad", "Porcentaje accionario", "Cargo", "ES PEP", "Relacionado con PEP"];
+  const legalHeaders = ["Nombre", "Documento de identidad", "Cargo", "Condición", "ES PEP", "Relacionado con PEP"];
+  const defaultFields = {
+    name: "",
+    dni: "",
+    sharePercentage: "",
+    cargo: "",
+    esPep: "",
+    relatedWithPep: "",
+  };
+  const legalDefaultFields = {
+    name: "",
+    dni: "",
+    cargo: "",
+    condition: "",
+    esPep: "",
+    relatedWithPep: "",
+  };
+
+  const emptyFields = new Array(MAX_LENGTH - selected.length).fill(isStockholder ? defaultFields : legalDefaultFields);
+  const fields = [...selected, ...emptyFields];
+
+  let Headers;
+  let Content;
+
+  if (isStockholder) {
+    Headers = stockholderHeaders.map((header) => (
+      <React.Fragment key={header}>
+        <div className="spreadsheet__item">
+          <div>{header}: </div>
+        </div>
+      </React.Fragment>
+    ));
+
+    Content = fields.map((field, index) => (
+      <React.Fragment key={index}>
+        <div className="spreadsheet__item min-h">
+          <div className="content">{field.name}</div>
+        </div>
+        <div className="spreadsheet__item min-h">
+          <div className="content">{field.dni}</div>
+        </div>
+        <div className="spreadsheet__item min-h">
+          <div className="content">{field.sharePercentage}</div>
+        </div>
+        <div className="spreadsheet__item min-h">
+          <div className="content">{field.cargo}</div>
+        </div>
+        <div className="spreadsheet__item min-h">
+          <div className="content">{field.esPep}</div>
+        </div>
+        <div className="spreadsheet__item min-h">
+          <div className="content">{field.relatedWithPep}</div>
+        </div> 
+      </React.Fragment>
+    ))
+  } else {
+    Headers = legalHeaders.map((header) => (
+      <React.Fragment key={header}>
+        <div className="spreadsheet__item">
+          <div>{header}: </div>
+        </div>
+      </React.Fragment>
+    ));
+    Content = fields.map((field, index) => (
+      <React.Fragment key={index}>
+        <div className="spreadsheet__item min-h">
+          <div className="content">{field.name}</div>
+        </div>
+        <div className="spreadsheet__item min-h">
+          <div className="content">{field.dni}</div>
+        </div>
+        <div className="spreadsheet__item min-h">
+          <div className="content">{field.cargo}</div>
+        </div>
+        <div className="spreadsheet__item min-h">
+          <div className="content">{field.condition}</div>
+        </div>
+        <div className="spreadsheet__item min-h">
+          <div className="content">{field.esPep}</div>
+        </div>
+        <div className="spreadsheet__item min-h">
+          <div className="content">{field.relatedWithPep}</div>
+        </div> 
+      </React.Fragment>
+    ))
+  }
+
+  return (
+    <div className="spreadsheet__economic-section">
+      <Headers />
+      <Content />
+      {/* <div className="spreadsheet__item">
+        <div>Nombre: </div>
+      </div>
+      <div className="spreadsheet__item">
+        <div>Documento de identidad: </div>
+      </div>
+      <div className="spreadsheet__item">
+        <div>Porcentaje accionario: </div>
+      </div>
+      <div className="spreadsheet__item">
+        <div>Cargo: </div>
+      </div>
+      <div className="spreadsheet__item">
+        <div>ES PEP: </div>
+      </div>
+      <div className="spreadsheet__item">
+        <div>Relacionado con PEP: </div>
+      </div> */}
+      {/* {fields.map((field, index) => (
+        <React.Fragment key={index}>
+          <div className="spreadsheet__item min-h">
+            <div className="content">{field.name}</div>
+          </div>
+          <div className="spreadsheet__item min-h">
+            <div className="content">{field.dni}</div>
+          </div>
+          <div className="spreadsheet__item min-h">
+            <div className="content">{field.sharePercentage}</div>
+          </div>
+          <div className="spreadsheet__item min-h">
+            <div className="content">{field.cargo}</div>
+          </div>
+          <div className="spreadsheet__item min-h">
+            <div className="content">{field.esPep}</div>
+          </div>
+          <div className="spreadsheet__item min-h">
+            <div className="content">{field.relatedWithPep}</div>
+          </div> 
+        </React.Fragment>
+      ))} */}
+      {/* <div className="spreadsheet__item min-h">
+        <div className="content">{formData.financialInformation.financialInformation.stockholder[0].dni}</div>
+      </div>
+      <div className="spreadsheet__item min-h">
+        <div className="content">{formData.financialInformation.financialInformation.stockholder[0].sharePercentage}</div>
+      </div>
+      <div className="spreadsheet__item min-h">
+        <div className="content">{formData.financialInformation.financialInformation.stockholder[0].cargo}</div>
+      </div>
+      <div className="spreadsheet__item min-h">
+        <div className="content">{formData.financialInformation.financialInformation.stockholder[0].esPep}</div>
+      </div>
+      <div className="spreadsheet__item min-h">
+        <div className="content">{formData.financialInformation.financialInformation.stockholder[0].relatedWithPep}</div>
+      </div> */}
+    </div>
+  )
+}
+
 const LegalEntityFormPdf = React.forwardRef((props, ref) => {
   const { formData } = useFormContext();
 
@@ -298,51 +458,16 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
             Accionista / Junta directiva
           </div>
           <div className="spreadsheet__economic">
-            <div className="spreadsheet__economic-section">
-              <div className="spreadsheet__item">
-                <div>Nombre: </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div>Documento de identidad: </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div>Porcentaje accionario: </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div>Cargo: </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div>ES PEP: </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div>Relacionado con PEP: </div>
-              </div>
-              <div className="spreadsheet__item min-h">
-                <div className="content">{formData.financialInformation.financialInformation.stockholder[0].name}</div>
-              </div>
-              <div className="spreadsheet__item min-h">
-                <div className="content">{formData.financialInformation.financialInformation.stockholder[0].dni}</div>
-              </div>
-              <div className="spreadsheet__item min-h">
-                <div className="content">{formData.financialInformation.financialInformation.stockholder[0].sharePercentage}</div>
-              </div>
-              <div className="spreadsheet__item min-h">
-                <div className="content">{formData.financialInformation.financialInformation.stockholder[0].cargo}</div>
-              </div>
-              <div className="spreadsheet__item min-h">
-                <div className="content">{formData.financialInformation.financialInformation.stockholder[0].esPep}</div>
-              </div>
-              <div className="spreadsheet__item min-h">
-                <div className="content">{formData.financialInformation.financialInformation.stockholder[0].relatedWithPep}</div>
-              </div>
-            </div>
+            <FinancialInformationFields field="stockholder" />
 
             <div className="spreadsheet__item text-center">
               Representante(s) legal(es) / Autorizados para realizar operaciones
               bursatiles
             </div>
 
-            <div className="spreadsheet__economic-section">
+            <FinancialInformationFields field="legalRepresentative" />
+
+            {/* <div className="spreadsheet__economic-section">
               <div className="spreadsheet__item">
                 <div>Nombre: </div>
               </div>
@@ -379,7 +504,7 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item min-h">
                 <div className="content">{formData.financialInformation.financialInformation.legalRepresentative[0].relatedWithPep}</div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
