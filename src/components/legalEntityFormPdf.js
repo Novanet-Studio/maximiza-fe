@@ -12,7 +12,7 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
 
   return (
     <div className="spreadsheet" ref={ref}>
-      <div className="page-break" style={{ height: "95vh", }}>
+      <div className="page-break">
         <header className="spreadsheet__header">
           <img className="spreadsheet__image" src={MaximizaLogo} alt="logo" />
 
@@ -21,7 +21,7 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
           </h5>
         </header>
         {/* Datos basicos */}
-        <div className="spreadsheet__section">
+        <div className="spreadsheet__section page-break">
           <div className="spreadsheet__container">
             <div className="spreadsheet__section1">
               <div className="spreadsheet__item border-l-rounded">
@@ -56,7 +56,7 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
         </div>
 
         {/* Sector valores */}
-        <div className="spreadsheet__section">
+        <div className="spreadsheet__section page-break">
           <h5 className="spreadsheet__title">
             DATOS DE LA INSTITUCIÓN DEL SECTOR VALORES
           </h5>
@@ -137,12 +137,15 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Actividad económica: </label>
-                  <input
+                  <div style={{ fontSize: "8px" }}>
+                    {formData.enterpriseIdentification.economicActivity}
+                  </div>
+                  {/* <input
                     type="text"
                     defaultValue={
                       formData.enterpriseIdentification.economicActivity
                     }
-                  />
+                  /> */}
                 </div>
               </div>
               <div className="spreadsheet__item">
@@ -445,7 +448,7 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
             INFORMACIÓN ECONÓMICO FINANCIERA DE LA EMPRESA
           </h5>
           <div className="spreadsheet__item text-center">
-            Accionistar / Junta directiva
+            Accionista / Junta directiva
           </div>
           <div className="spreadsheet__economic">
             <div className="spreadsheet__economic-section">
@@ -570,9 +573,9 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
         </div>
       </div>
 
-      <div className="page-break" style={{ height: "95vh", marginTop: '2rem', paddingTop: '2rem' }}>
+      <div className="page-break">
         {/* Información economico financiera de la empresa */}
-        <div style={{}} className="spreadsheet__section">
+        <div style={{}} className="spreadsheet__section page-break">
           <h5 className="spreadsheet__title">
             INFORMACIÓN ECONÓMICO FINANCIERA DE LA EMPRESA
           </h5>
@@ -1071,7 +1074,7 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
         </div>
 
         {/* Datos economico financieros */}
-        <div className="spreadsheet__section" style={{ }}>
+        <div className="spreadsheet__section page-break" style={{}}>
           <h5 className="spreadsheet__title">
             INFORMACIÓN DEL PRODUCTO O SERVICIO BURSATIL
           </h5>
@@ -1253,66 +1256,42 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
         </div>
       </div>
 
-      <div className="page-break" style={{ height: "95vh", marginTop: '4rem', paddingTop: '2rem' }}>
+      <div className="page-break">
         {/* Aceptacion de contrato */}
-        <div style={{ borderWidth: "2px" }} className="spreadsheet__section">
+        <div
+          style={{ borderWidth: "2px" }}
+          className="spreadsheet__section page-break"
+        >
           <h5 className="spreadsheet__title">
             ACEPTACIÓN DEL CONTRATO DE CUENTA DE CORRETAJE BURSÁTIL POR PARTE
             DEL INVERSOR
           </h5>
 
           <p className="spreadsheet__contract">
-            Aceptación contrato de cuenta de corretaje bursátilexpresamente por
-            parte del inversor con la firma delque presente documento,
-            ﬁnancieras el cliente expresamente Con la ﬁrmadel del presente
-            documento , el cliente conviene y acepta las operaciones y
-            bursátiles celebra- conviene acepta que las y bursátiles celebradas
-            entre maximiza y elbursátil, cliente sedel regirán contrato de
-            cuenta corretaje das entrey maximiza y eloperaciones cliente
-            sefinancieras regirán por el contrato de cuenta corretaje cualpor el
-            elpresente anexo forma parte bursátil, del ycual el presente anexo
-            forma parte integrante, y pública cual fue autenticado por ante
-            lachacao Notaría del Pública sexta del Municipio deldel estado
-            integrante, el cual fue autenticado por ante la notaria sexta del
-            municipio estado miranda, el 26Chacao de enero 2007, Miranda, 26tomo
-            de Enero del los 2007, bajode el N°56, tomo 10, de los libros deesa
-            autenticación llevados porel esa notaría, así mismo, el cliente
-            haber bajo el n°el56, 10, de libros autenticacion llevados por
-            notaria, asi mismo, cliente declara haber leido ydeclara comprendido
-            leído y comprendido las operaciones objeto de los contratos que
-            integran la cuenta de corretaje bursátil. De conformidad con lo
-            establecido en las las operaciones objeto de los contratos que
-            integran la cuenta de corretaje bursátil. De conformidad con lo
-            establecido en el articulo normas relativas a la administración y
-            fiscalización de los riesgos relacionados con los delitos de
-            legitimación de los capitales, financiamiento al n°41 de la
-            providencia n° 074 publicada en gaceta oﬁcial n° 41,788 de fecha 26
-            de junio de 2019, emanada por la superintendecia terrorismo,
-            financiamiento de la proliferación de armas de destrucción masiva y
-            otros ilícitos, aplicables a los sujetos regulados por la nacional
-            de valores, el (los) inversor (es) declara (n) bajo fe de juramento
-            que los dineros, capitales y haberes, valores o titulos utilizados
-            Superintendencia Nacional de Valores, por lo que el (los)
-            inversor(es) declara(n) bajo fe de juramento que los dineros,
-            capitales y haberes, valores en las operaciones, no guardan relacion
-            con actividades provenientes del delito de legitimacion de capitales
-            u otros delitos previstos y o títulos utilizados en las operaciones,
-            no guardan relación con actividades provenientes del delito de
-            legitimación de capitales u otros delitos sancionados en la ley
-            orgánica juramento que los dineros, capitales y haberes, valores o
-            titulos utilizados en las operaciones, no previstos y sancionados en
-            la ley orgánica contra la delincuencia organizada y financiamiento
-            al terrorismo. Así mismo, el inversor expresamente guardan relacion
-            con actividades provenientes del delito de legitimacion de capitales
-            u otros delitos previstos y sancionados en la ley declara que la
-            información suministrada es cierta y completa y que refleja con
-            exactitud la realidad legal y financiera del cliente y, autoriza
-            orgánica autoriza suﬁcientemente a maximiza casa bolsa,los C.A.,
-            Para que veriﬁque lossido datos aportados que han sido vertidos
-            suficientemente a Maximiza Casa de Bolsa, C.A., para quede verifique
-            datos aportados y que han vertidos en estayplanilla, señalados en la
-            en esta planilla,N°209 en cumplimiento a lo establecido en laesta
-            normativa providencia y las demás disposiciones que tutelan materia.
+            Con la firma del presente documento, el cliente expresamente
+            conviene y acepta que las operaciones financieras y bursátiles
+            celebradas entre Maximiza y el cliente se regirán por el contrato de
+            cuenta corretaje bursátil, del cual el presente anexo forma parte
+            integrante, y el cual fue autenticado por ante la notaria pública
+            sexta del municipio chacao del estado miranda, el 26 de enero del
+            2007, bajo el n°56, tomo 10, de los libros de autenticación llevados
+            por esa notaria, así mismo, el cliente declara haber leído y
+            comprendido las operaciones objeto de los contratos que integran la
+            cuenta de corretaje bursátil. De conformidad con lo establecido en
+            el artículo n°41 de la providencia n° 074 publicada en gaceta
+            oficial n° 41,788 de fecha 26 de junio de 2019, emanada por la
+            superintendencia nacional de valores, el (los) inversor (es) declara
+            (n) bajo fe de juramento que los dineros, capitales y haberes,
+            valores o títulos utilizados en las operaciones, no guardan relación
+            con actividades provenientes del delito legitimación de capitales u
+            otros delitos previstos y sancionados en la ley orgánica juramento
+            que los dineros, capitales y haberes valores o títulos utilizados en
+            las operaciones, no guardan relación con actividades provenientes
+            del delito legitimación capitales u otros delitos previstos y
+            sancionados en la ley orgánica autoriza suficientemente a Maximiza
+            casa de bolsa C.A., Para que verifique los datos aportados y que han
+            sido vertidos en esta planilla, en cumplimiento a lo establecido en
+            la normativa antes mencionada.
           </p>
         </div>
 

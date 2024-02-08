@@ -86,8 +86,8 @@
   &__item {
     border: 1px solid #006548;
     font-size: 12px;
-    padding: 0.8rem 0.6rem 0.8rem;
-    min-height: 2rem;
+    padding: 0.5rem 0.6rem 0.5rem;
+    min-height: 1.5rem;
   }
 
   // -------------------------------
@@ -208,6 +208,8 @@
   }
 
   &__services {
+    max-width: 100%;
+    
     &-section {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -225,6 +227,7 @@
       .spreadsheet__item {
         display: flex;
         flex-direction: column;
+        // max-width: 243px;
       }
     }
 
@@ -367,13 +370,29 @@
 
 @media all {
   .page-break {
-     display: none;
+    // display: none;
+  }
+}
+
+@media print {
+  html, body {
+    height: initial !important;
+    overflow: initial !important;
+    -webkit-print-color-adjust: exact;
   }
 }
 
 @media print {
   .page-break {
-      display: block;
-      page-break-before: auto;
-    }
+    margin-top: 1rem;
+    display: block;
+    // page-break-before: auto;
+    page-break-after: auto;
+    page-break-inside: avoid;
+  }
+}
+
+@page {
+  size: auto;
+  margin: 2mm;
 }
