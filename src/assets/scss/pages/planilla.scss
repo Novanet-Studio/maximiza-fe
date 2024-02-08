@@ -209,7 +209,7 @@
 
   &__services {
     max-width: 100%;
-    
+
     &-section {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -370,7 +370,7 @@
 
 @media all {
   .page-break {
-    // display: none;
+    display: none;
   }
 }
 
