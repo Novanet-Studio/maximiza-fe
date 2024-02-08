@@ -6,8 +6,7 @@
   min-width: 54.375rem;
   width: 100%;
   max-width: 100%;
-  min-height: 80vh;
-  border: 1px solid $gris5;
+  // border: 1px solid $gris5;
   padding: 2rem;
 }
 
@@ -29,6 +28,7 @@
   border-left: 4px solid #006548;
   font-weight: 600;
   padding-left: 1rem;
+  font-size: 1.3rem;
 }
 
 .spreadsheet__body {
@@ -59,6 +59,7 @@
     text-transform: uppercase;
     font-size: .8rem;
     background: #006548;
+    padding: 0.4rem 0;
     color: white;
     border-top-left-radius: 0.8rem;
     border-top-right-radius: 0.8rem;
@@ -85,7 +86,8 @@
   &__item {
     border: 1px solid #006548;
     font-size: 12px;
-    padding: .4rem .8rem 0.5rem;
+    padding: 0.8rem 0.6rem 0.8rem;
+    min-height: 2rem;
   }
 
   // -------------------------------
@@ -218,7 +220,7 @@
 
     &-section-2 {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(5, 1fr);
 
       .spreadsheet__item {
         display: flex;
@@ -361,4 +363,17 @@
 
 .text-center {
   text-align: center;
+}
+
+@media all {
+  .page-break {
+     display: none;
+  }
+}
+
+@media print {
+  .page-break {
+      display: block;
+      page-break-before: auto;
+    }
 }

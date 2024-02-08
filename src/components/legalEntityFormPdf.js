@@ -7,20 +7,19 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
   const { formData } = useFormContext();
 
   useEffect(() => {
-    console.log(formData)
-  }, [formData])
-  
+    console.log(formData);
+  }, [formData]);
+
   return (
     <div className="spreadsheet" ref={ref}>
-      <header className="spreadsheet__header">
-        <img className="spreadsheet__image" src={MaximizaLogo} alt="logo" />
+      <div className="page-break" style={{ height: "95vh", }}>
+        <header className="spreadsheet__header">
+          <img className="spreadsheet__image" src={MaximizaLogo} alt="logo" />
 
-        <h5 className="spreadsheet__main-title">
-          Ficha de identificación del inversionista persona jurídica
-        </h5>
-      </header>
-
-      <div className="spreadsheet__body">
+          <h5 className="spreadsheet__main-title">
+            Ficha de identificación del inversionista persona jurídica
+          </h5>
+        </header>
         {/* Datos basicos */}
         <div className="spreadsheet__section">
           <div className="spreadsheet__container">
@@ -28,19 +27,28 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item border-l-rounded">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Lugar: </label>
-                  <input type="text" defaultValue={formData.institutionData.place} />
+                  <input
+                    type="text"
+                    defaultValue={formData.institutionData.place}
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Fechas de elaboración: </label>
-                  <input type="text" defaultValue={formData.institutionData.productionDate} />
+                  <input
+                    type="text"
+                    defaultValue={formData.institutionData.productionDate}
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Moneda: </label>
-                  <input type="text" defaultValue={formData.institutionData.place} />
+                  <input
+                    type="text"
+                    defaultValue={formData.institutionData.place}
+                  />
                 </div>
               </div>
             </div>
@@ -60,16 +68,16 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                     Nombre de casa de bolsa o sociedades de corretaje de
                     valores:{" "}
                   </label>
-                  <input type="text" defaultValue="Maximiza Casa de Bolsa, C.A." />
+                  <input
+                    type="text"
+                    defaultValue="Maximiza Casa de Bolsa, C.A."
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Registro información fiscal:</div>
-                  <input
-                    type="text"
-                    defaultValue="Rif: J-300254492"
-                  />
+                  <input type="text" defaultValue="Rif: J-300254492" />
                 </div>
               </div>
               <div className="spreadsheet__item">
@@ -95,19 +103,33 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Registro de información ﬁscal: </label>
-                  <input type="text" defaultValue={formData.enterpriseIdentification.taxInformationRegistration} />
+                  <input
+                    type="text"
+                    defaultValue={
+                      formData.enterpriseIdentification
+                        .taxInformationRegistration
+                    }
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Razón Social: </label>
-                  <input type="text" defaultValue={formData.enterpriseIdentification.socialReason} />
+                  <input
+                    type="text"
+                    defaultValue={
+                      formData.enterpriseIdentification.socialReason
+                    }
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Nombre Comercial: </label>
-                  <input type="text" defaultValue={formData.enterpriseIdentification.tradename} />
+                  <input
+                    type="text"
+                    defaultValue={formData.enterpriseIdentification.tradename}
+                  />
                 </div>
               </div>
             </div>
@@ -115,13 +137,23 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Actividad económica: </label>
-                  <input type="text" defaultValue={formData.enterpriseIdentification.economicActivity} />
+                  <input
+                    type="text"
+                    defaultValue={
+                      formData.enterpriseIdentification.economicActivity
+                    }
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Actividad especiﬁca: </label>
-                  <input type="text" defaultValue={formData.enterpriseIdentification.specificActivity} />
+                  <input
+                    type="text"
+                    defaultValue={
+                      formData.enterpriseIdentification.specificActivity
+                    }
+                  />
                 </div>
               </div>
             </div>
@@ -134,37 +166,69 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Nombre del registro: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.registerData.recordName} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.enterpriseIdentification.registerData
+                          .recordName
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Número: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.registerData.number} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.enterpriseIdentification.registerData.number
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Tomo: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.registerData.took} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.enterpriseIdentification.registerData.took
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Folio: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.registerData.fol} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.enterpriseIdentification.registerData.fol
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Fecha: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.registerData.date} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.enterpriseIdentification.registerData.date
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Capital social: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.registerData.socialCapital} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.enterpriseIdentification.registerData
+                          .socialCapital
+                      }
+                    />
                   </div>
                 </div>
               </div>
@@ -178,37 +242,70 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Nombre del registro: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.lastModification.recordName} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.enterpriseIdentification.lastModification
+                          .recordName
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Número: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.lastModification.number} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.enterpriseIdentification.lastModification
+                          .number
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Tomo: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.lastModification.took} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.enterpriseIdentification.lastModification.took
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Folio: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.lastModification.fol} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.enterpriseIdentification.lastModification.fol
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Fecha: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.lastModification.date} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.enterpriseIdentification.lastModification.date
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Capital social: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.lastModification.socialCapital} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.enterpriseIdentification.lastModification
+                          .socialCapital
+                      }
+                    />
                   </div>
                 </div>
               </div>
@@ -220,25 +317,41 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Número de gaceta oﬁcial: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.officialGazetteNumber} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.enterpriseIdentification.officialGazetteNumber
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Fecha: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.publicEntitiesDate} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.enterpriseIdentification.publicEntitiesDate
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Autoridad / Ente de adscripción: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.authority} />
+                    <input
+                      type="text"
+                      defaultValue={formData.enterpriseIdentification.authority}
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Código ONT: </label>
-                    <input type="text" defaultValue={formData.enterpriseIdentification.ontCode} />
+                    <input
+                      type="text"
+                      defaultValue={formData.enterpriseIdentification.ontCode}
+                    />
                   </div>
                 </div>
               </div>
@@ -248,19 +361,32 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Teléfonos: </label>
-                  <input type="text" defaultValue={formData.enterpriseIdentification.publicPhones} />
+                  <input
+                    type="text"
+                    defaultValue={
+                      formData.enterpriseIdentification.publicPhones
+                    }
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Sitio Web: </label>
-                  <input type="text" defaultValue={formData.enterpriseIdentification.website} />
+                  <input
+                    type="text"
+                    defaultValue={formData.enterpriseIdentification.website}
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Correo electrónico: </label>
-                  <input type="text" defaultValue={formData.enterpriseIdentification.publicEntityEmail} />
+                  <input
+                    type="text"
+                    defaultValue={
+                      formData.enterpriseIdentification.publicEntityEmail
+                    }
+                  />
                 </div>
               </div>
             </div>
@@ -268,7 +394,12 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
             <div className="spreadsheet__item">
               <div className="spreadsheet__form-item">
                 <label htmlFor="">Dirección: </label>
-                  <input type="text" defaultValue={formData.enterpriseIdentification.publicEntityAddress} />
+                <input
+                  type="text"
+                  defaultValue={
+                    formData.enterpriseIdentification.publicEntityAddress
+                  }
+                />
               </div>
             </div>
 
@@ -276,19 +407,32 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item border-bl-rounded">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Teléfonos: </label>
-                  <input type="text" defaultValue={formData.enterpriseIdentification.publicPhones2} />
+                  <input
+                    type="text"
+                    defaultValue={
+                      formData.enterpriseIdentification.publicPhones2
+                    }
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Sitio Web: </label>
-                  <input type="text" defaultValue={formData.enterpriseIdentification.website2} />
+                  <input
+                    type="text"
+                    defaultValue={formData.enterpriseIdentification.website2}
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item border-br-rounded">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Correo electrónico: </label>
-                  <input type="text" defaultValue={formData.enterpriseIdentification.publicEntityEmail2} />
+                  <input
+                    type="text"
+                    defaultValue={
+                      formData.enterpriseIdentification.publicEntityEmail2
+                    }
+                  />
                 </div>
               </div>
             </div>
@@ -324,22 +468,40 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                 <label htmlFor="">Relacionado con PEP: </label>
               </div>
               <div className="spreadsheet__item min-h">
-                {formData.financialInformation.financialInformation.stockholder[0].name}
+                {
+                  formData.financialInformation.financialInformation
+                    .stockholder[0].name
+                }
               </div>
               <div className="spreadsheet__item min-h">
-                {formData.financialInformation.financialInformation.stockholder[0].dni}
+                {
+                  formData.financialInformation.financialInformation
+                    .stockholder[0].dni
+                }
               </div>
               <div className="spreadsheet__item min-h">
-                {formData.financialInformation.financialInformation.stockholder[0].sharePercentage}
+                {
+                  formData.financialInformation.financialInformation
+                    .stockholder[0].sharePercentage
+                }
               </div>
               <div className="spreadsheet__item min-h">
-                {formData.financialInformation.financialInformation.stockholder[0].cargo}
+                {
+                  formData.financialInformation.financialInformation
+                    .stockholder[0].cargo
+                }
               </div>
               <div className="spreadsheet__item min-h">
-                {formData.financialInformation.financialInformation.stockholder[0].esPep}
+                {
+                  formData.financialInformation.financialInformation
+                    .stockholder[0].esPep
+                }
               </div>
               <div className="spreadsheet__item min-h">
-                {formData.financialInformation.financialInformation.stockholder[0].relatedWithPep}
+                {
+                  formData.financialInformation.financialInformation
+                    .stockholder[0].relatedWithPep
+                }
               </div>
             </div>
 
@@ -368,29 +530,49 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                 <label htmlFor="">Relacionado con PEP: </label>
               </div>
               <div className="spreadsheet__item min-h">
-                {formData.financialInformation.financialInformation.legalRepresentative[0].name}
+                {
+                  formData.financialInformation.financialInformation
+                    .legalRepresentative[0].name
+                }
               </div>
               <div className="spreadsheet__item min-h">
-                {formData.financialInformation.financialInformation.legalRepresentative[0].dni}
+                {
+                  formData.financialInformation.financialInformation
+                    .legalRepresentative[0].dni
+                }
               </div>
               <div className="spreadsheet__item min-h">
-                {formData.financialInformation.financialInformation.legalRepresentative[0].sharePercentage}
+                {
+                  formData.financialInformation.financialInformation
+                    .legalRepresentative[0].sharePercentage
+                }
               </div>
               <div className="spreadsheet__item min-h">
-                {formData.financialInformation.financialInformation.legalRepresentative[0].cargo}
+                {
+                  formData.financialInformation.financialInformation
+                    .legalRepresentative[0].cargo
+                }
               </div>
               <div className="spreadsheet__item min-h">
-                {formData.financialInformation.financialInformation.legalRepresentative[0].esPep}
+                {
+                  formData.financialInformation.financialInformation
+                    .legalRepresentative[0].esPep
+                }
               </div>
               <div className="spreadsheet__item min-h">
-                {formData.financialInformation.financialInformation.legalRepresentative[0].relatedWithPep}
+                {
+                  formData.financialInformation.financialInformation
+                    .legalRepresentative[0].relatedWithPep
+                }
               </div>
             </div>
           </div>
         </div>
+      </div>
 
+      <div className="page-break" style={{ height: "95vh", marginTop: '2rem', paddingTop: '2rem' }}>
         {/* Información economico financiera de la empresa */}
-        <div className="spreadsheet__section">
+        <div style={{}} className="spreadsheet__section">
           <h5 className="spreadsheet__title">
             INFORMACIÓN ECONÓMICO FINANCIERA DE LA EMPRESA
           </h5>
@@ -429,22 +611,46 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" defaultValue={formData.financialInformation.financialInformation.politicalPerson[0].name} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.financialInformation.financialInformation
+                          .politicalPerson[0].name
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" defaultValue={formData.financialInformation.financialInformation.politicalPerson[0].cargo} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.financialInformation.financialInformation
+                          .politicalPerson[0].cargo
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" defaultValue={formData.financialInformation.financialInformation.politicalPerson[0].country} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.financialInformation.financialInformation
+                          .politicalPerson[0].country
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" defaultValue={formData.financialInformation.financialInformation.politicalPerson[0].pepIdentification} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.financialInformation.financialInformation
+                          .politicalPerson[0].pepIdentification
+                      }
+                    />
                   </div>
                 </div>
                 {/* <div className="spreadsheet__item">
@@ -494,37 +700,60 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">N° de subsidiarias / Oﬁcinas: </label>
-                  <input type="text" defaultValue={formData.financialInformation.financialInformation.officeNumber} />
+                  <input
+                    type="text"
+                    defaultValue={
+                      formData.financialInformation.financialInformation
+                        .officeNumber
+                    }
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">País con mayor presencia: </label>
-                  <input type="text" defaultValue={formData.financialInformation.countryWithGreaterPresence} />
+                  <input
+                    type="text"
+                    defaultValue={
+                      formData.financialInformation.countryWithGreaterPresence
+                    }
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">N° de empleados: </label>
-                  <input type="text" defaultValue={formData.financialInformation.employeesNumber} />
+                  <input
+                    type="text"
+                    defaultValue={formData.financialInformation.employeesNumber}
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Ventas mensuales: </label>
-                  <input type="text" defaultValue={formData.financialInformation.monthlySales} />
+                  <input
+                    type="text"
+                    defaultValue={formData.financialInformation.monthlySales}
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Ingresos mensuales: </label>
-                  <input type="text" defaultValue={formData.financialInformation.monthlyIncome} />
+                  <input
+                    type="text"
+                    defaultValue={formData.financialInformation.monthlyIncome}
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Egresos mensuales: </label>
-                  <input type="text" defaultValue={formData.financialInformation.monthlyExpenses} />
+                  <input
+                    type="text"
+                    defaultValue={formData.financialInformation.monthlyExpenses}
+                  />
                 </div>
               </div>
             </div>
@@ -537,13 +766,19 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Año: </label>
-                  <input type="text" defaultValue={formData.financialInformation.islrYear} />
+                  <input
+                    type="text"
+                    defaultValue={formData.financialInformation.islrYear}
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Monto: </label>
-                  <input type="text" defaultValue={formData.financialInformation.islrAmount} />
+                  <input
+                    type="text"
+                    defaultValue={formData.financialInformation.islrAmount}
+                  />
                 </div>
               </div>
             </div>
@@ -565,25 +800,43 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Nombre o razón social: </label>
-                  <input type="text" defaultValue={formData.financialInformation.providers[0].name} />
+                  <input
+                    type="text"
+                    defaultValue={
+                      formData.financialInformation.providers[0].name
+                    }
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Ubicación: </label>
-                  <input type="text" defaultValue={formData.financialInformation.providers[0].location} />
+                  <input
+                    type="text"
+                    defaultValue={
+                      formData.financialInformation.providers[0].location
+                    }
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Nombre o razón social: </label>
-                  <input type="text" defaultValue={formData.financialInformation.clients[0].name} />
+                  <input
+                    type="text"
+                    defaultValue={formData.financialInformation.clients[0].name}
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Ubicación: </label>
-                  <input type="text" defaultValue={formData.financialInformation.clients[0].location}  />
+                  <input
+                    type="text"
+                    defaultValue={
+                      formData.financialInformation.clients[0].location
+                    }
+                  />
                 </div>
               </div>
             </div>
@@ -679,17 +932,34 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" defaultValue={formData.financialInformation.relatedCompanies[0].name} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.financialInformation.relatedCompanies[0].name
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" defaultValue={formData.financialInformation.relatedCompanies[0].economicActivity} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.financialInformation.relatedCompanies[0]
+                          .economicActivity
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <input type="text" defaultValue={formData.financialInformation.relatedCompanies[0].taxInformationRegistry} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.financialInformation.relatedCompanies[0]
+                          .taxInformationRegistry
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
@@ -733,13 +1003,23 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Institución del sector bancario: </label>
-                    <input type="text" defaultValue={formData.financialInformation.bankReferencesInstitution} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.financialInformation.bankReferencesInstitution
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Nombre del producto: </label>
-                    <input type="text" defaultValue={formData.financialInformation.bankReferencesProductName} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.financialInformation.bankReferencesProductName
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
@@ -755,13 +1035,24 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Número del producto: </label>
-                    <input type="text" defaultValue={formData.financialInformation.bankReferencesProductNumber} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.financialInformation
+                          .bankReferencesProductNumber
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <label htmlFor="">Cifras promedio: </label>
-                    <input type="text" defaultValue={formData.financialInformation.bankReferencesAverage} />
+                    <input
+                      type="text"
+                      defaultValue={
+                        formData.financialInformation.bankReferencesAverage
+                      }
+                    />
                   </div>
                 </div>
                 <div className="spreadsheet__item">
@@ -780,7 +1071,7 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
         </div>
 
         {/* Datos economico financieros */}
-        <div className="spreadsheet__section">
+        <div className="spreadsheet__section" style={{ }}>
           <h5 className="spreadsheet__title">
             INFORMACIÓN DEL PRODUCTO O SERVICIO BURSATIL
           </h5>
@@ -789,19 +1080,28 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Nombre del producto: </label>
-                  <input type="text" defaultValue={formData.productInformation.productName} />
+                  <input
+                    type="text"
+                    defaultValue={formData.productInformation.productName}
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Monto del producto adquirido: </label>
-                  <input type="text" defaultValue={formData.productInformation.productAmount} />
+                  <input
+                    type="text"
+                    defaultValue={formData.productInformation.productAmount}
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Moneda: </label>
-                  <input type="text" defaultValue={formData.productInformation.currency} />
+                  <input
+                    type="text"
+                    defaultValue={formData.productInformation.currency}
+                  />
                 </div>
               </div>
             </div>
@@ -814,7 +1114,10 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Monto promedio mensual: </label>
-                  <input type="text" defaultValue={formData.productInformation.monthlyAmount} />
+                  <input
+                    type="text"
+                    defaultValue={formData.productInformation.monthlyAmount}
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
@@ -822,7 +1125,13 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                   <label htmlFor="">
                     N° transacciones por transferencias:{" "}
                   </label>
-                  <input type="text" defaultValue={formData.productInformation.numberOfTransactionsByTransfers} />
+                  <input
+                    type="text"
+                    defaultValue={
+                      formData.productInformation
+                        .numberOfTransactionsByTransfers
+                    }
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
@@ -830,45 +1139,69 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                   <label htmlFor="">
                     Enviar o recibir fondos del exterior:{" "}
                   </label>
-                  <input type="text" defaultValue={formData.productInformation.sendOrReceiveFundsFromAbroad} />
+                  <input
+                    type="text"
+                    defaultValue={
+                      formData.productInformation.sendOrReceiveFundsFromAbroad
+                    }
+                  />
                 </div>
               </div>
             </div>
 
             <div className="spreadsheet__services-section-2">
-              <div className="spreadsheet__item">
+              {/* <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <input type="text" defaultValue="" />
                 </div>
-              </div>
+              </div> */}
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Compra: </label>
-                  <input type="text" defaultValue={formData.productInformation.purchase} />
+                  <input
+                    type="text"
+                    defaultValue={formData.productInformation.purchase}
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Venta: </label>
-                  <input type="text" defaultValue={formData.productInformation.sale} />
+                  <input
+                    type="text"
+                    defaultValue={formData.productInformation.sale}
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">País origen: </label>
-                  <input type="text" defaultValue={formData.productInformation.originCountry} />
+                  <input
+                    type="text"
+                    defaultValue={formData.productInformation.originCountry}
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">País destino: </label>
-                  <input type="text" defaultValue={formData.productInformation.destinationCountry} />
+                  <input
+                    type="text"
+                    defaultValue={
+                      formData.productInformation.destinationCountry
+                    }
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <label htmlFor="">Uso moneda virtual: </label>
-                  <input type="text" defaultValue={formData.productInformation.virtualCurrencyUse} />
+                  <input
+                    type="text"
+                    defaultValue={
+                      formData.productInformation.virtualCurrencyUse
+                    }
+                  />
                 </div>
               </div>
             </div>
@@ -893,23 +1226,34 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               </div>
               <div className="spreadsheet__item border-bl-rounded">
                 <div className="spreadsheet__form-item min-h">
-                  <input type="text" defaultValue={formData.productInformation.motives} />
+                  <input
+                    type="text"
+                    defaultValue={formData.productInformation.motives}
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item min-h">
-                  <input type="text" defaultValue={formData.productInformation.fundsSource} />
+                  <input
+                    type="text"
+                    defaultValue={formData.productInformation.fundsSource}
+                  />
                 </div>
               </div>
               <div className="spreadsheet__item border-br-rounded">
                 <div className="spreadsheet__form-item min-h">
-                  <input type="text" defaultValue={formData.productInformation.fundsDestination} />
+                  <input
+                    type="text"
+                    defaultValue={formData.productInformation.fundsDestination}
+                  />
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
+      <div className="page-break" style={{ height: "95vh", marginTop: '4rem', paddingTop: '2rem' }}>
         {/* Aceptacion de contrato */}
         <div style={{ borderWidth: "2px" }} className="spreadsheet__section">
           <h5 className="spreadsheet__title">
