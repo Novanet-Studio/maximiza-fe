@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { graphql } from "gatsby";
+import { graphql, navigate } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import { useStepper } from "headless-stepper";
 import Page from "../../layout/page";
@@ -14,13 +14,11 @@ import InvestorProfileStep from "../../components/formSteps/investorProfileStep"
 import ProductInformationStep from "../../components/formSteps/ProductInformationStep";
 import AcceptContractStep from "../../components/formSteps/AcceptContractStep";
 import FinalStep from "../../components/formSteps/finalStep";
-import Loader from "../../components/loader";
 import { FormProvider } from "../../context/formContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/scss/pages/servicios.scss";
 import "../../assets/scss/pages/steps.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import LegalEntityFormPdf from "../../components/legalEntityFormPdf";
-import { useReactToPrint } from "react-to-print";
+
 
 const RegistroJuridico = ({ data }) => {
   const dataSource = data.strapiServicio;
@@ -72,8 +70,8 @@ const RegistroJuridico = ({ data }) => {
     e.preventDefault();
 
     if (!state.hasNextStep) {
-      console.log('redirecting...')
-      // setShowPreview(true);
+      navigate('/')
+      return;
     }
 
     currentInput.current.validate();
