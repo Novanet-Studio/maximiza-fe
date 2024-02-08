@@ -163,6 +163,78 @@ const FinancialInformationFields = (props) => {
   )
 }
 
+const PoliticalPersonFields = (props) => {
+  const { formData } = useFormContext();
+  const { politicalPerson } = formData.financialInformation.financialInformation;
+  const MAX_LENGTH = 3;
+  const defaultFields = {
+    name: "",
+    cargo: "",
+    country: "",
+    pepIdentification: "",
+  };
+  const emptyFields = new Array(MAX_LENGTH - politicalPerson.length).fill(defaultFields);
+  const fields = [...politicalPerson, ...emptyFields];
+
+  return (
+    <div className="spreadsheet__column-wrapper">
+      <div className="spreadsheet__col">
+        Persona expuesta políticamente
+      </div>
+      <div className="spreadsheet__content">
+        <div className="spreadsheet__item">
+          <div className="spreadsheet__form-item">
+            <div>
+              Nombre de la institución o ente de adscripción:
+            </div>
+          </div>
+        </div>
+        <div className="spreadsheet__item">
+          <div className="spreadsheet__form-item">
+            <div>Cargo que desempeña: </div>
+          </div>
+        </div>
+        <div className="spreadsheet__item">
+          <div className="spreadsheet__form-item">
+            <div>País: </div>
+          </div>
+        </div>
+        <div className="spreadsheet__item">
+          <div className="spreadsheet__form-item">
+            <div>
+              Identificación del pep en caso de relacionado:
+            </div>
+          </div>
+        </div>
+        {fields.map((field, index) => (
+          <React.Fragment key={index}>
+            <div className="spreadsheet__item">
+              <div className="spreadsheet__form-item">
+                <div className="content">{field.name}</div>
+              </div>
+            </div>
+            <div className="spreadsheet__item">
+              <div className="spreadsheet__form-item">
+                <div className="content">{field.cargo}</div>
+              </div>
+            </div>
+            <div className="spreadsheet__item">
+              <div className="spreadsheet__form-item">
+                <div className="content">{field.country}</div>
+              </div>
+            </div>
+            <div className="spreadsheet__item">
+              <div className="spreadsheet__form-item">
+                <div className="content">{field.pepIdentification}</div>
+              </div>
+            </div>
+          </React.Fragment>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 const LegalEntityFormPdf = React.forwardRef((props, ref) => {
   const { formData } = useFormContext();
 
@@ -519,7 +591,8 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
             Accionista / Junta directiva
           </div>
           <div className="spreadsheet__economic2">
-            <div className="spreadsheet__column-wrapper">
+            <PoliticalPersonFields />
+            {/* <div className="spreadsheet__column-wrapper">
               <div className="spreadsheet__col">
                 Persona expuesta políticamente
               </div>
@@ -568,48 +641,8 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                     <div className="content">{formData.financialInformation.financialInformation.politicalPerson[0].pepIdentification}</div>
                   </div>
                 </div>
-                {/* <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <input type="text" />
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <input type="text" />
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <input type="text" />
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <input type="text" />
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <input type="text" />
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <input type="text" />
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <input type="text" />
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <input type="text" />
-                  </div>
-                </div> */}
               </div>
-            </div>
+            </div> */}
 
             <div className="spreadsheet__economic2-section">
               <div className="spreadsheet__item">
