@@ -1018,45 +1018,41 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Institución del sector bancario: </div>
-                    <div className="content">{formData.financialInformation.bankReferencesInstitution}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Nombre del producto: </div>
+                  </div>
+                </div>
+                <div className="spreadsheet__item">
+                  <div className="spreadsheet__form-item">
+                    <div className="content">{formData.financialInformation.bankReferencesInstitution}</div>
+                  </div>
+                </div>
+                <div className="spreadsheet__item">
+                  <div className="spreadsheet__form-item">
                     <div className="content">{formData.financialInformation.bankReferencesProductName}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <div className="content"></div>
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <div className="content"></div>
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
                     <div>Número del producto: </div>
-                    <div className="content">{formData.financialInformation.bankReferencesProductNumber}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Cifras promedio: </div>
-                    <div className="content">{formData.financialInformation.bankReferencesAverage}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <div className="content"></div>
+                    <div className="content">{formData.financialInformation.bankReferencesProductNumber}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item border-br-rounded">
                   <div className="spreadsheet__form-item">
-                    <div className="content"></div>
+                    <div className="content">{formData.financialInformation.bankReferencesAverage}</div>
                   </div>
                 </div>
               </div>
