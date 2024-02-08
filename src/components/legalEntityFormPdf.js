@@ -306,6 +306,63 @@ const ClientsAndProvidersFields = (props) => {
   )
 }
 
+const RelatedCompaniesFields = (props) => {
+  const { formData } = useFormContext();
+  const { relatedCompanies } = formData.financialInformation;
+  const MAX_LENGTH = 3;
+  const defaultFields = {
+    name: "",
+    economicActivity: "",
+    taxInformationRegistry: "",
+  };
+  const emptyFields = new Array(MAX_LENGTH - relatedCompanies.length).fill(defaultFields);
+  const fields = [...relatedCompanies, ...emptyFields];
+
+  return (
+    <div className="spreadsheet__column-wrapper">
+      <div className="spreadsheet__col spreadsheet__col-border">
+        Empresas relacionadas
+      </div>
+      <div className="spreadsheet__content spreadsheet__content--1-2">
+        <div className="spreadsheet__item">
+          <div className="spreadsheet__form-item">
+            <div>Nombre o razón social: </div>
+          </div>
+        </div>
+        <div className="spreadsheet__item">
+          <div className="spreadsheet__form-item">
+            <div>Actividad económica: </div>
+          </div>
+        </div>
+        <div className="spreadsheet__item">
+          <div className="spreadsheet__form-item">
+            <div>Registro de información fiscal: </div>
+          </div>
+        </div>
+        {fields.map((field, index) => (
+          <React.Fragment>
+            <div className="spreadsheet__item">
+              <div className="spreadsheet__form-item">
+                <div className="content">{field.name}</div>
+              </div>
+            </div>
+            <div className="spreadsheet__item">
+              <div className="spreadsheet__form-item">
+                <div className="content">{field.economicActivity}</div>
+              </div>
+            </div>
+            <div className="spreadsheet__item">
+              <div className="spreadsheet__form-item">
+                <div className="content">{field.taxInformationRegistry}</div>
+              </div>
+            </div>
+          </React.Fragment>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 const LegalEntityFormPdf = React.forwardRef((props, ref) => {
   const { formData } = useFormContext();
 
@@ -884,7 +941,8 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               </div>
             </div> */}
 
-            <div className="spreadsheet__column-wrapper">
+            <RelatedCompaniesFields />
+            {/* <div className="spreadsheet__column-wrapper">
               <div className="spreadsheet__col spreadsheet__col-border">
                 Empresas relacionadas
               </div>
@@ -950,7 +1008,7 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className="spreadsheet__column-wrapper">
               <div className="spreadsheet__col border-bl-rounded">
