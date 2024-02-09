@@ -104,61 +104,6 @@ const FinancialInformationFields = (props) => {
     <div className="spreadsheet__economic-section">
       {Headers}
       {Content}
-      {/* <div className="spreadsheet__item">
-        <div>Nombre: </div>
-      </div>
-      <div className="spreadsheet__item">
-        <div>Documento de identidad: </div>
-      </div>
-      <div className="spreadsheet__item">
-        <div>Porcentaje accionario: </div>
-      </div>
-      <div className="spreadsheet__item">
-        <div>Cargo: </div>
-      </div>
-      <div className="spreadsheet__item">
-        <div>ES PEP: </div>
-      </div>
-      <div className="spreadsheet__item">
-        <div>Relacionado con PEP: </div>
-      </div> */}
-      {/* {fields.map((field, index) => (
-        <React.Fragment key={index}>
-          <div className="spreadsheet__item min-h">
-            <div className="content">{field.name}</div>
-          </div>
-          <div className="spreadsheet__item min-h">
-            <div className="content">{field.dni}</div>
-          </div>
-          <div className="spreadsheet__item min-h">
-            <div className="content">{field.sharePercentage}</div>
-          </div>
-          <div className="spreadsheet__item min-h">
-            <div className="content">{field.cargo}</div>
-          </div>
-          <div className="spreadsheet__item min-h">
-            <div className="content">{field.esPep}</div>
-          </div>
-          <div className="spreadsheet__item min-h">
-            <div className="content">{field.relatedWithPep}</div>
-          </div> 
-        </React.Fragment>
-      ))} */}
-      {/* <div className="spreadsheet__item min-h">
-        <div className="content">{formData.financialInformation.financialInformation.stockholder[0].dni}</div>
-      </div>
-      <div className="spreadsheet__item min-h">
-        <div className="content">{formData.financialInformation.financialInformation.stockholder[0].sharePercentage}</div>
-      </div>
-      <div className="spreadsheet__item min-h">
-        <div className="content">{formData.financialInformation.financialInformation.stockholder[0].cargo}</div>
-      </div>
-      <div className="spreadsheet__item min-h">
-        <div className="content">{formData.financialInformation.financialInformation.stockholder[0].esPep}</div>
-      </div>
-      <div className="spreadsheet__item min-h">
-        <div className="content">{formData.financialInformation.financialInformation.stockholder[0].relatedWithPep}</div>
-      </div> */}
     </div>
   )
 }
@@ -254,25 +199,21 @@ const ClientsAndProvidersFields = (props) => {
         <div className="spreadsheet__item">
           <div className="spreadsheet__form-item">
             <div>Nombre o razón social: </div>
-            {/* <div className="content">{formData.financialInformation.providers[0].name}</div> */}
           </div>
         </div>
         <div className="spreadsheet__item">
           <div className="spreadsheet__form-item">
             <div>Ubicación: </div>
-            {/* <div className="content">{formData.financialInformation.providers[0].location}</div> */}
           </div>
         </div>
         <div className="spreadsheet__item">
           <div className="spreadsheet__form-item">
             <div>Nombre o razón social: </div>
-            {/* <div className="content">{formData.financialInformation.clients[0].name}</div> */}
           </div>
         </div>
         <div className="spreadsheet__item">
           <div className="spreadsheet__form-item">
             <div>Ubicación: </div>
-            {/* <div className="content">{formData.financialInformation.clients[0].location}</div> */}
           </div>
         </div>
       </div>
@@ -664,46 +605,7 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               bursatiles
             </div>
 
-            {/* <FinancialInformationFields field="legalRepresentative" /> */}
-
-            {/* <div className="spreadsheet__economic-section">
-              <div className="spreadsheet__item">
-                <div>Nombre: </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div>Documento de identidad: </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div>Porcentaje accionario: </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div>Cargo: </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div>ES PEP: </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div>Relacionado con PEP: </div>
-              </div>
-              <div className="spreadsheet__item min-h">
-                <div className="content">{formData.financialInformation.financialInformation.legalRepresentative[0].name}</div>
-              </div>
-              <div className="spreadsheet__item min-h">
-                <div className="content">{formData.financialInformation.financialInformation.legalRepresentative[0].dni}</div>
-              </div>
-              <div className="spreadsheet__item min-h">
-                <div className="content">{formData.financialInformation.financialInformation.legalRepresentative[0].sharePercentage}</div>
-              </div>
-              <div className="spreadsheet__item min-h">
-                <div className="content">{formData.financialInformation.financialInformation.legalRepresentative[0].cargo}</div>
-              </div>
-              <div className="spreadsheet__item min-h">
-                <div className="content">{formData.financialInformation.financialInformation.legalRepresentative[0].esPep}</div>
-              </div>
-              <div className="spreadsheet__item min-h">
-                <div className="content">{formData.financialInformation.financialInformation.legalRepresentative[0].relatedWithPep}</div>
-              </div>
-            </div> */}
+            <FinancialInformationFields field="legalRepresentative" />
           </div>
         </div>
       </div>
@@ -719,57 +621,6 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
           </div>
           <div className="spreadsheet__economic2">
             <PoliticalPersonFields />
-            {/* <div className="spreadsheet__column-wrapper">
-              <div className="spreadsheet__col">
-                Persona expuesta políticamente
-              </div>
-              <div className="spreadsheet__content">
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <div>
-                      Nombre de la institución o ente de adscripción:
-                    </div>
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <div>Cargo que desempeña: </div>
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <div>País: </div>
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <div>
-                      Identificación del pep en caso de relacionado:
-                    </div>
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <div className="content">{formData.financialInformation.financialInformation.politicalPerson[0].name}</div>
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <div className="content">{formData.financialInformation.financialInformation.politicalPerson[0].cargo}</div>
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <div className="content">{formData.financialInformation.financialInformation.politicalPerson[0].country}</div>
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <div className="content">{formData.financialInformation.financialInformation.politicalPerson[0].pepIdentification}</div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
 
             <div className="spreadsheet__economic2-section">
               <div className="spreadsheet__item">
@@ -843,171 +694,7 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
             </div>
 
             <ClientsAndProvidersFields />
-
-            {/* <div className="spreadsheet__content">
-              <div className="spreadsheet__item">
-                <div className="spreadsheet__form-item">
-                  <div>Nombre o razón social: </div>
-                  <div className="content">{formData.financialInformation.providers[0].name}</div>
-                </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div className="spreadsheet__form-item">
-                  <div>Ubicación: </div>
-                  <div className="content">{formData.financialInformation.providers[0].location}</div>
-                </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div className="spreadsheet__form-item">
-                  <div>Nombre o razón social: </div>
-                  <div className="content">{formData.financialInformation.clients[0].name}</div>
-                </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div className="spreadsheet__form-item">
-                  <div>Ubicación: </div>
-                  <div className="content">{formData.financialInformation.clients[0].location}</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="spreadsheet__content">
-              <div className="spreadsheet__item">
-                <div className="spreadsheet__form-item">
-                  <div className="content"></div>
-                </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div className="spreadsheet__form-item">
-                  <div className="content"></div>
-                </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div className="spreadsheet__form-item">
-                  <div className="content"></div>
-                </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div className="spreadsheet__form-item">
-                  <div className="content"></div>
-                </div>
-              </div>
-            </div>
-
-            <div className="spreadsheet__content">
-              <div className="spreadsheet__item">
-                <div className="spreadsheet__form-item">
-                  <div className="content"></div>
-                </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div className="spreadsheet__form-item">
-                  <div className="content"></div>
-                </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div className="spreadsheet__form-item">
-                  <div className="content"></div>
-                </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div className="spreadsheet__form-item">
-                  <div className="content"></div>
-                </div>
-              </div>
-            </div>
-
-            <div className="spreadsheet__content">
-              <div className="spreadsheet__item">
-                <div className="spreadsheet__form-item">
-                  <div className="content"></div>
-                </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div className="spreadsheet__form-item">
-                  <div className="content"></div>
-                </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div className="spreadsheet__form-item">
-                  <div className="content"></div>
-                </div>
-              </div>
-              <div className="spreadsheet__item">
-                <div className="spreadsheet__form-item">
-                  <div className="content"></div>
-                </div>
-              </div>
-            </div> */}
-
             <RelatedCompaniesFields />
-            {/* <div className="spreadsheet__column-wrapper">
-              <div className="spreadsheet__col spreadsheet__col-border">
-                Empresas relacionadas
-              </div>
-              <div className="spreadsheet__content spreadsheet__content--1-2">
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <div>Nombre o razón social: </div>
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <div>Actividad económica: </div>
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <div>Registro de información fiscal: </div>
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <div className="content">{formData.financialInformation.relatedCompanies[0].name}</div>
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <div className="content">{formData.financialInformation.relatedCompanies[0].economicActivity}</div>
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <div className="content">{formData.financialInformation.relatedCompanies[0].taxInformationRegistry}</div>
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <div className="content"></div>
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <div className="content"></div>
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <div className="content"></div>
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <div className="content"></div>
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <div className="content"></div>
-                  </div>
-                </div>
-                <div className="spreadsheet__item">
-                  <div className="spreadsheet__form-item">
-                    <div className="content"></div>
-                  </div>
-                </div>
-              </div>
-            </div> */}
 
             <div className="spreadsheet__column-wrapper">
               <div className="spreadsheet__col border-bl-rounded">
