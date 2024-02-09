@@ -48,7 +48,7 @@ const FinancialInformationFields = (props) => {
 
     Content = fields.map((field, index) => (
       <React.Fragment key={index}>
-        <div className="spreadsheet__item min-h">
+        <div className="spreadsheet__item min-h" key={`stockholder-${index}`}>
           <div className="content">{field.name}</div>
         </div>
         <div className="spreadsheet__item min-h">
@@ -78,7 +78,7 @@ const FinancialInformationFields = (props) => {
     ));
     Content = fields.map((field, index) => (
       <React.Fragment key={index}>
-        <div className="spreadsheet__item min-h">
+        <div className="spreadsheet__item min-h" key={`legal-${index}`}>
           <div className="content">{field.name}</div>
         </div>
         <div className="spreadsheet__item min-h">
@@ -102,8 +102,8 @@ const FinancialInformationFields = (props) => {
 
   return (
     <div className="spreadsheet__economic-section">
-      <Headers />
-      <Content />
+      {Headers}
+      {Content}
       {/* <div className="spreadsheet__item">
         <div>Nombre: </div>
       </div>
@@ -237,7 +237,7 @@ const PoliticalPersonFields = (props) => {
 
 const ClientsAndProvidersFields = (props) => {
   const { formData } = useFormContext();
-  const { providers, clients } = formData.financialInformation.financialInformation;
+  const { providers, clients } = formData.financialInformation;
   const MAX_LENGTH = 3;
   const defaultFields = {
     name: "",
@@ -247,7 +247,6 @@ const ClientsAndProvidersFields = (props) => {
   const providersEmptyFields = new Array(MAX_LENGTH - providers.length).fill(defaultFields);
   const clientsFields = [...clients, ...clientsEmptyFields];
   const providersFields = [...providers, ...providersEmptyFields];
-  const fields = [providersFields, clientsFields];
 
   return (
     <React.Fragment>
@@ -279,7 +278,7 @@ const ClientsAndProvidersFields = (props) => {
       </div>
 
       {new Array(3).fill().map((_, index) => (
-        <div className="spreadsheet__content">
+        <div className="spreadsheet__content" key={`clients-providers-${index}`}>
           <div className="spreadsheet__item">
             <div className="spreadsheet__form-item">
               <div className="content">{providersFields[index].name}</div>
@@ -665,7 +664,7 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               bursatiles
             </div>
 
-            <FinancialInformationFields field="legalRepresentative" />
+            {/* <FinancialInformationFields field="legalRepresentative" /> */}
 
             {/* <div className="spreadsheet__economic-section">
               <div className="spreadsheet__item">
