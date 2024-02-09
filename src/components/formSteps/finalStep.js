@@ -13,7 +13,7 @@ export function FaDownload(props) {
 }
 
 const FinalStep = React.forwardRef((props, ref) => {
-  const { setShowPreview } = useFormContext();
+  const { setShowPreview, formData } = useFormContext();
 
   const printRef = React.useRef();
 
@@ -36,7 +36,7 @@ const FinalStep = React.forwardRef((props, ref) => {
         <h4>¡El documento está listo!</h4>
         <p>Descarguelo y rellene los campos restantes</p>
 
-        <LegalEntityFormPdf ref={printRef} />
+        {formData?.institutionData?.place && <LegalEntityFormPdf ref={printRef} />}
 
         <button onClick={(e) => {
           e.preventDefault()

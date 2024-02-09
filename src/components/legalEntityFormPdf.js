@@ -4,12 +4,12 @@ import { useFormContext } from "../context/formContext";
 import "../assets/scss/pages/planilla.scss";
 
 const FinancialInformationFields = (props) => {
-  const { formData } = useFormContext();
+  const context = useFormContext();
   const options = ["stockholder", "legalRepresentative"];
 
   if (!options.includes(props.field)) return null;
   
-  const selected = formData.financialInformation.financialInformation[props.field];
+  const selected = context?.formData?.financialInformation?.financialInformation[props.field] || [];
   const MAX_LENGTH = 3;
   const isStockholder = props.field === "stockholder";
   const stockholderHeaders = ["Nombre", "Documento de identidad", "Porcentaje accionario", "Cargo", "ES PEP", "Relacionado con PEP"];
@@ -31,7 +31,9 @@ const FinancialInformationFields = (props) => {
     relatedWithPep: "",
   };
 
-  const emptyFields = new Array(MAX_LENGTH - selected.length).fill(isStockholder ? defaultFields : legalDefaultFields);
+  const arrayLength = MAX_LENGTH - selected?.length || 0
+
+  const emptyFields = new Array(arrayLength).fill(isStockholder ? defaultFields : legalDefaultFields);
   const fields = [...selected, ...emptyFields];
 
   let Headers;
@@ -109,8 +111,8 @@ const FinancialInformationFields = (props) => {
 }
 
 const PoliticalPersonFields = (props) => {
-  const { formData } = useFormContext();
-  const { politicalPerson } = formData.financialInformation.financialInformation;
+  const context = useFormContext();
+  const politicalPerson = context?.formData?.financialInformation?.financialInformation?.politicalPerson || [];
   const MAX_LENGTH = 3;
   const defaultFields = {
     name: "",
@@ -118,7 +120,8 @@ const PoliticalPersonFields = (props) => {
     country: "",
     pepIdentification: "",
   };
-  const emptyFields = new Array(MAX_LENGTH - politicalPerson.length).fill(defaultFields);
+  const arrayLength = MAX_LENGTH - politicalPerson?.length || 0
+  const emptyFields = new Array(arrayLength).fill(defaultFields);
   const fields = [...politicalPerson, ...emptyFields];
 
   return (
@@ -181,15 +184,19 @@ const PoliticalPersonFields = (props) => {
 }
 
 const ClientsAndProvidersFields = (props) => {
-  const { formData } = useFormContext();
-  const { providers, clients } = formData.financialInformation;
+  const context = useFormContext();
+  const providers = context?.formData?.financialInformation?.providers || [];
+  const clients = context?.formData?.financialInformation?.clients || [];
   const MAX_LENGTH = 3;
   const defaultFields = {
     name: "",
     location: "",
   };
-  const clientsEmptyFields = new Array(MAX_LENGTH - clients.length).fill(defaultFields);
-  const providersEmptyFields = new Array(MAX_LENGTH - providers.length).fill(defaultFields);
+  const clientsArrayLength = MAX_LENGTH - clients?.length || 0
+  const providersArrayLength = MAX_LENGTH - providers?.length || 0
+
+  const clientsEmptyFields = new Array(clientsArrayLength).fill(defaultFields);
+  const providersEmptyFields = new Array(providersArrayLength).fill(defaultFields);
   const clientsFields = [...clients, ...clientsEmptyFields];
   const providersFields = [...providers, ...providersEmptyFields];
 
@@ -247,15 +254,16 @@ const ClientsAndProvidersFields = (props) => {
 }
 
 const RelatedCompaniesFields = (props) => {
-  const { formData } = useFormContext();
-  const { relatedCompanies } = formData.financialInformation;
+  const context = useFormContext();
+  const relatedCompanies = context?.formData?.financialInformation?.relatedCompanies || [];
   const MAX_LENGTH = 3;
   const defaultFields = {
     name: "",
     economicActivity: "",
     taxInformationRegistry: "",
   };
-  const emptyFields = new Array(MAX_LENGTH - relatedCompanies.length).fill(defaultFields);
+  const arrayLength = MAX_LENGTH - relatedCompanies?.length || 0
+  const emptyFields = new Array(arrayLength).fill(defaultFields);
   const fields = [...relatedCompanies, ...emptyFields];
 
   return (
@@ -266,7 +274,7 @@ const RelatedCompaniesFields = (props) => {
       <div className="spreadsheet__content spreadsheet__content--1-2">
         <div className="spreadsheet__item">
           <div className="spreadsheet__form-item">
-            <div>Nombre o razón social: </div>
+            <div>Nombre o razón social: </div>MAX_LENGTH - relatedCompanies?.length ?? 0
           </div>
         </div>
         <div className="spreadsheet__item">
@@ -304,10 +312,11 @@ const RelatedCompaniesFields = (props) => {
 }
 
 const LegalEntityFormPdf = React.forwardRef((props, ref) => {
-  const { formData } = useFormContext();
+  const context = useFormContext();
+  const [formData, setFormData] = React.useState({})
 
   useEffect(() => {
-    console.log(formData);
+    setFormData(context.formData);
   }, [formData]);
 
   return (
@@ -327,19 +336,19 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item border-l-rounded">
                 <div className="spreadsheet__form-item">
                   <div>Lugar: </div>
-                  <div className="content">{formData.institutionData.place}</div>
+                  <div className="content">{formData?.institutionData?.place}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Fechas de elaboración: </div>
-                  <div className="content">{formData.institutionData.productionDate}</div>
+                  <div className="content">{formData?.institutionData?.productionDate}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Moneda: </div>
-                  <div className="content">{formData.institutionData.place}</div>
+                  <div className="content">{formData?.institutionData?.place}</div>
                 </div>
               </div>
             </div>
@@ -387,19 +396,19 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Registro de información ﬁscal: </div>
-                  <div className="content">{formData.enterpriseIdentification.taxInformationRegistration}</div>
+                  <div className="content">{formData?.enterpriseIdentification?.taxInformationRegistration}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Razón Social: </div>
-                  <div className="content">{formData.enterpriseIdentification.socialReason}</div>
+                  <div className="content">{formData?.enterpriseIdentification?.socialReason}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Nombre Comercial: </div>
-                  <div className="content">{formData.enterpriseIdentification.tradename}</div>
+                  <div className="content">{formData?.enterpriseIdentification?.tradename}</div>
                 </div>
               </div>
             </div>
@@ -407,15 +416,15 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Actividad económica: </div>
-                  <div className="content" style={{ fontSize: formData.enterpriseIdentification.economicActivity.length > 15 ? "8px" : "10px" }}>
-                    {formData.enterpriseIdentification.economicActivity}
+                  <div className="content" style={{ fontSize: formData?.enterpriseIdentification?.economicActivity.length > 15 ? "8px" : "10px" }}>
+                    {formData?.enterpriseIdentification?.economicActivity}
                   </div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Actividad especiﬁca: </div>
-                  <div className="content">{formData.enterpriseIdentification.specificActivity}</div>
+                  <div className="content">{formData?.enterpriseIdentification?.specificActivity}</div>
                 </div>
               </div>
             </div>
@@ -428,37 +437,37 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Nombre del registro: </div>
-                    <div className="content">{formData.enterpriseIdentification.registerData.recordName}</div>
+                    <div className="content">{formData?.enterpriseIdentification?.registerData?.recordName}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Número: </div>
-                    <div className="content">{formData.enterpriseIdentification.registerData.number}</div>
+                    <div className="content">{formData?.enterpriseIdentification?.registerData?.number}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Tomo: </div>
-                    <div className="content">{formData.enterpriseIdentification.registerData.took}</div>
+                    <div className="content">{formData?.enterpriseIdentification?.registerData?.took}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Folio: </div>
-                    <div className="content">{formData.enterpriseIdentification.registerData.fol}</div>
+                    <div className="content">{formData?.enterpriseIdentification?.registerData?.fol}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Fecha: </div>
-                    <div className="content">{formData.enterpriseIdentification.registerData.date}</div>
+                    <div className="content">{formData?.enterpriseIdentification?.registerData?.date}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Capital social: </div>
-                    <div className="content">{formData.enterpriseIdentification.registerData.socialCapital}</div>
+                    <div className="content">{formData?.enterpriseIdentification?.registerData?.socialCapital}</div>
                   </div>
                 </div>
               </div>
@@ -472,37 +481,37 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Nombre del registro: </div>
-                    <div className="content">{formData.enterpriseIdentification.lastModification.recordName}</div>
+                    <div className="content">{formData?.enterpriseIdentification?.lastModification?.recordName}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Número: </div>
-                    <div className="content">{formData.enterpriseIdentification.lastModification.number}</div>
+                    <div className="content">{formData?.enterpriseIdentification?.lastModification?.number}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Tomo: </div>
-                    <div className="content">{formData.enterpriseIdentification.lastModification.took}</div>
+                    <div className="content">{formData?.enterpriseIdentification?.lastModification?.took}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Folio: </div>
-                    <div className="content">{formData.enterpriseIdentification.lastModification.fol}</div>
+                    <div className="content">{formData?.enterpriseIdentification?.lastModification?.fol}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Fecha: </div>
-                    <div className="content">{formData.enterpriseIdentification.lastModification.date}</div>
+                    <div className="content">{formData?.enterpriseIdentification?.lastModification?.date}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Capital social: </div>
-                    <div className="content">{formData.enterpriseIdentification.lastModification.socialCapital}</div>
+                    <div className="content">{formData?.enterpriseIdentification?.lastModification?.socialCapital}</div>
                   </div>
                 </div>
               </div>
@@ -514,25 +523,25 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Número de gaceta oﬁcial: </div>
-                    <div className="content">{formData.enterpriseIdentification.officialGazetteNumber}</div>
+                    <div className="content">{formData?.enterpriseIdentification?.officialGazetteNumber}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Fecha: </div>
-                    <div className="content">{formData.enterpriseIdentification.publicEntitiesDate}</div>
+                    <div className="content">{formData?.enterpriseIdentification?.publicEntitiesDate}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Autoridad / Ente de adscripción: </div>
-                    <div className="content">{formData.enterpriseIdentification.authority}</div>
+                    <div className="content">{formData?.enterpriseIdentification?.authority}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Código ONT: </div>
-                    <div className="content">{formData.enterpriseIdentification.ontCode}</div>
+                    <div className="content">{formData?.enterpriseIdentification?.ontCode}</div>
                   </div>
                 </div>
               </div>
@@ -542,19 +551,19 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Teléfonos: </div>
-                  <div className="content">{formData.enterpriseIdentification.publicPhones}</div>
+                  <div className="content">{formData?.enterpriseIdentification?.publicPhones}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Sitio Web: </div>
-                  <div className="content">{formData.enterpriseIdentification.website}</div>
+                  <div className="content">{formData?.enterpriseIdentification?.website}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Correo electrónico: </div>
-                  <div className="content">{formData.enterpriseIdentification.publicEntityEmail}</div>
+                  <div className="content">{formData?.enterpriseIdentification?.publicEntityEmail}</div>
                 </div>
               </div>
             </div>
@@ -562,7 +571,7 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
             <div className="spreadsheet__item">
               <div className="spreadsheet__form-item">
                 <div>Dirección: </div>
-                <div className="content">{formData.enterpriseIdentification.publicEntityAddress}</div>
+                <div className="content">{formData?.enterpriseIdentification?.publicEntityAddress}</div>
               </div>
             </div>
 
@@ -570,19 +579,19 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item border-bl-rounded">
                 <div className="spreadsheet__form-item">
                   <div>Teléfonos: </div>
-                  <div className="content">{formData.enterpriseIdentification.publicPhones2}</div>
+                  <div className="content">{formData?.enterpriseIdentification?.publicPhones2}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Sitio Web: </div>
-                  <div className="content">{formData.enterpriseIdentification.website2}</div>
+                  <div className="content">{formData?.enterpriseIdentification?.website2}</div>
                 </div>
               </div>
               <div className="spreadsheet__item border-br-rounded">
                 <div className="spreadsheet__form-item">
                   <div>Correo electrónico: </div>
-                  <div className="content">{formData.enterpriseIdentification.publicEntityEmail2}</div>
+                  <div className="content">{formData?.enterpriseIdentification?.publicEntityEmail2}</div>
                 </div>
               </div>
             </div>
@@ -626,37 +635,37 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>N° de subsidiarias / Oﬁcinas: </div>
-                  <div className="content">{formData.financialInformation.financialInformation.officeNumber}</div>
+                  <div className="content">{formData?.financialInformation?.financialInformation?.officeNumber}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>País con mayor presencia: </div>
-                  <div className="content">{formData.financialInformation.countryWithGreaterPresence}</div>
+                  <div className="content">{formData?.financialInformation?.countryWithGreaterPresence}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>N° de empleados: </div>
-                  <div className="content">{formData.financialInformation.employeesNumber}</div>
+                  <div className="content">{formData?.financialInformation?.employeesNumber}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Ventas mensuales: </div>
-                  <div className="content">{formData.financialInformation.monthlySales}</div>
+                  <div className="content">{formData?.financialInformation?.monthlySales}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Ingresos mensuales: </div>
-                  <div className="content">{formData.financialInformation.monthlyIncome}</div>
+                  <div className="content">{formData?.financialInformation?.monthlyIncome}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Egresos mensuales: </div>
-                  <div className="content">{formData.financialInformation.monthlyExpenses}</div>
+                  <div className="content">{formData?.financialInformation?.monthlyExpenses}</div>
                 </div>
               </div>
             </div>
@@ -669,13 +678,13 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Año: </div>
-                  <div className="content">{formData.financialInformation.islrYear}</div>
+                  <div className="content">{formData?.financialInformation?.islrYear}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Monto: </div>
-                  <div className="content">{formData.financialInformation.islrAmount}</div>
+                  <div className="content">{formData?.financialInformation?.islrAmount}</div>
                 </div>
               </div>
             </div>
@@ -713,12 +722,12 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <div className="content">{formData.financialInformation.bankReferencesInstitution}</div>
+                    <div className="content">{formData?.financialInformation?.bankReferencesInstitution}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <div className="content">{formData.financialInformation.bankReferencesProductName}</div>
+                    <div className="content">{formData?.financialInformation?.bankReferencesProductName}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
@@ -733,12 +742,12 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                 </div>
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
-                    <div className="content">{formData.financialInformation.bankReferencesProductNumber}</div>
+                    <div className="content">{formData?.financialInformation?.bankReferencesProductNumber}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item border-br-rounded">
                   <div className="spreadsheet__form-item">
-                    <div className="content">{formData.financialInformation.bankReferencesAverage}</div>
+                    <div className="content">{formData?.financialInformation?.bankReferencesAverage}</div>
                   </div>
                 </div>
               </div>
@@ -756,19 +765,19 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Nombre del producto: </div>
-                  <div className="content">{formData.productInformation.productName}</div>
+                  <div className="content">{formData?.productInformation?.productName}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Monto del producto adquirido: </div>
-                  <div className="content">{formData.productInformation.productAmount}</div>
+                  <div className="content">{formData?.productInformation?.productAmount}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Moneda: </div>
-                  <div className="content">{formData.productInformation.currency}</div>
+                  <div className="content">{formData?.productInformation?.currency}</div>
                 </div>
               </div>
             </div>
@@ -781,7 +790,7 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Monto promedio mensual: </div>
-                  <div className="content">{formData.productInformation.monthlyAmount}</div>
+                  <div className="content">{formData?.productInformation?.monthlyAmount}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
@@ -789,7 +798,7 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                   <div>
                     N° transacciones por transferencias:
                   </div>
-                  <div className="content">{formData.productInformation.numberOfTransactionsByTransfers}</div>
+                  <div className="content">{formData?.productInformation?.numberOfTransactionsByTransfers}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
@@ -797,7 +806,7 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                   <div>
                     Enviar o recibir fondos del exterior:
                   </div>
-                  <div className="content">{formData.productInformation.sendOrReceiveFundsFromAbroad}</div>
+                  <div className="content">{formData?.productInformation?.sendOrReceiveFundsFromAbroad}</div>
                 </div>
               </div>
             </div>
@@ -811,31 +820,31 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Compra: </div>
-                  <div className="content">{formData.productInformation.purchase}</div>
+                  <div className="content">{formData?.productInformation?.purchase}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Venta: </div>
-                  <div className="content">{formData.productInformation.sale}</div>
+                  <div className="content">{formData?.productInformation?.sale}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>País origen: </div>
-                  <div className="content">{formData.productInformation.originCountry}</div>
+                  <div className="content">{formData?.productInformation?.originCountry}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>País destino: </div>
-                  <div className="content">{formData.productInformation.destinationCountry}</div>
+                  <div className="content">{formData?.productInformation?.destinationCountry}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Uso moneda virtual: </div>
-                  <div className="content">{formData.productInformation.virtualCurrencyUse}</div>
+                  <div className="content">{formData?.productInformation?.virtualCurrencyUse}</div>
                 </div>
               </div>
             </div>
@@ -860,17 +869,17 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               </div>
               <div className="spreadsheet__item border-bl-rounded">
                 <div className="spreadsheet__form-item min-h">
-                  <div className="content">{formData.productInformation.motives}</div>
+                  <div className="content">{formData?.productInformation?.motives}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item min-h">
-                  <div className="content">{formData.productInformation.fundsSource}</div>
+                  <div className="content">{formData?.productInformation?.fundsSource}</div>
                 </div>
               </div>
               <div className="spreadsheet__item border-br-rounded">
                 <div className="spreadsheet__form-item min-h">
-                  <div className="content">{formData.productInformation.fundsDestination}</div>
+                  <div className="content">{formData?.productInformation?.fundsDestination}</div>
                 </div>
               </div>
             </div>
