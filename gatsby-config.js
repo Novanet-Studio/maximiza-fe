@@ -6,7 +6,12 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
+//  utilities
+import browserHydrateFunction from "./src/utilities/gatsby/browser-hydrate-function";
+
 const strapiConfig = require("./data/strapiConfig");
+
+export const replaceHydrateFunction = browserHydrateFunction;
 
 module.exports = {
   siteMetadata: {
