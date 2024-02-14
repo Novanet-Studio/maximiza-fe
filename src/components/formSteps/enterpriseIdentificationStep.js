@@ -12,6 +12,7 @@ const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
     const values = getValues();
     
     if (valid) {
+      console.log("2. EnterpriseIdentificationStep valid?", valid);
       updateFormData({ enterpriseIdentification: values.enterpriseIdentification });
       nextStep();
     }

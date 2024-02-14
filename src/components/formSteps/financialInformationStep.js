@@ -94,6 +94,7 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
     const values = getValues();
 
     if (valid) {
+      console.log("3. FinancialInformationStep valid?", valid);
       updateFormData({ financialInformation: values.financialInformation });
       nextStep();
     }

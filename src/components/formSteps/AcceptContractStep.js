@@ -12,6 +12,7 @@ const AcceptContractStep = React.forwardRef((props, ref) => {
 
     
     if (valid) {
+      console.log("6. AcceptContractStep valid?", valid);
       updateFormData({ accepted: values.accept });
       nextStep();
     }

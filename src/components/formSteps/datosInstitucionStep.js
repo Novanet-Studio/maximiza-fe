@@ -11,6 +11,7 @@ const DatosInstitucionStep = React.forwardRef((props, ref) => {
     const values = getValues();
 
     if (valid) {
+      console.log("1. DatosInstitucionStep valid?", valid);
       updateFormData({ institutionData: values.institutionData });
       nextStep();
     }

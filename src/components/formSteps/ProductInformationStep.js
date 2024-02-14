@@ -13,6 +13,7 @@ const ProductInformationStep = React.forwardRef((props, ref) => {
     const values = getValues();
     
     if (valid) {
+      console.log("5. ProductInformationStep valid?", valid);
       updateFormData({ productInformation: values.productInformation });
       nextStep();
     }

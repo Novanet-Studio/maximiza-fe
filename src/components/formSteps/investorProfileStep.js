@@ -11,6 +11,7 @@ const InvestorProfileStep = React.forwardRef((props, ref) => {
     const values = getValues();
 
     if (valid) {
+      console.log("4. InvestorProfileStep valid?", valid);
       updateFormData({ investorProfile: values.investorProfile });
       nextStep();
     }
