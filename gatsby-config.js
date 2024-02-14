@@ -7,7 +7,7 @@ require("dotenv").config({
 });
 
 //  utilities
-import browserHydrateFunction  from "./src/utilities/gatsby/browser-hydrate-function";
+import browserHydrateFunction  from "../src/utilities/gatsby/browser-hydrate-function";
 
 const strapiConfig = require("./data/strapiConfig");
 
