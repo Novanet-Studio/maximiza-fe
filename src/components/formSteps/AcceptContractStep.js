@@ -4,7 +4,7 @@ import { useFormContext } from "../../context/formContext";
 
 const AcceptContractStep = React.forwardRef((props, ref) => {
   const { nextStep, updateFormData, setShowPreview } = useFormContext();
-  const { register, trigger, getValues } = useForm();
+  const { register, trigger, getValues, formState: { errors } } = useForm();
 
   async function validate() {
     const valid = await trigger();
@@ -35,6 +35,9 @@ const AcceptContractStep = React.forwardRef((props, ref) => {
           <input {...register('accept', { required: true })} id="none" className="steps-form__input" type="checkbox" />
           Acepto los términos y condiciones
         </label>
+        {errors.accept?.type === 'required' && (
+          <p className="alert-error" role="alert">Debes aceptar para poder continuar</p>
+        )}
       </div>
   
     </form>

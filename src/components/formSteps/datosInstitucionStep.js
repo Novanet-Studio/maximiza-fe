@@ -4,7 +4,7 @@ import { useFormContext } from "../../context/formContext";
 
 const DatosInstitucionStep = React.forwardRef((props, ref) => {
   const { nextStep, updateFormData } = useFormContext();
-  const { register, trigger, getValues } = useForm();
+  const { register, trigger, getValues, formState: { errors } } = useForm();
 
   async function validate() {
     const valid = await trigger();
@@ -27,14 +27,23 @@ const DatosInstitucionStep = React.forwardRef((props, ref) => {
         <div className="steps-form__group-item">
           <label htmlFor="place">Lugar</label>
           <input {...register('institutionData.place', { required: true })} className="steps-form__input" type="text" placeholder="Lugar" />
+          {errors.institutionData?.place?.type === 'required' && (
+            <p className="alert-error" role="alert">El campo es requerido</p>
+          )}
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="productionDate">Fechas de elaboración</label>
           <input {...register('institutionData.productionDate', { required: true })} className="steps-form__input" type="text" placeholder="Fechas de elaboración" />
+          {errors.institutionData?.productionDate?.type === 'required' && (
+            <p className="alert-error" role="alert">El campo es requerido</p>
+          )}
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="inverstorNumber">N° o código del inversionista</label>
           <input {...register('institutionData.inverstorNumber', { required: true })} className="steps-form__input" type="text" placeholder="N° o código del inversionista" />
+          {errors.institutionData?.inverstorNumber?.type === 'required' && (
+            <p className="alert-error" role="alert">El campo es requerido</p>
+          )}
         </div>
       </div>
 
@@ -48,16 +57,25 @@ const DatosInstitucionStep = React.forwardRef((props, ref) => {
             className="steps-form__input steps-form__input--2"
             type="text"
           />
+          {errors.institutionData?.brokerageHouseName?.type === 'required' && (
+            <p className="alert-error" role="alert">El campo es requerido</p>
+          )}
         </div>
 
         <div className="steps-form__group-item">
           <label htmlFor="taxInformationRegistration">Registro información fiscal</label>
           <input {...register('institutionData.taxInformationRegistration', { required: true })} className="steps-form__input" type="text" placeholder="" />
+          {errors.institutionData?.taxInformationRegistration?.type === 'required' && (
+            <p className="alert-error" role="alert">El campo es requerido</p>
+          )}
         </div>
       </div>
       <div className="steps-form__group-item">
         <label htmlFor="address">Dirección</label>
         <input {...register('institutionData.address', { required: true })}  className="steps-form__input" type="text" placeholder="Dirección" />
+        {errors.institutionData?.address?.type === 'required' && (
+          <p className="alert-error" role="alert">El campo es requerido</p>
+        )}
       </div>
     </form>
   );
