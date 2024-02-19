@@ -316,8 +316,8 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
   const [formData, setFormData] = React.useState({})
 
   useEffect(() => {
-    setFormData(context.formData);
-  }, [context.formData]);
+   setFormData(context.formData);
+  }, []);
 
   return (
     <div className="spreadsheet" ref={ref}>
