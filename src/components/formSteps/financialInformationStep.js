@@ -17,45 +17,60 @@ const AddButton = ({ onClick, disabled }) => (
   </button>
 )
 
+const defaults = {
+  stockholder: [{
+    name: '',
+    dni: '',
+    sharePercentage: '',
+    cargo: '',
+    esPep: '',
+    relatedWithPep: ''
+  }],
+  legalRepresentative: [{
+    name: '',
+    dni: '',
+    sharePercentage: '',
+    cargo: '',
+    esPep: '',
+    relatedWithPep: ''
+  }],
+  politicalPerson: [{
+    name: '',
+    cargo: '',
+    country: '',
+    pepIdentification: ''
+  }],
+  providers: [{
+    name: '',
+    location: '',
+  }],
+  clients: [{
+    name: '',
+    location: '',
+  }],
+  relatedCompanies: [{
+    name: '',
+    economicActivity: '',
+    taxInformationRegistry: '',
+  }],
+}
+
 const FinancialInformationStep = React.forwardRef((props, ref) => {
-  const { nextStep, updateFormData } = useFormContext();
+  const { nextStep, updateFormData, formData } = useFormContext();
   const { register, trigger, control, getValues, formState: { errors } } = useForm({
     defaultValues: {
-      stockholder: [{
-        name: '',
-        dni: '',
-        sharePercentage: '',
-        cargo: '',
-        esPep: '',
-        relatedWithPep: ''
-      }],
-      legalRepresentative: [{
-        name: '',
-        dni: '',
-        sharePercentage: '',
-        cargo: '',
-        esPep: '',
-        relatedWithPep: ''
-      }],
-      politicalPerson: [{
-        name: '',
-        cargo: '',
-        country: '',
-        pepIdentification: ''
-      }],
-      providers: [{
-        name: '',
-        location: '',
-      }],
-      clients: [{
-        name: '',
-        location: '',
-      }],
-      relatedCompanies: [{
-        name: '',
-        economicActivity: '',
-        taxInformationRegistry: '',
-      }],
+      ...defaults
+    },
+    values: {
+      financialInformation: {
+        ...formData.financialInformation
+      },
+      stockholder: formData.financialInformation?.financialInformation?.stockholder || defaults.stockholder,
+      legalRepresentative: formData.financialInformation?.financialInformation?.legalRepresentative || defaults.legalRepresentative,
+      politicalPerson: formData.financialInformation?.financialInformation?.politicalPerson || defaults.politicalPerson,
+      providers: formData.financialInformation?.financialInformation?.providers || defaults.providers,
+      clients: formData.financialInformation?.financialInformation?.clients || defaults.clients,
+      relatedCompanies: formData.financialInformation?.financialInformation?.relatedCompanies || defaults.relatedCompanies,
     }
   });
 

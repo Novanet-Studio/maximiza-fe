@@ -4,8 +4,14 @@ import { useFormContext } from "../../context/formContext";
 import { economicActivity } from "./fieldsOptions";
 
 const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
-  const { nextStep, updateFormData } = useFormContext();
-  const { register, trigger, getValues, formState: { errors } } = useForm();
+  const { nextStep, updateFormData, formData } = useFormContext();
+  const { register, trigger, getValues, formState: { errors } } = useForm({
+    values: {
+      enterpriseIdentification: {
+        ...formData.enterpriseIdentification
+      }
+    },
+  });
 
   async function validate() {
     const valid = await trigger()
@@ -54,7 +60,7 @@ const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
         <div className="steps-form__group-item" style={{ maxWidth: "50%" }}>
           <label htmlFor="economicActivity">Actividad económica</label>
           <select {...register('enterpriseIdentification.economicActivity', { required: true })} className="steps-form__input"  id="economicActivity">
-            <option value="" selected>SELECCIONA</option>
+            <option defaultValue="" selected>SELECCIONA</option>
             {economicActivity.map((activity) => (
               <option key={activity} value={activity}>{activity}</option>
             ))}

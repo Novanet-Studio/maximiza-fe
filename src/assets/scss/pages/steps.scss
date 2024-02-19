@@ -170,7 +170,8 @@
   .checkbox-label {
     color: $gris1;
 
-    & input[type="radio"] {
+    & input[type="radio"],
+    & input[type="checkbox"] {
       margin-right: 1rem;
       padding: 1rem;
       accent-color: $verde6;

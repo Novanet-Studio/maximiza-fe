@@ -31,7 +31,7 @@ const RegistroJuridico = ({ data }) => {
       },
       { label: "Identificación de la empresa" },
       { label: "Información económico financiera" },
-      { label: "Perfil del inversionista" },
+      // { label: "Perfil del inversionista" },
       { label: "Producto o servicio bursátil" },
       { label: "Aceptación del contrato" },
       { label: "Finalizado" },
@@ -55,13 +55,13 @@ const RegistroJuridico = ({ data }) => {
       return <EnterpriseIdentificationStep ref={currentInput} />;
     } else if (state.currentStep === 2) {
       return <FinancialInformationStep ref={currentInput} />;
+    // } else if (state.currentStep === 3) {
+    //   return <InvestorProfileStep ref={currentInput} />;
     } else if (state.currentStep === 3) {
-      return <InvestorProfileStep ref={currentInput} />;
-    } else if (state.currentStep === 4) {
       return <ProductInformationStep ref={currentInput} />;
-    } else if (state.currentStep === 5) {
+    } else if (state.currentStep === 4) {
       return <AcceptContractStep ref={currentInput} />;
-    } else if (state.currentStep === 6) {
+    } else if (state.currentStep === 5) {
       return <FinalStep ref={currentInput} />;
     }
   }

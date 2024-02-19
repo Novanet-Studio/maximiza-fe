@@ -4,8 +4,14 @@ import { useFormContext } from "../../context/formContext";
 import { countries, currency, fundsDestination, fundsSource, motives, productNames, virtualCurrency } from "./fieldsOptions";
 
 const ProductInformationStep = React.forwardRef((props, ref) => {
-  const { nextStep, updateFormData } = useFormContext();
-  const { register, trigger, getValues, formState: { errors } } = useForm();
+  const { nextStep, updateFormData, formData } = useFormContext();
+  const { register, trigger, getValues, formState: { errors } } = useForm({
+    values: {
+      productInformation: {
+        ...formData.productInformation
+      }
+    }
+  });
 
 
   async function validate() {

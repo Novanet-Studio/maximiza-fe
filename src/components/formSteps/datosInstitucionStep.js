@@ -4,14 +4,30 @@ import { useFormContext } from "../../context/formContext";
 
 function getDate(date) {
   const selected = date;
+  if (!selected) return ""
   const [year, month, day] = selected.split('-')
 
   return `${day}-${month}-${year}`
 }
 
+function getSystemDate(date) {
+  const selected = date;
+  if (!selected) return ""
+  const [day, month, year] = selected.split('-')
+
+  return `${year}-${month}-${day}`
+}
+
 const DatosInstitucionStep = React.forwardRef((props, ref) => {
-  const { nextStep, updateFormData } = useFormContext();
-  const { register, trigger, getValues, formState: { errors } } = useForm();
+  const { nextStep, updateFormData, formData } = useFormContext();
+  const { register, trigger, getValues, formState: { errors } } = useForm({
+    values: {
+      institutionData: {
+        ...formData.institutionData,
+        productionDate: getSystemDate(formData?.institutionData?.productionDate),
+      }
+    },
+  });
 
   async function validate() {
     const valid = await trigger();
