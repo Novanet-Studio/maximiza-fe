@@ -233,9 +233,19 @@ const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="publicEntityEmail">Correo electrónico</label>
-          <input {...register('enterpriseIdentification.publicEntityEmail', { required: true })} className="steps-form__input" type="text" />
-          {errors.enterpriseIdentification?.publicEntityEmail?.type === 'required' && (
-            <p className="alert-error" role="alert">El campo es requerido</p>
+          <input 
+            {...register('enterpriseIdentification.publicEntityEmail', 
+              { required: true, 
+                pattern: {
+                  value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                  message: 'Ingresa un correo electrónico valido',
+                }
+              })
+            } 
+            className="steps-form__input" type="email" 
+          />
+          {errors.enterpriseIdentification?.publicEntityEmail && (
+            <p className="alert-error" role="alert">Ingrese un correo válido</p>
           )}
         </div>
       </div>
@@ -265,9 +275,21 @@ const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="publicEntityEmail">Correo electrónico</label>
-          <input {...register('enterpriseIdentification.publicEntityEmail2', { required: true })} className="steps-form__input" type="text" />
-          {errors.enterpriseIdentification?.publicEntityEmail2?.type === 'required' && (
-            <p className="alert-error" role="alert">El campo es requerido</p>
+          <input 
+            {...register('enterpriseIdentification.publicEntityEmail2', 
+              {
+                required: true,
+                pattern: {
+                  value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                  message: 'Ingresa un correo electrónico valido',
+                }
+              }
+            )} 
+            className="steps-form__input" 
+            type="email"
+          />
+          {errors.enterpriseIdentification?.publicEntityEmail2 && (
+            <p className="alert-error" role="alert">Ingrese un correo válido</p>
           )}
         </div>
       </div>
