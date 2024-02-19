@@ -2,6 +2,13 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useFormContext } from "../../context/formContext";
 
+function getDate(date) {
+  const selected = date;
+  const [year, month, day] = selected.split('-')
+
+  return `${day}-${month}-${year}`
+}
+
 const DatosInstitucionStep = React.forwardRef((props, ref) => {
   const { nextStep, updateFormData } = useFormContext();
   const { register, trigger, getValues, formState: { errors } } = useForm();
@@ -12,7 +19,12 @@ const DatosInstitucionStep = React.forwardRef((props, ref) => {
 
     if (valid) {
       console.log("1. DatosInstitucionStep valid?", valid);
-      updateFormData({ institutionData: values.institutionData });
+      const institutionData = {
+        ...values.institutionData,
+        productionDate: getDate(values.institutionData.productionDate)
+      }
+
+      updateFormData({ institutionData });
       nextStep();
     }
   }
@@ -33,7 +45,7 @@ const DatosInstitucionStep = React.forwardRef((props, ref) => {
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="productionDate">Fechas de elaboración</label>
-          <input {...register('institutionData.productionDate', { required: true })} className="steps-form__input" type="text" placeholder="Fechas de elaboración" />
+          <input {...register('institutionData.productionDate', { required: true })} className="steps-form__input" type="date" placeholder="Fechas de elaboración"  />
           {errors.institutionData?.productionDate?.type === 'required' && (
             <p className="alert-error" role="alert">El campo es requerido</p>
           )}
