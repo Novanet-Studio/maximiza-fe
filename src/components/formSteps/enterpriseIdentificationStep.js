@@ -2,13 +2,23 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useFormContext } from "../../context/formContext";
 import { economicActivity } from "./fieldsOptions";
+import { formatDate, formatSystemDate } from "../../utilities/date";
 
 const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
   const { nextStep, updateFormData, formData } = useFormContext();
   const { register, trigger, getValues, formState: { errors } } = useForm({
     values: {
       enterpriseIdentification: {
-        ...formData.enterpriseIdentification
+        ...formData.enterpriseIdentification,
+        registerData: {
+          ...formData?.enterpriseIdentification?.registerData,
+          date: formatSystemDate(formData?.enterpriseIdentification?.registerData?.date),
+        },
+        lastModification: {
+          ...formData?.enterpriseIdentification?.lastModification,
+          date: formatSystemDate(formData?.enterpriseIdentification?.lastModification?.date),
+        },
+        publicEntitiesDate: formatSystemDate(formData?.enterpriseIdentification?.publicEntitiesDate),
       }
     },
   });
@@ -19,6 +29,21 @@ const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
     
     if (valid) {
       console.log("2. EnterpriseIdentificationStep valid?", valid);
+      const enterpriseIdentification = {
+        ...values.enterpriseIdentification,
+        registerData: {
+          ...values.enterpriseIdentification.registerData,
+          date: formatDate(values.enterpriseIdentification.registerData.date),
+        },
+        lastModification: {
+          ...values.enterpriseIdentification.lastModification,
+          date: formatDate(values.enterpriseIdentification.lastModification.date),
+        },
+        publicEntitiesDate: formatDate(values.enterpriseIdentification.publicEntitiesDate),
+      }
+
+      console.log("enterpriseIdentification", enterpriseIdentification);
+
       updateFormData({ enterpriseIdentification: values.enterpriseIdentification });
       nextStep();
     }
@@ -33,6 +58,17 @@ const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
       <h4>Datos de identificación de la empresa</h4>
 
       <div className="steps-form__group">
+        <div className="steps-form__group-item" style={{ width: '1rem', minWidth: '1rem' }}>
+          <label htmlFor="taxType">Tipo RIF</label>
+          <select id="taxType" className="steps-form__input-simple" name="taxType" title="taxType" {...register('enterpriseIdentification.taxType', { required: true })}>
+            <option selected disabled>TIPO</option>
+            <option value="J">J</option>
+            <option value="G">G</option>
+          </select>
+          {errors.enterpriseIdentification?.taxType?.type === 'required' && (
+            <p className="alert-error" role="alert">El campo es requerido</p>
+          )}
+        </div>
         <div className="steps-form__group-item">
           <label htmlFor="taxInformationRegistration">Registro información fiscal</label>
           <input {...register('enterpriseIdentification.taxInformationRegistration', { required: true })} className="steps-form__input" type="text" />
@@ -114,7 +150,7 @@ const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="date">Fecha</label>
-          <input {...register('enterpriseIdentification.registerData.date', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('enterpriseIdentification.registerData.date', { required: true })} className="steps-form__input" type="date" />
           {errors.enterpriseIdentification?.registerData?.date?.type === 'required' && (
             <p className="alert-error" role="alert">El campo es requerido</p>
           )}
@@ -164,7 +200,7 @@ const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="date">Fecha</label>
-          <input {...register('enterpriseIdentification.lastModification.date', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('enterpriseIdentification.lastModification.date', { required: true })} className="steps-form__input" type="date" />
           {errors.enterpriseIdentification?.lastModification?.date?.type === 'required' && (
             <p className="alert-error" role="alert">El campo es requerido</p>
           )}
@@ -190,7 +226,7 @@ const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="publicEntitiesDate">Fecha</label>
-          <input {...register('enterpriseIdentification.publicEntitiesDate', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('enterpriseIdentification.publicEntitiesDate', { required: true })} className="steps-form__input" type="date" />
           {errors.enterpriseIdentification?.publicEntitiesDate?.type === 'required' && (
             <p className="alert-error" role="alert">El campo es requerido</p>
           )}
@@ -254,8 +290,8 @@ const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
         <label htmlFor="publicEntityAddress">Dirección</label>
         <input {...register('enterpriseIdentification.publicEntityAddress', { required: true })} className="steps-form__input" type="text" />
         {errors.enterpriseIdentification?.publicEntityAddress?.type === 'required' && (
-            <p className="alert-error" role="alert">El campo es requerido</p>
-          )}
+          <p className="alert-error" role="alert">El campo es requerido</p>
+        )}
       </div>
 
       <div className="steps-form__group">
