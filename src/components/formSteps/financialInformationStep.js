@@ -172,6 +172,21 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
                 <p className="alert-error" role="alert">El campo es requerido</p>
               )}
             </div>
+            <div className="steps-form__group-item" style={{ width: '1rem', minWidth: '1rem' }}>
+              <label htmlFor={`stockholder.${index}.dniType`}>Tipo</label>
+              <select
+                id={`stockholder.${index}.dniType`}
+                className="steps-form__input-simple"
+                {...register(`financialInformation.financialInformation.stockholder.${index}.dniType`, { required: true })}
+              >
+                <option selected disabled>TIPO</option>
+                <option value="V">V</option>
+                <option value="E">E</option>
+              </select>
+              {errors.financialInformation?.financialInformation?.stockholder[index]?.dniType?.type === 'required' && (
+                <p className="alert-error" role="alert">El campo es requerido</p>
+              )}
+            </div>
             <div className="steps-form__group-item">
               <label htmlFor={`stockholder.${index}.dni`}>Documento de identidad</label>
               <input {...register(`financialInformation.financialInformation.stockholder.${index}.dni`, { required: true })}  className="steps-form__input" type="text" />
@@ -236,6 +251,21 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
               <label htmlFor={`legalRepresentative.${index}.name`}>Nombre</label>
               <input {...register(`financialInformation.financialInformation.legalRepresentative.${index}.name`, { required: true })} className="steps-form__input" type="text" />
               {errors.financialInformation?.financialInformation?.legalRepresentative[index]?.name.type === 'required' && (
+                <p className="alert-error" role="alert">El campo es requerido</p>
+              )}
+            </div>
+            <div className="steps-form__group-item" style={{ width: '1rem', minWidth: '1rem' }}>
+              <label htmlFor={`legalRepresentative.${index}.dniType`}>Tipo</label>
+              <select
+                id={`legalRepresentative.${index}.dniType`}
+                className="steps-form__input-simple"
+                {...register(`financialInformation.financialInformation.legalRepresentative.${index}.dniType`, { required: true })}
+              >
+                <option selected disabled>TIPO</option>
+                <option value="V">V</option>
+                <option value="E">E</option>
+              </select>
+              {errors.financialInformation?.financialInformation?.legalRepresentative[index]?.dniType?.type === 'required' && (
                 <p className="alert-error" role="alert">El campo es requerido</p>
               )}
             </div>
@@ -423,7 +453,7 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
         </div>
       </div>
   
-      <div className="steps-form__group">
+      {/* <div className="steps-form__group">
         <div className="steps-form__group-item">
           <label htmlFor="islrCondition">Condición</label>
           <input {...register('financialInformation.islrCondition', { required: true })} className="steps-form__input" type="text" />
@@ -445,7 +475,7 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
             <p className="alert-error" role="alert">El campo es requerido</p>
           )}
         </div>
-      </div>
+      </div> */}
   
       <div style={{ marginTop: "1rem" }}></div>
 
@@ -541,6 +571,17 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
                 <p className="alert-error" role="alert">El campo es requerido</p>
               )}
             </div>
+            <div className="steps-form__group-item" style={{ width: '1rem', minWidth: '3rem' }}>
+              <label htmlFor={`relatedCompanies.${index}.taxType`}>Tipo</label>
+              <select id="taxType" className="steps-form__input-simple" {...register(`financialInformation.relatedCompanies.${index}.taxType`, { required: true })}>
+                <option selected disabled>TIPO</option>
+                <option value="J">J</option>
+                <option value="G">G</option>
+              </select>
+              {errors.financialInformation?.relatedCompanies[index]?.taxType?.type === 'required' && (
+                <p className="alert-error" role="alert">El campo es requerido</p>
+              )}
+            </div>
             <div className="steps-form__group-item">
               <label htmlFor={`relatedCompanies.${index}.taxInformationRegistry`}>Registro de información fiscal</label>
               <input {...register(`financialInformation.relatedCompanies.${index}.taxInformationRegistry`, { required: true })} className="steps-form__input" type="text" />
@@ -579,7 +620,7 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
           )}
         </div>
         <div className="steps-form__group-item">
-          <label htmlFor="bankReferencesProductName">Nombre del producto</label>
+          <label htmlFor="bankReferencesProductName">Tipo del producto</label>
           <input {...register('financialInformation.bankReferencesProductName', { required: true })} className="steps-form__input" type="text" />
           {errors.financialInformation?.bankReferencesProductName?.type === 'required' && (
             <p className="alert-error" role="alert">El campo es requerido</p>
@@ -590,9 +631,12 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
       <div className="steps-form__group">
         <div className="steps-form__group-item">
           <label htmlFor="bankReferencesProductNumber">Número del producto</label>
-          <input {...register('financialInformation.bankReferencesProductNumber', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('financialInformation.bankReferencesProductNumber', { required: true, maxLength: 20, minLength: 20, pattern: /^[0-9]+$/ })} className="steps-form__input" type="text" />
           {errors.financialInformation?.bankReferencesProductNumber?.type === 'required' && (
             <p className="alert-error" role="alert">El campo es requerido</p>
+          )}
+          {['maxLength', 'minLength'].includes(errors.financialInformation?.bankReferencesProductNumber?.type) && (
+            <p className="alert-error" role="alert">El campo debe contener 20 dígitos</p>
           )}
         </div>
         <div className="steps-form__group-item">
