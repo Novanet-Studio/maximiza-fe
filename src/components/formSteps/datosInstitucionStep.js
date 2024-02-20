@@ -81,9 +81,10 @@ const DatosInstitucionStep = React.forwardRef((props, ref) => {
         <div className="steps-form__group-item">
           <label htmlFor="brokerageHouseName">Nombre de casa de bolsa o sociedades de corretaje de valores</label>
           <input
-            {...register('institutionData.brokerageHouseName', { required: true })}
+            {...register('institutionData.brokerageHouseName', { value: 'Maximiza Casa de Bolsa, C.A.' })}
             className="steps-form__input steps-form__input--2"
             type="text"
+            readOnly
           />
           {errors.institutionData?.brokerageHouseName?.type === 'required' && (
             <p className="alert-error" role="alert">El campo es requerido</p>
