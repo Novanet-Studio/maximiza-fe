@@ -84,7 +84,7 @@ const FinancialInformationFields = (props) => {
           <div className="content">{field.name}</div>
         </div>
         <div className="spreadsheet__item min-h">
-          <div className="content">{field.dni}</div>
+          <div className="content">{field.dniType}-{field.dni}</div>
         </div>
         <div className="spreadsheet__item min-h">
           <div className="content">{field.cargo}</div>
@@ -274,7 +274,7 @@ const RelatedCompaniesFields = (props) => {
       <div className="spreadsheet__content spreadsheet__content--1-2">
         <div className="spreadsheet__item">
           <div className="spreadsheet__form-item">
-            <div>Nombre o razón social: </div>MAX_LENGTH - relatedCompanies?.length ?? 0
+            <div>Nombre o razón social: </div>
           </div>
         </div>
         <div className="spreadsheet__item">
@@ -301,7 +301,7 @@ const RelatedCompaniesFields = (props) => {
             </div>
             <div className="spreadsheet__item">
               <div className="spreadsheet__form-item">
-                <div className="content">{field.taxInformationRegistry}</div>
+                <div className="content">{field.taxType}-{field.taxInformationRegistry}</div>
               </div>
             </div>
           </React.Fragment>
@@ -396,7 +396,9 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Registro de información ﬁscal: </div>
-                  <div className="content">{formData?.enterpriseIdentification?.taxInformationRegistration}</div>
+                  <div className="content">
+                    {formData?.enterpriseIdentification?.taxType}-{formData?.enterpriseIdentification?.taxInformationRegistration}
+                  </div>
                 </div>
               </div>
               <div className="spreadsheet__item">
