@@ -41,6 +41,18 @@ module.exports = {
     {
       resolve: "gatsby-plugin-offline",
       options: {
+        precachePages: [
+          `/empresa/`,
+          `/servicios/*`,
+          `/directiva/`,
+          `/contacto/`,
+          `/capital/`,
+          `/responsabilidad/`,
+          `/medios/`,
+          `/blog/*`,
+          `/cumplimiento/`,
+          `/sugerencias/`,
+        ],
         workboxConfig: {
           globPatterns: ["src/assets/images/icon.png"],
         },
