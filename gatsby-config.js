@@ -25,6 +25,7 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-transition-link",
     "gatsby-transformer-remark",
+    `gatsby-plugin-remove-serviceworker`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -38,7 +39,7 @@ module.exports = {
         icon: `src/assets/images/icon.png`, // This path is relative to the root of the site.
       },
     },
-/*     {
+    /*     {
       resolve: "gatsby-plugin-offline",
       options: {
         precachePages: [
