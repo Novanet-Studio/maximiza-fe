@@ -38,7 +38,7 @@ module.exports = {
         icon: `src/assets/images/icon.png`, // This path is relative to the root of the site.
       },
     },
-    {
+/*     {
       resolve: "gatsby-plugin-offline",
       options: {
         precachePages: [
@@ -57,7 +57,7 @@ module.exports = {
           globPatterns: ["src/assets/images/icon.png"],
         },
       },
-    },
+    }, */
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
