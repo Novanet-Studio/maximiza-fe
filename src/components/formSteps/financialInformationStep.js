@@ -26,6 +26,15 @@ const defaults = {
     esPep: '',
     relatedWithPep: ''
   }],
+  // beneficiary: [{
+  //   name: '',
+  //   type: '',
+  //   document: '',
+  //   cargo: '',
+  //   condition: '',
+  //   phone: '',
+  //   email: '',
+  // }],
   legalRepresentative: [{
     name: '',
     dni: '',
@@ -239,7 +248,103 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
       ))}
 
       <AddButton onClick={appendStockholder} disabled={fields.length >= 3} />
+
+      <div style={{ marginTop: "1rem" }}></div>
   
+      <div className="steps-form__collection">
+        <h6>Beneficiario</h6>
+        <div className="steps-form__group">
+          <div className="steps-form__group-item">
+            <label htmlFor={`beneficiary.name`}>Nombre</label>
+            <input {...register(`financialInformation.financialInformation.beneficiary.name`, { required: true })} className="steps-form__input" type="text" />
+            {errors.financialInformation?.financialInformation?.beneficiary?.name.type === 'required' && (
+              <p className="alert-error" role="alert">El campo es requerido</p>
+            )}
+          </div>
+          <div className="steps-form__group-item" style={{ width: '1rem', minWidth: '1rem' }}>
+            <label htmlFor={`beneficiary.dniType`}>Tipo</label>
+            <select
+              id={`beneficiary.dniType`}
+              className="steps-form__input-simple"
+              {...register(`financialInformation.financialInformation.beneficiary.dniType`, { required: true })}
+            >
+              <option selected disabled>TIPO</option>
+              <option value="V">V</option>
+              <option value="E">E</option>
+            </select>
+            {errors.financialInformation?.financialInformation?.beneficiary.dniType?.type === 'required' && (
+              <p className="alert-error" role="alert">El campo es requerido</p>
+            )}
+          </div>
+          <div className="steps-form__group-item">
+            <label htmlFor={`beneficiary.dni`}>Documento</label>
+            <input {...register(`financialInformation.financialInformation.beneficiary.dni`, { required: true })} className="steps-form__input" type="text" />
+            {errors.financialInformation?.financialInformation?.beneficiary.dni.type === 'required' && (
+              <p className="alert-error" role="alert">El campo es requerido</p>
+            )}
+          </div>
+          <div className="steps-form__group-item">
+            <label htmlFor={`beneficiary.cargo`}>Cargo</label>
+            <input {...register(`financialInformation.financialInformation.beneficiary.cargo`, { required: true })} className="steps-form__input" type="text" />
+            {errors.financialInformation?.financialInformation?.beneficiary.cargo.type === 'required' && (
+              <p className="alert-error" role="alert">El campo es requerido</p>
+            )}
+          </div>
+        </div>
+        <div className="steps-form__group">
+          <div className="steps-form__group-item">
+            <label htmlFor={`beneficiary.condition`}>Condición: </label>
+            <select id={`beneficiary.condition`} {...register(`financialInformation.financialInformation.beneficiary.condition`, { required: true })} className="steps-form__input">
+              <option value="" selected disabled>SELECCIONA</option>
+              <option value="DIRECTO">DIRECTO</option>
+              <option value="INDIRECTO">INDIRECTO</option>
+            </select>
+            {errors.financialInformation?.financialInformation?.beneficiary.condition.type === 'required' && (
+              <p className="alert-error" role="alert">El campo es requerido</p>
+            )}
+          </div>
+          <div className="steps-form__group-item">
+            <label htmlFor={`beneficiary.phone`}>Teléfono</label>
+            <input {...register(`financialInformation.financialInformation.beneficiary.phone`, { required: true, pattern: { value: /[0-9]+/, message: 'Solo se aceptan números' } })} className="steps-form__input" type="text" />
+            {errors.financialInformation?.financialInformation?.beneficiary.phone.type === 'required' && (
+              <p className="alert-error" role="alert">El campo es requerido</p>
+            )}
+            {errors.financialInformation?.financialInformation?.beneficiary.phone.type === 'pattern' && (
+              <p className="alert-error" role="alert">El campo solo acepta números</p>
+            )}
+          </div>
+          <div className="steps-form__group-item">
+            <label htmlFor={`beneficiary.email`}>Correo electrónico</label>
+            <input 
+              {...register('financialInformation.financialInformation.beneficiary.email', 
+                {
+                  required: true,
+                  pattern: {
+                    value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                    message: 'Ingresa un correo electrónico valido',
+                  }
+                }
+              )} 
+              className="steps-form__input" 
+              type="email"
+            />
+            {/* <select id={`beneficiary.email`} {...register(`financialInformation.financialInformation.beneficiary.email`, { required: true })} className="steps-form__input">
+              <option value="" selected disabled>SELECCIONA</option>
+              {relatedWithPep.map((item) => (
+                <option key={item} value={item}>{item}</option>
+              ))}
+            </select> */}
+            {errors.financialInformation?.financialInformation?.beneficiary.relatedWithPep.type === 'required' && (
+              <p className="alert-error" role="alert">El campo es requerido</p>
+            )}
+
+            {errors.enterpriseIdentification?.publicPhones2?.type === 'pattern' && (
+              <p className="alert-error" role="alert">El email es inválido</p>
+            )}
+          </div>
+        </div>
+      </div>
+
       <div style={{ marginTop: "1rem" }}></div>
   
       {legalFields.map((field, index) => (
@@ -329,23 +434,24 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
   
       <div style={{ marginTop: "1rem" }}></div>
   
-      <h6>Accionista / Junta directiva</h6>
+      {/* <h6>Accionista / Junta directiva</h6> */}
+      <h6>Persona expuesta politicamente</h6>
   
       {politicalPersonFields.map((field, index) => (
         <div className="steps-form__collection" key={field.id}>
-          <h6>Persona expuesta politicamente</h6>
+          {/* <h6>Persona expuesta politicamente</h6> */}
           {index > 0 && <RemoveButton onClick={() => removePoliticalPerson(index)} />}
           <div className="steps-form__group">
             <div className="steps-form__group-item">
               <label htmlFor={`politicalPerson.${index}.name`}>Nombre de la institución o ente de adscripción</label>
-              <input {...register(`financialInformation.financialInformation.politicalPerson.${index}.name`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.financialInformation.politicalPerson.${index}.name`, { required: true })} placeholder="No aplica" className="steps-form__input" type="text" />
               {errors.financialInformation?.financialInformation?.politicalPerson[index]?.name.type === 'required' && (
                 <p className="alert-error" role="alert">El campo es requerido</p>
               )}
             </div>
             <div className="steps-form__group-item">
               <label htmlFor={`politicalPerson.${index}.cargo`}>Cargo que desempeña</label>
-              <input {...register(`financialInformation.financialInformation.politicalPerson.${index}.cargo`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.financialInformation.politicalPerson.${index}.cargo`, { required: true })} placeholder="No aplica" className="steps-form__input" type="text" />
               {errors.financialInformation?.financialInformation?.politicalPerson[index]?.cargo.type === 'required' && (
                 <p className="alert-error" role="alert">El campo es requerido</p>
               )}
@@ -366,7 +472,7 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
             </div>
             <div className="steps-form__group-item">
               <label htmlFor={`politicalPerson.${index}.pepIdentification`}>Identificación del PEP en caso relacionado</label>
-              <input {...register(`financialInformation.financialInformation.politicalPerson.${index}.pepIdentification`, { required: true })} className="steps-form__input" type="text" />
+              <input {...register(`financialInformation.financialInformation.politicalPerson.${index}.pepIdentification`, { required: true })} placeholder="No aplica" className="steps-form__input" type="text" />
               {errors.financialInformation?.financialInformation?.politicalPerson[index]?.pepIdentification.type === 'required' && (
                 <p className="alert-error" role="alert">El campo es requerido</p>
               )}
@@ -621,7 +727,12 @@ const FinancialInformationStep = React.forwardRef((props, ref) => {
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="bankReferencesProductName">Tipo del producto</label>
-          <input {...register('financialInformation.bankReferencesProductName', { required: true })} className="steps-form__input" type="text" />
+          <select id={`bankReferencesProductName`} {...register(`financialInformation.bankReferencesProductName`, { required: true })} className="steps-form__input">
+            <option value="" selected disabled>SELECCIONE</option>
+              <option value="CUENTA CORRIENTE">CUENTA CORRIENTE</option>
+              <option value="CUENTA DE AHORRO">CUENTA DE AHORRO</option>
+          </select>
+          {/* <input {...register('financialInformation.bankReferencesProductName', { required: true })} className="steps-form__input" type="text" /> */}
           {errors.financialInformation?.bankReferencesProductName?.type === 'required' && (
             <p className="alert-error" role="alert">El campo es requerido</p>
           )}

@@ -1,12 +1,13 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { useFormContext } from "../../context/formContext";
 import { economicActivity } from "./fieldsOptions";
 import { formatDate, formatSystemDate } from "../../utilities/date";
+import { NumericFormat } from "react-number-format";
 
 const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
   const { nextStep, updateFormData, formData } = useFormContext();
-  const { register, trigger, getValues, formState: { errors } } = useForm({
+  const { register, trigger, getValues, formState: { errors }, control } = useForm({
     values: {
       enterpriseIdentification: {
         ...formData.enterpriseIdentification,
@@ -71,9 +72,12 @@ const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="taxInformationRegistration">Registro información fiscal</label>
-          <input {...register('enterpriseIdentification.taxInformationRegistration', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('enterpriseIdentification.taxInformationRegistration', { required: true, pattern: { value: /[0-9]+/, message: 'Solo se aceptan números' } })} className="steps-form__input" type="text" />
           {errors.enterpriseIdentification?.taxInformationRegistration?.type === 'required' && (
             <p className="alert-error" role="alert">El campo es requerido</p>
+          )}
+          {errors.enterpriseIdentification?.taxInformationRegistration?.type === 'pattern' && (
+            <p className="alert-error" role="alert">Solo se aceptan carácteres numéricos</p>
           )}
         </div>
         <div className="steps-form__group-item">
@@ -143,7 +147,7 @@ const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
       <div className="steps-form__group">
         <div className="steps-form__group-item">
           <label htmlFor="fol">Folio</label>
-          <input {...register('enterpriseIdentification.registerData.fol', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('enterpriseIdentification.registerData.fol', { required: true })} placeholder="No aplica" className="steps-form__input" type="text" />
           {errors.enterpriseIdentification?.registerData?.fol?.type === 'required' && (
             <p className="alert-error" role="alert">El campo es requerido</p>
           )}
@@ -157,7 +161,21 @@ const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="socialCapital">Capital social</label>
-          <input {...register('enterpriseIdentification.registerData.socialCapital', { required: true })} className="steps-form__input" type="text" />
+          {/* <input {...register('enterpriseIdentification.registerData.socialCapital', { required: true })} className="steps-form__input" type="text" /> */}
+          <Controller
+            control={control}
+            name="enterpriseIdentification.registerData.socialCapital"
+            render={({ field }) => (
+              <NumericFormat
+                {...field}
+                className="steps-form__input"
+                thousandSeparator="."
+                decimalSeparator=","
+                decimalScale={2}
+                prefix="Bs "
+              />
+            )}
+          />
           {errors.enterpriseIdentification?.registerData?.socialCapital?.type === 'required' && (
             <p className="alert-error" role="alert">El campo es requerido</p>
           )}
@@ -207,62 +225,41 @@ const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="socialCapital">Capital social</label>
-          <input {...register('enterpriseIdentification.lastModification.socialCapital', { required: true })} className="steps-form__input" type="text" />
+          {/* <input {...register('enterpriseIdentification.lastModification.socialCapital', { required: true })} className="steps-form__input" type="text" /> */}
+          <Controller
+            control={control}
+            name="enterpriseIdentification.lastModification.socialCapital"
+            render={({ field }) => (
+              <NumericFormat
+                {...field}
+                className="steps-form__input"
+                thousandSeparator="."
+                decimalSeparator=","
+                decimalScale={2}
+                prefix="Bs "
+              />
+            )}
+          />
           {errors.enterpriseIdentification?.lastModification?.socialCapital?.type === 'required' && (
             <p className="alert-error" role="alert">El campo es requerido</p>
           )}
         </div>
       </div>
 
-      <h6>Entes públicos</h6>
-
       <div className="steps-form__group">
         <div className="steps-form__group-item">
-          <label htmlFor="officialGazetteNumber">Número de gaceta oficial</label>
-          <input {...register('enterpriseIdentification.officialGazetteNumber', { required: true })} className="steps-form__input" type="text" />
-          {errors.enterpriseIdentification?.officialGazetteNumber?.type === 'required' && (
-            <p className="alert-error" role="alert">El campo es requerido</p>
-          )}
-        </div>
-        <div className="steps-form__group-item">
-          <label htmlFor="publicEntitiesDate">Fecha</label>
-          <input {...register('enterpriseIdentification.publicEntitiesDate', { required: true })} className="steps-form__input" type="date" />
-          {errors.enterpriseIdentification?.publicEntitiesDate?.type === 'required' && (
-            <p className="alert-error" role="alert">El campo es requerido</p>
-          )}
-        </div>
-      </div>
-
-      <div className="steps-form__group">
-        <div className="steps-form__group-item">
-          <label htmlFor="authority">Autoridad / Ente de adscripción</label>
-          <input {...register('enterpriseIdentification.authority', { required: true })} className="steps-form__input" type="text" />
-          {errors.enterpriseIdentification?.authority?.type === 'required' && (
-            <p className="alert-error" role="alert">El campo es requerido</p>
-          )}
-        </div>
-        <div className="steps-form__group-item">
-          <label htmlFor="ontCode">Códico ONT</label>
-          <input {...register('enterpriseIdentification.ontCode', { required: true })} className="steps-form__input" type="text" />
-          {errors.enterpriseIdentification?.ontCode?.type === 'required' && (
-            <p className="alert-error" role="alert">El campo es requerido</p>
-          )}
-        </div>
-      </div>
-
-      <div style={{ paddingTop: '2rem' }}></div>
-
-      <div className="steps-form__group">
-        <div className="steps-form__group-item">
-          <label htmlFor="publicPhones">Teléfonos</label>
-          <input {...register('enterpriseIdentification.publicPhones', { required: true })} className="steps-form__input" type="text" />
+          <label htmlFor="publicPhones">Teléfono</label>
+          <input {...register('enterpriseIdentification.publicPhones', { required: true, pattern: { value: /[0-9]+/, message: 'Solo se aceptan números' } })} className="steps-form__input" type="text" />
           {errors.enterpriseIdentification?.publicPhones?.type === 'required' && (
             <p className="alert-error" role="alert">El campo es requerido</p>
+          )}
+          {errors.enterpriseIdentification?.publicPhones?.type === 'pattern' && (
+            <p className="alert-error" role="alert">El campo solo acepta números</p>
           )}
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="website">Sitio web</label>
-          <input {...register('enterpriseIdentification.website', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('enterpriseIdentification.website', { required: true })} placeholder="No aplica" className="steps-form__input" type="text" />
           {errors.enterpriseIdentification?.website?.type === 'required' && (
             <p className="alert-error" role="alert">El campo es requerido</p>
           )}
@@ -294,17 +291,58 @@ const EnterpriseIdentificationStep = React.forwardRef((props, ref) => {
         )}
       </div>
 
+      <h6>Entes públicos</h6>
+
       <div className="steps-form__group">
         <div className="steps-form__group-item">
-          <label htmlFor="publicPhones">Teléfonos</label>
-          <input {...register('enterpriseIdentification.publicPhones2', { required: true })} className="steps-form__input" type="text" />
-          {errors.enterpriseIdentification?.publicPhones2?.type === 'required' && (
+          <label htmlFor="officialGazetteNumber">Número de gaceta oficial</label>
+          <input {...register('enterpriseIdentification.officialGazetteNumber', { required: true })} placeholder="No aplica" className="steps-form__input" type="text" />
+          {errors.enterpriseIdentification?.officialGazetteNumber?.type === 'required' && (
             <p className="alert-error" role="alert">El campo es requerido</p>
           )}
         </div>
         <div className="steps-form__group-item">
+          <label htmlFor="publicEntitiesDate">Fecha</label>
+          <input {...register('enterpriseIdentification.publicEntitiesDate', { required: true })} className="steps-form__input" type="date" />
+          {errors.enterpriseIdentification?.publicEntitiesDate?.type === 'required' && (
+            <p className="alert-error" role="alert">El campo es requerido</p>
+          )}
+        </div>
+      </div>
+
+      <div className="steps-form__group">
+        <div className="steps-form__group-item">
+          <label htmlFor="authority">Autoridad / Ente de adscripción</label>
+          <input {...register('enterpriseIdentification.authority', { required: true })} placeholder="No aplica" className="steps-form__input" type="text" />
+          {errors.enterpriseIdentification?.authority?.type === 'required' && (
+            <p className="alert-error" role="alert">El campo es requerido</p>
+          )}
+        </div>
+        <div className="steps-form__group-item">
+          <label htmlFor="ontCode">Códico ONT</label>
+          <input {...register('enterpriseIdentification.ontCode', { required: true })} className="steps-form__input" type="text" />
+          {errors.enterpriseIdentification?.ontCode?.type === 'required' && (
+            <p className="alert-error" role="alert">El campo es requerido</p>
+          )}
+        </div>
+      </div>
+
+      {/* <div style={{ paddingTop: '2rem' }}></div> */}
+
+      <div className="steps-form__group">
+        <div className="steps-form__group-item">
+          <label htmlFor="publicPhones">Teléfono</label>
+          <input {...register('enterpriseIdentification.publicPhones2', { required: true, pattern: { value: /[0-9]+/, message: 'Solo se aceptan números' } })} className="steps-form__input" type="text" />
+          {errors.enterpriseIdentification?.publicPhones2?.type === 'required' && (
+            <p className="alert-error" role="alert">El campo es requerido</p>
+          )}
+          {errors.enterpriseIdentification?.publicPhones2?.type === 'pattern' && (
+            <p className="alert-error" role="alert">El campo solo acepta números</p>
+          )}
+        </div>
+        <div className="steps-form__group-item">
           <label htmlFor="website">Sitio web</label>
-          <input {...register('enterpriseIdentification.website2', { required: true })} className="steps-form__input" type="text" />
+          <input {...register('enterpriseIdentification.website2', { required: true })} placeholder="No aplica" className="steps-form__input" type="text" />
           {errors.enterpriseIdentification?.website2?.type === 'required' && (
             <p className="alert-error" role="alert">El campo es requerido</p>
           )}

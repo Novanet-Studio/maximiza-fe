@@ -88,7 +88,12 @@ const ProductInformationStep = React.forwardRef((props, ref) => {
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="sendOrReceiveFundsFromAbroad">Enviar o recibir fondos del exterior</label>
-          <input {...register('productInformation.sendOrReceiveFundsFromAbroad', { required: true })} className="steps-form__input" type="text" />
+          {/* <input {...register('productInformation.sendOrReceiveFundsFromAbroad', { required: true })} className="steps-form__input" type="text" /> */}
+          <select {...register('productInformation.sendOrReceiveFundsFromAbroad', { required: true })} className="steps-form__input"  id="economicActivity">
+            <option defaultValue="" selected>SELECCIONA</option>
+            <option value="SI">SI</option>
+            <option value="NO">NO</option>
+          </select>
           {errors.productInformation?.sendOrReceiveFundsFromAbroad?.type === 'required' && (
             <p className="alert-error" role="alert">El campo es requerido</p>
           )}

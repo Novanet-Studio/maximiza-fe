@@ -68,7 +68,7 @@ const DatosInstitucionStep = React.forwardRef((props, ref) => {
         </div>
         <div className="steps-form__group-item">
           <label htmlFor="inverstorNumber">N° o código del inversionista</label>
-          <input {...register('institutionData.inverstorNumber', { required: true })} className="steps-form__input" type="text" placeholder="N° o código del inversionista" />
+          <input {...register('institutionData.inverstorNumber', { required: false })} className="steps-form__input" type="text" placeholder="N° o código del inversionista" />
           {errors.institutionData?.inverstorNumber?.type === 'required' && (
             <p className="alert-error" role="alert">El campo es requerido</p>
           )}
@@ -86,16 +86,19 @@ const DatosInstitucionStep = React.forwardRef((props, ref) => {
             type="text"
             readOnly
           />
-          {errors.institutionData?.brokerageHouseName?.type === 'required' && (
+          {/* {errors.institutionData?.brokerageHouseName?.type === 'required' && (
             <p className="alert-error" role="alert">El campo es requerido</p>
-          )}
+          )} */}
         </div>
 
         <div className="steps-form__group-item">
           <label htmlFor="taxInformationRegistration">Registro información fiscal</label>
-          <input {...register('institutionData.taxInformationRegistration', { required: true })} className="steps-form__input" type="text" placeholder="" />
+          <input {...register('institutionData.taxInformationRegistration', { required: true, pattern: { value: /[0-9]+/, message: 'Solo se aceptan números' } })} className="steps-form__input" type="text" placeholder="" />
           {errors.institutionData?.taxInformationRegistration?.type === 'required' && (
             <p className="alert-error" role="alert">El campo es requerido</p>
+          )}
+          {errors.institutionData?.taxInformationRegistration?.type === 'pattern' && (
+            <p className="alert-error" role="alert">Solo se aceptan carácteres numéricos</p>
           )}
         </div>
       </div>
