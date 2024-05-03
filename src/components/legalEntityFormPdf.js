@@ -158,12 +158,12 @@ const PoliticalPersonFields = (props) => {
           <React.Fragment key={index}>
             <div className="spreadsheet__item">
               <div className="spreadsheet__form-item">
-                <div className="content">{field.name}</div>
+                <div className="content">{field?.name || "No aplica"}</div>
               </div>
             </div>
             <div className="spreadsheet__item">
               <div className="spreadsheet__form-item">
-                <div className="content">{field.cargo}</div>
+                <div className="content">{field?.cargo || "No aplica"}</div>
               </div>
             </div>
             <div className="spreadsheet__item">
@@ -173,7 +173,7 @@ const PoliticalPersonFields = (props) => {
             </div>
             <div className="spreadsheet__item">
               <div className="spreadsheet__form-item">
-                <div className="content">{field.pepIdentification}</div>
+                <div className="content">{field?.pepIdentification || "No aplica"}</div>
               </div>
             </div>
           </React.Fragment>
@@ -457,7 +457,7 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Folio: </div>
-                    <div className="content">{formData?.enterpriseIdentification?.registerData?.fol}</div>
+                    <div className="content">{formData?.enterpriseIdentification?.registerData?.fol || "No aplica"}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
@@ -525,7 +525,7 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Número de gaceta oﬁcial: </div>
-                    <div className="content">{formData?.enterpriseIdentification?.officialGazetteNumber}</div>
+                    <div className="content">{formData?.enterpriseIdentification?.officialGazetteNumber || "No aplica"}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
@@ -537,7 +537,7 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
                 <div className="spreadsheet__item">
                   <div className="spreadsheet__form-item">
                     <div>Autoridad / Ente de adscripción: </div>
-                    <div className="content">{formData?.enterpriseIdentification?.authority}</div>
+                    <div className="content">{formData?.enterpriseIdentification?.authority || "No aplica"}</div>
                   </div>
                 </div>
                 <div className="spreadsheet__item">
@@ -559,7 +559,7 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Sitio Web: </div>
-                  <div className="content">{formData?.enterpriseIdentification?.website}</div>
+                  <div className="content">{formData?.enterpriseIdentification?.website || "No aplica"}</div>
                 </div>
               </div>
               <div className="spreadsheet__item">
@@ -587,7 +587,7 @@ const LegalEntityFormPdf = React.forwardRef((props, ref) => {
               <div className="spreadsheet__item">
                 <div className="spreadsheet__form-item">
                   <div>Sitio Web: </div>
-                  <div className="content">{formData?.enterpriseIdentification?.website2}</div>
+                  <div className="content">{formData?.enterpriseIdentification?.website2 || "No aplica"}</div>
                 </div>
               </div>
               <div className="spreadsheet__item border-br-rounded">
