@@ -38,26 +38,26 @@ module.exports = {
         icon: `src/assets/images/icon.png`, // This path is relative to the root of the site.
       },
     },
-    {
-      resolve: "gatsby-plugin-offline",
-      options: {
-        precachePages: [
-          `/empresa/`,
-          `/servicios/`,
-          `/directiva/`,
-          `/contacto/`,
-          `/capital/`,
-          `/responsabilidad/`,
-          `/medios/`,
-          `/blog/*`,
-          `/cumplimiento/`,
-          `/sugerencias/`,
-        ],
-        workboxConfig: {
-          globPatterns: ["src/assets/images/icon.png"],
-        },
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-offline",
+    //   options: {
+    //     precachePages: [
+    //       `/empresa/`,
+    //       `/servicios/`,
+    //       `/directiva/`,
+    //       `/contacto/`,
+    //       `/capital/`,
+    //       `/responsabilidad/`,
+    //       `/medios/`,
+    //       `/blog/*`,
+    //       `/cumplimiento/`,
+    //       `/sugerencias/`,
+    //     ],
+    //     workboxConfig: {
+    //       globPatterns: ["src/assets/images/icon.png"],
+    //     },
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
