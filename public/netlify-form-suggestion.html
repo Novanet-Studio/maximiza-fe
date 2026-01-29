@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maximiza - Formulario Estático Sugerencias</title>
+  </head>
+  <body>
+    <form
+      netlify
+      name="sugerencias"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      enctype="multipart/form-data"
+    >
+      <input type="hidden" name="form-name" value="sugerencias" />
+
+      <p hidden>
+        <label
+          >Don’t fill this out if you’re human: <input name="bot-field"
+        /></label>
+      </p>
+
+      <input type="text" name="nombre" />
+      <input type="number" name="cedula" />
+      <input type="text" name="rif" />
+      <input type="email" name="email" />
+      <input type="number" name="telefono" />
+
+      <textarea name="mensaje"></textarea>
+
+      <input type="file" name="archivo_1" />
+      <input type="file" name="archivo_2" />
+      <input type="file" name="archivo_3" />
+
+      <button type="submit">Enviar</button>
+    </form>
+  </body>
+</html>

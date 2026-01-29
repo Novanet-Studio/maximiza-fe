@@ -1,0 +1,74 @@
+* {
+  font-family: "Monserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.text-outline {
+  -webkit-text-stroke: 0.2px black;
+}
+
+.button-primary {
+  @apply bg-maximiza-verde1 hover:bg-maximiza-verde6 text-maximiza-blanco1 px-6 py-3 text-base xl:text-lg font-light transition-colors cursor-pointer inline-block;
+}
+
+.button-primary {
+  @apply bg-maximiza-verde1 hover:bg-maximiza-verde6 text-maximiza-blanco1 px-6 py-3 text-base xl:text-lg font-light transition-colors cursor-pointer inline-block;
+
+  &.--medium {
+    @apply px-4 py-2 text-sm;
+  }
+
+  &.--small {
+    @apply px-2 py-1 text-sm;
+  }
+}
+
+.button-secondary {
+  @apply bg-maximiza-blanco2 hover:bg-maximiza-gris5 text-maximiza-gris3 border border-maximiza-gris5 px-6 py-3 text-base xl:text-lg font-light transition-colors cursor-pointer inline-block;
+
+  &.--medium {
+    @apply px-4 py-2 text-sm;
+  }
+
+  &.--small {
+    @apply px-2 py-1 text-sm;
+  }
+}
+
+.button-danger {
+  @apply bg-maximiza-error/90 hover:bg-maximiza-error text-maximiza-blanco1 border border-maximiza-error px-6 py-3 text-base xl:text-lg font-light transition-colors cursor-pointer inline-block;
+
+  &.--medium {
+    @apply px-4 py-2 text-sm;
+  }
+
+  &.--small {
+    @apply px-2 py-1 text-sm;
+  }
+}
+
+.hero-title {
+  @apply text-maximiza-verde1 font-black text-2xl md:text-3xl mb-2;
+}
+
+.prose {
+  p {
+    @apply mb-4;
+
+    &:last-child {
+      @apply mb-0;
+    }
+  }
+
+  strong {
+    @apply font-black;
+  }
+
+  a {
+    @apply text-maximiza-verde1 hover:text-maximiza-verde6 transition-colors;
+  }
+}
+
+/* PDF */
+

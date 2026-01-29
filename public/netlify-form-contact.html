@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Maximiza - Formulario Estático Contacto</title>
+  </head>
+  <body>
+    <form
+      netlify
+      name="inicio"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+    >
+      <input type="hidden" name="form-name" value="inicio" />
+
+      <p hidden>
+        <label
+          >Don’t fill this out if you’re human: <input name="bot-field"
+        /></label>
+      </p>
+
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+
+      <button type="submit">Enviar</button>
+    </form>
+  </body>
+</html>
