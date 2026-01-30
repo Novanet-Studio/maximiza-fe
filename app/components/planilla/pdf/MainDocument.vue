@@ -116,6 +116,8 @@ onMounted(() => {
 <template>
   <div class="spreadsheet" style="padding: 1rem">
     <div class="page-break-container">
+      <div class="w-full text-right text-sm font-bold">Pág. 1/3</div>
+
       <header class="spreadsheet__header">
         <img class="spreadsheet__image" :src="MaximizaLogo" alt="logo" />
         <h5 class="spreadsheet__main-title">
@@ -429,21 +431,18 @@ onMounted(() => {
           </div>
 
           <div class="grid grid-cols-2 w-full">
-            <!-- Fila 1, Columna 1: Label -->
             <div class="spreadsheet__item border-b-0 border-r-0">
               <div class="spreadsheet__form-item">
                 <div>Actividad económica:</div>
               </div>
             </div>
 
-            <!-- Fila 1, Columna 2: Label -->
             <div class="spreadsheet__item border-b-0">
               <div class="spreadsheet__form-item">
                 <div>Actividad específica:</div>
               </div>
             </div>
 
-            <!-- Fila 2, Columna 1: Valor -->
             <div class="spreadsheet__item border-r-0">
               <div class="spreadsheet__form-item">
                 <div class="content text-[9px] leading-tight">
@@ -452,7 +451,6 @@ onMounted(() => {
               </div>
             </div>
 
-            <!-- Fila 2, Columna 2: Valor -->
             <div class="spreadsheet__item">
               <div class="spreadsheet__form-item">
                 <div class="content text-[9px] leading-tight">
@@ -737,6 +735,8 @@ onMounted(() => {
     </div>
 
     <div class="page-break">
+      <div class="w-full text-right text-sm font-bold">Pág. 2/3</div>
+
       <div class="spreadsheet__section">
         <h5 class="spreadsheet__title">
           INFORMACIÓN ECONÓMICO FINANCIERA
@@ -923,14 +923,14 @@ onMounted(() => {
               class="spreadsheet__form-item border-r-2 border-maximiza-verde1"
             >
               <div>País origen:</div>
-              <div class="content">{{ originCountryLabel || 'N/A' }}</div>
+              <div class="content">{{ originCountryLabel || "N/A" }}</div>
             </div>
 
             <div
               class="spreadsheet__form-item border-r-2 border-maximiza-verde1"
             >
               <div>País destino:</div>
-              <div class="content">{{ destinationCountryLabel || 'N/A' }}</div>
+              <div class="content">{{ destinationCountryLabel || "N/A" }}</div>
             </div>
 
             <div class="spreadsheet__form-item">
@@ -938,50 +938,6 @@ onMounted(() => {
               <div class="content">{{ product.virtualCurrencyUse }}</div>
             </div>
           </div>
-
-          <!-- 
-           <div class="spreadsheet__item">
-            <div class="spreadsheet__form-item">
-              <div>Destino de los fondos:</div>
-              <div class="content text-[10px]">{{ fundsDestinationLabel }}</div>
-            </div>
-          </div>
-
-
-          <div class="spreadsheet__item">
-            <div class="spreadsheet__form-item">
-              <div>Motivos por los cuales solicita los servicios:</div>
-              <div class="content">{{ product.motives }}</div>
-            </div>
-          </div>
-
-          <div class="spreadsheet__item">
-            <div class="spreadsheet__form-item">
-              <div>Origen de los fondos:</div>
-              <div class="content text-[10px]">{{ fundsSourceLabel }}</div>
-            </div>
-          </div>
-          <div class="spreadsheet__item">
-            <div class="spreadsheet__form-item">
-              <div>Destino de los fondos:</div>
-              <div class="content text-[10px]">{{ fundsDestinationLabel }}</div>
-            </div>
-          </div>
-
-          <div class="spreadsheet__item">
-            <div class="spreadsheet__form-item">
-              <div>Compra:</div>
-              <div class="content">Temp</div>
-            </div>
-          </div>
-          <div class="spreadsheet__item">
-            <div class="spreadsheet__form-item">
-              <div>Venta:</div>
-              <div class="content">Temp</div>
-            </div>
-          </div>
-          
-          -->
         </div>
 
         <div
@@ -1040,6 +996,8 @@ onMounted(() => {
     </div>
 
     <div class="page-break">
+      <div class="w-full text-right text-sm font-bold">Pág. 3/3</div>
+
       <div class="spreadsheet__section" style="border-width: 2px">
         <h5 class="spreadsheet__title">
           ACEPTACIÓN DEL CONTRATO DE CUENTA DE CORRETAJE BURSÁTIL POR PARTE DEL
