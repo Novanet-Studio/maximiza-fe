@@ -4,7 +4,7 @@ useSeoMeta({
 });
 
 const heroImage = {
-  url: "https://res.cloudinary.com/novanet-studio/image/upload/v1646847320/maximiza/v4/maximiza_servicios_miniatura_98daf48fa5.webp",
+  url: "https://res.cloudinary.com/novanet-studio/image/upload/v1769799589/maximiza/v4/onboarding_portraid_929d995c64.webp",
   alternativeText: "Registro",
 };
 </script>
@@ -12,7 +12,7 @@ const heroImage = {
 <template>
   <div class="w-full min-h-dvh">
     <CommonHero
-      text="Seleccione el tipo de persona para iniciar el proceso de registro."
+      text="Abre tu Cuenta de Corretaje Bursátil de forma rápida, cumpliendo con la normativa de la Superintendencia Nacional de Valores (SNV)."
       :image="heroImage"
       :show-logo="false"
       :inverted="true"
@@ -22,7 +22,7 @@ const heroImage = {
         <h1
           class="text-maximiza-verde1 font-black text-2xl md:text-3xl mb-4 text-left"
         >
-          Registro de Planilla
+          ¡Bienvenido a Maximiza Casa de Bolsa!
         </h1>
       </template>
     </CommonHero>
