@@ -22,7 +22,6 @@ const financial = computed(
 );
 const institution = computed(() => props.data.institutionData || ({} as any));
 
-// Lógica de fecha común para todos
 const dateParts = computed(() => {
   const dateStr = institution.value.productionDate;
   if (!dateStr) return { day: "__", month: "_________", year: "__" };
@@ -50,10 +49,8 @@ const dateParts = computed(() => {
   return { day, month, year };
 });
 
-// Generamos una lista de documentos a renderizar
 const documentsList = computed(() => {
   if (isNatural.value) {
-    // CASO NATURAL: Un solo documento con datos personales
     return [
       {
         type: "NATURAL",
@@ -66,12 +63,10 @@ const documentsList = computed(() => {
       },
     ];
   } else {
-    // CASO JURIDICA: Un documento por cada Stockholder
     const legalRepresentatives = financial.value.legalRepresentatives || [];
 
     console.log(legalRepresentatives);
 
-    // Si no hay accionistas, devolvemos un array vacío o uno con datos vacíos para no romper el layout
     if (legalRepresentatives.length === 0) {
       return [
         {
@@ -84,25 +79,23 @@ const documentsList = computed(() => {
       ];
     }
 
-    // Mapeamos cada accionista a una estructura de página
     return legalRepresentatives.map((holder: any) => ({
       type: "JURIDICA",
       repName: holder.name || "________________",
-      // Usamos la dirección del accionista, si no tiene, línea vacía
+
       repAddress: holder.address || "________________",
-      // Usamos el DNI compuesto (V123456) del accionista
+
       repId: holder.dni || "________________",
       companyName: enterprise.value.socialReason || "________________",
     }));
   }
 });
 
-console.log(documentsList.value)
+console.log(documentsList.value);
 </script>
 
 <template>
   <div class="spreadsheet" style="padding: 1rem">
-    <!-- Iteramos sobre la lista de documentos generada -->
     <div
       v-for="(doc, index) in documentsList"
       :key="index"
@@ -127,7 +120,6 @@ console.log(documentsList.value)
           <p>Presente.</p>
         </div>
 
-        <!-- CONTENIDO PERSONA NATURAL -->
         <div
           v-if="doc.type === 'NATURAL'"
           class="text-justify leading-loose text-sm space-y-6"
@@ -163,7 +155,6 @@ console.log(documentsList.value)
           </p>
         </div>
 
-        <!-- CONTENIDO PERSONA JURIDICA (Iterado por accionista) -->
         <div v-else class="text-justify leading-loose text-sm space-y-6">
           <p>
             Quien suscribe
@@ -227,11 +218,6 @@ console.log(documentsList.value)
             >
           </div>
         </div>
-
-        <div class="mt-16 pt-4 text-xs font-bold">
-          Nota: esta declaración debe ser impresa en papel con membrete de la
-          empresa.
-        </div>
       </div>
     </div>
   </div>
@@ -240,12 +226,11 @@ console.log(documentsList.value)
 <style lang="scss">
 .page-break-container {
   page-break-after: always;
-  /* Asegura que cada contenedor ocupe al menos una página completa visualmente */
+
   min-height: 100vh;
   padding-bottom: 2rem;
 }
 
-/* Evita salto de página después del último elemento para no generar una hoja en blanco extra */
 .page-break-container:last-child {
   page-break-after: auto;
 }
@@ -264,7 +249,6 @@ console.log(documentsList.value)
   width: 180px;
 }
 
-/* Clases de utilidad para el texto */
 .text-justify {
   text-align: justify;
 }
@@ -276,7 +260,7 @@ console.log(documentsList.value)
 @media print {
   .page-break-container {
     page-break-after: always;
-    min-height: 0; /* Reset height for print */
+    min-height: 0;
     padding-bottom: 0;
   }
 

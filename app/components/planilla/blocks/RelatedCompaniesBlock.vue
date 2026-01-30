@@ -7,7 +7,7 @@ const { source } = defineProps<{
 <template>
   <div class="grid grid-cols-[115px_1fr]">
     <aside
-      class="bg-maximiza-verde1 min-h-[80px] flex justify-center items-center border-b border-maximiza-blanco1"
+      class="bg-maximiza-verde1 min-h-[60px] flex justify-center items-center border-b border-maximiza-blanco1"
     >
       <h5 class="text-maximiza-blanco1 font-bold">Empresas relacionadas</h5>
     </aside>

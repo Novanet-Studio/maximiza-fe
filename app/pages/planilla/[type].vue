@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import FormStepper from "~/components/planilla/FormStepper.vue";
+import OnboardingRequirements from "~/components/planilla/OnboardingRequirements.vue";
 
 import { usePlanillaWizard } from "~/composables/usePlanillaWizard";
 
 //? common steps
 import AcceptContractStep from "~/components/planilla/steps/AcceptContractStep.vue";
-import DatosInstitucionStep from "~/components/planilla/steps/DatosInstitucionStep.vue";
 import FinancialInformationStep from "~/components/planilla/steps/FinancialInformationStep.vue";
-import InvestorProfileStep from "~/components/planilla/steps/InvestorProfileStep.vue";
 import ProductInformationStep from "~/components/planilla/steps/ProductInformationStep.vue";
 import FinalStep from "~/components/planilla/steps/FinalStep.vue";
 
@@ -109,21 +108,7 @@ const pageTitle = computed(() =>
 
 <template>
   <div class="w-full bg-white pb-24">
-    <CommonHero
-      :text="`Complete el formulario para el registro de ${pageTitle}.`"
-      :image="heroImage"
-      :inverted="true"
-      :show-logo="false"
-      :button-text="''"
-    >
-      <template #custom-title>
-        <h1
-          class="text-maximiza-verde1 font-black text-2xl md:text-3xl mb-4 text-left"
-        >
-          Registro: {{ pageTitle }}
-        </h1>
-      </template>
-    </CommonHero>
+    <OnboardingRequirements :type="type" />
 
     <section class="mt-12">
       <FormStepper

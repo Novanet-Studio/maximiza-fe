@@ -40,7 +40,11 @@ export const usePlanillaWizard = () => {
       if (state.value.currentStep > state.value.maxStepReached) {
         state.value.maxStepReached = state.value.currentStep;
       }
-      window.scrollTo({ top: 300, behavior: "smooth" });
+
+      document.getElementById("formStepper")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     } else {
       state.value.isComplete = true;
     }
@@ -49,15 +53,26 @@ export const usePlanillaWizard = () => {
   const prevStep = () => {
     if (state.value.currentStep > 0) {
       state.value.currentStep--;
-      window.scrollTo({ top: 0, behavior: "smooth" });
+
+      document.getElementById("formStepper")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     }
   };
 
   const goToStep = (index: number) => {
     // Only allow navigation to visited steps or current step
-    if (index >= 0 && index <= state.value.maxStepReached && index < state.value.totalSteps) {
+    if (
+      index >= 0 &&
+      index <= state.value.maxStepReached &&
+      index < state.value.totalSteps
+    ) {
       state.value.currentStep = index;
-      window.scrollTo({ top: 300, behavior: "smooth" });
+
+      const stepper = document.getElementById("formStepper")?.offsetHeight;
+
+      window.scrollTo({ top: stepper, behavior: "smooth" });
     }
   };
 

@@ -22,7 +22,7 @@ const isStepClickable = (index: number) => {
 </script>
 
 <template>
-  <div class="w-full mx-auto px-4 mb-12">
+  <div id="formStepper" class="w-full mx-auto px-4 mb-12">
     <div class="md:hidden mb-6">
       <p class="text-maximiza-verde1 font-bold text-sm uppercase mb-2">
         Paso {{ currentStep + 1 }} de {{ steps.length }}

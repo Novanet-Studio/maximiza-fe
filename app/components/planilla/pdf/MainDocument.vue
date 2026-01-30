@@ -462,7 +462,7 @@ onMounted(() => {
 
           <div class="w-full grid grid-cols-[135px_1fr]">
             <aside
-              class="bg-maximiza-verde1 min-h-[80px] flex justify-center items-center border-b border-maximiza-blanco1"
+              class="bg-maximiza-verde1 min-h-[60px] flex justify-center items-center border-b border-maximiza-blanco1"
             >
               <h5 class="text-maximiza-blanco1 font-bold">
                 Datos del registro
@@ -527,7 +527,7 @@ onMounted(() => {
 
           <div class="w-full grid grid-cols-[135px_1fr]">
             <aside
-              class="bg-maximiza-verde1 min-h-[80px] flex justify-center items-center border-b border-maximiza-blanco1"
+              class="bg-maximiza-verde1 min-h-[60px] flex justify-center items-center border-b border-maximiza-blanco1"
             >
               <h5 class="text-maximiza-blanco1 font-bold">
                 Última modificación
@@ -594,7 +594,7 @@ onMounted(() => {
 
           <div class="w-full grid grid-cols-[135px_1fr]">
             <aside
-              class="bg-maximiza-verde1 min-h-[80px] flex justify-center items-center"
+              class="bg-maximiza-verde1 min-h-[60px] flex justify-center items-center"
             >
               <h5 class="text-maximiza-blanco1 font-bold">Entes públicos</h5>
             </aside>
@@ -993,10 +993,6 @@ onMounted(() => {
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="page-break">
-      <div class="w-full text-right text-sm font-bold">Pág. 3/3</div>
 
       <div class="spreadsheet__section" style="border-width: 2px">
         <h5 class="spreadsheet__title">
@@ -1039,6 +1035,10 @@ onMounted(() => {
           </p>
         </div>
       </div>
+    </div>
+
+    <div class="page-break">
+      <div class="w-full text-right text-sm font-bold">Pág. 3/3</div>
 
       <div class="spreadsheet__section">
         <h5 class="spreadsheet__title">DECLARACIÓN JURADA</h5>
@@ -1125,11 +1125,10 @@ onMounted(() => {
             <li class="text-start">
               4) Referencia bancaria denominada en moneda nacional.
             </li>
-            <li class="text-start">5) Balance general actualizado.</li>
             <li class="text-start">
-              6) Declaración jurada cada vez que realice una operación.
+              5) Declaración jurada cada vez que realice una operación.
             </li>
-            <li class="text-start">7) Otros.</li>
+            <li class="text-start">6) Otros.</li>
           </span>
         </div>
       </div>
@@ -1168,14 +1167,14 @@ onMounted(() => {
 .spreadsheet {
   width: 100%;
   max-width: 100%;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .spreadsheet__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .spreadsheet__image {
@@ -1190,7 +1189,7 @@ onMounted(() => {
   border-left: 4px solid #006548;
   font-weight: 700;
   padding-left: 1rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.2;
 }
 
@@ -1207,9 +1206,9 @@ onMounted(() => {
   width: 100%;
   text-align: center;
   text-transform: uppercase;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   background: #006548;
-  padding: 0.3rem;
+  padding: 0.2rem;
   color: white;
   font-weight: bold;
   border-top-left-radius: 0.8rem;
@@ -1225,14 +1224,12 @@ onMounted(() => {
   flex-direction: column;
   align-items: start;
   text-align: left;
-
-  gap: 0.1rem;
+  font-size: 0.5rem;
 
   div.content {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 600;
-    font-size: clamp(0.5rem, 5vw, 2rem);
-    min-height: 1rem;
+    font-size: 0.7rem;
   }
 
   * {
@@ -1244,7 +1241,7 @@ onMounted(() => {
   min-height: 30px;
   border: 1px solid #006548;
   padding: 0.1rem;
-  font-size: 0.7rem;
+  font-size: 0.5rem;
 
   &.border-r-0 {
     border-right: none;

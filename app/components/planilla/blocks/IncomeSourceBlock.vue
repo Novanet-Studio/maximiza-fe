@@ -71,7 +71,7 @@ const { source } = defineProps<{
 
   <div class="w-full grid grid-cols-[100px_1fr]">
     <aside
-      class="bg-maximiza-verde1 min-h-[80px] flex justify-center items-center border-b border-maximiza-blanco1"
+      class="bg-maximiza-verde1 min-h-[60px] flex justify-center items-center border-b border-maximiza-blanco1"
     >
       <h5 class="text-maximiza-blanco1 font-bold">Relación de dependencia:</h5>
     </aside>
@@ -144,7 +144,7 @@ const { source } = defineProps<{
 
   <div class="w-full grid grid-cols-[100px_1fr]">
     <aside
-      class="bg-maximiza-verde1 min-h-[80px] flex justify-center items-center border-b border-maximiza-blanco1"
+      class="bg-maximiza-verde1 min-h-[60px] flex justify-center items-center border-b border-maximiza-blanco1"
     >
       <h5 class="text-maximiza-blanco1 font-bold">Negocio propio:</h5>
     </aside>
@@ -270,7 +270,7 @@ const { source } = defineProps<{
 
   <div class="w-full grid grid-cols-[100px_1fr]">
     <aside
-      class="bg-maximiza-verde1 min-h-[80px] flex justify-center items-center"
+      class="bg-maximiza-verde1 min-h-[60px] flex justify-center items-center"
     >
       <h5 class="text-maximiza-blanco1 font-bold">Otros ingresos:</h5>
     </aside>

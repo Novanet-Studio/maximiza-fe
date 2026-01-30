@@ -15,7 +15,7 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
 
     <div class="w-full grid grid-cols-[115px_1fr]">
       <aside
-        class="bg-maximiza-verde1 min-h-[80px] flex justify-center items-center"
+        class="bg-maximiza-verde1 min-h-[60px] flex justify-center items-center"
       >
         <h5 class="text-maximiza-blanco1 font-bold">
           Persona expuesta politicamente
