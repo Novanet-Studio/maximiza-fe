@@ -34,51 +34,69 @@ const schema = yup.object({
       ? yup.array().min(1, "Seleccione al menos una fuente")
       : yup.array().optional(),
 
-  companyName: yup.string().when("incomeSource", {
+  company: yup.object().when("incomeSource", {
     is: (val: string[]) => val?.includes("dependencia"),
-    then: (s) => s.required("Requerido"),
-  }),
-  companyRemuneration: yup.string().when("incomeSource", {
-    is: (val: string[]) => val?.includes("dependencia"),
-    then: (s) => s.required("Requerido"),
-  }),
-  companyRifType: yup.string().when("incomeSource", {
-    is: (val: string[]) => val?.includes("dependencia"),
-    then: (s) => s.required("Requerido"),
-  }),
-  companyRifNumber: yup.string().when("incomeSource", {
-    is: (val: string[]) => val?.includes("dependencia"),
-    then: (s) => s.required("Requerido").matches(/^[0-9]+$/, "Solo números"),
-  }),
-  companyRol: yup.string().when("incomeSource", {
-    is: (val: string[]) => val?.includes("propio"),
-    then: (s) => s.required("Requerido"),
-  }),
-  companyBranch: yup.string().when("incomeSource", {
-    is: (val: string[]) => val?.includes("propio"),
-    then: (s) => s.required("Requerido"),
+    then: () =>
+      yup.object({
+        name: yup.string().required("Requerido"),
+        rifType: yup.string().required("Requerido"),
+        rifNumber: yup
+          .string()
+          .required("Requerido")
+          .matches(/^[0-9]+$/, "Solo números"),
+        remuneration: yup.string().required("Requerido"),
+        rol: yup.string().required("Requerido"),
+        branch: yup.string().required("Requerido"),
+        address: yup.string().optional(),
+        phone: yup.string().optional(),
+      }),
+    otherwise: () => yup.object().optional(),
   }),
 
-  businessName: yup.string().when("incomeSource", {
+  business: yup.object().when("incomeSource", {
     is: (val: string[]) => val?.includes("propio"),
-    then: (s) => s.required("Requerido"),
-  }),
-
-  businessRifType: yup.string().when("incomeSource", {
-    is: (val: string[]) => val?.includes("propio"),
-    then: (s) => s.required("Requerido"),
-  }),
-  businessRifNumber: yup.string().when("incomeSource", {
-    is: (val: string[]) => val?.includes("propio"),
-    then: (s) => s.required("Requerido").matches(/^[0-9]+$/, "Solo números"),
-  }),
-
-  businessIncome: yup.string().when("incomeSource", {
-    is: (val: string[]) => val?.includes("propio"),
-    then: (s) => s.required("Requerido"),
+    then: () =>
+      yup.object({
+        name: yup.string().required("Requerido"),
+        rifType: yup.string().required("Requerido"),
+        rifNumber: yup
+          .string()
+          .required("Requerido")
+          .matches(/^[0-9]+$/, "Solo números"),
+        fiscalAddress: yup.string().optional(),
+        income: yup.string().required("Requerido"),
+        constitutionDate: yup.string().required("Requerido"),
+        registerData: yup.string().required("Requerido"),
+        branch: yup.string().required("Requerido"),
+        phone: yup.string().optional(),
+        providers: yup
+          .array()
+          .of(
+            yup.object({
+              name: yup.string().required("Requerido"),
+              location: yup.string().required("Requerido"),
+            }),
+          )
+          .max(3, "Máximo 3 registros"),
+        clients: yup
+          .array()
+          .of(
+            yup.object({
+              name: yup.string().required("Requerido"),
+              location: yup.string().required("Requerido"),
+            }),
+          )
+          .max(3, "Máximo 3 registros"),
+      }),
+    otherwise: () => yup.object().optional(),
   }),
 
   otherIncomeSource: yup.string().when("incomeSource", {
+    is: (val: string[]) => val?.includes("otros"),
+    then: (s) => s.required("Requerido"),
+  }),
+
+  otherIncomeAmount: yup.string().when("incomeSource", {
     is: (val: string[]) => val?.includes("otros"),
     then: (s) => s.required("Requerido"),
   }),
@@ -117,94 +135,104 @@ const schema = yup.object({
       ? yup.string().required("Requerido")
       : yup.string().optional(),
 
-  bankReferences: yup
-    .array()
-    .of(
-      yup.object({
-        institution: yup.string().required("Requerido"),
-        accountNumber: yup
-          .string()
-          .required("Requerido")
-          .matches(/^[0-9]{20}$/, "20 dígitos"),
-        productType: yup.string().required("Requerido"),
-        averageAmount: yup.string().required("Requerido"),
-      }),
-    )
-    .min(1, "Requerido"),
+  bankReference: yup.object({
+    institution: yup.string().required("Requerido"),
+    accountNumber: yup
+      .string()
+      .required("Requerido")
+      .matches(/^[0-9]{20}$/, "20 dígitos"),
+    productType: yup.string().required("Requerido"),
+    averageAmount: yup.string().required("Requerido"),
+  }),
 
   stockholders:
     type === "juridica"
-      ? yup.array().of(
-          yup.object({
-            name: yup.string().required("Requerido"),
-            dniType: yup.string().required("Requerido"),
-            dniNumber: yup
-              .string()
-              .required("Requerido")
-              .matches(/^[0-9]+$/, "Solo números"),
-            percentage: yup.string().required("Requerido"),
-            nationality: yup.string().required("Requerido"),
-            address: yup.string().required("Requerido"),
-            cargo: yup.string().required("Requerido"),
-            esPep: yup.string().required("Requerido"),
-            relatedWithPep: yup.string().required("Requerido"),
-          }),
-        )
+      ? yup
+          .array()
+          .of(
+            yup.object({
+              name: yup.string().required("Requerido"),
+              dniType: yup.string().required("Requerido"),
+              dniNumber: yup
+                .string()
+                .required("Requerido")
+                .matches(/^[0-9]+$/, "Solo números"),
+              percentage: yup.string().required("Requerido"),
+              nationality: yup.string().required("Requerido"),
+              address: yup.string().required("Requerido"),
+              cargo: yup.string().required("Requerido"),
+              esPep: yup.string().required("Requerido"),
+              relatedWithPep: yup.string().required("Requerido"),
+            }),
+          )
+          .max(3, "Máximo 3 registros")
       : yup.array().optional(),
 
   legalRepresentatives:
     type === "juridica"
-      ? yup.array().of(
-          yup.object({
-            name: yup.string().required("Requerido"),
-            dniType: yup.string().required("Requerido"),
-            dniNumber: yup
-              .string()
-              .required("Requerido")
-              .matches(/^[0-9]+$/, "Solo números"),
-            cargo: yup.string().required("Requerido"),
-            nationality: yup.string().required("Requerido"),
-            address: yup.string().required("Requerido"),
-            condition: yup.string().required("Requerido"),
-            esPep: yup.string().required("Requerido"),
-            relatedWithPep: yup.string().required("Requerido"),
-          }),
-        )
+      ? yup
+          .array()
+          .of(
+            yup.object({
+              name: yup.string().required("Requerido"),
+              dniType: yup.string().required("Requerido"),
+              dniNumber: yup
+                .string()
+                .required("Requerido")
+                .matches(/^[0-9]+$/, "Solo números"),
+              cargo: yup.string().required("Requerido"),
+              nationality: yup.string().required("Requerido"),
+              address: yup.string().required("Requerido"),
+              condition: yup.string().required("Requerido"),
+              esPep: yup.string().required("Requerido"),
+              relatedWithPep: yup.string().required("Requerido"),
+            }),
+          )
+          .max(3, "Máximo 3 registros")
       : yup.array().optional(),
 
   providers:
     type === "juridica"
-      ? yup.array().of(
-          yup.object({
-            name: yup.string().required("Requerido"),
-            location: yup.string().required("Requerido"),
-          }),
-        )
+      ? yup
+          .array()
+          .of(
+            yup.object({
+              name: yup.string().required("Requerido"),
+              location: yup.string().required("Requerido"),
+            }),
+          )
+          .max(3, "Máximo 3 registros")
       : yup.array().optional(),
 
   clients:
     type === "juridica"
-      ? yup.array().of(
-          yup.object({
-            name: yup.string().required("Requerido"),
-            location: yup.string().required("Requerido"),
-          }),
-        )
+      ? yup
+          .array()
+          .of(
+            yup.object({
+              name: yup.string().required("Requerido"),
+              location: yup.string().required("Requerido"),
+            }),
+          )
+          .max(3, "Máximo 3 registros")
       : yup.array().optional(),
 
   relatedCompanies:
     type === "juridica"
-      ? yup.array().of(
-          yup.object({
-            name: yup.string().required("Requerido"),
-            activity: yup.string().required("Requerido"),
-            rifType: yup.string().required("Requerido"),
-            rifNumber: yup
-              .string()
-              .required("Requerido")
-              .matches(/^[0-9]+$/, "Solo números"),
-          }),
-        )
+      ? yup
+          .array()
+          .of(
+            yup.object({
+              name: yup.string().required("Requerido"),
+              activity: yup.string().required("Requerido"),
+              rifType: yup.string().required("Requerido"),
+              rifNumber: yup
+                .string()
+                .required("Requerido")
+                .matches(/^[0-9]+$/, "Solo números"),
+            }),
+          )
+          .max(3, "Máximo 3 registros")
       : yup.array().optional(),
 });
 
@@ -214,10 +242,11 @@ const splitId = (val: string) => {
 };
 
 const companyRifData = splitId(
-  wizard.state.value.formData.financialInformation?.companyRif,
+  wizard.state.value.formData.financialInformation?.company?.rif,
 );
+
 const businessRifData = splitId(
-  wizard.state.value.formData.financialInformation?.businessRif,
+  wizard.state.value.formData.financialInformation?.business?.rif,
 );
 
 const processArrayIds = (
@@ -244,10 +273,8 @@ const defaultStockholder = {
   cargo: "",
   esPep: "NO",
   relatedWithPep: "NO",
-
   nationality: "VENEZOLANO",
   address: "",
-
   entityName: "",
   position: "",
   country: "",
@@ -263,10 +290,8 @@ const defaultLegalRep = {
   condition: "",
   esPep: "NO",
   relatedWithPep: "NO",
-
   nationality: "VENEZOLANO",
   address: "",
-
   dni: "",
 };
 
@@ -307,20 +332,31 @@ const initialRelated = processArrayIds(
   "rifNumber",
 ) || [defaultCompany];
 
-const initialProviders =
+const initialJuridicaProviders =
   wizard.state.value.formData.financialInformation?.providers?.length > 0
     ? wizard.state.value.formData.financialInformation?.providers
     : [defaultProvider];
 
-const initialClients =
+const initialJuridicaClients =
   wizard.state.value.formData.financialInformation?.clients?.length > 0
     ? wizard.state.value.formData.financialInformation?.clients
     : [defaultClient];
 
-const initialBankReferences =
-  wizard.state.value.formData.financialInformation?.bankReferences?.length > 0
-    ? wizard.state.value.formData.financialInformation?.bankReferences
-    : [defaultBank];
+const initialBusinessProviders =
+  wizard.state.value.formData.financialInformation?.business?.providers
+    ?.length > 0
+    ? wizard.state.value.formData.financialInformation?.business?.providers
+    : [defaultProvider];
+
+const initialBusinessClients =
+  wizard.state.value.formData.financialInformation?.business?.clients?.length >
+  0
+    ? wizard.state.value.formData.financialInformation?.business?.clients
+    : [defaultClient];
+
+const initialBankReference =
+  wizard.state.value.formData.financialInformation?.bankReference ||
+  defaultBank;
 
 const { handleSubmit, errors, defineField, values } = useForm({
   validationSchema: schema,
@@ -329,35 +365,52 @@ const { handleSubmit, errors, defineField, values } = useForm({
       wizard.state.value.formData.financialInformation?.economicActivity || "",
     specificActivity:
       wizard.state.value.formData.financialInformation?.specificActivity || "",
-
     incomeSource:
       wizard.state.value.formData.financialInformation?.incomeSource || [],
-    companyName:
-      wizard.state.value.formData.financialInformation?.companyName || "",
-    companyRemuneration:
-      wizard.state.value.formData.financialInformation?.companyRemuneration ||
-      "",
-    companyRol:
-      wizard.state.value.formData.financialInformation?.companyRol || "",
-    companyBranch:
-      wizard.state.value.formData.financialInformation?.companyBranch || "",
 
-    companyAddress:
-      wizard.state.value.formData.financialInformation?.companyAddress || "",
-    companyRifType: companyRifData.type,
-    companyRifNumber: companyRifData.number,
-    companyPhone:
-      wizard.state.value.formData.financialInformation?.companyPhone || "",
+    company: {
+      name:
+        wizard.state.value.formData.financialInformation?.company?.name || "",
+      rifType: companyRifData.type,
+      rifNumber: companyRifData.number,
+      remuneration:
+        wizard.state.value.formData.financialInformation?.company
+          ?.remuneration || "",
+      rol: wizard.state.value.formData.financialInformation?.company?.rol || "",
+      branch:
+        wizard.state.value.formData.financialInformation?.company?.branch || "",
+      address:
+        wizard.state.value.formData.financialInformation?.company?.address ||
+        "",
+      phone:
+        wizard.state.value.formData.financialInformation?.company?.phone || "",
+    },
 
-    businessName:
-      wizard.state.value.formData.financialInformation?.businessName || "",
-
-    businessRifType: businessRifData.type,
-    businessRifNumber: businessRifData.number,
-    businessAddress:
-      wizard.state.value.formData.financialInformation?.businessAddress || "",
-    businessIncome:
-      wizard.state.value.formData.financialInformation?.businessIncome || "",
+    business: {
+      name:
+        wizard.state.value.formData.financialInformation?.business?.name || "",
+      rifType: businessRifData.type,
+      rifNumber: businessRifData.number,
+      fiscalAddress:
+        wizard.state.value.formData.financialInformation?.business
+          ?.fiscalAddress || "",
+      income:
+        wizard.state.value.formData.financialInformation?.business?.income ||
+        "",
+      constitutionDate:
+        wizard.state.value.formData.financialInformation?.business
+          ?.constitutionDate || "",
+      registerData:
+        wizard.state.value.formData.financialInformation?.business
+          ?.registerData || "",
+      branch:
+        wizard.state.value.formData.financialInformation?.business?.branch ||
+        "",
+      phone:
+        wizard.state.value.formData.financialInformation?.business?.phone || "",
+      providers: initialBusinessProviders,
+      clients: initialBusinessClients,
+    },
 
     otherIncomeSource:
       wizard.state.value.formData.financialInformation?.otherIncomeSource || "",
@@ -374,34 +427,39 @@ const { handleSubmit, errors, defineField, values } = useForm({
     islrAmount:
       wizard.state.value.formData.financialInformation?.islrAmount || "",
 
-    bankReferences: initialBankReferences,
+    bankReference: initialBankReference,
+
     stockholders: initialStockholders,
     legalRepresentatives: initialLegal,
-    providers: initialProviders,
-    clients: initialClients,
+    providers: initialJuridicaProviders,
+    clients: initialJuridicaClients,
     relatedCompanies: initialRelated,
   },
 });
 
 const [economicActivity] = defineField("economicActivity");
 const [specificActivity] = defineField("specificActivity");
-
 const [incomeSource] = defineField("incomeSource");
-const [companyName] = defineField("companyName");
-const [companyRemuneration] = defineField("companyRemuneration");
-const [companyRol] = defineField("companyRol");
-const [companyBranch] = defineField("companyBranch");
 
-const [companyAddress] = defineField("companyAddress");
-const [companyRifType] = defineField("companyRifType");
-const [companyRifNumber] = defineField("companyRifNumber");
-const [companyPhone] = defineField("companyPhone");
+const [companyName] = defineField("company.name");
+const [companyRifType] = defineField("company.rifType");
+const [companyRifNumber] = defineField("company.rifNumber");
+const [companyRemuneration] = defineField("company.remuneration");
+const [companyRol] = defineField("company.rol");
+const [companyBranch] = defineField("company.branch");
+const [companyAddress] = defineField("company.address");
+const [companyPhone] = defineField("company.phone");
 
-const [businessName] = defineField("businessName");
-const [businessRifType] = defineField("businessRifType");
-const [businessRifNumber] = defineField("businessRifNumber");
-const [businessAddress] = defineField("businessAddress");
-const [businessIncome] = defineField("businessIncome");
+const [businessName] = defineField("business.name");
+const [businessRifType] = defineField("business.rifType");
+const [businessRifNumber] = defineField("business.rifNumber");
+const [businessFiscalAddress] = defineField("business.fiscalAddress");
+const [businessIncome] = defineField("business.income");
+const [businessConstitutionDate] = defineField("business.constitutionDate");
+const [businessRegisterData] = defineField("business.registerData");
+const [businessBranch] = defineField("business.branch");
+const [businessPhone] = defineField("business.phone");
+
 const [otherIncomeSource] = defineField("otherIncomeSource");
 const [otherIncomeAmount] = defineField("otherIncomeAmount");
 
@@ -411,11 +469,11 @@ const [monthlyExpenses] = defineField("monthlyExpenses");
 const [islrYear] = defineField("islrYear");
 const [islrAmount] = defineField("islrAmount");
 
-const {
-  fields: bankFields,
-  push: addBank,
-  remove: removeBank,
-} = useFieldArray("bankReferences");
+const [bankInstitution] = defineField("bankReference.institution");
+const [bankProductType] = defineField("bankReference.productType");
+const [bankAccountNumber] = defineField("bankReference.accountNumber");
+const [bankAverageAmount] = defineField("bankReference.averageAmount");
+
 const {
   fields: stockholderFields,
   push: addStockholder,
@@ -427,14 +485,14 @@ const {
   remove: removeLegal,
 } = useFieldArray("legalRepresentatives");
 const {
-  fields: providerFields,
-  push: addProvider,
-  remove: removeProvider,
+  fields: juridicaProviderFields,
+  push: addJuridicaProvider,
+  remove: removeJuridicaProvider,
 } = useFieldArray("providers");
 const {
-  fields: clientFields,
-  push: addClient,
-  remove: removeClient,
+  fields: juridicaClientFields,
+  push: addJuridicaClient,
+  remove: removeJuridicaClient,
 } = useFieldArray("clients");
 const {
   fields: companyFields,
@@ -442,33 +500,59 @@ const {
   remove: removeCompany,
 } = useFieldArray("relatedCompanies");
 
+const {
+  fields: businessProviderFields,
+  push: addBusinessProvider,
+  remove: removeBusinessProvider,
+} = useFieldArray("business.providers");
+const {
+  fields: businessClientFields,
+  push: addBusinessClient,
+  remove: removeBusinessClient,
+} = useFieldArray("business.clients");
+
+const handleAddStockholder = () => {
+  if (stockholderFields.value.length < 3)
+    addStockholder({ ...defaultStockholder });
+};
+const handleAddLegal = () => {
+  if (legalFields.value.length < 3) addLegal({ ...defaultLegalRep });
+};
+const handleAddJuridicaProvider = () => {
+  if (juridicaProviderFields.value.length < 3)
+    addJuridicaProvider({ ...defaultProvider });
+};
+const handleAddJuridicaClient = () => {
+  if (juridicaClientFields.value.length < 3)
+    addJuridicaClient({ ...defaultClient });
+};
+const handleAddCompany = () => {
+  if (companyFields.value.length < 3) addCompany({ ...defaultCompany });
+};
+
+const handleAddBusinessProvider = () => {
+  if (businessProviderFields.value.length < 3)
+    addBusinessProvider({ ...defaultProvider });
+};
+const handleAddBusinessClient = () => {
+  if (businessClientFields.value.length < 3)
+    addBusinessClient({ ...defaultClient });
+};
+
 const validate = handleSubmit((values) => {
   const payload = { ...values };
 
   if (type === "natural") {
-    payload.companyRif = "";
-    payload.businessRif = "";
-
-    if (
-      values.incomeSource?.includes("dependencia") &&
-      values.companyRifType &&
-      values.companyRifNumber
-    ) {
-      payload.companyRif = `${values.companyRifType}${values.companyRifNumber}`;
+    if (values.incomeSource?.includes("dependencia")) {
+      if (values.company?.rifType && values.company?.rifNumber) {
+        payload.company.rif = `${values.company.rifType}${values.company.rifNumber}`;
+      }
     }
-
-    if (
-      values.incomeSource?.includes("propio") &&
-      values.businessRifType &&
-      values.businessRifNumber
-    ) {
-      payload.businessRif = `${values.businessRifType}${values.businessRifNumber}`;
+    if (values.incomeSource?.includes("propio")) {
+      if (values.business?.rifType && values.business?.rifNumber) {
+        payload.business.rif = `${values.business.rifType}${values.business.rifNumber}`;
+      }
     }
-
-    delete payload.companyRifType;
-    delete payload.companyRifNumber;
-    delete payload.businessRifType;
-    delete payload.businessRifNumber;
   }
 
   if (type === "juridica") {
@@ -496,7 +580,7 @@ defineExpose({ validate });
 </script>
 
 <template>
-  <form class="flex flex-col" @submit.prevent>
+  <form class="flex flex-col gap-6" @submit.prevent>
     <div v-if="type === 'natural'">
       <FormTitle text="Información económica" />
       <FormBaseLayout>
@@ -558,76 +642,76 @@ defineExpose({ validate });
           </h5>
           <FormBaseLayout>
             <FormBaseInput
-              name="companyName"
+              name="company.name"
               label="Nombre de la empresa"
               v-model="companyName"
-              :error-message="errors.companyName"
+              :error-message="errors['company.name']"
               required
             />
 
             <div class="w-full">
-              <FormBaseLabel htmlFor="companyRifNumber" label="RIF" required />
+              <FormBaseLabel htmlFor="company.rifNumber" label="RIF" required />
               <div class="flex gap-1">
                 <div class="w-16 shrink-0">
                   <FormBaseSelect
-                    name="companyRifType"
+                    name="company.rifType"
                     v-model="companyRifType"
                     :options="docTypeOptionsAlt"
-                    :error-message="errors.companyRifType ? ' ' : ''"
+                    :error-message="errors['company.rifType'] ? ' ' : ''"
                   />
                 </div>
                 <div class="w-full">
                   <FormBaseInput
-                    name="companyRifNumber"
+                    name="company.rifNumber"
                     v-model="companyRifNumber"
                     placeholder="12345678"
                     type="tel"
-                    :error-message="errors.companyRifNumber"
+                    :error-message="errors['company.rifNumber']"
                     :comment="'RIF_REQUIRED'"
                   />
                 </div>
               </div>
               <FormError
-                v-if="!errors.companyRifNumber && errors.companyRifType"
+                v-if="!errors['company.rifNumber'] && errors['company.rifType']"
                 error="Seleccione tipo"
               />
             </div>
 
             <FormBaseInput
-              name="companyRol"
+              name="company.rol"
               label="Cargo dentro de la empresa"
               v-model="companyRol"
-              :error-message="errors.companyRol"
+              :error-message="errors['company.rol']"
               required
             />
 
             <FormBaseSelect
-              name="companyBranch"
+              name="company.branch"
               label="Ramo de la empresa"
               v-model="companyBranch"
               :options="economicActivityOptions"
-              :error-message="errors.companyBranch"
+              :error-message="errors['company.branch']"
               class="col-span-full"
               required
             />
 
             <FormBaseSelect
-              label="Remuneración mensual"
-              name="companyRemuneration"
+              label="Remuneración"
+              name="company.remuneration"
               v-model="companyRemuneration"
               :options="monthlyIncomeOptions"
-              :error-message="errors.companyRemuneration ? ' ' : ''"
+              :error-message="errors['company.remuneration'] ? ' ' : ''"
               :comment="'INCOMES'"
             />
 
             <FormBaseInput
-              name="companyAddress"
+              name="company.address"
               label="Dirección"
               v-model="companyAddress"
             />
 
             <FormBaseInput
-              name="companyPhone"
+              name="company.phone"
               label="Teléfono"
               v-model="companyPhone"
             />
@@ -643,55 +727,182 @@ defineExpose({ validate });
           </h5>
           <FormBaseLayout>
             <FormBaseInput
-              name="businessName"
+              name="business.name"
               label="Nombre / Razón social"
               v-model="businessName"
-              :error-message="errors.businessName"
+              :error-message="errors['business.name']"
               required
             />
 
             <div class="w-full">
-              <FormBaseLabel htmlFor="businessRifNumber" label="RIF" required />
+              <FormBaseLabel
+                htmlFor="business.rifNumber"
+                label="RIF"
+                required
+              />
               <div class="flex gap-1">
                 <div class="w-16 shrink-0">
                   <FormBaseSelect
-                    name="businessRifType"
+                    name="business.rifType"
                     v-model="businessRifType"
                     :options="docTypeOptions"
-                    :error-message="errors.businessRifType ? ' ' : ''"
+                    :error-message="errors['business.rifType'] ? ' ' : ''"
                   />
                 </div>
                 <div class="w-full">
                   <FormBaseInput
-                    name="businessRifNumber"
+                    name="business.rifNumber"
                     v-model="businessRifNumber"
                     placeholder="12345678"
                     type="tel"
-                    :error-message="errors.businessRifNumber"
+                    :error-message="errors['business.rifNumber']"
                     :comment="'RIF_REQUIRED'"
                   />
                 </div>
               </div>
               <FormError
-                v-if="!errors.businessRifNumber && errors.businessRifType"
+                v-if="
+                  !errors['business.rifNumber'] && errors['business.rifType']
+                "
                 error="Seleccione tipo"
               />
             </div>
 
             <FormBaseInput
-              name="businessAddress"
+              name="business.constitutionDate"
+              label="Fecha de constitución"
+              v-model="businessConstitutionDate"
+              type="date"
+              :error-message="errors['business.constitutionDate']"
+              required
+            />
+
+            <FormBaseInput
+              name="business.registerData"
+              label="Datos de registro"
+              v-model="businessRegisterData"
+              :error-message="errors['business.registerData']"
+              required
+            />
+
+            <FormBaseInput
+              name="business.fiscalAddress"
               label="Dirección fiscal"
-              v-model="businessAddress"
+              v-model="businessFiscalAddress"
+            />
+
+            <FormBaseInput
+              name="business.phone"
+              label="Teléfono"
+              v-model="businessPhone"
+            />
+
+            <FormBaseSelect
+              name="business.branch"
+              label="Ramo del negocio"
+              v-model="businessBranch"
+              :options="economicActivityOptions"
+              :error-message="errors['business.branch']"
+              class="col-span-full"
+              required
             />
 
             <FormBaseSelect
               label="Ingresos mensuales"
-              name="businessIncome"
+              name="business.income"
               v-model="businessIncome"
               :options="monthlyIncomeOptions"
-              :error-message="errors.businessIncome ? ' ' : ''"
+              :error-message="errors['business.income'] ? ' ' : ''"
             />
           </FormBaseLayout>
+
+          <div class="mt-8">
+            <h6 class="font-bold text-maximiza-gris4 mb-4">
+              Principales proveedores
+            </h6>
+            <div
+              v-for="(field, i) in businessProviderFields"
+              :key="field.key"
+              class="p-4 border border-maximiza-gris5 rounded-sm mb-4"
+            >
+              <FormBaseLayout>
+                <FormBaseInput
+                  :name="`business.providers[${i}].name`"
+                  label="Razón social"
+                  v-model="field.value.name"
+                  :error-message="errors[`business.providers[${i}].name`]"
+                />
+                <FormBaseInput
+                  :name="`business.providers[${i}].location`"
+                  label="Ubicación"
+                  v-model="field.value.location"
+                  :error-message="errors[`business.providers[${i}].location`]"
+                />
+                <template #button-bar>
+                  <button
+                    v-if="businessProviderFields.length > 1"
+                    type="button"
+                    @click="removeBusinessProvider(i)"
+                    class="button-danger --small"
+                  >
+                    Eliminar <font-awesome-icon :icon="['fas', 'trash']" />
+                  </button>
+                </template>
+              </FormBaseLayout>
+            </div>
+            <button
+              v-if="businessProviderFields.length < 3"
+              type="button"
+              @click="handleAddBusinessProvider"
+              class="button-primary --medium"
+            >
+              + Agregar proveedor
+            </button>
+          </div>
+
+          <div class="mt-8">
+            <h6 class="font-bold text-maximiza-gris4 mb-4">
+              Principales clientes
+            </h6>
+            <div
+              v-for="(field, i) in businessClientFields"
+              :key="field.key"
+              class="p-4 border border-maximiza-gris5 rounded-sm mb-4"
+            >
+              <FormBaseLayout>
+                <FormBaseInput
+                  :name="`business.clients[${i}].name`"
+                  label="Razón social"
+                  v-model="field.value.name"
+                  :error-message="errors[`business.clients[${i}].name`]"
+                />
+                <FormBaseInput
+                  :name="`business.clients[${i}].location`"
+                  label="Ubicación"
+                  v-model="field.value.location"
+                  :error-message="errors[`business.clients[${i}].location`]"
+                />
+                <template #button-bar>
+                  <button
+                    v-if="businessClientFields.length > 1"
+                    type="button"
+                    @click="removeBusinessClient(i)"
+                    class="button-danger --small"
+                  >
+                    Eliminar <font-awesome-icon :icon="['fas', 'trash']" />
+                  </button>
+                </template>
+              </FormBaseLayout>
+            </div>
+            <button
+              v-if="businessClientFields.length < 3"
+              type="button"
+              @click="handleAddBusinessClient"
+              class="button-primary --medium"
+            >
+              + Agregar cliente
+            </button>
+          </div>
         </div>
 
         <div
@@ -852,7 +1063,6 @@ defineExpose({ validate });
                 :error-message="errors[`stockholders[${i}].address`]"
               />
 
-              <!-- SECCIÓN PEP -->
               <div class="col-span-full space-y-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <FormBaseSelect
@@ -926,24 +1136,9 @@ defineExpose({ validate });
         </div>
 
         <button
+          v-if="stockholderFields.length < 3"
           type="button"
-          @click="
-            addStockholder({
-              name: '',
-              dniType: 'V',
-              dniNumber: '',
-              percentage: '',
-              cargo: '',
-              nationality: '',
-              address: '',
-              esPep: 'NO',
-              relatedWithPep: 'NO',
-              entityName: '',
-              position: '',
-              country: '',
-              relatedIdentification: '',
-            })
-          "
+          @click="handleAddStockholder"
           class="button-primary --medium mt-4"
         >
           + Agregar Accionista
@@ -1031,6 +1226,28 @@ defineExpose({ validate });
                 :error-message="errors[`legalRepresentatives[${i}].address`]"
               />
 
+              <div class="col-span-full space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <FormBaseSelect
+                    :name="`legalRepresentatives[${i}].esPep`"
+                    label="¿Es Persona Expuesta Políticamente (PEP)?"
+                    v-model="field.value.esPep"
+                    :options="isPepOptions"
+                    :error-message="errors[`legalRepresentatives[${i}].esPep`]"
+                  />
+
+                  <FormBaseSelect
+                    :name="`legalRepresentatives[${i}].relatedWithPep`"
+                    label="¿Relacionado con PEP?"
+                    v-model="field.value.relatedWithPep"
+                    :error-message="
+                      errors[`legalRepresentatives[${i}].relatedWithPep`]
+                    "
+                    :options="relatedWithPepOptions"
+                  />
+                </div>
+              </div>
+
               <template #button-bar>
                 <button
                   v-if="legalFields.length > 1"
@@ -1047,21 +1264,9 @@ defineExpose({ validate });
         </div>
 
         <button
+          v-if="legalFields.length < 3"
           type="button"
-          @click="
-            addLegal({
-              name: '',
-              dniType: 'V',
-              dniNumber: '',
-              nationality: '',
-              address: '',
-
-              cargo: '',
-              condition: '',
-              esPep: 'NO',
-              relatedWithPep: 'NO',
-            })
-          "
+          @click="handleAddLegal"
           class="button-primary --medium mt-4"
         >
           + Agregar
@@ -1073,7 +1278,7 @@ defineExpose({ validate });
 
         <div class="w-full">
           <div
-            v-for="(field, i) in providerFields"
+            v-for="(field, i) in juridicaProviderFields"
             :key="field.key"
             class="p-4 border-l border-b border-maximiza-gris5/90 bg-maximiza-gris5/10"
           >
@@ -1093,9 +1298,9 @@ defineExpose({ validate });
 
               <template #button-bar>
                 <button
-                  v-if="providerFields.length > 1"
+                  v-if="juridicaProviderFields.length > 1"
                   type="button"
-                  @click="removeProvider(i)"
+                  @click="removeJuridicaProvider(i)"
                   class="button-danger --small"
                 >
                   Proveedor cliente
@@ -1107,8 +1312,9 @@ defineExpose({ validate });
         </div>
 
         <button
+          v-if="juridicaProviderFields.length < 3"
           type="button"
-          @click="addProvider({ name: '', location: '' })"
+          @click="handleAddJuridicaProvider"
           class="button-primary --medium mt-4"
         >
           + Agregar
@@ -1120,7 +1326,7 @@ defineExpose({ validate });
 
         <div class="w-full">
           <div
-            v-for="(field, i) in clientFields"
+            v-for="(field, i) in juridicaClientFields"
             :key="field.key"
             class="p-4 border-l border-b border-maximiza-gris5/90 bg-maximiza-gris5/10"
           >
@@ -1141,9 +1347,9 @@ defineExpose({ validate });
 
               <template #button-bar>
                 <button
-                  v-if="clientFields.length > 1"
+                  v-if="juridicaClientFields.length > 1"
                   type="button"
-                  @click="removeClient(i)"
+                  @click="removeJuridicaClient(i)"
                   class="button-danger --small"
                 >
                   Eliminar cliente
@@ -1154,8 +1360,9 @@ defineExpose({ validate });
           </div>
         </div>
         <button
+          v-if="juridicaClientFields.length < 3"
           type="button"
-          @click="addClient({ name: '', location: '' })"
+          @click="handleAddJuridicaClient"
           class="button-primary --medium mt-4"
         >
           + Agregar
@@ -1230,10 +1437,9 @@ defineExpose({ validate });
         </div>
 
         <button
+          v-if="companyFields.length < 3"
           type="button"
-          @click="
-            addCompany({ name: '', activity: '', rifType: 'J', rifNumber: '' })
-          "
+          @click="handleAddCompany"
           class="button-primary --medium mt-4"
         >
           + Agregar
@@ -1242,87 +1448,47 @@ defineExpose({ validate });
     </div>
 
     <div class="flex flex-col items-end">
-      <FormTitle text="Referencias bancarias" />
+      <FormTitle text="Referencia bancaria" />
 
-      <div class="flex flex-col w-full">
-        <div
-          v-for="(field, i) in bankFields"
-          :key="field.key"
-          class="p-4 border-l border-b border-maximiza-gris5/90 bg-maximiza-gris5/10"
-        >
-          <FormBaseLayout>
-            <FormBaseSelect
-              :name="`bankReferences[${i}].institution`"
-              label="Institución"
-              :options="bankingInstituteOptions"
-              v-model="field.value.institution"
-              :error-message="errors[`bankReferences[${i}].institution`]"
-              required
-              class="col-span-2"
-            />
+      <FormBaseLayout>
+        <FormBaseSelect
+          name="bankReference.institution"
+          label="Institución"
+          :options="bankingInstituteOptions"
+          v-model="bankInstitution"
+          :error-message="errors['bankReference.institution']"
+          required
+          class="col-span-2"
+        />
 
-            <FormBaseSelect
-              :name="`bankReferences[${i}].productType`"
-              label="Tipo de cuenta"
-              :options="['Cuenta corriente', 'Cuenta de ahorro']"
-              v-model="field.value.productType"
-              :error-message="errors[`bankReferences[${i}].productType`]"
-              required
-            />
+        <FormBaseSelect
+          name="bankReference.productType"
+          label="Tipo de cuenta"
+          :options="['Cuenta corriente', 'Cuenta de ahorro']"
+          v-model="bankProductType"
+          :error-message="errors['bankReference.productType']"
+          required
+        />
 
-            <FormBaseInput
-              :name="`bankReferences[${i}].accountNumber`"
-              label="Número de cuenta (20 dígitos)"
-              v-model="field.value.accountNumber"
-              :maxlength="20"
-              placeholder="12345..."
-              :error-message="errors[`bankReferences[${i}].accountNumber`]"
-              required
-            />
+        <FormBaseInput
+          name="bankReference.accountNumber"
+          label="Número de cuenta (20 dígitos)"
+          v-model="bankAccountNumber"
+          :maxlength="20"
+          placeholder="12345..."
+          :error-message="errors['bankReference.accountNumber']"
+          required
+        />
 
-            <FormBaseInput
-              :name="`bankReferences[${i}].averageAmount`"
-              type="number"
-              label="Cifras promedio mensuales (en Bs)"
-              v-model="field.value.averageAmount"
-              :error-message="errors[`bankReferences[${i}].averageAmount`]"
-              required
-            />
-
-            <template #button-bar>
-              <button
-                v-if="bankFields.length > 1"
-                type="button"
-                @click="removeBank(i)"
-                class="button-danger --small"
-              >
-                Eliminar cuenta <font-awesome-icon :icon="['fas', 'trash']" />
-              </button>
-            </template>
-          </FormBaseLayout>
-        </div>
-      </div>
-      <p
-        v-if="errors.bankReferences"
-        class="text-red-500 text-xs mt-2 font-medium"
-      >
-        {{ errors.bankReferences }}
-      </p>
-
-      <button
-        type="button"
-        @click="
-          addBank({
-            institution: '',
-            accountNumber: '',
-            productType: '',
-            averageAmount: '',
-          })
-        "
-        class="button-primary --medium mt-4"
-      >
-        + Agregar Cuenta
-      </button>
+        <FormBaseInput
+          name="bankReference.averageAmount"
+          type="number"
+          label="Cifras promedio mensuales (en Bs)"
+          v-model="bankAverageAmount"
+          :error-message="errors['bankReference.averageAmount']"
+          required
+        />
+      </FormBaseLayout>
     </div>
   </form>
 </template>

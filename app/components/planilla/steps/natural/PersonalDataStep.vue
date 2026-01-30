@@ -40,6 +40,8 @@ const schema = yup.object({
   maritalStatus: yup.string().required("Estado civil requerido"),
   profession: yup.string().required("Profesión u oficio requerido"),
 
+  incomeSource: yup.string().required("Requerido"),
+
   spouseName: yup.string(),
   spouseIdentification: yup.string(),
 
@@ -80,6 +82,13 @@ const schema = yup.object({
     then: (schema) => schema.required("Fecha requerida"),
     otherwise: (schema) => schema.notRequired(),
   }),
+
+  legalRepresentativePhones: yup.string().when("hasLegalRepresentative", {
+    is: "SI",
+    then: (schema) => schema.required("Requerido"),
+    otherwise: (schema) => schema.notRequired(),
+  }),
+  legalRepresentativeDocumentData: yup.string(),
 });
 
 const initialId =
@@ -113,6 +122,7 @@ const { handleSubmit, errors, defineField } = useForm({
     maritalStatus:
       wizard.state.value.formData.personalData?.maritalStatus || "",
     profession: wizard.state.value.formData.personalData?.profession || "",
+    incomeSource: wizard.state.value.formData.personalData?.incomeSource || "",
     spouseName: wizard.state.value.formData.personalData?.spouseName || "N/A",
     spouseIdentification:
       wizard.state.value.formData.personalData?.spouseIdentification || "N/A",
@@ -130,10 +140,16 @@ const { handleSubmit, errors, defineField } = useForm({
     legalRepresentativeIdentificationNumber: initialLegRepNumber,
     legalRepresentativeBirthPlace:
       wizard.state.value.formData.personalData?.legalRepresentativeBirthPlace ||
-      "VENEZUE",
+      "VENEZUELA",
     legalRepresentativeBirthDate:
       wizard.state.value.formData.personalData?.legalRepresentativeBirthDate ||
       "",
+
+    legalRepresentativePhones:
+      wizard.state.value.formData.personalData?.legalRepresentativePhones || "",
+    legalRepresentativeDocumentData:
+      wizard.state.value.formData.personalData
+        ?.legalRepresentativeDocumentData || "N/A",
   },
 });
 
@@ -149,6 +165,8 @@ const [otherNationality] = defineField("otherNationality");
 const [gender] = defineField("gender");
 const [maritalStatus] = defineField("maritalStatus");
 const [profession] = defineField("profession");
+const [incomeSource] = defineField("incomeSource");
+
 const [spouseName] = defineField("spouseName");
 const [spouseIdentification] = defineField("spouseIdentification");
 const [address] = defineField("address");
@@ -171,6 +189,10 @@ const [legalRepresentativeBirthPlace] = defineField(
 const [legalRepresentativeBirthDate] = defineField(
   "legalRepresentativeBirthDate",
 );
+const [legalRepresentativePhones] = defineField("legalRepresentativePhones");
+const [legalRepresentativeDocumentData] = defineField(
+  "legalRepresentativeDocumentData",
+);
 
 const validate = handleSubmit((values) => {
   const fullIdentification = `${values.identificationType}${values.identificationNumber}`;
@@ -188,6 +210,8 @@ const validate = handleSubmit((values) => {
     finalValues.legalRepresentativeFullname = "";
     finalValues.legalRepresentativeBirthPlace = "";
     finalValues.legalRepresentativeBirthDate = "";
+    finalValues.legalRepresentativePhones = "";
+    finalValues.legalRepresentativeDocumentData = "";
     legRepId = "";
   }
 
@@ -213,7 +237,7 @@ defineExpose({
 </script>
 
 <template>
-  <form class="flex flex-col" @submit.prevent>
+  <form class="flex flex-col gap-6" @submit.prevent>
     <div>
       <FormTitle text="Datos personales del inversionista" />
 
@@ -340,6 +364,7 @@ defineExpose({
           :error-message="errors.phones"
           required
         />
+
         <FormBaseInput
           name="email"
           label="Correo electrónico"
@@ -359,6 +384,14 @@ defineExpose({
           v-model="profession"
           :options="occupationsOptions"
           :error-message="errors.profession"
+          required
+        />
+
+        <FormBaseInput
+          name="incomeSource"
+          label="Fuente de ingreso"
+          v-model="incomeSource"
+          :error-message="errors.incomeSource"
           required
         />
       </FormBaseLayout>
@@ -458,11 +491,28 @@ defineExpose({
 
             <FormBaseInput
               name="legalRepresentativeBirthDate"
-              label="Fecha de Nacimiento"
+              label="Fecha de nacimiento"
               type="date"
               v-model="legalRepresentativeBirthDate"
               :max="minAgeDate(18)"
               :error-message="errors.legalRepresentativeBirthDate"
+              required
+            />
+
+            <FormBaseInput
+              name="legalRepresentativePhones"
+              label="Teléfono"
+              type="tel"
+              v-model="legalRepresentativePhones"
+              :error-message="errors.legalRepresentativePhones"
+              required
+            />
+
+            <FormBaseInput
+              name="legalRepresentativeDocumentData"
+              label="Datos del documento"
+              v-model="legalRepresentativeDocumentData"
+              :error-message="errors.legalRepresentativeDocumentData"
               required
             />
           </FormBaseLayout>

@@ -254,7 +254,7 @@ defineExpose({ validate });
 </script>
 
 <template>
-  <form class="flex flex-col" @submit.prevent>
+  <form class="flex flex-col gap-6" @submit.prevent>
     <div>
       <FormTitle text="Datos de identificación de la empresa" />
 

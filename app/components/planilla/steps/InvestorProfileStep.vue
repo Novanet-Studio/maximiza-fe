@@ -55,7 +55,7 @@ defineExpose({
 </script>
 
 <template>
-  <form class="flex flex-col" @submit.prevent>
+  <form class="flex flex-col gap-6" @submit.prevent>
     <div>
       <FormTitle text="Perfil del inversionista" class="mb-4" />
       <p class="text-maximiza-gris2 text-sm leading-relaxed mb-6">

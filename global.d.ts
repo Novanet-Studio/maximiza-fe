@@ -30,17 +30,23 @@ declare namespace MXMZ {
     gender: string;
     maritalStatus: string;
     profession: string;
+    incomeSource: string;
+
     spouseName: string;
     spouseIdentification: string;
     address: string;
     phones: string;
     email: string;
     identification: string;
+
     hasLegalRepresentative: "SI" | "NO";
+
     legalRepresentativeFullname: string;
     legalRepresentativeIdentification: string;
     legalRepresentativeBirthPlace: string;
     legalRepresentativeBirthDate: string;
+    legalRepresentativePhones: string;
+    legalRepresentativeDocumentData: string;
   }
 
   interface PepProfile {
@@ -59,31 +65,54 @@ declare namespace MXMZ {
     specificActivity: string;
     incomeSource: string[];
 
-    companyRif?: string;
-    companyRemuneration: string;
-    companyName: string;
-    companyAddress: string;
-    companyPhone: string;
-    companyRifType?: string;
-    companyRifNumber?: string;
-    companyRol: string;
-    companyBranch: string;
+    company: {
+      rif?: string;
+      rifType?: string;
+      rifNumber?: string;
 
-    businessRif?: string;
-    businessRifType?: string;
-    businessRifNumber?: string;
-    businessName: string;
-    businessAddress: string;
-    businessIncome: string;
+      remuneration: string;
+      name: string;
+      address: string;
+      phone: string;
+
+      rol: string;
+      branch: string;
+    };
+
+    business: {
+      rif?: string;
+      rifType?: string;
+      rifNumber?: string;
+
+      name: string;
+      income: string;
+
+      constitutionDate: string;
+      registerData: string;
+      fiscalAddress: string;
+      branch: string;
+      phone: string;
+
+      providers: Array<Providers>;
+      clients: Array<Clients>;
+    };
 
     otherIncomeSource: string;
     otherIncomeAmount: string;
+
     monthlyIncome: string;
     monthlySales: string;
     monthlyExpenses: string;
     islrYear: string;
     islrAmount: string;
-    bankReferences: Array<BankReferences>;
+
+    bankReference: {
+      institution: string;
+      accountNumber: string;
+      productType: string;
+      averageAmount: string;
+    };
+
     stockholders: Array<Stockholders>;
     legalRepresentatives: Array<LegalRepresentatives>;
     providers: Array<Providers>;
@@ -91,12 +120,15 @@ declare namespace MXMZ {
     relatedCompanies: Array<RelatedCompanies>;
   }
 
-  type BankReferences = {
-    institution: string;
-    accountNumber: string;
-    productType: string;
-    averageAmount: string;
-  };
+  /*
+
+  stockholders
+  legalRepresentatives
+  providers
+  clients
+  relatedCompanies
+  
+  */
 
   type Stockholders = {
     name: string;

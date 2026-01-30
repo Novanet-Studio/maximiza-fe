@@ -5,39 +5,70 @@ const { source } = defineProps<{
 </script>
 
 <template>
-  <div class="grid grid-cols-[85px_1fr]">
+  <div class="grid grid-cols-[115px_1fr]">
     <aside
-      class="bg-maximiza-verde1 min-h-[80px] flex justify-center items-center"
+      class="bg-maximiza-verde1 min-h-[80px] flex justify-center items-center border-b border-maximiza-blanco1"
     >
       <h5 class="text-maximiza-blanco1 font-bold">Empresas relacionadas</h5>
     </aside>
 
     <div class="w-full">
       <div class="grid grid-cols-[1.5fr_1fr_1fr]">
-        <div class="spreadsheet__item font-bold bg-maximiza-gris5 text-[10px]">
+        <div class="spreadsheet__item font-bold text-[10px]">
           Nombre o razón social
         </div>
-        <div class="spreadsheet__item font-bold bg-maximiza-gris5 text-[10px]">
+        <div class="spreadsheet__item font-bold text-[10px]">
           Actividad económica
         </div>
-        <div class="spreadsheet__item font-bold bg-maximiza-gris5 text-[10px]">
+        <div class="spreadsheet__item font-bold text-[10px]">
           Registro de información fiscal
         </div>
       </div>
 
-      <template v-for="(item, i) in source" :key="i">
-        <div class="grid grid-cols-[1.5fr_1fr_1fr]">
-          <div class="spreadsheet__item">
-            <div class="content">{{ item.name }}</div>
-          </div>
-          <div class="spreadsheet__item">
-            <div class="content">{{ item.activity }}</div>
-          </div>
-          <div class="spreadsheet__item">
-            <div class="content">{{ item.rif }}</div>
-          </div>
+      <div class="grid grid-cols-[1.5fr_1fr_1fr]">
+        <div class="spreadsheet__item">
+          <div v-if="source[0]" class="content">{{ source[0].name }}</div>
+          <div v-else class="content">N/A</div>
         </div>
-      </template>
+        <div class="spreadsheet__item">
+          <div v-if="source[0]" class="content">{{ source[0].activity }}</div>
+          <div v-else class="content">N/A</div>
+        </div>
+        <div class="spreadsheet__item">
+          <div v-if="source[0]" class="content">{{ source[0].rif }}</div>
+          <div v-else class="content">N/A</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-[1.5fr_1fr_1fr]">
+        <div class="spreadsheet__item">
+          <div v-if="source[1]" class="content">{{ source[1].name }}</div>
+          <div v-else class="content">N/A</div>
+        </div>
+        <div class="spreadsheet__item">
+          <div v-if="source[1]" class="content">{{ source[1].activity }}</div>
+          <div v-else class="content">N/A</div>
+        </div>
+        <div class="spreadsheet__item">
+          <div v-if="source[1]" class="content">{{ source[1].rif }}</div>
+          <div v-else class="content">N/A</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-[1.5fr_1fr_1fr]">
+        <div class="spreadsheet__item">
+          <div v-if="source[2]" class="content">{{ source[2].name }}</div>
+          <div v-else class="content">N/A</div>
+        </div>
+        <div class="spreadsheet__item">
+          <div v-if="source[2]" class="content">{{ source[2].activity }}</div>
+          <div v-else class="content">N/A</div>
+        </div>
+        <div class="spreadsheet__item">
+          <div v-if="source[2]" class="content">{{ source[2].rif }}</div>
+          <div v-else class="content">N/A</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

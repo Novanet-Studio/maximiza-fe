@@ -122,7 +122,7 @@ defineExpose({
 </script>
 
 <template>
-  <form class="flex flex-col" @submit.prevent>
+  <form class="flex flex-col gap-6" @submit.prevent>
     <div>
       <FormTitle
         text="Información del producto o servicio bursátil"

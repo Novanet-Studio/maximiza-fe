@@ -56,7 +56,7 @@ defineExpose({
 </script>
 
 <template>
-  <form class="flex flex-col" @submit.prevent>
+  <form class="flex flex-col gap-6" @submit.prevent>
     <div>
       <FormBaseLayout>
         <FormBaseInput

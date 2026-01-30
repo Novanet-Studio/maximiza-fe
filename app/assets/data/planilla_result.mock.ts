@@ -72,14 +72,12 @@ export const PLANILLA_JURIDICA_MOCK_DATA: MXMZ.WizardPlanillaResult = {
     monthlyExpenses: "10000",
     islrYear: "2000",
     islrAmount: "10000",
-    bankReferences: [
-      {
-        institution: "0102-G200099976",
-        accountNumber: "01340411924111074513",
-        productType: "Cuenta corriente",
-        averageAmount: "34563456",
-      },
-    ],
+    bankReference: {
+      institution: "0102-G200099976",
+      accountNumber: "01340411924111074513",
+      productType: "Cuenta corriente",
+      averageAmount: "34563456",
+    },
     stockholders: [
       {
         name: "Eliezer Meza",
@@ -178,6 +176,7 @@ export const PLANILLA_NATURAL_MOCK_DATA: MXMZ.WizardPlanillaResult = {
     birthDate: "2001-02-13",
     nationality: "VENEZOLANO",
     otherNationality: "",
+    incomeSource: "Desarollo de Software",
     gender: "M",
     maritalStatus: "SOLTERO",
     profession: "OCC146",
@@ -192,6 +191,8 @@ export const PLANILLA_NATURAL_MOCK_DATA: MXMZ.WizardPlanillaResult = {
     legalRepresentativeBirthDate: "2000-02-13",
     identification: "V29500120",
     legalRepresentativeIdentification: "V20123123",
+    legalRepresentativePhones: "04122970632",
+    legalRepresentativeDocumentData: "",
   },
   pepProfile: {
     pepStatus: "hasRelationship",
@@ -223,14 +224,12 @@ export const PLANILLA_NATURAL_MOCK_DATA: MXMZ.WizardPlanillaResult = {
     monthlyExpenses: "",
     islrYear: "",
     islrAmount: "",
-    bankReferences: [
-      {
-        institution: "0134-J070133805",
-        accountNumber: "01340411924111074513",
-        productType: "Cuenta corriente",
-        averageAmount: "500000",
-      },
-    ],
+    bankReference: {
+      institution: "0102-G200099976",
+      accountNumber: "01340411924111074513",
+      productType: "Cuenta corriente",
+      averageAmount: "34563456",
+    },
     stockholders: [
       {
         name: "",

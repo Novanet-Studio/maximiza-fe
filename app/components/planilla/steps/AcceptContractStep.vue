@@ -33,7 +33,7 @@ defineExpose({
 </script>
 
 <template>
-  <form class="flex flex-col" @submit.prevent>
+  <form class="flex flex-col gap-6" @submit.prevent>
     <FormTitle
       text="Aceptación del contrato de cuenta de corretaje bursátil por parte del inversor"
     />

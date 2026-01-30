@@ -19,7 +19,6 @@ const generateAndDownload = async (
   filename: string,
   styles: string,
 ) => {
-
   const html = element.innerHTML;
 
   const response = await $fetch("/api/generate-pdf", {
@@ -100,6 +99,16 @@ const handleDownload = async () => {
   }
 };
 
+const EMAIL = "contacto@maximiza.com.ve";
+
+const copyEmail = async () => {
+  try {
+    await navigator.clipboard.writeText(EMAIL);
+  } catch (err) {
+    console.error("Error al copiar: ", err);
+  }
+};
+
 defineExpose({
   validate: () => {},
 });
@@ -111,15 +120,25 @@ defineExpose({
       <font-awesome-icon :icon="['fas', 'circle-check']" />
     </div>
 
-    <h4 class="text-maximiza-negro1 font-black text-2xl md:text-3xl mb-4">
+    <h4 class="text-maximiza-negro1 font-black text-2xl md:text-3xl mb-2">
       ¡El expediente está listo!
     </h4>
 
-    <p class="text-maximiza-gris2 text-md md:text-lg mb-8 max-w-lg mx-auto">
-      Revise la previsualización de los documentos a continuación.
+    <p class="text-maximiza-gris1 text-md mb-8 max-w-2xl mx-auto">
+      Para poder validar el registro es necesario enviar a
+
+      <b
+        class="text-maximiza-verde1 hover:underline cursor-pointer"
+        @click="copyEmail"
+        title="Haz click para copiar"
+      >
+        {{ EMAIL }}
+      </b>
+
+      las planillas descargadas más los recaudos indicados
     </p>
 
-    <div class="flex flex-col items-center gap-2 mb-4">
+    <div class="flex flex-col items-center gap-2 mb-2">
       <button
         @click="handleDownload"
         :disabled="isGenerating"

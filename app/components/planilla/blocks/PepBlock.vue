@@ -5,22 +5,15 @@ const { source, stockholders } = defineProps<{
 }>();
 
 import { getLabel, countriesOptions } from "~/assets/data/formSources";
-
-const stock = computed(
-  () =>
-    stockholders?.filter(
-      (s) => s.esPep === "SI" || s.relatedWithPep === "SI",
-    ) || [],
-);
 </script>
 
 <template>
-  <div v-if="stock?.length > 0">
+  <div v-if="stockholders && stockholders?.length > 0">
     <div class="spreadsheet__item font-bold text-[10px]">
       Accionistar / Junta directiva
     </div>
 
-    <div class="w-full grid grid-cols-[85px_1fr]">
+    <div class="w-full grid grid-cols-[115px_1fr]">
       <aside
         class="bg-maximiza-verde1 min-h-[80px] flex justify-center items-center"
       >
@@ -29,203 +22,334 @@ const stock = computed(
         </h5>
       </aside>
       <div>
-        <div class="grid grid-cols-[1fr_1fr_1fr_1fr_1fr]">
-          <div
-            class="spreadsheet__item font-bold bg-maximiza-gris5 text-[10px]"
-          >
-            Nombre
+        <div class="grid grid-cols-[1.5fr_1fr_1fr_1fr]">
+          <div class="spreadsheet__item font-bold text-[10px]">
+            Nombre de la institución o ente de adscripción:
           </div>
 
-          <div
-            class="spreadsheet__item font-bold bg-maximiza-gris5 text-[10px]"
-          >
-            Nombre del ente adscripción:
-          </div>
-
-          <div
-            class="spreadsheet__item font-bold bg-maximiza-gris5 text-[10px]"
-          >
+          <div class="spreadsheet__item font-bold text-[10px]">
             Cargo que desempeña:
           </div>
 
-          <div
-            class="spreadsheet__item font-bold bg-maximiza-gris5 text-[10px]"
-          >
-            País:
-          </div>
+          <div class="spreadsheet__item font-bold text-[10px]">País:</div>
 
-          <div
-            class="spreadsheet__item font-bold bg-maximiza-gris5 text-[10px]"
-          >
-            Identificación del relacionado:
+          <div class="spreadsheet__item font-bold text-[10px]">
+            Identificación del pep en caso de relacionado::
           </div>
         </div>
 
-        <template v-for="(item, i) in stockholders" :key="i">
-          <div class="grid grid-cols-[1fr_1fr_1fr_1fr_1fr]">
-            <div class="spreadsheet__item">
-              <div class="content">{{ item.name }}</div>
+        <div class="grid grid-cols-[1.5fr_1fr_1fr_1fr]">
+          <div class="spreadsheet__item">
+            <div
+              v-if="
+                stockholders[0] &&
+                (stockholders[0].esPep == 'SI' ||
+                  stockholders[0].relatedWithPep == 'SI')
+              "
+              class="content"
+            >
+              {{ stockholders[0].entityName }}
             </div>
-            <div class="spreadsheet__item">
-              <div class="content">{{ item.entityName }}</div>
-            </div>
-            <div class="spreadsheet__item">
-              <div class="content">{{ item.position }}</div>
-            </div>
-            <div class="spreadsheet__item">
-              <div class="content">{{ item.country }}</div>
-            </div>
-            <div class="spreadsheet__item">
-              <div class="content">{{ item.relatedIdentification }}</div>
-            </div>
+            <div v-else class="content">N/A</div>
           </div>
-        </template>
+          <div class="spreadsheet__item">
+            <div
+              v-if="
+                stockholders[0] &&
+                (stockholders[0].esPep == 'SI' ||
+                  stockholders[0].relatedWithPep == 'SI')
+              "
+              class="content"
+            >
+              {{ stockholders[0].position }}
+            </div>
+            <div v-else class="content">N/A</div>
+          </div>
+          <div class="spreadsheet__item">
+            <div
+              v-if="
+                stockholders[0] &&
+                (stockholders[0].esPep == 'SI' ||
+                  stockholders[0].relatedWithPep == 'SI')
+              "
+              class="content"
+            >
+              {{ stockholders[0].country }}
+            </div>
+            <div v-else class="content">N/A</div>
+          </div>
+          <div class="spreadsheet__item">
+            <div
+              v-if="
+                stockholders[0] &&
+                (stockholders[0].esPep == 'SI' ||
+                  stockholders[0].relatedWithPep == 'SI')
+              "
+              class="content"
+            >
+              {{ stockholders[0].relatedIdentification }}
+            </div>
+            <div v-else class="content">N/A</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-[1.5fr_1fr_1fr_1fr]">
+          <div class="spreadsheet__item">
+            <div
+              v-if="
+                stockholders[1] &&
+                (stockholders[1].esPep == 'SI' ||
+                  stockholders[1].relatedWithPep == 'SI')
+              "
+              class="content"
+            >
+              {{ stockholders[1].entityName }}
+            </div>
+            <div v-else class="content">N/A</div>
+          </div>
+          <div class="spreadsheet__item">
+            <div
+              v-if="
+                stockholders[1] &&
+                (stockholders[1].esPep == 'SI' ||
+                  stockholders[1].relatedWithPep == 'SI')
+              "
+              class="content"
+            >
+              {{ stockholders[1].position }}
+            </div>
+            <div v-else class="content">N/A</div>
+          </div>
+          <div class="spreadsheet__item">
+            <div
+              v-if="
+                stockholders[1] &&
+                (stockholders[1].esPep == 'SI' ||
+                  stockholders[1].relatedWithPep == 'SI')
+              "
+              class="content"
+            >
+              {{ stockholders[1].country }}
+            </div>
+            <div v-else class="content">N/A</div>
+          </div>
+          <div class="spreadsheet__item">
+            <div
+              v-if="
+                stockholders[1] &&
+                (stockholders[1].esPep == 'SI' ||
+                  stockholders[1].relatedWithPep == 'SI')
+              "
+              class="content"
+            >
+              {{ stockholders[1].relatedIdentification }}
+            </div>
+            <div v-else class="content">N/A</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-[1.5fr_1fr_1fr_1fr]">
+          <div class="spreadsheet__item">
+            <div
+              v-if="
+                stockholders[2] &&
+                (stockholders[2].esPep == 'SI' ||
+                  stockholders[2].relatedWithPep == 'SI')
+              "
+              class="content"
+            >
+              {{ stockholders[2].entityName }}
+            </div>
+            <div v-else class="content">N/A</div>
+          </div>
+          <div class="spreadsheet__item">
+            <div
+              v-if="
+                stockholders[2] &&
+                (stockholders[2].esPep == 'SI' ||
+                  stockholders[2].relatedWithPep == 'SI')
+              "
+              class="content"
+            >
+              {{ stockholders[2].position }}
+            </div>
+            <div v-else class="content">N/A</div>
+          </div>
+          <div class="spreadsheet__item">
+            <div
+              v-if="
+                stockholders[2] &&
+                (stockholders[2].esPep == 'SI' ||
+                  stockholders[2].relatedWithPep == 'SI')
+              "
+              class="content"
+            >
+              {{ stockholders[2].country }}
+            </div>
+            <div v-else class="content">N/A</div>
+          </div>
+          <div class="spreadsheet__item">
+            <div
+              v-if="
+                stockholders[2] &&
+                (stockholders[2].esPep == 'SI' ||
+                  stockholders[2].relatedWithPep == 'SI')
+              "
+              class="content"
+            >
+              {{ stockholders[2].relatedIdentification }}
+            </div>
+            <div v-else class="content">N/A</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+
   <div v-if="!stockholders">
-    <div
-      class="spreadsheet__item text-center font-bold bg-maximiza-gris5 text-[10px]"
-    >
-      Perfil PEP (Persona expuesta políticamente) del inversionista
-    </div>
-
-    <div class="spreadsheet__item flex items-center justify-start">
-      <span class="text-[10px]">¿El inversionista es PEP?</span>
-      <div
-        :class="[
-          'border px-1 ml-1 font-black',
-          source.isPep === 'SI'
-            ? 'bg-maximiza-error text-maximiza-blanco1'
-            : 'bg-maximiza-verde1 text-maximiza-blanco1',
-        ]"
-      >
-        {{ source.isPep }}
-      </div>
-    </div>
-
-    <table v-if="source.isPep === 'SI'" class="w-full">
-      <tbody class="grid grid-cols-[1fr_1fr_1fr_1fr]">
+    <table class="w-full">
+      <thead class="grid grid-cols-[4fr_7fr_4fr_3fr_4fr]">
         <tr class="spreadsheet__item">
-          <td class="spreadsheet__form-item">
-            Nombre del ente adscripción:
-            <div class="content">{{ source.entityName }}</div>
-          </td>
+          <td>Persona expuesta politicamente (PEP):</td>
         </tr>
         <tr class="spreadsheet__item">
-          <td class="spreadsheet__form-item">
-            Cargo que desempeña:
-            <div class="content">{{ source.position }}</div>
-          </td>
+          <td>Nombre del ente adscripción:</td>
         </tr>
         <tr class="spreadsheet__item">
-          <td class="spreadsheet__form-item">
-            País:
-            <div class="content">
-              <div class="content">
-                {{ getLabel(source.country, countriesOptions) }}
-              </div>
+          <td>Cargo que desempeña:</td>
+        </tr>
+        <tr class="spreadsheet__item">
+          <td>País:</td>
+        </tr>
+        <tr class="spreadsheet__item">
+          <td>Identificación del relacionado:</td>
+        </tr>
+      </thead>
+      <tbody class="grid grid-cols-[4fr_7fr_4fr_3fr_4fr]">
+        <!-- fila -->
+        <tr class="spreadsheet__item">
+          <td class="grid grid-cols-[1fr_auto]">
+            <span> El inversionista es (PEP)</span>
+            <div
+              :class="[
+                'border px-1 ml-1 font-black flex items-center justify-center',
+                source.isPep === 'SI'
+                  ? 'bg-maximiza-error text-maximiza-blanco1'
+                  : 'bg-maximiza-verde1 text-maximiza-blanco1',
+              ]"
+            >
+              {{ source.isPep }}
             </div>
           </td>
         </tr>
         <tr class="spreadsheet__item">
-          <td class="spreadsheet__form-item">
-            Identificación del relacionado:
-            <div class="content">{{ source.relatedIdentification }}</div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="spreadsheet__item flex items-center justify-start">
-      <span class="text-[10px]"
-        >¿El inversionista tiene parentesco con un PEP?</span
-      >
-      <div
-        :class="[
-          'border px-1 ml-1 font-black',
-          source.hasPepRelationship === 'SI'
-            ? 'bg-maximiza-error text-maximiza-blanco1'
-            : 'bg-maximiza-verde1 text-maximiza-blanco1',
-        ]"
-      >
-        {{ source.hasPepRelationship }}
-      </div>
-    </div>
-
-    <table v-if="source.hasPepRelationship === 'SI'" class="w-full">
-      <tbody class="grid grid-cols-[1fr_1fr_1fr_1fr]">
-        <tr class="spreadsheet__item">
-          <td class="spreadsheet__form-item">
-            Nombre del ente adscripción:
-            <div class="content">{{ source.entityName }}</div>
+          <td class="font-bold">
+            {{ source.isPep === "SI" ? source.entityName : "" }}
           </td>
         </tr>
         <tr class="spreadsheet__item">
-          <td class="spreadsheet__form-item">
-            Cargo que desempeña:
-            <div class="content">{{ source.position }}</div>
+          <td class="font-bold">
+            {{ source.isPep === "SI" ? source.position : "" }}
           </td>
         </tr>
         <tr class="spreadsheet__item">
-          <td class="spreadsheet__form-item">
-            País:
-            <div class="content">
-              {{ getLabel(source.country, countriesOptions) }}
+          <td class="font-bold">
+            {{
+              source.isPep === "SI"
+                ? getLabel(source.country, countriesOptions)
+                : ""
+            }}
+          </td>
+        </tr>
+        <tr class="spreadsheet__item">
+          <td class="font-bold">
+            {{ source.isPep === "SI" ? source.relatedIdentification : "" }}
+          </td>
+        </tr>
+        <!-- fila -->
+        <tr class="spreadsheet__item">
+          <td class="grid grid-cols-[1fr_auto]">
+            <span> Tiene parentesco con (PEP)</span>
+            <div
+              :class="[
+                'border px-1 ml-1 font-black flex items-center justify-center',
+                source.hasPepRelationship === 'SI'
+                  ? 'bg-maximiza-error text-maximiza-blanco1'
+                  : 'bg-maximiza-verde1 text-maximiza-blanco1',
+              ]"
+            >
+              {{ source.hasPepRelationship }}
             </div>
           </td>
         </tr>
         <tr class="spreadsheet__item">
-          <td class="spreadsheet__form-item">
-            Identificación del relacionado:
-            <div class="content">{{ source.relatedIdentification }}</div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="spreadsheet__item flex items-center justify-start">
-      <span class="text-[10px]"
-        >¿El inversionista es asociado cercano de un PEP?</span
-      >
-      <div
-        :class="[
-          'border px-1 ml-1 font-black',
-          source.isPepAssociate === 'SI'
-            ? 'bg-maximiza-error text-maximiza-blanco1'
-            : 'bg-maximiza-verde1 text-maximiza-blanco1',
-        ]"
-      >
-        {{ source.isPepAssociate }}
-      </div>
-    </div>
-
-    <table v-if="source.isPepAssociate === 'SI'" class="w-full">
-      <tbody class="grid grid-cols-[1fr_1fr_1fr_1fr]">
-        <tr class="spreadsheet__item">
-          <td class="spreadsheet__form-item">
-            Nombre del ente adscripción:
-            <div class="content">{{ source.entityName }}</div>
+          <td class="font-bold">
+            {{ source.hasPepRelationship === "SI" ? source.entityName : "" }}
           </td>
         </tr>
         <tr class="spreadsheet__item">
-          <td class="spreadsheet__form-item">
-            Cargo que desempeña:
-            <div class="content">{{ source.position }}</div>
+          <td class="font-bold">
+            {{ source.hasPepRelationship === "SI" ? source.position : "" }}
           </td>
         </tr>
         <tr class="spreadsheet__item">
-          <td class="spreadsheet__form-item">
-            País:
-            <div class="content">
-              {{ getLabel(source.country, countriesOptions) }}
+          <td class="font-bold">
+            {{
+              source.hasPepRelationship === "SI"
+                ? getLabel(source.country, countriesOptions)
+                : ""
+            }}
+          </td>
+        </tr>
+        <tr class="spreadsheet__item">
+          <td class="font-bold">
+            {{
+              source.hasPepRelationship === "SI"
+                ? source.relatedIdentification
+                : ""
+            }}
+          </td>
+        </tr>
+        <!-- fila -->
+        <tr class="spreadsheet__item">
+          <td class="grid grid-cols-[1fr_auto]">
+            <span> Es asociado cercano de (PE)</span>
+            <div
+              :class="[
+                'border px-1 ml-1 font-black flex items-center justify-center',
+                source.isPepAssociate === 'SI'
+                  ? 'bg-maximiza-error text-maximiza-blanco1'
+                  : 'bg-maximiza-verde1 text-maximiza-blanco1',
+              ]"
+            >
+              {{ source.isPep }}
             </div>
           </td>
         </tr>
         <tr class="spreadsheet__item">
-          <td class="spreadsheet__form-item">
-            Identificación del relacionado:
-            <div class="content">{{ source.relatedIdentification }}</div>
+          <td class="font-bold">
+            {{ source.isPepAssociate === "SI" ? source.entityName : "" }}
+          </td>
+        </tr>
+        <tr class="spreadsheet__item">
+          <td class="font-bold">
+            {{ source.isPepAssociate === "SI" ? source.position : "" }}
+          </td>
+        </tr>
+        <tr class="spreadsheet__item">
+          <td class="font-bold">
+            {{
+              source.isPepAssociate === "SI"
+                ? getLabel(source.country, countriesOptions)
+                : ""
+            }}
+          </td>
+        </tr>
+        <tr class="spreadsheet__item">
+          <td class="font-bold">
+            {{
+              source.isPepAssociate === "SI" ? source.relatedIdentification : ""
+            }}
           </td>
         </tr>
       </tbody>

@@ -6,30 +6,48 @@ const { source } = defineProps<{
 
 <template>
   <div class="w-full">
-    <div
-      class="spreadsheet__item text-center font-bold bg-maximiza-verde1 text-maximiza-blanco1"
-    >
+    <div class="spreadsheet__item text-center font-bold">
       Principales proveedores
     </div>
 
     <div class="grid grid-cols-[2fr_1fr]">
-      <div class="spreadsheet__item font-bold bg-maximiza-gris5 text-[10px]">
+      <div class="spreadsheet__item font-bold text-[10px]">
         Nombre o razón social
       </div>
-      <div class="spreadsheet__item font-bold bg-maximiza-gris5 text-[10px]">
-        Ubicación
+      <div class="spreadsheet__item font-bold text-[10px]">Ubicación</div>
+    </div>
+
+    <div class="grid grid-cols-[2fr_1fr]">
+      <div class="spreadsheet__item">
+        <div v-if="source[0]" class="content">{{ source[0].name }}</div>
+        <div v-else class="content">N/A</div>
+      </div>
+      <div class="spreadsheet__item">
+        <div v-if="source[0]" class="content">{{ source[0].location }}</div>
+        <div v-else class="content">N/A</div>
       </div>
     </div>
 
-    <template v-for="(item, i) in source" :key="i">
-      <div class="grid grid-cols-[2fr_1fr]">
-        <div class="spreadsheet__item">
-          <div class="content">{{ item.name }}</div>
-        </div>
-        <div class="spreadsheet__item">
-          <div class="content">{{ item.location }}</div>
-        </div>
+    <div class="grid grid-cols-[2fr_1fr]">
+      <div class="spreadsheet__item">
+        <div v-if="source[1]" class="content">{{ source[1].name }}</div>
+        <div v-else class="content">N/A</div>
       </div>
-    </template>
+      <div class="spreadsheet__item">
+        <div v-if="source[1]" class="content">{{ source[1].location }}</div>
+        <div v-else class="content">N/A</div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-[2fr_1fr]">
+      <div class="spreadsheet__item">
+        <div v-if="source[2]" class="content">{{ source[2].name }}</div>
+        <div v-else class="content">N/A</div>
+      </div>
+      <div class="spreadsheet__item">
+        <div v-if="source[2]" class="content">{{ source[2].location }}</div>
+        <div v-else class="content">N/A</div>
+      </div>
+    </div>
   </div>
 </template>

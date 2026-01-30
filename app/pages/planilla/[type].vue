@@ -38,7 +38,7 @@ const stepsConfigNames = {
     "Aceptación Contrato",
     "Identificación Empresa",
     "Info. Financiera",
-    "Perfil Inversionista",
+    // "Perfil Inversionista",
     "Info. Producto",
     "Descarga",
   ],
@@ -47,7 +47,7 @@ const stepsConfigNames = {
     "Datos Personales",
     "Perfil PEP",
     "Info. Financiera",
-    "Perfil Inversionista",
+    // "Perfil Inversionista",
     "Info. Producto",
     "Descarga",
   ],
@@ -58,7 +58,7 @@ const stepsComponents = {
     AcceptContractStep, //? common step
     EnterpriseIdentificationStep,
     FinancialInformationStep, //? common step
-    InvestorProfileStep, //? common step
+    // InvestorProfileStep, //? common step
     ProductInformationStep, //? common step
     FinalStep, //? common step
   ],
@@ -67,7 +67,7 @@ const stepsComponents = {
     PersonalDataStep,
     PepProfileStep,
     FinancialInformationStep, //? common step
-    InvestorProfileStep, //? common step
+    // InvestorProfileStep, //? common step
     ProductInformationStep, //? common step
     FinalStep, //? common step
   ],
