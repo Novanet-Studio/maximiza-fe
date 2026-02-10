@@ -1,18 +1,10 @@
 <script setup lang="ts">
 import MarkdownIt from "markdown-it";
-import { getMediosQuery } from "~/schemas/medios.schemas";
 
-const graphql = useStrapiGraphQL();
+const { mediosData, fetchMedios } = useMaximizaQueries();
 
-const { data: mediosData } = await useAsyncData(async () => {
-  try {
-    const response = await graphql<any>(getMediosQuery);
-
-    return response?.data?.medio || null;
-  } catch (error) {
-    console.error("Error fetching medio:", error);
-    return null;
-  }
+onMounted(() => {
+  fetchMedios();
 });
 
 useSeoMeta({
@@ -25,20 +17,22 @@ useSeoMeta({
 </script>
 
 <template>
-  <div v-if="mediosData" class="w-full">
-    <CommonHero
-      :text="mediosData.principal.contenido"
-      :image="mediosData.principal.imagen"
-      :show-logo="false"
-      :inverted="true"
-    >
-      <template #custom-title>
-        <h1 class="hero-title text-left">
-          {{ mediosData.principal.titulo }}
-        </h1>
-      </template>
-    </CommonHero>
+  <div class="min-h-dvh">
+    <div v-if="mediosData" class="w-full">
+      <CommonHero
+        :text="mediosData.principal.contenido"
+        :image="mediosData.principal.imagen"
+        :show-logo="false"
+        :inverted="true"
+      >
+        <template #custom-title>
+          <h1 class="hero-title text-left">
+            {{ mediosData.principal.titulo }}
+          </h1>
+        </template>
+      </CommonHero>
 
-    <CommonContactBanner />
+      <CommonContactBanner />
+    </div>
   </div>
 </template>

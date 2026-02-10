@@ -45,7 +45,7 @@ const toggleMenu = () => {
 
       <div class="hidden md:flex items-center justify-end gap-14">
         <div class="group relative flex items-center h-full cursor-pointer">
-          <span class="text-maximiza-verde1 text-5xl mr-1">•</span>
+          <span class="text-maximiza-verde1 text-5xl mr-1 -mt-2">•</span>
           <p
             class="text-xl font-extrabold text-maximiza-gris3 group-hover:text-maximiza-verde1 transition-colors"
           >
@@ -63,7 +63,7 @@ const toggleMenu = () => {
         </div>
 
         <div class="group relative flex items-center h-full cursor-pointer">
-          <span class="text-maximiza-verde1 text-5xl mr-1">•</span>
+          <span class="text-maximiza-verde1 text-5xl mr-1 -mt-2">•</span>
           <p
             class="text-xl font-extrabold text-maximiza-gris3 group-hover:text-maximiza-verde1 transition-colors"
           >
@@ -80,7 +80,7 @@ const toggleMenu = () => {
         </div>
 
         <div class="group relative flex items-center h-full cursor-pointer">
-          <span class="text-maximiza-verde1 text-5xl mr-1">•</span>
+          <span class="text-maximiza-verde1 text-5xl mr-1 -mt-2">•</span>
           <p
             class="text-xl font-extrabold text-maximiza-gris3 group-hover:text-maximiza-verde1 transition-colors"
           >
@@ -98,7 +98,7 @@ const toggleMenu = () => {
         </div>
 
         <div class="group relative flex items-center h-full cursor-pointer">
-          <span class="text-maximiza-verde1 text-5xl mr-1">•</span>
+          <span class="text-maximiza-verde1 text-5xl mr-1 -mt-2">•</span>
           <p
             class="text-xl font-extrabold text-maximiza-gris3 group-hover:text-maximiza-verde1 transition-colors"
           >
