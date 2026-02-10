@@ -8,6 +8,7 @@ import {
   conditionOptions,
   isPepOptions,
   countriesOptions,
+  specificActivityOptions,
   nationalityOptions,
   docTypeOptionsAlt,
   monthlyIncomeOptions,
@@ -157,7 +158,18 @@ const schema = yup.object({
                 .string()
                 .required("Requerido")
                 .matches(/^[0-9]+$/, "Solo números"),
-              percentage: yup.string().required("Requerido"),
+              percentage: yup
+                .string()
+                .required("Requerido")
+                .test(
+                  "is-valid-percentage",
+                  "Porcentaje inválido (0 - 100)",
+                  (value) => {
+                    if (!value) return false;
+                    const percentage = parseFloat(value);
+                    return percentage >= 0 && percentage <= 100;
+                  },
+                ),
               nationality: yup.string().required("Requerido"),
               address: yup.string().required("Requerido"),
               cargo: yup.string().required("Requerido"),
@@ -583,21 +595,22 @@ defineExpose({ validate });
   <form class="flex flex-col gap-6" @submit.prevent>
     <div v-if="type === 'natural'">
       <FormTitle text="Información económica" />
-      <FormBaseLayout>
+      <FormBaseLayout :style="'lg:grid-cols-2'">
         <FormBaseSelect
           name="economicActivity"
           label="Actividad económica"
           v-model="economicActivity"
           :options="economicActivityOptions"
           :error-message="errors.economicActivity"
-          class="xl:col-span-2"
           required
         />
 
-        <FormBaseInput
+        <FormBaseSelect
           name="specificActivity"
           label="Actividad específica"
+          class="col-span-full"
           v-model="specificActivity"
+          :options="specificActivityOptions"
           :error-message="errors.specificActivity"
           required
         />
@@ -667,7 +680,6 @@ defineExpose({ validate });
                     placeholder="12345678"
                     type="tel"
                     :error-message="errors['company.rifNumber']"
-                    :comment="'RIF_REQUIRED'"
                   />
                 </div>
               </div>
@@ -695,11 +707,11 @@ defineExpose({ validate });
               required
             />
 
-            <FormBaseSelect
-              label="Remuneración"
+            <FormBaseInput
+              label="Remuneración (en Bolívares)"
               name="company.remuneration"
               v-model="companyRemuneration"
-              :options="monthlyIncomeOptions"
+              type="number"
               :error-message="errors['company.remuneration'] ? ' ' : ''"
               :comment="'INCOMES'"
             />
@@ -756,7 +768,6 @@ defineExpose({ validate });
                     placeholder="12345678"
                     type="tel"
                     :error-message="errors['business.rifNumber']"
-                    :comment="'RIF_REQUIRED'"
                   />
                 </div>
               </div>
@@ -789,6 +800,7 @@ defineExpose({ validate });
               name="business.fiscalAddress"
               label="Dirección fiscal"
               v-model="businessFiscalAddress"
+              :comment="'RIF_REQUIRED'"
             />
 
             <FormBaseInput
@@ -807,11 +819,12 @@ defineExpose({ validate });
               required
             />
 
-            <FormBaseSelect
-              label="Ingresos mensuales"
+            <FormBaseInput
+              label="Ingresos mensuales (en Bolívares)"
               name="business.income"
               v-model="businessIncome"
-              :options="monthlyIncomeOptions"
+              type="number"
+              :comment="'INCOMES'"
               :error-message="errors['business.income'] ? ' ' : ''"
             />
           </FormBaseLayout>
@@ -913,20 +926,23 @@ defineExpose({ validate });
             Otros Ingresos
           </h5>
           <FormBaseLayout>
-            <FormBaseInput
+            <FormBaseSelect
+              class="col-span-2"
               name="otherIncomeSource"
               label="Actividad generadora"
               v-model="otherIncomeSource"
+              :options="economicActivityOptions"
               :error-message="errors.otherIncomeSource"
               required
             />
 
-            <FormBaseSelect
-              label="Ingresos mensuales (en Bs)"
+            <FormBaseInput
+              label="Ingresos mensuales (en Bolívares)"
               name="otherIncomeAmount"
               v-model="otherIncomeAmount"
-              :options="monthlyIncomeOptions"
+              type="number"
               :error-message="errors.otherIncomeAmount ? ' ' : ''"
+              :comment="'INCOMES'"
             />
           </FormBaseLayout>
         </div>
@@ -939,21 +955,21 @@ defineExpose({ validate });
         <FormBaseLayout class="grid-cols-1 md:grid-cols-3">
           <FormBaseInput
             name="monthlyIncome"
-            label="Ingresos (en Bs)"
+            label="Ingresos (en Bolívares)"
             v-model="monthlyIncome"
             type="number"
             :error-message="errors.monthlyIncome"
           />
           <FormBaseInput
             name="monthlySales"
-            label="Ventas (en Bs)"
+            label="Ventas (en Bolívares)"
             v-model="monthlySales"
             type="number"
             :error-message="errors.monthlySales"
           />
           <FormBaseInput
             name="monthlyExpenses"
-            label="Egresos (en Bs)"
+            label="Egresos (en Bolívares)"
             v-model="monthlyExpenses"
             type="number"
             :error-message="errors.monthlyExpenses"
@@ -979,7 +995,7 @@ defineExpose({ validate });
 
           <FormBaseInput
             name="islrAmount"
-            label="Monto (en Bs)"
+            label="Monto (en Bolívares)"
             v-model="islrAmount"
             :error-message="errors.islrAmount"
           />
@@ -1026,7 +1042,6 @@ defineExpose({ validate });
                       v-model="field.value.dniNumber"
                       type="tel"
                       :error-message="errors[`stockholders[${i}].dniNumber`]"
-                      :comment="'RIF_REQUIRED'"
                       required
                     />
                   </div>
@@ -1037,6 +1052,9 @@ defineExpose({ validate });
                 :name="`stockholders[${i}].percentage`"
                 label="% Accionario"
                 v-model="field.value.percentage"
+                type="number"
+                :max="100"
+                :min="0"
                 :error-message="errors[`stockholders[${i}].percentage`]"
               />
 
@@ -1111,7 +1129,7 @@ defineExpose({ validate });
 
                     <FormBaseInput
                       :name="`stockholders[${i}].relatedIdentification`"
-                      label="Identificación del relacionado (Si aplica)"
+                      label="Identificación del relacionado (En caso de aplicar)"
                       v-model="field.value.relatedIdentification"
                       :error-message="
                         errors[`stockholders[${i}].relatedIdentification`]
@@ -1187,7 +1205,6 @@ defineExpose({ validate });
                       :error-message="
                         errors[`legalRepresentatives[${i}].dniNumber`]
                       "
-                      :comment="'RIF_REQUIRED'"
                     />
                   </div>
                 </div>
@@ -1414,7 +1431,6 @@ defineExpose({ validate });
                       :error-message="
                         errors[`relatedCompanies[${i}].rifNumber`]
                       "
-                      :comment="'RIF_REQUIRED'"
                       type="tel"
                     />
                   </div>
@@ -1483,7 +1499,7 @@ defineExpose({ validate });
         <FormBaseInput
           name="bankReference.averageAmount"
           type="number"
-          label="Cifras promedio mensuales (en Bs)"
+          label="Cifras promedio mensuales (en Bolívares)"
           v-model="bankAverageAmount"
           :error-message="errors['bankReference.averageAmount']"
           required

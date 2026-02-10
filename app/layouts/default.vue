@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const route = useRoute();
 
-// Por defecto el header (logo) se muestra, a menos que la página diga lo contrario
 const showHeader = computed(() => {
   return route.meta.showHeader !== false;
 });

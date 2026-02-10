@@ -102,7 +102,7 @@ const toggleMenu = () => {
           <p
             class="text-xl font-extrabold text-maximiza-gris3 group-hover:text-maximiza-verde1 transition-colors"
           >
-            Ingresar
+            Registro
           </p>
 
           <div

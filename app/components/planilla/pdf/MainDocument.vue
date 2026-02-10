@@ -10,6 +10,7 @@ import {
   fundsSourceOptions,
   fundsDestinationOptions,
   annualInvestmentOptions,
+  specificActivityOptions,
   knowledgeOptions,
   experienceOptions,
   investmentLevelOptions,
@@ -88,15 +89,7 @@ const productNameLabel = computed(() =>
 const currencyLabel = computed(() =>
   getLabel(product.value.currency, currencyOptions),
 );
-const fundsSourceLabel = computed(() =>
-  getLabel(product.value.fundsSource, fundsSourceOptions),
-);
-const fundsDestinationLabel = computed(() =>
-  getLabel(product.value.fundsDestination, fundsDestinationOptions),
-);
-const virtualCurrencyLabel = computed(() =>
-  getLabel(product.value.virtualCurrencyUse, virtualCurrencyOptions),
-);
+
 const originCountryLabel = computed(() =>
   getLabel(product.value.originCountry, countriesOptions),
 );
@@ -288,7 +281,9 @@ onMounted(() => {
             <div class="spreadsheet__item">
               <div class="spreadsheet__form-item">
                 <div>Fuente de ingreso:</div>
-                <div class="content">{{ personal.incomeSource }}</div>
+                <div class="content">
+                  {{ getLabel(personal.incomeSource, economicActivityOptions) }}
+                </div>
               </div>
             </div>
           </div>
@@ -433,7 +428,7 @@ onMounted(() => {
           <div class="grid grid-cols-2 w-full">
             <div class="spreadsheet__item border-b-0 border-r-0">
               <div class="spreadsheet__form-item">
-                <div>Actividad económica:</div>
+                <div>Actividad asdfa sdf económica:</div>
               </div>
             </div>
 
@@ -454,7 +449,12 @@ onMounted(() => {
             <div class="spreadsheet__item">
               <div class="spreadsheet__form-item">
                 <div class="content text-[9px] leading-tight">
-                  {{ financial.specificActivity }}
+                  {{
+                    getLabel(
+                      enterprise.specificActivity,
+                      specificActivityOptions,
+                    )
+                  }}
                 </div>
               </div>
             </div>
@@ -481,21 +481,13 @@ onMounted(() => {
 
                 <div class="spreadsheet__item">
                   <div class="spreadsheet__form-item">
-                    <div>Fecha:</div>
-                    <div class="content">
-                      {{ formatDate(enterprise.registerData?.date) }}
-                    </div>
-                  </div>
-                </div>
-
-                <div class="spreadsheet__item">
-                  <div class="spreadsheet__form-item">
                     <div>Número:</div>
                     <div class="content">
                       {{ enterprise.registerData?.number }}
                     </div>
                   </div>
                 </div>
+
                 <div class="spreadsheet__item">
                   <div class="spreadsheet__form-item">
                     <div>Tomo:</div>
@@ -504,11 +496,21 @@ onMounted(() => {
                     </div>
                   </div>
                 </div>
+
                 <div class="spreadsheet__item">
                   <div class="spreadsheet__form-item">
                     <div>Folio:</div>
                     <div class="content">
                       {{ enterprise.registerData?.fol }}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="spreadsheet__item">
+                  <div class="spreadsheet__form-item">
+                    <div>Fecha:</div>
+                    <div class="content">
+                      {{ formatDate(enterprise.registerData?.date) }}
                     </div>
                   </div>
                 </div>
@@ -546,21 +548,13 @@ onMounted(() => {
 
                 <div class="spreadsheet__item">
                   <div class="spreadsheet__form-item">
-                    <div>Fecha de modificación:</div>
-                    <div class="content">
-                      {{ formatDate(enterprise.lastModification?.date) }}
-                    </div>
-                  </div>
-                </div>
-
-                <div class="spreadsheet__item">
-                  <div class="spreadsheet__form-item">
                     <div>Número:</div>
                     <div class="content">
                       {{ enterprise.lastModification?.number }}
                     </div>
                   </div>
                 </div>
+
                 <div class="spreadsheet__item">
                   <div class="spreadsheet__form-item">
                     <div>Tomo:</div>
@@ -569,11 +563,21 @@ onMounted(() => {
                     </div>
                   </div>
                 </div>
+
                 <div class="spreadsheet__item">
                   <div class="spreadsheet__form-item">
                     <div>Folio:</div>
                     <div class="content">
                       {{ enterprise.lastModification?.fol }}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="spreadsheet__item">
+                  <div class="spreadsheet__form-item">
+                    <div>Fecha de modificación:</div>
+                    <div class="content">
+                      {{ formatDate(enterprise.lastModification?.date) }}
                     </div>
                   </div>
                 </div>
@@ -708,9 +712,7 @@ onMounted(() => {
         </h5>
         <div class="grid grid-cols-2">
           <div class="spreadsheet__item">
-            <div class="spreadsheet__form-item">
-              <div>Actividad económica:</div>
-            </div>
+            <div class="spreadsheet__form-item"></div>
           </div>
           <div class="spreadsheet__item">
             <div class="spreadsheet__form-item">
@@ -727,7 +729,11 @@ onMounted(() => {
           </div>
           <div class="spreadsheet__item">
             <div class="spreadsheet__form-item">
-              <div class="content">{{ financial.specificActivity }}</div>
+              <div class="content">
+                {{
+                  getLabel(financial.specificActivity, specificActivityOptions)
+                }}
+              </div>
             </div>
           </div>
         </div>
@@ -910,11 +916,11 @@ onMounted(() => {
               class="spreadsheet__form-item border-r-2 border-maximiza-verde1"
             >
               <div>Compra:</div>
-              <div class="content">Temp</div>
+              <div class="content">{{ product.perTransferPurchase }}</div>
             </div>
             <div class="spreadsheet__form-item">
               <div>Venta:</div>
-              <div class="content">Temp</div>
+              <div class="content">{{ product.perTransferSale }}</div>
             </div>
           </div>
 

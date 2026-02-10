@@ -8,6 +8,7 @@ import {
   genderOptions,
   nationalityOptions,
   countriesOptions,
+  economicActivityOptions,
   docTypeOptions,
   occupationsOptions,
   booleanOptions,
@@ -122,7 +123,8 @@ const { handleSubmit, errors, defineField } = useForm({
     maritalStatus:
       wizard.state.value.formData.personalData?.maritalStatus || "",
     profession: wizard.state.value.formData.personalData?.profession || "",
-    incomeSource: wizard.state.value.formData.personalData?.incomeSource || "",
+    incomeSource:
+      wizard.state.value.formData.personalData?.incomeSource || "SAO0010",
     spouseName: wizard.state.value.formData.personalData?.spouseName || "N/A",
     spouseIdentification:
       wizard.state.value.formData.personalData?.spouseIdentification || "N/A",
@@ -318,7 +320,7 @@ defineExpose({
 
         <FormBaseInput
           name="otherNationality"
-          label="Otra nacionalidad (Si aplica)"
+          label="Otra nacionalidad (En caso de aplicar)"
           v-model="otherNationality"
         />
       </FormBaseLayout>
@@ -354,6 +356,7 @@ defineExpose({
           :error-message="errors.address"
           required
           class="col-span-2"
+          :comment="'RIF_REQUIRED'"
         />
 
         <FormBaseInput
@@ -387,17 +390,18 @@ defineExpose({
           required
         />
 
-        <FormBaseInput
+        <FormBaseSelect
           name="incomeSource"
           label="Fuente de ingreso"
           v-model="incomeSource"
+          :options="economicActivityOptions"
           :error-message="errors.incomeSource"
           required
         />
       </FormBaseLayout>
 
       <FormTitle
-        text="Datos personales del cónyuge (Si aplica)"
+        text="Datos personales del cónyuge (En caso de aplicar)"
         :style="'mt-12'"
       />
 

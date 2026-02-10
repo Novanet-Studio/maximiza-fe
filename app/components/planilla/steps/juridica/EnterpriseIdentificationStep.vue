@@ -6,6 +6,7 @@ import { usePlanillaWizard } from "~/composables/usePlanillaWizard";
 import {
   economicActivityOptions,
   countriesOptions,
+  specificActivityOptions,
 } from "~/assets/data/formSources";
 
 const wizard = usePlanillaWizard();
@@ -315,10 +316,12 @@ defineExpose({ validate });
           required
         />
 
-        <FormBaseInput
+        <FormBaseSelect
+          class="col-span-full"
           name="specificActivity"
           label="Actividad específica"
           v-model="specificActivity"
+          :options="specificActivityOptions"
           :error-message="errors.specificActivity"
           required
         />
@@ -379,7 +382,7 @@ defineExpose({ validate });
         />
         <FormBaseInput
           name="registerFol"
-          label="Folio (Si aplica)"
+          label="Folio (En caso de aplicar)"
           v-model="registerFol"
         />
         <FormBaseInput
@@ -428,7 +431,7 @@ defineExpose({ validate });
         />
         <FormBaseInput
           name="lastModFol"
-          label="Folio (Si aplica)"
+          label="Folio (En caso de aplicar)"
           v-model="lastModFol"
           placeholder="No aplica"
         />

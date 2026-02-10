@@ -143,7 +143,7 @@ defineExpose({
           />
           <FormBaseInput
             name="relatedIdentification"
-            label="Identificación del relacionado (Si aplica)"
+            label="Identificación del relacionado (En caso de aplicar)"
             v-model="relatedIdentification"
             placeholder="Documento ID"
           />

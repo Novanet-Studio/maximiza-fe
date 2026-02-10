@@ -65,8 +65,6 @@ const documentsList = computed(() => {
   } else {
     const legalRepresentatives = financial.value.legalRepresentatives || [];
 
-    console.log(legalRepresentatives);
-
     if (legalRepresentatives.length === 0) {
       return [
         {
@@ -90,8 +88,6 @@ const documentsList = computed(() => {
     }));
   }
 });
-
-console.log(documentsList.value);
 </script>
 
 <template>

@@ -1,27 +1,44 @@
 <script setup lang="ts">
-import { getFooterQuery } from "~/schemas/common.schema";
+// const graphql = useStrapiGraphQL();
 
-const graphql = useStrapiGraphQL();
-
-const { data: socialLinks } = await useAsyncData<any[]>(
-  async () => {
-    try {
-      const response = await graphql<any>(getFooterQuery);
-
-      if (response.data.contacto.info_contacto) {
-        return response.data.contacto.info_contacto;
-      }
-
-      return [];
-    } catch (error) {
-      console.error("Error cargando footer:", error);
-      return [];
-    }
+const socialLinks = ref<any[]>([
+  {
+    id: "1",
+    icono: "instagram",
+    prefijo: "fab",
+    vinculo: "https://www.instagram.com/maximiza_ve/",
+    contenido: "Instagram",
   },
   {
-    default: () => [],
+    id: "3",
+    icono: "twitter",
+    prefijo: "fab",
+    vinculo: "https://twitter.com/maximiza_ve",
+    contenido: "twitter",
   },
-);
+]);
+
+// const { data: socialLinks } = await useAsyncData<any[]>(
+//   async () => {
+//     try {
+//       const response = await graphql<any>(getFooterQuery);
+
+//       console.log("footer resp", response);
+
+//       if (response.data.contacto.info_contacto) {
+//         return response.data.contacto.info_contacto;
+//       }
+
+//       return [];
+//     } catch (error) {
+//       console.error("Error cargando footer:", error);
+//       return [];
+//     }
+//   },
+//   {
+//     default: () => [],
+//   },
+// );
 
 const currentYear = new Date().getFullYear();
 </script>

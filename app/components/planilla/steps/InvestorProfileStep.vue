@@ -134,7 +134,7 @@ defineExpose({
         class="p-4 border-l border-b border-maximiza-gris5/90 bg-maximiza-gris5/10"
       >
         <h5 class="text-maximiza-verde1 font-black mb-1 text-lg">
-          Total de activos líquidos (en Bs)
+          Total de activos líquidos (en Bolívares)
         </h5>
 
         <FormBaseInput
@@ -151,7 +151,7 @@ defineExpose({
         class="p-4 border-l border-b border-maximiza-gris5/90 bg-maximiza-gris5/10"
       >
         <h5 class="text-maximiza-verde1 font-black mb-1 text-lg">
-          Patrimonio total (en Bs)
+          Patrimonio total (en Bolívares)
         </h5>
 
         <FormBaseInput

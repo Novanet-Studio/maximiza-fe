@@ -18,8 +18,6 @@ export default defineNuxtConfig({
     public: {
       strapi: {
         url: process.env.STRAPI_API_URL || "http://localhost:1337",
-        token: process.env.STRAPI_TOKEN || undefined,
-
         prefix: "/api",
         version: "v4",
       },
@@ -101,7 +99,7 @@ export default defineNuxtConfig({
   fonts: {
     families: [
       {
-        name: "Monserrat",
+        name: "Montserrat",
         provider: "local", // or 'local', 'adobe'
         weights: [300, 400, 500, 600, 700, 800, 900], // Include all desired weights
         styles: ["normal", "italic"],
@@ -163,6 +161,11 @@ export default defineNuxtConfig({
   image: {
     cloudinary: {
       baseURL: "https://res.cloudinary.com/novanet-studio/image/upload/",
+    },
+  },
+  vite: {
+    optimizeDeps: {
+      include: ["qs"],
     },
   },
 });

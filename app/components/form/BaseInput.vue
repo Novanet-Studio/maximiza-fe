@@ -17,6 +17,7 @@ interface Props {
 }
 
 const COMMENT_TYPES: Record<string, string> = {
+  INCOMES: "El monto indicado debe coincidir con su constancia de ingreso",
   RIF_REQUIRED:
     "Ingresar la información exacta como aparece en su Registro de Información fiscal",
 };

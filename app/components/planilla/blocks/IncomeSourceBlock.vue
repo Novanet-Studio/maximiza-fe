@@ -5,7 +5,7 @@ import {
   getLabel,
 } from "~/assets/data/formSources";
 
-import { formatDate } from "~/lib/utils";
+import { formatAmount, formatDate } from "~/lib/utils";
 
 const { source } = defineProps<{
   source: MXMZ.FinancialInformation;
@@ -98,10 +98,7 @@ const { source } = defineProps<{
           <div class="spreadsheet__form-item">
             Remuneración
             <div class="content">
-              {{
-                getLabel(source.company.remuneration, monthlyIncomeOptions) ||
-                "N/A"
-              }}
+              {{ formatAmount(source.company.remuneration) || "N/A" }}
             </div>
           </div>
         </div>
@@ -130,12 +127,12 @@ const { source } = defineProps<{
         <div class="spreadsheet__item">
           <div class="spreadsheet__form-item">
             Ramo del negocio:
-            <div class="content">
+            <span class="content font-bold">
               {{
                 getLabel(source.company.branch, economicActivityOptions) ||
                 "N/A"
               }}
-            </div>
+            </span>
           </div>
         </div>
       </div>
@@ -167,9 +164,7 @@ const { source } = defineProps<{
           <div class="spreadsheet__form-item">
             Ingresos mensuales:
             <div class="content">
-              {{
-                getLabel(source.business.income, monthlyIncomeOptions) || "N/A"
-              }}
+              {{ formatAmount(source.business.income) || "N/A" }}
             </div>
           </div>
         </div>
@@ -289,16 +284,16 @@ const { source } = defineProps<{
         <div class="col-span-full grid grid-cols-2">
           <div class="spreadsheet__item">
             <div class="content">
-              {{ source.otherIncomeSource || "N/A" }}
+              {{
+                getLabel(source.otherIncomeSource, economicActivityOptions) ||
+                "N/A"
+              }}
             </div>
           </div>
 
           <div class="spreadsheet__item">
             <div class="content">
-              {{
-                getLabel(source.otherIncomeAmount, monthlyIncomeOptions) ||
-                "N/A"
-              }}
+              {{ formatAmount(source.otherIncomeAmount) || "N/A" }}
             </div>
           </div>
         </div>
