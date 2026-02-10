@@ -3,20 +3,13 @@ import MarkdownIt from "markdown-it";
 
 import { getImageUrl, getImageAlt, truncateText } from "~/lib/utils";
 
-import { getCapitalQuery } from "~/schemas/capital.schema";
-
 const md = new MarkdownIt({ html: true, breaks: true });
 const renderMarkdown = (content: string) => md.render(content || "");
 
-const graphql = useStrapiGraphQL();
-const { data: capitalData } = await useAsyncData(async () => {
-  try {
-    const response = await graphql<any>(getCapitalQuery);
-    return response?.data?.capital || null;
-  } catch (error) {
-    console.error("Error fetching capital:", error);
-    return null;
-  }
+const { capitalData, fetchCapital } = useMaximizaQueries();
+
+onMounted(() => {
+  fetchCapital();
 });
 
 useSeoMeta({
@@ -29,62 +22,64 @@ useSeoMeta({
 </script>
 
 <template>
-  <div v-if="capitalData" class="w-full">
-    <!-- HERO -->
-    <CommonHero
-      :image="capitalData.principal.imagen"
-      :inverted="true"
-      :show-logo="false"
-      :button-text="''"
-    >
-      <template #custom-title>
-        <h1 class="hero-title text-left">
-          {{ capitalData.principal.titulo }}
-        </h1>
-      </template>
-    </CommonHero>
-
-    <section class="mx-auto px-4 xl:px-0 mt-16 md:mt-24 mb-16">
-      <h2
-        class="font-black text-maximiza-negro1 text-xl md:text-2xl xl:text-3xl text-center mb-12"
+  <div class="min-h-dvh">
+    <div v-if="capitalData" class="w-full">
+      <!-- HERO -->
+      <CommonHero
+        :image="capitalData.principal.imagen"
+        :inverted="true"
+        :show-logo="false"
+        :button-text="''"
       >
-        {{ capitalData.partners_titulo }}
-      </h2>
+        <template #custom-title>
+          <h1 class="hero-title text-left">
+            {{ capitalData.principal.titulo }}
+          </h1>
+        </template>
+      </CommonHero>
 
-      <ul class="flex flex-col gap-16 md:gap-24 w-full md:w-[90%] mx-auto">
-        <li
-          v-for="(item, index) in capitalData.partners_secciones"
-          :key="item.id"
-          class="flex flex-col md:flex-row items-center gap-8 md:gap-12"
+      <section class="mx-auto px-4 xl:px-0 mt-16 md:mt-24 mb-16">
+        <h2
+          class="font-black text-maximiza-negro1 text-xl md:text-2xl xl:text-3xl text-center mb-12"
         >
-          <div
-            class="w-full md:w-[35%] shrink-0"
-            :class="{ 'md:order-last': Number(index) % 2 !== 0 }"
-          >
-            <NuxtImg
-              :src="getImageUrl(item.imagen)"
-              :alt="getImageAlt(item.imagen)"
-              provider="cloudinary"
-              class="w-full h-auto object-cover md:max-h-[28vh]"
-            />
-          </div>
+          {{ capitalData.partners_titulo }}
+        </h2>
 
-          <div
-            class="w-full md:w-[65%]"
-            :class="{
-              'text-left': Number(index) % 2 === 0,
-              'md:text-right': Number(index) % 2 !== 0,
-            }"
+        <ul class="flex flex-col gap-16 md:gap-24 w-full md:w-[90%] mx-auto">
+          <li
+            v-for="(item, index) in capitalData.partners_secciones"
+            :key="item.id"
+            class="flex flex-col md:flex-row items-center gap-8 md:gap-12"
           >
             <div
-              class="text-maximiza-gris1 font-normal text-sm md:text-base xl:text-lg leading-relaxed prose prose-p:my-0"
-              v-html="renderMarkdown(item.contenido)"
-            ></div>
-          </div>
-        </li>
-      </ul>
-    </section>
+              class="w-full md:w-[35%] shrink-0"
+              :class="{ 'md:order-last': Number(index) % 2 !== 0 }"
+            >
+              <NuxtImg
+                :src="getImageUrl(item.imagen)"
+                :alt="getImageAlt(item.imagen)"
+                provider="cloudinary"
+                class="w-full h-auto object-cover md:max-h-[28vh]"
+              />
+            </div>
 
-    <CommonContactBanner />
+            <div
+              class="w-full md:w-[65%]"
+              :class="{
+                'text-left': Number(index) % 2 === 0,
+                'md:text-right': Number(index) % 2 !== 0,
+              }"
+            >
+              <div
+                class="text-maximiza-gris1 font-normal text-sm md:text-base xl:text-lg leading-relaxed prose prose-p:my-0"
+                v-html="renderMarkdown(item.contenido)"
+              ></div>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <CommonContactBanner />
+    </div>
   </div>
 </template>

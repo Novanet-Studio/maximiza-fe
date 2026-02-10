@@ -96,18 +96,6 @@ export default defineNuxtConfig({
     id: "G-4W17JXKS6P",
   },
 
-  fonts: {
-    families: [
-      {
-        name: "Montserrat",
-        provider: "local", // or 'local', 'adobe'
-        weights: [300, 400, 500, 600, 700, 800, 900], // Include all desired weights
-        styles: ["normal", "italic"],
-        subsets: ["latin-ext", "latin"],
-      },
-    ],
-  },
-
   icon: {
     class: "icon",
     mode: "css",
@@ -154,7 +142,19 @@ export default defineNuxtConfig({
 
         { name: "viewport", content: "width=device-width, initial-scale=1" },
       ],
-      link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
+      link: [
+        { rel: "icon", type: "image/png", href: "/favicon.png" },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        {
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossorigin: "",
+        },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+        },
+      ],
     },
   },
 
