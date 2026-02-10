@@ -44,8 +44,8 @@ const schema = yup.object({
   lastModDate: yup.string().required("Requerido"),
   lastModCapital: yup.string().required("Requerido"),
 
-  publicEntitiesDate: yup.string().required("Requerido"),
-  ontCode: yup.string().required("Requerido"),
+  publicEntitiesDate: yup.string().optional(),
+  ontCode: yup.string().optional(),
 
   publicPhones: yup
     .string()
@@ -139,7 +139,7 @@ const { handleSubmit, errors, defineField } = useForm({
     authority:
       wizard.state.value.formData.enterpriseIdentification?.authority || "",
     ontCode:
-      wizard.state.value.formData.enterpriseIdentification?.ontCode || "",
+      wizard.state.value.formData.enterpriseIdentification?.ontCode || "N/A",
 
     publicPhones:
       wizard.state.value.formData.enterpriseIdentification?.publicPhones || "",
@@ -467,11 +467,10 @@ defineExpose({ validate });
 
         <FormBaseInput
           name="publicEntitiesDate"
-          label="Fecha"
+          label="Fecha (En caso de aplicar)"
           type="date"
           v-model="publicEntitiesDate"
           :error-message="errors.publicEntitiesDate"
-          required
         />
 
         <FormBaseInput
@@ -483,10 +482,9 @@ defineExpose({ validate });
 
         <FormBaseInput
           name="ontCode"
-          label="Código ONT"
+          label="Código ONT (En caso de aplicar)"
           v-model="ontCode"
           :error-message="errors.ontCode"
-          required
         />
       </FormBaseLayout>
     </div>

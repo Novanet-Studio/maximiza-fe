@@ -608,7 +608,7 @@ onMounted(() => {
                   <div class="spreadsheet__form-item">
                     <div>Número de gaceta oficial:</div>
                     <div class="content">
-                      {{ enterprise.officialGazetteNumber }}
+                      {{ enterprise.officialGazetteNumber || "N/A" }}
                     </div>
                   </div>
                 </div>
@@ -616,20 +616,22 @@ onMounted(() => {
                   <div class="spreadsheet__form-item">
                     <div>Fecha:</div>
                     <div class="content">
-                      {{ formatDate(enterprise.publicEntitiesDate) }}
+                      {{ formatDate(enterprise.publicEntitiesDate) || "N/A" }}
                     </div>
                   </div>
                 </div>
                 <div class="spreadsheet__item">
                   <div class="spreadsheet__form-item">
                     <div>Autoridad / Ente de adscripción:</div>
-                    <div class="content">{{ enterprise.authority }}</div>
+                    <div class="content">
+                      {{ enterprise.authority || "N/A" }}
+                    </div>
                   </div>
                 </div>
                 <div class="spreadsheet__item">
                   <div class="spreadsheet__form-item">
                     <div>Código ONT:</div>
-                    <div class="content">{{ enterprise.ontCode }}</div>
+                    <div class="content">{{ enterprise.ontCode || "N/A" }}</div>
                   </div>
                 </div>
               </div>

@@ -168,7 +168,7 @@ de la misma
         <b class="font-extrabold"
           >Realiza tu registro o actualizacioón de datos</b
         >
-        en la Caja Venezolana de Valores (CVV) y descarga la lanilla firmada:
+        en la Caja Venezolana de Valores (CVV) y descarga la planilla firmada:
       </p>
 
       <ul>
@@ -352,7 +352,7 @@ de la misma
         <b class="font-extrabold"
           >Realiza tu registro o actualizacioón de datos</b
         >
-        en la Caja Venezolana de Valores (CVV) y descarga la lanilla firmada:
+        en la Caja Venezolana de Valores (CVV) y descarga la planilla firmada:
       </p>
 
       <ul>

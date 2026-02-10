@@ -66,8 +66,8 @@ defineExpose({
       cierta y completa y que refleja con exactitud la realidad legal y
       financiera del cliente y, autoriza suficientemente a Maximiza Casa de
       Bolsa, C.A., para que verifique los datos aportados y que han sido
-      vertidos en esta planilla, señalados en la providencia N°209 y las demás
-      disposiciones que tutelan esta materia.
+      vertidos en esta planilla, señalados en la providencia N°025 y las demás
+      disposiciones que tutelan esta materia
     </p>
 
     <FormBaseLayout>
