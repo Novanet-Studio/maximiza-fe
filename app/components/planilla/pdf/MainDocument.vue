@@ -430,7 +430,7 @@ onMounted(() => {
           <div class="grid grid-cols-2 w-full">
             <div class="spreadsheet__item border-b-0 border-r-0">
               <div class="spreadsheet__form-item">
-                <div>Actividad asdfa sdf económica:</div>
+                <div>Actividad económica:</div>
               </div>
             </div>
 
