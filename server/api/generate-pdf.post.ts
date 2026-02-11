@@ -12,13 +12,15 @@ export default defineEventHandler(async (event) => {
   let browser;
 
   try {
-    // LÓGICA HÍBRIDA: LOCAL VS PRODUCCIÓN
-    if (process.env.NODE_ENV === 'production' || process.env.NETLIFY) {
-      // --- CONFIGURACIÓN PARA NETLIFY / AWS LAMBDA ---
-      
-      // Configuración de gráficos para ahorrar memoria
+
+    const isProduction = process.env.NETLIFY || process.env.NODE_ENV === 'production';
+
+    if (isProduction) {
+      console.log('Iniciando Chromium en modo Serverless...');
+
+      chromium.setHeadlessMode = true;
       chromium.setGraphicsMode = false;
-      
+
       browser = await puppeteer.launch({
         args: chromium.args,
         defaultViewport: chromium.defaultViewport,
@@ -28,40 +30,29 @@ export default defineEventHandler(async (event) => {
       });
 
     } else {
-      // --- CONFIGURACIÓN PARA LOCALHOST (WINDOWS/MAC/LINUX) ---
-      // puppeteer-core no descarga Chrome, necesitamos decirle dónde está el tuyo.
-      // Ajusta esta ruta según tu sistema operativo:
-      
-      // Windows: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
-      // Mac: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-      // Linux: '/usr/bin/google-chrome'
-      
-      const localExecutablePath = 
-        process.platform === 'win32' 
-          ? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' 
-          : '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+
+      const localExecutablePath = process.platform === 'win32'
+        ? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
+        : '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 
       browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        executablePath: localExecutablePath, 
+        executablePath: localExecutablePath,
         headless: true
       });
     }
 
     const page = await browser.newPage();
 
+
     const fullHtml = `
       <!DOCTYPE html>
       <html lang="es">
       <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
           ${cssContent}
-          body { 
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
-          }
+          body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
           @page { margin: 0; size: A4; }
         </style>
       </head>
@@ -71,9 +62,10 @@ export default defineEventHandler(async (event) => {
       </html>
     `;
 
-    await page.setContent(fullHtml, { 
-      waitUntil: 'networkidle0',
-      timeout: 30000 
+
+    await page.setContent(fullHtml, {
+      waitUntil: 'load',
+      timeout: 8000
     });
 
     const pdfBuffer = await page.pdf({
@@ -84,21 +76,21 @@ export default defineEventHandler(async (event) => {
 
     await browser.close();
 
+
     setHeaders(event, {
       'Content-Type': 'application/pdf',
-      'Content-Disposition': 'attachment; filename="planilla.pdf"',
+      'Content-Disposition': 'attachment; filename="documento.pdf"',
     });
 
     return pdfBuffer;
 
-  } catch (error) {
-    console.error("ERROR GENERATING PDF:", error);
-    // Asegurarse de cerrar el navegador si falla
+  } catch (error: any) {
+    console.error("ERROR CRÍTICO PDF:", error);
     if (browser) await browser.close();
-    
+
     throw createError({
       statusCode: 500,
-      statusMessage: `Error generando PDF: ${error.message}`
+      statusMessage: error.message
     });
   }
 });
