@@ -12,17 +12,17 @@ export default defineEventHandler(async (event) => {
   let browser;
 
   try {
-    console.log('Iniciando generación de PDF...');
 
-    if (process.env.NODE_ENV === 'production' || process.env.NETLIFY) {
+    const isProduction = process.env.NETLIFY || process.env.NODE_ENV === 'production';
 
-
+    if (isProduction) {
+      console.log('Iniciando Chromium en modo Serverless...');
 
       chromium.setHeadlessMode = true;
       chromium.setGraphicsMode = false;
 
       browser = await puppeteer.launch({
-        args: [...chromium.args, '--hide-scrollbars', '--disable-web-security'],
+        args: chromium.args,
         defaultViewport: chromium.defaultViewport,
         executablePath: await chromium.executablePath(),
         headless: chromium.headless,
@@ -31,10 +31,10 @@ export default defineEventHandler(async (event) => {
 
     } else {
 
-      const localExecutablePath =
-        process.platform === 'win32'
-          ? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
-          : '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+      console.log('Iniciando Chrome local...');
+      const localExecutablePath = process.platform === 'win32'
+        ? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
+        : '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 
       browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -52,7 +52,6 @@ export default defineEventHandler(async (event) => {
       <head>
         <meta charset="UTF-8">
         <style>
-          /* Forzar estilos de impresión */
           ${cssContent}
           body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
           @page { margin: 0; size: A4; }
@@ -65,12 +64,10 @@ export default defineEventHandler(async (event) => {
     `;
 
 
-
     await page.setContent(fullHtml, {
-      waitUntil: 'domcontentloaded',
-      timeout: 10000
+      waitUntil: 'load',
+      timeout: 8000
     });
-
 
     const pdfBuffer = await page.pdf({
       format: 'A4',
@@ -83,19 +80,18 @@ export default defineEventHandler(async (event) => {
 
     setHeaders(event, {
       'Content-Type': 'application/pdf',
-      'Content-Disposition': 'attachment; filename="planilla.pdf"',
+      'Content-Disposition': 'attachment; filename="documento.pdf"',
     });
 
     return pdfBuffer;
 
   } catch (error: any) {
-    console.error("ERROR GENERATING PDF:", error);
+    console.error("ERROR CRÍTICO PDF:", error);
     if (browser) await browser.close();
-
 
     throw createError({
       statusCode: 500,
-      statusMessage: `Error interno: ${error.message}`
+      statusMessage: error.message
     });
   }
 });

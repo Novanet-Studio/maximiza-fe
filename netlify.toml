@@ -3,4 +3,5 @@
   publish = "dist"
 
 [functions]
+  external_node_modules = ["@sparticuz/chromium", "puppeteer-core"]
   node_bundler = "esbuild"

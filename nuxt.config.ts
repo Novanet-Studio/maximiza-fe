@@ -114,10 +114,9 @@ export default defineNuxtConfig({
     },
     moduleSideEffects: ['@sparticuz/chromium'],
     externals: {
-      trace: false,
-      external: ['@sparticuz/chromium']
+      inline: [],
+      external: ['@sparticuz/chromium', 'puppeteer-core']
     },
-    // Aumentar el timeout de la función (si usas plan Pro ayuda, si no, optimiza el PDF)
     routeRules: {
       '/api/generate-pdf': { cors: true, headers: { 'Access-Control-Allow-Origin': '*' } }
     }
