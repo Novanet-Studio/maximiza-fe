@@ -97,6 +97,7 @@ const destinationCountryLabel = computed(() =>
   getLabel(product.value.destinationCountry, countriesOptions),
 );
 
+/*
 onMounted(() => {
   if (process.client) {
     console.group("📋 PDF JURIDICA MOCK DATA");
@@ -104,6 +105,7 @@ onMounted(() => {
     console.groupEnd();
   }
 });
+*/
 </script>
 
 <template>
@@ -462,8 +464,7 @@ onMounted(() => {
 
           <div class="w-full grid grid-cols-[135px_1fr]">
             <aside
-              class="bg-maximiza-verde1 min-h-[60px] flex justify-center items-center border-b border-maximiza-blanco1"
-            >
+              class="bg-maximiza-verde1 min-h-[60px] flex justify-center items-center border-b border-maximiza-blanco1">
               <h5 class="text-maximiza-blanco1 font-bold">
                 Datos del registro
               </h5>
@@ -529,8 +530,7 @@ onMounted(() => {
 
           <div class="w-full grid grid-cols-[135px_1fr]">
             <aside
-              class="bg-maximiza-verde1 min-h-[60px] flex justify-center items-center border-b border-maximiza-blanco1"
-            >
+              class="bg-maximiza-verde1 min-h-[60px] flex justify-center items-center border-b border-maximiza-blanco1">
               <h5 class="text-maximiza-blanco1 font-bold">
                 Última modificación
               </h5>
@@ -597,9 +597,7 @@ onMounted(() => {
           </div>
 
           <div class="w-full grid grid-cols-[135px_1fr]">
-            <aside
-              class="bg-maximiza-verde1 min-h-[60px] flex justify-center items-center"
-            >
+            <aside class="bg-maximiza-verde1 min-h-[60px] flex justify-center items-center">
               <h5 class="text-maximiza-blanco1 font-bold">Entes públicos</h5>
             </aside>
             <div>
@@ -697,9 +695,7 @@ onMounted(() => {
             INFORMACIÓN ECONÓMICO FINANCIERA DE LA EMPRESA
           </h5>
           <PlanillaBlocksStockholdersBlock :source="financial.stockholders" />
-          <PlanillaBlocksLegalRepresentativesBlock
-            :source="financial.legalRepresentatives"
-          />
+          <PlanillaBlocksLegalRepresentativesBlock :source="financial.legalRepresentatives" />
         </template>
 
         <template v-else>
@@ -756,10 +752,7 @@ onMounted(() => {
         </template>
 
         <template v-else>
-          <PlanillaBlocksPepBlock
-            :source="pep"
-            :stockholders="financial.stockholders"
-          />
+          <PlanillaBlocksPepBlock :source="pep" :stockholders="financial.stockholders" />
 
           <div class="grid grid-cols-3">
             <div class="spreadsheet__item">
@@ -845,9 +838,7 @@ onMounted(() => {
             <PlanillaBlocksClientsBlock :source="financial.clients" />
           </div>
 
-          <PlanillaBlocksRelatedCompaniesBlock
-            :source="financial.relatedCompanies"
-          />
+          <PlanillaBlocksRelatedCompaniesBlock :source="financial.relatedCompanies" />
 
           <PlanillaBlocksBankReferencesBlock :source="financial" />
         </template>
@@ -914,9 +905,7 @@ onMounted(() => {
           </div>
 
           <div class="spreadsheet__item grid grid-cols-2">
-            <div
-              class="spreadsheet__form-item border-r-2 border-maximiza-verde1"
-            >
+            <div class="spreadsheet__form-item border-r-2 border-maximiza-verde1">
               <div>Compra:</div>
               <div class="content">{{ product.perTransferPurchase }}</div>
             </div>
@@ -927,16 +916,12 @@ onMounted(() => {
           </div>
 
           <div class="spreadsheet__item grid grid-cols-3">
-            <div
-              class="spreadsheet__form-item border-r-2 border-maximiza-verde1"
-            >
+            <div class="spreadsheet__form-item border-r-2 border-maximiza-verde1">
               <div>País origen:</div>
               <div class="content">{{ originCountryLabel || "N/A" }}</div>
             </div>
 
-            <div
-              class="spreadsheet__form-item border-r-2 border-maximiza-verde1"
-            >
+            <div class="spreadsheet__form-item border-r-2 border-maximiza-verde1">
               <div>País destino:</div>
               <div class="content">{{ destinationCountryLabel || "N/A" }}</div>
             </div>
@@ -948,10 +933,8 @@ onMounted(() => {
           </div>
         </div>
 
-        <div
-          v-if="product.sendOrReceiveFundsFromAbroad === 'SI'"
-          class="spreadsheet__item font-bold bg-maximiza-gris5 text-[10px]"
-        >
+        <div v-if="product.sendOrReceiveFundsFromAbroad === 'SI'"
+          class="spreadsheet__item font-bold bg-maximiza-gris5 text-[10px]">
           Enviar o recibir fondos del exterior
         </div>
 
@@ -1008,9 +991,7 @@ onMounted(() => {
           INVERSOR
         </h5>
         <div class="p-2">
-          <p
-            class="spreadsheet__contract text-justify text-[9px] leading-tight"
-          >
+          <p class="spreadsheet__contract text-justify text-[9px] leading-tight">
             Aceptación del contrato de cuenta de corretaje bursátil por parte
             del inversor con la firma del presente documento, el cliente
             expresamente conviene y acepta que las operaciones financieras y
@@ -1160,9 +1141,7 @@ onMounted(() => {
         </div>
       </div>
 
-      <span class="copy text-left"
-        >Maximiza Casa de Bolsa. R.I.F. Nro. J-30025492-5</span
-      >
+      <span class="copy text-left">Maximiza Casa de Bolsa. R.I.F. Nro. J-30025492-5</span>
     </div>
   </div>
 </template>

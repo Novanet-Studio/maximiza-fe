@@ -31,7 +31,6 @@ export default defineEventHandler(async (event) => {
 
     } else {
 
-      console.log('Iniciando Chrome local...');
       const localExecutablePath = process.platform === 'win32'
         ? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
         : '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
