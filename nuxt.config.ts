@@ -6,6 +6,8 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
 
+  ssr: true,
+
   modules: [
     "@nuxtjs/tailwindcss",
     "@nuxtjs/strapi",
@@ -103,13 +105,22 @@ export default defineNuxtConfig({
   },
 
   devServer: {
-    port: 3002,
+    port: 3000,
   },
 
   nitro: {
     prerender: {
       routes: ["/netlify-form-contact.html", "/netlify-form-suggestion.html"],
     },
+    moduleSideEffects: ['@sparticuz/chromium'],
+    externals: {
+      trace: false,
+      external: ['@sparticuz/chromium']
+    },
+    // Aumentar el timeout de la función (si usas plan Pro ayuda, si no, optimiza el PDF)
+    routeRules: {
+      '/api/generate-pdf': { cors: true, headers: { 'Access-Control-Allow-Origin': '*' } }
+    }
   },
 
   app: {
