@@ -1,222 +1,99 @@
 <script setup lang="ts">
-import MarkdownIt from "markdown-it";
+import { metadata } from '@/assets/data/metadata';
+import { motion } from 'motion-v';
+import { generalContainerVariants, generalItemVariants } from '~/assets/animations/motion';
 
-import { getImageUrl, getImageAlt, truncateText } from "~/lib/utils";
-
-const md = new MarkdownIt({ html: true, breaks: true });
-const renderMarkdown = (content: string) => md.render(content || "");
-
-const showModal = ref(false);
-const selectedItemId = ref<string | number | null>(null);
-
-const activeAccordion = ref<string | number | null>(null);
-
-const comissions = ref([
-  {
-    servicio: "Compra/Venta de títulos valores",
-    detalle: "Hasta 5% del monto transado",
-  },
-  {
-    servicio: "Estructuración de instrumentos de deuda",
-    detalle: "Hasta 5% del monto emitido",
-  },
-  {
-    servicio: "Colocación de instrumentos de deuda",
-    detalle: "Hasta 5% del monto colocado",
-  },
-]);
-
-const openModal = (item: any) => {
-  selectedItemId.value = item.id;
-  showModal.value = true;
-};
-
-const closeModal = () => {
-  showModal.value = false;
-  selectedItemId.value = null;
-};
-
-const toggleAccordion = (id: string | number) => {
-  activeAccordion.value = activeAccordion.value === id ? null : id;
-};
-
-const { serviciosData, fetchServicios } = useMaximizaQueries();
-
-onMounted(() => {
-  fetchServicios();
-});
-
-useSeoMeta({
-  title: "Maximiza inversiones en la bolsa",
-  description:
-    "Ofrecemos diferentes estrategias financieras para gestionar sus inversiones en la bolsa de valores.",
-  ogImage:
-    "https://res.cloudinary.com/novanet-studio/image/upload/v1646847320/maximiza/v4/maximiza_servicios_miniatura_98daf48fa5.webp",
-});
+useSeoMeta(metadata.servicios);
 </script>
 
 <template>
-  <div class="min-h-dvh">
-    <div v-if="serviciosData" class="w-full">
-      <CommonHero
-        :text="serviciosData.principal.contenido"
-        :image="serviciosData.principal.imagen"
-        :show-logo="false"
-        :button-text="''"
-      >
-        <template #custom-title>
-          <h1 class="hero-title md:text-right">
-            {{ serviciosData.principal.titulo }}
-          </h1>
-        </template>
-      </CommonHero>
+    <div class="w-full h-auto flex flex-col">
+        <CommonHero :title="'Aceleramos y protegemos <br /> el valor de su capital'"
+            :description="'Gestionamos activos líquidos e instrumentos de financiamiento nacionales e internacionales para impulsar el crecimiento patrimonial y corporativo.'"
+            :button="{
+                text: 'Explore nuestras soluciones financieras',
+                link: '#'
+            }" :image="{
+                src: '/images/hero/main-servicios.webp',
+                alt: 'Hero Background'
+            }" :pattern="{
+                src: '/images/hero/pattern-servicios.webp',
+            }" />
 
-      <section class="mx-auto px-4 xl:px-0 mt-16 md:mt-36 mb-16 md:mb-24">
-        <div
-          v-for="(grupo, index) in serviciosData.inversionista"
-          :key="grupo.id"
-          :id="grupo.identidad"
-          class="flex flex-col lg:flex-row gap-8 mb-20 md:mb-32"
-          :class="{ 'lg:flex-row-reverse': Number(index) % 2 !== 0 }"
-        >
-          <div
-            class="w-full lg:w-1/3 relative h-[300px] lg:h-auto min-h-[300px]"
-          >
+        <SharedOurServices is-reverse />
+
+        <motion.section
+            class="container w-full min-h-dvh mx-auto overflow-hidden flex flex-col justify-center items-center py-16"
+            :variants="generalContainerVariants" initial="hidden" animate="visible">
+
+            <motion.header class=" flex flex-col" :variants="generalItemVariants" initial="hidden" animate="visible">
+                <h2 class="text-left">
+                    Apertura Privada de Cuenta de Corretaje
+                </h2>
+
+                <h3 class="text-left mb-8">
+                    (Inversionistas Corporativos e Individuales)
+                </h3>
+
+                <p class="text-left text-gray text-base lg:text-lg">
+                    Comience su recorrido de inversión y diversificación con el respaldo, la discreción y la solidez
+                    institucional de Maximiza. En estricto y riguroso apego al marco regulatorio tutelado por la
+                    Superintendencia Nacional de Valores (SUNAVAL), hemos diseñado un proceso de apertura de cuentas
+                    fluido,
+                    transparente y de confidencialidad extrema.
+                    <br />
+                    <br />
+                    Para proceder con la integración formal de su expediente fiduciario, le invitamos a descargar y
+                    evaluar
+                    nuestro Contrato de Cuenta de Corretaje Bursátil, junto con la documentación estándar de
+                    Identificación
+                    del Inversor. Nuestro equipo élite de asesores patrimoniales le acompañará y guiará de manera
+                    personalizada en cada paso del proceso: desde la validación de la Ficha de Registro de Firmas hasta
+                    la
+                    delegación del Poder de manejo de cuenta custodia. Nuestro objetivo primordial es garantizar que su
+                    incursión estratégica en el mercado de capitales sea expedita, tecnológicamente segura y
+                    absolutamente
+                    blindada desde la perspectiva legal y jurídica.
+
+                </p>
+            </motion.header>
+
             <div
-              class="absolute inset-0 bg-maximiza-verde1-dark/20 z-10 flex items-center justify-center p-8"
-            >
-              <h3
-                class="text-white font-black text-2xl md:text-3xl text-center leading-tight drop-shadow-md"
-              >
-                {{ grupo.nombre }}
-              </h3>
-            </div>
-            <NuxtImg
-              :src="getImageUrl(grupo.imagen)"
-              :alt="getImageAlt(grupo.imagen)"
-              provider="cloudinary"
-              class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-60"
-            />
-          </div>
+                class="w-full flex flex-col md:flex-row items-center md:items-stretch justify-center gap-y-40 md:gap-y-0 gap-x-8 lg:gap-x-16 mt-32 md:mt-48 max-w-5xl mx-auto px-4 md:px-0">
+                <motion.div
+                    class="max-w-[340px] w-full relative pt-32 lg:pt-40 pb-12 bg-white border border-white-alt2 flex flex-col items-center group transition-colors duration-300"
+                    :variants="generalItemVariants" initial="hidden" animate="visible">
 
-          <div class="w-full lg:w-2/3">
-            <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <li
-                v-for="item in grupo.items"
-                :key="item.id"
-                class="relative bg-maximiza-blanco2 shadow-sm"
-              >
-                <button
-                  @click="toggleAccordion(item.id)"
-                  class="w-full flex items-center justify-between text-left transition-colors hover:bg-maximiza-gris5 h-full"
-                  :class="{ 'bg-maximiza-gris5': activeAccordion === item.id }"
-                >
-                  <div class="flex items-center gap-4">
                     <div
-                      class="w-10 h-10 shrink-0 bg-maximiza-verde1 flex items-center justify-center rounded-sm"
-                    >
-                      <NuxtImg
-                        :src="getImageUrl(item.icono)"
-                        alt="Icono"
-                        provider="cloudinary"
-                        class="w-10 h-10 object-contain brightness-0 invert"
-                      />
+                        class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] lg:w-64 aspect-square bg-white-alt flex items-center justify-center p-6 lg:p-10 transition-transform duration-300">
+                        <img src="/images/pages/home/person-type-natural.webp" alt="Persona natural"
+                            class="w-full h-full object-contain relative z-10" />
                     </div>
-                    <h4
-                      class="text-maximiza-gris4 font-medium text-sm md:text-base"
-                    >
-                      {{ item.titulo }}
-                    </h4>
-                  </div>
-                  <font-awesome-icon
-                    :icon="['fas', 'caret-down']"
-                    class="text-maximiza-verde1 transition-transform duration-300 ml-2"
-                    :class="{ 'rotate-180': activeAccordion === item.id }"
-                  />
-                </button>
 
-                <div
-                  class="overflow-hidden transition-all duration-300 ease-in-out bg-maximiza-blanco1 absolute z-20 w-full shadow-lg left-0 top-full"
-                  :class="
-                    activeAccordion === item.id
-                      ? 'opacity-100 visible'
-                      : 'opacity-0 invisible h-0'
-                  "
-                >
-                  <div class="p-6">
-                    <strong class="block text-maximiza-verde1 font-bold mb-2">{{
-                      item.titulo
-                    }}</strong>
+                    <h3 class="pb-8 text-2xl font-extrabold text-black-alt">Persona natural</h3>
+
+                    <NuxtLink :to="'/registro/persona-natural'">
+                        <UiButton :text="'Quiero registrarme'" :icon="'arrow-right-to-bracket'" variant="primary" />
+                    </NuxtLink>
+                </motion.div>
+
+                <motion.div
+                    class="max-w-[340px] w-full relative pt-32 lg:pt-40 pb-12 bg-white border border-white-alt2 flex flex-col items-center group transition-colors duration-300"
+                    :variants="generalItemVariants" initial="hidden" animate="visible">
+
                     <div
-                      class="text-maximiza-gris2 text-sm leading-relaxed mb-4 prose prose-p:my-0 prose-a:text-maximiza-verde1"
-                      v-html="renderMarkdown(truncateText(item.contenido, 200))"
-                    ></div>
-                    <button
-                      class="button-primary --small"
-                      @click="openModal(item)"
-                    >
-                      Leer más
-                    </button>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+                        class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] lg:w-64 aspect-square bg-white-alt flex items-center justify-center p-6 lg:p-10 transition-transform duration-300">
+                        <img src="/images/pages/home/person-type-juridica.webp" alt="Persona jurídica"
+                            class="w-full h-full object-contain relative z-10" />
+                    </div>
 
-      <section class="mx-auto px-4 xl:px-0 mb-16 md:mb-24 text-center">
-        <h2
-          class="font-black text-maximiza-negro1 text-xl md:text-2xl xl:text-3xl mb-8"
-        >
-          Comisiones vigentes
-        </h2>
+                    <h3 class="pb-8 text-2xl font-extrabold text-black-alt">Persona jurídica</h3>
 
-        <div class="w-full overflow-x-auto">
-          <table class="w-full border-collapse">
-            <tbody class="text-left">
-              <tr
-                v-for="(comission, index) in comissions"
-                :key="comission.servicio"
-                :class="{
-                  'border-b border-maximiza-gris5':
-                    index !== comissions.length - 1,
-                  'bg-maximiza-blanco2': index % 2 !== 0,
-                }"
-              >
-                <td class="w-1/2 p-2 md:p-4 border-r border-maximiza-gris5">
-                  <h4
-                    class="text-maximiza-verde1 font-black text-lg md:text-xl"
-                  >
-                    {{ comission.servicio }}
-                  </h4>
-                </td>
-                <td
-                  class="w-1/2 p-2 md:p-4 text-maximiza-gris2 font-light text-base md:text-lg"
-                >
-                  {{ comission.detalle }}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <CommonContactBanner />
-
-      <div v-if="serviciosData.inversionista">
-        <div v-for="grupo in serviciosData.inversionista" :key="grupo.id">
-          <CommonModal
-            v-if="
-              showModal && grupo.items.some((i: any) => i.id === selectedItemId)
-            "
-            :id="selectedItemId"
-            :data="grupo.items"
-            image-field-name="icono"
-            @close="closeModal"
-          />
-        </div>
-      </div>
+                    <NuxtLink :to="'/registro/persona-juridica'">
+                        <UiButton :text="'Quiero registrarme'" :icon="'arrow-right-to-bracket'" variant="secondary" />
+                    </NuxtLink>
+                </motion.div>
+            </div>
+        </motion.section>
     </div>
-  </div>
 </template>

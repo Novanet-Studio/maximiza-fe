@@ -1,245 +1,196 @@
 <script setup lang="ts">
-definePageMeta({
-  showHeader: true,
-});
+import { motion } from 'motion-v';
+import { metadata } from '@/assets/data/metadata';
+import { headerItemVariants, generalContainerVariants, generalItemVariants } from "@/assets/animations/motion"
 
-import MarkdownIt from "markdown-it";
+const institutionalValues = ref([
+    {
+        label: 'Confianza',
+        description: "fiduciaria integral",
+        image: '/images/pages/empresa/items/1.webp'
+    },
+    {
+        label: 'Responsabilidad',
+        description: "patrimonial rigurosa",
+        image: '/images/pages/empresa/items/2.webp'
+    },
+    {
+        label: 'Compromiso',
+        description: "analitico de excelencia",
+        image: '/images/pages/empresa/items/3.webp'
+    },
+    {
+        label: 'Pensamiento',
+        description: "estrategico anticipado",
+        image: '/images/pages/empresa/items/4.webp'
+    },
+    {
+        label: 'Transparencia',
+        description: "operativa absoluta",
+        image: '/images/pages/empresa/items/5.webp'
+    },
+]);
 
-import { getImageUrl, getImageAlt, truncateText } from "~/lib/utils";
+const alliesLogos = ref([
+    {
+        src: '/images/pages/empresa/allies/1.webp',
+        alt: 'Alianzas 1'
+    },
+    {
+        src: '/images/pages/empresa/allies/2.webp',
+        alt: 'Alianzas 2'
+    },
+    {
+        src: '/images/pages/empresa/allies/3.webp',
+        alt: 'Alianzas 3'
+    },
+    {
+        src: '/images/pages/empresa/allies/4.webp',
+        alt: 'Alianzas 4'
+    },
+    {
+        src: '/images/pages/empresa/allies/5.webp',
+        alt: 'Alianzas 5'
+    },
+    {
+        src: '/images/pages/empresa/allies/6.webp',
+        alt: 'Alianzas 6'
+    },
+])
 
-const md = new MarkdownIt({ html: true, breaks: true });
-const renderMarkdown = (content: string) => md.render(content || "");
-
-const showModal = ref(false);
-const selectedHistoriaId = ref<string | number | null>(null);
-
-const openModal = (item: any) => {
-  selectedHistoriaId.value = item.id;
-  showModal.value = true;
-};
-
-const closeModal = () => {
-  showModal.value = false;
-  selectedHistoriaId.value = null;
-};
-
-const { empresaData, fetchEmpresa } = useMaximizaQueries();
-
-onMounted(() => {
-  fetchEmpresa();
-});
-
-useSeoMeta({
-  title: "Maximiza para invertir en la bolsa",
-  description:
-    "Somos una casa de bolsa que ofrece herramientas para invertir en la bolsa y gestionar instrumentos financieros.",
-  ogImage:
-    "https://res.cloudinary.com/novanet-studio/image/upload/v1646847321/maximiza/v4/maximiza_empresa_miniatura_2ef6217989.webp",
-});
+useSeoMeta(metadata.empresa);
 </script>
 
 <template>
-  <div class="min-h-dvh">
-    <div v-if="empresaData" class="w-full">
-      <CommonHero
-        :text="empresaData.principal.contenido"
-        :image="empresaData.principal.imagen"
-        :inverted="true"
-        :show-logo="false"
-        :button-text="''"
-      >
-        <template #custom-title>
-          <h1 class="hero-title text-left">
-            {{ empresaData.principal.titulo }}
-          </h1>
-        </template>
-      </CommonHero>
+    <div class="w-full h-auto flex flex-col">
+        <CommonHero :title="'Arquitectos de su futuro financiero'"
+            :description="'Aliados estratégicos en ingeniería financiera avanzada: gestión patrimonial, activos alternativos y financiamiento corporativo a gran escala con máxima integridad.'"
+            :button="{
+                text: 'Configure su estrategia patrimonial',
+                link: '#'
+            }" :image="{
+                src: '/images/hero/main-empresa.webp',
+                alt: 'Hero Background'
+            }" :pattern="{
+                src: '/images/hero/pattern-empresa.webp',
+            }" />
 
-      <section class="mt-12 md:mt-16 xl:mt-24 xl:px-0 mx-auto">
-        <ul class="flex flex-wrap justify-between gap-4">
-          <li
-            v-for="item in empresaData.historia"
-            :key="item.id"
-            class="w-full flex flex-1 flex-col md:flex-row items-start mb-12 md:mb-8 xl:mb-0"
-          >
-            <div class="mb-4 md:mb-0 shrink-0">
-              <NuxtImg
-                :src="getImageUrl(item.imagen)"
-                :alt="getImageAlt(item.imagen)"
-                provider="cloudinary"
-                class="w-full min-w-[220px] h-auto object-cover"
-              />
+        <CommonTextBanner
+            :description="'Constituidos en 1992, atesoramos más de tres décadas de trayectoria y experiencia en el mercado de capitales venezolano. Estamos comprometidos con ofrecer a nuestros clientes soluciones integrales a través de servicios especializados de corretaje de títulos valores y asesoría en finanzas corporativas.'"
+            :background="'/images/textBanner/empresa.webp'" />
+
+
+        <motion.section class="container w-full min-h-dvh flex flex-col justify-center items-center py-16"
+            :variants="generalContainerVariants" initial="hidden" animate="visible">
+            <CommonSectionHeader title="Banca de inversión y asesoría corporativa de clase mundial" />
+
+            <div class="w-full max-w-6xl flex flex-col gap-16 mt-6 px-4 md:px-0">
+                <motion.div class="flex flex-col md:flex-row items-center w-full" :variants="generalItemVariants">
+                    <div
+                        class="bg-primary w-full md:w-62.5 h-75 md:h-62.5 p-4 flex shrink-0 justify-center items-center z-10 relative">
+                        <img src="/images/pages/empresa/info-section-1.webp" alt="Especialistas en asesoría"
+                            class="w-full h-full object-contain" />
+                    </div>
+                    <div
+                        class="bg-linear-to-r from-white to-white-alt2 p-8 md:p-16 md:pl-40 md:pr-24 w-full grow md:-ml-31.25 z-0">
+                        <h4 class="text-black-alt mb-4">Foco corporativo especializado</h4>
+                        <p class="p1 text-gray">
+                            Brindamos asesoría analítica exhaustiva a corporaciones nacionales y entidades extranjeras
+                            en la intrincada valoración de empresas de gran capitalización, estructuración de fusiones y
+                            adquisiciones (M&A), y diseño de financiamientos a la medida.
+                        </p>
+                    </div>
+                </motion.div>
+
+                <motion.div class="flex flex-col md:flex-row-reverse items-center w-full"
+                    :variants="generalItemVariants">
+                    <div
+                        class="bg-black-alt w-full md:w-62.5 h-75 md:h-62.5 p-4 flex shrink-0 justify-center items-center z-10 relative">
+                        <img src="/images/pages/empresa/info-section-2.webp" alt="Alianzas formales"
+                            class="w-full h-full object-contain" />
+                    </div>
+                    <div
+                        class="bg-linear-to-r from-white to-white-alt2 p-8 md:p-16 md:pr-40 md:pl-24 w-full grow md:-mr-31.25 z-0">
+                        <h4 class="text-black-alt mb-4 text-right">Ecosistema de promoción financiera</h4>
+                        <p class="p1 text-gray text-right">
+                            Nuestro ADN innovador nos ha llevado a participar activamente en la cimentación de vehículos
+                            financieros líderes, tales como Silk & CO (banca de inversión regional) y Vitral Advisors
+                            LLC (RIA registrado en la SEC, Nueva York), lo que nos capacita para ofrecer soluciones
+                            transfronterizas sin fricciones.
+                        </p>
+                    </div>
+                </motion.div>
             </div>
+        </motion.section>
 
-            <div class="w-full md:pl-2 flex flex-col">
-              <h3
-                class="text-maximiza-verde1 font-black text-lg md:text-2xl mb-2"
-              >
-                {{ item.titulo }}
-              </h3>
+        <CommonContentWithColumns title="Filosofía y ADN corporativo"
+            background-image="/images/backgrounds/mision-y-vision.webp" is-split-background auto-columns :columns="{
+                left: 'md:w-[25%]',
+                right: 'md:w-[75%]',
+            }">
+            <CommonContentCard title="Misión"
+                content="Diseñar y estructurar soluciones de inversión y financiamiento innovadoras que aporten una capa inexpugnable de seguridad, maximicen la rentabilidad y cultiven la confianza absoluta, garantizando un servicio de excelencia y sofisticación a nuestra clientela institucional y privada."
+                :image="{ url: '/images/pages/empresa/mision-item.webp', alt: 'Misión' }" :styles="{
+                    title: 'text-black-alt mb-2 md:mb-4',
+                    content: 'p2 text-sm md:text-base lg:p3 text-gray',
+                    wrapper: 'flex-1 p-4 flex flex-col justify-center'
+                }" />
 
-              <div
-                class="text-maximiza-gris4 font-light text-sm leading-relaxed mb-4 prose prose-p:my-0"
-                v-html="renderMarkdown(truncateText(item.contenido, 190))"
-              ></div>
+            <CommonContentCard title="Visión"
+                content="Consolidarnos indiscutiblemente como el referente principal y más respetado de la banca de inversión en el mercado venezolano, impulsando el tejido productivo del país a través de la máxima eficiencia operativa, la transparencia innegociable y la alineación total de intereses con nuestros stakeholders."
+                :image="{ url: '/images/pages/empresa/vision-item.webp', alt: 'Visión' }" :styles="{
+                    title: 'text-black-alt mb-2 md:mb-4',
+                    content: 'p2 text-sm md:text-base lg:p3 text-gray',
+                    wrapper: 'flex-1 p-4 flex flex-col justify-center'
+                }" />
+        </CommonContentWithColumns>
 
-              <button
-                class="bg-maximiza-verde1 hover:bg-maximiza-verde6 text-maximiza-blanco1 text-xs md:text-sm px-4 py-2 transition-colors self-start cursor-pointer"
-                @click="openModal(item)"
-              >
-                Conocer más
-              </button>
-            </div>
-          </li>
-        </ul>
-      </section>
+        <motion.section class="hidden md:flex py-16 bg-black-alt w-full flex-col items-center" :style="{
+            backgroundImage: `url(${'/images/backgrounds/valores.webp'})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+        }" :variants="generalContainerVariants" initial='hidden' whileInView="visible" :viewport="{ once: true }">
 
-      <section class="mt-8 md:mt-12 xl:mt-24 px-4 xl:px-0">
-        <h2
-          class="font-black text-maximiza-negro1 text-xl md:text-2xl mb-4 text-center"
-        >
-          {{ empresaData.equipo.titulo }}
-        </h2>
-        <p
-          class="text-maximiza-gris3 font-normal text-sm md:text-base xl:text-xl mx-auto"
-        >
-          {{ empresaData.equipo.contenido }}
-        </p>
-      </section>
+            <ul class="container w-full mx-auto flex flex-col md:flex-row justify-center gap-4 lg:gap-12">
+                <motion.li v-for="(value, index) in institutionalValues" :key="`empresa_item_${index}`"
+                    class="flex-1 flex flex-col items-center justify-center" :variants="headerItemVariants">
 
-      <section class="mt-4 mb-0 px-4 xl:px-0">
-        <ul class="flex flex-col md:flex-row w-full">
-          <li
-            v-for="item in empresaData.nosotros"
-            :key="item.id"
-            class="group relative w-full md:w-1/3 h-[30vh] md:h-[24vh] lg:h-[41vh] cursor-pointer overflow-hidden mb-4 md:mb-0"
-          >
-            <NuxtImg
-              :src="getImageUrl(item.imagen)"
-              :alt="getImageAlt(item.imagen)"
-              provider="cloudinary"
-              class="absolute inset-0 w-full h-full object-cover z-0 filter md:grayscale-0 md:group-hover:grayscale transition-all duration-500"
-            />
+                    <img :src="value.image" :alt="value.label"
+                        class="w-40 h-40 md:w-20 md:h-20 2xl:w-40 2xl:h-40 mb-4 object-contain" />
 
-            <div class="w-full top-0 absolute z-10 flex flex-col justify-end">
-              <h3
-                class="bg-maximiza-verde1 text-maximiza-blanco1 text-center py-3 font-black text-lg relative z-20"
-              >
-                {{ item.titulo }}
-              </h3>
+                    <h5 class="text-white font-semibold text-center">{{ value.label }}</h5>
+                    <p class="text-white text-center p3">{{ value.description }}</p>
 
-              <div
-                class="bg-maximiza-blanco2 text-maximiza-gris1 font-light text-xs md:text-sm p-2 transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-in-out"
-              >
-                <div v-html="renderMarkdown(item.contenido)"></div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </section>
-
-      <section class="bg-maximiza-blanco2 py-4 md:py-6 xl:py-8 mt-16 md:mt-20">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-          <h2
-            class="font-black text-maximiza-negro1 text-xl md:text-2xl xl:text-3xl mb-4"
-          >
-            {{ empresaData.aliados.titulo }}
-          </h2>
-          <p class="text-maximiza-gris2 font-normal mb-8 md:mb-12">
-            {{ empresaData.aliados.contenido }}
-          </p>
-
-          <div class="w-full md:w-[90%] mx-auto">
-            <AboutAlies />
-          </div>
-        </div>
-      </section>
-
-      <section class="max-w-7xl mx-auto px-4 mt-16 md:mt-20 mb-16 md:mb-24">
-        <div class="mb-12">
-          <h2
-            class="text-center font-black text-maximiza-negro1 text-xl md:text-2xl xl:text-3xl mb-8"
-          >
-            Balances mensuales
-          </h2>
-
-          <div
-            v-for="anio in empresaData.balances"
-            :key="anio.id"
-            class="flex flex-col lg:flex-row items-center mb-8 border-b border-maximiza-gris5 pb-8 last:border-0"
-          >
-            <h3
-              class="text-maximiza-gris1 font-black text-lg md:text-2xl lg:w-[10%] lg:text-right lg:pr-8 mb-4 lg:mb-0"
-            >
-              {{ anio.ano }}
-            </h3>
-
-            <ul
-              class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 w-full lg:w-[90%] gap-1"
-            >
-              <li v-for="mes in anio.mes" :key="mes.id">
-                <a
-                  :href="mes.descarga"
-                  download
-                  target="_blank"
-                  class="group flex items-center justify-start md:justify-center bg-maximiza-blanco2 hover:bg-maximiza-verde1 text-maximiza-gris2 hover:text-maximiza-blanco1 py-3 px-4 text-xs md:text-sm font-medium transition-colors duration-300 border-maximiza-blanco1"
-                >
-                  <font-awesome-icon
-                    :icon="['fas', 'download']"
-                    class="mr-2 text-maximiza-verde1 group-hover:text-maximiza-blanco1 transition-colors"
-                  />
-                  <span class="capitalize">{{ mes.mes }}</span>
-                </a>
-              </li>
+                </motion.li>
             </ul>
-          </div>
-        </div>
+        </motion.section>
 
-        <div>
-          <h2
-            class="text-center font-black text-maximiza-negro1 text-xl md:text-2xl xl:text-3xl mb-8"
-          >
-            Balances auditados
-          </h2>
+        <ModulesEmpresaManagementTeam class="hidden md:flex" />
 
-          <div
-            v-for="anio in empresaData.balances_auditados"
-            :key="anio.id"
-            class="flex flex-col lg:flex-row items-center mb-8 border-b border-maximiza-gris5 pb-8 last:border-0"
-          >
-            <h3
-              class="text-maximiza-gris1 font-black text-lg md:text-2xl lg:w-[10%] lg:text-right lg:pr-8 mb-4 lg:mb-0"
-            >
-              {{ anio.ano }}
-            </h3>
+        <motion.section class="hidden md:flex container w-full mb-20" :variants="generalContainerVariants"
+            initial="hidden" animate="visible">
 
-            <ul class="grid grid-cols-2 md:grid-cols-4 w-full lg:w-[90%] gap-1">
-              <li v-for="mes in anio.mes" :key="mes.id">
-                <a
-                  :href="mes.descarga"
-                  download
-                  target="_blank"
-                  class="group flex items-center justify-start md:justify-center bg-maximiza-blanco2 hover:bg-maximiza-verde1 text-maximiza-gris2 hover:text-maximiza-blanco1 py-3 px-4 text-xs md:text-sm font-medium transition-colors duration-300 border-maximiza-blanco1"
-                >
-                  <font-awesome-icon
-                    :icon="['fas', 'download']"
-                    class="mr-2 text-maximiza-verde1 group-hover:text-maximiza-blanco1 transition-colors"
-                  />
-                  <span class="capitalize">{{ mes.mes }}</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
+            <div class="w-full mx-auto flex flex-col md:flex-row justify-center items-center gap-8">
+                <div class="w-2/5 flex flex-col gap-4">
+                    <h3 class="text-right text-black-alt">
+                        Red global de <br /> alianzas estratégicas
+                    </h3>
+                    <p class="p3 text-right text-gray">
+                        Nuestra solidez operativa se encuentra cimentada y respaldada en décadas de relaciones
+                        formales
+                        e
+                        institucionales ininterrumpidas con las firmas financieras más prestigiosas del
+                        hemisferio.
+                    </p>
+                </div>
 
-      <CommonModal
-        v-if="showModal"
-        :id="selectedHistoriaId"
-        :data="empresaData.historia"
-        image-field-name="imagen"
-        @close="closeModal"
-      />
+                <div class="p-4 `md:p-8 lg:p-12 xl:p-16 bg-white-alt grid grid-cols-3 gap-6">
+                    <motion.img v-for="(logo, index) in alliesLogos" :key="`empresa_allies_${index}`" :src="logo.src"
+                        :alt="logo.alt" class="aspect-square" :variants="generalItemVariants" />
+                </div>
+            </div>
+        </motion.section>
+
+        <ModulesEmpresaBalanceSection />
     </div>
-  </div>
 </template>

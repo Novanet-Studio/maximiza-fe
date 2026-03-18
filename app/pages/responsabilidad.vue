@@ -1,115 +1,261 @@
 <script setup lang="ts">
-import MarkdownIt from "markdown-it";
+import { metadata } from '@/assets/data/metadata';
+import { motion } from 'motion-v';
+import { generalItemVariants, generalContainerVariants } from '~/assets/animations/motion';
 
-const md = new MarkdownIt({ html: true, breaks: true });
-const renderMarkdown = (content: string) => md.render(content || "");
+const openPopoverIndex = ref<number | null>(null);
 
-const activeAccordion = ref<string | number | null>(null);
+const supports: { image: string, alt: string }[] = [
+    {
+        image: '/images/pages/responsabilidad/supports/1.webp',
+        alt: 'sup_1'
+    },
+    {
+        image: '/images/pages/responsabilidad/supports/2.webp',
+        alt: 'sup_2'
+    },
+    {
+        image: '/images/pages/responsabilidad/supports/3.webp',
+        alt: 'sup_3'
+    },
+    {
+        image: '/images/pages/responsabilidad/supports/4.webp',
+        alt: 'sup_4'
+    }
+]
 
-const toggleAccordion = (id: string | number) => {
-  activeAccordion.value = activeAccordion.value === id ? null : id;
-};
+const warnings: { image: string, alt: string, title: string, content: string }[] = [
+    {
+        image: '/images/pages/responsabilidad/warnings/1.webp',
+        alt: 'warning_1',
+        title: 'Prevención y control de legitimación de capitales',
+        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.'
+    },
+    {
+        image: '/images/pages/responsabilidad/warnings/2.webp',
+        alt: 'warning_2',
+        title: 'Estándar "Conozca a su cliente" (KYC)',
+        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.'
+    },
+    {
+        image: '/images/pages/responsabilidad/warnings/3.webp',
+        alt: 'warning_3',
+        title: 'Código de ética y conducta profesional',
+        content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.'
+    },
+]
 
-const { responsabilidadData, fetchResponsabilidad } = useMaximizaQueries();
+const links: { description: string, button: { link: string }, image: { url: string, alt: string } }[] = [
+    {
+        description: 'Decreto con rango valor y fuerza de ley del mercado de valores',
+        button: {
+            link: '',
+        },
+        image: {
+            url: '/images/pages/responsabilidad/links/1.webp',
+            alt: 'link_1'
+        }
+    },
+    {
+        description: 'Ley orgánica contra la delincuencia organizada y financiamiento al terrorismo (LOCDOFT)',
+        button: {
+            link: '',
+        },
+        image: {
+            url: '/images/pages/responsabilidad/links/2.webp',
+            alt: 'link_2'
+        }
+    },
+    {
+        description: 'Ley orgánica de drogas (LOD)',
+        button: {
+            link: '',
+        },
+        image: {
+            url: '/images/pages/responsabilidad/links/3.webp',
+            alt: 'link_3'
+        }
+    },
+    {
+        description: 'Providencia 209 - Gaceta oficial 42115',
+        button: {
+            link: '',
+        },
+        image: {
+            url: '/images/pages/responsabilidad/links/4.webp',
+            alt: 'link_4'
+        }
+    },
+    {
+        description: 'Demás circulares enmarcadas por la SUNAVAL',
+        button: {
+            link: '',
+        },
+        image: {
+            url: '/images/pages/responsabilidad/links/5.webp',
+            alt: 'link_5'
+        }
+    },
+    {
+        description: 'Gaceta oficial normas relativas <br /> al buen gobierno corporativo',
+        button: {
+            link: '',
+        },
+        image: {
+            url: '/images/pages/responsabilidad/links/6.webp',
+            alt: 'link_6'
+        }
+    }
+]
 
-onMounted(() => {
-  fetchResponsabilidad();
-});
-
-useSeoMeta({
-  title: "Responsabilidad",
-  description:
-    "Contamos con la generación de dividendos para la empresa y el planteamiento del impacto social.",
-  ogImage:
-    "https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_responsabilidad_miniatura_cd2b3fa7fc.webp",
-});
+useSeoMeta(metadata.responsabilidad);
 </script>
 
 <template>
-  <div class="min-h-dvh">
-    <div v-if="responsabilidadData" class="w-full">
-      <CommonHero
-        :text="responsabilidadData.principal.contenido"
-        :image="responsabilidadData.principal.imagen"
-        :show-logo="false"
-        :button-text="''"
-      >
-        <template #custom-title>
-          <div
-            class="hero-title text-left"
-            v-html="renderMarkdown(responsabilidadData.principal.titulo)"
-          ></div>
-        </template>
-      </CommonHero>
+    <div class="w-full h-auto flex flex-col">
+        <CommonHero :title="'Responsabilidad social <br /> y buen gobierno corporativo'"
+            :description="'Combinamos el servicio social con estrictos controles de riesgo, <br /> asegurando un entorno de inversión seguro, ético y legal.'"
+             :image="{
+                src: '/images/hero/main-responsabilidad.webp',
+                alt: 'Hero Background'
+            }" :pattern="{
+                src: '/images/hero/pattern-responsabilidad.webp',
+            }" />
 
-      <section class="mx-auto px-4 xl:px-0 mt-16 md:mt-24 mb-16 md:mb-24">
-        <h2
-          class="font-black text-maximiza-negro1 text-xl md:text-2xl xl:text-3xl text-center mb-12"
-        >
-          {{ responsabilidadData.contribucion }}
-        </h2>
 
-        <ul
-          class="flex flex-col sm:flex-row flex-wrap justify-between gap-y-4 sm:gap-y-0 sm:gap-x-6"
-        >
-          <li
-            v-for="item in responsabilidadData.contribuciones_secciones"
-            :key="item.id"
-            class="relative w-full sm:flex-1 bg-maximiza-blanco2 shadow-sm"
-          >
-            <button
-              @click="toggleAccordion(item.id)"
-              class="w-full flex items-center justify-between p-2 text-left transition-colors hover:bg-maximiza-gris5 h-full border-b border-maximiza-gris5"
-              :class="{ 'bg-maximiza-gris5': activeAccordion === item.id }"
-            >
-              <h3
-                class="text-maximiza-verde1 font-black text-base sm:text-xs md:text-base lg:text-lg pr-4"
-              >
-                {{ item.titulo }}
-              </h3>
+        <CommonContentWithColumns backgroundImage="/images/backgrounds/responsabilidad-1.webp"
+            title="Responsabilidad <br /> social corporativa" cover-wrapper>
+            <Motion :variants="generalItemVariants">
+                <h4 class="text-white font-extrabold! mb-4">
+                    Compromiso Integral ESG y Fortalecimiento Social
+                </h4>
 
-              <font-awesome-icon
-                :icon="['fas', 'caret-down']"
-                class="text-maximiza-verde1 transition-transform duration-300 ml-2 shrink-0"
-                :class="{ 'rotate-180': activeAccordion === item.id }"
-              />
-            </button>
+                <p class="p2 md:text-sm lg:p3 text-white">
+                    En la alta gerencia de Maximiza entendemos que la verdadera generación de valor trasciende con
+                    creces el pago trimestral de dividendos financieros. Adoptamos de forma endógena los criterios de
+                    sostenibilidad ESG (Ambiental, Social y de Gobernanza) como pilares fundamentales para participar
+                    activamente en el renacimiento productivo de la sociedad venezolana.
+                </p>
+            </Motion>
+        </CommonContentWithColumns>
 
-            <div
-              class="overflow-hidden transition-all duration-300 ease-in-out bg-maximiza-blanco1 absolute z-20 w-full shadow-lg left-0 top-full"
-              :class="
-                activeAccordion === item.id
-                  ? 'opacity-100 visible'
-                  : 'opacity-0 invisible h-0'
-              "
-            >
-              <div class="p-2 border-t border-maximiza-gris5">
-                <div
-                  class="text-maximiza-gris1 text-sm md:text-base leading-relaxed prose prose-p:my-0 prose-a:text-maximiza-verde1"
-                  v-html="renderMarkdown(item.contenido)"
-                ></div>
-              </div>
+        <motion.section class="container w-full mx-auto py-16 flex flex-col space-y-8"
+            :variants="generalContainerVariants" initial="hidden" animate="visible">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-24 w-full ">
+                <Motion :variants="generalItemVariants" class="flex flex-col items-center">
+                    <img src="/images/pages/responsabilidad/cards/1.webp" alt="Bienestar social"
+                        class="w-full h-auto aspect-video object-cover" />
+                    <div class="bg-primary -mt-6 py-4 px-3 lg:px-6 relative z-10 w-[75%]">
+                        <h6 class="text-white text-center">
+                            Bienestar social
+                        </h6>
+                    </div>
+                </Motion>
+                <Motion :variants="generalItemVariants" class="flex flex-col items-center">
+                    <img src="/images/pages/responsabilidad/cards/2.webp" alt="Donaciones dirigidas"
+                        class="w-full h-auto aspect-video object-cover" />
+                    <div class="bg-primary -mt-6 py-4 px-3 lg:px-6 relative z-10 w-[75%]">
+                        <h6 class="text-white text-center">
+
+                            Donaciones dirigidas
+                        </h6>
+                    </div>
+                </Motion>
+                <Motion :variants="generalItemVariants" class="flex flex-col items-center">
+                    <img src="/images/pages/responsabilidad/cards/3.webp" alt="Comité social"
+                        class="w-full h-auto aspect-video object-cover" />
+                    <div class="bg-primary -mt-6 py-4 px-3 lg:px-6 relative z-10 w-[75%]">
+                        <h6 class="text-white text-center">
+
+                            Comité social
+                        </h6>
+                    </div>
+                </Motion>
             </div>
-          </li>
-        </ul>
-      </section>
 
-      <section class="mx-auto px-4 xl:px-0 mt-16 md:mt-24 mb-16 md:mb-24">
-        <h2
-          class="font-black text-maximiza-negro1 text-xl md:text-2xl xl:text-3xl text-center mb-8 w-full"
-        >
-          Causas que apoyamos
-        </h2>
+            <Motion :variants="generalItemVariants" class="w-full">
+                <p class="p1md:p2 text-gray">
+                    A través de nuestro estructurado Comité Social, canalizamos recursos, tiempo y conocimientos para
+                    respaldar el accionar de fundaciones, instituciones educativas de base y programas formativos
+                    especializados, dejando una huella tangible, solidaria y medible en pro del crecimiento de las
+                    futuras generaciones de nuestra nación.
+                </p>
+            </Motion>
 
-        <div
-          class="text-center text-maximiza-gris2 font-normal text-sm md:text-base leading-relaxed max-w-4xl mx-auto mb-12 prose prose-p:my-0 prose-a:text-maximiza-verde1"
-          v-html="
-            renderMarkdown(responsabilidadData.colaboracion_texto.contenido)
-          "
-        ></div>
+            <motion.section class="w-full flex flex-col max-sm:items-center md:flex-row md:justify-between gap-4 lg:gap-8 " :variants="generalContainerVariants"
+                initial="hidden" animate="visible">
 
-        <AwarenessCharitableCauses />
-      </section>
+                <motion.img v-for="(support, index) in supports" :key="index" :variants="generalItemVariants"
+                    class="w-full max-w-[183px] md:max-w-[136px] lg:max-w-[183px]" :src="support.image" :alt="support.alt" />
+            </motion.section>
+        </motion.section>
+
+
+
+        <CommonContentWithColumns backgroundImage="/images/backgrounds/responsabilidad-2.webp"
+            title="Buen gobierno <br /> corporativo" cover-wrapper>
+            <motion.div :variants="generalItemVariants">
+                <h5 class="text-white font-extrabold! mb-4">
+                    El pilar inquebrantable de nuestra integridad
+                </h5>
+
+                <p class="p2 text-white">
+                    Nuestra adopción temprana y respeto estricto a las mejores prácticas de gobierno corporativo brindan
+                    la seguridad jurídica, operativa y económica esencial para un crecimiento sostenible y la atracción
+                    constante de inversiones institucionales.
+                </p>
+                <br />
+                <p class="p2 text-white">
+                    En Maximiza Casa de Bolsa, nuestras operaciones están protegidas por un riguroso ecosistema ético y
+                    regulatorio global.
+                </p>
+            </motion.div>
+        </CommonContentWithColumns>
+
+
+        <motion.section class="container mx-auto w-full px-0 md:px-8 py-16 max-w-5xl" :variants="generalContainerVariants"
+            initial="hidden" animate="visible">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+                <motion.li v-for="(warning, index) in warnings" :key="`warning-${index}`"
+                    :variants="generalItemVariants" class="w-full relative transition-[z-index] duration-300"
+                    :class="openPopoverIndex === index ? 'z-50' : 'z-0'">
+                    <AppPopover position="bottom" class="w-full! block!"
+                        @toggled="(val) => openPopoverIndex = val ? index : null">
+                        <template #trigger>
+                            <div
+                                class="flex items-center stretch bg-white border border-white-alt2 cursor-pointer hover:shadow-md transition-shadow h-full w-full">
+                                <div class="w-26 h-30 bg-white-alt" />
+                                <div
+                                    class="absolute bg-black-alt translate-x-1/5 flex items-center justify-center w-24 h-24 aspect-square">
+                                    <img :src="warning.image" :alt="warning.alt" class="w-full h-full object-contain" />
+                                </div>
+                                <div class="flex-1 px-6 py-4 flex items-center justify-between">
+                                    <h5 class="text-black-alt" v-html="warning.title" />
+                                    <FontAwesomeIcon :icon="['fas', 'chevron-down']" class="text-black-alt shrink-0" />
+                                </div>
+                            </div>
+                        </template>
+                        <div class="w-full text-left min-w-64 max-w-sm">
+                            <p class="text-gray text-sm md:text-base leading-relaxed">{{ warning.content }}</p>
+                        </div>
+                    </AppPopover>
+                </motion.li>
+            </div>
+
+        </motion.section>
+
+
+        <CommonContentWithColumns title="Marco Regulatorio y Cumplimiento Legal"
+            background-image="/images/backgrounds/soluciones-financieras.webp" is-split-background auto-columns
+            :columns="{
+                left: 'md:w-[35%]',
+                right: 'md:w-[65%]',
+            }">
+            <CommonContentCard v-for="(item, index) in links" :key="`link-${index}`" :content="item.description"
+                :button="{ label: 'Descargar', link: item.button.link, icon: 'download', size: 'md' }"
+                :image="{ url: item.image.url, alt: item.image.alt }" is-image-full/>
+
+        </CommonContentWithColumns>
     </div>
-  </div>
 </template>

@@ -1,186 +1,76 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { metadata } from '@/assets/data/metadata';
+import commonData from '@/assets/data/common.json';
+import { motion } from 'motion-v';
+import { generalContainerVariants, generalItemVariants } from '@/assets/animations/motion';
 
-const form = ref({
-  "bot-field": "",
-  name: "",
-  email: "",
-  message: "",
-});
+useSeoMeta(metadata.contacto);
 
-const encode = (data: Record<string, any>) => {
-  return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
-};
-
-const handleSubmit = async () => {
-  try {
-    const formData = encode({
-      "form-name": "inicio",
-      ...form.value,
-    });
-
-    const response = await fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: formData,
-    });
-
-    if (!response.ok) {
-      throw new Error("Error en la respuesta del servidor");
+const contactMethods = [
+    {
+        title: 'Atención al cliente',
+        value: commonData.email,
+        icon: '/images/pages/contact/items/1.webp'
+    },
+    {
+        title: 'Master',
+        value: commonData.phone,
+        icon: '/images/pages/contact/items/2.webp'
+    },
+    {
+        title: 'Fax',
+        value: commonData.fax,
+        icon: '/images/pages/contact/items/3.webp'
     }
-
-    form.value.name = "";
-    form.value.email = "";
-    form.value.message = "";
-  } catch (error) {
-    console.error("Error al enviar:", error);
-  }
-};
-
-const { contactoData, fetchContacto } = useMaximizaQueries();
-
-onMounted(() => {
-  fetchContacto();
-});
-
-useSeoMeta({
-  title: "Contacto",
-  description:
-    "Somos una casa de bolsa que ofrece innovadoras herramientas para la inversión, gestión y estructuración de activos financieros.",
-  ogImage:
-    "https://res.cloudinary.com/novanet-studio/image/upload/v1646847320/maximiza/v4/maximiza_contacto_miniatura_7e7d7d94e8.webp",
-});
+];
 </script>
 
 <template>
-  <div class="min-h-dvh">
-    <div v-if="contactoData" class="w-full">
-      <CommonHero
-        :text="contactoData.principal.contenido"
-        :image="contactoData.principal.imagen"
-        :inverted="true"
-        :show-logo="false"
-        :button-text="''"
-      >
-        <template #custom-title>
-          <h1 class="hero-title text-left">
-            {{ contactoData.principal.titulo }}
-          </h1>
-        </template>
-      </CommonHero>
+    <div class="w-full h-auto flex flex-col">
+        <CommonHero :title="'Inicie la estructuración de su nueva estrategia financiera'"
+            :description="'Evaluación confidencial para proteger su tesorería de la volatilidad o diseñar un financiamiento a la medida para su ciclo productivo.'"
+            :image="{
+                src: '/images/hero/main-contacto.webp',
+                alt: 'Hero Background'
+            }" :pattern="{
+                src: '/images/hero/pattern-contacto.webp',
+            }" />
 
-      <section
-        class="mx-auto px-4 xl:px-0 mt-12 md:mt-16 xl:mt-24 mb-16 md:mb-24"
-      >
-        <div class="flex flex-col xl:flex-row justify-between gap-12 xl:gap-0">
-          <div class="w-full xl:w-[30%] text-left">
-            <ul class="flex flex-col gap-8 md:gap-10">
-              <li class="flex items-center gap-4">
-                <span
-                  class="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center bg-maximiza-verde1 shrink-0 text-maximiza-blanco1"
-                >
-                  <font-awesome-icon
-                    :icon="['fas', 'envelope']"
-                    class="text-lg md:text-xl"
-                  />
-                </span>
-                <p class="text-maximiza-gris2 font-medium text-sm md:text-base">
-                  contacto@maximiza.com.ve
-                </p>
-              </li>
+        <ModulesContactForm />
 
-              <li class="flex items-center gap-4">
-                <span
-                  class="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center bg-maximiza-verde1 shrink-0 text-maximiza-blanco1"
-                >
-                  <font-awesome-icon
-                    :icon="['fas', 'phone']"
-                    class="text-lg md:text-xl"
-                  />
-                </span>
-                <p
-                  class="text-maximiza-gris2 font-medium text-sm md:text-base leading-relaxed"
-                >
-                  Master +58 (212) 9539447 <br />
-                  Fax +58 (212) 9573365 / 3366
-                </p>
-              </li>
+        <motion.section class="container mx-auto py-16 px-4 md:px-0" :variants="generalContainerVariants"
+            initial="hidden" whileInView="visible" :viewport="{ once: true, margin: '-50px' }">
+            <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center lg:items-stretch">
+                <motion.div class="w-full max-w-[471px] lg:w-1/2 flex flex-col shadow-lg"
+                    :variants="generalItemVariants">
+                    <div class="w-full h-100 lg:h-112.5">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.1148587256353!2d-66.8666605885711!3d10.491610989597191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a591b8dcdeec3%3A0x1118acd802417a6e!2sMaximiza%20Casa%20de%20Bolsa%20C.A!5e0!3m2!1ses!2sve!4v1773170192534!5m2!1ses!2sve"
+                            class="w-full h-full border-0" allowfullscreen="false" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <div class="bg-black-alt p-10 flex flex-col justify-center grow">
+                        <h3 class="text-white mb-2">Dirección</h3>
+                        <p class="p2 text-white-alt">{{ commonData.address }}</p>
+                    </div>
+                </motion.div>
 
-              <li class="flex items-start gap-4">
-                <span
-                  class="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center bg-maximiza-verde1 shrink-0 text-maximiza-blanco1 mt-1"
-                >
-                  <font-awesome-icon
-                    :icon="['fas', 'map-marker-alt']"
-                    class="text-lg md:text-xl"
-                  />
-                </span>
-                <p
-                  class="text-maximiza-gris2 font-medium text-sm md:text-base leading-relaxed"
-                >
-                  Avenida Francisco de Miranda, Torre Europa, Piso 3, Oficinas
-                  3-B3. El Rosal, Caracas, Venezuela.
-                </p>
-              </li>
-            </ul>
-          </div>
-
-          <div class="w-full xl:w-[65%]">
-            <form
-              class="flex flex-col flex-wrap justify-between"
-              method="POST"
-              data-netlify="true"
-              name="inicio"
-              @submit.prevent="handleSubmit"
-            >
-              <input type="hidden" name="form-name" value="inicio" />
-
-              <p class="hidden">
-                <label>
-                  Don’t fill this out if you’re human:
-                  <input name="bot-field" v-model="form['bot-field']" />
-                </label>
-              </p>
-
-              <div class="w-full flex flex-wrap justify-between">
-                <input
-                  v-model="form.name"
-                  type="text"
-                  name="name"
-                  placeholder="Nombre y apellido"
-                  class="w-full md:w-[48%] mb-6 md:mb-4 bg-transparent border-b-2 border-maximiza-verde1 text-maximiza-gris4 placeholder-gray-400 py-2 focus:outline-none focus:border-green-700 transition-colors"
-                  required
-                />
-                <input
-                  v-model="form.email"
-                  type="email"
-                  name="email"
-                  placeholder="Correo"
-                  class="w-full md:w-[48%] mb-6 md:mb-4 bg-transparent border-b-2 border-maximiza-verde1 text-maximiza-gris4 placeholder-gray-400 py-2 focus:outline-none focus:border-green-700 transition-colors"
-                  required
-                />
-                <textarea
-                  v-model="form.message"
-                  name="message"
-                  placeholder="Escriba su mensaje aquí..."
-                  class="w-full mb-8 md:mb-0 bg-transparent border-b-2 border-maximiza-verde1 text-maximiza-gris4 placeholder-gray-400 py-2 focus:outline-none focus:border-green-700 transition-colors resize-none h-12 md:h-auto"
-                  required
-                />
-              </div>
-
-              <div class="w-full flex justify-end mt-4">
-                <input
-                  type="submit"
-                  class="button-primary cursor-pointer"
-                  value="Enviar mensaje ➤"
-                />
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
+                <motion.div class="w-full md:w-auto lg:w-1/2 pl-12 flex flex-col justify-center gap-8"
+                    :variants="generalContainerVariants">
+                    <motion.div v-for="(method, index) in contactMethods" :key="index" :variants="generalItemVariants"
+                        class="w-full h-28 bg-white border border-gray flex">
+                        <div
+                            class="mt-2 w-24 h-24 bg-primary -translate-x-1/2 flex shrink-0 items-center justify-center">
+                            <img :src="method.icon" :alt="method.title" class="w-18 h-18 object-contain" />
+                        </div>
+                        <div class="-translate-x-5 flex flex-col justify-center py-8 grow">
+                            <h5 class="text-black-alt">{{ method.title }}</h5>
+                            <p class="p2">{{ method.value }}</p>
+                        </div>
+                    </motion.div>
+                </motion.div>
+            </div>
+        </motion.section>
     </div>
-  </div>
 </template>

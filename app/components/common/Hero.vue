@@ -1,77 +1,61 @@
 <script setup lang="ts">
-import MarkdownIt from "markdown-it";
-import { getImageAlt, getImageUrl } from "~/lib/utils";
+import { motion } from "motion-v"
+import { generalContainerVariants, generalItemVariants, generalImageVariants } from "@/assets/animations/motion"
 
-interface Props {
-  text?: string;
-  image: any;
-
-  textWrapperClass?: string;
-
-  inverted?: boolean;
-  showLogo?: boolean;
-
-  buttonText?: string;
-  buttonLink?: string;
+interface HeroProps {
+    title: string,
+    description: string,
+    button?: {
+        text: string,
+        link: string
+    },
+    image: {
+        src: string,
+        alt: string
+    },
+    pattern?: {
+        src: string,
+    }
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  inverted: false,
-  showLogo: false,
-});
-
-const md = new MarkdownIt({ html: true, breaks: true });
-const renderMarkdown = (content: string) => md.render(content || "");
+const props = defineProps<HeroProps>()
 </script>
 
 <template>
-  <section
-    class="flex flex-col lg:flex-row items-center lg:min-h-[26vh] xl:min-h-[46vh] mb-12"
-  >
-    <div
-      :class="[
-        'w-full lg:w-1/2 flex flex-col',
-        inverted
-          ? 'md:pl-8 md:order-2 text-left items-start'
-          : 'md:pr-8 md:order-1 text-left lg:text-right items-start lg:items-end',
+    <motion.section class="w-full mt-[10vh] overflow-hidden" :style="{
+        backgroundImage: `url(${props.pattern?.src})`,
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover'
+    }" :variants="generalContainerVariants" initial="hidden" whileInView="visible"
+        :viewport="{ once: true, margin: '-10px' }">
+        <div class="w-full h-full bg-white/75">
 
-        textWrapperClass,
-      ]"
-    >
-      <img
-        v-if="showLogo"
-        src="/images/logo-maximiza.svg"
-        alt="Maximiza logo"
-        class="hidden md:block w-[25vw] mb-4"
-        :class="inverted ? 'mr-auto' : 'ml-auto'"
-      />
+            <div
+                class="container max-sm:min-h-[90dvh] sm:min-h-[460px] flex flex-col sm:flex-row justify-center xl:justify-between items-center">
+                <div class="w-auto flex items-center justify-center sm:h-full">
+                    <div class="">
+                        <motion.div :variants="generalItemVariants">
+                            <h1 class="mb-4" v-html="props.title" />
+                        </motion.div>
+                        <motion.div :variants="generalItemVariants">
+                            <p class="max-w-[642px] p1 font-normal leading-7 text-gray" v-html="props.description" />
+                        </motion.div>
+                        <motion.div :variants="generalItemVariants">
+                            <NuxtLink :to="props.button?.link">
+                                <UiButton v-if="props.button" class="mt-4" :text="props.button.text" :icon="'check'"
+                                    size="md" />
+                            </NuxtLink>
+                        </motion.div>
+                    </div>
+                </div>
 
-      <slot name="custom-title" />
+                <motion.div class="shrink-0 w-[90%] md:w-[284px] md:h-[250px] xl:w-[410px] xl:h-[360px]"
+                    :variants="generalImageVariants">
+                    <img :src="props.image.src" :alt="props.image.alt" class="w-full h-full object-cover">
+                </motion.div>
+            </div>
+        </div>
 
-      <div
-        v-if="text"
-        class="text-maximiza-gris3 font-normal text-base md:text-2xl leading-relaxed mb-4 md:mb-8 max-w-prose"
-        :class="inverted ? 'text-left mr-auto' : 'lg:text-right lg:ml-auto'"
-        v-html="renderMarkdown(text)"
-      />
-
-      <div v-if="buttonText" class="mt-4">
-        <NuxtLink :to="buttonLink" class="button-primary">
-          {{ buttonText }}
-        </NuxtLink>
-      </div>
-    </div>
-
-    <div
-      class="w-full lg:w-1/2 mt-6 md:mt-0"
-      :class="[inverted ? 'md:order-1 md:pr-[2vw]' : 'md:order-2 md:pl-[2vw]']"
-    >
-      <NuxtImg
-        :src="getImageUrl(image)"
-        :alt="getImageAlt(image)"
-        provider="cloudinary"
-        class="w-full h-auto object-cover"
-      />
-    </div>
-  </section>
+    </motion.section>
 </template>

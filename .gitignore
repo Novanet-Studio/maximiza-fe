@@ -23,4 +23,7 @@ logs
 .env.*
 !.env.example
 
-notas.md
+.agent
+bun.lock
+# Local Netlify folder
+.netlify

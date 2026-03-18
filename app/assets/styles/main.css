@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+@import "@fortawesome/fontawesome-svg-core/styles.css";
+
+@theme {
+  --font-sans: "Google Sans", sans-serif;
+  --font-serif: "Google Sans Flex", sans-serif;
+
+  --color-black: #000000;
+  --color-black-alt: #2d2d2d;
+  --color-primary: #00735f;
+  --color-primary-alt: #19816f;
+  --color-secondary: #f1cda7;
+  --color-gray: #707070;
+  --color-gray-alt: #B1B1B1;
+  --color-white: #ffffff;
+  --color-white-alt: #f1f1f1;
+  --color-white-alt2: #E5E5E5;
+
+  --color-warning: #ffb73a;
+  --breakpoint-xs: 25rem;
+}
+
+
+@layer base {
+  * {
+    font-family: var(--font-sans);
+    font-optical-sizing: auto;
+    font-style: normal;
+
+    box-sizing: border-box;
+
+  }
+
+  *::-webkit-scrollbar {
+    display: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+  }
+
+  h1 {
+    @apply text-4xl md:text-2xl lg:text-3xl xl:text-4xl;
+    font-weight: 800;
+  }
+
+  h2 {
+    @apply text-3xl md:text-xl lg:text-2xl xl:text-3xl;
+    font-weight: 800;
+  }
+
+  h3 {
+    @apply text-base md:text-lg lg:text-xl xl:text-2xl;
+    font-weight: 800;
+  }
+
+  h4 {
+    @apply text-base lg:text-lg xl:text-xl;
+    font-weight: 800;
+  }
+
+  h5 {
+    @apply text-sm lg:text-base xl:text-lg;
+    font-weight: 800;
+  }
+
+  h6 {
+    @apply text-sm xl:text-base;
+    font-weight: 800;
+  }
+
+  p {
+    font-weight: 400;
+
+    &.p1 {
+      @apply text-lg md:text-base lg:text-lg xl:text-xl;
+    }
+
+    &.p2 {
+      @apply text-sm lg:text-base xl:text-lg;
+    }
+
+    &.p3 {
+      @apply text-xs lg:text-sm;
+    }
+  }
+
+  strong {
+    font-weight: 700;
+    color: var(--color-black-alt);
+  }
+
+  ol,
+  li,
+  ul {
+    @apply list-none;
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply w-[90%] max-w-[1152px] mx-auto;
+  }
+
+  .prose {
+    p {
+      margin-bottom: 1rem;
+    }
+
+    ul,
+    ol {
+      margin-bottom: 1rem;
+
+      li {
+        list-style-type: disc;
+
+        margin-left: 1rem;
+      }
+    }
+  }
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.4s;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(1rem);
+}
