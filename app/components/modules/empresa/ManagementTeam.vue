@@ -35,7 +35,7 @@ const managementTeam = ref(
                 {
                     "name": "Quintina Avilez",
                     "rol": "Director suplente",
-                    "description": "Licenciada en contaduría Pública. Año (1992-1999) de la Universidad Santa María. Especialista en Análisis Financiero."
+                    "description": "Especialista en Finanzas, Auditoría y Gobierno Corporativo con más de 30 años de trayectoria en el sector bancario y mercado de valores (Maximiza Casa de Bolsa, Bank of America, ING Bank). Experta en el diseño e implementación de estrategias de control interno, cumplimiento normativo. especialista en análisis Financiero y de Riesgo."
                 },
                 {
                     "name": "Daniela Escalona",
@@ -46,6 +46,11 @@ const managementTeam = ref(
                     "name": "Carlos Rizzolo",
                     "rol": "Director Suplente",
                     "description": "Licenciatura en Ingeniería Eléctrica de la Universidad Simón Bolívar. Maestría en Finanzas Corporativas de la Universidad Católica Andrés Bello. Estudio Ejecutivo en Valoración de la Universidad de Nueva York (NYU), con más de 13 años de experiencia en el Sector Financiero. Especializado en Asesoramiento e Inversiones Discrecionales. Desarrollo y ejecución de estrategias de inversión cuantitativas."
+                },
+                {
+                    "name": "Gastón José Sardi Quintero",
+                    "rol": "Director Principal Independiente",
+                    "description": "Egresado de la Universidad Metropolitana como Ingeniero de Sistemas en el año 1983. Más de 40 años de experiencia en la dirección de empresas en el sector de distribución de Aceros Especiales, Inoxidables y Hierro en General, implementando estrategias y planes de negocio en Venezuela y en otros países de Latinoamérica. Adicionalmente he estado vinculado en diferentes actividades gremiales y de responsabilidad social. Fue Presidente de la Cámara de Comercio, Industria y Servicios de Caracas. Actualmente Director Independiente en Maximiza Casa de Bolsa, C.A."
                 }
             ]
         },

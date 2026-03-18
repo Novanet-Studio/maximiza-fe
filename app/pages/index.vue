@@ -20,7 +20,7 @@ useSeoMeta(metadata.home);
             }" />
 
         <CommonTextBanner
-            :description="'Pertenecemos a un ecosistema financiero consolidado a nivel nacional e internacional. Nuestras alianzas estratégicas onshore y offshore nos otorgan una capacidad de respuesta inigualable  para estructurar soluciones a la medida, conectando de forma fluida el mercado venezolano con los flujos de capital global.'"
+            :description="'Pertenecemos a un ecosistema financiero consolidado a nivel nacional e internacional; somos miembros de la Bolsa de Valores de Caracas (BVC) y autorizados por la SUNAVAL. Nuestras alianzas estratégicas onshore y offshore nos otorgan una capacidad de respuesta inigualable  para estructurar soluciones a la medida, conectando de forma fluida el mercado venezolano con los flujos de capital global.'"
             :background="'/images/textBanner/home.webp'" />
 
         <ModulesHomePersonTypeSelect />

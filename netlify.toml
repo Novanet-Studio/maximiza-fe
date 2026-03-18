@@ -1,0 +1,4 @@
+# Settings for the 'refactor032026' (or any other specific branch name)
+[context.refactor032026]
+  command = "bun run build"
+  publish = "dist-refactor"

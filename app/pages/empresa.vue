@@ -76,7 +76,7 @@ useSeoMeta(metadata.empresa);
             }" />
 
         <CommonTextBanner
-            :description="'Constituidos en 1992, atesoramos más de tres décadas de trayectoria y experiencia en el mercado de capitales venezolano. Estamos comprometidos con ofrecer a nuestros clientes soluciones integrales a través de servicios especializados de corretaje de títulos valores y asesoría en finanzas corporativas.'"
+            :description="'Constituidos en 1992, atesoramos más de tres décadas de trayectoria y experiencia en el mercado de capitales venezolano. Estamos comprometidos con ofrecer a nuestros clientes soluciones integrales a través de servicios especializados de corretaje de títulos valores y asesoría en finanzas corporativas. Somos miembros de la Bolsa de Valores de Caracas (BVC) y autorizados por la SUNAVAL'"
             :background="'/images/textBanner/empresa.webp'" />
 
 
