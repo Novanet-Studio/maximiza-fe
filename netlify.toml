@@ -1,9 +1,7 @@
-# Default build settings for all branches
 [build]
-  command = "nuxt generate:default"
-  publish = "dist"
-
-# Settings for the 'refactor032026' (or any other specific branch name)
-[context.refactor032026]
   command = "bun run build"
   publish = "dist"
+
+[functions]
+  external_node_modules = ["@sparticuz/chromium", "puppeteer-core"]
+  node_bundler = "esbuild"

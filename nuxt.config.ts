@@ -48,11 +48,9 @@ export default defineNuxtConfig({
     ],
   },
 
-
   gtag: {
     id: "G-4W17JXKS6P",
   },
-
 
   devServer: {
     port: 3013,
@@ -60,7 +58,7 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      routes: ["/contact-form.html"],
+      routes: ["/static/contact-form.html"],
     },
     moduleSideEffects: ['@sparticuz/chromium'],
     externals: {
