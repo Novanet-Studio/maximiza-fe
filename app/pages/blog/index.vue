@@ -4,7 +4,6 @@ import { metadata } from '@/assets/data/metadata';
 useSeoMeta(metadata.blog);
 </script>
 
-
 <template>
     <div class="w-full h-auto flex flex-col">
         <CommonHero :title="'Perspectivas estratégicas <br /> y análisis de mercado'"

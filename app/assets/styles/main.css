@@ -16,9 +16,14 @@
   --color-white: #ffffff;
   --color-white-alt: #f1f1f1;
   --color-white-alt2: #E5E5E5;
+  --color-error: #ec131e;
+  --color-error-alt: #f23d45;
 
   --color-warning: #ffb73a;
+
   --breakpoint-xs: 25rem;
+
+  --width-a4: 210mm;
 }
 
 
@@ -122,6 +127,26 @@
 
         margin-left: 1rem;
       }
+    }
+  }
+
+  .form-section {
+    @apply flex flex-col gap-8;
+  }
+
+  .form-subsection {
+    @apply p-8 pt-4 pb-6 border-l-[2px] border-b-[2px] border-white-alt bg-white-alt/35 flex flex-col gap-8;
+
+    &.--alt {
+      @apply p-4 border-l-[2px] border-b-[2px] border-white-alt bg-white-alt/50 flex flex-col gap-8;
+    }
+  }
+
+  .form-subsection-title {
+    @apply -ml-4 block text-xl font-bold text-black-alt;
+
+    &.--alt {
+      @apply m-0 block text-lg font-bold;
     }
   }
 }

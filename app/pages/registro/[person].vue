@@ -16,7 +16,7 @@ const labels: Record<string, { title: string, description: string, banner: strin
             "Registro de Información Fiscal (RIF), vigente.",
             "Una (1) Referencia Bancaria, con una vigencia mínima de tres meses.",
             "Constancia de trabajo actual del inversor, o informe de atestiguamiento de ingresos emitida por un contador público colegiado, en el caso de personas que trabajen de manera independiente.",
-            "Planilla de Declaración Jurada de Origen y Destino de los Fondos, cada vez que realice una operación."
+            "Onboarding de Declaración Jurada de Origen y Destino de los Fondos, cada vez que realice una operación."
         ]
     },
     "persona-juridica": {
@@ -29,7 +29,7 @@ const labels: Record<string, { title: string, description: string, banner: strin
             "Documento constitutivo y las modificaciones estatutarias de la persona jurídica que muestre los socios beneficiarios finales de la sociedad. En caso de persona jurídica no domiciliada en el país, los mismos documentos debidamente protocolizados y traducidos al idioma castellano.",
             "Acta de asamblea donde conste la elección de la junta directiva actual, sin que se encuentre vencido su período electivo.",
             "Una (1) Referencia Bancaria, con una vigencia mínima de tres meses.",
-            "Planilla de Declaración Jurada de Origen y Destino de los Fondos, cada vez que realice una operación.",
+            "Onboarding de Declaración Jurada de Origen y Destino de los Fondos, cada vez que realice una operación.",
         ],
     }
 }
@@ -70,10 +70,8 @@ onMounted(() => {
                 :backgroundImage="personType === 'persona-natural' ? '/images/pages/registro/banner-persona-natural.webp' : '/images/pages/registro/banner-persona-juridica.webp'"
                 title="Comienza completando el formulario de registro" />
 
-            <div class="container lg:-translate-y-10">
-                <ModulesOnboardingWizardWrapper>
-                    Wizard form
-                </ModulesOnboardingWizardWrapper>
+            <div class="container w-full translate-y-0 md:-translate-y-12 lg:-translate-y-20">
+                <ModulesOnboardingWizardWrapper :personType="personType" />
             </div>
         </motion.div>
     </div>

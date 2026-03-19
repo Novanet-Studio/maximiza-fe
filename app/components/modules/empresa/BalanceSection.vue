@@ -13,9 +13,6 @@ const isLoading = ref(true);
 onMounted(async () => {
     try {
         balancesData.value = await getAllBalances();
-
-
-        console.log(balancesData.value);
     } catch (e) {
         console.error('Error loading balances:', e);
     } finally {

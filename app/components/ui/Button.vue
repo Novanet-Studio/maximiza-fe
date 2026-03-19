@@ -5,14 +5,19 @@ interface ButtonProps {
     text: string,
     icon?: string,
     type?: 'button' | 'submit' | 'reset',
-    variant?: 'primary' | 'secondary' | 'outline'
-    size?: 'sm' | 'md' | 'lg'
+    variant?: 'primary' | 'secondary' | 'outline' | 'danger'
+    size?: 'icon' | 'sm' | 'md' | 'lg'
+    disabled?: boolean
+    spin?: boolean
+    onClick?: () => void
+    suffixIcon?: boolean
 }
 
 const props = withDefaults(defineProps<ButtonProps>(), {
     variant: 'primary',
     size: 'md',
-    type: 'button'
+    type: 'button',
+    suffixIcon: false
 })
 
 const overlayVariants: any = {
@@ -25,31 +30,39 @@ const overlayVariants: any = {
         }
     }
 }
+
 </script>
 
 <template>
-    <motion.button :type="props.type" class="relative overflow-hidden font-semibold group cursor-pointer" :class="{
+    <motion.button :type="props.type" class="relative w-fit overflow-hidden font-semibold group cursor-pointer" :class="{
         'bg-primary text-white': props.variant === 'primary',
         'bg-gray text-white': props.variant === 'secondary',
         'border border-black-alt text-black-alt': props.variant === 'outline',
-        'px-3 py-2 xl:py-3 text-sm': props.size === 'sm',
+        'text-error': props.variant === 'danger',
+        'p-1 text-sm': props.size === 'icon',
+        'px-3 py-2 text-sm': props.size === 'sm',
         'px-4 py-3 text-base': props.size === 'md',
         'px-6 py-4 text-lg': props.size === 'lg',
-    }" initial="hidden" whileHover="hover">
+
+    }" initial="hidden" whileHover="hover" :disabled="props.disabled" @click="props.onClick">
         <motion.div class="absolute left-0 top-0 h-full z-0" :class="{
             'bg-primary-alt': props.variant === 'primary',
             'bg-black-alt': props.variant === 'secondary',
-            'bg-white-alt': props.variant === 'outline'
+            'bg-white-alt': props.variant === 'outline',
         }" :variants="overlayVariants" />
-        <span class="relative z-10 text-sm xl:text-base  flex items-center gap-1">
+        <div class="relative z-10 flex text-sm xl:text-base items-center gap-1" :class="{
+            'flex-row-reverse': props.suffixIcon,
+        }">
             {{ props.text }}
             <FontAwesomeIcon v-if="props.icon" :icon="props.icon" :class="{
-                'size-1 xl:size-2': props.size === 'sm',
-                'size-2 xl:size-4': props.size === 'md',
-                'size-4 xl:size-6': props.size === 'lg',
+                'size-1 xl:size-2': props.size === 'icon',
+                'size-2 xl:size-4': props.size === 'sm',
+                'size-4 xl:size-6': props.size === 'md',
+                'size-6 xl:size-8': props.size === 'lg',
                 'text-white': props.variant === 'primary' || props.variant === 'secondary',
                 'text-black-alt': props.variant === 'outline',
+                'animate-spin': props.spin
             }" />
-        </span>
+        </div>
     </motion.button>
 </template>

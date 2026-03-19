@@ -59,17 +59,17 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    // prerender: {
-    //   routes: ["/netlify-form-contact.html", "/netlify-form-suggestion.html"],
-    // },
-    // moduleSideEffects: ['@sparticuz/chromium'],
-    // externals: {
-    //   inline: [],
-    //   external: ['@sparticuz/chromium', 'puppeteer-core']
-    // },
-    // routeRules: {
-    //   '/api/generate-pdf': { cors: true, headers: { 'Access-Control-Allow-Origin': '*' } }
-    // }
+    prerender: {
+      routes: ["/contact-form.html"],
+    },
+    moduleSideEffects: ['@sparticuz/chromium'],
+    externals: {
+      inline: [],
+      external: ['@sparticuz/chromium', 'puppeteer-core']
+    },
+    routeRules: {
+      '/api/generate-pdf': { cors: true, headers: { 'Access-Control-Allow-Origin': '*' } }
+    }
   },
 
   robots: {

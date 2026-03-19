@@ -29,17 +29,17 @@ const props = defineProps<Props>();
 
         <div
             class="container w-full translate-y-0 md:-translate-y-12 lg:-translate-y-20 grid grid-cols-1 md:grid-cols-3 justify-items-center md:justify-around gap-12 md:gap-8 lg:gap-12 xl:gap-16">
-            <CommonContentCard subtitle="Paso 1:" title="Planillas de la CVV"
+            <CommonContentCard subtitle="Paso 1:" title="Onboardings de la CVV"
                 content="Realiza tu registro o actualización de datos en la Caja Venezolana de Valores (CVV) y descarga la lanilla firmada:"
                 :image="{
                     url: '/images/pages/registro/header/1.webp',
-                    alt: 'Planillas_de_la_CVV'
+                    alt: 'Onboardings_de_la_CVV'
                 }" :styles="{
                     title: 'text-black-alt mb-4',
                     content: 'p3 text-gray',
                     wrapper: `flex-1 p-6 md:p-4 lg:p-6 flex flex-col justify-start`
                 }" :button="{
-                    label: 'Planilla SITRAD',
+                    label: 'Onboarding SITRAD',
                     link: '/https://www.cajavenezolana.com/sitradweb/login.php',
                     icon: 'hand-point-right'
                 }" is-vertical />
