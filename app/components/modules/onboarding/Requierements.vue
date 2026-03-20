@@ -19,7 +19,7 @@ const props = defineProps<Props>()
             <div
                 class="bg-white-alt w-[275px] h-[275px] md:w-[190px] md:h-[190px] xl:w-[275px] xl:h-[275px] max-sm:mb-10 p-4 flex shrink-0 justify-center items-center z-10 relative">
                 <img :src="`/images/pages/home/${personType === 'persona-natural' ? 'person-type-natural.webp' : 'person-type-juridica.webp'}`"
-                    alt="Especialistas_en_asesoría" class="w-full h-full object-contain" />
+                    alt="Especialistas_en_asesoría" title="Especialistas_en_asesoría" class="w-full h-full object-contain" />
             </div>
             <div
                 class="bg-linear-to-r from-white to-white-alt2 p-8 md:pl-40 md:pr-10 lg:pl-40 lg:pr-24 w-full grow md:-ml-31.25 z-0">

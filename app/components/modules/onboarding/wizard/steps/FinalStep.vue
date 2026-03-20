@@ -115,11 +115,9 @@ defineExpose({
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center text-center py-12">
-
-
+  <div class="flex flex-col items-center justify-center text-center py-6 md:py-12">
     <picture class="mb-12">
-      <img class="w-[300px] h-auto" src="/images/brand/imagotipo.svg" alt="Maximiza Logo" />
+      <img class="w-[240px] md:w-[300px] h-auto" src="/images/brand/imagotipo.svg" alt="Maximiza Logo" title="Maximiza Logo" />
     </picture>
 
     <h2 class="text-primary font-black text-2xl md:text-3xl mb-2">
@@ -153,7 +151,7 @@ defineExpose({
 
     <div class="w-full p-4 md:p-8 rounded overflow-auto">
       <div class="flex flex-col gap-8 justify-center items-center">
-        <div class="w-a4 relative">
+        <div class="max-w-a4 relative">
           <p class="text-left text-lg font-bold text-black-alt mb-1 uppercase">
             1. Ficha de Identificación
           </p>
@@ -162,7 +160,7 @@ defineExpose({
           </div>
         </div>
 
-        <div class="w-a4 relative">
+        <div class="max-w-a4 relative">
           <p class="text-left text-lg font-bold text-black-alt mb-1 uppercase">
             2. Poder de Apertura
           </p>
@@ -171,7 +169,7 @@ defineExpose({
           </div>
         </div>
 
-        <div class="w-a4 relative">
+        <div class="max-w-a4 relative">
           <p class="text-left text-lg font-bold text-black-alt mb-1 uppercase">
             3. Origen de Fondos
           </p>
@@ -180,7 +178,7 @@ defineExpose({
           </div>
         </div>
 
-        <div class="w-a4 relative">
+        <div class="max-w-a4 relative">
           <p class="text-left text-lg font-bold text-black-alt mb-1 uppercase">
             4. Registro de Firmas
           </p>

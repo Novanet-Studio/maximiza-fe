@@ -89,7 +89,7 @@ const formCode = computed(() =>
   <div class="spreadsheet" style="padding: 1rem">
     <div class="page-break-container">
       <header class="spreadsheet__header relative">
-        <img class="spreadsheet__image" :src="MaximizaLogo" alt="logo" />
+        <img class="spreadsheet__image" :src="MaximizaLogo" alt="logo" title="logo" />
 
         <div class="text-right text-xs font-bold absolute top-0 right-0">
           {{ formCode }}

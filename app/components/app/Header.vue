@@ -107,10 +107,10 @@ onUnmounted(() => {
                 initial="hidden" animate="visible">
 
                 <motion.div :variants="headerItemVariants">
-                    <NuxtLink to="/" @click="setActive('Inicio')">
+                    <NuxtLink title="Ir a Enlace" to="/" @click="setActive('Inicio')">
                         <picture>
                             <img class="w-full max-w-[140px] xl:max-w-[200px] h-auto" src="/images/brand/imagotipo.svg"
-                                alt="Maximiza Logo" />
+                                alt="Maximiza Logo" title="Maximiza_Logo" />
                         </picture>
                     </NuxtLink>
                 </motion.div>
@@ -118,7 +118,7 @@ onUnmounted(() => {
                 <!-- Desktop Menu -->
                 <ul class="hidden md:flex items-center gap-4 xl:gap-8">
                     <motion.li as="li" v-for="item in navigationLinks" :key="item.label" :variants="headerItemVariants">
-                        <NuxtLink :to="item.to" @click="setActive(item.label)" :class="[
+                        <NuxtLink :title="item.label" :to="item.to" @click="setActive(item.label)" :class="[
                             active === item.label
                                 ? `text-primary`
                                 : 'text-black hover:text-primary',
@@ -131,11 +131,11 @@ onUnmounted(() => {
 
                 <!-- Desktop Buttons -->
                 <motion.div class="hidden md:flex items-center space-x-2" :variants="headerItemVariants">
-                    <NuxtLink to="/registro">
+                    <NuxtLink title="Registrarse" to="/registro">
                         <UiButton :text="'Registrarse'" :icon="'user-plus'" size="sm" />
                     </NuxtLink>
 
-                    <NuxtLink to="/registro">
+                    <NuxtLink title="Iniciar sesión" to="/registro">
                         <UiButton :text="'Iniciar sesión'" :icon="'sign-in'" size="sm" variant="outline" />
                     </NuxtLink>
                 </motion.div>
@@ -161,7 +161,7 @@ onUnmounted(() => {
                 <div class="flex-1 flex flex-col px-6 py-6 overflow-y-auto max-h-[calc(100vh-10dvh)]">
                     <ul class="flex flex-col gap-6">
                         <li v-for="item in navigationLinks" :key="item.label">
-                            <NuxtLink :to="item.to" @click="setActive(item.label)"
+                            <NuxtLink :title="item.label" :to="item.to" @click="setActive(item.label)"
                                 class="text-base font-normal transition-colors"
                                 :class="active === item.label ? 'text-primary' : 'text-black-alt hover:text-primary'">
                                 {{ item.label }}
@@ -171,11 +171,11 @@ onUnmounted(() => {
 
                     <!-- Mobile Menu Buttons -->
                     <div class="mt-8 w-fit flex items-center gap-3">
-                        <NuxtLink to="/registro" class="flex-1">
+                        <NuxtLink title="Registrarse" to="/registro" class="flex-1">
                             <UiButton :text="'Registrarse'" :icon="'user-plus'" size="sm"
                                 class="w-full justify-center" />
                         </NuxtLink>
-                        <NuxtLink to="/registro" class="flex-1">
+                        <NuxtLink title="Ingresar" to="/registro" class="flex-1">
                             <UiButton :text="'Ingresar'" :icon="'sign-in'" size="sm" variant="outline"
                                 class="w-full justify-center bg-white" />
                         </NuxtLink>

@@ -118,6 +118,16 @@
       margin-bottom: 1rem;
     }
 
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: inherit;
+      margin-bottom: 1rem;
+    }
+
     ul,
     ol {
       margin-bottom: 1rem;
@@ -128,14 +138,16 @@
         margin-left: 1rem;
       }
     }
+
+
   }
 
   .form-section {
-    @apply flex flex-col gap-8;
+    @apply flex flex-col gap-4 md:gap-8;
   }
 
   .form-subsection {
-    @apply p-8 pt-4 pb-6 border-l-[2px] border-b-[2px] border-white-alt bg-white-alt/35 flex flex-col gap-8;
+    @apply p-4 pt-2 pb-3 md:p-8 md:pt-4 md:pb-6 border-l-[2px] border-b-[2px] border-white-alt bg-white-alt/35 flex flex-col gap-8;
 
     &.--alt {
       @apply p-4 border-l-[2px] border-b-[2px] border-white-alt bg-white-alt/50 flex flex-col gap-8;
@@ -143,7 +155,7 @@
   }
 
   .form-subsection-title {
-    @apply -ml-4 block text-xl font-bold text-black-alt;
+    @apply -ml-2 md:-ml-4 block text-xl font-bold text-black-alt;
 
     &.--alt {
       @apply m-0 block text-lg font-bold;

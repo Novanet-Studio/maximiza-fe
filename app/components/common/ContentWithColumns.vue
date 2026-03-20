@@ -24,7 +24,7 @@ const props = withDefaults(defineProps<{
         <div class="absolute inset-0 flex w-full h-full z-0 pointer-events-none">
             <template v-if="isSplitBackground">
                 <div class="w-full md:w-1/2 h-full bg-primary relative overflow-hidden">
-                    <img v-if="backgroundImage" :src="backgroundImage" alt="Background"
+                    <img v-if="backgroundImage" :src="backgroundImage" alt="Background" title="Background"
                         class="absolute inset-0 w-full h-full object-cover " />
                 </div>
                 <div class="hidden md:block w-1/2 h-full bg-white"></div>
@@ -32,7 +32,7 @@ const props = withDefaults(defineProps<{
             <template v-else>
                 <div
                     :class="`w-full ${coverWrapper ? 'h-full' : 'h-[490px] md:h-[214px] lg:h-[340px]'} relative overflow-hidden`">
-                    <img v-if="backgroundImage" :src="backgroundImage" alt="Background"
+                    <img v-if="backgroundImage" :src="backgroundImage" alt="Background" title="Background"
                         class="absolute inset-0 w-full h-full object-cover" />
                 </div>
             </template>

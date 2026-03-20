@@ -2,8 +2,20 @@
 import { metadata } from '@/assets/data/metadata';
 import { motion } from 'motion-v';
 import { generalContainerVariants, generalItemVariants } from '~/assets/animations/motion';
+import { useJsonLd } from '~/composables/useJsonLd';
 
 useSeoMeta(metadata.servicios);
+
+useJsonLd({
+  "@context": "https://schema.org",
+  "@type": "FinancialService",
+  "name": "Servicios Financieros Maximiza",
+  "description": metadata.servicios.description,
+  "provider": {
+    "@type": "Organization",
+    "name": "Maximiza Casa de Bolsa"
+  }
+});
 </script>
 
 <template>
@@ -66,13 +78,13 @@ useSeoMeta(metadata.servicios);
 
                     <div
                         class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] lg:w-64 aspect-square bg-white-alt flex items-center justify-center p-6 lg:p-10 transition-transform duration-300">
-                        <img src="/images/pages/home/person-type-natural.webp" alt="Persona natural"
+                        <img src="/images/pages/home/person-type-natural.webp" alt="Persona natural" title="Persona natural"
                             class="w-full h-full object-contain relative z-10" />
                     </div>
 
                     <h3 class="pb-8 text-2xl font-extrabold text-black-alt">Persona natural</h3>
 
-                    <NuxtLink :to="'/registro/persona-natural'">
+                    <NuxtLink title="Quiero registrarme" :to="'/registro/persona-natural'">
                         <UiButton :text="'Quiero registrarme'" :icon="'arrow-right-to-bracket'" variant="primary" />
                     </NuxtLink>
                 </motion.div>
@@ -83,13 +95,13 @@ useSeoMeta(metadata.servicios);
 
                     <div
                         class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] lg:w-64 aspect-square bg-white-alt flex items-center justify-center p-6 lg:p-10 transition-transform duration-300">
-                        <img src="/images/pages/home/person-type-juridica.webp" alt="Persona jurídica"
+                        <img src="/images/pages/home/person-type-juridica.webp" alt="Persona jurídica" title="Persona jurídica"
                             class="w-full h-full object-contain relative z-10" />
                     </div>
 
                     <h3 class="pb-8 text-2xl font-extrabold text-black-alt">Persona jurídica</h3>
 
-                    <NuxtLink :to="'/registro/persona-juridica'">
+                    <NuxtLink title="Quiero registrarme" :to="'/registro/persona-juridica'">
                         <UiButton :text="'Quiero registrarme'" :icon="'arrow-right-to-bracket'" variant="secondary" />
                     </NuxtLink>
                 </motion.div>

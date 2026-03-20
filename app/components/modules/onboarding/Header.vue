@@ -91,7 +91,7 @@ const props = defineProps<Props>();
                 <div class="mt-4 flex items-center gap-2">
                     <FontAwesomeIcon icon="envelope" class="text-primary mt-1" />
 
-                    <a :href="`mailto:${companyData.email}`" class="text-gray text-xs lg:text-base">{{
+                    <a :title="companyData.email" :href="`mailto:${companyData.email}`" class="text-gray text-xs lg:text-base">{{
                         companyData.email }}</a>
                 </div>
             </CommonContentCard>

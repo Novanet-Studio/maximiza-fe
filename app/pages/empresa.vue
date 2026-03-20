@@ -58,7 +58,20 @@ const alliesLogos = ref([
     },
 ])
 
+import { useJsonLd } from '~/composables/useJsonLd';
+
 useSeoMeta(metadata.empresa);
+
+useJsonLd({
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "La Empresa - Maximiza Casa de Bolsa",
+  "description": metadata.empresa.description,
+  "mainEntity": {
+    "@type": "FinancialService",
+    "name": "Maximiza Casa de Bolsa"
+  }
+});
 </script>
 
 <template>
@@ -88,7 +101,7 @@ useSeoMeta(metadata.empresa);
                 <motion.div class="flex flex-col md:flex-row items-center w-full" :variants="generalItemVariants">
                     <div
                         class="bg-primary w-full md:w-62.5 h-75 md:h-62.5 p-4 flex shrink-0 justify-center items-center z-10 relative">
-                        <img src="/images/pages/empresa/info-section-1.webp" alt="Especialistas en asesoría"
+                        <img src="/images/pages/empresa/info-section-1.webp" alt="Especialistas en asesoría" title="Especialistas en asesoría"
                             class="w-full h-full object-contain" />
                     </div>
                     <div
@@ -106,7 +119,7 @@ useSeoMeta(metadata.empresa);
                     :variants="generalItemVariants">
                     <div
                         class="bg-black-alt w-full md:w-62.5 h-75 md:h-62.5 p-4 flex shrink-0 justify-center items-center z-10 relative">
-                        <img src="/images/pages/empresa/info-section-2.webp" alt="Alianzas formales"
+                        <img src="/images/pages/empresa/info-section-2.webp" alt="Alianzas formales" title="Alianzas formales"
                             class="w-full h-full object-contain" />
                     </div>
                     <div
@@ -155,7 +168,7 @@ useSeoMeta(metadata.empresa);
                 <motion.li v-for="(value, index) in institutionalValues" :key="`empresa_item_${index}`"
                     class="flex-1 flex flex-col items-center justify-center" :variants="headerItemVariants">
 
-                    <img :src="value.image" :alt="value.label"
+                    <img :src="value.image" :alt="value.label" :title="value.label"
                         class="w-40 h-40 md:w-20 md:h-20 2xl:w-40 2xl:h-40 mb-4 object-contain" />
 
                     <h5 class="text-white font-semibold text-center">{{ value.label }}</h5>
@@ -186,7 +199,7 @@ useSeoMeta(metadata.empresa);
 
                 <div class="p-4 `md:p-8 lg:p-12 xl:p-16 bg-white-alt grid grid-cols-3 gap-6">
                     <motion.img v-for="(logo, index) in alliesLogos" :key="`empresa_allies_${index}`" :src="logo.src"
-                        :alt="logo.alt" class="aspect-square" :variants="generalItemVariants" />
+                        :alt="logo.alt" :title="logo.alt" class="aspect-square" :variants="generalItemVariants" />
                 </div>
             </div>
         </motion.section>

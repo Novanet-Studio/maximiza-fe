@@ -19,7 +19,7 @@ import { generalContainerVariants, generalItemVariants, overlayVariants } from "
                     class="w-[275px] h-[275px] md:w-[190px] md:h-[190px] xl:w-[275px] xl:h-[275px] relative p-4 bg-white-alt overflow-hidden">
                     <motion.div class="absolute left-0 top-0 h-full bg-primary z-0" :variants="overlayVariants" />
 
-                    <img src="/images/pages/home/person-type-natural.webp" alt="Person Type Natural"
+                    <img src="/images/pages/home/person-type-natural.webp" alt="Person Type Natural" title="Person Type Natural"
                         class="w-full h-full object-contain relative z-10" />
                 </div>
 
@@ -34,7 +34,7 @@ import { generalContainerVariants, generalItemVariants, overlayVariants } from "
                     class="w-[275px] h-[275px] md:w-[190px] md:h-[190px] xl:w-[275px] xl:h-[275px] relative p-4 bg-white-alt overflow-hidden">
                     <motion.div class="absolute left-0 top-0 h-full bg-primary z-0" :variants="overlayVariants" />
 
-                    <img src="/images/pages/home/person-type-juridica.webp" alt="Person Type Juridica"
+                    <img src="/images/pages/home/person-type-juridica.webp" alt="Person Type Juridica" title="Person Type Juridica"
                         class="w-full h-full object-contain relative z-10" />
                 </div>
 

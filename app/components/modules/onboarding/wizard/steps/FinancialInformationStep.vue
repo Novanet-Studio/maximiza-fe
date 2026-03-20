@@ -1043,7 +1043,7 @@ defineExpose({ validate });
 
       <FormBaseLayout>
         <FormBaseSelect name="bankReference.institution" label="Institución" :options="bankingInstituteOptions"
-          v-model="bankInstitution" :error-message="errors['bankReference.institution']" required class="col-span-2" />
+          v-model="bankInstitution" :error-message="errors['bankReference.institution']" required class="md:col-span-2" />
 
         <FormBaseSelect name="bankReference.productType" label="Tipo de cuenta"
           :options="['Cuenta corriente', 'Cuenta de ahorro']" v-model="bankProductType"

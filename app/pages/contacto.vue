@@ -4,8 +4,22 @@ import commonData from '@/assets/data/common.json';
 import { motion } from 'motion-v';
 import { generalContainerVariants, generalItemVariants } from '@/assets/animations/motion';
 
+import { useJsonLd } from '~/composables/useJsonLd';
+
 useSeoMeta(metadata.contacto);
 
+useJsonLd({
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Contacto - Maximiza Casa de Bolsa",
+  "description": metadata.contacto.description,
+  "mainEntity": {
+    "@type": "FinancialService",
+    "name": "Maximiza Casa de Bolsa",
+    "telephone": commonData.phone,
+    "email": commonData.email
+  }
+});
 const contactMethods = [
     {
         title: 'Atención al cliente',
@@ -62,7 +76,7 @@ const contactMethods = [
                         class="w-full h-28 bg-white border border-gray flex">
                         <div
                             class="mt-2 w-24 h-24 bg-primary -translate-x-1/2 flex shrink-0 items-center justify-center">
-                            <img :src="method.icon" :alt="method.title" class="w-18 h-18 object-contain" />
+                            <img :src="method.icon" :alt="method.title" title="method.title" class="w-18 h-18 object-contain" />
                         </div>
                         <div class="-translate-x-5 flex flex-col justify-center py-8 grow">
                             <h5 class="text-black-alt">{{ method.title }}</h5>

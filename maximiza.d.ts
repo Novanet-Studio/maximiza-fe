@@ -40,7 +40,7 @@ declare namespace MXMZ {
     export interface Article {
         readonly documentId: string;
         readonly titulo: string;
-        readonly fecha: Date;
+        readonly fecha: string;
         readonly slug: string;
         readonly descripcion: string;
         readonly imagen: {

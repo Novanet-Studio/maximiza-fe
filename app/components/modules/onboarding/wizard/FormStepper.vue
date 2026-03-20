@@ -22,7 +22,7 @@ const isStepClickable = (index: number) => {
 </script>
 
 <template>
-  <div id="formStepper" class="w-full mx-auto px-4">
+  <div id="formStepper" class="w-full mx-auto px-2 md:px-4">
     <!-- MOBILE VIEW -->
     <div class="md:hidden mb-6">
       <p class="text-primary font-bold text-sm uppercase mb-2">

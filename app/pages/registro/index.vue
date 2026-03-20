@@ -25,7 +25,7 @@ useSeoMeta(metadata.registro);
 
             <div class="max-w-2xl w-full flex flex-col md:flex-row max-sm:gap-16 justify-around items-center">
 
-                <NuxtLink to="/registro/persona-natural">
+                <NuxtLink title="Persona natural" to="/registro/persona-natural">
                     <motion.button type="button" class="flex flex-col items-center gap-4 group"
                         :variants="generalItemVariants" initial="hidden" whileHover="hover" animate="visible">
 
@@ -33,7 +33,7 @@ useSeoMeta(metadata.registro);
                             <motion.div class="absolute left-0 top-0 h-full bg-primary z-0"
                                 :variants="overlayVariants" />
 
-                            <img src="/images/pages/home/person-type-natural.webp" alt="Person Type Natural"
+                            <img src="/images/pages/home/person-type-natural.webp" alt="Person Type Natural" title="Person Type Natural"
                                 class="w-full h-full object-contain relative z-10" />
                         </div>
 
@@ -45,14 +45,14 @@ useSeoMeta(metadata.registro);
 
                 </NuxtLink>
 
-                <NuxtLink to="/registro/persona-juridica">
+                <NuxtLink title="Persona juridica" to="/registro/persona-juridica">
                     <motion.button type="button" class="flex flex-col items-center gap-4 group"
                         :variants="generalItemVariants" initial="hidden" whileHover="hover" animate="visible">
                         <div class="w-[275px] h-[275px] relative p-4 bg-white-alt overflow-hidden">
                             <motion.div class="absolute left-0 top-0 h-full bg-primary z-0"
                                 :variants="overlayVariants" />
 
-                            <img src="/images/pages/home/person-type-juridica.webp" alt="Person Type Juridica"
+                            <img src="/images/pages/home/person-type-juridica.webp" alt="Person Type Juridica" title="Person Type Juridica"
                                 class="w-full h-full object-contain relative z-10" />
                         </div>
 

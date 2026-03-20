@@ -16,6 +16,14 @@ export const formatDate = (dateString: string | undefined | null): string => {
   return `${day}/${month}/${year}`;
 };
 
+export const articleExcerpt = (text: string | undefined | null, length: number) => {
+  if (!text) return "";
+
+  const raw = text.replace(/<[^>]*>/g, '');
+
+  return raw.length > length ? raw.substring(0, length) + "..." : raw;
+};
+
 export const minAgeDate = (age: number): string => {
   const today = new Date();
   const date = new Date(

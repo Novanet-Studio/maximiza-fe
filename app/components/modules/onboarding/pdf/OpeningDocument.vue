@@ -72,7 +72,7 @@ const textData = computed(() => {
   <div class="spreadsheet" style="padding: 1rem">
     <div class="page-break-container">
       <header class="spreadsheet__header">
-        <img class="spreadsheet__image" :src="MaximizaLogo" alt="logo" />
+        <img class="spreadsheet__image" :src="MaximizaLogo" alt="logo" title="logo" />
       </header>
 
       <div class="spreadsheet__body mt-12 px-4">

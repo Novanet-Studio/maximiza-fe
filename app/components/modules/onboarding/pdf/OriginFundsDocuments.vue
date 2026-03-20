@@ -98,7 +98,7 @@ const documentsList = computed(() => {
       class="page-break-container"
     >
       <header class="spreadsheet__header flex justify-end">
-        <img class="spreadsheet__image" :src="MaximizaLogo" alt="logo" />
+        <img class="spreadsheet__image" :src="MaximizaLogo" alt="logo" title="logo" />
       </header>
 
       <div class="spreadsheet__body mt-12 px-4">

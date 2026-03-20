@@ -114,7 +114,7 @@ onMounted(() => {
       <div class="w-full text-right text-sm font-bold">Pág. 1/3</div>
 
       <header class="spreadsheet__header">
-        <img class="spreadsheet__image" :src="MaximizaLogo" alt="logo" />
+        <img class="spreadsheet__image" :src="MaximizaLogo" alt="logo" title="logo" />
         <h5 class="spreadsheet__main-title">
           FICHA DE IDENTIFICACIÓN DEL INVERSIONISTA PERSONA
           {{ isNatural ? "NATURAL" : "JURÍDICA" }}

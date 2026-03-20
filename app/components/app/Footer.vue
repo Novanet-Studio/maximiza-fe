@@ -40,9 +40,9 @@ const currentYear = new Date().getFullYear();
             <motion.div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 md:gap-4 mb-12"
                 :variants="footerContainerVariants">
                 <motion.div class="col-span-full mb-8 md:mb-6" :variants="footerItemVariants">
-                    <NuxtLink to="/">
+                    <NuxtLink title="Ir a Enlace" to="/">
                         <picture>
-                            <img src="/images/brand/imagotipo.svg" alt="Maximiza Casa de Bolsa"
+                            <img src="/images/brand/imagotipo.svg" alt="Maximiza Casa de Bolsa" title="Maximiza Casa de Bolsa"
                                 class="w-full max-w-[180px] xl:max-w-[240px] brightness-0 invert" />
                         </picture>
                     </NuxtLink>
@@ -52,7 +52,7 @@ const currentYear = new Date().getFullYear();
                     <h6 class="text-white mb-3 xl:mb-6">Enlaces directos</h6>
                     <ul class="space-y-2 xl:space-y-6">
                         <li v-for="link in directLinks" :key="link.label">
-                            <NuxtLink :to="link.to"
+                            <NuxtLink :title="link.label" :to="link.to"
                                 class="text-sm xl:text-base text-white-alt hover:text-secondary transition-colors duration-300">
                                 {{ link.label }}
                             </NuxtLink>
@@ -64,7 +64,7 @@ const currentYear = new Date().getFullYear();
                     <h6 class="text-white mb-3 xl:mb-6">Enlaces usuarios</h6>
                     <ul class="space-y-2 xl:space-y-6">
                         <li v-for="link in userLinks" :key="link.label">
-                            <NuxtLink :to="link.to"
+                            <NuxtLink :title="link.label" :to="link.to"
                                 class="text-sm xl:text-base text-white-alt hover:text-secondary transition-colors duration-300">
                                 {{ link.label }}
                             </NuxtLink>
@@ -76,11 +76,11 @@ const currentYear = new Date().getFullYear();
                     <h6 class="text-white mb-3 xl:mb-6">Enlaces de interés</h6>
                     <ul class="space-y-2 xl:space-y-6">
                         <li v-for="link in interestLinks" :key="link.label">
-                            <a v-if="link.external" :href="link.to" target="_blank" rel="noopener noreferrer"
+                            <a :title="link.label" v-if="link.external" :href="link.to" target="_blank" rel="noopener noreferrer"
                                 class="text-sm xl:text-base text-white-alt hover:text-secondary transition-colors duration-300">
                                 {{ link.label }}
                             </a>
-                            <NuxtLink v-else :to="link.to"
+                            <NuxtLink :title="link.label" v-else :to="link.to"
                                 class="text-sm xl:text-base text-white-alt hover:text-secondary transition-colors duration-300">
                                 {{ link.label }}
                             </NuxtLink>
@@ -98,13 +98,13 @@ const currentYear = new Date().getFullYear();
 
                 <div class="flex items-center gap-1">
                     <FontAwesomeIcon :icon="faEnvelope" class="text-white" />
-                    <a :href="`mailto:${companyData.email}`" class="hover:text-secondary transition-colors">{{
+                    <a :title="companyData.email" :href="`mailto:${companyData.email}`" class="hover:text-secondary transition-colors">{{
                         companyData.email }}</a>
                 </div>
 
                 <div class="flex items-center gap-1">
                     <FontAwesomeIcon :icon="faPhone" class="text-white" />
-                    <a :href="`tel:${companyData.phone}`" class="hover:text-secondary transition-colors">{{
+                    <a :title="companyData.phone" :href="`tel:${companyData.phone}`" class="hover:text-secondary transition-colors">{{
                         companyData.phone
                     }}</a>
                 </div>
@@ -131,9 +131,9 @@ const currentYear = new Date().getFullYear();
                     <span class="text-xs sm:text-base flex"><span class="px-1 hidden sm:block">|</span> Diseñado
                         por:</span>
                     <span class="font-bold text-white flex">
-                        <NuxtLink to="https://novanet.studio/" target="_blank">
+                        <NuxtLink title="Ir a Enlace" to="https://novanet.studio/" target="_blank">
                             <picture>
-                                <img src="/resources/logo-novanet.svg" alt="Logo Novanet"
+                                <img src="/resources/logo-novanet.svg" alt="Logo Novanet" title="Logo Novanet"
                                     class="h-4 w-auto hover:scale-95 transition-all duration-300" />
                             </picture>
                         </NuxtLink>

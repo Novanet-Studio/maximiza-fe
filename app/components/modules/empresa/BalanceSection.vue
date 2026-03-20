@@ -40,21 +40,18 @@ onMounted(async () => {
                         class="w-full flex flex-col md:flex-row items-start md:items-center py-8"
                         :variants="generalItemVariants">
 
-                        <!-- Left column: Year -->
                         <div class="w-full md:w-24 shrink-0 text-center md:text-left">
-                            <h3 class="text-3xl text-primary">{{ item.ano }}</h3>
+                            <h3 class="max-md:mb-2 text-3xl text-primary">{{ item.ano }}</h3>
                         </div>
 
-                        <!-- Right column: Document Buttons Grid -->
                         <div class="w-full bg-white-alt2 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 gap-0.5">
                             <span v-for="(doc, docIndex) in item.source" :key="docIndex">
-                                <a v-if="doc.file" :href="doc.file.url" target="_blank" rel="noopener noreferrer"
-                                    class="group flex items-center justify-between gap-2 py-3 lg:py-4 lg:px-6 bg-white-alt hover:bg-primary text-black-alt hover:text-white transition-colors duration-300">
+                                <a :title="doc.label" v-if="doc.file" :href="doc.file.url" target="_blank" rel="noopener noreferrer"
+                                    class="group flex items-center justify-between gap-2 px-2 py-3 lg:py-4 lg:px-6 bg-white-alt hover:bg-primary text-black-alt hover:text-white transition-colors duration-300">
                                     <span class="text-base font-semibold">{{ doc.label }}</span>
 
                                     <FontAwesomeIcon :icon="faFileDownload"
                                         class="text-primary group-hover:text-white transition-colors duration-300 text-lg" />
-                                    
                                 </a>
                             </span>
                         </div>

@@ -30,12 +30,12 @@ import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
 
                     <div
                         class="flex flex-col md:flex-row items-start md:items-center md:gap-3 md:gap-6 text-gray text-base md:text-lg w-full md:w-auto">
-                        <a :href="`mailto:${companyData.email}`"
+                        <a :title="companyData.email" :href="`mailto:${companyData.email}`"
                             class="flex items-center gap-3 hover:opacity-80 transition-opacity">
                             <FontAwesomeIcon :icon="faEnvelope" class="text-primary text-xl" />
                             {{ companyData.email }}
                         </a>
-                        <a :href="`tel:${companyData.phone.replace(/\s+/g, '')}`"
+                        <a :title="companyData.phone" :href="`tel:${companyData.phone.replace(/\s+/g, '')}`"
                             class="flex items-center gap-3 hover:opacity-80 transition-opacity">
                             <FontAwesomeIcon :icon="faPhone" class="text-primary text-xl" />
                             {{ companyData.phone }}
@@ -46,7 +46,7 @@ import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
                 <div
                     class="w-[240px] sm:w-[280px] md:w-[243px] xl:w-[386px] shrink-0 flex justify-center -mt-28 mb-4 md:-mt-12 md:-mb-12 z-10 drop-shadow-2xl">
                     <img src="/images/pages/home/book.webp"
-                        alt="Pasado, presente y futuro del mercado de valores en Venezuela"
+                        alt="Pasado, presente y futuro del mercado de valores en Venezuela" title="Pasado, presente y futuro del mercado de valores en Venezuela"
                         class="object-contain w-full" />
                 </div>
             </motion.div>

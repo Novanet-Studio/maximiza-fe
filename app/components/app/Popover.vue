@@ -72,7 +72,7 @@ onUnmounted(() => {
                 }
             ]" @click.stop>
                 <div v-if="title || icon" class="flex items-center gap-3 mb-3">
-                    <img v-if="icon" :src="icon" alt="icon" class="w-6 h-6 object-contain" />
+                    <img v-if="icon" :src="icon" alt="icon" title="icon" class="w-6 h-6 object-contain" />
                     <h5 v-if="title" class="font-semibold text-black-alt m-0 text-lg">{{ title }}</h5>
                 </div>
 

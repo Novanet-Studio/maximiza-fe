@@ -99,7 +99,7 @@ onMounted(() => {
     </section>
 
     <section class="w-full">
-      <div class="bg-white px-4">
+      <div class="bg-white px-2 md:px-4">
         <div class="overflow-hidden">
           <AnimatePresence mode="popLayout">
             <motion.div :key="wizard.state.value.currentStep" :initial="{ opacity: 0, x: 20 }"

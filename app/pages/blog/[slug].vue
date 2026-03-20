@@ -8,6 +8,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { faLinkedinIn, faXTwitter } from '@fortawesome/free-brands-svg-icons'
 import { useArticles } from '~/composables/useArticles'
 import { marked } from 'marked'
+import { articleExcerpt } from '~/lib/utils';
 
 const route = useRoute();
 const slug = route.params.slug as string;
@@ -21,11 +22,28 @@ if (!article.value) {
     throw createError({ statusCode: 404, statusMessage: 'Artículo no encontrado', fatal: true });
 }
 
+import { useJsonLd } from '~/composables/useJsonLd';
+
+useJsonLd({
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": article.value.titulo,
+  "description": articleExcerpt(article.value.descripcion, 200),
+  "image": article.value.imagen?.url || "https://maximiza.com.ve/images/article-placeholder.webp",
+  "datePublished": article.value.fecha,
+  "dateModified": article.value.fecha,
+  "author": {
+    "@type": "Organization",
+    "name": "Maximiza Casa de Bolsa",
+    "url": "https://maximiza.com.ve/"
+  }
+});
+
 useSeoMeta({
     title: article.value.titulo,
-    description: article.value.descripcion || 'Artículo de Blog',
+    description: articleExcerpt(article.value.descripcion, 200),
     ogTitle: article.value.titulo,
-    ogDescription: article.value.descripcion || 'Artículo de Blog',
+    ogDescription: articleExcerpt(article.value.descripcion, 200),
     ogImage: article.value.imagen?.url || '/images/article-placeholder.webp',
     ogUrl: requestUrl.href,
     ogType: "article",
@@ -51,33 +69,33 @@ const parsedContent = computed(() => {
 <template>
     <div class="relative w-full min-h-dvh mt-[10vh] pb-40 flex flex-col bg-white">
         <div class="h-100 absolute inset-0 z-0">
-            <img src="/images/pages/blog/article-banner.webp" alt="Background"
+            <img src="/images/pages/blog/article-banner.webp" alt="Background" title="Background"
                 class="w-full h-full object-cover object-center" />
         </div>
 
-        <motion.article class="container w-full mx-auto bg-white translate-y-20 2xl:translate-y-30 "
+        <motion.article class="container mx-auto bg-white translate-y-30 lg:translate-y-40"
             :variants="generalContainerVariants" initial="hidden" whileInView="visible" :viewport="{ once: true }">
 
-            <motion.header class="relative z-10 w-full h-96 mx-auto flex flex-col md:flex-row"
+            <motion.header class="relative z-10 w-full md:max-h-96 mx-auto flex flex-col md:flex-row"
                 :variants="generalItemVariants">
 
-                <div class="w-full md:w-1/2 ">
+                <div class="w-full md:w-1/2 shrink-0">
                     <img :src="article?.imagen?.url || '/images/article-placeholder.webp'" :alt="article?.titulo"
-                        class="w-full h-full object-cover" />
+                        title="article?.titulo" class="w-full h-64 sm:h-80 md:h-full object-cover object-center" />
                 </div>
 
-                <div class="w-full md:w-1/2 relative bg-white flex items-center overflow-hidden">
-                    <img src="/images/pages/blog/polygon-assets.webp" alt="Pattern"
-                        class="absolute pointer-events-none" />
+                <div class="w-full md:w-1/2 relative bg-white-alt flex items-center justify-center overflow-hidden min-h-48">
+                    <img src="/images/pages/blog/polygon-assets.webp" alt="Pattern" title="Pattern"
+                        class="absolute inset-0 w-full h-full object-cover pointer-events-none z-0" />
 
-                    <div class="absolute w-full h-full p-8 flex items-center">
-                        <h1 v-html="article?.titulo" />
+                    <div class="relative z-10 w-full p-8 md:p-12 flex items-center text-center md:text-left">
+                        <h1 v-html="article?.titulo" class="w-full m-0" />
                     </div>
                 </div>
             </motion.header>
 
             <motion.main
-                class="text-gray text-sm md:text-base leading-relaxed md:columns-2 pt-8 px-8 gap-16 font-light column-fill-balance text-left"
+                class="text-gray text-sm md:text-base leading-relaxed md:columns-2 p-4 lg:p-8 gap-8 lg:gap-16 font-light column-fill-balance text-left"
                 :variants="generalItemVariants">
                 <div v-html="parsedContent" class="prose" />
             </motion.main>
@@ -90,18 +108,18 @@ const parsedContent = computed(() => {
                 <div class="w-full px-8 text-primary sm:w-auto flex flex-col items-start gap-2">
                     <p class="p2">Comparte este artículo</p>
                     <div class="flex items-center gap-4">
-                        <a :href="shareLinkedIn" target="_blank" rel="noopener noreferrer"
+                        <a title="Ir a shareLinkedIn" :href="shareLinkedIn" target="_blank" rel="noopener noreferrer"
                             class="text-black-alt hover:text-primary transition-colors" aria-label="LinkedIn">
                             <FontAwesomeIcon :icon="faLinkedinIn" class="text-2xl" />
                         </a>
-                        <a :href="shareX" target="_blank" rel="noopener noreferrer"
+                        <a title="Ir a shareX" :href="shareX" target="_blank" rel="noopener noreferrer"
                             class="text-black-alt hover:text-primary transition-colors" aria-label="Twitter">
                             <FontAwesomeIcon :icon="faXTwitter" class="text-2xl" />
                         </a>
                     </div>
                 </div>
 
-                <NuxtLink to="/blog"
+                <NuxtLink title="Volver al blog" to="/blog"
                     class="w-full sm:w-auto text-black-alt hover:text-primary transition-colors flex items-center gap-1 justify-end">
                     <FontAwesomeIcon :icon="faArrowLeft" />
                     <p class="p2">Volver al blog</p>
@@ -116,5 +134,4 @@ const parsedContent = computed(() => {
 .column-fill-balance {
     column-fill: balance;
 }
-
 </style>

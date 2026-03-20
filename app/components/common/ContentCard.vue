@@ -53,7 +53,7 @@ const props = withDefaults(defineProps<Props>(), {
             <p :class="props.styles.content" v-html="props.content"></p>
 
             <div class="mt-4" v-if="props.button">
-                <NuxtLink :to="props.button.link">
+                <NuxtLink :title="props.button.label" :to="props.button.link">
                     <UiButton :text="props.button.label" :icon="props.button.icon" :variant="props.button.variant"
                         :size="props.button.size" />
                 </NuxtLink>
@@ -62,7 +62,7 @@ const props = withDefaults(defineProps<Props>(), {
             <slot />
         </div>
         <div class="shrink-0" :class="{ 'relative': props.isVertical }">
-            <img :src="props.image.url" :alt="props.image.alt"
+            <img :src="props.image.url" :alt="props.image.alt" title="props.image.alt"
                 :class="props.isVertical 
                             ? 'w-full min-w-[280px] min-h-[175px] md:min-w-[152px] md:min-h-[95px] lg:min-w-[280px] lg:min-h-[175px] object-cover' 
                             : `w-full h-auto md:w-[220px] lg:w-[280px] object-cover`" />

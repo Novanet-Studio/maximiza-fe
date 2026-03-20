@@ -49,7 +49,7 @@ const links: { description: string, button: { link: string }, image: { url: stri
     {
         description: 'Decreto con rango valor y fuerza de ley del mercado de valores',
         button: {
-            link: '',
+            link: 'https://historico.tsj.gob.ve/gaceta_ext/diciembre/30122015/E-30122015-4474.pdf#page=1',
         },
         image: {
             url: '/images/pages/responsabilidad/links/1.webp',
@@ -59,7 +59,7 @@ const links: { description: string, button: { link: string }, image: { url: stri
     {
         description: 'Ley orgánica contra la delincuencia organizada y financiamiento al terrorismo (LOCDOFT)',
         button: {
-            link: '',
+            link: 'https://res.cloudinary.com/novanet-studio/image/upload/v1663620373/maximiza/downloads/LOCDOFT_xkzdu7.pdf',
         },
         image: {
             url: '/images/pages/responsabilidad/links/2.webp',
@@ -69,7 +69,7 @@ const links: { description: string, button: { link: string }, image: { url: stri
     {
         description: 'Ley orgánica de drogas (LOD)',
         button: {
-            link: '',
+            link: 'http://historico.tsj.gob.ve/gaceta/noviembre/5112010/5112010-2989.pdf#page=1',
         },
         image: {
             url: '/images/pages/responsabilidad/links/3.webp',
@@ -79,7 +79,7 @@ const links: { description: string, button: { link: string }, image: { url: stri
     {
         description: 'Providencia 209 - Gaceta oficial 42115',
         button: {
-            link: '',
+            link: 'https://res.cloudinary.com/novanet-studio/image/upload/v1663620677/maximiza/downloads/Providencia_209-GO_42115_izkots.pdf',
         },
         image: {
             url: '/images/pages/responsabilidad/links/4.webp',
@@ -89,7 +89,7 @@ const links: { description: string, button: { link: string }, image: { url: stri
     {
         description: 'Demás circulares enmarcadas por la SUNAVAL',
         button: {
-            link: '',
+            link: '#',
         },
         image: {
             url: '/images/pages/responsabilidad/links/5.webp',
@@ -99,7 +99,7 @@ const links: { description: string, button: { link: string }, image: { url: stri
     {
         description: 'Gaceta oficial normas relativas <br /> al buen gobierno corporativo',
         button: {
-            link: '',
+            link: 'https://res.cloudinary.com/novanet-studio/image/upload/v1663620767/maximiza/downloads/G.O_Normas_Relativas_al_buen_Gobierno_Corporativo_tgiqhy.pdf',
         },
         image: {
             url: '/images/pages/responsabilidad/links/6.webp',
@@ -108,14 +108,27 @@ const links: { description: string, button: { link: string }, image: { url: stri
     }
 ]
 
-useSeoMeta(metadata.responsabilidad);
+import { useJsonLd } from '~/composables/useJsonLd';
+
+useSeoMeta(metadata.responsabilidadSocial);
+
+useJsonLd({
+    "@context": "https://schema.org",
+    "@type": "FinancialService",
+    "name": "responsabilidadSocial Social - Maximiza Casa de Bolsa",
+    "description": metadata.responsabilidadSocial.description,
+    "provider": {
+        "@type": "Organization",
+        "name": "Maximiza Casa de Bolsa"
+    }
+});
 </script>
 
 <template>
     <div class="w-full h-auto flex flex-col">
         <CommonHero :title="'Responsabilidad social <br /> y buen gobierno corporativo'"
             :description="'Combinamos el servicio social con estrictos controles de riesgo, <br /> asegurando un entorno de inversión seguro, ético y legal.'"
-             :image="{
+            :image="{
                 src: '/images/hero/main-responsabilidad.webp',
                 alt: 'Hero Background'
             }" :pattern="{
@@ -144,7 +157,7 @@ useSeoMeta(metadata.responsabilidad);
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-24 w-full ">
                 <Motion :variants="generalItemVariants" class="flex flex-col items-center">
                     <img src="/images/pages/responsabilidad/cards/1.webp" alt="Bienestar social"
-                        class="w-full h-auto aspect-video object-cover" />
+                        title="Bienestar social" class="w-full h-auto aspect-video object-cover" />
                     <div class="bg-primary -mt-6 py-4 px-3 lg:px-6 relative z-10 w-[75%]">
                         <h6 class="text-white text-center">
                             Bienestar social
@@ -153,7 +166,7 @@ useSeoMeta(metadata.responsabilidad);
                 </Motion>
                 <Motion :variants="generalItemVariants" class="flex flex-col items-center">
                     <img src="/images/pages/responsabilidad/cards/2.webp" alt="Donaciones dirigidas"
-                        class="w-full h-auto aspect-video object-cover" />
+                        title="Donaciones dirigidas" class="w-full h-auto aspect-video object-cover" />
                     <div class="bg-primary -mt-6 py-4 px-3 lg:px-6 relative z-10 w-[75%]">
                         <h6 class="text-white text-center">
 
@@ -162,7 +175,7 @@ useSeoMeta(metadata.responsabilidad);
                     </div>
                 </Motion>
                 <Motion :variants="generalItemVariants" class="flex flex-col items-center">
-                    <img src="/images/pages/responsabilidad/cards/3.webp" alt="Comité social"
+                    <img src="/images/pages/responsabilidad/cards/3.webp" alt="Comité social" title="Comité social"
                         class="w-full h-auto aspect-video object-cover" />
                     <div class="bg-primary -mt-6 py-4 px-3 lg:px-6 relative z-10 w-[75%]">
                         <h6 class="text-white text-center">
@@ -182,11 +195,13 @@ useSeoMeta(metadata.responsabilidad);
                 </p>
             </Motion>
 
-            <motion.section class="w-full flex flex-col max-sm:items-center md:flex-row md:justify-between gap-4 lg:gap-8 " :variants="generalContainerVariants"
-                initial="hidden" animate="visible">
+            <motion.section
+                class="w-full flex flex-col max-sm:items-center md:flex-row md:justify-between gap-4 lg:gap-8 "
+                :variants="generalContainerVariants" initial="hidden" animate="visible">
 
                 <motion.img v-for="(support, index) in supports" :key="index" :variants="generalItemVariants"
-                    class="w-full max-w-[183px] md:max-w-[136px] lg:max-w-[183px]" :src="support.image" :alt="support.alt" />
+                    class="w-full max-w-[183px] md:max-w-[136px] lg:max-w-[183px]" :src="support.image"
+                    :alt="support.alt" />
             </motion.section>
         </motion.section>
 
@@ -213,8 +228,8 @@ useSeoMeta(metadata.responsabilidad);
         </CommonContentWithColumns>
 
 
-        <motion.section class="container mx-auto w-full px-0 md:px-8 py-16 max-w-5xl" :variants="generalContainerVariants"
-            initial="hidden" animate="visible">
+        <motion.section class="container mx-auto w-full px-0 md:px-8 py-16 max-w-5xl"
+            :variants="generalContainerVariants" initial="hidden" animate="visible">
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
                 <motion.li v-for="(warning, index) in warnings" :key="`warning-${index}`"
@@ -228,7 +243,8 @@ useSeoMeta(metadata.responsabilidad);
                                 <div class="w-26 h-30 bg-white-alt" />
                                 <div
                                     class="absolute bg-black-alt translate-x-1/5 flex items-center justify-center w-24 h-24 aspect-square">
-                                    <img :src="warning.image" :alt="warning.alt" class="w-full h-full object-contain" />
+                                    <img :src="warning.image" :alt="warning.alt" title="warning.alt"
+                                        class="w-full h-full object-contain" />
                                 </div>
                                 <div class="flex-1 px-6 py-4 flex items-center justify-between">
                                     <h5 class="text-black-alt" v-html="warning.title" />
@@ -254,7 +270,7 @@ useSeoMeta(metadata.responsabilidad);
             }">
             <CommonContentCard v-for="(item, index) in links" :key="`link-${index}`" :content="item.description"
                 :button="{ label: 'Descargar', link: item.button.link, icon: 'download', size: 'md' }"
-                :image="{ url: item.image.url, alt: item.image.alt }" is-image-full/>
+                :image="{ url: item.image.url, alt: item.image.alt }" is-image-full />
 
         </CommonContentWithColumns>
     </div>

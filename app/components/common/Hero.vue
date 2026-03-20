@@ -42,9 +42,8 @@ const props = defineProps<HeroProps>()
                             <p class="max-w-[642px] p1 font-normal leading-7 text-gray" v-html="props.description" />
                         </motion.div>
                         <motion.div :variants="generalItemVariants">
-                            <NuxtLink :to="props.button?.link">
-                                <UiButton v-if="props.button" class="mt-4" :text="props.button.text" :icon="'check'"
-                                    size="md" />
+                            <NuxtLink :title="props.button.text" v-if="props.button" :to="props.button?.link">
+                                <UiButton class="mt-4" :text="props.button.text" :icon="'check'" size="md" />
                             </NuxtLink>
                         </motion.div>
                     </div>
@@ -52,7 +51,8 @@ const props = defineProps<HeroProps>()
 
                 <motion.div class="shrink-0 w-[90%] md:w-[284px] md:h-[250px] xl:w-[410px] xl:h-[360px]"
                     :variants="generalImageVariants">
-                    <img :src="props.image.src" :alt="props.image.alt" class="w-full h-full object-cover">
+                    <img :src="props.image.src" :alt="props.image.alt" :title="props.image.alt"
+                        class="w-full h-full object-cover">
                 </motion.div>
             </div>
         </div>
