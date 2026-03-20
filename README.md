@@ -1,6 +1,6 @@
 # Maximiza - Frontend Web Application
 
-![Maximiza](public/images/brand/imagotipo.svg)
+![Maximiza](public/images/brand/imagotipo-white.svg)
 
 Maximiza es una aplicación web frontend construida con **Nuxt 4** y **Vue 3** para **Maximiza Casa de Bolsa**. Este proyecto se conecta a un backend/CMS administrado con **Strapi** y está altamente optimizado para SEO, rendimiento web y experiencia de usuario moderna (PWA, animaciones, tipografías personalizadas).
 
