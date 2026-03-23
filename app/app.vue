@@ -1,17 +1,8 @@
 <script setup lang="ts">
 import { useJsonLd } from '~/composables/useJsonLd';
+import { jsonld } from '~/assets/data/jsonld';
 
-useJsonLd({
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Maximiza Casa de Bolsa",
-  "url": "https://maximiza.com.ve",
-  "logo": "https://maximiza.com.ve/images/brand/imagotipo.svg",
-  "sameAs": [
-    "https://www.linkedin.com/company/maximizacasadebolsa/",
-    "https://x.com/maximiza"
-  ]
-});
+useJsonLd(jsonld.organization);
 </script>
 
 <template>

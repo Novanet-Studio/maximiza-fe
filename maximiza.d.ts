@@ -1,5 +1,6 @@
 declare module "@/assets/data/common.json" {
     const value: {
+        baseUrl: string;
         email: string;
         phone: string;
         fax: string;

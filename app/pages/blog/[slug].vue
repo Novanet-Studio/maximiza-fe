@@ -2,6 +2,10 @@
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
 import { motion } from 'motion-v';
+
+import { useJsonLd } from '~/composables/useJsonLd';
+import { jsonld } from '~/assets/data/jsonld';
+
 import { generalContainerVariants, generalItemVariants } from '~/assets/animations/motion'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
@@ -22,23 +26,6 @@ if (!article.value) {
     throw createError({ statusCode: 404, statusMessage: 'Artículo no encontrado', fatal: true });
 }
 
-import { useJsonLd } from '~/composables/useJsonLd';
-
-useJsonLd({
-  "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": article.value.titulo,
-  "description": articleExcerpt(article.value.descripcion, 200),
-  "image": article.value.imagen?.url || "https://maximiza.com.ve/images/article-placeholder.webp",
-  "datePublished": article.value.fecha,
-  "dateModified": article.value.fecha,
-  "author": {
-    "@type": "Organization",
-    "name": "Maximiza Casa de Bolsa",
-    "url": "https://maximiza.com.ve/"
-  }
-});
-
 useSeoMeta({
     title: article.value.titulo,
     description: articleExcerpt(article.value.descripcion, 200),
@@ -50,6 +37,9 @@ useSeoMeta({
     twitterCard: "summary_large_image",
     themeColor: "#00735f",
 });
+
+useJsonLd(jsonld.article(article.value, articleExcerpt(article.value.descripcion, 200)));
+
 
 const shareLinkedIn = computed(() => {
     return `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(requestUrl.href)}`;
@@ -84,7 +74,8 @@ const parsedContent = computed(() => {
                         title="article?.titulo" class="w-full h-64 sm:h-80 md:h-full object-cover object-center" />
                 </div>
 
-                <div class="w-full md:w-1/2 relative bg-white-alt flex items-center justify-center overflow-hidden min-h-48">
+                <div
+                    class="w-full md:w-1/2 relative bg-white-alt flex items-center justify-center overflow-hidden min-h-48">
                     <img src="/images/pages/blog/polygon-assets.webp" alt="Pattern" title="Pattern"
                         class="absolute inset-0 w-full h-full object-cover pointer-events-none z-0" />
 

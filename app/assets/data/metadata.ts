@@ -2,7 +2,6 @@ const DOMAIN = process.env.BASE_URL || "maximiza.com.ve";
 const BASE_URL = (path: string) => `https://${DOMAIN}/${path}`;
 const OG_IMAGE_BASE_URL = (image: string) => `https://res.cloudinary.com/novanet-studio/image/upload/${image}`;
 
-
 export const metadata: Record<string, any> = {
   home: {
     title: "Maximiza, experiencia y liderazgo",

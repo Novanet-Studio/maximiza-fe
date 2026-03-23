@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { motion } from 'motion-v';
 import { metadata } from '@/assets/data/metadata';
+
+import { useJsonLd } from '~/composables/useJsonLd';
+import { jsonld } from '~/assets/data/jsonld';
+
 import { headerItemVariants, generalContainerVariants, generalItemVariants } from "@/assets/animations/motion"
 
 const institutionalValues = ref([
@@ -58,20 +62,9 @@ const alliesLogos = ref([
     },
 ])
 
-import { useJsonLd } from '~/composables/useJsonLd';
-
 useSeoMeta(metadata.empresa);
 
-useJsonLd({
-  "@context": "https://schema.org",
-  "@type": "AboutPage",
-  "name": "La Empresa - Maximiza Casa de Bolsa",
-  "description": metadata.empresa.description,
-  "mainEntity": {
-    "@type": "FinancialService",
-    "name": "Maximiza Casa de Bolsa"
-  }
-});
+useJsonLd(jsonld.about);
 </script>
 
 <template>

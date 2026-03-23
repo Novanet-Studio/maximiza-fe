@@ -12,10 +12,10 @@ import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
 
             <motion.div :variants="generalItemVariants" initial="hidden" whileInView="visible"
                 :viewport="{ once: true, margin: '-100px' }"
-                class="w-full mt-24 md:mt-0 bg-white border border-gray/30 flex flex-col-reverse md:flex-row items-center justify-between">
+                class="relative w-full mt-24 md:mt-0 bg-white border border-gray/30 flex flex-col-reverse md:flex-row justify-start">
 
                 <div
-                    class="flex-1 w-full flex flex-col items-start md:items-end text-left md:text-right pb-10 pt-4 md:py-10 xl:py-16 px-4 sm:px-10 md:pr-6 md:pl-6 xl:pr-16 xl:pl-32">
+                    class="flex-1 w-full flex flex-col items-start  text-left md:text-right pb-10 pt-4 md:py-10 xl:py-16 px-4 sm:px-10 md:pr-6 md:pl-6 xl:pr-16 xl:pl-32">
                     <h2 class="mb-4 max-sm:text-2xl text-black-alt">Memoria y liderazgo intelectual</h2>
 
                     <p class="p1 text-gray mb-6 md:mb-8 max-w-[320px] md:max-w-[500px]">
@@ -44,7 +44,7 @@ import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
                 </div>
 
                 <div
-                    class="w-[240px] sm:w-[280px] md:w-[243px] xl:w-[386px] shrink-0 flex justify-center -mt-28 mb-4 md:-mt-12 md:-mb-12 z-10 drop-shadow-2xl">
+                    class="absolute right-0 top-0 w-[240px] sm:w-[280px] md:w-[243px] xl:w-[360px] shrink-0 flex justify-z-10 drop-shadow-2xl">
                     <img src="/images/pages/home/book.webp"
                         alt="Pasado, presente y futuro del mercado de valores en Venezuela" title="Pasado, presente y futuro del mercado de valores en Venezuela"
                         class="object-contain w-full" />

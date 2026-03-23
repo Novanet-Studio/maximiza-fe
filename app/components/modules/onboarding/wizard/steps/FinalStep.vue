@@ -120,7 +120,7 @@ defineExpose({
       <img class="w-[240px] md:w-[300px] h-auto" src="/images/brand/imagotipo.svg" alt="Maximiza Logo" title="Maximiza Logo" />
     </picture>
 
-    <h2 class="text-primary font-black text-2xl md:text-3xl mb-2">
+    <h2 class="text-black-alt font-black text-2xl md:text-3xl mb-2">
       ¡El expediente está listo!
     </h2>
 

@@ -15,7 +15,7 @@ const { article } = defineProps<Props>();
     <NuxtLink :title="article.titulo" :to="`/blog/${article.slug}`">
         <motion.article class="bg-white border border-gray/20 flex flex-col h-full cursor-pointer group"
             :variants="generalItemVariants">
-            <div class="w-full h-64 overflow-hidden bg-white-alt relative">
+            <div class="w-full overflow-hidden bg-white-alt relative">
                 <img :src="article.imagen?.url || '/images/article-placeholder.webp'" :alt="article.titulo"
                     :title="article.titulo" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
             </div>

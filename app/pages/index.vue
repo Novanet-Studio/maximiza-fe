@@ -1,19 +1,11 @@
 <script setup lang="ts">
 import { metadata } from '@/assets/data/metadata';
 import { useJsonLd } from '~/composables/useJsonLd';
+import { jsonld } from '~/assets/data/jsonld';
 
 useSeoMeta(metadata.home);
 
-useJsonLd({
-  "@context": "https://schema.org",
-  "@type": "FinancialService",
-  "name": "Servicios Financieros Maximiza",
-  "description": metadata.home.description,
-  "provider": {
-    "@type": "Organization",
-    "name": "Maximiza Casa de Bolsa"
-  }
-});
+useJsonLd(jsonld.home);
 </script>
 
 <template>

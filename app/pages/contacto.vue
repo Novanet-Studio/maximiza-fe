@@ -5,21 +5,8 @@ import { motion } from 'motion-v';
 import { generalContainerVariants, generalItemVariants } from '@/assets/animations/motion';
 
 import { useJsonLd } from '~/composables/useJsonLd';
+import { jsonld } from '~/assets/data/jsonld';
 
-useSeoMeta(metadata.contacto);
-
-useJsonLd({
-  "@context": "https://schema.org",
-  "@type": "ContactPage",
-  "name": "Contacto - Maximiza Casa de Bolsa",
-  "description": metadata.contacto.description,
-  "mainEntity": {
-    "@type": "FinancialService",
-    "name": "Maximiza Casa de Bolsa",
-    "telephone": commonData.phone,
-    "email": commonData.email
-  }
-});
 const contactMethods = [
     {
         title: 'Atención al cliente',
@@ -37,6 +24,10 @@ const contactMethods = [
         icon: '/images/pages/contact/items/3.webp'
     }
 ];
+
+useSeoMeta(metadata.contacto);
+
+useJsonLd(jsonld.contact);
 </script>
 
 <template>

@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { metadata } from '@/assets/data/metadata';
+import { jsonld } from '~/assets/data/jsonld';
 
 useSeoMeta(metadata.blog);
+
+useJsonLd(jsonld.blog);
 </script>
 
 <template>

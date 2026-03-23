@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import { motion } from 'motion-v';
-import { generalContainerVariants, generalItemVariants, overlayVariants } from '~/assets/animations/motion';
+
 import { metadata } from '~/assets/data/metadata';
+import { jsonld } from '~/assets/data/jsonld';
+
+import { generalContainerVariants, generalItemVariants, overlayVariants } from '~/assets/animations/motion';
 
 useSeoMeta(metadata.registro);
+
+useJsonLd(jsonld.register);
 </script>
 
 <template>

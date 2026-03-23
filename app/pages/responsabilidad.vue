@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { metadata } from '@/assets/data/metadata';
+import { useJsonLd } from '~/composables/useJsonLd';
+
+import { jsonld } from '~/assets/data/jsonld';
 import { motion } from 'motion-v';
+
 import { generalItemVariants, generalContainerVariants } from '~/assets/animations/motion';
 
 const openPopoverIndex = ref<number | null>(null);
@@ -108,20 +112,10 @@ const links: { description: string, button: { link: string }, image: { url: stri
     }
 ]
 
-import { useJsonLd } from '~/composables/useJsonLd';
 
 useSeoMeta(metadata.responsabilidadSocial);
 
-useJsonLd({
-    "@context": "https://schema.org",
-    "@type": "FinancialService",
-    "name": "responsabilidadSocial Social - Maximiza Casa de Bolsa",
-    "description": metadata.responsabilidadSocial.description,
-    "provider": {
-        "@type": "Organization",
-        "name": "Maximiza Casa de Bolsa"
-    }
-});
+useJsonLd(jsonld.socialResponsibility);
 </script>
 
 <template>
