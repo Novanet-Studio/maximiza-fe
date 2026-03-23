@@ -14,7 +14,6 @@ export const metadata: Record<string, any> = {
     ogType: "website",
     twitterCard: "summary_large_image",
     themeColor: "#00735f",
-    keywords: "maximiza, experiencia, liderazgo, casa de bolsa, servicio, intermediación bursátil, corretaje, títulos valores, finanzas corporativas, inversión, manejo de capital",
   },
   empresa: {
     title: "Empresa, somos los arquitectos de su futuro financiero",
@@ -26,7 +25,6 @@ export const metadata: Record<string, any> = {
     ogType: "website",
     twitterCard: "summary_large_image",
     themeColor: "#00735f",
-    keywords: "empresa, arquitectos, futuro financiero, aliados estratégicos, ingeniería financiera, gestión patrimonial, activos alternativos, financiamiento corporativo, integridad",
   },
   servicios: {
     title: "Servicios, aceleramos y protegemos el valor de su capital",
@@ -38,7 +36,6 @@ export const metadata: Record<string, any> = {
     ogType: "website",
     twitterCard: "summary_large_image",
     themeColor: "#00735f",
-    keywords: "servicios, aceleramos, protegemos, valor, capital, casa de bolsa, innovación, herramientas, inversión, gestión, estructuración, activos financieros",
   },
   responsabilidadSocial: {
     title: "Responsabilidad social y buen gobierno corporativo",
@@ -50,7 +47,6 @@ export const metadata: Record<string, any> = {
     ogType: "website",
     twitterCard: "summary_large_image",
     themeColor: "#00735f",
-    keywords: "responsabilidad social, gobierno corporativo, servicio social, controles de riesgo, entorno de inversión, seguro, ético, legal",
   },
   blog: {
     title: "Blog. Perspectivas estratégicas y análisis de mercado",
@@ -62,7 +58,6 @@ export const metadata: Record<string, any> = {
     ogType: "website",
     twitterCard: "summary_large_image",
     themeColor: "#00735f",
-    keywords: "blog, perspectivas estratégicas, análisis de mercado, inteligencia financiera, tendencias globales, macroeconomía, mercado de capitales, venezuela, optimizar inversiones, datos empíricos",
   },
   contacto: {
     title: "Contacto, inicie la estructuración de su nueva estrategia financiera",
@@ -74,7 +69,6 @@ export const metadata: Record<string, any> = {
     ogType: "website",
     twitterCard: "summary_large_image",
     themeColor: "#00735f",
-    keywords: "contacto, estructuración, estrategia financiera, evaluación confidencial, proteger tesorería, volatilidad, diseñar financiamiento, ciclo productivo",
   },
   registro: {
     title: "Registro ¡Bienvenido a Maximiza Casa de Bolsa!",
@@ -86,6 +80,5 @@ export const metadata: Record<string, any> = {
     ogType: "website",
     twitterCard: "summary_large_image",
     themeColor: "#00735f",
-    keywords: "registro, bienvenido, maximiza, casa de bolsa, cuenta de corretaje bursátil, rápida, normativa, superintendencia nacional de valores, snv",
   },
 };

@@ -42,7 +42,7 @@ const parsedOverlay = computed(() => {
         backgroundRepeat: 'none'
     }" :variants="generalContainerVariants" initial="hidden" whileInView="visible"
         :viewport="{ once: true, margin: '-50px' }">
-        <div class="container max-w-[90%]! h-full py-20 flex items-center justify-center">
+        <div class="container h-full py-20 flex items-center justify-center">
             <motion.div :variants="generalItemVariants">
                 <p
                     class="text-3xl md:text-[20px] md:leading-[28px] xl:text-[30px] xl:leading-[40px] font-semibold text-white text-center">
