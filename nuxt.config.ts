@@ -7,7 +7,7 @@ export default defineNuxtConfig({
   modules: ["nuxt-gtag", "@nuxt/image", "@nuxt/fonts", "@vite-pwa/nuxt", "@nuxtjs/sitemap", "@nuxtjs/robots", "@netlify/nuxt", "@nuxtjs/strapi"],
 
   strapi: {
-    url: process.env.STRAPI_URL || 'http://localhost:1337',
+    url: process.env.STRAPI_API_URL || 'http://localhost:1337',
   },
 
   site: {
@@ -26,7 +26,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       strapi: {
-        url: process.env.STRAPI_URL || "http://localhost:1337",
+        url: process.env.STRAPI_API_URL || "http://localhost:1337",
         prefix: "/api",
         version: "v4",
       },

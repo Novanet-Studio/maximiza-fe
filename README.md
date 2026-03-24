@@ -64,9 +64,9 @@ maximiza-fe/
 3. **Configurar las Variables de Entorno:**
    Crea un archivo llamado `.env` en la raíz del proyecto. El proyecto requiere la URL del servidor CMS Strapi:
    ```env
-   STRAPI_URL=https://url-de-tu-backend-strapi/
+   STRAPI_API_URL=https://url-de-tu-backend-strapi/
    ```
-   *(Nota: Si corres el backend de Strapi localmente, usa `STRAPI_URL=http://localhost:1337`)*
+   *(Nota: Si corres el backend de Strapi localmente, usa `STRAPI_API_URL=http://localhost:1337`)*
 
 ---
 
