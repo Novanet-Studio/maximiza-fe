@@ -149,9 +149,9 @@ defineExpose({
       las ventanas emergentes para este sitio.
     </span>
 
-    <div class="w-full p-4 md:p-8 rounded overflow-auto">
-      <div class="flex flex-col gap-8 justify-center items-center">
-        <div class="max-w-a4 relative">
+    <div class="w-full p-0 md:p-8 rounded overflow-x-auto">
+      <div class="flex flex-col gap-8 w-max mx-auto">
+        <div class="w-a4 relative shrink-0">
           <p class="text-left text-lg font-bold text-black-alt mb-1 uppercase">
             1. Ficha de Identificación
           </p>
@@ -160,7 +160,7 @@ defineExpose({
           </div>
         </div>
 
-        <div class="max-w-a4 relative">
+        <div class="w-a4 relative shrink-0">
           <p class="text-left text-lg font-bold text-black-alt mb-1 uppercase">
             2. Poder de Apertura
           </p>
@@ -169,7 +169,7 @@ defineExpose({
           </div>
         </div>
 
-        <div class="max-w-a4 relative">
+        <div class="w-a4 relative shrink-0">
           <p class="text-left text-lg font-bold text-black-alt mb-1 uppercase">
             3. Origen de Fondos
           </p>
@@ -178,7 +178,7 @@ defineExpose({
           </div>
         </div>
 
-        <div class="max-w-a4 relative">
+        <div class="w-a4 relative shrink-0">
           <p class="text-left text-lg font-bold text-black-alt mb-1 uppercase">
             4. Registro de Firmas
           </p>
