@@ -21,14 +21,14 @@ const props = defineProps<Props>();
         :viewport="{ once: true, margin: '-120px' }" class="mt-[10vh] max-sm:pb-20">
         <CommonContentWithColumns :backgroundImage="props.banner.src" :title="props.title">
             <motion.div :variants="generalItemVariants">
-                <p class="p2 text-white text-start">
+                <p class="content-with-columns text-white text-start">
                     {{ props.description }}
                 </p>
             </motion.div>
         </CommonContentWithColumns>
 
         <div
-            class="container w-full translate-y-0 md:-translate-y-12 lg:-translate-y-20 grid grid-cols-1 md:grid-cols-3 justify-items-center md:justify-around gap-12 md:gap-8 lg:gap-12 xl:gap-16">
+            class="container w-full translate-y-0 grid grid-cols-1 md:grid-cols-3 justify-items-center md:justify-around gap-12 md:gap-8 lg:gap-12 xl:gap-16">
             <CommonContentCard subtitle="Paso 1:" title="Onboardings de la CVV"
                 content="Realiza tu registro o actualización de datos en la Caja Venezolana de Valores (CVV) y descarga la lanilla firmada:"
                 :image="{
@@ -36,7 +36,7 @@ const props = defineProps<Props>();
                     alt: 'Onboardings_de_la_CVV'
                 }" :styles="{
                     title: 'text-black-alt mb-4',
-                    content: 'p3 text-gray',
+                    content: 'text-gray',
                     wrapper: `flex-1 p-6 md:p-4 lg:p-6 flex flex-col justify-start`
                 }" :button="{
                     label: 'Onboarding SITRAD',
@@ -51,29 +51,29 @@ const props = defineProps<Props>();
                     alt: 'Registro_en_linea'
                 }" :styles="{
                     title: 'text-black-alt mb-4',
-                    content: 'p3 text-gray',
+                    content: 'text-gray',
                     wrapper: `flex-1 p-6 md:p-4 lg:p-6 flex flex-col justify-start`
                 }" is-vertical>
                 <ul class="mt-4 flex flex-col">
                     <li class="text-gray flex items-start gap-2">
                         <FontAwesomeIcon icon="check" class="text-primary mt-1" />
 
-                        <p class="p3">Ficha única de identificación del inversionista</p>
+                        <p class="">Ficha única de identificación del inversionista</p>
                     </li>
                     <li class="text-gray flex items-start gap-2">
                         <FontAwesomeIcon icon="check" class="text-primary mt-1" />
 
-                        <p class="p3">Ficha de registro de firmas</p>
+                        <p class="">Ficha de registro de firmas</p>
                     </li>
                     <li class="text-gray flex items-start gap-2">
                         <FontAwesomeIcon icon="check" class="text-primary mt-1" />
 
-                        <p class="p3">Declaración jurada y destino de los fondos</p>
+                        <p class="">Declaración jurada y destino de los fondos</p>
                     </li>
                     <li class="text-gray flex items-start gap-2">
                         <FontAwesomeIcon icon="check" class="text-primary mt-1" />
 
-                        <p class="p3">Poder de apertura y manejo de cuenta</p>
+                        <p class="">Poder de apertura y manejo de cuenta</p>
                     </li>
                 </ul>
             </CommonContentCard>
@@ -85,7 +85,7 @@ const props = defineProps<Props>();
                     alt: 'Envio_de_recaudos'
                 }" :styles="{
                     title: 'text-black-alt mb-4',
-                    content: 'p3 text-gray',
+                    content: 'text-gray',
                     wrapper: `flex-1 p-6 md:p-4 lg:p-6 flex flex-col justify-start`
                 }" is-vertical>
                 <div class="mt-4 flex items-center gap-2">

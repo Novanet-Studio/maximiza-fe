@@ -344,12 +344,12 @@ const initialRelated = processArrayIds(
   "rifNumber",
 ) || [defaultCompany];
 
-const initialJuridicaProviders =
+const initialJurídicaProviders =
   wizard.state.value.formData.financialInformation?.providers?.length > 0
     ? wizard.state.value.formData.financialInformation?.providers
     : [defaultProvider];
 
-const initialJuridicaClients =
+const initialJurídicaClients =
   wizard.state.value.formData.financialInformation?.clients?.length > 0
     ? wizard.state.value.formData.financialInformation?.clients
     : [defaultClient];
@@ -443,8 +443,8 @@ const { handleSubmit, errors, defineField, values } = useForm({
 
     stockholders: initialStockholders,
     legalRepresentatives: initialLegal,
-    providers: initialJuridicaProviders,
-    clients: initialJuridicaClients,
+    providers: initialJurídicaProviders,
+    clients: initialJurídicaClients,
     relatedCompanies: initialRelated,
   },
 });
@@ -497,14 +497,14 @@ const {
   remove: removeLegal,
 } = useFieldArray("legalRepresentatives");
 const {
-  fields: juridicaProviderFields,
-  push: addJuridicaProvider,
-  remove: removeJuridicaProvider,
+  fields: jurídicaProviderFields,
+  push: addJurídicaProvider,
+  remove: removeJurídicaProvider,
 } = useFieldArray("providers");
 const {
-  fields: juridicaClientFields,
-  push: addJuridicaClient,
-  remove: removeJuridicaClient,
+  fields: jurídicaClientFields,
+  push: addJurídicaClient,
+  remove: removeJurídicaClient,
 } = useFieldArray("clients");
 const {
   fields: companyFields,
@@ -530,13 +530,13 @@ const handleAddStockholder = () => {
 const handleAddLegal = () => {
   if (legalFields.value.length < 3) addLegal({ ...defaultLegalRep });
 };
-const handleAddJuridicaProvider = () => {
-  if (juridicaProviderFields.value.length < 3)
-    addJuridicaProvider({ ...defaultProvider });
+const handleAddJurídicaProvider = () => {
+  if (jurídicaProviderFields.value.length < 3)
+    addJurídicaProvider({ ...defaultProvider });
 };
-const handleAddJuridicaClient = () => {
-  if (juridicaClientFields.value.length < 3)
-    addJuridicaClient({ ...defaultClient });
+const handleAddJurídicaClient = () => {
+  if (jurídicaClientFields.value.length < 3)
+    addJurídicaClient({ ...defaultClient });
 };
 const handleAddCompany = () => {
   if (companyFields.value.length < 3) addCompany({ ...defaultCompany });
@@ -952,7 +952,7 @@ defineExpose({ validate });
         <h6 class="form-subsection-title --alt">Principales proveedores</h6>
 
         <div class="w-full">
-          <div v-for="(field, i) in juridicaProviderFields" :key="field.key">
+          <div v-for="(field, i) in jurídicaProviderFields" :key="field.key">
             <FormBaseLayout use-buttons>
               <FormBaseInput :name="`providers[${i}].name`" label="Razón social" v-model="field.value.name"
                 :error-message="errors[`providers[${i}].name`]" />
@@ -960,16 +960,16 @@ defineExpose({ validate });
                 :error-message="errors[`providers[${i}].location`]" />
 
               <template #button-bar>
-                <UiButton v-if="juridicaProviderFields.length > 1" :text="''" :icon="'close'" size="icon"
-                  variant="danger" :onClick="() => removeJuridicaProvider(i)" />
+                <UiButton v-if="jurídicaProviderFields.length > 1" :text="''" :icon="'close'" size="icon"
+                  variant="danger" :onClick="() => removeJurídicaProvider(i)" />
               </template>
             </FormBaseLayout>
           </div>
         </div>
 
         <span class="self-end">
-          <UiButton v-if="juridicaProviderFields.length < 3" suffix-icon text="Agregar" :icon="'plus'" size="sm"
-            :onClick="handleAddJuridicaProvider" />
+          <UiButton v-if="jurídicaProviderFields.length < 3" suffix-icon text="Agregar" :icon="'plus'" size="sm"
+            :onClick="handleAddJurídicaProvider" />
         </span>
       </div>
 
@@ -977,7 +977,7 @@ defineExpose({ validate });
         <h6 class="form-subsection-title --alt">Principales clientes</h6>
 
         <div class="w-full">
-          <div v-for="(field, i) in juridicaClientFields" :key="field.key">
+          <div v-for="(field, i) in jurídicaClientFields" :key="field.key">
             <FormBaseLayout use-buttons>
               <FormBaseInput :name="`clients[${i}].name`" label="Razón social" v-model="field.value.name"
                 :error-message="errors[`clients[${i}].name`]" class="mb-2" />
@@ -985,15 +985,15 @@ defineExpose({ validate });
                 :error-message="errors[`clients[${i}].location`]" />
 
               <template #button-bar>
-                <UiButton v-if="juridicaClientFields.length > 1" :text="''" :icon="'close'" size="icon" variant="danger"
-                  :onClick="() => removeJuridicaClient(i)" />
+                <UiButton v-if="jurídicaClientFields.length > 1" :text="''" :icon="'close'" size="icon" variant="danger"
+                  :onClick="() => removeJurídicaClient(i)" />
               </template>
             </FormBaseLayout>
           </div>
         </div>
         <span class="self-end">
-          <UiButton v-if="juridicaClientFields.length < 3" suffix-icon text="Agregar" :icon="'plus'" size="sm"
-            :onClick="handleAddJuridicaClient" />
+          <UiButton v-if="jurídicaClientFields.length < 3" suffix-icon text="Agregar" :icon="'plus'" size="sm"
+            :onClick="handleAddJurídicaClient" />
         </span>
       </div>
 

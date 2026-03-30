@@ -39,17 +39,17 @@ const managementTeam = ref(
                 },
                 {
                     "name": "Daniela Escalona",
-                    "rol": "Director Suplente",
+                    "rol": "Director suplente",
                     "description": "Licenciatura en Ciencias Administrativas opción Banca y Finanzas de la Universidad Metropolitana, Maestría en Finanzas y Master en Administración del IESA. Con experiencia en el área de Finanzas Corporativas por más de veinte años, participando en más de 100 valoraciones de toda índole y complejidad de empresa en distintas industrias, distintos países de la Región y distintos entornos económicos, elaborando estudios de factibilidad económico-financieros, diagnósticos y análisis financieros, modelación y preparación de prospectos de inversión y proyecciones financieras, análisis estratégicos, entre otros."
                 },
                 {
                     "name": "Carlos Rizzolo",
-                    "rol": "Director Suplente",
+                    "rol": "Director suplente",
                     "description": "Licenciatura en Ingeniería Eléctrica de la Universidad Simón Bolívar. Maestría en Finanzas Corporativas de la Universidad Católica Andrés Bello. Estudio Ejecutivo en Valoración de la Universidad de Nueva York (NYU), con más de 13 años de experiencia en el Sector Financiero. Especializado en Asesoramiento e Inversiones Discrecionales. Desarrollo y ejecución de estrategias de inversión cuantitativas."
                 },
                 {
-                    "name": "Gastón José Sardi Quintero",
-                    "rol": "Director Principal Independiente",
+                    "name": "Gastón Sardi",
+                    "rol": "Director independiente",
                     "description": "Egresado de la Universidad Metropolitana como Ingeniero de Sistemas en el año 1983. Más de 40 años de experiencia en la dirección de empresas en el sector de distribución de Aceros Especiales, Inoxidables y Hierro en General, implementando estrategias y planes de negocio en Venezuela y en otros países de Latinoamérica. Adicionalmente he estado vinculado en diferentes actividades gremiales y de responsabilidad social. Fue Presidente de la Cámara de Comercio, Industria y Servicios de Caracas. Actualmente Director Independiente en Maximiza Casa de Bolsa, C.A."
                 }
             ]
@@ -135,7 +135,7 @@ const managementTeamVariants = {
                 <h3 class="text-left text-black-alt">Comisarios</h3>
             </div>
 
-            <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <div class="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 <motion.div v-for="(person, index) in managementTeam.Curators.persons" :key="index"
                     :variants="generalItemVariants">
                     <ModulesEmpresaManagementTeamItem :name="person.name" :rol="person.rol"

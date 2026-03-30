@@ -93,14 +93,14 @@ useJsonLd(jsonld.about);
             <div class="w-full max-w-6xl flex flex-col gap-16 mt-6 px-4 md:px-0">
                 <motion.div class="flex flex-col md:flex-row items-center w-full" :variants="generalItemVariants">
                     <div
-                        class="bg-primary w-full md:w-62.5 h-75 md:h-62.5 p-4 flex shrink-0 justify-center items-center z-10 relative">
-                        <img src="/images/pages/empresa/info-section-1.webp" alt="Especialistas en asesoría" title="Especialistas en asesoría"
-                            class="w-full h-full object-contain" />
+                        class="bg-primary w-62.5 h-62.5 p-4 flex shrink-0 justify-center items-center z-10 relative">
+                        <img src="/images/pages/empresa/info-section-1.webp" alt="Especialistas en asesoría"
+                            title="Especialistas en asesoría" class="w-full h-full object-contain" />
                     </div>
                     <div
-                        class="bg-linear-to-r from-white to-white-alt2 p-8 md:p-16 md:pl-40 md:pr-24 w-full grow md:-ml-31.25 z-0">
-                        <h4 class="text-black-alt mb-4">Foco corporativo especializado</h4>
-                        <p class="p1 text-gray">
+                        class="max-w-[940px] lg:h-[342px] bg-linear-to-b md:bg-linear-to-r from-white  to-white-alt2 p-8 pt-40 md:p-16 md:pl-36 md:pr-4 w-full grow -mt-30 md:m-0 md:-ml-31.25 z-0 flex flex-col justify-center">
+                        <h4 class="text-xl lending-[22px] text-black-alt mb-2">Foco corporativo especializado</h4>
+                        <p class="text-xl lending-[28px] md:text-base md:lending-[24px] lg:text-xl lg:lending-[28px] text-gray">
                             Brindamos asesoría analítica exhaustiva a corporaciones nacionales y entidades extranjeras
                             en la intrincada valoración de empresas de gran capitalización, estructuración de fusiones y
                             adquisiciones (M&A), y diseño de financiamientos a la medida.
@@ -111,14 +111,14 @@ useJsonLd(jsonld.about);
                 <motion.div class="flex flex-col md:flex-row-reverse items-center w-full"
                     :variants="generalItemVariants">
                     <div
-                        class="bg-black-alt w-full md:w-62.5 h-75 md:h-62.5 p-4 flex shrink-0 justify-center items-center z-10 relative">
-                        <img src="/images/pages/empresa/info-section-2.webp" alt="Alianzas formales" title="Alianzas formales"
-                            class="w-full h-full object-contain" />
+                        class="bg-black-alt w-62.5 h-62.5 p-4 flex shrink-0 justify-center items-center z-10 relative">
+                        <img src="/images/pages/empresa/info-section-2.webp" alt="Alianzas formales"
+                            title="Alianzas formales" class="w-full h-full object-contain" />
                     </div>
                     <div
-                        class="bg-linear-to-r from-white to-white-alt2 p-8 md:p-16 md:pr-40 md:pl-24 w-full grow md:-mr-31.25 z-0">
-                        <h4 class="text-black-alt mb-4 text-right">Ecosistema de promoción financiera</h4>
-                        <p class="p1 text-gray text-right">
+                        class="max-w-[940px] lg:h-[342px] bg-linear-to-t md:bg-linear-to-r from-white-alt2 to-white p-8 pt-40 md:p-16 md:pr-36 md:pl-4 w-full grow -mt-30 md:m-0 md:-mr-31.25 z-0 flex flex-col justify-center">
+                        <h4 class="text-xl lending-[22px] text-black-alt mb-2 md:text-right">Ecosistema de promoción financiera</h4>
+                        <p class="text-xl lending-[28px] md:text-base md:lending-[24px] lg:text-xl lg:lending-[28px] text-gray md:text-right">
                             Nuestro ADN innovador nos ha llevado a participar activamente en la cimentación de vehículos
                             financieros líderes, tales como Silk & CO (banca de inversión regional) y Vitral Advisors
                             LLC (RIA registrado en la SEC, Nueva York), lo que nos capacita para ofrecer soluciones
@@ -137,18 +137,18 @@ useJsonLd(jsonld.about);
             <CommonContentCard title="Misión"
                 content="Diseñar y estructurar soluciones de inversión y financiamiento innovadoras que aporten una capa inexpugnable de seguridad, maximicen la rentabilidad y cultiven la confianza absoluta, garantizando un servicio de excelencia y sofisticación a nuestra clientela institucional y privada."
                 :image="{ url: '/images/pages/empresa/mision-item.webp', alt: 'Misión' }" :styles="{
-                    title: 'text-black-alt mb-2 md:mb-4',
-                    content: 'p2 text-sm md:text-base lg:p3 text-gray',
-                    wrapper: 'flex-1 p-4 flex flex-col justify-center'
-                }" />
+                    title: 'text-xl lending-[22px] md:text-sm md:lending-[18px] lg:text-xl lg:lending-[22px] text-black-alt mb-2 md:mb-4',
+                    content: 'text-lg lending-[26px] md:text-xs md:lending-[20px] lg:text-lg lg:lending-[26px] text-gray',
+                    wrapper: 'flex-1 p-4 pt-6 flex flex-col justify-center'
+                }" maxWidth="350" />
 
             <CommonContentCard title="Visión"
                 content="Consolidarnos indiscutiblemente como el referente principal y más respetado de la banca de inversión en el mercado venezolano, impulsando el tejido productivo del país a través de la máxima eficiencia operativa, la transparencia innegociable y la alineación total de intereses con nuestros stakeholders."
                 :image="{ url: '/images/pages/empresa/vision-item.webp', alt: 'Visión' }" :styles="{
-                    title: 'text-black-alt mb-2 md:mb-4',
-                    content: 'p2 text-sm md:text-base lg:p3 text-gray',
-                    wrapper: 'flex-1 p-4 flex flex-col justify-center'
-                }" />
+                    title: 'text-xl lending-[22px] md:text-sm md:lending-[18px] lg:text-xl lg:lending-[22px] text-black-alt mb-2 md:mb-4',
+                    content: 'text-lg lending-[26px] md:text-xs md:lending-[20px] lg:text-lg lg:lending-[26px] text-gray',
+                    wrapper: 'flex-1 p-4 pt-6 flex flex-col justify-center'
+                }" maxWidth="350" />
         </CommonContentWithColumns>
 
         <motion.section class="hidden md:flex py-16 bg-black-alt w-full flex-col items-center" :style="{
@@ -165,7 +165,7 @@ useJsonLd(jsonld.about);
                         class="w-40 h-40 md:w-20 md:h-20 2xl:w-40 2xl:h-40 mb-4 object-contain" />
 
                     <h5 class="text-white font-semibold text-center">{{ value.label }}</h5>
-                    <p class="text-white text-center p3">{{ value.description }}</p>
+                    <p class="text-white text-center ">{{ value.description }}</p>
 
                 </motion.li>
             </ul>
@@ -181,7 +181,7 @@ useJsonLd(jsonld.about);
                     <h3 class="text-right text-black-alt">
                         Red global de <br /> alianzas estratégicas
                     </h3>
-                    <p class="p3 text-right text-gray">
+                    <p class=" text-right text-gray">
                         Nuestra solidez operativa se encuentra cimentada y respaldada en décadas de relaciones
                         formales
                         e

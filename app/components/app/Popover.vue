@@ -62,7 +62,7 @@ onUnmounted(() => {
             enter-from-class="transform scale-95 opacity-0" enter-to-class="transform scale-100 opacity-100"
             leave-active-class="transition duration-150 ease-in" leave-from-class="transform scale-100 opacity-100"
             leave-to-class="transform scale-95 opacity-0">
-            <div v-if="isOpen" class="absolute z-50 p-5 rounded-2xl border border-gray/20 min-w-[30dvw]" :class="[
+            <div v-if="isOpen" class="absolute z-50 p-5 border border-gray/20 min-w-[30dvw]" :class="[
                 bgColor,
                 {
                     'top-full left-1/2 -translate-x-1/2 mt-1': position === 'bottom',

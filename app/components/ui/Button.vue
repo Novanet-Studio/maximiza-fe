@@ -15,7 +15,7 @@ interface ButtonProps {
 
 const props = withDefaults(defineProps<ButtonProps>(), {
     variant: 'primary',
-    size: 'md',
+    size: 'sm',
     type: 'button',
     suffixIcon: false
 })
@@ -34,23 +34,23 @@ const overlayVariants: any = {
 </script>
 
 <template>
-    <motion.button :type="props.type" class="relative w-fit overflow-hidden font-semibold group cursor-pointer" :class="{
+    <motion.button :type="props.type" class="relative w-fit overflow-hidden font-serif font-medium group cursor-pointer" :class="{
         'bg-primary text-white': props.variant === 'primary',
-        'bg-gray text-white': props.variant === 'secondary',
+        'bg-black-alt text-white': props.variant === 'secondary',
         'border border-black-alt text-black-alt': props.variant === 'outline',
         'text-error': props.variant === 'danger',
         'p-1 text-sm': props.size === 'icon',
-        'px-3 py-2 text-sm': props.size === 'sm',
+        'px-3 py-2 text-xs': props.size === 'sm',
         'px-4 py-3 text-base': props.size === 'md',
         'px-6 py-4 text-lg': props.size === 'lg',
 
     }" initial="hidden" whileHover="hover" :disabled="props.disabled" @click="props.onClick">
         <motion.div class="absolute left-0 top-0 h-full z-0" :class="{
             'bg-primary-alt': props.variant === 'primary',
-            'bg-black-alt': props.variant === 'secondary',
+            'bg-gray': props.variant === 'secondary',
             'bg-white-alt': props.variant === 'outline',
         }" :variants="overlayVariants" />
-        <div class="relative z-10 flex text-sm xl:text-base items-center gap-1" :class="{
+        <div class="relative z-10 flex items-center gap-1" :class="{
             'flex-row-reverse': props.suffixIcon,
         }">
             {{ props.text }}

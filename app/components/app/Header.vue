@@ -116,7 +116,7 @@ onUnmounted(() => {
                 </motion.div>
 
                 <!-- Desktop Menu -->
-                <ul class="hidden md:flex items-center gap-4 xl:gap-8">
+                <ul class="hidden lg:flex items-center gap-4 xl:gap-8">
                     <motion.li as="li" v-for="item in navigationLinks" :key="item.label" :variants="headerItemVariants">
                         <NuxtLink :title="item.label" :to="item.to" @click="setActive(item.label)" :class="[
                             active === item.label
@@ -130,7 +130,7 @@ onUnmounted(() => {
                 </ul>
 
                 <!-- Desktop Buttons -->
-                <motion.div class="hidden md:flex items-center space-x-2" :variants="headerItemVariants">
+                <motion.div class="hidden lg:flex items-center space-x-2" :variants="headerItemVariants">
                     <NuxtLink title="Registrarse" to="/registro">
                         <UiButton :text="'Registrarse'" :icon="'user-plus'" size="sm" />
                     </NuxtLink>
@@ -141,7 +141,7 @@ onUnmounted(() => {
                 </motion.div>
 
                 <!-- Mobile Header Toggle Button -->
-                <div class="md:hidden">
+                <div class="lg:hidden">
                     <button @click="isMobileMenuOpen = !isMobileMenuOpen"
                         class="text-black-alt text-2xl p-2 focus:outline-none"
                         :class="{ 'text-primary': isMobileMenuOpen }">

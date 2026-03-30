@@ -15,7 +15,7 @@ import FinalStep from "./steps/FinalStep.vue";
 import PersonalDataStep from "./steps/natural/PersonalDataStep.vue";
 import PepProfileStep from "./steps/natural/PepProfileStep.vue";
 
-//? juridica steps
+//? jurídica steps
 import EnterpriseIdentificationStep from "./steps/juridica/EnterpriseIdentificationStep.vue";
 
 const props = defineProps<{ type: MXMZ.OnboardingType }>();
@@ -92,7 +92,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-full bg-white p-4 md:p-8" v-if="props.type">
+  <div class="w-full bg-white p-4 pb-6 md:p-8 md:pb-12" v-if="props.type">
     <section>
       <FormStepper :steps="currentStepsList" :current-step="wizard.state.value.currentStep"
         :max-step-reached="wizard.state.value.maxStepReached" @go-to-step="wizard.goToStep" />

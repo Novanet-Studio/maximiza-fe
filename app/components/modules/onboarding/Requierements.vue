@@ -17,16 +17,16 @@ const props = defineProps<Props>()
         :variants="generalContainerVariants" initial="hidden" animate="visible">
         <motion.div class="flex flex-col md:flex-row items-center w-full" :variants="generalItemVariants">
             <div
-                class="bg-white-alt w-[275px] h-[275px] md:w-[190px] md:h-[190px] xl:w-[275px] xl:h-[275px] max-sm:mb-10 p-4 flex shrink-0 justify-center items-center z-10 relative">
+                class="bg-white-alt w-[275px] h-[275px] md:w-[190px] md:h-[190px] xl:w-[275px] xl:h-[275px] max-sm:mb-4 p-4 flex shrink-0 justify-center items-center z-10 relative">
                 <img :src="`/images/pages/home/${personType === 'persona-natural' ? 'person-type-natural.webp' : 'person-type-juridica.webp'}`"
                     alt="Especialistas_en_asesoría" title="Especialistas_en_asesoría" class="w-full h-full object-contain" />
             </div>
             <div
-                class="bg-linear-to-r from-white to-white-alt2 p-8 md:pl-40 md:pr-10 lg:pl-40 lg:pr-24 w-full grow md:-ml-31.25 z-0">
+                class="bg-linear-to-b md:bg-linear-to-r from-white to-white-alt2 p-8 pt-40 md:p-8 md:pl-40 md:pr-10 lg:pr-24 w-full -mt-30 md:m-0 md:-ml-31.25 z-0">
                 <h4 class="font-extrabold text-black-alt mb-2">Recaudos para personas {{ personType ===
                     'persona-natural' ? 'naturales'
                     : 'jurídicas' }}</h4>
-                <ol class="pl-5 flex flex-col">
+                <ol class="pl-5 flex flex-col gap-2">
                     <li v-for="(requierement, index) in requierements" :key="index"
                         class="text-sm lg:text-base xl:text-xl text-gray list-decimal">
                         {{ requierement }}
@@ -36,11 +36,12 @@ const props = defineProps<Props>()
         </motion.div>
     </motion.section>
     <motion.section v-if="personType === 'persona-juridica'"
-        class="container w-full flex flex-col justify-center items-center py-16" :variants="generalContainerVariants"
+        class="container w-full flex flex-col justify-center items-center py-8" :variants="generalContainerVariants"
         initial="hidden" animate="visible">
-        <CommonSectionHeader title="Requisitos" />
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl mt-12 mx-auto px-4 md:px-0 items-stretch">
+        <h2 class="font-bold mb-6">Requisitos</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl mx-auto px-4 md:px-0 items-stretch">
             <motion.div class="bg-white border border-white-alt2 p-4 lg:p-8 xl:p-12 shadow-xs"
                 :variants="generalItemVariants">
                 <h4 class="text-primary font-bold mb-6">De las Asociaciones Cooperativas</h4>

@@ -50,7 +50,7 @@ const handleSubmit = async () => {
     <CommonContentWithColumns backgroundImage="/images/pages/contact/banner.webp" title="Formulario <br /> de contacto"
         cover-wrapper>
         <div class="w-full">
-            <h4 class="max-sm:text-lg text-white mb-4 md:mb-8">Envíanos un mensaje a través de este formulario</h4>
+            <h4 class="content-with-columns text-white mb-4 md:mb-8">Envíanos un mensaje a través de este formulario</h4>
 
             <motion.form @submit.prevent="handleSubmit" class="flex flex-col gap-8 w-full" data-netlify="true"
                 name="FORMULARIO_DE_CONTACTO" netlify-honeypot="bot-field" :variants="generalContainerVariants">
@@ -77,12 +77,12 @@ const handleSubmit = async () => {
                         class="w-full bg-transparent border-b border-white text-white placeholder-gray outline-none py-1 pr-8 appearance-none focus:border-secondary transition-colors">
                         <option value="" disabled selected hidden class="text-gray-500">Área específica de interés
                         </option>
-                        <option value="Apertura de cuenta corretaje" class="text-black">Apertura de Cuenta Corretaje
+                        <option value="Apertura de cuenta corretaje" class="text-black text-base md:text-xs">Apertura de Cuenta Corretaje
                         </option>
-                        <option value="Gestión patrimonial" class="text-black">Gestión Patrimonial</option>
-                        <option value="Financiamiento corporativo" class="text-black">Financiamiento Corporativo
+                        <option value="Gestión patrimonial" class="text-black text-base md:text-xs">Gestión Patrimonial</option>
+                        <option value="Financiamiento corporativo" class="text-black text-base md:text-xs">Financiamiento Corporativo
                         </option>
-                        <option value="Otros" class="text-black">Otro</option>
+                        <option value="Otros" class="text-black text-base md:text-xs">Otro</option>
                     </select>
 
                     <div class="absolute inset-y-0 right-0 flex items-center px-1 pointer-events-none text-white">

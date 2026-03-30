@@ -45,7 +45,7 @@ const parsedOverlay = computed(() => {
         <div class="container h-full py-20 flex items-center justify-center">
             <motion.div :variants="generalItemVariants">
                 <p
-                    class="text-3xl md:text-[20px] md:leading-[28px] xl:text-[30px] xl:leading-[40px] font-semibold text-white text-center">
+                    class="text-3xl leading-[40px] md:text-xl md:leading-[28px] lg:text-3xl lg:leading-[40px] font-semibold text-white text-center">
                     {{ props.description }}</p>
             </motion.div>
         </div>

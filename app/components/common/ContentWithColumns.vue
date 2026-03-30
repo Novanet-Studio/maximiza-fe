@@ -20,7 +20,7 @@ const props = withDefaults(defineProps<{
 </script>
 
 <template>
-    <section class="relative w-full flex md:pt-2 md:pb-20 lg:pt-12 lg:pb-30">
+    <section class="relative w-full flex pb-10">
         <div class="absolute inset-0 flex w-full h-full z-0 pointer-events-none">
             <template v-if="isSplitBackground">
                 <div class="w-full md:w-1/2 h-full bg-primary relative overflow-hidden">

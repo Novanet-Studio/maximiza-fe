@@ -39,7 +39,7 @@ const props = defineProps<HeroProps>()
                             <h1 class="mb-4" v-html="props.title" />
                         </motion.div>
                         <motion.div :variants="generalItemVariants">
-                            <p class="max-w-[642px] p1 font-normal leading-7 text-gray" v-html="props.description" />
+                            <p class="max-w-[642px] text-xl leading-[28px] md:text-sm md:leading-[26px] lg:text-xl lg:leading-[28px]  font-normal  text-gray" v-html="props.description" />
                         </motion.div>
                         <motion.div :variants="generalItemVariants">
                             <NuxtLink :title="props.button.text" v-if="props.button" :to="props.button?.link">

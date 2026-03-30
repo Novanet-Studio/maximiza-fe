@@ -138,7 +138,7 @@ const currentYear = new Date().getFullYear();
                         <NuxtLink title="Ir a Enlace" to="https://novanet.studio/" target="_blank">
                             <picture>
                                 <img src="/resources/logo-novanet.svg" alt="Logo Novanet" title="Logo Novanet"
-                                    class="h-4 w-auto hover:scale-95 transition-all duration-300" />
+                                    class="h-6 w-auto mb-0.5 hover:scale-95 transition-all duration-300" />
                             </picture>
                         </NuxtLink>
                     </span>

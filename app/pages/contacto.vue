@@ -57,7 +57,7 @@ useJsonLd(jsonld.contact);
                     </div>
                     <div class="bg-black-alt p-10 flex flex-col justify-center grow">
                         <h3 class="text-white mb-2">Dirección</h3>
-                        <p class="p2 text-white-alt">{{ commonData.address }}</p>
+                        <p class=" text-white-alt">{{ commonData.address }}</p>
                     </div>
                 </motion.div>
 
@@ -66,12 +66,12 @@ useJsonLd(jsonld.contact);
                     <motion.div v-for="(method, index) in contactMethods" :key="index" :variants="generalItemVariants"
                         class="w-full h-28 bg-white border border-gray flex">
                         <div
-                            class="mt-2 w-24 h-24 bg-primary -translate-x-1/2 flex shrink-0 items-center justify-center">
-                            <img :src="method.icon" :alt="method.title" title="method.title" class="w-18 h-18 object-contain" />
+                            class="mt-2 w-24 h-24 bg-black-alt -translate-x-1/2 flex shrink-0 items-center justify-center">
+                            <img :src="method.icon" :alt="method.title" :title="method.title" class="w-18 h-18 object-contain" />
                         </div>
                         <div class="-translate-x-5 flex flex-col justify-center py-8 grow">
                             <h5 class="text-black-alt">{{ method.title }}</h5>
-                            <p class="p2">{{ method.value }}</p>
+                            <p class="text-gray">{{ method.value }}</p>
                         </div>
                     </motion.div>
                 </motion.div>

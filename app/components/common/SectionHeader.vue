@@ -19,7 +19,7 @@ const props = defineProps<Props>();
         </motion.div>
 
         <motion.div v-if="description" :variants="generalItemVariants">
-            <p class="max-w-2xl mx-auto mt-6 mb-4 p1 text-gray text-center" v-html="description" />
+            <p class="max-w-2xl mx-auto mt-6 mb-4 text-xl leading-[28px] md:text-sm md:leading-[26px] lg:text-xl lg:leading-[28px] text-gray text-center" v-html="description" />
         </motion.div>
     </header>
 </template>

@@ -133,11 +133,11 @@ useJsonLd(jsonld.socialResponsibility);
         <CommonContentWithColumns backgroundImage="/images/backgrounds/responsabilidad-1.webp"
             title="Responsabilidad <br /> social corporativa" cover-wrapper>
             <Motion :variants="generalItemVariants">
-                <h4 class="text-white font-extrabold! mb-4">
+                <h4 class="content-with-columns text-white mb-4">
                     Compromiso Integral ESG y Fortalecimiento Social
                 </h4>
 
-                <p class="p2 md:text-sm lg:p3 text-white">
+                <p class="content-with-columns text-white">
                     En la alta gerencia de Maximiza entendemos que la verdadera generación de valor trasciende con
                     creces el pago trimestral de dividendos financieros. Adoptamos de forma endógena los criterios de
                     sostenibilidad ESG (Ambiental, Social y de Gobernanza) como pilares fundamentales para participar
@@ -181,7 +181,7 @@ useJsonLd(jsonld.socialResponsibility);
             </div>
 
             <Motion :variants="generalItemVariants" class="w-full">
-                <p class="p1md:p2 text-gray">
+                <p class="text-gray">
                     A través de nuestro estructurado Comité Social, canalizamos recursos, tiempo y conocimientos para
                     respaldar el accionar de fundaciones, instituciones educativas de base y programas formativos
                     especializados, dejando una huella tangible, solidaria y medible en pro del crecimiento de las
@@ -204,17 +204,17 @@ useJsonLd(jsonld.socialResponsibility);
         <CommonContentWithColumns backgroundImage="/images/backgrounds/responsabilidad-2.webp"
             title="Buen gobierno <br /> corporativo" cover-wrapper>
             <motion.div :variants="generalItemVariants">
-                <h5 class="text-white font-extrabold! mb-4">
+                <h4 class="content-with-columns text-white mb-4">
                     El pilar inquebrantable de nuestra integridad
-                </h5>
+                </h4>
 
-                <p class="p2 text-white">
+                <p class="content-with-columns text-white">
                     Nuestra adopción temprana y respeto estricto a las mejores prácticas de gobierno corporativo brindan
                     la seguridad jurídica, operativa y económica esencial para un crecimiento sostenible y la atracción
                     constante de inversiones institucionales.
                 </p>
                 <br />
-                <p class="p2 text-white">
+                <p class="content-with-columns text-white">
                     En Maximiza Casa de Bolsa, nuestras operaciones están protegidas por un riguroso ecosistema ético y
                     regulatorio global.
                 </p>
@@ -263,6 +263,7 @@ useJsonLd(jsonld.socialResponsibility);
                 right: 'md:w-[65%]',
             }">
             <CommonContentCard v-for="(item, index) in links" :key="`link-${index}`" :content="item.description"
+                :styles="{ content: 'text-[18px] leading-[26px] md:text-[12px] md:leading-[20px] lg:text-[20px] lg:leading-[24px] text-gray', wrapper: 'flex-1 p-4 flex flex-col justify-center' }"
                 :button="{ label: 'Descargar', link: item.button.link, icon: 'download', size: 'md' }"
                 :image="{ url: item.image.url, alt: item.image.alt }" is-image-full />
 

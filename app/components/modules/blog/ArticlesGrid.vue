@@ -21,14 +21,14 @@ onMounted(async () => {
 </script>
 
 <template>
-    <motion.section class="container w-full mx-auto py-16 px-4" :variants="generalContainerVariants" initial="hidden"
+    <motion.section class="container w-full mx-auto py-16 lg:px-4" :variants="generalContainerVariants" initial="hidden"
         animate="visible">
 
         <div v-if="isLoading" class="w-full flex justify-center items-center py-24">
             <AppLoader />
         </div>
 
-        <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div v-else class="max-w-[940px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-[50px] justify-items-center">
             <ModulesBlogArticle v-for="article in articles" :key="article.slug" :article="article" />
         </div>
 

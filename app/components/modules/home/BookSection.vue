@@ -7,7 +7,7 @@ import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
 </script>
 
 <template>
-    <section class="w-full py-20 xl:py-28 bg-white-alt flex items-center justify-center">
+    <section class="w-full py-40 bg-white-alt flex items-center justify-center">
         <div class="container mx-auto px-4 sm:px-12 flex justify-center mt-20 md:mt-0">
 
             <motion.div :variants="generalItemVariants" initial="hidden" whileInView="visible"
@@ -15,19 +15,17 @@ import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
                 class="relative w-full max-w-5xl bg-white border border-gray/30 flex flex-col md:flex-row items-stretch">
 
                 <!-- Text Content -->
-                <div class="w-full md:w-3/5  flex flex-col items-start md:items-end text-left md:text-right max-sm:pt-52 md:py-8 lg:py-12 px-6 sm:px-10 md:pl-12 lg:pl-16 z-0">
-                    <h2 class="text-left md:text-right">
+                <div class="w-full md:w-3/5 flex flex-col items-start md:items-end text-left md:text-right max-sm:pt-52 md:p-6 lg:p-10 z-0">
+                    <h2 class="text-left mb-4 md:text-right">
                         Memoria y <br class="hidden lg:block"/> liderazgo intelectual
                     </h2>
 
-                    <p class="p2 xl:p1 text-gray mb-1 w-full text-left md:text-right max-w-md">
-                        El mercado de valores tiene historia.
+                    <p class="w-full mb-1 text-gray text-left md:text-right max-w-md text-base leading-[24px] md:text-[9.74px] md:leading-[18.09px] lg:text-base lg:leading-[24px] text">
+                        El mercado de valores tiene historia. <br /> Obra clave de 2022, auspiciada por nuestra firma, que documenta la resiliencia, evolución y perspectivas del ecosistema bursátil venezolano. Testimonio de nuestro arraigo histórico y compromiso con el desarrollo económico nacional.
                     </p>
-                    <p class="p2 xl:p1 text-gray mb-8 w-full text-left md:text-right max-w-md">
-                        Obra clave de 2022, auspiciada por nuestra firma, que documenta la resiliencia, evolución y perspectivas del ecosistema bursátil venezolano. Testimonio de nuestro arraigo histórico y compromiso con el desarrollo económico nacional.
-                    </p>
+                    
 
-                    <h5 class="font-bold text-black-alt text-lg lg:text-xl w-full text-left md:text-right mb-4">
+                    <h5 class="font-bold text-black-alt text-lg lg:text-xl w-full text-left md:text-right mt-4 mb-2">
                         Más información
                     </h5>
 
@@ -46,7 +44,7 @@ import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
                 </div>
 
                 <!-- Book Image (Absolute Positioning) -->
-                <div class="absolute left-1/2 md:left-3/5  md:right-8 lg:right-16 top-0 md:top-1/2 -translate-x-1/2 md:translate-x-0 -translate-y-[45%] md:-translate-y-1/2 w-50 sm:w-60 md:w-70 lg:w-80 xl:w-90 z-10 pointer-events-none flex justify-center">
+                <div class="absolute left-1/2 md:left-3/5 top-0 md:top-1/2 -translate-x-1/2 md:translate-x-0 -translate-y-[45%] md:-translate-y-1/2 w-50 sm:w-60 md:w-70 lg:w-80 xl:w-90 z-10 pointer-events-none flex justify-center">
                     <img src="/images/pages/home/book.webp"
                         alt="Pasado, presente y futuro del mercado de valores en Venezuela" 
                         title="Pasado, presente y futuro del mercado de valores en Venezuela"

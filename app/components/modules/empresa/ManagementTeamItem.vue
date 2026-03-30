@@ -34,7 +34,7 @@ const isPopoverOpen = ref(false);
         <div
             class="z-0 w-full bg-white border border-gray/30 -mt-8 pt-12 pb-4 px-6 md:px-8 shadow-sm flex flex-col items-center transition-all duration-300">
 
-            <AppPopover position="bottom" :title="name" @toggled="isPopoverOpen = $event">
+            <AppPopover position="bottom" @toggled="isPopoverOpen = $event">
                 <template #trigger>
                     <button
                         class="text-gray/50 hover:text-primary text-sm font-medium  flex items-center justify-center focus:outline-none transition-colors duration-300 cursor-pointer">

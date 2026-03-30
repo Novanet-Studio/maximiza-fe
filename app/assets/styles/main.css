@@ -68,7 +68,13 @@
   h4 {
     @apply text-base lg:text-lg xl:text-xl;
     font-weight: 800;
+
+    &.content-with-columns {
+      @apply text-lg leading-[20px] md:text-sm md:leading-[18px] lg:text-lg lg:leading-[20px];
+    }
   }
+
+
 
   h5 {
     @apply text-sm lg:text-base xl:text-lg;
@@ -81,18 +87,8 @@
   }
 
   p {
-    font-weight: 400;
-
-    &.p1 {
-      @apply text-lg md:text-base lg:text-lg xl:text-xl;
-    }
-
-    &.p2 {
-      @apply text-sm lg:text-base xl:text-lg;
-    }
-
-    &.p3 {
-      @apply text-xs lg:text-sm;
+    &.content-with-columns {
+      @apply font-normal text-lg leading-[26px] md:text-xs md:leading-[20px] lg:text-lg lg:leading-[26px];      
     }
   }
 

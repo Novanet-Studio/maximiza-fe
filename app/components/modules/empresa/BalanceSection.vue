@@ -22,7 +22,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <motion.section class="container w-full min-h-screen mb-20 md:mb-32 flex flex-col items-center"
+    <motion.section class="container w-full py-16 min-h-screen mb-20 md:mb-32 flex flex-col items-center"
         :variants="generalContainerVariants" initial="hidden" animate="visible">
 
         <div v-if="isLoading" class="flex justify-center items-center py-20 w-full">

@@ -40,7 +40,7 @@ defineExpose({
     />
 
     <p
-      class="text-gray text-sm md:text-base leading-relaxed text-justify mb-6"
+      class="mt-4 text-gray text-sm md:text-base leading-relaxed text-justify mb-6"
     >
       Aceptación del contrato de cuenta de corretaje bursátil por parte del
       inversor con la firma del presente documento, el cliente expresamente
@@ -67,7 +67,7 @@ defineExpose({
       financiera del cliente y, autoriza suficientemente a Maximiza Casa de
       Bolsa, C.A., para que verifique los datos aportados y que han sido
       vertidos en esta planilla, señalados en la providencia N°025 y las demás
-      disposiciones que tutelan esta materia
+      disposiciones que tutelan esta materia.
     </p>
 
     <FormBaseLayout>

@@ -60,22 +60,22 @@ const handleDownload = async () => {
     const documents = [
       {
         ref: mainDocumentContent.value,
-        name: `1_Ficha_Identificacion_${type == 'persona-natural' ? 'Persona_Natural' : 'Persona_Juridica'}.pdf`,
+        name: `1_Ficha_Identificacion_${type == 'persona-natural' ? 'Persona_Natural' : 'Persona_Jurídica'}.pdf`,
         label: "Ficha de Identificación",
       },
       {
         ref: openingDocumentContent.value,
-        name: `2_Poder_Apertura_${type == 'persona-natural' ? 'Persona_Natural' : 'Persona_Juridica'}.pdf`,
+        name: `2_Poder_Apertura_${type == 'persona-natural' ? 'Persona_Natural' : 'Persona_Jurídica'}.pdf`,
         label: "Poder de Apertura",
       },
       {
         ref: originFundsDocumentContent.value,
-        name: `3_Origen_Fondos_${type == 'persona-natural' ? 'Persona_Natural' : 'Persona_Juridica'}.pdf`,
+        name: `3_Origen_Fondos_${type == 'persona-natural' ? 'Persona_Natural' : 'Persona_Jurídica'}.pdf`,
         label: "Origen de Fondos",
       },
       {
         ref: signatureRegistrationDocumentContent.value,
-        name: `4_Registro_Firmas_${type == 'persona-natural' ? 'Persona_Natural' : 'Persona_Juridica'}.pdf`,
+        name: `4_Registro_Firmas_${type == 'persona-natural' ? 'Persona_Natural' : 'Persona_Jurídica'}.pdf`,
         label: "Registro de Firmas",
       },
     ];

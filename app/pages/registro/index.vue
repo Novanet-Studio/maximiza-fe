@@ -43,27 +43,27 @@ useJsonLd(jsonld.register);
                         </div>
 
                         <label for="person-type-natural"
-                            class="text-2xl font-bold text-gray group-hover:text-black transition-colors duration-300">Persona
+                            class="font-serif text-2xl md:text-xl font-extrabold text-black-alt group-hover:text-black transition-colors duration-300">Persona
                             natural</label>
 
                     </motion.button>
 
                 </NuxtLink>
 
-                <NuxtLink title="Persona juridica" to="/registro/persona-juridica">
+                <NuxtLink title="Persona jurídica" to="/registro/persona-juridica">
                     <motion.button type="button" class="flex flex-col items-center gap-4 group"
                         :variants="generalItemVariants" initial="hidden" whileHover="hover" animate="visible">
                         <div class="w-[275px] h-[275px] relative p-4 bg-white-alt overflow-hidden">
-                            <motion.div class="absolute left-0 top-0 h-full bg-primary z-0"
+                            <motion.div class="absolute left-0 top-0 h-full bg-black-alt z-0"
                                 :variants="overlayVariants" />
 
-                            <img src="/images/pages/home/person-type-juridica.webp" alt="Person Type Juridica" title="Person Type Juridica"
+                            <img src="/images/pages/home/person-type-juridica.webp" alt="Person Type Jurídica" title="Person Type Jurídica"
                                 class="w-full h-full object-contain relative z-10" />
                         </div>
 
-                        <label for="person-type-juridica"
-                            class="text-2xl font-bold text-gray group-hover:text-black transition-colors duration-300">Persona
-                            juridica</label>
+                        <label for="person-type-jurídica"
+                            class="font-serif text-2xl md:text-xl font-extrabold text-black-alt group-hover:text-black transition-colors duration-300">Persona
+                            jurídica</label>
 
                     </motion.button>
                 </NuxtLink>

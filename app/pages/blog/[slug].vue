@@ -92,13 +92,13 @@ const parsedContent = computed(() => {
             </motion.main>
 
             <motion.footer
-                class="mt-12 pt-6 border-t border-gray/30 flex flex-col sm:flex-row items-start justify-between"
+                class="mt-12 py-6 border-t border-gray/30 flex items-center justify-between"
                 :variants="generalItemVariants">
 
 
-                <div class="w-full px-8 text-primary sm:w-auto flex flex-col items-start gap-2">
-                    <p class="p2">Comparte este artículo</p>
-                    <div class="flex items-center gap-4">
+                <div class="w-full text-primary sm:w-auto flex flex-col items-start gap-2">
+                    <p class="">Comparte este artículo</p>
+                    <div class="flex items-center gap-2">
                         <a title="Ir a shareLinkedIn" :href="shareLinkedIn" target="_blank" rel="noopener noreferrer"
                             class="text-black-alt hover:text-primary transition-colors" aria-label="LinkedIn">
                             <FontAwesomeIcon :icon="faLinkedinIn" class="text-2xl" />
@@ -113,7 +113,7 @@ const parsedContent = computed(() => {
                 <NuxtLink title="Volver al blog" to="/blog"
                     class="w-full sm:w-auto text-black-alt hover:text-primary transition-colors flex items-center gap-1 justify-end">
                     <FontAwesomeIcon :icon="faArrowLeft" />
-                    <p class="p2">Volver al blog</p>
+                    <p class="text-primary font-semibold">Volver al blog</p>
                 </NuxtLink>
 
             </motion.footer>

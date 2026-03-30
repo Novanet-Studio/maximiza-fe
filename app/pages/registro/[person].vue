@@ -65,12 +65,12 @@ onMounted(() => {
 
 
         <motion.div :variants="generalContainerVariants" initial="hidden" whileInView="visible"
-            :viewport="{ once: true, margin: '-120px' }" class="mt-[10vh] bg-white lg:bg-white-alt">
+            :viewport="{ once: true, margin: '-120px' }" class="mt-[10vh] bg-white-alt">
             <CommonContentWithColumns
                 :backgroundImage="personType === 'persona-natural' ? '/images/pages/registro/banner-persona-natural.webp' : '/images/pages/registro/banner-persona-juridica.webp'"
                 title="Comienza completando el formulario de registro" />
 
-            <div class="container w-full translate-y-0 md:-translate-y-12 lg:-translate-y-20">
+            <div class="container w-full pb-8 md:pb-16 translate-y-0">
                 <ModulesOnboardingWizardWrapper :personType="personType" />
             </div>
         </motion.div>
