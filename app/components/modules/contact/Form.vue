@@ -11,6 +11,25 @@ const form = ref({
     area_of_interest: "",
 });
 
+const isOpen = ref(false);
+
+const options = [
+    { value: 'Apertura de cuenta corretaje', label: 'Apertura de Cuenta Corretaje' },
+    { value: 'Gestión patrimonial', label: 'Gestión Patrimonial' },
+    { value: 'Financiamiento corporativo', label: 'Financiamiento Corporativo' },
+    { value: 'Otros', label: 'Otro' },
+];
+
+const selectedLabel = computed(() => {
+    const found = options.find(o => o.value === form.value.area_of_interest);
+    return found ? found.label : null;
+});
+
+const selectOption = (option: any) => {
+    form.value.area_of_interest = option.value as string;
+    isOpen.value = false;
+};
+
 const encode = (data: Record<string, any>) => {
     return Object.keys(data)
         .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
@@ -50,7 +69,8 @@ const handleSubmit = async () => {
     <CommonContentWithColumns backgroundImage="/images/pages/contact/banner.webp" title="Formulario <br /> de contacto"
         cover-wrapper>
         <div class="w-full">
-            <h4 class="content-with-columns text-white mb-4 md:mb-8">Envíanos un mensaje a través de este formulario</h4>
+            <h4 class="content-with-columns text-white mb-4 md:mb-8">Envíanos un mensaje a través de este formulario
+            </h4>
 
             <motion.form @submit.prevent="handleSubmit" class="flex flex-col gap-8 w-full" data-netlify="true"
                 name="FORMULARIO_DE_CONTACTO" netlify-honeypot="bot-field" :variants="generalContainerVariants">
@@ -72,26 +92,32 @@ const handleSubmit = async () => {
                     class="bg-transparent border-b border-white text-white placeholder-gray outline-none py-1 focus:border-secondary transition-colors"
                     :variants="generalItemVariants" />
 
-                <motion.div class="relative w-full" :variants="generalItemVariants">
-                    <select v-model="form.area_of_interest" required
-                        class="w-full bg-transparent border-b border-white text-white placeholder-gray outline-none py-1 pr-8 appearance-none focus:border-secondary transition-colors">
-                        <option value="" disabled selected hidden class="text-gray-500">Área específica de interés
-                        </option>
-                        <option value="Apertura de cuenta corretaje" class="text-black text-base md:text-xs">Apertura de Cuenta Corretaje
-                        </option>
-                        <option value="Gestión patrimonial" class="text-black text-base md:text-xs">Gestión Patrimonial</option>
-                        <option value="Financiamiento corporativo" class="text-black text-base md:text-xs">Financiamiento Corporativo
-                        </option>
-                        <option value="Otros" class="text-black text-base md:text-xs">Otro</option>
-                    </select>
+                <motion.div class="relative w-full group" :variants="generalItemVariants">
+                    <div @click="isOpen = !isOpen"
+                        class="w-full border-b border-white text-white py-1.5 pr-2 cursor-pointer transition-colors focus:border-secondary flex justify-between items-center"
+                        :class="{ 'border-secondary': isOpen }">
+                        <span :class="form.area_of_interest ? 'text-white' : 'text-gray-400'">
+                            {{ selectedLabel || 'Área específica de interés' }}
+                        </span>
 
-                    <div class="absolute inset-y-0 right-0 flex items-center px-1 pointer-events-none text-white">
-                        <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                            <path
-                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                clip-rule="evenodd" fill-rule="evenodd"></path>
-                        </svg>
+                        <FontAwesomeIcon icon="fa-solid fa-chevron-down" class="transition-all duration-300"
+                            :class="{ '-rotate-180': isOpen }" />
                     </div>
+
+                    <transition name="fade">
+                        <ul v-if="isOpen"
+                            class="absolute z-50 w-full mt-1 bg-black-alt border border-gray-700 shadow-xl overflow-hidden">
+                            <li v-for="option in options" :key="option.value" @click="selectOption(option)"
+                                class="px-4 py-2 text-white text-base cursor-pointer transition-colors duration-200 hover:bg-primary"
+                                :class="{
+                                    'bg-primary': option.value === form.area_of_interest,
+                                }">
+                                {{ option.label }}
+                            </li>
+                        </ul>
+                    </transition>
+
+                    <input type="hidden" v-model="form.area_of_interest" required>
                 </motion.div>
 
                 <motion.div class="flex justify-end" :variants="generalItemVariants">

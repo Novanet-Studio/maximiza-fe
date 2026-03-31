@@ -91,12 +91,14 @@ const currentYear = new Date().getFullYear();
                 </motion.nav>
             </motion.div>
 
-            <motion.div class="pb-8 flex flex-col md:flex-row flex-wrap gap-1 md:gap-4 text-sm"
+            <motion.div class="pb-8 flex flex-col text-xs"
                 :variants="footerItemVariants">
-                <p class="w-full font-semibold md:w-auto mb-2 md:mb-0">
+                <p class="w-full md:w-auto mb-2 md:text-base md:leading-[24px]">
                     Si desea mayor información de nuestros servicios, escríbanos y nos comunicaremos con usted a la
                     brevedad posible
                 </p>
+                
+                <div class="w-full flex flex-wrap gap-2 md:gap-4">
 
                 <div class="flex items-center gap-1">
                     <FontAwesomeIcon :icon="faEnvelope" class="text-white" />
@@ -122,6 +124,8 @@ const currentYear = new Date().getFullYear();
                     <FontAwesomeIcon :icon="faLocationDot" class="text-white mt-1 md:mt-0.5" />
                     <span>{{ companyData.address }}</span>
                 </div>
+                </div>
+
             </motion.div>
 
             <motion.div

@@ -15,15 +15,14 @@ import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
                 class="relative w-full max-w-5xl bg-white border border-gray/30 flex flex-col md:flex-row items-stretch">
 
                 <!-- Text Content -->
-                <div class="w-full md:w-3/5 flex flex-col items-start md:items-end text-left md:text-right max-sm:pt-52 md:p-6 lg:p-10 z-0">
-                    <h2 class="text-left mb-4 md:text-right">
+                <div class="w-full md:w-3/5 flex flex-col items-start md:items-end text-left md:text-right max-sm:pt-52 p-4 px-6 md:p-6 lg:p-10 z-0">
+                    <h2 class="text-2xl leading-[26px] md:text-base md:leading-[18.09px] lg:text-2xl lg:leading-[26px] text-left mb-4 md:text-right">
                         Memoria y <br class="hidden lg:block"/> liderazgo intelectual
                     </h2>
 
                     <p class="w-full mb-1 text-gray text-left md:text-right max-w-md text-base leading-[24px] md:text-[9.74px] md:leading-[18.09px] lg:text-base lg:leading-[24px] text">
                         El mercado de valores tiene historia. <br /> Obra clave de 2022, auspiciada por nuestra firma, que documenta la resiliencia, evolución y perspectivas del ecosistema bursátil venezolano. Testimonio de nuestro arraigo histórico y compromiso con el desarrollo económico nacional.
                     </p>
-                    
 
                     <h5 class="font-bold text-black-alt text-lg lg:text-xl w-full text-left md:text-right mt-4 mb-2">
                         Más información
@@ -50,7 +49,6 @@ import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
                         title="Pasado, presente y futuro del mercado de valores en Venezuela"
                         class="object-contain w-full shadow-[15px_15px_24px_-3px_rgba(0,_0,_0,_0.5)]" />
                 </div>
-
             </motion.div>
         </div>
     </section>

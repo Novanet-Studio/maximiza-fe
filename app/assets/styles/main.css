@@ -12,10 +12,10 @@
   --color-primary-alt: #19816f;
   --color-secondary: #f1cda7;
   --color-gray: #707070;
-  --color-gray-alt: #B1B1B1;
+  --color-gray-alt: #b1b1b1;
   --color-white: #ffffff;
   --color-white-alt: #f1f1f1;
-  --color-white-alt2: #E5E5E5;
+  --color-white-alt2: #e5e5e5;
   --color-error: #ec131e;
   --color-error-alt: #f23d45;
 
@@ -26,7 +26,6 @@
   --width-a4: 210mm;
 }
 
-
 @layer base {
   * {
     font-family: var(--font-sans);
@@ -34,7 +33,6 @@
     font-style: normal;
 
     box-sizing: border-box;
-
   }
 
   *::-webkit-scrollbar {
@@ -74,8 +72,6 @@
     }
   }
 
-
-
   h5 {
     @apply text-sm lg:text-base xl:text-lg;
     font-weight: 800;
@@ -88,7 +84,7 @@
 
   p {
     &.content-with-columns {
-      @apply font-normal text-lg leading-[26px] md:text-xs md:leading-[20px] lg:text-lg lg:leading-[26px];      
+      @apply font-normal text-lg leading-[26px] md:text-xs md:leading-[20px] lg:text-lg lg:leading-[26px];
     }
   }
 
@@ -134,8 +130,6 @@
         margin-left: 1rem;
       }
     }
-
-
   }
 
   .form-section {
