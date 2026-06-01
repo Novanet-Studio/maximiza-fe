@@ -36,7 +36,7 @@ const labels: Record<string, { title: string, description: string, banner: strin
 
 onMounted(() => {
     personType.value = String(route.params.person);
-    
+
     if (labels[personType.value]) {
         useSeoMeta({
             ...metadata.registro,
