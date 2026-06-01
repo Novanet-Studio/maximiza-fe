@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import MarkdownIt from "markdown-it";
+
+import { useMaximizaQueries } from "~/composables/useMaximizaQueries";
+
 import { getImageUrl, getImageAlt } from "~/lib/utils";
 
 const form = ref({

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import MarkdownIt from "markdown-it";
 
+import { useMaximizaQueries } from "~/composables/useMaximizaQueries";
+
 import { getImageUrl, getImageAlt } from "~/lib/utils";
 
 const md = new MarkdownIt({ html: true, breaks: true });

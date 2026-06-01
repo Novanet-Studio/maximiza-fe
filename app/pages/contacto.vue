@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
+import { useMaximizaQueries } from "~/composables/useMaximizaQueries";
+
 const form = ref({
   "bot-field": "",
   name: "",

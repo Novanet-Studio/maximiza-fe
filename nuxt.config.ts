@@ -10,7 +10,7 @@ export default defineNuxtConfig({
 
   modules: [
     "@nuxtjs/tailwindcss",
-    "@nuxtjs/strapi",
+    ["@nuxtjs/strapi", { version: "v4", url: process.env.STRAPI_API_URL || "http://localhost:1337", prefix: "/api" }],
     "@nuxt/image",
     "@vite-pwa/nuxt",
     "@nuxt/fonts",

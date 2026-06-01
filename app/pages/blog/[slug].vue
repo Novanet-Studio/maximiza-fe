@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import MarkdownIt from "markdown-it";
+
 import { getImageAlt, getImageUrl } from "~/lib/utils";
 import { getArticuloBySlugQuery } from "~/schemas/blog.schemas";
 
@@ -8,11 +9,15 @@ const md = new MarkdownIt({ html: true, breaks: true });
 const renderMarkdown = (content: string) => md.render(content || "");
 
 const slug = route.params.slug as string;
+const { public: { strapi } } = useRuntimeConfig();
 
-const graphql = useStrapiGraphQL();
 const { data: articulo } = await useAsyncData(`articulo-${slug}`, async () => {
   try {
-    const response = await graphql<any>(getArticuloBySlugQuery, { slug });
+    const response = await $fetch<{ data: any }>(`${strapi.url}/graphql`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", accept: "application/json" },
+      body: { query: getArticuloBySlugQuery, variables: { slug } },
+    });
 
     return response?.data?.articulos?.[0] || null;
   } catch (error) {

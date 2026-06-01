@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import MarkdownIt from "markdown-it";
 
+import { useMaximizaQueries } from "~/composables/useMaximizaQueries";
+
 const md = new MarkdownIt({ html: true, breaks: true });
 const renderMarkdown = (content: string) => md.render(content || "");
 

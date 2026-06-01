@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import MarkdownIt from "markdown-it";
 import { getBlogQuery } from "~/schemas/blog.schemas";
- 
+
 import {
   formatDate,
   getImageAlt,
@@ -12,11 +12,15 @@ import {
 const md = new MarkdownIt({ html: true, breaks: true });
 const renderMarkdown = (content: string) => md.render(content || "");
 
-const graphql = useStrapiGraphQL();
+const { public: { strapi } } = useRuntimeConfig();
 
 const { data: blogData } = await useAsyncData(async () => {
   try {
-    const response = await graphql<any>(getBlogQuery);
+    const response = await $fetch<{ data: any }>(`${strapi.url}/graphql`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", accept: "application/json" },
+      body: { query: getBlogQuery },
+    });
 
     return {
       principal: response?.data?.blog?.principal,

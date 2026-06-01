@@ -5,6 +5,8 @@ definePageMeta({
 
 import MarkdownIt from "markdown-it";
 
+import { useMaximizaQueries } from "~/composables/useMaximizaQueries";
+
 import { getImageUrl, getImageAlt, truncateText } from "~/lib/utils";
 
 const md = new MarkdownIt({ html: true, breaks: true });

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import MarkdownIt from "markdown-it";
 
+import { useMaximizaQueries } from "~/composables/useMaximizaQueries";
+
 const { mediosData, fetchMedios } = useMaximizaQueries();
 
 onMounted(() => {

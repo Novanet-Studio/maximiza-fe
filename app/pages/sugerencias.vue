@@ -2,6 +2,8 @@
 import { ref } from "vue";
 import MarkdownIt from "markdown-it";
 
+import { useMaximizaQueries } from "~/composables/useMaximizaQueries";
+
 const form = ref({
   "bot-field": "",
   nombre: "",
