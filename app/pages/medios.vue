@@ -1,19 +1,20 @@
 <script setup lang="ts">
-import MarkdownIt from "markdown-it";
+  import MarkdownIt from 'markdown-it'
 
-const { mediosData, fetchMedios } = useMaximizaQueries();
+  import { useMaximizaQueries } from '~/composables/useMaximizaQueries'
 
-onMounted(() => {
-  fetchMedios();
-});
+  const { mediosData, fetchMedios } = useMaximizaQueries()
 
-useSeoMeta({
-  title: "Medios de Comunicacion",
-  description:
-    "Exposicion de Maximiza en los medios de comunicacion tradicionales",
-  ogImage:
-    "https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_medios_miniatura_488c08a954.webp",
-});
+  onMounted(() => {
+    fetchMedios()
+  })
+
+  useSeoMeta({
+    title: 'Medios de Comunicacion',
+    description: 'Exposicion de Maximiza en los medios de comunicacion tradicionales',
+    ogImage:
+      'https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_medios_miniatura_488c08a954.webp',
+  })
 </script>
 
 <template>

@@ -1,64 +1,67 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import MarkdownIt from "markdown-it";
-import { getImageUrl, getImageAlt } from "~/lib/utils";
+  import { ref } from 'vue'
+  import MarkdownIt from 'markdown-it'
 
-const form = ref({
-  "bot-field": "",
-  name: "",
-  email: "",
-  message: "",
-});
+  import { useMaximizaQueries } from '~/composables/useMaximizaQueries'
 
-const encode = (data: Record<string, any>) => {
-  return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
-};
+  import { getImageUrl, getImageAlt } from '~/lib/utils'
 
-const handleSubmit = async () => {
-  try {
-    const formData = encode({
-      "form-name": "inicio",
-      ...form.value,
-    });
+  const form = ref({
+    'bot-field': '',
+    name: '',
+    email: '',
+    message: '',
+  })
 
-    const response = await fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: formData,
-    });
-
-    if (!response.ok) {
-      throw new Error("Error en la respuesta del servidor");
-    }
-
-    form.value.name = "";
-    form.value.email = "";
-    form.value.message = "";
-    alert("Mensaje enviado con éxito");
-  } catch (error) {
-    console.error("Error al enviar:", error);
-    alert("Hubo un error al enviar el mensaje.");
+  const encode = (data: Record<string, any>) => {
+    return Object.keys(data)
+      .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&')
   }
-};
 
-const md = new MarkdownIt({ html: true, breaks: true });
-const renderMarkdown = (content: string) => md.render(content || "");
+  const handleSubmit = async () => {
+    try {
+      const formData = encode({
+        'form-name': 'inicio',
+        ...form.value,
+      })
 
-const { homeData, fetchHome } = useMaximizaQueries();
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formData,
+      })
 
-onMounted(() => {
-  fetchHome();
-});
+      if (!response.ok) {
+        throw new Error('Error en la respuesta del servidor')
+      }
 
-useSeoMeta({
-  title: "Casa de bolsa",
-  description:
-    "Casa de bolsa dedicada a la asesoría financiera y a la gestión de activos transados en el mercado bursátil.",
-  ogImage:
-    "https://res.cloudinary.com/novanet-studio/image/upload/v1646847323/maximiza/v4/maximiza_inicio_miniatura_7b38641a3d.webp",
-});
+      form.value.name = ''
+      form.value.email = ''
+      form.value.message = ''
+      alert('Mensaje enviado con éxito')
+    } catch (error) {
+      console.error('Error al enviar:', error)
+      alert('Hubo un error al enviar el mensaje.')
+    }
+  }
+
+  const md = new MarkdownIt({ html: true, breaks: true })
+  const renderMarkdown = (content: string) => md.render(content || '')
+
+  const { homeData, fetchHome } = useMaximizaQueries()
+
+  onMounted(() => {
+    fetchHome()
+  })
+
+  useSeoMeta({
+    title: 'Casa de bolsa',
+    description:
+      'Casa de bolsa dedicada a la asesoría financiera y a la gestión de activos transados en el mercado bursátil.',
+    ogImage:
+      'https://res.cloudinary.com/novanet-studio/image/upload/v1646847323/maximiza/v4/maximiza_inicio_miniatura_7b38641a3d.webp',
+  })
 </script>
 
 <template>
@@ -72,27 +75,25 @@ useSeoMeta({
         :inverted="false"
       />
 
-      <section class="mt-12 md:mt-16 xl:mt-24 px-4 xl:px-0">
+      <section class="mt-12 px-4 md:mt-16 xl:mt-24 xl:px-0">
         <h2
-          class="text-center font-black text-gray-900 text-xl md:text-2xl xl:text-3xl mb-8 md:mb-12"
+          class="text-gray-900 mb-8 text-center text-xl font-black md:mb-12 md:text-2xl xl:text-3xl"
         >
           {{ homeData.beneficios_titulo }}
         </h2>
 
-        <ul class="flex flex-col md:flex-row justify-between gap-8 md:gap-4">
+        <ul class="flex flex-col justify-between gap-8 md:flex-row md:gap-4">
           <li
             v-for="item in homeData.beneficios"
             :key="item.id"
-            class="w-full md:w-[30%] relative group"
+            class="group relative w-full md:w-[30%]"
           >
-            <div class="md:border-b-2 md:border-maximiza-gris5 md:pb-4 h-full">
-              <h3
-                class="text-maximiza-verde1 font-black text-center text-lg md:text-xl"
-              >
+            <div class="h-full md:border-b-2 md:border-maximiza-gris5 md:pb-4">
+              <h3 class="text-center text-lg font-black text-maximiza-verde1 md:text-xl">
                 {{ item.titulo }}
               </h3>
               <div
-                class="text-maximiza-gris1 text-center font-normal text-sm md:text-base leading-relaxed prose prose-p:my-0 mx-auto"
+                class="prose prose-p:my-0 mx-auto text-center text-sm font-normal leading-relaxed text-maximiza-gris1 md:text-base"
                 v-html="renderMarkdown(item.contenido)"
               ></div>
             </div>
@@ -100,39 +101,39 @@ useSeoMeta({
         </ul>
       </section>
 
-      <section class="mt-16 md:mt-20 xl:mt-24 mb-16 px-4 xl:px-0">
-        <ul class="flex flex-col md:flex-row gap-4 w-full md:h-[300px]">
+      <section class="mb-16 mt-16 px-4 md:mt-20 xl:mt-24 xl:px-0">
+        <ul class="flex w-full flex-col gap-4 md:h-[300px] md:flex-row">
           <li
             v-for="item in homeData.servicios"
             :key="item.id"
-            class="relative group overflow-hidden cursor-pointer /* Móvil: Altura fija */ w-full h-[200px] /* Desktop: Flex-grow logic */ md:w-auto md:h-full md:flex-1 md:hover:flex-[2] /* Transición suave del ancho */ transition-all duration-500 ease-in-out"
+            class="/* Móvil: Altura fija */ /* Desktop: Flex-grow logic */ /* Transición suave del ancho */ group relative h-[200px] w-full cursor-pointer overflow-hidden transition-all duration-500 ease-in-out md:h-full md:w-auto md:flex-1 md:hover:flex-[2]"
           >
-            <NuxtLink :to="item.link" class="block w-full h-full relative">
+            <NuxtLink :to="item.link" class="relative block h-full w-full">
               <NuxtImg
                 :src="getImageUrl(item.imagen)"
                 :alt="getImageAlt(item.imagen)"
                 provider="cloudinary"
-                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
 
               <div
-                class="absolute inset-0 bg-maximiza-verde1-dark/30 group-hover:bg-maximiza-verde1-dark/50 transition-colors duration-500"
+                class="absolute inset-0 bg-maximiza-verde1-dark/30 transition-colors duration-500 group-hover:bg-maximiza-verde1-dark/50"
               ></div>
 
               <div
-                class="absolute bottom-0 left-0 w-full p-6 md:p-8 bg-gradient-to-t from-maximiza-verde1-dark/90 via-maximiza-verde1-dark/70 to-transparent"
+                class="to-transparent absolute bottom-0 left-0 w-full bg-gradient-to-t from-maximiza-verde1-dark/90 via-maximiza-verde1-dark/70 p-6 md:p-8"
               >
                 <h3
-                  class="text-maximiza-blanco1 font-black text-xl md:text-2xl drop-shadow-md mb-0 group-hover:mb-2 transition-all duration-300"
+                  class="mb-0 text-xl font-black text-maximiza-blanco1 drop-shadow-md transition-all duration-300 group-hover:mb-2 md:text-2xl"
                 >
                   {{ item.titulo }}
                 </h3>
 
                 <div
-                  class="overflow-hidden max-h-0 opacity-0 group-hover:max-h-[200px] group-hover:opacity-100 transition-all duration-500 ease-in-out"
+                  class="max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out group-hover:max-h-[200px] group-hover:opacity-100"
                 >
                   <p
-                    class="text-maximiza-blanco1 text-sm md:text-base font-medium leading-relaxed pt-2"
+                    class="pt-2 text-sm font-medium leading-relaxed text-maximiza-blanco1 md:text-base"
                   >
                     {{ item.contenido }}
                   </p>
@@ -143,19 +144,17 @@ useSeoMeta({
         </ul>
       </section>
 
-      <section class="mt-16 mb-20 md:my-20 xl:my-24 px-4 xl:px-0">
-        <h2
-          class="text-center font-black text-maximiza text-xl md:text-2xl xl:text-3xl mb-4"
-        >
+      <section class="mb-20 mt-16 px-4 md:my-20 xl:my-24 xl:px-0">
+        <h2 class="text-maximiza mb-4 text-center text-xl font-black md:text-2xl xl:text-3xl">
           {{ homeData.contacto_titulo }}
         </h2>
 
-        <p class="text-center text-gray-600 font-normal mb-8 mx-auto">
+        <p class="text-gray-600 mx-auto mb-8 text-center font-normal">
           {{ homeData.contacto_descripcion }}
         </p>
 
         <form
-          class="flex flex-col md:flex-row flex-wrap justify-between mt-8 md:mt-12"
+          class="mt-8 flex flex-col flex-wrap justify-between md:mt-12 md:flex-row"
           method="POST"
           data-netlify="true"
           name="inicio"
@@ -169,15 +168,13 @@ useSeoMeta({
             </label>
           </p>
 
-          <div
-            class="w-full md:w-[75%] lg:w-[80%] flex flex-wrap justify-between"
-          >
+          <div class="flex w-full flex-wrap justify-between md:w-[75%] lg:w-[80%]">
             <input
               v-model="form.name"
               type="text"
               name="name"
               placeholder="Nombre y apellido"
-              class="w-full md:w-[48%] mb-6 md:mb-4 bg-transparent border-b-2 border-maximiza-verde1 text-maximiza-gris4 placeholder-gray-400 py-2 focus:outline-none focus:border-green-700 transition-colors"
+              class="bg-transparent placeholder-gray-400 focus:border-green-700 mb-6 w-full border-b-2 border-maximiza-verde1 py-2 text-maximiza-gris4 transition-colors focus:outline-none md:mb-4 md:w-[48%]"
               required
             />
             <input
@@ -185,24 +182,20 @@ useSeoMeta({
               type="email"
               name="email"
               placeholder="Correo"
-              class="w-full md:w-[48%] mb-6 md:mb-4 bg-transparent border-b-2 border-maximiza-verde1 text-maximiza-gris4 placeholder-gray-400 py-2 focus:outline-none focus:border-green-700 transition-colors"
+              class="bg-transparent placeholder-gray-400 focus:border-green-700 mb-6 w-full border-b-2 border-maximiza-verde1 py-2 text-maximiza-gris4 transition-colors focus:outline-none md:mb-4 md:w-[48%]"
               required
             />
             <textarea
               v-model="form.message"
               name="message"
               placeholder="Escriba su mensaje aquí..."
-              class="w-full mb-8 md:mb-0 bg-transparent border-b-2 border-maximiza-verde1 text-maximiza-gris4 placeholder-gray-400 py-2 focus:outline-none focus:border-green-700 transition-colors resize-none h-12 md:h-auto"
+              class="bg-transparent placeholder-gray-400 focus:border-green-700 mb-8 h-12 w-full resize-none border-b-2 border-maximiza-verde1 py-2 text-maximiza-gris4 transition-colors focus:outline-none md:mb-0 md:h-auto"
               required
             />
           </div>
 
-          <div class="w-full md:w-[20%] lg:w-[15%] flex items-end">
-            <input
-              type="submit"
-              class="button-primary cursor-pointer"
-              value="Enviar mensaje ➤"
-            />
+          <div class="flex w-full items-end md:w-[20%] lg:w-[15%]">
+            <input type="submit" class="button-primary cursor-pointer" value="Enviar mensaje ➤" />
           </div>
         </form>
       </section>

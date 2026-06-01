@@ -1,15 +1,15 @@
 <script setup lang="ts">
-const props = defineProps<{
-  type: "natural" | "juridica";
-}>();
+  const props = defineProps<{
+    type: 'natural' | 'juridica'
+  }>()
 
-const selectedModalId = ref<string | null>(null);
+  const selectedModalId = ref<string | null>(null)
 
-const modalData = [
-  {
-    id: "fideicomiso",
-    titulo: "Registro para fideicomiso",
-    contenido: `<ul>
+  const modalData = [
+    {
+      id: 'fideicomiso',
+      titulo: 'Registro para fideicomiso',
+      contenido: `<ul>
         <li class="text-lg text-maximiza-gris1 flex gap-2 items-start">
           <b class="text-maximiza-verde2 font-semibold">1.</b> Cédula de
           Identidad y Registro de Información Fiscal (RIF) vigente del
@@ -48,11 +48,11 @@ const modalData = [
           fideicomiso (Fideicomisario).
         </li>
       </ul>`,
-  },
-  {
-    id: "cooperativas",
-    titulo: "Requisitos de las Asociaciones Cooperativas",
-    contenido: `<ul>
+    },
+    {
+      id: 'cooperativas',
+      titulo: 'Requisitos de las Asociaciones Cooperativas',
+      contenido: `<ul>
         <li class="text-lg text-maximiza-gris1 flex gap-2 items-start">
           <b class="text-maximiza-verde2 font-semibold">1.</b> Registro de
           Información Fiscal (RIF), vigente.
@@ -90,12 +90,12 @@ const modalData = [
           cooperativa.
         </li>
       </ul>`,
-  },
+    },
 
-  {
-    id: "osfl",
-    titulo: "Requisitos para las OSLFL",
-    contenido: `<ul>
+    {
+      id: 'osfl',
+      titulo: 'Requisitos para las OSLFL',
+      contenido: `<ul>
        <li class="text-lg text-maximiza-gris1 flex gap-2 items-start ml-12">
           <b class="text-maximiza-verde2 font-semibold">1.</b> Registro de Información Fiscal (RIF), vigente.
         </li>
@@ -132,31 +132,24 @@ con las que se hayan acordado asociaciones, emitido por la junta directiva
 de la misma
         </li>
       </ul>`,
-  },
-];
+    },
+  ]
 </script>
 
 <template>
   <section v-if="type === 'natural'" class="flex flex-col gap-12">
     <article class="flex gap-4">
-      <img
-        src="/images/planilla/onboarding_PN.webp"
-        alt="onboarding_PN portraid"
-      />
-      <h5
-        class="text-maximiza-verde1 text-3xl font-extrabold flex items-center"
-      >
+      <img src="/images/planilla/onboarding_PN.webp" alt="onboarding_PN portraid" />
+      <h5 class="flex items-center text-3xl font-extrabold text-maximiza-verde1">
         Pasos para registro <br />
         de Persona Natural
       </h5>
     </article>
 
     <article>
-      <h5
-        class="text-maximiza-negro1 text-3xl font-bold flex items-center gap-2"
-      >
+      <h5 class="flex items-center gap-2 text-3xl font-bold text-maximiza-negro1">
         <div
-          class="bg-maximiza-verde1 rounded-full w-12 h-12 flex items-center justify-center text-maximiza-blanco1 text-3xl"
+          class="flex h-12 w-12 items-center justify-center rounded-full bg-maximiza-verde1 text-3xl text-maximiza-blanco1"
         >
           1
         </div>
@@ -164,17 +157,15 @@ de la misma
         Planillas de la Caja Venezolana de Valores
       </h5>
 
-      <p class="mt-2 mb-6 text-lg text-maximiza-gris1">
-        <b class="font-extrabold"
-          >Realiza tu registro o actualizacioón de datos</b
-        >
+      <p class="mb-6 mt-2 text-lg text-maximiza-gris1">
+        <b class="font-extrabold">Realiza tu registro o actualizacioón de datos</b>
         en la Caja Venezolana de Valores (CVV) y descarga la planilla firmada:
       </p>
 
       <ul>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-center">
+        <li class="flex items-center gap-2 text-lg text-maximiza-gris1">
           <font-awesome-icon
-            class="text-maximiza-verde1 text-xl"
+            class="text-xl text-maximiza-verde1"
             :icon="['fas', 'hand-point-right']"
           />
 
@@ -190,11 +181,9 @@ de la misma
     </article>
 
     <article>
-      <h5
-        class="text-maximiza-negro1 text-3xl font-bold flex items-center gap-2"
-      >
+      <h5 class="flex items-center gap-2 text-3xl font-bold text-maximiza-negro1">
         <div
-          class="bg-maximiza-verde1 rounded-full w-12 h-12 flex items-center justify-center text-maximiza-blanco1 text-3xl"
+          class="flex h-12 w-12 items-center justify-center rounded-full bg-maximiza-verde1 text-3xl text-maximiza-blanco1"
         >
           2
         </div>
@@ -202,50 +191,35 @@ de la misma
         Registro en línea
       </h5>
 
-      <p class="mt-2 mb-6 text-lg text-maximiza-gris1">
+      <p class="mb-6 mt-2 text-lg text-maximiza-gris1">
         Completa el formulario de registro digital. Nuestro sistema
-        <b class="font-extrabold">genera y completa automáticamente</b> las
-        siguientes planillas:
+        <b class="font-extrabold">genera y completa automáticamente</b> las siguientes planillas:
       </p>
 
       <ul>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-center">
-          <font-awesome-icon
-            class="text-maximiza-verde1 text-xl"
-            :icon="['fas', 'check']"
-          />
+        <li class="flex items-center gap-2 text-lg text-maximiza-gris1">
+          <font-awesome-icon class="text-xl text-maximiza-verde1" :icon="['fas', 'check']" />
           Ficha Única de Identificación del Inversionista
         </li>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-center">
-          <font-awesome-icon
-            class="text-maximiza-verde1 text-xl"
-            :icon="['fas', 'check']"
-          />
+        <li class="flex items-center gap-2 text-lg text-maximiza-gris1">
+          <font-awesome-icon class="text-xl text-maximiza-verde1" :icon="['fas', 'check']" />
           Ficha de Registro de Firmas
         </li>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-center">
-          <font-awesome-icon
-            class="text-maximiza-verde1 text-xl"
-            :icon="['fas', 'check']"
-          />
+        <li class="flex items-center gap-2 text-lg text-maximiza-gris1">
+          <font-awesome-icon class="text-xl text-maximiza-verde1" :icon="['fas', 'check']" />
           Declaración Jurada y destino de los fondos
         </li>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-center">
-          <font-awesome-icon
-            class="text-maximiza-verde1 text-xl"
-            :icon="['fas', 'check']"
-          />
+        <li class="flex items-center gap-2 text-lg text-maximiza-gris1">
+          <font-awesome-icon class="text-xl text-maximiza-verde1" :icon="['fas', 'check']" />
           Poder de Apertura y Manejo de Cuenta Custodia
         </li>
       </ul>
     </article>
 
     <article>
-      <h5
-        class="text-maximiza-negro1 text-3xl font-bold flex items-center gap-2"
-      >
+      <h5 class="flex items-center gap-2 text-3xl font-bold text-maximiza-negro1">
         <div
-          class="bg-maximiza-verde1 rounded-full w-12 h-12 flex items-center justify-center text-maximiza-blanco1 text-3xl"
+          class="flex h-12 w-12 items-center justify-center rounded-full bg-maximiza-verde1 text-3xl text-maximiza-blanco1"
         >
           3
         </div>
@@ -253,17 +227,14 @@ de la misma
         Envío de recaudos
       </h5>
 
-      <p class="mt-2 mb-6 text-lg text-maximiza-gris1">
+      <p class="mb-6 mt-2 text-lg text-maximiza-gris1">
         Una vez cuentes con todas las planillas y los recaudos completos,
         <b>envíalos por correo electrónico a:</b>
       </p>
 
       <ul>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-center">
-          <font-awesome-icon
-            class="text-maximiza-verde1 text-xl"
-            :icon="['fas', 'envelope']"
-          />
+        <li class="flex items-center gap-2 text-lg text-maximiza-gris1">
+          <font-awesome-icon class="text-xl text-maximiza-verde1" :icon="['fas', 'envelope']" />
 
           contacto@maximiza.com.ve
         </li>
@@ -271,48 +242,41 @@ de la misma
     </article>
 
     <article>
-      <h5
-        class="text-maximiza-negro1 text-3xl font-bold flex items-center gap-2 mb-4"
-      >
+      <h5 class="mb-4 flex items-center gap-2 text-3xl font-bold text-maximiza-negro1">
         Recaudos para personas naturales
       </h5>
 
       <ul>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-start">
-          <b class="text-maximiza-verde2 font-semibold"> 1.</b> Cédula de
-          Identidad vigente, para personas venezolanas y extranjeras residentes
-          en el país, o copia del pasaporte para personas extrajeras no
-          residente.
+        <li class="flex items-start gap-2 text-lg text-maximiza-gris1">
+          <b class="font-semibold text-maximiza-verde2"> 1.</b> Cédula de Identidad vigente, para
+          personas venezolanas y extranjeras residentes en el país, o copia del pasaporte para
+          personas extrajeras no residente.
         </li>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-start">
-          <b class="text-maximiza-verde2 font-semibold">2.</b> Registro de
-          Información Fiscal (RIF), vigente.
+        <li class="flex items-start gap-2 text-lg text-maximiza-gris1">
+          <b class="font-semibold text-maximiza-verde2">2.</b> Registro de Información Fiscal (RIF),
+          vigente.
         </li>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-start">
-          <b class="text-maximiza-verde2 font-semibold">3.</b> Una (1)
-          Referencia Bancaria, con una vigencia mínima de tres meses.
+        <li class="flex items-start gap-2 text-lg text-maximiza-gris1">
+          <b class="font-semibold text-maximiza-verde2">3.</b> Una (1) Referencia Bancaria, con una
+          vigencia mínima de tres meses.
         </li>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-start">
-          <b class="text-maximiza-verde2 font-semibold">4.</b> Constancia de
-          trabajo actual del inversor, o informe de atestiguamiento de ingresos
-          emitida por un contador público colegiado, en el caso de personas que
-          trabajen de manera independiente.
+        <li class="flex items-start gap-2 text-lg text-maximiza-gris1">
+          <b class="font-semibold text-maximiza-verde2">4.</b> Constancia de trabajo actual del
+          inversor, o informe de atestiguamiento de ingresos emitida por un contador público
+          colegiado, en el caso de personas que trabajen de manera independiente.
         </li>
 
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-start">
-          <b class="text-maximiza-verde2 font-semibold">5.</b> Planilla de
-          Declaración Jurada de Origen y Destino de los Fondos, cada vez que
-          realice una operación.
+        <li class="flex items-start gap-2 text-lg text-maximiza-gris1">
+          <b class="font-semibold text-maximiza-verde2">5.</b> Planilla de Declaración Jurada de
+          Origen y Destino de los Fondos, cada vez que realice una operación.
         </li>
       </ul>
     </article>
 
     <article>
-      <h5
-        class="text-maximiza-verde1 text-4xl font-bold flex items-center gap-2"
-      >
+      <h5 class="flex items-center gap-2 text-4xl font-bold text-maximiza-verde1">
         <font-awesome-icon
-          class="text-maximiza-verde1 text-4xl"
+          class="text-4xl text-maximiza-verde1"
           :icon="['fas', 'hand-point-down']"
         />
 
@@ -323,24 +287,17 @@ de la misma
 
   <section v-if="type === 'juridica'" class="flex flex-col gap-12">
     <article class="flex gap-4">
-      <img
-        src="/images/planilla/onboarding_PN.webp"
-        alt="onboarding_PN portraid"
-      />
-      <h5
-        class="text-maximiza-verde1 text-3xl font-extrabold flex items-center"
-      >
+      <img src="/images/planilla/onboarding_PN.webp" alt="onboarding_PN portraid" />
+      <h5 class="flex items-center text-3xl font-extrabold text-maximiza-verde1">
         Pasos para registro <br />
         de Persona Jurídica
       </h5>
     </article>
 
     <article>
-      <h5
-        class="text-maximiza-negro1 text-3xl font-bold flex items-center gap-2"
-      >
+      <h5 class="flex items-center gap-2 text-3xl font-bold text-maximiza-negro1">
         <div
-          class="bg-maximiza-verde1 rounded-full w-12 h-12 flex items-center justify-center text-maximiza-blanco1 text-3xl"
+          class="flex h-12 w-12 items-center justify-center rounded-full bg-maximiza-verde1 text-3xl text-maximiza-blanco1"
         >
           1
         </div>
@@ -348,17 +305,15 @@ de la misma
         Planillas de la Caja Venezolana de Valores
       </h5>
 
-      <p class="mt-2 mb-6 text-lg text-maximiza-gris1">
-        <b class="font-extrabold"
-          >Realiza tu registro o actualizacioón de datos</b
-        >
+      <p class="mb-6 mt-2 text-lg text-maximiza-gris1">
+        <b class="font-extrabold">Realiza tu registro o actualizacioón de datos</b>
         en la Caja Venezolana de Valores (CVV) y descarga la planilla firmada:
       </p>
 
       <ul>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-center">
+        <li class="flex items-center gap-2 text-lg text-maximiza-gris1">
           <font-awesome-icon
-            class="text-maximiza-verde1 text-xl"
+            class="text-xl text-maximiza-verde1"
             :icon="['fas', 'hand-point-right']"
           />
 
@@ -374,11 +329,9 @@ de la misma
     </article>
 
     <article>
-      <h5
-        class="text-maximiza-negro1 text-3xl font-bold flex items-center gap-2"
-      >
+      <h5 class="flex items-center gap-2 text-3xl font-bold text-maximiza-negro1">
         <div
-          class="bg-maximiza-verde1 rounded-full w-12 h-12 flex items-center justify-center text-maximiza-blanco1 text-3xl"
+          class="flex h-12 w-12 items-center justify-center rounded-full bg-maximiza-verde1 text-3xl text-maximiza-blanco1"
         >
           2
         </div>
@@ -386,50 +339,35 @@ de la misma
         Registro en línea
       </h5>
 
-      <p class="mt-2 mb-6 text-lg text-maximiza-gris1">
+      <p class="mb-6 mt-2 text-lg text-maximiza-gris1">
         Completa el formulario de registro digital. Nuestro sistema
-        <b class="font-extrabold">genera y completa automáticamente</b> las
-        siguientes planillas:
+        <b class="font-extrabold">genera y completa automáticamente</b> las siguientes planillas:
       </p>
 
       <ul>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-center">
-          <font-awesome-icon
-            class="text-maximiza-verde1 text-xl"
-            :icon="['fas', 'check']"
-          />
+        <li class="flex items-center gap-2 text-lg text-maximiza-gris1">
+          <font-awesome-icon class="text-xl text-maximiza-verde1" :icon="['fas', 'check']" />
           Ficha Única de Identificación del Inversionista
         </li>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-center">
-          <font-awesome-icon
-            class="text-maximiza-verde1 text-xl"
-            :icon="['fas', 'check']"
-          />
+        <li class="flex items-center gap-2 text-lg text-maximiza-gris1">
+          <font-awesome-icon class="text-xl text-maximiza-verde1" :icon="['fas', 'check']" />
           Ficha de Registro de Firmas
         </li>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-center">
-          <font-awesome-icon
-            class="text-maximiza-verde1 text-xl"
-            :icon="['fas', 'check']"
-          />
+        <li class="flex items-center gap-2 text-lg text-maximiza-gris1">
+          <font-awesome-icon class="text-xl text-maximiza-verde1" :icon="['fas', 'check']" />
           Declaración Jurada y destino de los fondos
         </li>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-center">
-          <font-awesome-icon
-            class="text-maximiza-verde1 text-xl"
-            :icon="['fas', 'check']"
-          />
+        <li class="flex items-center gap-2 text-lg text-maximiza-gris1">
+          <font-awesome-icon class="text-xl text-maximiza-verde1" :icon="['fas', 'check']" />
           Poder de Apertura y Manejo de Cuenta Custodia
         </li>
       </ul>
     </article>
 
     <article>
-      <h5
-        class="text-maximiza-negro1 text-3xl font-bold flex items-center gap-2"
-      >
+      <h5 class="flex items-center gap-2 text-3xl font-bold text-maximiza-negro1">
         <div
-          class="bg-maximiza-verde1 rounded-full w-12 h-12 flex items-center justify-center text-maximiza-blanco1 text-3xl"
+          class="flex h-12 w-12 items-center justify-center rounded-full bg-maximiza-verde1 text-3xl text-maximiza-blanco1"
         >
           3
         </div>
@@ -437,17 +375,14 @@ de la misma
         Envío de recaudos
       </h5>
 
-      <p class="mt-2 mb-6 text-lg text-maximiza-gris1">
+      <p class="mb-6 mt-2 text-lg text-maximiza-gris1">
         Una vez cuentes con todas las planillas y los recaudos completos,
         <b>envíalos por correo electrónico a:</b>
       </p>
 
       <ul>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-center">
-          <font-awesome-icon
-            class="text-maximiza-verde1 text-xl"
-            :icon="['fas', 'envelope']"
-          />
+        <li class="flex items-center gap-2 text-lg text-maximiza-gris1">
+          <font-awesome-icon class="text-xl text-maximiza-verde1" :icon="['fas', 'envelope']" />
 
           contacto@maximiza.com.ve
         </li>
@@ -455,102 +390,79 @@ de la misma
     </article>
 
     <article>
-      <h5
-        class="text-maximiza-negro1 text-3xl font-bold flex items-center gap-2 mb-4"
-      >
+      <h5 class="mb-4 flex items-center gap-2 text-3xl font-bold text-maximiza-negro1">
         Recaudos para personas jurídica
       </h5>
 
       <ul>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-start">
-          <b class="text-maximiza-verde2 font-semibold">1.</b> Registro de
-          Información Fiscal (RIF), vigente.
+        <li class="flex items-start gap-2 text-lg text-maximiza-gris1">
+          <b class="font-semibold text-maximiza-verde2">1.</b> Registro de Información Fiscal (RIF),
+          vigente.
         </li>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-start">
-          <b class="text-maximiza-verde2 font-semibold">2.</b> Cédula de
-          Identidad y Registro de Información Fiscal (RIF) vigente del
-          representante legal de la persona jurídica.
+        <li class="flex items-start gap-2 text-lg text-maximiza-gris1">
+          <b class="font-semibold text-maximiza-verde2">2.</b> Cédula de Identidad y Registro de
+          Información Fiscal (RIF) vigente del representante legal de la persona jurídica.
         </li>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-start">
-          <b class="text-maximiza-verde2 font-semibold">3.</b> Documento
-          constitutivo y las modificaciones estatutarias de la persona jurídica
-          que muestre los socios beneficiarios finales de la sociedad. En caso
-          de persona jurídica no domiciliada en el país, los mismos documentos
-          debidamente protocolizados y traducidos al idioma castellano.
+        <li class="flex items-start gap-2 text-lg text-maximiza-gris1">
+          <b class="font-semibold text-maximiza-verde2">3.</b> Documento constitutivo y las
+          modificaciones estatutarias de la persona jurídica que muestre los socios beneficiarios
+          finales de la sociedad. En caso de persona jurídica no domiciliada en el país, los mismos
+          documentos debidamente protocolizados y traducidos al idioma castellano.
         </li>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-start">
-          <b class="text-maximiza-verde2 font-semibold">4.</b> Acta de asamblea
-          donde conste la elección de la junta directiva actual, sin que se
-          encuentre vencido su período electivo.
+        <li class="flex items-start gap-2 text-lg text-maximiza-gris1">
+          <b class="font-semibold text-maximiza-verde2">4.</b> Acta de asamblea donde conste la
+          elección de la junta directiva actual, sin que se encuentre vencido su período electivo.
         </li>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-start">
-          <b class="text-maximiza-verde2 font-semibold">5.</b> Una (1)
-          Referencia Bancaria, con una vigencia mínima de tres meses.
+        <li class="flex items-start gap-2 text-lg text-maximiza-gris1">
+          <b class="font-semibold text-maximiza-verde2">5.</b> Una (1) Referencia Bancaria, con una
+          vigencia mínima de tres meses.
         </li>
-        <li class="text-lg text-maximiza-gris1 flex gap-2 items-start">
-          <b class="text-maximiza-verde2 font-semibold">6.</b> Planilla de
-          Declaración Jurada de Origen y Destino de los Fondos, cada vez que
-          realice una operación.
+        <li class="flex items-start gap-2 text-lg text-maximiza-gris1">
+          <b class="font-semibold text-maximiza-verde2">6.</b> Planilla de Declaración Jurada de
+          Origen y Destino de los Fondos, cada vez que realice una operación.
         </li>
       </ul>
     </article>
 
-    <article class="space-y-4 mb-8">
-      <li
-        class="text-lg text-maximiza-gris1 flex gap-2 items-center cursor-pointer"
-      >
+    <article class="mb-8 space-y-4">
+      <li class="flex cursor-pointer items-center gap-2 text-lg text-maximiza-gris1">
         <font-awesome-icon
-          class="text-maximiza-verde1 text-xl"
+          class="text-xl text-maximiza-verde1"
           :icon="['fas', 'hand-point-right']"
         />
 
-        <a
-          @click="selectedModalId = 'fideicomiso'"
-          class="text-maximiza-verde6 underline"
-        >
+        <a @click="selectedModalId = 'fideicomiso'" class="text-maximiza-verde6 underline">
           Requisitos de los Fideicomiso
         </a>
       </li>
 
-      <li
-        class="text-lg text-maximiza-gris1 flex gap-2 items-center cursor-pointer"
-      >
+      <li class="flex cursor-pointer items-center gap-2 text-lg text-maximiza-gris1">
         <font-awesome-icon
-          class="text-maximiza-verde1 text-xl"
+          class="text-xl text-maximiza-verde1"
           :icon="['fas', 'hand-point-right']"
         />
 
-        <a
-          @click="selectedModalId = 'cooperativas'"
-          class="text-maximiza-verde6 underline"
-        >
+        <a @click="selectedModalId = 'cooperativas'" class="text-maximiza-verde6 underline">
           Requisitos de las Asociaciones Cooperativas
         </a>
       </li>
 
-      <li
-        class="text-lg text-maximiza-gris1 flex gap-2 items-center cursor-pointer"
-      >
+      <li class="flex cursor-pointer items-center gap-2 text-lg text-maximiza-gris1">
         <font-awesome-icon
-          class="text-maximiza-verde1 text-xl"
+          class="text-xl text-maximiza-verde1"
           :icon="['fas', 'hand-point-right']"
         />
 
-        <a
-          @click="selectedModalId = 'osfl'"
-          class="text-maximiza-verde6 underline"
-        >
+        <a @click="selectedModalId = 'osfl'" class="text-maximiza-verde6 underline">
           Requisitos de las OSLFL
         </a>
       </li>
     </article>
 
     <article>
-      <h5
-        class="text-maximiza-verde1 text-4xl font-bold flex items-center gap-2"
-      >
+      <h5 class="flex items-center gap-2 text-4xl font-bold text-maximiza-verde1">
         <font-awesome-icon
-          class="text-maximiza-verde1 text-4xl"
+          class="text-4xl text-maximiza-verde1"
           :icon="['fas', 'hand-point-down']"
         />
 

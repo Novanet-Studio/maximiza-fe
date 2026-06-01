@@ -1,23 +1,23 @@
 <script setup>
-const status = ref("idle");
+  const status = ref('idle')
 
-const startTransition = () => {
-  status.value = "in";
-};
+  const startTransition = () => {
+    status.value = 'in'
+  }
 
-const finishTransition = () => {
-  status.value = "out";
-};
+  const finishTransition = () => {
+    status.value = 'out'
+  }
 
-defineExpose({
-  startTransition,
-  finishTransition,
-});
+  defineExpose({
+    startTransition,
+    finishTransition,
+  })
 </script>
 
 <template>
   <div
-    class="fixed top-0 w-full h-screen bg-maximiza z-[9999] pointer-events-none"
+    class="bg-maximiza pointer-events-none fixed top-0 z-[9999] h-screen w-full"
     :class="{
       'left-[-100%]': status === 'idle',
       'animate-overlay-in': status === 'in',

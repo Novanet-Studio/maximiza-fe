@@ -1,43 +1,41 @@
 <script setup lang="ts">
-interface Option {
-  value: string | number | boolean;
-  label: string;
-}
-
-interface Props {
-  modelValue?: string | number | boolean;
-  name: string;
-  style?: string;
-  label?: string;
-  options: Option[];
-  errorMessage?: string;
-  disabled?: boolean;
-  row?: boolean;
-  required?: boolean;
-}
-
-const props = defineProps<Props>();
-const emit = defineEmits(["update:modelValue"]);
-
-const handleChange = (value: string | number | boolean) => {
-  if (!props.disabled) {
-    emit("update:modelValue", value);
+  interface Option {
+    value: string | number | boolean
+    label: string
   }
-};
+
+  interface Props {
+    modelValue?: string | number | boolean
+    name: string
+    style?: string
+    label?: string
+    options: Option[]
+    errorMessage?: string
+    disabled?: boolean
+    row?: boolean
+    required?: boolean
+  }
+
+  const props = defineProps<Props>()
+  const emit = defineEmits(['update:modelValue'])
+
+  const handleChange = (value: string | number | boolean) => {
+    if (!props.disabled) {
+      emit('update:modelValue', value)
+    }
+  }
 </script>
 
 <template>
   <div class="w-full">
     <FormBaseLabel :html-for="name" :label="label" :required="required" />
 
-    <div
-      :class="`mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ${style} gap-4`"
-    >
+    <div :class="`mt-2 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ${style} gap-4`">
       <label
         v-for="option in options"
         :key="String(option.value)"
-        class="flex items-center gap-2 cursor-pointer group"
-        :class="{ 'opacity-50 cursor-not-allowed': disabled }"
+        class="group flex cursor-pointer items-center gap-2"
+        :class="{ 'cursor-not-allowed opacity-50': disabled }"
       >
         <div class="relative flex items-center justify-center">
           <input
@@ -47,11 +45,11 @@ const handleChange = (value: string | number | boolean) => {
             :checked="modelValue === option.value"
             :disabled="disabled"
             @change="handleChange(option.value)"
-            class="peer h-4 w-4 appearance-none rounded-full border border-gray-300 transition-all checked:border-maximiza-verde1 checked:border-[5px]"
+            class="border-gray-300 peer h-4 w-4 appearance-none rounded-full border transition-all checked:border-[5px] checked:border-maximiza-verde1"
           />
         </div>
         <span
-          class="text-sm text-maximiza-negro1 group-hover:text-maximiza-verde1 transition-colors"
+          class="text-sm text-maximiza-negro1 transition-colors group-hover:text-maximiza-verde1"
           :class="{
             'font-bold text-maximiza-verde1': modelValue === option.value,
           }"

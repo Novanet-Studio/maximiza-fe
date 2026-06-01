@@ -1,41 +1,43 @@
 <script setup lang="ts">
-definePageMeta({
-  showHeader: true,
-});
+  definePageMeta({
+    showHeader: true,
+  })
 
-import MarkdownIt from "markdown-it";
+  import MarkdownIt from 'markdown-it'
 
-import { getImageUrl, getImageAlt, truncateText } from "~/lib/utils";
+  import { useMaximizaQueries } from '~/composables/useMaximizaQueries'
 
-const md = new MarkdownIt({ html: true, breaks: true });
-const renderMarkdown = (content: string) => md.render(content || "");
+  import { getImageUrl, getImageAlt, truncateText } from '~/lib/utils'
 
-const showModal = ref(false);
-const selectedHistoriaId = ref<string | number | null>(null);
+  const md = new MarkdownIt({ html: true, breaks: true })
+  const renderMarkdown = (content: string) => md.render(content || '')
 
-const openModal = (item: any) => {
-  selectedHistoriaId.value = item.id;
-  showModal.value = true;
-};
+  const showModal = ref(false)
+  const selectedHistoriaId = ref<string | number | null>(null)
 
-const closeModal = () => {
-  showModal.value = false;
-  selectedHistoriaId.value = null;
-};
+  const openModal = (item: any) => {
+    selectedHistoriaId.value = item.id
+    showModal.value = true
+  }
 
-const { empresaData, fetchEmpresa } = useMaximizaQueries();
+  const closeModal = () => {
+    showModal.value = false
+    selectedHistoriaId.value = null
+  }
 
-onMounted(() => {
-  fetchEmpresa();
-});
+  const { empresaData, fetchEmpresa } = useMaximizaQueries()
 
-useSeoMeta({
-  title: "Maximiza para invertir en la bolsa",
-  description:
-    "Somos una casa de bolsa que ofrece herramientas para invertir en la bolsa y gestionar instrumentos financieros.",
-  ogImage:
-    "https://res.cloudinary.com/novanet-studio/image/upload/v1646847321/maximiza/v4/maximiza_empresa_miniatura_2ef6217989.webp",
-});
+  onMounted(() => {
+    fetchEmpresa()
+  })
+
+  useSeoMeta({
+    title: 'Maximiza para invertir en la bolsa',
+    description:
+      'Somos una casa de bolsa que ofrece herramientas para invertir en la bolsa y gestionar instrumentos financieros.',
+    ogImage:
+      'https://res.cloudinary.com/novanet-studio/image/upload/v1646847321/maximiza/v4/maximiza_empresa_miniatura_2ef6217989.webp',
+  })
 </script>
 
 <template>
@@ -55,36 +57,34 @@ useSeoMeta({
         </template>
       </CommonHero>
 
-      <section class="mt-12 md:mt-16 xl:mt-24 xl:px-0 mx-auto">
+      <section class="mx-auto mt-12 md:mt-16 xl:mt-24 xl:px-0">
         <ul class="flex flex-wrap justify-between gap-4">
           <li
             v-for="item in empresaData.historia"
             :key="item.id"
-            class="w-full flex flex-1 flex-col md:flex-row items-start mb-12 md:mb-8 xl:mb-0"
+            class="mb-12 flex w-full flex-1 flex-col items-start md:mb-8 md:flex-row xl:mb-0"
           >
-            <div class="mb-4 md:mb-0 shrink-0">
+            <div class="mb-4 shrink-0 md:mb-0">
               <NuxtImg
                 :src="getImageUrl(item.imagen)"
                 :alt="getImageAlt(item.imagen)"
                 provider="cloudinary"
-                class="w-full min-w-[220px] h-auto object-cover"
+                class="h-auto w-full min-w-[220px] object-cover"
               />
             </div>
 
-            <div class="w-full md:pl-2 flex flex-col">
-              <h3
-                class="text-maximiza-verde1 font-black text-lg md:text-2xl mb-2"
-              >
+            <div class="flex w-full flex-col md:pl-2">
+              <h3 class="mb-2 text-lg font-black text-maximiza-verde1 md:text-2xl">
                 {{ item.titulo }}
               </h3>
 
               <div
-                class="text-maximiza-gris4 font-light text-sm leading-relaxed mb-4 prose prose-p:my-0"
+                class="prose prose-p:my-0 mb-4 text-sm font-light leading-relaxed text-maximiza-gris4"
                 v-html="renderMarkdown(truncateText(item.contenido, 190))"
               ></div>
 
               <button
-                class="bg-maximiza-verde1 hover:bg-maximiza-verde6 text-maximiza-blanco1 text-xs md:text-sm px-4 py-2 transition-colors self-start cursor-pointer"
+                class="cursor-pointer self-start bg-maximiza-verde1 px-4 py-2 text-xs text-maximiza-blanco1 transition-colors hover:bg-maximiza-verde6 md:text-sm"
                 @click="openModal(item)"
               >
                 Conocer más
@@ -94,42 +94,38 @@ useSeoMeta({
         </ul>
       </section>
 
-      <section class="mt-8 md:mt-12 xl:mt-24 px-4 xl:px-0">
-        <h2
-          class="font-black text-maximiza-negro1 text-xl md:text-2xl mb-4 text-center"
-        >
+      <section class="mt-8 px-4 md:mt-12 xl:mt-24 xl:px-0">
+        <h2 class="mb-4 text-center text-xl font-black text-maximiza-negro1 md:text-2xl">
           {{ empresaData.equipo.titulo }}
         </h2>
-        <p
-          class="text-maximiza-gris3 font-normal text-sm md:text-base xl:text-xl mx-auto"
-        >
+        <p class="mx-auto text-sm font-normal text-maximiza-gris3 md:text-base xl:text-xl">
           {{ empresaData.equipo.contenido }}
         </p>
       </section>
 
-      <section class="mt-4 mb-0 px-4 xl:px-0">
-        <ul class="flex flex-col md:flex-row w-full">
+      <section class="mb-0 mt-4 px-4 xl:px-0">
+        <ul class="flex w-full flex-col md:flex-row">
           <li
             v-for="item in empresaData.nosotros"
             :key="item.id"
-            class="group relative w-full md:w-1/3 h-[30vh] md:h-[24vh] lg:h-[41vh] cursor-pointer overflow-hidden mb-4 md:mb-0"
+            class="group relative mb-4 h-[30vh] w-full cursor-pointer overflow-hidden md:mb-0 md:h-[24vh] md:w-1/3 lg:h-[41vh]"
           >
             <NuxtImg
               :src="getImageUrl(item.imagen)"
               :alt="getImageAlt(item.imagen)"
               provider="cloudinary"
-              class="absolute inset-0 w-full h-full object-cover z-0 filter md:grayscale-0 md:group-hover:grayscale transition-all duration-500"
+              class="absolute inset-0 z-0 h-full w-full object-cover filter transition-all duration-500 md:grayscale-0 md:group-hover:grayscale"
             />
 
-            <div class="w-full top-0 absolute z-10 flex flex-col justify-end">
+            <div class="absolute top-0 z-10 flex w-full flex-col justify-end">
               <h3
-                class="bg-maximiza-verde1 text-maximiza-blanco1 text-center py-3 font-black text-lg relative z-20"
+                class="relative z-20 bg-maximiza-verde1 py-3 text-center text-lg font-black text-maximiza-blanco1"
               >
                 {{ item.titulo }}
               </h3>
 
               <div
-                class="bg-maximiza-blanco2 text-maximiza-gris1 font-light text-xs md:text-sm p-2 transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-in-out"
+                class="translate-y-full transform bg-maximiza-blanco2 p-2 text-xs font-light text-maximiza-gris1 opacity-0 transition-all duration-500 ease-in-out group-hover:translate-y-0 group-hover:opacity-100 md:text-sm"
               >
                 <div v-html="renderMarkdown(item.contenido)"></div>
               </div>
@@ -138,27 +134,25 @@ useSeoMeta({
         </ul>
       </section>
 
-      <section class="bg-maximiza-blanco2 py-4 md:py-6 xl:py-8 mt-16 md:mt-20">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-          <h2
-            class="font-black text-maximiza-negro1 text-xl md:text-2xl xl:text-3xl mb-4"
-          >
+      <section class="mt-16 bg-maximiza-blanco2 py-4 md:mt-20 md:py-6 xl:py-8">
+        <div class="mx-auto max-w-7xl px-4 text-center">
+          <h2 class="mb-4 text-xl font-black text-maximiza-negro1 md:text-2xl xl:text-3xl">
             {{ empresaData.aliados.titulo }}
           </h2>
-          <p class="text-maximiza-gris2 font-normal mb-8 md:mb-12">
+          <p class="mb-8 font-normal text-maximiza-gris2 md:mb-12">
             {{ empresaData.aliados.contenido }}
           </p>
 
-          <div class="w-full md:w-[90%] mx-auto">
+          <div class="mx-auto w-full md:w-[90%]">
             <AboutAlies />
           </div>
         </div>
       </section>
 
-      <section class="max-w-7xl mx-auto px-4 mt-16 md:mt-20 mb-16 md:mb-24">
+      <section class="mx-auto mb-16 mt-16 max-w-7xl px-4 md:mb-24 md:mt-20">
         <div class="mb-12">
           <h2
-            class="text-center font-black text-maximiza-negro1 text-xl md:text-2xl xl:text-3xl mb-8"
+            class="mb-8 text-center text-xl font-black text-maximiza-negro1 md:text-2xl xl:text-3xl"
           >
             Balances mensuales
           </h2>
@@ -166,27 +160,25 @@ useSeoMeta({
           <div
             v-for="anio in empresaData.balances"
             :key="anio.id"
-            class="flex flex-col lg:flex-row items-center mb-8 border-b border-maximiza-gris5 pb-8 last:border-0"
+            class="mb-8 flex flex-col items-center border-b border-maximiza-gris5 pb-8 last:border-0 lg:flex-row"
           >
             <h3
-              class="text-maximiza-gris1 font-black text-lg md:text-2xl lg:w-[10%] lg:text-right lg:pr-8 mb-4 lg:mb-0"
+              class="mb-4 text-lg font-black text-maximiza-gris1 md:text-2xl lg:mb-0 lg:w-[10%] lg:pr-8 lg:text-right"
             >
               {{ anio.ano }}
             </h3>
 
-            <ul
-              class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 w-full lg:w-[90%] gap-1"
-            >
+            <ul class="grid w-full grid-cols-2 gap-1 md:grid-cols-4 lg:w-[90%] lg:grid-cols-6">
               <li v-for="mes in anio.mes" :key="mes.id">
                 <a
                   :href="mes.descarga"
                   download
                   target="_blank"
-                  class="group flex items-center justify-start md:justify-center bg-maximiza-blanco2 hover:bg-maximiza-verde1 text-maximiza-gris2 hover:text-maximiza-blanco1 py-3 px-4 text-xs md:text-sm font-medium transition-colors duration-300 border-maximiza-blanco1"
+                  class="group flex items-center justify-start border-maximiza-blanco1 bg-maximiza-blanco2 px-4 py-3 text-xs font-medium text-maximiza-gris2 transition-colors duration-300 hover:bg-maximiza-verde1 hover:text-maximiza-blanco1 md:justify-center md:text-sm"
                 >
                   <font-awesome-icon
                     :icon="['fas', 'download']"
-                    class="mr-2 text-maximiza-verde1 group-hover:text-maximiza-blanco1 transition-colors"
+                    class="mr-2 text-maximiza-verde1 transition-colors group-hover:text-maximiza-blanco1"
                   />
                   <span class="capitalize">{{ mes.mes }}</span>
                 </a>
@@ -197,7 +189,7 @@ useSeoMeta({
 
         <div>
           <h2
-            class="text-center font-black text-maximiza-negro1 text-xl md:text-2xl xl:text-3xl mb-8"
+            class="mb-8 text-center text-xl font-black text-maximiza-negro1 md:text-2xl xl:text-3xl"
           >
             Balances auditados
           </h2>
@@ -205,25 +197,25 @@ useSeoMeta({
           <div
             v-for="anio in empresaData.balances_auditados"
             :key="anio.id"
-            class="flex flex-col lg:flex-row items-center mb-8 border-b border-maximiza-gris5 pb-8 last:border-0"
+            class="mb-8 flex flex-col items-center border-b border-maximiza-gris5 pb-8 last:border-0 lg:flex-row"
           >
             <h3
-              class="text-maximiza-gris1 font-black text-lg md:text-2xl lg:w-[10%] lg:text-right lg:pr-8 mb-4 lg:mb-0"
+              class="mb-4 text-lg font-black text-maximiza-gris1 md:text-2xl lg:mb-0 lg:w-[10%] lg:pr-8 lg:text-right"
             >
               {{ anio.ano }}
             </h3>
 
-            <ul class="grid grid-cols-2 md:grid-cols-4 w-full lg:w-[90%] gap-1">
+            <ul class="grid w-full grid-cols-2 gap-1 md:grid-cols-4 lg:w-[90%]">
               <li v-for="mes in anio.mes" :key="mes.id">
                 <a
                   :href="mes.descarga"
                   download
                   target="_blank"
-                  class="group flex items-center justify-start md:justify-center bg-maximiza-blanco2 hover:bg-maximiza-verde1 text-maximiza-gris2 hover:text-maximiza-blanco1 py-3 px-4 text-xs md:text-sm font-medium transition-colors duration-300 border-maximiza-blanco1"
+                  class="group flex items-center justify-start border-maximiza-blanco1 bg-maximiza-blanco2 px-4 py-3 text-xs font-medium text-maximiza-gris2 transition-colors duration-300 hover:bg-maximiza-verde1 hover:text-maximiza-blanco1 md:justify-center md:text-sm"
                 >
                   <font-awesome-icon
                     :icon="['fas', 'download']"
-                    class="mr-2 text-maximiza-verde1 group-hover:text-maximiza-blanco1 transition-colors"
+                    class="mr-2 text-maximiza-verde1 transition-colors group-hover:text-maximiza-blanco1"
                   />
                   <span class="capitalize">{{ mes.mes }}</span>
                 </a>

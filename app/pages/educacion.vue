@@ -1,24 +1,26 @@
 <script setup lang="ts">
-import MarkdownIt from "markdown-it";
+  import MarkdownIt from 'markdown-it'
 
-import { getImageUrl, getImageAlt } from "~/lib/utils";
+  import { useMaximizaQueries } from '~/composables/useMaximizaQueries'
 
-const md = new MarkdownIt({ html: true, breaks: true });
-const renderMarkdown = (content: string) => md.render(content || "");
+  import { getImageUrl, getImageAlt } from '~/lib/utils'
 
-const { educacionData, fetchEducacion } = useMaximizaQueries();
+  const md = new MarkdownIt({ html: true, breaks: true })
+  const renderMarkdown = (content: string) => md.render(content || '')
 
-onMounted(() => {
-  fetchEducacion();
-});
+  const { educacionData, fetchEducacion } = useMaximizaQueries()
 
-useSeoMeta({
-  title: "Educación en corretaje de títulos valores",
-  description:
-    "Somos pioneros en ofrecer programas de capacitación para mejorar la educación financiera en Venezuela.",
-  ogImage:
-    "https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_educacion_miniatura_5a3e3b347e.webp",
-});
+  onMounted(() => {
+    fetchEducacion()
+  })
+
+  useSeoMeta({
+    title: 'Educación en corretaje de títulos valores',
+    description:
+      'Somos pioneros en ofrecer programas de capacitación para mejorar la educación financiera en Venezuela.',
+    ogImage:
+      'https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_educacion_miniatura_5a3e3b347e.webp',
+  })
 </script>
 
 <template>
@@ -37,40 +39,38 @@ useSeoMeta({
         </template>
       </CommonHero>
 
-      <section class="mx-auto px-4 xl:px-0 mt-16 md:mt-24 mb-16 md:mb-24">
+      <section class="mx-auto mb-16 mt-16 px-4 md:mb-24 md:mt-24 xl:px-0">
         <h2
-          class="font-black text-maximiza-negro1 text-xl md:text-2xl xl:text-3xl text-center mb-12"
+          class="mb-12 text-center text-xl font-black text-maximiza-negro1 md:text-2xl xl:text-3xl"
         >
           {{ educacionData.items_titulo }}
         </h2>
 
         <ul
-          class="flex flex-col md:flex-row flex-wrap lg:flex-nowrap justify-between gap-12 lg:gap-8"
+          class="flex flex-col flex-wrap justify-between gap-12 md:flex-row lg:flex-nowrap lg:gap-8"
         >
           <li
             v-for="item in educacionData.items"
             :key="item.id"
-            class="flex flex-col md:flex-row lg:flex-col items-center md:items-start lg:items-center w-full lg:w-1/3 gap-6 md:gap-8 lg:gap-6"
+            class="flex w-full flex-col items-center gap-6 md:flex-row md:items-start md:gap-8 lg:w-1/3 lg:flex-col lg:items-center lg:gap-6"
           >
             <div
-              class="w-[120px] h-[120px] md:w-[100px] md:h-[100px] lg:w-[140px] lg:h-[140px] shrink-0"
+              class="h-[120px] w-[120px] shrink-0 md:h-[100px] md:w-[100px] lg:h-[140px] lg:w-[140px]"
             >
               <NuxtImg
                 :src="getImageUrl(item.imagen)"
                 :alt="getImageAlt(item.imagen)"
                 provider="cloudinary"
-                class="w-full h-full object-contain"
+                class="h-full w-full object-contain"
               />
             </div>
 
-            <div class="text-center md:text-left lg:text-center w-full">
-              <h3
-                class="text-maximiza-negro1 font-black text-lg md:text-xl mb-1"
-              >
+            <div class="w-full text-center md:text-left lg:text-center">
+              <h3 class="mb-1 text-lg font-black text-maximiza-negro1 md:text-xl">
                 {{ item.titulo }}
               </h3>
               <div
-                class="text-maximiza-gris4 text-sm leading-relaxed prose prose-p:my-0"
+                class="prose prose-p:my-0 text-sm leading-relaxed text-maximiza-gris4"
                 v-html="renderMarkdown(item.contenido)"
               ></div>
             </div>
@@ -78,9 +78,9 @@ useSeoMeta({
         </ul>
       </section>
 
-      <section class="mx-auto px-4 xl:px-0 mb-16 md:mb-24">
+      <section class="mx-auto mb-16 px-4 md:mb-24 xl:px-0">
         <h2
-          class="font-black text-maximiza-negro1 text-xl md:text-2xl xl:text-3xl text-center mb-12"
+          class="mb-12 text-center text-xl font-black text-maximiza-negro1 md:text-2xl xl:text-3xl"
         >
           {{ educacionData.programas_titulo }}
         </h2>
@@ -89,17 +89,14 @@ useSeoMeta({
           <div
             v-for="(programa, index) in educacionData.programas"
             :key="programa.id"
-            class="flex flex-col lg:flex-row items-start gap-2 lg:gap-4"
+            class="flex flex-col items-start gap-2 lg:flex-row lg:gap-4"
           >
-            <div
-              class="w-full lg:w-1/4"
-              :class="{ 'lg:order-last': Number(index) % 2 !== 0 }"
-            >
+            <div class="w-full lg:w-1/4" :class="{ 'lg:order-last': Number(index) % 2 !== 0 }">
               <NuxtImg
                 :src="getImageUrl(programa.imagen)"
                 :alt="getImageAlt(programa.imagen)"
                 provider="cloudinary"
-                class="w-full h-auto object-cover"
+                class="h-auto w-full object-cover"
               />
             </div>
 
@@ -110,19 +107,17 @@ useSeoMeta({
                 'lg:text-right': Number(index) % 2 !== 0,
               }"
             >
-              <ul class="w-full flex flex-col">
+              <ul class="flex w-full flex-col">
                 <li
                   v-for="mercado in programa.mercados"
                   :key="mercado.id"
-                  class="border-b-2 border-maximiza-gris5 py-2 md:py-4 last:border-b-0 first:pt-0"
+                  class="border-b-2 border-maximiza-gris5 py-2 first:pt-0 last:border-b-0 md:py-4"
                 >
-                  <h3
-                    class="text-maximiza-verde1 font-black text-lg md:text-xl mb-1"
-                  >
+                  <h3 class="mb-1 text-lg font-black text-maximiza-verde1 md:text-xl">
                     {{ mercado.titulo }}
                   </h3>
                   <div
-                    class="text-maximiza-gris1 text-sm md:text-base lg:text-lg leading-relaxed"
+                    class="text-sm leading-relaxed text-maximiza-gris1 md:text-base lg:text-lg"
                     v-html="renderMarkdown(mercado.contenido)"
                   ></div>
                 </li>

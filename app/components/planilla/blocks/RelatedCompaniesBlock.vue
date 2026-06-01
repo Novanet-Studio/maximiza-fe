@@ -1,28 +1,22 @@
 <script setup lang="ts">
-const { source } = defineProps<{
-  source: MXMZ.RelatedCompanies[];
-}>();
+  const { source } = defineProps<{
+    source: MXMZ.RelatedCompanies[]
+  }>()
 </script>
 
 <template>
   <div class="grid grid-cols-[115px_1fr]">
     <aside
-      class="bg-maximiza-verde1 min-h-[60px] flex justify-center items-center border-b border-maximiza-blanco1"
+      class="flex min-h-[60px] items-center justify-center border-b border-maximiza-blanco1 bg-maximiza-verde1"
     >
-      <h5 class="text-maximiza-blanco1 font-bold">Empresas relacionadas</h5>
+      <h5 class="font-bold text-maximiza-blanco1">Empresas relacionadas</h5>
     </aside>
 
     <div class="w-full">
       <div class="grid grid-cols-[1.5fr_1fr_1fr]">
-        <div class="spreadsheet__item font-bold text-[10px]">
-          Nombre o razón social
-        </div>
-        <div class="spreadsheet__item font-bold text-[10px]">
-          Actividad económica
-        </div>
-        <div class="spreadsheet__item font-bold text-[10px]">
-          Registro de información fiscal
-        </div>
+        <div class="spreadsheet__item text-[10px] font-bold">Nombre o razón social</div>
+        <div class="spreadsheet__item text-[10px] font-bold">Actividad económica</div>
+        <div class="spreadsheet__item text-[10px] font-bold">Registro de información fiscal</div>
       </div>
 
       <div class="grid grid-cols-[1.5fr_1fr_1fr]">

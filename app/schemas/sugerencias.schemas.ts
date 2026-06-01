@@ -12,4 +12,4 @@ export const getSugerenciasQuery = `
       info_sugerencias 
     }
   }
-`;
+`
