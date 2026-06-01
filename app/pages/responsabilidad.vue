@@ -30,19 +30,19 @@ const supports: { image: string, alt: string }[] = [
 
 const warnings: { image: string, alt: string, title: string, content: string }[] = [
     {
-        image: '/images/pages/responsabilidad/warnings/1.webp',
+        image: '/images/pages/responsabilidad/warnings/maximiza-legitimacion-capitales-icono.webp',
         alt: 'warning_1',
         title: 'Prevención y control de legitimación de capitales',
         content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.'
     },
     {
-        image: '/images/pages/responsabilidad/warnings/2.webp',
+        image: '/images/pages/responsabilidad/warnings/maximiza-conozca-cliente-icono.webp',
         alt: 'warning_2',
         title: 'Estándar "Conozca a su cliente" (KYC)',
         content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.'
     },
     {
-        image: '/images/pages/responsabilidad/warnings/3.webp',
+        image: '/images/pages/responsabilidad/warnings/maximiza-codigo-etica-icono.webp',
         alt: 'warning_3',
         title: 'Código de ética y conducta profesional',
         content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.'
@@ -123,7 +123,7 @@ useJsonLd(jsonld.socialResponsibility);
         <CommonHero :title="'Responsabilidad social <br /> y buen gobierno corporativo'"
             :description="'Combinamos el servicio social con estrictos controles de riesgo, <br /> asegurando un entorno de inversión seguro, ético y legal.'"
             :image="{
-                src: '/images/hero/main-responsabilidad.webp',
+                src: '/images/hero/maximiza-rombo-forma-abstracta-cristal.webp',
                 alt: 'Hero Background'
             }" :pattern="{
                 src: '/images/hero/pattern-responsabilidad.webp',
@@ -236,7 +236,7 @@ useJsonLd(jsonld.socialResponsibility);
                                 class="flex items-center stretch bg-white border border-white-alt2 cursor-pointer hover:shadow-md transition-shadow h-full w-full">
                                 <div class="w-26 h-30 bg-white-alt" />
                                 <div
-                                    class="absolute bg-black-alt translate-x-1/5 flex items-center justify-center w-24 h-24 aspect-square">
+                                    class="absolute bg-black-alt translate-x-1/5 flex items-center justify-center w-18 h-18 p-6 aspect-square">
                                     <img :src="warning.image" :alt="warning.alt" title="warning.alt"
                                         class="w-full h-full object-contain" />
                                 </div>
