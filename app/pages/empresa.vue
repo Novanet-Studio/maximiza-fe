@@ -191,8 +191,8 @@ useJsonLd(jsonld.about);
                 </div>
 
                 <div class="p-4 `md:p-8 lg:p-12 xl:p-16 bg-white-alt grid grid-cols-3 gap-6">
-                    <motion.img v-for="(logo, index) in alliesLogos" :key="`empresa_allies_${index}`" :title="logo.alt"
-                        class="aspect-square" :variants="generalItemVariants" />
+                    <motion.img v-for="(logo, index) in alliesLogos" :key="`empresa_allies_${index}`" :src="logo.src"
+                        :alt="logo.alt" :title="logo.alt" class="aspect-square" :variants="generalItemVariants" />
                 </div>
             </div>
         </motion.section>
