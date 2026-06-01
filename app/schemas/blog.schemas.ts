@@ -22,7 +22,7 @@ export const getBlogQuery = `
       }
     }
   }
-`;
+`
 
 export const getArticuloBySlugQuery = `
   query ArticuloBySlug($slug: String!) {
@@ -38,4 +38,4 @@ export const getArticuloBySlugQuery = `
       }
     }
   }
-`;
+`

@@ -1,26 +1,26 @@
 <script setup lang="ts">
-const overlay = ref<any>(null);
-const router = useRouter();
+  const overlay = ref<any>(null)
+  const router = useRouter()
 
-router.beforeEach((to, from, next) => {
-  if (overlay.value) {
-    overlay.value.startTransition();
+  router.beforeEach((to, from, next) => {
+    if (overlay.value) {
+      overlay.value.startTransition()
 
-    setTimeout(() => {
-      next();
-    }, 500);
-  } else {
-    next();
-  }
-});
+      setTimeout(() => {
+        next()
+      }, 500)
+    } else {
+      next()
+    }
+  })
 
-router.afterEach(() => {
-  if (overlay.value) {
-    setTimeout(() => {
-      overlay.value.finishTransition();
-    }, 100);
-  }
-});
+  router.afterEach(() => {
+    if (overlay.value) {
+      setTimeout(() => {
+        overlay.value.finishTransition()
+      }, 100)
+    }
+  })
 </script>
 
 <template>
@@ -32,14 +32,14 @@ router.afterEach(() => {
 </template>
 
 <style>
-.page-enter-active,
-.page-leave-active {
-  transition: all 0.5s ease-in-out;
-}
+  .page-enter-active,
+  .page-leave-active {
+    transition: all 0.5s ease-in-out;
+  }
 
-.page-enter-from,
-.page-leave-to {
-  opacity: 0;
-  filter: blur(4px);
-}
+  .page-enter-from,
+  .page-leave-to {
+    opacity: 0;
+    filter: blur(4px);
+  }
 </style>

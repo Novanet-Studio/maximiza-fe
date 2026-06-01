@@ -18,4 +18,4 @@ export const getResponsabilidadQuery = `
       colaboracion_texto
     }
   }
-`;
+`

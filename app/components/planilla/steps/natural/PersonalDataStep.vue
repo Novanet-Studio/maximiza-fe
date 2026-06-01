@@ -1,241 +1,217 @@
 <script setup lang="ts">
-import { useForm } from "vee-validate";
-import * as yup from "yup";
-import { usePlanillaWizard } from "~/composables/usePlanillaWizard";
+  import { useForm } from 'vee-validate'
+  import * as yup from 'yup'
+  import { usePlanillaWizard } from '~/composables/usePlanillaWizard'
 
-import {
-  maritalStatusOptions,
-  genderOptions,
-  nationalityOptions,
-  countriesOptions,
-  economicActivityOptions,
-  docTypeOptions,
-  occupationsOptions,
-  booleanOptions,
-} from "~/assets/data/formSources";
-import { minAgeDate } from "~/lib/utils";
+  import {
+    maritalStatusOptions,
+    genderOptions,
+    nationalityOptions,
+    countriesOptions,
+    economicActivityOptions,
+    docTypeOptions,
+    occupationsOptions,
+    booleanOptions,
+  } from '~/assets/data/formSources'
+  import { minAgeDate } from '~/lib/utils'
 
-const wizard = usePlanillaWizard();
+  const wizard = usePlanillaWizard()
 
-const schema = yup.object({
-  identificationType: yup.string().required(),
-  identificationNumber: yup
-    .string()
-    .required("ID requerido")
-    .matches(/^[0-9]{5,9}$/, "Debe tener entre 5 y 9 dígitos"),
+  const schema = yup.object({
+    identificationType: yup.string().required(),
+    identificationNumber: yup
+      .string()
+      .required('ID requerido')
+      .matches(/^[0-9]{5,9}$/, 'Debe tener entre 5 y 9 dígitos'),
 
-  firstName: yup.string().required("Los nombres son requeridos"),
-  lastName: yup.string().required("Los apellidos son requeridos"),
-  birthPlace: yup.string().required("Lugar de nacimiento requerido"),
-  birthDate: yup
-    .string()
-    .required("Fecha de nacimiento requerida")
-    .test("is-adult", "Debes ser mayor de 18 años", (value) => {
-      if (!value) return false;
-      return new Date(value) <= new Date(minAgeDate(18));
+    firstName: yup.string().required('Los nombres son requeridos'),
+    lastName: yup.string().required('Los apellidos son requeridos'),
+    birthPlace: yup.string().required('Lugar de nacimiento requerido'),
+    birthDate: yup
+      .string()
+      .required('Fecha de nacimiento requerida')
+      .test('is-adult', 'Debes ser mayor de 18 años', (value) => {
+        if (!value) return false
+        return new Date(value) <= new Date(minAgeDate(18))
+      }),
+
+    nationality: yup.string().required('Nacionalidad requerida'),
+    otherNationality: yup.string(),
+    gender: yup.string().required('Género requerido'),
+    maritalStatus: yup.string().required('Estado civil requerido'),
+    profession: yup.string().required('Profesión u oficio requerido'),
+
+    incomeSource: yup.string().required('Requerido'),
+
+    spouseName: yup.string(),
+    spouseIdentification: yup.string(),
+
+    address: yup.string().required('Dirección requerida'),
+    phones: yup
+      .string()
+      .required('Teléfono requerido')
+      .matches(/^[0-9]+$/, 'Solo números'),
+    email: yup.string().required('Correo requerido').email('Correo inválido'),
+
+    hasLegalRepresentative: yup.string().required('Seleccione una opción'),
+
+    legalRepresentativeFullname: yup.string().when('hasLegalRepresentative', {
+      is: 'SI',
+      then: (schema) => schema.required('Nombre requerido'),
+      otherwise: (schema) => schema.notRequired(),
     }),
 
-  nationality: yup.string().required("Nacionalidad requerida"),
-  otherNationality: yup.string(),
-  gender: yup.string().required("Género requerido"),
-  maritalStatus: yup.string().required("Estado civil requerido"),
-  profession: yup.string().required("Profesión u oficio requerido"),
+    legalRepresentativeIdentificationType: yup.string(),
 
-  incomeSource: yup.string().required("Requerido"),
-
-  spouseName: yup.string(),
-  spouseIdentification: yup.string(),
-
-  address: yup.string().required("Dirección requerida"),
-  phones: yup
-    .string()
-    .required("Teléfono requerido")
-    .matches(/^[0-9]+$/, "Solo números"),
-  email: yup.string().required("Correo requerido").email("Correo inválido"),
-
-  hasLegalRepresentative: yup.string().required("Seleccione una opción"),
-
-  legalRepresentativeFullname: yup.string().when("hasLegalRepresentative", {
-    is: "SI",
-    then: (schema) => schema.required("Nombre requerido"),
-    otherwise: (schema) => schema.notRequired(),
-  }),
-
-  legalRepresentativeIdentificationType: yup.string(),
-
-  legalRepresentativeIdentificationNumber: yup
-    .string()
-    .when("hasLegalRepresentative", {
-      is: "SI",
-      then: (schema) =>
-        schema.required("ID requerido").matches(/^[0-9]*$/, "Solo números"),
+    legalRepresentativeIdentificationNumber: yup.string().when('hasLegalRepresentative', {
+      is: 'SI',
+      then: (schema) => schema.required('ID requerido').matches(/^[0-9]*$/, 'Solo números'),
       otherwise: (schema) => schema.notRequired().nullable(),
     }),
 
-  legalRepresentativeBirthPlace: yup.string().when("hasLegalRepresentative", {
-    is: "SI",
-    then: (schema) => schema.required("Lugar requerido"),
-    otherwise: (schema) => schema.notRequired(),
-  }),
+    legalRepresentativeBirthPlace: yup.string().when('hasLegalRepresentative', {
+      is: 'SI',
+      then: (schema) => schema.required('Lugar requerido'),
+      otherwise: (schema) => schema.notRequired(),
+    }),
 
-  legalRepresentativeBirthDate: yup.string().when("hasLegalRepresentative", {
-    is: "SI",
-    then: (schema) => schema.required("Fecha requerida"),
-    otherwise: (schema) => schema.notRequired(),
-  }),
+    legalRepresentativeBirthDate: yup.string().when('hasLegalRepresentative', {
+      is: 'SI',
+      then: (schema) => schema.required('Fecha requerida'),
+      otherwise: (schema) => schema.notRequired(),
+    }),
 
-  legalRepresentativePhones: yup.string().when("hasLegalRepresentative", {
-    is: "SI",
-    then: (schema) => schema.required("Requerido"),
-    otherwise: (schema) => schema.notRequired(),
-  }),
-  legalRepresentativeDocumentData: yup.string(),
-});
+    legalRepresentativePhones: yup.string().when('hasLegalRepresentative', {
+      is: 'SI',
+      then: (schema) => schema.required('Requerido'),
+      otherwise: (schema) => schema.notRequired(),
+    }),
+    legalRepresentativeDocumentData: yup.string(),
+  })
 
-const initialId =
-  wizard.state.value.formData.personalData?.identification || "";
-const initialType = initialId ? initialId.charAt(0) : "V";
-const initialNumber = initialId ? initialId.slice(1) : "";
+  const initialId = wizard.state.value.formData.personalData?.identification || ''
+  const initialType = initialId ? initialId.charAt(0) : 'V'
+  const initialNumber = initialId ? initialId.slice(1) : ''
 
-const initialLegRepId =
-  wizard.state.value.formData.personalData?.legalRepresentativeIdentification ||
-  "";
-const initialLegRepType = initialLegRepId ? initialLegRepId.charAt(0) : "V";
-const initialLegRepNumber = initialLegRepId ? initialLegRepId.slice(1) : "";
+  const initialLegRepId =
+    wizard.state.value.formData.personalData?.legalRepresentativeIdentification || ''
+  const initialLegRepType = initialLegRepId ? initialLegRepId.charAt(0) : 'V'
+  const initialLegRepNumber = initialLegRepId ? initialLegRepId.slice(1) : ''
 
-const { handleSubmit, errors, defineField } = useForm({
-  validationSchema: schema,
-  initialValues: {
-    identificationType: initialType,
-    identificationNumber: initialNumber,
+  const { handleSubmit, errors, defineField } = useForm({
+    validationSchema: schema,
+    initialValues: {
+      identificationType: initialType,
+      identificationNumber: initialNumber,
 
-    firstName: wizard.state.value.formData.personalData?.firstName || "",
-    lastName: wizard.state.value.formData.personalData?.lastName || "",
-    birthPlace:
-      wizard.state.value.formData.personalData?.birthPlace || "VENEZUELA",
-    birthDate:
-      wizard.state.value.formData.personalData?.birthDate || minAgeDate(18),
-    nationality:
-      wizard.state.value.formData.personalData?.nationality || "VENEZOLANO",
-    otherNationality:
-      wizard.state.value.formData.personalData?.otherNationality || "",
-    gender: wizard.state.value.formData.personalData?.gender || "",
-    maritalStatus:
-      wizard.state.value.formData.personalData?.maritalStatus || "",
-    profession: wizard.state.value.formData.personalData?.profession || "",
-    incomeSource:
-      wizard.state.value.formData.personalData?.incomeSource || "SAO0010",
-    spouseName: wizard.state.value.formData.personalData?.spouseName || "N/A",
-    spouseIdentification:
-      wizard.state.value.formData.personalData?.spouseIdentification || "N/A",
-    address: wizard.state.value.formData.personalData?.address || "",
-    phones: wizard.state.value.formData.personalData?.phones || "",
-    email: wizard.state.value.formData.personalData?.email || "",
+      firstName: wizard.state.value.formData.personalData?.firstName || '',
+      lastName: wizard.state.value.formData.personalData?.lastName || '',
+      birthPlace: wizard.state.value.formData.personalData?.birthPlace || 'VENEZUELA',
+      birthDate: wizard.state.value.formData.personalData?.birthDate || minAgeDate(18),
+      nationality: wizard.state.value.formData.personalData?.nationality || 'VENEZOLANO',
+      otherNationality: wizard.state.value.formData.personalData?.otherNationality || '',
+      gender: wizard.state.value.formData.personalData?.gender || '',
+      maritalStatus: wizard.state.value.formData.personalData?.maritalStatus || '',
+      profession: wizard.state.value.formData.personalData?.profession || '',
+      incomeSource: wizard.state.value.formData.personalData?.incomeSource || 'SAO0010',
+      spouseName: wizard.state.value.formData.personalData?.spouseName || 'N/A',
+      spouseIdentification: wizard.state.value.formData.personalData?.spouseIdentification || 'N/A',
+      address: wizard.state.value.formData.personalData?.address || '',
+      phones: wizard.state.value.formData.personalData?.phones || '',
+      email: wizard.state.value.formData.personalData?.email || '',
 
-    hasLegalRepresentative:
-      wizard.state.value.formData.personalData?.hasLegalRepresentative || "NO",
+      hasLegalRepresentative:
+        wizard.state.value.formData.personalData?.hasLegalRepresentative || 'NO',
 
-    legalRepresentativeFullname:
-      wizard.state.value.formData.personalData?.legalRepresentativeFullname ||
-      "",
-    legalRepresentativeIdentificationType: initialLegRepType,
-    legalRepresentativeIdentificationNumber: initialLegRepNumber,
-    legalRepresentativeBirthPlace:
-      wizard.state.value.formData.personalData?.legalRepresentativeBirthPlace ||
-      "VENEZUELA",
-    legalRepresentativeBirthDate:
-      wizard.state.value.formData.personalData?.legalRepresentativeBirthDate ||
-      "",
+      legalRepresentativeFullname:
+        wizard.state.value.formData.personalData?.legalRepresentativeFullname || '',
+      legalRepresentativeIdentificationType: initialLegRepType,
+      legalRepresentativeIdentificationNumber: initialLegRepNumber,
+      legalRepresentativeBirthPlace:
+        wizard.state.value.formData.personalData?.legalRepresentativeBirthPlace || 'VENEZUELA',
+      legalRepresentativeBirthDate:
+        wizard.state.value.formData.personalData?.legalRepresentativeBirthDate || '',
 
-    legalRepresentativePhones:
-      wizard.state.value.formData.personalData?.legalRepresentativePhones || "",
-    legalRepresentativeDocumentData:
-      wizard.state.value.formData.personalData
-        ?.legalRepresentativeDocumentData || "N/A",
-  },
-});
+      legalRepresentativePhones:
+        wizard.state.value.formData.personalData?.legalRepresentativePhones || '',
+      legalRepresentativeDocumentData:
+        wizard.state.value.formData.personalData?.legalRepresentativeDocumentData || 'N/A',
+    },
+  })
 
-const [identificationType] = defineField("identificationType");
-const [identificationNumber] = defineField("identificationNumber");
+  const [identificationType] = defineField('identificationType')
+  const [identificationNumber] = defineField('identificationNumber')
 
-const [firstName] = defineField("firstName");
-const [lastName] = defineField("lastName");
-const [birthPlace] = defineField("birthPlace");
-const [birthDate] = defineField("birthDate");
-const [nationality] = defineField("nationality");
-const [otherNationality] = defineField("otherNationality");
-const [gender] = defineField("gender");
-const [maritalStatus] = defineField("maritalStatus");
-const [profession] = defineField("profession");
-const [incomeSource] = defineField("incomeSource");
+  const [firstName] = defineField('firstName')
+  const [lastName] = defineField('lastName')
+  const [birthPlace] = defineField('birthPlace')
+  const [birthDate] = defineField('birthDate')
+  const [nationality] = defineField('nationality')
+  const [otherNationality] = defineField('otherNationality')
+  const [gender] = defineField('gender')
+  const [maritalStatus] = defineField('maritalStatus')
+  const [profession] = defineField('profession')
+  const [incomeSource] = defineField('incomeSource')
 
-const [spouseName] = defineField("spouseName");
-const [spouseIdentification] = defineField("spouseIdentification");
-const [address] = defineField("address");
-const [phones] = defineField("phones");
-const [email] = defineField("email");
+  const [spouseName] = defineField('spouseName')
+  const [spouseIdentification] = defineField('spouseIdentification')
+  const [address] = defineField('address')
+  const [phones] = defineField('phones')
+  const [email] = defineField('email')
 
-const [hasLegalRepresentative] = defineField("hasLegalRepresentative");
-const [legalRepresentativeFullname] = defineField(
-  "legalRepresentativeFullname",
-);
-const [legalRepresentativeIdentificationType] = defineField(
-  "legalRepresentativeIdentificationType",
-);
-const [legalRepresentativeIdentificationNumber] = defineField(
-  "legalRepresentativeIdentificationNumber",
-);
-const [legalRepresentativeBirthPlace] = defineField(
-  "legalRepresentativeBirthPlace",
-);
-const [legalRepresentativeBirthDate] = defineField(
-  "legalRepresentativeBirthDate",
-);
-const [legalRepresentativePhones] = defineField("legalRepresentativePhones");
-const [legalRepresentativeDocumentData] = defineField(
-  "legalRepresentativeDocumentData",
-);
+  const [hasLegalRepresentative] = defineField('hasLegalRepresentative')
+  const [legalRepresentativeFullname] = defineField('legalRepresentativeFullname')
+  const [legalRepresentativeIdentificationType] = defineField(
+    'legalRepresentativeIdentificationType'
+  )
+  const [legalRepresentativeIdentificationNumber] = defineField(
+    'legalRepresentativeIdentificationNumber'
+  )
+  const [legalRepresentativeBirthPlace] = defineField('legalRepresentativeBirthPlace')
+  const [legalRepresentativeBirthDate] = defineField('legalRepresentativeBirthDate')
+  const [legalRepresentativePhones] = defineField('legalRepresentativePhones')
+  const [legalRepresentativeDocumentData] = defineField('legalRepresentativeDocumentData')
 
-const validate = handleSubmit((values) => {
-  const fullIdentification = `${values.identificationType}${values.identificationNumber}`;
+  const validate = handleSubmit((values) => {
+    const fullIdentification = `${values.identificationType}${values.identificationNumber}`
 
-  if (!/^[V|E|J|P][0-9]{5,9}$/.test(fullIdentification)) {
-    return;
-  }
+    if (!/^[V|E|J|P][0-9]{5,9}$/.test(fullIdentification)) {
+      return
+    }
 
-  let legRepId = "";
-  let finalValues = { ...values };
+    let legRepId = ''
+    let finalValues = { ...values }
 
-  if (values.hasLegalRepresentative === "SI") {
-    legRepId = `${values.legalRepresentativeIdentificationType}${values.legalRepresentativeIdentificationNumber}`;
-  } else {
-    finalValues.legalRepresentativeFullname = "";
-    finalValues.legalRepresentativeBirthPlace = "";
-    finalValues.legalRepresentativeBirthDate = "";
-    finalValues.legalRepresentativePhones = "";
-    finalValues.legalRepresentativeDocumentData = "";
-    legRepId = "";
-  }
+    if (values.hasLegalRepresentative === 'SI') {
+      legRepId = `${values.legalRepresentativeIdentificationType}${values.legalRepresentativeIdentificationNumber}`
+    } else {
+      finalValues.legalRepresentativeFullname = ''
+      finalValues.legalRepresentativeBirthPlace = ''
+      finalValues.legalRepresentativeBirthDate = ''
+      finalValues.legalRepresentativePhones = ''
+      finalValues.legalRepresentativeDocumentData = ''
+      legRepId = ''
+    }
 
-  const payload = {
-    ...finalValues,
-    identification: fullIdentification,
-    legalRepresentativeIdentification: legRepId,
-  };
+    const payload = {
+      ...finalValues,
+      identification: fullIdentification,
+      legalRepresentativeIdentification: legRepId,
+    }
 
-  delete payload.identificationType;
-  delete payload.identificationNumber;
-  delete payload.legalRepresentativeIdentificationType;
-  delete payload.legalRepresentativeIdentificationNumber;
+    delete payload.identificationType
+    delete payload.identificationNumber
+    delete payload.legalRepresentativeIdentificationType
+    delete payload.legalRepresentativeIdentificationNumber
 
-  wizard.updateFormData({ personalData: payload });
+    wizard.updateFormData({ personalData: payload })
 
-  wizard.nextStep();
-});
+    wizard.nextStep()
+  })
 
-defineExpose({
-  validate,
-});
+  defineExpose({
+    validate,
+  })
 </script>
 
 <template>
@@ -260,11 +236,7 @@ defineExpose({
         />
 
         <div class="w-full">
-          <FormBaseLabel
-            htmlFor="identificationNumber"
-            label="Documento de identidad"
-            required
-          />
+          <FormBaseLabel htmlFor="identificationNumber" label="Documento de identidad" required />
 
           <div class="flex gap-1">
             <div class="w-16 shrink-0">
@@ -400,17 +372,10 @@ defineExpose({
         />
       </FormBaseLayout>
 
-      <FormTitle
-        text="Datos personales del cónyuge (En caso de aplicar)"
-        :style="'mt-12'"
-      />
+      <FormTitle text="Datos personales del cónyuge (En caso de aplicar)" :style="'mt-12'" />
 
       <FormBaseLayout>
-        <FormBaseInput
-          name="spouseName"
-          label="Nombre completo del cónyuge"
-          v-model="spouseName"
-        />
+        <FormBaseInput name="spouseName" label="Nombre completo del cónyuge" v-model="spouseName" />
         <FormBaseInput
           name="spouseIdentification"
           label="Documento identidad cónyuge"
@@ -463,9 +428,7 @@ defineExpose({
                     name="legalRepresentativeIdentificationType"
                     v-model="legalRepresentativeIdentificationType"
                     :options="docTypeOptions"
-                    :error-message="
-                      errors.legalRepresentativeIdentificationType ? ' ' : ''
-                    "
+                    :error-message="errors.legalRepresentativeIdentificationType ? ' ' : ''"
                   />
                 </div>
 
@@ -475,9 +438,7 @@ defineExpose({
                     v-model="legalRepresentativeIdentificationNumber"
                     placeholder="12345678"
                     type="tel"
-                    :error-message="
-                      errors.legalRepresentativeIdentificationNumber
-                    "
+                    :error-message="errors.legalRepresentativeIdentificationNumber"
                     :comment="'RIF_REQUIRED'"
                   />
                 </div>

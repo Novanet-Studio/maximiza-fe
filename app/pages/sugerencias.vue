@@ -1,96 +1,96 @@
 <script setup lang="ts">
-import { ref } from "vue";
-import MarkdownIt from "markdown-it";
+  import { ref } from 'vue'
+  import MarkdownIt from 'markdown-it'
 
-import { useMaximizaQueries } from "~/composables/useMaximizaQueries";
+  import { useMaximizaQueries } from '~/composables/useMaximizaQueries'
 
-const form = ref({
-  "bot-field": "",
-  nombre: "",
-  cedula: "",
-  rif: "",
-  email: "",
-  telefono: "",
-  mensaje: "",
-});
+  const form = ref({
+    'bot-field': '',
+    nombre: '',
+    cedula: '',
+    rif: '',
+    email: '',
+    telefono: '',
+    mensaje: '',
+  })
 
-const files = ref<{ [key: string]: File | null }>({
-  archivo_1: null,
-  archivo_2: null,
-  archivo_3: null,
-});
+  const files = ref<{ [key: string]: File | null }>({
+    archivo_1: null,
+    archivo_2: null,
+    archivo_3: null,
+  })
 
-const handleFileChange = (event: Event, fieldName: string) => {
-  const target = event.target as HTMLInputElement;
-  if (target.files && target.files.length > 0) {
-    files.value[fieldName] = target.files[0] || null;
-  } else {
-    files.value[fieldName] = null;
-  }
-};
-
-const handleSubmit = async () => {
-  try {
-    const formData = new FormData();
-
-    formData.append("form-name", "sugerencias");
-
-    Object.keys(form.value).forEach((key) => {
-      formData.append(key, form.value[key as keyof typeof form.value]);
-    });
-
-    Object.keys(files.value).forEach((key) => {
-      if (files.value[key]) {
-        formData.append(key, files.value[key] as Blob);
-      }
-    });
-
-    const response = await fetch("/", {
-      method: "POST",
-      body: formData,
-    });
-
-    if (!response.ok) {
-      throw new Error("Error en la respuesta del servidor");
+  const handleFileChange = (event: Event, fieldName: string) => {
+    const target = event.target as HTMLInputElement
+    if (target.files && target.files.length > 0) {
+      files.value[fieldName] = target.files[0] || null
+    } else {
+      files.value[fieldName] = null
     }
-
-    alert("Sugerencia enviada con éxito");
-
-    form.value.nombre = "";
-    form.value.cedula = "";
-    form.value.rif = "";
-    form.value.email = "";
-    form.value.telefono = "";
-    form.value.mensaje = "";
-
-    files.value.archivo_1 = null;
-    files.value.archivo_2 = null;
-    files.value.archivo_3 = null;
-
-    const fileInputs = document.querySelectorAll('input[type="file"]');
-    fileInputs.forEach((input: any) => (input.value = ""));
-  } catch (error) {
-    console.error("Error al enviar:", error);
-    alert("Hubo un error al enviar su sugerencia.");
   }
-};
 
-const md = new MarkdownIt({ html: true, breaks: true });
-const renderMarkdown = (content: string) => md.render(content || "");
+  const handleSubmit = async () => {
+    try {
+      const formData = new FormData()
 
-const { sugerenciaData, fetchSugerencias } = useMaximizaQueries();
+      formData.append('form-name', 'sugerencias')
 
-onMounted(() => {
-  fetchSugerencias();
-});
+      Object.keys(form.value).forEach((key) => {
+        formData.append(key, form.value[key as keyof typeof form.value])
+      })
 
-useSeoMeta({
-  title: "Sugerencias",
-  description:
-    "Envíenos sus quejas, reclamos y/o sugerencias sobre temas de nuestra competencia.",
-  ogImage:
-    "https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_sugerencias_miniatura_3f6598f24d.webp",
-});
+      Object.keys(files.value).forEach((key) => {
+        if (files.value[key]) {
+          formData.append(key, files.value[key] as Blob)
+        }
+      })
+
+      const response = await fetch('/', {
+        method: 'POST',
+        body: formData,
+      })
+
+      if (!response.ok) {
+        throw new Error('Error en la respuesta del servidor')
+      }
+
+      alert('Sugerencia enviada con éxito')
+
+      form.value.nombre = ''
+      form.value.cedula = ''
+      form.value.rif = ''
+      form.value.email = ''
+      form.value.telefono = ''
+      form.value.mensaje = ''
+
+      files.value.archivo_1 = null
+      files.value.archivo_2 = null
+      files.value.archivo_3 = null
+
+      const fileInputs = document.querySelectorAll('input[type="file"]')
+      fileInputs.forEach((input: any) => (input.value = ''))
+    } catch (error) {
+      console.error('Error al enviar:', error)
+      alert('Hubo un error al enviar su sugerencia.')
+    }
+  }
+
+  const md = new MarkdownIt({ html: true, breaks: true })
+  const renderMarkdown = (content: string) => md.render(content || '')
+
+  const { sugerenciaData, fetchSugerencias } = useMaximizaQueries()
+
+  onMounted(() => {
+    fetchSugerencias()
+  })
+
+  useSeoMeta({
+    title: 'Sugerencias',
+    description:
+      'Envíenos sus quejas, reclamos y/o sugerencias sobre temas de nuestra competencia.',
+    ogImage:
+      'https://res.cloudinary.com/novanet-studio/image/upload/v1646847317/maximiza/v4/maximiza_sugerencias_miniatura_3f6598f24d.webp',
+  })
 </script>
 
 <template>
@@ -110,72 +110,58 @@ useSeoMeta({
         </template>
       </CommonHero>
 
-      <section class="mx-auto px-4 xl:px-0 mt-12 mb-16 md:mb-24">
-        <div class="flex flex-col xl:flex-row justify-between gap-12 xl:gap-0">
-          <div class="w-full lg:w-1/3 text-left">
+      <section class="mx-auto mb-16 mt-12 px-4 md:mb-24 xl:px-0">
+        <div class="flex flex-col justify-between gap-12 xl:flex-row xl:gap-0">
+          <div class="w-full text-left lg:w-1/3">
             <ul class="flex flex-col gap-8 md:gap-10">
               <li class="flex items-start gap-4">
                 <div
-                  class="text-maximiza-gris2 font-light italic"
+                  class="font-light italic text-maximiza-gris2"
                   v-html="renderMarkdown(sugerenciaData.info_sugerencias)"
                 ></div>
               </li>
 
               <li class="flex items-start gap-4">
                 <span
-                  class="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center bg-maximiza-verde1 shrink-0 text-maximiza-blanco1"
+                  class="flex h-6 w-6 shrink-0 items-center justify-center bg-maximiza-verde1 text-maximiza-blanco1 md:h-8 md:w-8"
                 >
-                  <font-awesome-icon
-                    :icon="['fas', 'building']"
-                    class="text-lg md:text-xl"
-                  />
+                  <font-awesome-icon :icon="['fas', 'building']" class="text-lg md:text-xl" />
                 </span>
-                <p class="text-maximiza-gris2 font-medium text-sm md:text-base">
-                  Av. Francisco de Miranda Torre Europa Piso 3 Oficina 3-B3
-                  Caracas 1060 – Estado Miranda.
+                <p class="text-sm font-medium text-maximiza-gris2 md:text-base">
+                  Av. Francisco de Miranda Torre Europa Piso 3 Oficina 3-B3 Caracas 1060 – Estado
+                  Miranda.
                 </p>
               </li>
 
               <li class="flex items-center gap-4">
                 <span
-                  class="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center bg-maximiza-verde1 shrink-0 text-maximiza-blanco1"
+                  class="flex h-6 w-6 shrink-0 items-center justify-center bg-maximiza-verde1 text-maximiza-blanco1 md:h-8 md:w-8"
                 >
-                  <font-awesome-icon
-                    :icon="['fas', 'earth-americas']"
-                    class="text-lg md:text-xl"
-                  />
+                  <font-awesome-icon :icon="['fas', 'earth-americas']" class="text-lg md:text-xl" />
                 </span>
-                <p class="text-maximiza-gris2 font-medium text-sm md:text-base">
+                <p class="text-sm font-medium text-maximiza-gris2 md:text-base">
                   Sitio web: maximiza.com.ve
                 </p>
               </li>
 
               <li class="flex items-center gap-4">
                 <span
-                  class="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center bg-maximiza-verde1 shrink-0 text-maximiza-blanco1"
+                  class="flex h-6 w-6 shrink-0 items-center justify-center bg-maximiza-verde1 text-maximiza-blanco1 md:h-8 md:w-8"
                 >
-                  <font-awesome-icon
-                    :icon="['fas', 'envelope']"
-                    class="text-lg md:text-xl"
-                  />
+                  <font-awesome-icon :icon="['fas', 'envelope']" class="text-lg md:text-xl" />
                 </span>
-                <p class="text-maximiza-gris2 font-medium text-sm md:text-base">
+                <p class="text-sm font-medium text-maximiza-gris2 md:text-base">
                   maximizaprevencion@maximiza.com.ve
                 </p>
               </li>
 
               <li class="flex items-center gap-4">
                 <span
-                  class="w-6 h-6 md:w-8 md:h-8 flex items-center justify-center bg-maximiza-verde1 shrink-0 text-maximiza-blanco1"
+                  class="flex h-6 w-6 shrink-0 items-center justify-center bg-maximiza-verde1 text-maximiza-blanco1 md:h-8 md:w-8"
                 >
-                  <font-awesome-icon
-                    :icon="['fas', 'phone']"
-                    class="text-lg md:text-xl"
-                  />
+                  <font-awesome-icon :icon="['fas', 'phone']" class="text-lg md:text-xl" />
                 </span>
-                <p
-                  class="text-maximiza-gris2 font-medium text-sm md:text-base leading-relaxed"
-                >
+                <p class="text-sm font-medium leading-relaxed text-maximiza-gris2 md:text-base">
                   Máster: (58) 212-9539447 <br />
                   Fax: (58) 212-9573316
                 </p>
@@ -200,13 +186,13 @@ useSeoMeta({
                 </label>
               </p>
 
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+              <div class="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
                 <input
                   v-model="form.nombre"
                   type="text"
                   name="nombre"
                   placeholder="Nombre y apellido"
-                  class="w-full bg-transparent border-b-2 border-maximiza-verde1 text-maximiza-gris2 placeholder-gray-400 py-3 focus:outline-none focus:border-green-700 transition-colors text-sm md:text-base font-medium"
+                  class="bg-transparent placeholder-gray-400 focus:border-green-700 w-full border-b-2 border-maximiza-verde1 py-3 text-sm font-medium text-maximiza-gris2 transition-colors focus:outline-none md:text-base"
                   required
                 />
                 <input
@@ -214,7 +200,7 @@ useSeoMeta({
                   type="number"
                   name="cedula"
                   placeholder="Cédula de identidad"
-                  class="w-full bg-transparent border-b-2 border-maximiza-verde1 text-maximiza-gris2 placeholder-gray-400 py-3 focus:outline-none focus:border-green-700 transition-colors text-sm md:text-base font-medium"
+                  class="bg-transparent placeholder-gray-400 focus:border-green-700 w-full border-b-2 border-maximiza-verde1 py-3 text-sm font-medium text-maximiza-gris2 transition-colors focus:outline-none md:text-base"
                   required
                 />
                 <input
@@ -222,14 +208,14 @@ useSeoMeta({
                   type="text"
                   name="rif"
                   placeholder="RIF"
-                  class="w-full bg-transparent border-b-2 border-maximiza-verde1 text-maximiza-gris2 placeholder-gray-400 py-3 focus:outline-none focus:border-green-700 transition-colors text-sm md:text-base font-medium"
+                  class="bg-transparent placeholder-gray-400 focus:border-green-700 w-full border-b-2 border-maximiza-verde1 py-3 text-sm font-medium text-maximiza-gris2 transition-colors focus:outline-none md:text-base"
                 />
                 <input
                   v-model="form.email"
                   type="email"
                   name="email"
                   placeholder="Correo"
-                  class="w-full bg-transparent border-b-2 border-maximiza-verde1 text-maximiza-gris2 placeholder-gray-400 py-3 focus:outline-none focus:border-green-700 transition-colors text-sm md:text-base font-medium"
+                  class="bg-transparent placeholder-gray-400 focus:border-green-700 w-full border-b-2 border-maximiza-verde1 py-3 text-sm font-medium text-maximiza-gris2 transition-colors focus:outline-none md:text-base"
                   required
                 />
                 <input
@@ -237,7 +223,7 @@ useSeoMeta({
                   type="number"
                   name="telefono"
                   placeholder="Teléfono"
-                  class="w-full bg-transparent border-b-2 border-maximiza-verde1 text-maximiza-gris2 placeholder-gray-400 py-3 focus:outline-none focus:border-green-700 transition-colors text-sm md:text-base font-medium"
+                  class="bg-transparent placeholder-gray-400 focus:border-green-700 w-full border-b-2 border-maximiza-verde1 py-3 text-sm font-medium text-maximiza-gris2 transition-colors focus:outline-none md:text-base"
                 />
               </div>
 
@@ -245,12 +231,12 @@ useSeoMeta({
                 v-model="form.mensaje"
                 name="mensaje"
                 placeholder="Descripción"
-                class="w-full bg-transparent border-b-2 border-maximiza-verde1 text-maximiza-gris2 placeholder-gray-400 py-3 focus:outline-none focus:border-green-700 transition-colors text-sm md:text-base font-medium resize-none h-16"
+                class="bg-transparent placeholder-gray-400 focus:border-green-700 h-16 w-full resize-none border-b-2 border-maximiza-verde1 py-3 text-sm font-medium text-maximiza-gris2 transition-colors focus:outline-none md:text-base"
                 required
               />
 
               <div class="mt-4">
-                <small class="block text-maximiza-gris2 mb-4">
+                <small class="mb-4 block text-maximiza-gris2">
                   Agregue la documentación que avale el contenido del mensaje.
                 </small>
                 <div class="flex flex-col gap-4" id="Fields">
@@ -258,7 +244,7 @@ useSeoMeta({
                     <input
                       id="id00"
                       name="archivo_1"
-                      class="text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-maximiza-verde1 file:text-maximiza-blanco1 hover:file:bg-green-700"
+                      class="text-gray-500 hover:file:bg-green-700 text-sm file:mr-4 file:rounded-full file:border-0 file:bg-maximiza-verde1 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-maximiza-blanco1"
                       type="file"
                       @change="(e) => handleFileChange(e, 'archivo_1')"
                     />
@@ -267,7 +253,7 @@ useSeoMeta({
                     <input
                       id="id01"
                       name="archivo_2"
-                      class="text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-maximiza-verde1 file:text-maximiza-blanco1 hover:file:bg-green-700"
+                      class="text-gray-500 hover:file:bg-green-700 text-sm file:mr-4 file:rounded-full file:border-0 file:bg-maximiza-verde1 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-maximiza-blanco1"
                       type="file"
                       @change="(e) => handleFileChange(e, 'archivo_2')"
                     />
@@ -276,7 +262,7 @@ useSeoMeta({
                     <input
                       id="id02"
                       name="archivo_3"
-                      class="text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-maximiza-verde1 file:text-maximiza-blanco1 hover:file:bg-green-700"
+                      class="text-gray-500 hover:file:bg-green-700 text-sm file:mr-4 file:rounded-full file:border-0 file:bg-maximiza-verde1 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-maximiza-blanco1"
                       type="file"
                       @change="(e) => handleFileChange(e, 'archivo_3')"
                     />
@@ -284,7 +270,7 @@ useSeoMeta({
                 </div>
               </div>
 
-              <div class="flex justify-start md:justify-end mt-8">
+              <div class="mt-8 flex justify-start md:justify-end">
                 <input
                   type="submit"
                   class="button-primary cursor-pointer"

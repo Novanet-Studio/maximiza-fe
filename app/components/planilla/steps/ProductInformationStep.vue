@@ -1,133 +1,116 @@
 <script setup lang="ts">
-import { useForm } from "vee-validate";
-import * as yup from "yup";
-import { usePlanillaWizard } from "~/composables/usePlanillaWizard";
+  import { useForm } from 'vee-validate'
+  import * as yup from 'yup'
+  import { usePlanillaWizard } from '~/composables/usePlanillaWizard'
 
-import {
-  productNamesOptions,
-  currencyOptions,
-  countriesOptions,
-  virtualCurrencyOptions,
-  motivesOptions,
-  fundsSourceOptions,
-  fundsDestinationOptions,
-  perTransferPurchaseOptions,
-  perTransferSaleOptions,
-} from "~/assets/data/formSources";
+  import {
+    productNamesOptions,
+    currencyOptions,
+    countriesOptions,
+    virtualCurrencyOptions,
+    motivesOptions,
+    fundsSourceOptions,
+    fundsDestinationOptions,
+    perTransferPurchaseOptions,
+    perTransferSaleOptions,
+  } from '~/assets/data/formSources'
 
-const wizard = usePlanillaWizard();
+  const wizard = usePlanillaWizard()
 
-const schema = yup.object({
-  productName: yup.string().required("Requerido"),
-  productAmount: yup.string().required("Requerido"),
-  currency: yup.string().required("Requerido"),
+  const schema = yup.object({
+    productName: yup.string().required('Requerido'),
+    productAmount: yup.string().required('Requerido'),
+    currency: yup.string().required('Requerido'),
 
-  monthlyAmount: yup.string().required("Requerido"),
+    monthlyAmount: yup.string().required('Requerido'),
 
-  perTransferPurchase: yup.string().required("Requerido"),
-  perTransferSale: yup.string().required("Requerido"),
+    perTransferPurchase: yup.string().required('Requerido'),
+    perTransferSale: yup.string().required('Requerido'),
 
-  motives: yup.string().required("Requerido"),
-  fundsSource: yup.string().required("Requerido"),
-  fundsDestination: yup.string().required("Requerido"),
+    motives: yup.string().required('Requerido'),
+    fundsSource: yup.string().required('Requerido'),
+    fundsDestination: yup.string().required('Requerido'),
 
-  sendOrReceiveFundsFromAbroad: yup.string().required("Seleccione una opción"),
+    sendOrReceiveFundsFromAbroad: yup.string().required('Seleccione una opción'),
 
-  originCountry: yup.string().when("sendOrReceiveFundsFromAbroad", {
-    is: (val: string) => val !== "NO",
-    then: (s) => s.required("Requerido"),
-    otherwise: (s) => s.optional(),
-  }),
-  destinationCountry: yup.string().when("sendOrReceiveFundsFromAbroad", {
-    is: (val: string) => val !== "NO",
-    then: (s) => s.required("Requerido"),
-    otherwise: (s) => s.optional(),
-  }),
-  virtualCurrencyUse: yup.string().when("sendOrReceiveFundsFromAbroad", {
-    is: (val: string) => val !== "NO",
-    then: (s) => s.required("Requerido"),
-    otherwise: (s) => s.optional(),
-  }),
-});
+    originCountry: yup.string().when('sendOrReceiveFundsFromAbroad', {
+      is: (val: string) => val !== 'NO',
+      then: (s) => s.required('Requerido'),
+      otherwise: (s) => s.optional(),
+    }),
+    destinationCountry: yup.string().when('sendOrReceiveFundsFromAbroad', {
+      is: (val: string) => val !== 'NO',
+      then: (s) => s.required('Requerido'),
+      otherwise: (s) => s.optional(),
+    }),
+    virtualCurrencyUse: yup.string().when('sendOrReceiveFundsFromAbroad', {
+      is: (val: string) => val !== 'NO',
+      then: (s) => s.required('Requerido'),
+      otherwise: (s) => s.optional(),
+    }),
+  })
 
-const { handleSubmit, errors, defineField } = useForm({
-  validationSchema: schema,
-  initialValues: {
-    productName:
-      wizard.state.value.formData.productInformation?.productName || "",
-    productAmount:
-      wizard.state.value.formData.productInformation?.productAmount || "",
-    currency:
-      wizard.state.value.formData.productInformation?.currency ||
-      "BOLIVAR_SOBERANO",
+  const { handleSubmit, errors, defineField } = useForm({
+    validationSchema: schema,
+    initialValues: {
+      productName: wizard.state.value.formData.productInformation?.productName || '',
+      productAmount: wizard.state.value.formData.productInformation?.productAmount || '',
+      currency: wizard.state.value.formData.productInformation?.currency || 'BOLIVAR_SOBERANO',
 
-    monthlyAmount:
-      wizard.state.value.formData.productInformation?.monthlyAmount || "",
+      monthlyAmount: wizard.state.value.formData.productInformation?.monthlyAmount || '',
 
-    perTransferPurchase:
-      wizard.state.value.formData.productInformation?.perTransferPurchase || "",
-    perTransferSale:
-      wizard.state.value.formData.productInformation?.perTransferSale || "",
+      perTransferPurchase:
+        wizard.state.value.formData.productInformation?.perTransferPurchase || '',
+      perTransferSale: wizard.state.value.formData.productInformation?.perTransferSale || '',
 
-    motives: wizard.state.value.formData.productInformation?.motives || "",
+      motives: wizard.state.value.formData.productInformation?.motives || '',
 
-    fundsSource:
-      wizard.state.value.formData.productInformation?.fundsSource || "",
-    fundsDestination:
-      wizard.state.value.formData.productInformation?.fundsDestination || "",
+      fundsSource: wizard.state.value.formData.productInformation?.fundsSource || '',
+      fundsDestination: wizard.state.value.formData.productInformation?.fundsDestination || '',
 
-    sendOrReceiveFundsFromAbroad:
-      wizard.state.value.formData.productInformation
-        ?.sendOrReceiveFundsFromAbroad || "NO",
+      sendOrReceiveFundsFromAbroad:
+        wizard.state.value.formData.productInformation?.sendOrReceiveFundsFromAbroad || 'NO',
 
-    virtualCurrencyUse:
-      wizard.state.value.formData.productInformation?.virtualCurrencyUse ||
-      "NINGUNA",
-    originCountry:
-      wizard.state.value.formData.productInformation?.originCountry || "",
-    destinationCountry:
-      wizard.state.value.formData.productInformation?.destinationCountry || "",
-  },
-});
+      virtualCurrencyUse:
+        wizard.state.value.formData.productInformation?.virtualCurrencyUse || 'NINGUNA',
+      originCountry: wizard.state.value.formData.productInformation?.originCountry || '',
+      destinationCountry: wizard.state.value.formData.productInformation?.destinationCountry || '',
+    },
+  })
 
-const [productName] = defineField("productName");
-const [productAmount] = defineField("productAmount");
-const [currency] = defineField("currency");
+  const [productName] = defineField('productName')
+  const [productAmount] = defineField('productAmount')
+  const [currency] = defineField('currency')
 
-const [monthlyAmount] = defineField("monthlyAmount");
+  const [monthlyAmount] = defineField('monthlyAmount')
 
-const [sendOrReceiveFundsFromAbroad] = defineField(
-  "sendOrReceiveFundsFromAbroad",
-);
+  const [sendOrReceiveFundsFromAbroad] = defineField('sendOrReceiveFundsFromAbroad')
 
-const [originCountry] = defineField("originCountry");
-const [destinationCountry] = defineField("destinationCountry");
+  const [originCountry] = defineField('originCountry')
+  const [destinationCountry] = defineField('destinationCountry')
 
-const [perTransferPurchase] = defineField("perTransferPurchase");
-const [perTransferSale] = defineField("perTransferSale");
+  const [perTransferPurchase] = defineField('perTransferPurchase')
+  const [perTransferSale] = defineField('perTransferSale')
 
-const [motives] = defineField("motives");
-const [fundsSource] = defineField("fundsSource");
-const [fundsDestination] = defineField("fundsDestination");
+  const [motives] = defineField('motives')
+  const [fundsSource] = defineField('fundsSource')
+  const [fundsDestination] = defineField('fundsDestination')
 
-const validate = handleSubmit((values) => {
-  wizard.updateFormData({ productInformation: values });
+  const validate = handleSubmit((values) => {
+    wizard.updateFormData({ productInformation: values })
 
-  wizard.nextStep();
-});
+    wizard.nextStep()
+  })
 
-defineExpose({
-  validate,
-});
+  defineExpose({
+    validate,
+  })
 </script>
 
 <template>
   <form class="flex flex-col gap-6" @submit.prevent>
     <div>
-      <FormTitle
-        text="Información del producto o servicio bursátil"
-        class="mb-6"
-      />
+      <FormTitle text="Información del producto o servicio bursátil" class="mb-6" />
       <FormBaseLayout :style="'grid-cols-1 md:grid-cols-3'">
         <FormBaseSelect
           name="productName"
@@ -201,10 +184,7 @@ defineExpose({
     </div>
 
     <div>
-      <FormTitle
-        text="Número de transacciones por transferencia"
-        class="mb-6"
-      />
+      <FormTitle text="Número de transacciones por transferencia" class="mb-6" />
 
       <FormBaseLayout :style="'grid-cols-1 md:grid-cols-3'">
         <FormBaseSelect

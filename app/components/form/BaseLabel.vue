@@ -1,10 +1,10 @@
 <script setup lang="ts">
-defineProps<{
-  htmlFor?: string;
-  label?: string;
-  required?: boolean;
-  error?: string;
-}>();
+  defineProps<{
+    htmlFor?: string
+    label?: string
+    required?: boolean
+    error?: string
+  }>()
 </script>
 
 <template>

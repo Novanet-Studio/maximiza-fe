@@ -29,4 +29,4 @@ query HomeQuery {
     contacto_descripcion
   }
 }
-`;
+`

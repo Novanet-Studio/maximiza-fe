@@ -1,7 +1,7 @@
 <script setup lang="ts">
-defineProps<{
-  error?: string;
-}>();
+  defineProps<{
+    error?: string
+  }>()
 </script>
 
 <template>
@@ -13,10 +13,7 @@ defineProps<{
     leave-from-class="opacity-100 translate-y-0"
     leave-to-class="opacity-0 -translate-y-1"
   >
-    <p
-      v-if="error"
-      class="text-maximiza-error text-sm mt-1 font-normal flex items-center gap-1"
-    >
+    <p v-if="error" class="mt-1 flex items-center gap-1 text-sm font-normal text-maximiza-error">
       <font-awesome-icon :icon="['fas', 'circle-exclamation']" />
       {{ error }}
     </p>

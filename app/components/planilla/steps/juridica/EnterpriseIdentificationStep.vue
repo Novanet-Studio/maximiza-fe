@@ -1,257 +1,221 @@
 <script setup lang="ts">
-import { useForm } from "vee-validate";
-import * as yup from "yup";
-import { usePlanillaWizard } from "~/composables/usePlanillaWizard";
+  import { useForm } from 'vee-validate'
+  import * as yup from 'yup'
+  import { usePlanillaWizard } from '~/composables/usePlanillaWizard'
 
-import {
-  economicActivityOptions,
-  countriesOptions,
-  specificActivityOptions,
-} from "~/assets/data/formSources";
+  import {
+    economicActivityOptions,
+    countriesOptions,
+    specificActivityOptions,
+  } from '~/assets/data/formSources'
 
-const wizard = usePlanillaWizard();
+  const wizard = usePlanillaWizard()
 
-const rifTypeOptions = [
-  { value: "J", label: "J" },
-  { value: "G", label: "G" },
-];
+  const rifTypeOptions = [
+    { value: 'J', label: 'J' },
+    { value: 'G', label: 'G' },
+  ]
 
-const schema = yup.object({
-  rifType: yup.string().required("Requerido"),
-  rifNumber: yup
-    .string()
-    .required("Requerido")
-    .matches(/^[0-9]+$/, "Solo números"),
-  socialReason: yup.string().required("Requerido"),
-  tradename: yup.string().required("Requerido"),
+  const schema = yup.object({
+    rifType: yup.string().required('Requerido'),
+    rifNumber: yup
+      .string()
+      .required('Requerido')
+      .matches(/^[0-9]+$/, 'Solo números'),
+    socialReason: yup.string().required('Requerido'),
+    tradename: yup.string().required('Requerido'),
 
-  economicActivity: yup.string().required("Requerido"),
-  specificActivity: yup.string().required("Requerido"),
+    economicActivity: yup.string().required('Requerido'),
+    specificActivity: yup.string().required('Requerido'),
 
-  officesNumber: yup.string().required("Requerido"),
-  countryLargestPresence: yup.string().required("Requerido"),
-  employeesNumber: yup.string().required("Requerido"),
+    officesNumber: yup.string().required('Requerido'),
+    countryLargestPresence: yup.string().required('Requerido'),
+    employeesNumber: yup.string().required('Requerido'),
 
-  registerRecordName: yup.string().required("Requerido"),
-  registerNumber: yup.string().required("Requerido"),
-  registerTook: yup.string().required("Requerido"),
-  registerDate: yup.string().required("Requerido"),
-  registerCapital: yup.string().required("Requerido"),
+    registerRecordName: yup.string().required('Requerido'),
+    registerNumber: yup.string().required('Requerido'),
+    registerTook: yup.string().required('Requerido'),
+    registerDate: yup.string().required('Requerido'),
+    registerCapital: yup.string().required('Requerido'),
 
-  lastModRecordName: yup.string().required("Requerido"),
-  lastModNumber: yup.string().required("Requerido"),
-  lastModTook: yup.string().required("Requerido"),
-  lastModDate: yup.string().required("Requerido"),
-  lastModCapital: yup.string().required("Requerido"),
+    lastModRecordName: yup.string().required('Requerido'),
+    lastModNumber: yup.string().required('Requerido'),
+    lastModTook: yup.string().required('Requerido'),
+    lastModDate: yup.string().required('Requerido'),
+    lastModCapital: yup.string().required('Requerido'),
 
-  publicEntitiesDate: yup.string().optional(),
-  ontCode: yup.string().optional(),
+    publicEntitiesDate: yup.string().optional(),
+    ontCode: yup.string().optional(),
 
-  publicPhones: yup
-    .string()
-    .required("Requerido")
-    .matches(/^[0-9]+$/, "Solo números"),
-  publicPhones2: yup
-    .string()
-    .matches(/^[0-9]*$/, "Solo números")
-    .optional(),
-  publicEntityEmail: yup.string().required("Requerido").email("Inválido"),
-  publicEntityEmail2: yup.string().email("Inválido").optional(),
-  publicEntityAddress: yup.string().required("Requerido"),
-});
+    publicPhones: yup
+      .string()
+      .required('Requerido')
+      .matches(/^[0-9]+$/, 'Solo números'),
+    publicPhones2: yup
+      .string()
+      .matches(/^[0-9]*$/, 'Solo números')
+      .optional(),
+    publicEntityEmail: yup.string().required('Requerido').email('Inválido'),
+    publicEntityEmail2: yup.string().email('Inválido').optional(),
+    publicEntityAddress: yup.string().required('Requerido'),
+  })
 
-const initialRif =
-  wizard.state.value.formData.enterpriseIdentification
-    ?.taxInformationRegistration || "";
-const initialRifType = initialRif ? initialRif.charAt(0) : "J";
-const initialRifNum = initialRif ? initialRif.slice(1) : "";
+  const initialRif =
+    wizard.state.value.formData.enterpriseIdentification?.taxInformationRegistration || ''
+  const initialRifType = initialRif ? initialRif.charAt(0) : 'J'
+  const initialRifNum = initialRif ? initialRif.slice(1) : ''
 
-const { handleSubmit, errors, defineField } = useForm({
-  validationSchema: schema,
-  initialValues: {
-    rifType: initialRifType,
-    rifNumber: initialRifNum,
-    socialReason:
-      wizard.state.value.formData.enterpriseIdentification?.socialReason || "",
-    tradename:
-      wizard.state.value.formData.enterpriseIdentification?.tradename || "",
+  const { handleSubmit, errors, defineField } = useForm({
+    validationSchema: schema,
+    initialValues: {
+      rifType: initialRifType,
+      rifNumber: initialRifNum,
+      socialReason: wizard.state.value.formData.enterpriseIdentification?.socialReason || '',
+      tradename: wizard.state.value.formData.enterpriseIdentification?.tradename || '',
 
-    economicActivity:
-      wizard.state.value.formData.enterpriseIdentification?.economicActivity ||
-      "",
-    specificActivity:
-      wizard.state.value.formData.enterpriseIdentification?.specificActivity ||
-      "",
+      economicActivity:
+        wizard.state.value.formData.enterpriseIdentification?.economicActivity || '',
+      specificActivity:
+        wizard.state.value.formData.enterpriseIdentification?.specificActivity || '',
 
-    officesNumber:
-      wizard.state.value.formData.enterpriseIdentification?.officesNumber || "",
-    countryLargestPresence:
-      wizard.state.value.formData.enterpriseIdentification
-        ?.countryLargestPresence || "VENEZUELA",
-    employeesNumber:
-      wizard.state.value.formData.enterpriseIdentification?.employeesNumber ||
-      "",
+      officesNumber: wizard.state.value.formData.enterpriseIdentification?.officesNumber || '',
+      countryLargestPresence:
+        wizard.state.value.formData.enterpriseIdentification?.countryLargestPresence || 'VENEZUELA',
+      employeesNumber: wizard.state.value.formData.enterpriseIdentification?.employeesNumber || '',
 
-    registerRecordName:
-      wizard.state.value.formData.enterpriseIdentification?.registerData
-        ?.recordName || "",
-    registerNumber:
-      wizard.state.value.formData.enterpriseIdentification?.registerData
-        ?.number || "",
-    registerTook:
-      wizard.state.value.formData.enterpriseIdentification?.registerData
-        ?.took || "",
-    registerFol:
-      wizard.state.value.formData.enterpriseIdentification?.registerData?.fol ||
-      "",
-    registerDate:
-      wizard.state.value.formData.enterpriseIdentification?.registerData
-        ?.date || "",
-    registerCapital:
-      wizard.state.value.formData.enterpriseIdentification?.registerData
-        ?.socialCapital || "",
+      registerRecordName:
+        wizard.state.value.formData.enterpriseIdentification?.registerData?.recordName || '',
+      registerNumber:
+        wizard.state.value.formData.enterpriseIdentification?.registerData?.number || '',
+      registerTook: wizard.state.value.formData.enterpriseIdentification?.registerData?.took || '',
+      registerFol: wizard.state.value.formData.enterpriseIdentification?.registerData?.fol || '',
+      registerDate: wizard.state.value.formData.enterpriseIdentification?.registerData?.date || '',
+      registerCapital:
+        wizard.state.value.formData.enterpriseIdentification?.registerData?.socialCapital || '',
 
-    lastModRecordName:
-      wizard.state.value.formData.enterpriseIdentification?.lastModification
-        ?.recordName || "",
-    lastModNumber:
-      wizard.state.value.formData.enterpriseIdentification?.lastModification
-        ?.number || "",
-    lastModTook:
-      wizard.state.value.formData.enterpriseIdentification?.lastModification
-        ?.took || "",
-    lastModFol:
-      wizard.state.value.formData.enterpriseIdentification?.lastModification
-        ?.fol || "",
-    lastModDate:
-      wizard.state.value.formData.enterpriseIdentification?.lastModification
-        ?.date || "",
-    lastModCapital:
-      wizard.state.value.formData.enterpriseIdentification?.lastModification
-        ?.socialCapital || "",
+      lastModRecordName:
+        wizard.state.value.formData.enterpriseIdentification?.lastModification?.recordName || '',
+      lastModNumber:
+        wizard.state.value.formData.enterpriseIdentification?.lastModification?.number || '',
+      lastModTook:
+        wizard.state.value.formData.enterpriseIdentification?.lastModification?.took || '',
+      lastModFol: wizard.state.value.formData.enterpriseIdentification?.lastModification?.fol || '',
+      lastModDate:
+        wizard.state.value.formData.enterpriseIdentification?.lastModification?.date || '',
+      lastModCapital:
+        wizard.state.value.formData.enterpriseIdentification?.lastModification?.socialCapital || '',
 
-    officialGazetteNumber:
-      wizard.state.value.formData.enterpriseIdentification
-        ?.officialGazetteNumber || "",
-    publicEntitiesDate:
-      wizard.state.value.formData.enterpriseIdentification
-        ?.publicEntitiesDate || "",
-    authority:
-      wizard.state.value.formData.enterpriseIdentification?.authority || "",
-    ontCode:
-      wizard.state.value.formData.enterpriseIdentification?.ontCode || "N/A",
+      officialGazetteNumber:
+        wizard.state.value.formData.enterpriseIdentification?.officialGazetteNumber || '',
+      publicEntitiesDate:
+        wizard.state.value.formData.enterpriseIdentification?.publicEntitiesDate || '',
+      authority: wizard.state.value.formData.enterpriseIdentification?.authority || '',
+      ontCode: wizard.state.value.formData.enterpriseIdentification?.ontCode || 'N/A',
 
-    publicPhones:
-      wizard.state.value.formData.enterpriseIdentification?.publicPhones || "",
-    website:
-      wizard.state.value.formData.enterpriseIdentification?.website || "",
-    publicEntityEmail:
-      wizard.state.value.formData.enterpriseIdentification?.publicEntityEmail ||
-      "",
-    publicEntityAddress:
-      wizard.state.value.formData.enterpriseIdentification
-        ?.publicEntityAddress || "",
+      publicPhones: wizard.state.value.formData.enterpriseIdentification?.publicPhones || '',
+      website: wizard.state.value.formData.enterpriseIdentification?.website || '',
+      publicEntityEmail:
+        wizard.state.value.formData.enterpriseIdentification?.publicEntityEmail || '',
+      publicEntityAddress:
+        wizard.state.value.formData.enterpriseIdentification?.publicEntityAddress || '',
 
-    publicPhones2:
-      wizard.state.value.formData.enterpriseIdentification?.publicPhones2 || "",
-    website2:
-      wizard.state.value.formData.enterpriseIdentification?.website2 || "",
-    publicEntityEmail2:
-      wizard.state.value.formData.enterpriseIdentification
-        ?.publicEntityEmail2 || "",
-  },
-});
-
-const [rifType] = defineField("rifType");
-const [rifNumber] = defineField("rifNumber");
-const [socialReason] = defineField("socialReason");
-const [tradename] = defineField("tradename");
-const [economicActivity] = defineField("economicActivity");
-const [specificActivity] = defineField("specificActivity");
-
-const [officesNumber] = defineField("officesNumber");
-const [countryLargestPresence] = defineField("countryLargestPresence");
-const [employeesNumber] = defineField("employeesNumber");
-
-const [registerRecordName] = defineField("registerRecordName");
-const [registerNumber] = defineField("registerNumber");
-const [registerTook] = defineField("registerTook");
-const [registerFol] = defineField("registerFol");
-const [registerDate] = defineField("registerDate");
-const [registerCapital] = defineField("registerCapital");
-
-const [lastModRecordName] = defineField("lastModRecordName");
-const [lastModNumber] = defineField("lastModNumber");
-const [lastModTook] = defineField("lastModTook");
-const [lastModFol] = defineField("lastModFol");
-const [lastModDate] = defineField("lastModDate");
-const [lastModCapital] = defineField("lastModCapital");
-
-const [officialGazetteNumber] = defineField("officialGazetteNumber");
-const [publicEntitiesDate] = defineField("publicEntitiesDate");
-const [authority] = defineField("authority");
-const [ontCode] = defineField("ontCode");
-
-const [publicPhones] = defineField("publicPhones");
-const [website] = defineField("website");
-const [publicEntityEmail] = defineField("publicEntityEmail");
-const [publicEntityAddress] = defineField("publicEntityAddress");
-const [publicPhones2] = defineField("publicPhones2");
-const [website2] = defineField("website2");
-const [publicEntityEmail2] = defineField("publicEntityEmail2");
-
-const validate = handleSubmit((values) => {
-  const payload = {
-    taxType: values.rifType,
-    taxInformationRegistration: values.rifNumber,
-    socialReason: values.socialReason,
-    tradename: values.tradename,
-    economicActivity: values.economicActivity,
-    specificActivity: values.specificActivity,
-
-    officesNumber: values.officesNumber,
-    countryLargestPresence: values.countryLargestPresence,
-    employeesNumber: values.employeesNumber,
-
-    registerData: {
-      recordName: values.registerRecordName,
-      number: values.registerNumber,
-      took: values.registerTook,
-      fol: values.registerFol,
-      date: values.registerDate,
-      socialCapital: values.registerCapital,
+      publicPhones2: wizard.state.value.formData.enterpriseIdentification?.publicPhones2 || '',
+      website2: wizard.state.value.formData.enterpriseIdentification?.website2 || '',
+      publicEntityEmail2:
+        wizard.state.value.formData.enterpriseIdentification?.publicEntityEmail2 || '',
     },
+  })
 
-    lastModification: {
-      recordName: values.lastModRecordName,
-      number: values.lastModNumber,
-      took: values.lastModTook,
-      fol: values.lastModFol,
-      date: values.lastModDate,
-      socialCapital: values.lastModCapital,
-    },
+  const [rifType] = defineField('rifType')
+  const [rifNumber] = defineField('rifNumber')
+  const [socialReason] = defineField('socialReason')
+  const [tradename] = defineField('tradename')
+  const [economicActivity] = defineField('economicActivity')
+  const [specificActivity] = defineField('specificActivity')
 
-    officialGazetteNumber: values.officialGazetteNumber,
-    publicEntitiesDate: values.publicEntitiesDate,
-    authority: values.authority,
-    ontCode: values.ontCode,
+  const [officesNumber] = defineField('officesNumber')
+  const [countryLargestPresence] = defineField('countryLargestPresence')
+  const [employeesNumber] = defineField('employeesNumber')
 
-    publicPhones: values.publicPhones,
-    website: values.website,
-    publicEntityEmail: values.publicEntityEmail,
-    publicEntityAddress: values.publicEntityAddress,
+  const [registerRecordName] = defineField('registerRecordName')
+  const [registerNumber] = defineField('registerNumber')
+  const [registerTook] = defineField('registerTook')
+  const [registerFol] = defineField('registerFol')
+  const [registerDate] = defineField('registerDate')
+  const [registerCapital] = defineField('registerCapital')
 
-    publicPhones2: values.publicPhones2,
-    website2: values.website2,
-    publicEntityEmail2: values.publicEntityEmail2,
-  };
+  const [lastModRecordName] = defineField('lastModRecordName')
+  const [lastModNumber] = defineField('lastModNumber')
+  const [lastModTook] = defineField('lastModTook')
+  const [lastModFol] = defineField('lastModFol')
+  const [lastModDate] = defineField('lastModDate')
+  const [lastModCapital] = defineField('lastModCapital')
 
-  wizard.updateFormData({ enterpriseIdentification: payload });
+  const [officialGazetteNumber] = defineField('officialGazetteNumber')
+  const [publicEntitiesDate] = defineField('publicEntitiesDate')
+  const [authority] = defineField('authority')
+  const [ontCode] = defineField('ontCode')
 
-  wizard.nextStep();
-});
+  const [publicPhones] = defineField('publicPhones')
+  const [website] = defineField('website')
+  const [publicEntityEmail] = defineField('publicEntityEmail')
+  const [publicEntityAddress] = defineField('publicEntityAddress')
+  const [publicPhones2] = defineField('publicPhones2')
+  const [website2] = defineField('website2')
+  const [publicEntityEmail2] = defineField('publicEntityEmail2')
 
-defineExpose({ validate });
+  const validate = handleSubmit((values) => {
+    const payload = {
+      taxType: values.rifType,
+      taxInformationRegistration: values.rifNumber,
+      socialReason: values.socialReason,
+      tradename: values.tradename,
+      economicActivity: values.economicActivity,
+      specificActivity: values.specificActivity,
+
+      officesNumber: values.officesNumber,
+      countryLargestPresence: values.countryLargestPresence,
+      employeesNumber: values.employeesNumber,
+
+      registerData: {
+        recordName: values.registerRecordName,
+        number: values.registerNumber,
+        took: values.registerTook,
+        fol: values.registerFol,
+        date: values.registerDate,
+        socialCapital: values.registerCapital,
+      },
+
+      lastModification: {
+        recordName: values.lastModRecordName,
+        number: values.lastModNumber,
+        took: values.lastModTook,
+        fol: values.lastModFol,
+        date: values.lastModDate,
+        socialCapital: values.lastModCapital,
+      },
+
+      officialGazetteNumber: values.officialGazetteNumber,
+      publicEntitiesDate: values.publicEntitiesDate,
+      authority: values.authority,
+      ontCode: values.ontCode,
+
+      publicPhones: values.publicPhones,
+      website: values.website,
+      publicEntityEmail: values.publicEntityEmail,
+      publicEntityAddress: values.publicEntityAddress,
+
+      publicPhones2: values.publicPhones2,
+      website2: values.website2,
+      publicEntityEmail2: values.publicEntityEmail2,
+    }
+
+    wizard.updateFormData({ enterpriseIdentification: payload })
+
+    wizard.nextStep()
+  })
+
+  defineExpose({ validate })
 </script>
 
 <template>
@@ -261,11 +225,7 @@ defineExpose({ validate });
 
       <FormBaseLayout>
         <div class="w-full">
-          <FormBaseLabel
-            htmlFor="rifNumber"
-            label="Registro de información fiscal"
-            required
-          />
+          <FormBaseLabel htmlFor="rifNumber" label="Registro de información fiscal" required />
 
           <div class="flex gap-1">
             <div class="w-16 shrink-0">
@@ -502,12 +462,7 @@ defineExpose({ validate });
           required
         />
 
-        <FormBaseInput
-          name="website"
-          label="Sitio web"
-          v-model="website"
-          placeholder="No aplica"
-        />
+        <FormBaseInput name="website" label="Sitio web" v-model="website" placeholder="No aplica" />
 
         <FormBaseInput
           name="publicEntityEmail"
@@ -528,16 +483,11 @@ defineExpose({ validate });
         />
       </FormBaseLayout>
 
-      <h6 class="text-sm font-bold text-maximiza-gris4 mb-4">
+      <h6 class="mb-4 text-sm font-bold text-maximiza-gris4">
         Información de contacto alternativa (Opcional)
       </h6>
       <FormBaseLayout>
-        <FormBaseInput
-          name="publicPhones2"
-          label="Teléfono"
-          type="tel"
-          v-model="publicPhones2"
-        />
+        <FormBaseInput name="publicPhones2" label="Teléfono" type="tel" v-model="publicPhones2" />
         <FormBaseInput
           name="website2"
           label="Sitio web"

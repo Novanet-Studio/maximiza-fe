@@ -1,39 +1,31 @@
 <script setup lang="ts">
-const { source, stockholders } = defineProps<{
-  source: MXMZ.PepProfile;
-  stockholders?: MXMZ.Stockholders[];
-}>();
+  const { source, stockholders } = defineProps<{
+    source: MXMZ.PepProfile
+    stockholders?: MXMZ.Stockholders[]
+  }>()
 
-import { getLabel, countriesOptions } from "~/assets/data/formSources";
+  import { getLabel, countriesOptions } from '~/assets/data/formSources'
 </script>
 
 <template>
   <div v-if="stockholders && stockholders?.length > 0">
-    <div class="spreadsheet__item font-bold text-[10px]">
-      Accionistar / Junta directiva
-    </div>
+    <div class="spreadsheet__item text-[10px] font-bold">Accionistar / Junta directiva</div>
 
-    <div class="w-full grid grid-cols-[115px_1fr]">
-      <aside
-        class="bg-maximiza-verde1 min-h-[60px] flex justify-center items-center"
-      >
-        <h5 class="text-maximiza-blanco1 font-bold">
-          Persona expuesta politicamente
-        </h5>
+    <div class="grid w-full grid-cols-[115px_1fr]">
+      <aside class="flex min-h-[60px] items-center justify-center bg-maximiza-verde1">
+        <h5 class="font-bold text-maximiza-blanco1">Persona expuesta politicamente</h5>
       </aside>
       <div>
         <div class="grid grid-cols-[1.5fr_1fr_1fr_1fr]">
-          <div class="spreadsheet__item font-bold text-[10px]">
+          <div class="spreadsheet__item text-[10px] font-bold">
             Nombre de la institución o ente de adscripción:
           </div>
 
-          <div class="spreadsheet__item font-bold text-[10px]">
-            Cargo que desempeña:
-          </div>
+          <div class="spreadsheet__item text-[10px] font-bold">Cargo que desempeña:</div>
 
-          <div class="spreadsheet__item font-bold text-[10px]">País:</div>
+          <div class="spreadsheet__item text-[10px] font-bold">País:</div>
 
-          <div class="spreadsheet__item font-bold text-[10px]">
+          <div class="spreadsheet__item text-[10px] font-bold">
             Identificación del pep en caso de relacionado::
           </div>
         </div>
@@ -43,8 +35,7 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
             <div
               v-if="
                 stockholders[0] &&
-                (stockholders[0].esPep == 'SI' ||
-                  stockholders[0].relatedWithPep == 'SI')
+                (stockholders[0].esPep == 'SI' || stockholders[0].relatedWithPep == 'SI')
               "
               class="content"
             >
@@ -56,8 +47,7 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
             <div
               v-if="
                 stockholders[0] &&
-                (stockholders[0].esPep == 'SI' ||
-                  stockholders[0].relatedWithPep == 'SI')
+                (stockholders[0].esPep == 'SI' || stockholders[0].relatedWithPep == 'SI')
               "
               class="content"
             >
@@ -69,8 +59,7 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
             <div
               v-if="
                 stockholders[0] &&
-                (stockholders[0].esPep == 'SI' ||
-                  stockholders[0].relatedWithPep == 'SI')
+                (stockholders[0].esPep == 'SI' || stockholders[0].relatedWithPep == 'SI')
               "
               class="content"
             >
@@ -82,8 +71,7 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
             <div
               v-if="
                 stockholders[0] &&
-                (stockholders[0].esPep == 'SI' ||
-                  stockholders[0].relatedWithPep == 'SI')
+                (stockholders[0].esPep == 'SI' || stockholders[0].relatedWithPep == 'SI')
               "
               class="content"
             >
@@ -98,8 +86,7 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
             <div
               v-if="
                 stockholders[1] &&
-                (stockholders[1].esPep == 'SI' ||
-                  stockholders[1].relatedWithPep == 'SI')
+                (stockholders[1].esPep == 'SI' || stockholders[1].relatedWithPep == 'SI')
               "
               class="content"
             >
@@ -111,8 +98,7 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
             <div
               v-if="
                 stockholders[1] &&
-                (stockholders[1].esPep == 'SI' ||
-                  stockholders[1].relatedWithPep == 'SI')
+                (stockholders[1].esPep == 'SI' || stockholders[1].relatedWithPep == 'SI')
               "
               class="content"
             >
@@ -124,8 +110,7 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
             <div
               v-if="
                 stockholders[1] &&
-                (stockholders[1].esPep == 'SI' ||
-                  stockholders[1].relatedWithPep == 'SI')
+                (stockholders[1].esPep == 'SI' || stockholders[1].relatedWithPep == 'SI')
               "
               class="content"
             >
@@ -137,8 +122,7 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
             <div
               v-if="
                 stockholders[1] &&
-                (stockholders[1].esPep == 'SI' ||
-                  stockholders[1].relatedWithPep == 'SI')
+                (stockholders[1].esPep == 'SI' || stockholders[1].relatedWithPep == 'SI')
               "
               class="content"
             >
@@ -153,8 +137,7 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
             <div
               v-if="
                 stockholders[2] &&
-                (stockholders[2].esPep == 'SI' ||
-                  stockholders[2].relatedWithPep == 'SI')
+                (stockholders[2].esPep == 'SI' || stockholders[2].relatedWithPep == 'SI')
               "
               class="content"
             >
@@ -166,8 +149,7 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
             <div
               v-if="
                 stockholders[2] &&
-                (stockholders[2].esPep == 'SI' ||
-                  stockholders[2].relatedWithPep == 'SI')
+                (stockholders[2].esPep == 'SI' || stockholders[2].relatedWithPep == 'SI')
               "
               class="content"
             >
@@ -179,8 +161,7 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
             <div
               v-if="
                 stockholders[2] &&
-                (stockholders[2].esPep == 'SI' ||
-                  stockholders[2].relatedWithPep == 'SI')
+                (stockholders[2].esPep == 'SI' || stockholders[2].relatedWithPep == 'SI')
               "
               class="content"
             >
@@ -192,8 +173,7 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
             <div
               v-if="
                 stockholders[2] &&
-                (stockholders[2].esPep == 'SI' ||
-                  stockholders[2].relatedWithPep == 'SI')
+                (stockholders[2].esPep == 'SI' || stockholders[2].relatedWithPep == 'SI')
               "
               class="content"
             >
@@ -232,7 +212,7 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
             <span> El inversionista es (PEP)</span>
             <div
               :class="[
-                'border px-1 ml-1 font-black flex items-center justify-center',
+                'ml-1 flex items-center justify-center border px-1 font-black',
                 source.isPep === 'SI'
                   ? 'bg-maximiza-error text-maximiza-blanco1'
                   : 'bg-maximiza-verde1 text-maximiza-blanco1',
@@ -244,26 +224,22 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
-            {{ source.isPep === "SI" ? source.entityName : "" }}
+            {{ source.isPep === 'SI' ? source.entityName : '' }}
           </td>
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
-            {{ source.isPep === "SI" ? source.position : "" }}
+            {{ source.isPep === 'SI' ? source.position : '' }}
           </td>
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
-            {{
-              source.isPep === "SI"
-                ? getLabel(source.country, countriesOptions)
-                : ""
-            }}
+            {{ source.isPep === 'SI' ? getLabel(source.country, countriesOptions) : '' }}
           </td>
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
-            {{ source.isPep === "SI" ? source.relatedIdentification : "" }}
+            {{ source.isPep === 'SI' ? source.relatedIdentification : '' }}
           </td>
         </tr>
         <!-- fila -->
@@ -272,7 +248,7 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
             <span> Tiene parentesco con (PEP)</span>
             <div
               :class="[
-                'border px-1 ml-1 font-black flex items-center justify-center',
+                'ml-1 flex items-center justify-center border px-1 font-black',
                 source.hasPepRelationship === 'SI'
                   ? 'bg-maximiza-error text-maximiza-blanco1'
                   : 'bg-maximiza-verde1 text-maximiza-blanco1',
@@ -284,30 +260,24 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
-            {{ source.hasPepRelationship === "SI" ? source.entityName : "" }}
+            {{ source.hasPepRelationship === 'SI' ? source.entityName : '' }}
           </td>
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
-            {{ source.hasPepRelationship === "SI" ? source.position : "" }}
-          </td>
-        </tr>
-        <tr class="spreadsheet__item">
-          <td class="font-bold">
-            {{
-              source.hasPepRelationship === "SI"
-                ? getLabel(source.country, countriesOptions)
-                : ""
-            }}
+            {{ source.hasPepRelationship === 'SI' ? source.position : '' }}
           </td>
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
             {{
-              source.hasPepRelationship === "SI"
-                ? source.relatedIdentification
-                : ""
+              source.hasPepRelationship === 'SI' ? getLabel(source.country, countriesOptions) : ''
             }}
+          </td>
+        </tr>
+        <tr class="spreadsheet__item">
+          <td class="font-bold">
+            {{ source.hasPepRelationship === 'SI' ? source.relatedIdentification : '' }}
           </td>
         </tr>
         <!-- fila -->
@@ -316,7 +286,7 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
             <span> Es asociado cercano de (PE)</span>
             <div
               :class="[
-                'border px-1 ml-1 font-black flex items-center justify-center',
+                'ml-1 flex items-center justify-center border px-1 font-black',
                 source.isPepAssociate === 'SI'
                   ? 'bg-maximiza-error text-maximiza-blanco1'
                   : 'bg-maximiza-verde1 text-maximiza-blanco1',
@@ -328,28 +298,22 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
-            {{ source.isPepAssociate === "SI" ? source.entityName : "" }}
+            {{ source.isPepAssociate === 'SI' ? source.entityName : '' }}
           </td>
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
-            {{ source.isPepAssociate === "SI" ? source.position : "" }}
+            {{ source.isPepAssociate === 'SI' ? source.position : '' }}
           </td>
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
-            {{
-              source.isPepAssociate === "SI"
-                ? getLabel(source.country, countriesOptions)
-                : ""
-            }}
+            {{ source.isPepAssociate === 'SI' ? getLabel(source.country, countriesOptions) : '' }}
           </td>
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
-            {{
-              source.isPepAssociate === "SI" ? source.relatedIdentification : ""
-            }}
+            {{ source.isPepAssociate === 'SI' ? source.relatedIdentification : '' }}
           </td>
         </tr>
       </tbody>

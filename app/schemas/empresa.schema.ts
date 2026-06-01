@@ -55,4 +55,4 @@ query EmpresaQuery {
     }
   }
 }
-`;
+`

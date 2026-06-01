@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  compatibilityDate: "2025-07-15",
+  compatibilityDate: '2025-07-15',
   devtools: { enabled: false },
 
   future: {
@@ -9,56 +9,59 @@ export default defineNuxtConfig({
   ssr: true,
 
   modules: [
-    "@nuxtjs/tailwindcss",
-    ["@nuxtjs/strapi", { version: "v4", url: process.env.STRAPI_API_URL || "http://localhost:1337", prefix: "/api" }],
-    "@nuxt/image",
-    "@vite-pwa/nuxt",
-    "@nuxt/fonts",
+    '@nuxtjs/tailwindcss',
+    [
+      '@nuxtjs/strapi',
+      { version: 'v4', url: process.env.STRAPI_API_URL || 'http://localhost:1337', prefix: '/api' },
+    ],
+    '@nuxt/image',
+    '@vite-pwa/nuxt',
+    '@nuxt/fonts',
   ],
 
   runtimeConfig: {
     public: {
       strapi: {
-        url: process.env.STRAPI_API_URL || "http://localhost:1337",
-        prefix: "/api",
-        version: "v4",
+        url: process.env.STRAPI_API_URL || 'http://localhost:1337',
+        prefix: '/api',
+        version: 'v4',
       },
     },
   },
 
   pwa: {
     manifest: {
-      name: "Maximiza - Asesoría de inversión",
-      short_name: "Maximiza",
+      name: 'Maximiza - Asesoría de inversión',
+      short_name: 'Maximiza',
       description:
-        "Somos una casa de bolsa que ofrece innovadoras herramientas para la inversión, gestión y estructuración de activos financieros.",
-      theme_color: "#00735f",
-      background_color: "#ffffff",
-      display: "standalone",
-      orientation: "portrait",
-      lang: "es",
+        'Somos una casa de bolsa que ofrece innovadoras herramientas para la inversión, gestión y estructuración de activos financieros.',
+      theme_color: '#00735f',
+      background_color: '#ffffff',
+      display: 'standalone',
+      orientation: 'portrait',
+      lang: 'es',
       icons: [
         {
-          src: "pwa-192x192.png",
-          sizes: "192x192",
-          type: "image/png",
+          src: 'pwa-192x192.png',
+          sizes: '192x192',
+          type: 'image/png',
         },
         {
-          src: "pwa-512x512.png",
-          sizes: "512x512",
-          type: "image/png",
+          src: 'pwa-512x512.png',
+          sizes: '512x512',
+          type: 'image/png',
         },
         {
-          src: "pwa-512x512.png",
-          sizes: "512x512",
-          type: "image/png",
-          purpose: "any maskable",
+          src: 'pwa-512x512.png',
+          sizes: '512x512',
+          type: 'image/png',
+          purpose: 'any maskable',
         },
       ],
     },
 
     workbox: {
-      globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
+      globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
       navigateFallback: null,
     },
 
@@ -66,22 +69,19 @@ export default defineNuxtConfig({
       installPrompt: true,
     },
 
-    registerType: "autoUpdate",
+    registerType: 'autoUpdate',
     devOptions: {
       enabled: true,
-      type: "module",
+      type: 'module',
     },
   },
 
-  css: [
-    "~/assets/css/main.css",
-    "@fortawesome/fontawesome-svg-core/styles.css",
-  ],
+  css: ['~/assets/css/main.css', '@fortawesome/fontawesome-svg-core/styles.css'],
 
   router: {
     options: {
-      linkActiveClass: "active",
-      linkExactActiveClass: "exact-active",
+      linkActiveClass: 'active',
+      linkExactActiveClass: 'exact-active',
     },
   },
 
@@ -89,19 +89,19 @@ export default defineNuxtConfig({
     strict: true,
     tsConfig: {
       compilerOptions: {
-        types: ["global.d.ts"],
+        types: ['global.d.ts'],
       },
     },
   },
 
   gtag: {
-    id: "G-4W17JXKS6P",
+    id: 'G-4W17JXKS6P',
   },
 
   icon: {
-    class: "icon",
-    mode: "css",
-    cssLayer: "base",
+    class: 'icon',
+    mode: 'css',
+    cssLayer: 'base',
   },
 
   devServer: {
@@ -110,59 +110,59 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      routes: ["/netlify-form-contact.html", "/netlify-form-suggestion.html"],
+      routes: ['/netlify-form-contact.html', '/netlify-form-suggestion.html'],
     },
     moduleSideEffects: ['@sparticuz/chromium'],
     externals: {
       inline: [],
-      external: ['@sparticuz/chromium', 'puppeteer-core']
+      external: ['@sparticuz/chromium', 'puppeteer-core'],
     },
     routeRules: {
-      '/api/generate-pdf': { cors: true, headers: { 'Access-Control-Allow-Origin': '*' } }
-    }
+      '/api/generate-pdf': { cors: true, headers: { 'Access-Control-Allow-Origin': '*' } },
+    },
   },
 
   app: {
     pageTransition: {
-      name: "page",
-      mode: "out-in",
+      name: 'page',
+      mode: 'out-in',
     },
 
     head: {
-      title: "Maximiza - Asesoría de inversión",
-      titleTemplate: "%s",
+      title: 'Maximiza - Asesoría de inversión',
+      titleTemplate: '%s',
       meta: [
         {
-          name: "title",
-          content: "Maximiza",
+          name: 'title',
+          content: 'Maximiza',
         },
         {
-          name: "description",
+          name: 'description',
           content:
-            "Somos una casa de bolsa que ofrece innovadoras herramientas para la inversión, gestión y estructuración de activos financieros.",
+            'Somos una casa de bolsa que ofrece innovadoras herramientas para la inversión, gestión y estructuración de activos financieros.',
         },
         {
-          name: "name",
-          content: "Maximiza WebApp",
+          name: 'name',
+          content: 'Maximiza WebApp',
         },
         {
-          name: "author",
-          content: "Novanet Studio <info@novanet.studio>",
+          name: 'author',
+          content: 'Novanet Studio <info@novanet.studio>',
         },
 
-        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       ],
       link: [
-        { rel: "icon", type: "image/png", href: "/favicon.png" },
-        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        { rel: 'icon', type: 'image/png', href: '/favicon.png' },
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         {
-          rel: "preconnect",
-          href: "https://fonts.gstatic.com",
-          crossorigin: "",
+          rel: 'preconnect',
+          href: 'https://fonts.gstatic.com',
+          crossorigin: '',
         },
         {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
+          rel: 'stylesheet',
+          href: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap',
         },
       ],
     },
@@ -170,12 +170,12 @@ export default defineNuxtConfig({
 
   image: {
     cloudinary: {
-      baseURL: "https://res.cloudinary.com/novanet-studio/image/upload/",
+      baseURL: 'https://res.cloudinary.com/novanet-studio/image/upload/',
     },
   },
   vite: {
     optimizeDeps: {
-      include: ["qs"],
+      include: ['qs'],
     },
   },
-});
+})
