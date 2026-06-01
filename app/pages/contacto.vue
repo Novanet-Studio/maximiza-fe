@@ -11,17 +11,17 @@ const contactMethods = [
     {
         title: 'Atención al cliente',
         value: commonData.email,
-        icon: '/images/pages/contact/items/1.webp'
+        icon: '/images/pages/contact/items/maximiza-logo-instagram-icono.webp'
     },
     {
         title: 'Master',
         value: commonData.phone,
-        icon: '/images/pages/contact/items/2.webp'
+        icon: '/images/pages/contact/items/maximiza-contacto-master-icono.webp'
     },
     {
         title: 'Fax',
         value: commonData.fax,
-        icon: '/images/pages/contact/items/3.webp'
+        icon: '/images/pages/contact/items/maximiza-contacto-fax-icono.webp'
     }
 ];
 
@@ -35,7 +35,7 @@ useJsonLd(jsonld.contact);
         <CommonHero :title="'Inicie la estructuración de su nueva estrategia financiera'"
             :description="'Evaluación confidencial para proteger su tesorería de la volatilidad o diseñar un financiamiento a la medida para su ciclo productivo.'"
             :image="{
-                src: '/images/hero/main-contacto.webp',
+                src: '/images/hero/maximiza-octagono-forma-abstracta-cristal.webp',
                 alt: 'Hero Background'
             }" :pattern="{
                 src: '/images/hero/pattern-contacto.webp',
@@ -66,8 +66,9 @@ useJsonLd(jsonld.contact);
                     <motion.div v-for="(method, index) in contactMethods" :key="index" :variants="generalItemVariants"
                         class="w-full h-28 bg-white border border-gray flex">
                         <div
-                            class="mt-2 w-24 h-24 bg-black-alt -translate-x-1/2 flex shrink-0 items-center justify-center">
-                            <img :src="method.icon" :alt="method.title" :title="method.title" class="w-18 h-18 object-contain" />
+                            class="mt-2 w-18 h-18 p-6 bg-black-alt -translate-x-1/2 flex shrink-0 items-center justify-center">
+                            <img :src="method.icon" :alt="method.title" :title="method.title"
+                                class="w-18 h-18 object-contain" />
                         </div>
                         <div class="-translate-x-5 flex flex-col justify-center py-8 grow">
                             <h5 class="text-black-alt">{{ method.title }}</h5>

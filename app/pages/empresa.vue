@@ -75,7 +75,7 @@ useJsonLd(jsonld.about);
                 text: 'Configure su estrategia patrimonial',
                 link: '#'
             }" :image="{
-                src: '/images/hero/main-empresa.webp',
+                src: '/images/hero/maximiza-cubo-forma-abstracta-cristal.webp',
                 alt: 'Hero Background'
             }" :pattern="{
                 src: '/images/hero/pattern-empresa.webp',
@@ -92,15 +92,16 @@ useJsonLd(jsonld.about);
 
             <div class="w-full max-w-6xl flex flex-col gap-16 mt-6 px-4 md:px-0">
                 <motion.div class="flex flex-col md:flex-row items-center w-full" :variants="generalItemVariants">
-                    <div
-                        class="bg-primary w-62.5 h-62.5 p-4 flex shrink-0 justify-center items-center z-10 relative">
-                        <img src="/images/pages/empresa/info-section-1.webp" alt="Especialistas en asesoría"
-                            title="Especialistas en asesoría" class="w-full h-full object-contain" />
+                    <div class="bg-primary w-62.5 h-62.5 p-4 flex shrink-0 justify-center items-center z-10 relative">
+                        <img src="/images/pages/empresa/maximiza-faro-poligonal-trazo.webp"
+                            alt="Especialistas en asesoría" title="Especialistas en asesoría"
+                            class="w-full h-full object-contain" />
                     </div>
                     <div
                         class="max-w-[940px] lg:h-[342px] bg-linear-to-b md:bg-linear-to-r from-white  to-white-alt2 p-8 pt-40 md:p-16 md:pl-36 md:pr-4 w-full grow -mt-30 md:m-0 md:-ml-31.25 z-0 flex flex-col justify-center">
                         <h4 class="text-xl lending-[22px] text-black-alt mb-2">Foco corporativo especializado</h4>
-                        <p class="text-xl lending-[28px] md:text-base md:lending-[24px] lg:text-xl lg:lending-[28px] text-gray">
+                        <p
+                            class="text-xl lending-[28px] md:text-base md:lending-[24px] lg:text-xl lg:lending-[28px] text-gray">
                             Brindamos asesoría analítica exhaustiva a corporaciones nacionales y entidades extranjeras
                             en la intrincada valoración de empresas de gran capitalización, estructuración de fusiones y
                             adquisiciones (M&A), y diseño de financiamientos a la medida.
@@ -110,15 +111,16 @@ useJsonLd(jsonld.about);
 
                 <motion.div class="flex flex-col md:flex-row-reverse items-center w-full"
                     :variants="generalItemVariants">
-                    <div
-                        class="bg-black-alt w-62.5 h-62.5 p-4 flex shrink-0 justify-center items-center z-10 relative">
-                        <img src="/images/pages/empresa/info-section-2.webp" alt="Alianzas formales"
+                    <div class="bg-black-alt w-62.5 h-62.5 p-4 flex shrink-0 justify-center items-center z-10 relative">
+                        <img src="/images/pages/empresa/maximiza-rey-poligonal-trazo.webp" alt="Alianzas formales"
                             title="Alianzas formales" class="w-full h-full object-contain" />
                     </div>
                     <div
                         class="max-w-[940px] lg:h-[342px] bg-linear-to-t md:bg-linear-to-r from-white-alt2 to-white p-8 pt-40 md:p-16 md:pr-36 md:pl-4 w-full grow -mt-30 md:m-0 md:-mr-31.25 z-0 flex flex-col justify-center">
-                        <h4 class="text-xl lending-[22px] text-black-alt mb-2 md:text-right">Ecosistema de promoción financiera</h4>
-                        <p class="text-xl lending-[28px] md:text-base md:lending-[24px] lg:text-xl lg:lending-[28px] text-gray md:text-right">
+                        <h4 class="text-xl lending-[22px] text-black-alt mb-2 md:text-right">Ecosistema de promoción
+                            financiera</h4>
+                        <p
+                            class="text-xl lending-[28px] md:text-base md:lending-[24px] lg:text-xl lg:lending-[28px] text-gray md:text-right">
                             Nuestro ADN innovador nos ha llevado a participar activamente en la cimentación de vehículos
                             financieros líderes, tales como Silk & CO (banca de inversión regional) y Vitral Advisors
                             LLC (RIA registrado en la SEC, Nueva York), lo que nos capacita para ofrecer soluciones
@@ -159,13 +161,11 @@ useJsonLd(jsonld.about);
 
             <ul class="container w-full mx-auto flex flex-col md:flex-row justify-center gap-4 lg:gap-12">
                 <motion.li v-for="(value, index) in institutionalValues" :key="`empresa_item_${index}`"
-                    class="flex-1 flex flex-col items-center justify-center" :variants="headerItemVariants">
+                    class="flex-1 flex flex-col justify-center border-l-1 border-white pl-4"
+                    :variants="headerItemVariants">
 
-                    <img :src="value.image" :alt="value.label" :title="value.label"
-                        class="w-40 h-40 md:w-20 md:h-20 2xl:w-40 2xl:h-40 mb-4 object-contain" />
-
-                    <h5 class="text-white font-semibold text-center">{{ value.label }}</h5>
-                    <p class="text-white text-center ">{{ value.description }}</p>
+                    <h5 class="text-white font-semibold">{{ value.label }}</h5>
+                    <p class="text-white ">{{ value.description }}</p>
 
                 </motion.li>
             </ul>
@@ -191,8 +191,8 @@ useJsonLd(jsonld.about);
                 </div>
 
                 <div class="p-4 `md:p-8 lg:p-12 xl:p-16 bg-white-alt grid grid-cols-3 gap-6">
-                    <motion.img v-for="(logo, index) in alliesLogos" :key="`empresa_allies_${index}`" :src="logo.src"
-                        :alt="logo.alt" :title="logo.alt" class="aspect-square" :variants="generalItemVariants" />
+                    <motion.img v-for="(logo, index) in alliesLogos" :key="`empresa_allies_${index}`" :title="logo.alt"
+                        class="aspect-square" :variants="generalItemVariants" />
                 </div>
             </div>
         </motion.section>

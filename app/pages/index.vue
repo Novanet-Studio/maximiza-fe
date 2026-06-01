@@ -16,7 +16,7 @@ useJsonLd(jsonld.home);
                 text: 'Quiero invertir',
                 link: '#'
             }" :image="{
-                src: '/images/hero/main-home.webp',
+                src: '/images/hero/maximiza-aro-forma-abstracta-cristal.webp',
                 alt: 'Hero Background'
             }" :pattern="{
                 src: '/images/hero/pattern-home.webp',

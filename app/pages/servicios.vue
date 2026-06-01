@@ -18,7 +18,7 @@ useJsonLd(jsonld.services);
                 text: 'Explore nuestras soluciones financieras',
                 link: '#'
             }" :image="{
-                src: '/images/hero/main-servicios.webp',
+                src: '/images/hero/maximiza-organica-forma-abstracta-cristal.webp',
                 alt: 'Hero Background'
             }" :pattern="{
                 src: '/images/hero/pattern-servicios.webp',
@@ -70,7 +70,7 @@ useJsonLd(jsonld.services);
 
                     <div
                         class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] lg:w-64 aspect-square bg-white-alt flex items-center justify-center p-6 lg:p-10 transition-transform duration-300">
-                        <img src="/images/pages/home/person-type-natural.webp" alt="Persona natural" title="Persona natural"
+                        <img src="/images/pages/home/maximiza-planta-cristal-inversionista-natural.webp" alt="Persona natural" title="Persona natural"
                             class="w-full h-full object-contain relative z-10" />
                     </div>
 
@@ -87,7 +87,7 @@ useJsonLd(jsonld.services);
 
                     <div
                         class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[220px] lg:w-64 aspect-square bg-white-alt flex items-center justify-center p-6 lg:p-10 transition-transform duration-300">
-                        <img src="/images/pages/home/person-type-juridica.webp" alt="Persona jurídica" title="Persona jurídica"
+                        <img src="/images/pages/home/maximiza-edificios-cristal-inversionista-juridico.webp" alt="Persona jurídica" title="Persona jurídica"
                             class="w-full h-full object-contain relative z-10" />
                     </div>
 

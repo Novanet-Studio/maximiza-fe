@@ -16,7 +16,7 @@ useJsonLd(jsonld.register);
         <CommonHero :title="'¡Bienvenido a Maximiza <br /> Casa de Bolsa!'"
             :description="'Abre tu Cuenta de Corretaje Bursátil de forma rápida, cumpliendo con la normativa de la Superintendencia Nacional de Valores (SNV).'"
             :image="{
-                src: '/images/hero/main-registro.webp',
+                src: '/images/hero/maximiza-circulo-forma-abstracta-cristal.webp',
                 alt: 'Hero Background'
             }" :pattern="{
                 src: '/images/hero/pattern-registro.webp',
@@ -38,7 +38,7 @@ useJsonLd(jsonld.register);
                             <motion.div class="absolute left-0 top-0 h-full bg-primary z-0"
                                 :variants="overlayVariants" />
 
-                            <img src="/images/pages/home/person-type-natural.webp" alt="Person Type Natural" title="Person Type Natural"
+                            <img src="/images/pages/home/maximiza-planta-cristal-inversionista-natural.webp" alt="Person Type Natural" title="Person Type Natural"
                                 class="w-full h-full object-contain relative z-10" />
                         </div>
 
@@ -57,7 +57,7 @@ useJsonLd(jsonld.register);
                             <motion.div class="absolute left-0 top-0 h-full bg-black-alt z-0"
                                 :variants="overlayVariants" />
 
-                            <img src="/images/pages/home/person-type-juridica.webp" alt="Person Type Jurídica" title="Person Type Jurídica"
+                            <img src="/images/pages/home/maximiza-edificios-cristal-inversionista-juridico.webp" alt="Person Type Jurídica" title="Person Type Jurídica"
                                 class="w-full h-full object-contain relative z-10" />
                         </div>
 

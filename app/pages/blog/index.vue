@@ -12,7 +12,7 @@ useJsonLd(jsonld.blog);
         <CommonHero :title="'Perspectivas estratégicas <br /> y análisis de mercado'"
             :description="'Inteligencia financiera para el análisis de tendencias globales, macroeconómicos y perspectivas del mercado de capitales venezolano. Optimice sus inversiones con datos empíricos de alto valor.'"
             :image="{
-                src: '/images/hero/main-blog.webp',
+                src: '/images/hero/maximiza-rombo-forma-abstracta-cristal.webp',
                 alt: 'Hero Background'
             }" :pattern="{
                 src: '/images/hero/pattern-blog.webp',

@@ -14,39 +14,41 @@ import { generalContainerVariants, generalItemVariants, overlayVariants } from "
         <div class="max-w-2xl w-full flex flex-col md:flex-row gap-10 md:gap-0 justify-evenly items-center">
 
             <NuxtLink to="/registro/persona-natural">
-                <motion.button type="button" class="flex flex-col items-center gap-4 group cursor-pointer" :variants="generalItemVariants"
-                    initial="hidden" whileHover="hover" animate="visible">
+                <motion.button type="button" class="flex flex-col items-center gap-4 group cursor-pointer"
+                    :variants="generalItemVariants" initial="hidden" whileHover="hover" animate="visible">
 
                     <div
                         class="w-[275px] h-[275px] md:w-[190px] md:h-[190px] xl:w-[275px] xl:h-[275px] relative p-4 bg-white-alt overflow-hidden">
-                    <motion.div class="absolute left-0 top-0 h-full bg-primary z-0" :variants="overlayVariants" />
+                        <motion.div class="absolute left-0 top-0 h-full bg-primary z-0" :variants="overlayVariants" />
 
-                    <img src="/images/pages/home/person-type-natural.webp" alt="Person Type Natural" title="Person Type Natural"
-                        class="w-full h-full object-contain relative z-10" />
-                </div>
+                        <img src="/images/pages/home/maximiza-planta-cristal-inversionista-natural.webp"
+                            alt="Person Type Natural" title="Person Type Natural"
+                            class="w-full h-full object-contain relative z-10" />
+                    </div>
 
-                <label for="person-type-natural"
-                    class="font-serif text-2xl md:text-xl  font-extrabold text-black-alt group-hover:text-black transition-colors duration-300">Persona
-                    natural</label>
+                    <label for="person-type-natural"
+                        class="font-serif text-2xl md:text-xl  font-extrabold text-black-alt group-hover:text-black transition-colors duration-300">Persona
+                        natural</label>
                 </motion.button>
             </NuxtLink>
 
             <NuxtLink to="/registro/persona-juridica">
-            <motion.button type="button" class="flex flex-col items-center gap-4 group cursor-pointer" :variants="generalItemVariants"
-                initial="hidden" whileHover="hover" animate="visible">
-                <div
-                    class="w-[275px] h-[275px] md:w-[190px] md:h-[190px] xl:w-[275px] xl:h-[275px] relative p-4 bg-white-alt overflow-hidden">
-                    <motion.div class="absolute left-0 top-0 h-full bg-black-alt z-0" :variants="overlayVariants" />
+                <motion.button type="button" class="flex flex-col items-center gap-4 group cursor-pointer"
+                    :variants="generalItemVariants" initial="hidden" whileHover="hover" animate="visible">
+                    <div
+                        class="w-[275px] h-[275px] md:w-[190px] md:h-[190px] xl:w-[275px] xl:h-[275px] relative p-4 bg-white-alt overflow-hidden">
+                        <motion.div class="absolute left-0 top-0 h-full bg-black-alt z-0" :variants="overlayVariants" />
 
-                    <img src="/images/pages/home/person-type-juridica.webp" alt="Person Type Jurídica" title="Person Type Jurídica"
-                        class="w-full h-full object-contain relative z-10" />
-                </div>
+                        <img src="/images/pages/home/maximiza-edificios-cristal-inversionista-juridico.webp"
+                            alt="Person Type Jurídica" title="Person Type Jurídica"
+                            class="w-full h-full object-contain relative z-10" />
+                    </div>
 
-                <label for="person-type-jurídica"
-                    class="font-serif text-2xl md:text-xl font-extrabold text-black-alt group-hover:text-black transition-colors duration-300">Persona
-                    jurídica</label>
+                    <label for="person-type-jurídica"
+                        class="font-serif text-2xl md:text-xl font-extrabold text-black-alt group-hover:text-black transition-colors duration-300">Persona
+                        jurídica</label>
 
-            </motion.button>
+                </motion.button>
             </NuxtLink>
 
         </div>

@@ -18,7 +18,7 @@ const props = defineProps<Props>()
         <motion.div class="flex flex-col md:flex-row items-center w-full" :variants="generalItemVariants">
             <div
                 class="bg-white-alt w-[275px] h-[275px] md:w-[190px] md:h-[190px] xl:w-[275px] xl:h-[275px] max-sm:mb-4 p-4 flex shrink-0 justify-center items-center z-10 relative">
-                <img :src="`/images/pages/home/${personType === 'persona-natural' ? 'person-type-natural.webp' : 'person-type-juridica.webp'}`"
+                <img :src="`/images/pages/home/${personType === 'persona-natural' ? 'maximiza-planta-cristal-inversionista-natural.webp' : 'maximiza-edificios-cristal-inversionista-juridico.webp'}`"
                     alt="Especialistas_en_asesoría" title="Especialistas_en_asesoría" class="w-full h-full object-contain" />
             </div>
             <div
