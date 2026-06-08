@@ -165,6 +165,13 @@ export default defineNuxtConfig({
           href: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap',
         },
       ],
+
+      script: [
+        {
+          children: `function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"58faf27c9328dd620b835fc7f7eb5b09"})});`,
+          type: 'text/javascript'
+        }
+      ]
     },
   },
 
