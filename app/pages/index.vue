@@ -200,5 +200,6 @@
         </form>
       </section>
     </div>
+    <CommonYummyDonationModal />
   </div>
 </template>
