@@ -63,38 +63,47 @@
             />
           </div>
 
-          <!-- Description & Body Text -->
+          <!-- Title & Subtitle -->
+          <div class="flex flex-col gap-2 sm:gap-3 text-left">
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#00735F] leading-tight">
+              ¡Venezuela nos necesita a todos!
+            </h2>
+            <p class="text-sm sm:text-base lg:text-lg font-medium text-[#2D2D2D]/90">
+              Ante la emergencia, enfocamos nuestra ayuda en tres acciones concretas:
+            </p>
+          </div>
+
+          <!-- Description & Body Text (3 Action Bullets) -->
           <div class="flex flex-col gap-4 sm:gap-5 lg:gap-6 text-[#2D2D2D] leading-relaxed">
-            <p class="text-sm sm:text-base lg:text-lg xl:text-xl font-normal">
-              En Maximiza nos unimos a la gran iniciativa de respuesta de
-              <span class="text-[#00735F] font-bold">@yummy.vzla</span> para apoyar a nuestro país en esta emergencia. 🇻🇪 ❤️‍🩹
-            </p>
-
-            <p class="text-sm sm:text-base lg:text-lg xl:text-xl font-normal">
-              Yummy ha habilitado telemedicina, traslados para rescatistas y acopio de alimentos, pero hoy queremos pedir tu apoyo.
-            </p>
-
-            <!-- Suma tu aporte Highlight Card -->
-            <div class="border-l-4 border-[#00735F] bg-[#00735F]/5 p-5 sm:p-6 lg:p-8 flex flex-col gap-1.5 rounded-none">
-              <h4 class="text-lg sm:text-xl lg:text-2xl font-black text-[#00735F] tracking-wide uppercase mb-1">
-                Suma tu aporte:
-              </h4>
-              <p class="text-sm sm:text-base lg:text-lg xl:text-xl font-normal text-[#2D2D2D]">
-                Yummy sumará un
-              </p>
-              <div class="text-3xl sm:text-4xl lg:text-5xl font-black italic text-[#00735F] select-none tracking-tight">
-                25% extra
-              </div>
-              <p class="text-sm sm:text-base lg:text-lg xl:text-xl font-normal text-[#2D2D2D]">
-                a cada donación recibida.
-              </p>
-              <p class="text-sm sm:text-base lg:text-lg xl:text-xl font-normal text-[#2D2D2D]">
-                ¡Cada ayuda cuenta y se multiplica!
+            <!-- Bullet 1 -->
+            <div class="flex items-start gap-3 sm:gap-4">
+              <font-awesome-icon :icon="['fas', 'check-circle']" class="text-[#00735F] text-base sm:text-lg lg:text-xl mt-1 flex-shrink-0" />
+              <p class="text-xs sm:text-sm lg:text-base xl:text-lg font-normal text-left">
+                Nos unimos a la iniciativa de <span class="text-[#00735F] font-bold">@yummy.vzla</span>. Por cada donación, Yummy suma un <span class="text-[#00735F] font-bold">25% adicional</span>. ¡Dona tú también!
               </p>
             </div>
 
-            <p class="text-sm sm:text-base lg:text-lg xl:text-xl font-medium text-[#2D2D2D] mt-2">
-              Ingresa, elige tu método de pago (Pago Móvil, Zelle/ACH, Tarjeta) y dona
+            <!-- Bullet 2 -->
+            <div class="flex items-start gap-3 sm:gap-4">
+              <font-awesome-icon :icon="['fas', 'check-circle']" class="text-[#00735F] text-base sm:text-lg lg:text-xl mt-1 flex-shrink-0" />
+              <p class="text-xs sm:text-sm lg:text-base xl:text-lg font-normal text-left">
+                Activamos un operativo de entrega de medicamentos en hospitales de Caracas y La Guaira que hoy más lo requieren.
+              </p>
+            </div>
+
+            <!-- Bullet 3 -->
+            <div class="flex items-start gap-3 sm:gap-4">
+              <font-awesome-icon :icon="['fas', 'check-circle']" class="text-[#00735F] text-base sm:text-lg lg:text-xl mt-1 flex-shrink-0" />
+              <p class="text-xs sm:text-sm lg:text-base xl:text-lg font-normal text-left">
+                Desde este martes, con la reapertura de la Bolsa de Valores de Caracas, durante 90 días donaremos el <span class="text-[#00735F] font-bold">1% de nuestras ganancias por comisiones</span> a las fundaciones que acompañan a quienes lo perdieron todo.
+              </p>
+            </div>
+          </div>
+
+          <!-- Highlight Card/Footer Quote -->
+          <div class="border-l-4 border-[#00735F] bg-[#00735F]/5 p-4 sm:p-5 lg:p-6 rounded-none">
+            <p class="text-xs sm:text-sm lg:text-base xl:text-lg font-medium italic text-[#2D2D2D] text-left">
+              "Porque reconstruir no es cosa de un día: es un compromiso sostenido."
             </p>
           </div>
 
