@@ -73,17 +73,44 @@
             </p>
           </div>
 
-          <!-- Description & Body Text (3 Action Bullets) -->
-          <div class="flex flex-col gap-4 sm:gap-5 lg:gap-6 text-[#2D2D2D] leading-relaxed">
-            <!-- Bullet 1 -->
-            <div class="flex items-start gap-3 sm:gap-4">
-              <font-awesome-icon :icon="['fas', 'check-circle']" class="text-[#00735F] text-base sm:text-lg lg:text-xl mt-1 flex-shrink-0" />
-              <p class="text-xs sm:text-sm lg:text-base xl:text-lg font-normal text-left">
-                Nos unimos a la iniciativa de <span class="text-[#00735F] font-bold">@yummy.vzla</span>. Por cada donación, Yummy suma un <span class="text-[#00735F] font-bold">25% adicional</span>. ¡Dona tú también!
-              </p>
+          <!-- Description & Body Text (3 Action Bullets with details) -->
+          <div class="flex flex-col gap-5 sm:gap-6 lg:gap-8 text-[#2D2D2D] leading-relaxed">
+            
+            <!-- Action Bullet 1 -->
+            <div class="flex flex-col gap-4">
+              <div class="flex items-start gap-3 sm:gap-4">
+                <font-awesome-icon :icon="['fas', 'check-circle']" class="text-[#00735F] text-base sm:text-lg lg:text-xl mt-1 flex-shrink-0" />
+                <p class="text-xs sm:text-sm lg:text-base xl:text-lg font-normal text-left">
+                  Nos unimos a la iniciativa de <span class="text-[#00735F] font-bold">@yummy.vzla</span>. Por cada donación, Yummy suma un <span class="text-[#00735F] font-bold">25% adicional</span>. ¡Dona tú también! <span class="inline-block whitespace-nowrap ml-1">🇻🇪 ❤️‍🩹</span>
+                </p>
+              </div>
+
+              <!-- Bullet 1 Details: Only visible on sm (tablet/desktop) and up to match Figma layout and respect mobile space constraints -->
+              <div class="hidden sm:flex flex-col gap-4 pl-9 sm:pl-10">
+                <p class="text-xs sm:text-sm lg:text-base font-normal text-[#2D2D2D]/80 text-left">
+                  Yummy ha habilitado telemedicina, traslados para rescatistas y acopio de alimentos, pero hoy queremos pedir tu apoyo.
+                </p>
+
+                <!-- Suma tu aporte Highlight Card inside Bullet 1 -->
+                <div class="border-l-4 border-[#00735F] bg-[#00735F]/5 p-4 sm:p-5 lg:p-6 flex flex-col gap-1 rounded-none text-left">
+                  <h4 class="text-sm lg:text-base font-bold text-[#00735F] tracking-wide uppercase">
+                    Suma tu aporte: Yummy sumará un
+                  </h4>
+                  <div class="text-3xl lg:text-4xl font-black italic text-[#00735F] select-none tracking-tight my-1">
+                    25% extra
+                  </div>
+                  <p class="text-xs sm:text-sm lg:text-base font-normal text-[#2D2D2D]">
+                    a cada donación recibida. ¡Cada ayuda cuenta y se multiplica!
+                  </p>
+                </div>
+
+                <p class="text-xs sm:text-sm lg:text-base font-medium text-[#2D2D2D] text-left">
+                  Ingresa, elige tu método de pago (Pago Móvil, Zelle/ACH, Tarjeta) y dona
+                </p>
+              </div>
             </div>
 
-            <!-- Bullet 2 -->
+            <!-- Action Bullet 2 -->
             <div class="flex items-start gap-3 sm:gap-4">
               <font-awesome-icon :icon="['fas', 'check-circle']" class="text-[#00735F] text-base sm:text-lg lg:text-xl mt-1 flex-shrink-0" />
               <p class="text-xs sm:text-sm lg:text-base xl:text-lg font-normal text-left">
@@ -91,13 +118,14 @@
               </p>
             </div>
 
-            <!-- Bullet 3 -->
+            <!-- Action Bullet 3 -->
             <div class="flex items-start gap-3 sm:gap-4">
               <font-awesome-icon :icon="['fas', 'check-circle']" class="text-[#00735F] text-base sm:text-lg lg:text-xl mt-1 flex-shrink-0" />
               <p class="text-xs sm:text-sm lg:text-base xl:text-lg font-normal text-left">
                 Desde este martes, con la reapertura de la Bolsa de Valores de Caracas, durante 90 días donaremos el <span class="text-[#00735F] font-bold">1% de nuestras ganancias por comisiones</span> a las fundaciones que acompañan a quienes lo perdieron todo.
               </p>
             </div>
+
           </div>
 
           <!-- Highlight Card/Footer Quote -->
