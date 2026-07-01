@@ -1,39 +1,37 @@
 <script setup lang="ts">
 const { source, stockholders } = defineProps<{
-  source: MXMZ.PepProfile;
-  stockholders?: MXMZ.Stockholders[];
-}>();
+  source: MXMZ.PepProfile
+  stockholders?: MXMZ.Stockholders[]
+}>()
 
-import { getLabel, countriesOptions } from "~/assets/data/formSources";
+import { getLabel, countriesOptions } from '~/assets/data/formSources'
 </script>
 
 <template>
   <div v-if="stockholders && stockholders?.length > 0">
-    <div class="spreadsheet__item font-bold text-[10px]">
+    <div class="spreadsheet__item text-[10px] font-bold">
       Accionistar / Junta directiva
     </div>
 
-    <div class="w-full grid grid-cols-[115px_1fr]">
-      <aside
-        class="bg-primary min-h-[60px] flex justify-center items-center"
-      >
-        <h5 class="text-[12px] text-white font-bold">
+    <div class="grid w-full grid-cols-[115px_1fr]">
+      <aside class="bg-primary flex min-h-[60px] items-center justify-center">
+        <h5 class="text-[12px] font-bold text-white">
           Persona expuesta politicamente
         </h5>
       </aside>
       <div>
         <div class="grid grid-cols-[1.5fr_1fr_1fr_1fr]">
-          <div class="spreadsheet__item font-bold text-[10px]">
+          <div class="spreadsheet__item text-[10px] font-bold">
             Nombre de la institución o ente de adscripción:
           </div>
 
-          <div class="spreadsheet__item font-bold text-[10px]">
+          <div class="spreadsheet__item text-[10px] font-bold">
             Cargo que desempeña:
           </div>
 
-          <div class="spreadsheet__item font-bold text-[10px]">País:</div>
+          <div class="spreadsheet__item text-[10px] font-bold">País:</div>
 
-          <div class="spreadsheet__item font-bold text-[10px]">
+          <div class="spreadsheet__item text-[10px] font-bold">
             Identificación del pep en caso de relacionado::
           </div>
         </div>
@@ -232,7 +230,7 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
             <span> El inversionista es (PEP)</span>
             <div
               :class="[
-                'border px-1 ml-1 font-black flex items-center justify-center',
+                'ml-1 flex items-center justify-center border px-1 font-black',
                 source.isPep === 'SI'
                   ? 'bg-error text-white'
                   : 'bg-primary text-white',
@@ -244,26 +242,26 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
-            {{ source.isPep === "SI" ? source.entityName : "" }}
+            {{ source.isPep === 'SI' ? source.entityName : '' }}
           </td>
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
-            {{ source.isPep === "SI" ? source.position : "" }}
+            {{ source.isPep === 'SI' ? source.position : '' }}
           </td>
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
             {{
-              source.isPep === "SI"
+              source.isPep === 'SI'
                 ? getLabel(source.country, countriesOptions)
-                : ""
+                : ''
             }}
           </td>
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
-            {{ source.isPep === "SI" ? source.relatedIdentification : "" }}
+            {{ source.isPep === 'SI' ? source.relatedIdentification : '' }}
           </td>
         </tr>
         <!-- fila -->
@@ -272,7 +270,7 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
             <span> Tiene parentesco con (PEP)</span>
             <div
               :class="[
-                'border px-1 ml-1 font-black flex items-center justify-center',
+                'ml-1 flex items-center justify-center border px-1 font-black',
                 source.hasPepRelationship === 'SI'
                   ? 'bg-error text-white'
                   : 'bg-primary text-white',
@@ -284,29 +282,29 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
-            {{ source.hasPepRelationship === "SI" ? source.entityName : "" }}
+            {{ source.hasPepRelationship === 'SI' ? source.entityName : '' }}
           </td>
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
-            {{ source.hasPepRelationship === "SI" ? source.position : "" }}
+            {{ source.hasPepRelationship === 'SI' ? source.position : '' }}
           </td>
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
             {{
-              source.hasPepRelationship === "SI"
+              source.hasPepRelationship === 'SI'
                 ? getLabel(source.country, countriesOptions)
-                : ""
+                : ''
             }}
           </td>
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
             {{
-              source.hasPepRelationship === "SI"
+              source.hasPepRelationship === 'SI'
                 ? source.relatedIdentification
-                : ""
+                : ''
             }}
           </td>
         </tr>
@@ -316,7 +314,7 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
             <span> Es asociado cercano de (PE)</span>
             <div
               :class="[
-                'border px-1 ml-1 font-black flex items-center justify-center',
+                'ml-1 flex items-center justify-center border px-1 font-black',
                 source.isPepAssociate === 'SI'
                   ? 'bg-error text-white'
                   : 'bg-primary text-white',
@@ -328,27 +326,27 @@ import { getLabel, countriesOptions } from "~/assets/data/formSources";
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
-            {{ source.isPepAssociate === "SI" ? source.entityName : "" }}
+            {{ source.isPepAssociate === 'SI' ? source.entityName : '' }}
           </td>
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
-            {{ source.isPepAssociate === "SI" ? source.position : "" }}
+            {{ source.isPepAssociate === 'SI' ? source.position : '' }}
           </td>
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
             {{
-              source.isPepAssociate === "SI"
+              source.isPepAssociate === 'SI'
                 ? getLabel(source.country, countriesOptions)
-                : ""
+                : ''
             }}
           </td>
         </tr>
         <tr class="spreadsheet__item">
           <td class="font-bold">
             {{
-              source.isPepAssociate === "SI" ? source.relatedIdentification : ""
+              source.isPepAssociate === 'SI' ? source.relatedIdentification : ''
             }}
           </td>
         </tr>

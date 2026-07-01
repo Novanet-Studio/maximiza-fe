@@ -1,36 +1,36 @@
 <script setup lang="ts">
-import { useForm } from "vee-validate";
-import * as yup from "yup";
-import { useOnboardingWizard } from "~/composables/useOnboardingWizard";
+import { useForm } from 'vee-validate'
+import * as yup from 'yup'
+import { useOnboardingWizard } from '~/composables/useOnboardingWizard'
 
-const wizard = useOnboardingWizard();
-const type = wizard.state.value.type;
+const wizard = useOnboardingWizard()
+const type = wizard.state.value.type
 
 const schema = yup.object({
   accept: yup
     .boolean()
-    .required("Debes aceptar para poder continuar")
-    .isTrue("Debes aceptar para poder continuar"),
-});
+    .required('Debes aceptar para poder continuar')
+    .isTrue('Debes aceptar para poder continuar'),
+})
 
 const { handleSubmit, errors, defineField } = useForm({
   validationSchema: schema,
   initialValues: {
     accept: wizard.state.value.formData.accepted,
   },
-});
+})
 
-const [accept, acceptProps] = defineField("accept");
+const [accept, acceptProps] = defineField('accept')
 
 const validate = handleSubmit((values) => {
-  wizard.updateFormData({ accepted: values.accept || false });
+  wizard.updateFormData({ accepted: values.accept || false })
 
-  wizard.nextStep();
-});
+  wizard.nextStep()
+})
 
 defineExpose({
   validate,
-});
+})
 </script>
 
 <template>
@@ -40,7 +40,7 @@ defineExpose({
     />
 
     <p
-      class="mt-4 text-gray text-sm md:text-base leading-relaxed text-justify mb-6"
+      class="text-gray mt-4 mb-6 text-justify text-sm leading-relaxed md:text-base"
     >
       Aceptación del contrato de cuenta de corretaje bursátil por parte del
       inversor con la firma del presente documento, el cliente expresamente

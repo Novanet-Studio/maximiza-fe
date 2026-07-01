@@ -1,132 +1,131 @@
 <script setup lang="ts">
-import { MAXIMIZA_LOGO } from "~/assets/data/maximiza-logo";
+import { MAXIMIZA_LOGO } from '~/assets/data/maximiza-logo'
 
-const MaximizaLogo = MAXIMIZA_LOGO;
+const MaximizaLogo = MAXIMIZA_LOGO
 
 const props = defineProps<{
-  data: MXMZ.OnboardingWizardResult;
-}>();
+  data: MXMZ.OnboardingWizardResult
+}>()
 
 interface Signatory {
-  role: string;
-  name: string;
-  id: string;
-  phone?: string;
-  email?: string;
-  isMainClient?: boolean;
+  role: string
+  name: string
+  id: string
+  phone?: string
+  email?: string
+  isMainClient?: boolean
 }
 
 const isNatural = computed(() => {
-  return !props.data.enterpriseIdentification?.taxInformationRegistration;
-});
+  return !props.data.enterpriseIdentification?.taxInformationRegistration
+})
 
-const personal = computed(() => props.data.personalData || {});
+const personal = computed(() => props.data.personalData || {})
 const enterprise = computed(
-  () => props.data.enterpriseIdentification || ({} as any),
-);
-const financial = computed(
-  () => props.data.financialInformation || ({} as any),
-);
+  () => props.data.enterpriseIdentification || ({} as any)
+)
+const financial = computed(() => props.data.financialInformation || ({} as any))
 
 const clientInfo = computed(() => {
   if (isNatural.value) {
     return {
       name: `${personal.value.firstName} ${personal.value.lastName}`,
       id: `C.I: ${personal.value.identification}`,
-    };
+    }
   } else {
     return {
       name: enterprise.value.socialReason,
       id: `R.I.F: ${enterprise.value.taxType}-${enterprise.value.taxInformationRegistration}`,
-    };
+    }
   }
-});
+})
 
 const signatories = computed<Signatory[]>(() => {
-  const list: Signatory[] = [];
+  const list: Signatory[] = []
 
   if (isNatural.value) {
     list.push({
-      role: "Cliente",
+      role: 'Cliente',
       name: `${personal.value.firstName} ${personal.value.lastName}`,
       id: personal.value.identification,
       phone: personal.value.phones,
       email: personal.value.email,
       isMainClient: true,
-    });
+    })
 
-    if (personal.value.hasLegalRepresentative === "SI") {
+    if (personal.value.hasLegalRepresentative === 'SI') {
       list.push({
-        role: "Persona Autorizada",
+        role: 'Persona Autorizada',
         name: personal.value.legalRepresentativeFullname,
         id: personal.value.legalRepresentativeIdentification,
-        phone: "",
-        email: "",
-      });
+        phone: '',
+        email: '',
+      })
     }
   } else {
-    const reps = financial.value.legalRepresentatives || [];
+    const reps = financial.value.legalRepresentatives || []
     reps.forEach((rep: any) => {
       list.push({
-        role: "Persona Autorizada",
+        role: 'Persona Autorizada',
         name: rep.name,
         id: rep.dni || `${rep.dniType}${rep.dniNumber}`,
-        phone: "",
-        email: "",
-      });
-    });
+        phone: '',
+        email: '',
+      })
+    })
   }
 
-  return list;
-});
+  return list
+})
 
-const formCode = computed(() =>
-  isNatural.value ? "PCL-FRF-PN" : "PCL-FRF-PJ",
-);
+const formCode = computed(() => (isNatural.value ? 'PCL-FRF-PN' : 'PCL-FRF-PJ'))
 </script>
 
 <template>
   <div class="spreadsheet" style="padding: 1rem">
     <div class="page-break-container">
       <header class="spreadsheet__header relative">
-        <img class="spreadsheet__image" :src="MaximizaLogo" alt="logo" title="logo" />
+        <img
+          class="spreadsheet__image"
+          :src="MaximizaLogo"
+          alt="logo"
+          title="logo"
+        />
 
-        <div class="text-right text-xs font-bold absolute top-0 right-0">
+        <div class="absolute top-0 right-0 text-right text-xs font-bold">
           {{ formCode }}
         </div>
 
-        <div class="text-right mt-4 w-full">
-          <h2 class="font-bold text-sm uppercase">
+        <div class="mt-4 w-full text-right">
+          <h2 class="text-sm font-bold uppercase">
             Contrato de Cuenta de Corretaje Bursátil
           </h2>
-          <h3 class="font-bold text-sm uppercase text-gray-600">ANEXO I-B</h3>
-          <h1 class="font-bold text-lg uppercase text-primary">
+          <h3 class="text-sm font-bold text-gray-600 uppercase">ANEXO I-B</h3>
+          <h1 class="text-primary text-lg font-bold uppercase">
             Ficha de Registro de Firma
           </h1>
-          <h4 class="font-bold text-sm uppercase">
-            {{ isNatural ? "Persona Natural" : "Persona Jurídica" }}
+          <h4 class="text-sm font-bold uppercase">
+            {{ isNatural ? 'Persona Natural' : 'Persona Jurídica' }}
           </h4>
         </div>
       </header>
 
-      <div
-        class="text-center font-bold textazul1 text-sm my-4 uppercase"
-      >
+      <div class="textazul1 my-4 text-center text-sm font-bold uppercase">
         Personas autorizadas para colocar órdenes e impartir instrucciones en
         nombre del cliente
       </div>
 
-      <div class="border border-black mb-6">
+      <div class="mb-6 border border-black">
         <div class="grid grid-cols-[1fr_1fr]">
-          <div class="p-1 border-r border-black">
+          <div class="border-r border-black p-1">
             <div class="text-[10px] font-bold">Nombre del Cliente</div>
-            <div class="font-bold uppercase text-sm">{{ clientInfo.name }}</div>
+            <div class="text-sm font-bold uppercase">{{ clientInfo.name }}</div>
           </div>
           <div class="p-1">
             <div class="text-[10px] font-bold">
               Cédula de identidad / R.I.F.
             </div>
-            <div class="font-bold uppercase text-sm">{{ clientInfo.id }}</div>
+            <div class="text-sm font-bold uppercase">{{ clientInfo.id }}</div>
           </div>
         </div>
       </div>
@@ -134,17 +133,17 @@ const formCode = computed(() =>
       <div class="flex flex-col gap-4">
         <template v-for="(sig, index) in signatories" :key="index">
           <div
-            class="signature-card border-2 border-primary break-inside-avoid"
+            class="signature-card border-primary break-inside-avoid border-2"
           >
             <div class="grid grid-cols-[50px_1fr]">
               <div
-                class="flex items-center justify-center border-r-2 border-primary text-primary font-bold text-xl bg-gray-50"
+                class="border-primary text-primary flex items-center justify-center border-r-2 bg-gray-50 text-xl font-bold"
               >
-                {{ sig.isMainClient ? "C" : index + (isNatural ? 0 : 1) }}
+                {{ sig.isMainClient ? 'C' : index + (isNatural ? 0 : 1) }}
               </div>
-              <div class="text-center border-b border-primary py-1">
-                <div class="font-bold text-sm">Ficha de Registro de Firma</div>
-                <div class="font-bold text-sm text-gray-600">
+              <div class="border-primary border-b py-1 text-center">
+                <div class="text-sm font-bold">Ficha de Registro de Firma</div>
+                <div class="text-sm font-bold text-gray-600">
                   ({{ sig.role }})
                 </div>
               </div>
@@ -152,7 +151,7 @@ const formCode = computed(() =>
 
             <div class="p-2">
               <div
-                class="grid grid-cols-[2fr_1fr] border-b border-black pb-1 mb-1"
+                class="mb-1 grid grid-cols-[2fr_1fr] border-b border-black pb-1"
               >
                 <div class="border-r border-black pr-2">
                   <div class="text-[10px] font-bold">Nombre:</div>
@@ -164,48 +163,48 @@ const formCode = computed(() =>
                 </div>
               </div>
 
-              <div class="grid grid-cols-2 border-b border-black pb-1 mb-1">
+              <div class="mb-1 grid grid-cols-2 border-b border-black pb-1">
                 <div class="border-r border-black pr-2">
                   <div class="text-[10px] font-bold">Teléfono:</div>
                   <div class="text-xs">
-                    {{ sig.phone || "________________" }}
+                    {{ sig.phone || '________________' }}
                   </div>
                 </div>
                 <div class="pl-2">
                   <div class="text-[10px] font-bold">Correo electrónico:</div>
                   <div class="text-xs">
-                    {{ sig.email || "________________" }}
+                    {{ sig.email || '________________' }}
                   </div>
                 </div>
               </div>
 
-              <div class="grid grid-cols-1 border-b border-black pb-1 mb-2">
-                <div class="text-[10px] font-bold mb-1">Régimen de Firmas:</div>
-                <div class="flex gap-4 text-xs items-center">
+              <div class="mb-2 grid grid-cols-1 border-b border-black pb-1">
+                <div class="mb-1 text-[10px] font-bold">Régimen de Firmas:</div>
+                <div class="flex items-center gap-4 text-xs">
                   <div class="flex items-center gap-1">
                     <span>Conjuntas</span>
-                    <div class="w-4 h-4 border border-black"></div>
+                    <div class="h-4 w-4 border border-black"></div>
                   </div>
                   <div class="flex items-center gap-1">
                     <span>Indistintas</span>
-                    <div class="w-4 h-4 border border-black"></div>
+                    <div class="h-4 w-4 border border-black"></div>
                   </div>
-                  <div class="flex items-center gap-1 w-full">
+                  <div class="flex w-full items-center gap-1">
                     <span>Otro</span>
-                    <div class="border-b border-black w-full h-4"></div>
+                    <div class="h-4 w-full border-b border-black"></div>
                   </div>
                 </div>
               </div>
 
-              <div class="grid grid-cols-2 min-h-[100px]">
+              <div class="grid min-h-[100px] grid-cols-2">
                 <div
-                  class="border-r border-black flex flex-col justify-end items-center pr-2"
+                  class="flex flex-col items-center justify-end border-r border-black pr-2"
                 >
                   <div class="w-full border-t border-black"></div>
-                  <div class="text-[10px] font-bold mt-1">Firma</div>
+                  <div class="mt-1 text-[10px] font-bold">Firma</div>
                 </div>
-                <div class="flex flex-col justify-end items-center pl-2">
-                  <div class="w-full h-full border border-black relative">
+                <div class="flex flex-col items-center justify-end pl-2">
+                  <div class="relative h-full w-full border border-black">
                     <div
                       class="absolute bottom-1 w-full text-center text-[10px] font-bold"
                     >
@@ -220,15 +219,15 @@ const formCode = computed(() =>
       </div>
 
       <div
-        class="mt-6 border-2 border-black p-2 text-center font-bold text-xs break-inside-avoid"
+        class="mt-6 break-inside-avoid border-2 border-black p-2 text-center text-xs font-bold"
       >
         El Cliente expresamente declara que las personas cuyos datos y firma
         aparecen en las presentes Fichas de Registro de Firma, son las únicas
         autorizadas para colocar órdenes e impartir instrucciones en su nombre.
       </div>
 
-      <div class="mt-12 border-2 border-black p-4 break-inside-avoid">
-        <div class="grid grid-cols-3 gap-8 mt-8">
+      <div class="mt-12 break-inside-avoid border-2 border-black p-4">
+        <div class="mt-8 grid grid-cols-3 gap-8">
           <div class="flex flex-col items-center">
             <div class="w-full border-b border-black"></div>
             <div class="text-[10px]">Fecha</div>

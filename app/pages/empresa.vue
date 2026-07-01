@@ -1,202 +1,288 @@
 <script setup lang="ts">
-import { motion } from 'motion-v';
-import { metadata } from '@/assets/data/metadata';
+import { motion } from 'motion-v'
+import { metadata } from '@/assets/data/metadata'
 
-import { useJsonLd } from '~/composables/useJsonLd';
-import { jsonld } from '~/assets/data/jsonld';
+import { useJsonLd } from '~/composables/useJsonLd'
+import { jsonld } from '~/assets/data/jsonld'
 
-import { headerItemVariants, generalContainerVariants, generalItemVariants } from "@/assets/animations/motion"
+import {
+  headerItemVariants,
+  generalContainerVariants,
+  generalItemVariants,
+} from '@/assets/animations/motion'
 
 const institutionalValues = ref([
-    {
-        label: 'Confianza',
-        description: "fiduciaria integral",
-        image: '/images/pages/empresa/items/1.webp'
-    },
-    {
-        label: 'Responsabilidad',
-        description: "patrimonial rigurosa",
-        image: '/images/pages/empresa/items/2.webp'
-    },
-    {
-        label: 'Compromiso',
-        description: "analitico de excelencia",
-        image: '/images/pages/empresa/items/3.webp'
-    },
-    {
-        label: 'Pensamiento',
-        description: "estrategico anticipado",
-        image: '/images/pages/empresa/items/4.webp'
-    },
-    {
-        label: 'Transparencia',
-        description: "operativa absoluta",
-        image: '/images/pages/empresa/items/5.webp'
-    },
-]);
-
-const alliesLogos = ref([
-    {
-        src: '/images/pages/empresa/allies/1.webp',
-        alt: 'Alianzas 1'
-    },
-    {
-        src: '/images/pages/empresa/allies/2.webp',
-        alt: 'Alianzas 2'
-    },
-    {
-        src: '/images/pages/empresa/allies/3.webp',
-        alt: 'Alianzas 3'
-    },
-    {
-        src: '/images/pages/empresa/allies/4.webp',
-        alt: 'Alianzas 4'
-    },
-    {
-        src: '/images/pages/empresa/allies/5.webp',
-        alt: 'Alianzas 5'
-    },
-    {
-        src: '/images/pages/empresa/allies/6.webp',
-        alt: 'Alianzas 6'
-    },
+  {
+    label: 'Confianza',
+    description: 'fiduciaria integral',
+    image: '/images/pages/empresa/items/1.webp',
+  },
+  {
+    label: 'Responsabilidad',
+    description: 'patrimonial rigurosa',
+    image: '/images/pages/empresa/items/2.webp',
+  },
+  {
+    label: 'Compromiso',
+    description: 'analitico de excelencia',
+    image: '/images/pages/empresa/items/3.webp',
+  },
+  {
+    label: 'Pensamiento',
+    description: 'estrategico anticipado',
+    image: '/images/pages/empresa/items/4.webp',
+  },
+  {
+    label: 'Transparencia',
+    description: 'operativa absoluta',
+    image: '/images/pages/empresa/items/5.webp',
+  },
 ])
 
-useSeoMeta(metadata.empresa);
+const alliesLogos = ref([
+  {
+    src: '/images/pages/empresa/allies/1.webp',
+    alt: 'Alianzas 1',
+  },
+  {
+    src: '/images/pages/empresa/allies/2.webp',
+    alt: 'Alianzas 2',
+  },
+  {
+    src: '/images/pages/empresa/allies/3.webp',
+    alt: 'Alianzas 3',
+  },
+  {
+    src: '/images/pages/empresa/allies/4.webp',
+    alt: 'Alianzas 4',
+  },
+  {
+    src: '/images/pages/empresa/allies/5.webp',
+    alt: 'Alianzas 5',
+  },
+  {
+    src: '/images/pages/empresa/allies/6.webp',
+    alt: 'Alianzas 6',
+  },
+])
 
-useJsonLd(jsonld.about);
+useSeoMeta(metadata.empresa)
+
+useJsonLd(jsonld.about)
 </script>
 
 <template>
-    <div class="w-full h-auto flex flex-col">
-        <CommonHero :title="'Arquitectos de su futuro financiero'"
-            :description="'Aliados estratégicos en ingeniería financiera avanzada: gestión patrimonial, activos alternativos y financiamiento corporativo a gran escala con máxima integridad.'"
-            :button="{
-                text: 'Configure su estrategia patrimonial',
-                link: '#'
-            }" :image="{
-                src: '/images/hero/maximiza-cubo-forma-abstracta-cristal.webp',
-                alt: 'Hero Background'
-            }" :pattern="{
-                src: '/images/hero/pattern-empresa.webp',
-            }" />
+  <div class="flex h-auto w-full flex-col">
+    <CommonHero
+      :title="'Arquitectos de su futuro financiero'"
+      :description="'Aliados estratégicos en ingeniería financiera avanzada: gestión patrimonial, activos alternativos y financiamiento corporativo a gran escala con máxima integridad.'"
+      :button="{
+        text: 'Configure su estrategia patrimonial',
+        link: '#',
+      }"
+      :image="{
+        src: '/images/hero/maximiza-cubo-forma-abstracta-cristal.webp',
+        alt: 'Hero Background',
+      }"
+      :pattern="{
+        src: '/images/hero/pattern-empresa.webp',
+      }"
+    />
 
-        <CommonTextBanner
-            :description="'Constituidos en 1992, atesoramos más de tres décadas de trayectoria y experiencia en el mercado de capitales venezolano. Estamos comprometidos con ofrecer a nuestros clientes soluciones integrales a través de servicios especializados de corretaje de títulos valores y asesoría en finanzas corporativas. Somos miembros de la Bolsa de Valores de Caracas (BVC) y autorizados por la SUNAVAL'"
-            :background="'/images/textBanner/empresa.webp'" />
+    <CommonTextBanner
+      :description="'Constituidos en 1992, atesoramos más de tres décadas de trayectoria y experiencia en el mercado de capitales venezolano. Estamos comprometidos con ofrecer a nuestros clientes soluciones integrales a través de servicios especializados de corretaje de títulos valores y asesoría en finanzas corporativas. Somos miembros de la Bolsa de Valores de Caracas (BVC) y autorizados por la SUNAVAL'"
+      :background="'/images/textBanner/empresa.webp'"
+    />
 
+    <motion.section
+      class="container flex min-h-dvh w-full flex-col items-center justify-center py-16"
+      :variants="generalContainerVariants"
+      initial="hidden"
+      animate="visible"
+    >
+      <CommonSectionHeader
+        title="Banca de inversión y asesoría corporativa de clase mundial"
+      />
 
-        <motion.section class="container w-full min-h-dvh flex flex-col justify-center items-center py-16"
-            :variants="generalContainerVariants" initial="hidden" animate="visible">
-            <CommonSectionHeader title="Banca de inversión y asesoría corporativa de clase mundial" />
+      <div class="mt-6 flex w-full max-w-6xl flex-col gap-16 px-4 md:px-0">
+        <motion.div
+          class="flex w-full flex-col items-center md:flex-row"
+          :variants="generalItemVariants"
+        >
+          <div
+            class="bg-primary relative z-10 flex h-62.5 w-62.5 shrink-0 items-center justify-center p-4"
+          >
+            <img
+              src="/images/pages/empresa/maximiza-faro-poligonal-trazo.webp"
+              alt="Especialistas en asesoría"
+              title="Especialistas en asesoría"
+              class="h-full w-full object-contain"
+            />
+          </div>
+          <div
+            class="to-white-alt2 z-0 -mt-30 flex w-full max-w-[940px] grow flex-col justify-center bg-linear-to-b from-white p-8 pt-40 md:m-0 md:-ml-31.25 md:bg-linear-to-r md:p-16 md:pr-4 md:pl-36 lg:h-[342px]"
+          >
+            <h4 class="lending-[22px] text-black-alt mb-2 text-xl">
+              Foco corporativo especializado
+            </h4>
+            <p
+              class="lending-[28px] md:lending-[24px] lg:lending-[28px] text-gray text-xl md:text-base lg:text-xl"
+            >
+              Brindamos asesoría analítica exhaustiva a corporaciones nacionales
+              y entidades extranjeras en la intrincada valoración de empresas de
+              gran capitalización, estructuración de fusiones y adquisiciones
+              (M&A), y diseño de financiamientos a la medida.
+            </p>
+          </div>
+        </motion.div>
 
-            <div class="w-full max-w-6xl flex flex-col gap-16 mt-6 px-4 md:px-0">
-                <motion.div class="flex flex-col md:flex-row items-center w-full" :variants="generalItemVariants">
-                    <div class="bg-primary w-62.5 h-62.5 p-4 flex shrink-0 justify-center items-center z-10 relative">
-                        <img src="/images/pages/empresa/maximiza-faro-poligonal-trazo.webp"
-                            alt="Especialistas en asesoría" title="Especialistas en asesoría"
-                            class="w-full h-full object-contain" />
-                    </div>
-                    <div
-                        class="max-w-[940px] lg:h-[342px] bg-linear-to-b md:bg-linear-to-r from-white  to-white-alt2 p-8 pt-40 md:p-16 md:pl-36 md:pr-4 w-full grow -mt-30 md:m-0 md:-ml-31.25 z-0 flex flex-col justify-center">
-                        <h4 class="text-xl lending-[22px] text-black-alt mb-2">Foco corporativo especializado</h4>
-                        <p
-                            class="text-xl lending-[28px] md:text-base md:lending-[24px] lg:text-xl lg:lending-[28px] text-gray">
-                            Brindamos asesoría analítica exhaustiva a corporaciones nacionales y entidades extranjeras
-                            en la intrincada valoración de empresas de gran capitalización, estructuración de fusiones y
-                            adquisiciones (M&A), y diseño de financiamientos a la medida.
-                        </p>
-                    </div>
-                </motion.div>
+        <motion.div
+          class="flex w-full flex-col items-center md:flex-row-reverse"
+          :variants="generalItemVariants"
+        >
+          <div
+            class="bg-black-alt relative z-10 flex h-62.5 w-62.5 shrink-0 items-center justify-center p-4"
+          >
+            <img
+              src="/images/pages/empresa/maximiza-rey-poligonal-trazo.webp"
+              alt="Alianzas formales"
+              title="Alianzas formales"
+              class="h-full w-full object-contain"
+            />
+          </div>
+          <div
+            class="from-white-alt2 z-0 -mt-30 flex w-full max-w-[940px] grow flex-col justify-center bg-linear-to-t to-white p-8 pt-40 md:m-0 md:-mr-31.25 md:bg-linear-to-r md:p-16 md:pr-36 md:pl-4 lg:h-[342px]"
+          >
+            <h4
+              class="lending-[22px] text-black-alt mb-2 text-xl md:text-right"
+            >
+              Ecosistema de promoción financiera
+            </h4>
+            <p
+              class="lending-[28px] md:lending-[24px] lg:lending-[28px] text-gray text-xl md:text-right md:text-base lg:text-xl"
+            >
+              Nuestro ADN innovador nos ha llevado a participar activamente en
+              la cimentación de vehículos financieros líderes, tales como Silk &
+              CO (banca de inversión regional) y Vitral Advisors LLC (RIA
+              registrado en la SEC, Nueva York), lo que nos capacita para
+              ofrecer soluciones transfronterizas sin fricciones.
+            </p>
+          </div>
+        </motion.div>
+      </div>
+    </motion.section>
 
-                <motion.div class="flex flex-col md:flex-row-reverse items-center w-full"
-                    :variants="generalItemVariants">
-                    <div class="bg-black-alt w-62.5 h-62.5 p-4 flex shrink-0 justify-center items-center z-10 relative">
-                        <img src="/images/pages/empresa/maximiza-rey-poligonal-trazo.webp" alt="Alianzas formales"
-                            title="Alianzas formales" class="w-full h-full object-contain" />
-                    </div>
-                    <div
-                        class="max-w-[940px] lg:h-[342px] bg-linear-to-t md:bg-linear-to-r from-white-alt2 to-white p-8 pt-40 md:p-16 md:pr-36 md:pl-4 w-full grow -mt-30 md:m-0 md:-mr-31.25 z-0 flex flex-col justify-center">
-                        <h4 class="text-xl lending-[22px] text-black-alt mb-2 md:text-right">Ecosistema de promoción
-                            financiera</h4>
-                        <p
-                            class="text-xl lending-[28px] md:text-base md:lending-[24px] lg:text-xl lg:lending-[28px] text-gray md:text-right">
-                            Nuestro ADN innovador nos ha llevado a participar activamente en la cimentación de vehículos
-                            financieros líderes, tales como Silk & CO (banca de inversión regional) y Vitral Advisors
-                            LLC (RIA registrado en la SEC, Nueva York), lo que nos capacita para ofrecer soluciones
-                            transfronterizas sin fricciones.
-                        </p>
-                    </div>
-                </motion.div>
-            </div>
-        </motion.section>
+    <CommonContentWithColumns
+      title="Filosofía y ADN corporativo"
+      background-image="/images/backgrounds/mision-y-vision.webp"
+      is-split-background
+      auto-columns
+      :columns="{
+        left: 'md:w-[25%]',
+        right: 'md:w-[75%]',
+      }"
+    >
+      <CommonContentCard
+        title="Misión"
+        content="Diseñar y estructurar soluciones de inversión y financiamiento innovadoras que aporten una capa inexpugnable de seguridad, maximicen la rentabilidad y cultiven la confianza absoluta, garantizando un servicio de excelencia y sofisticación a nuestra clientela institucional y privada."
+        :image="{
+          url: '/images/pages/empresa/mision-item.webp',
+          alt: 'Misión',
+        }"
+        :styles="{
+          title:
+            'text-xl lending-[22px] md:text-sm md:lending-[18px] lg:text-xl lg:lending-[22px] text-black-alt mb-2 md:mb-4',
+          content:
+            'text-lg lending-[26px] md:text-xs md:lending-[20px] lg:text-lg lg:lending-[26px] text-gray',
+          wrapper: 'flex-1 p-4 pt-6 flex flex-col justify-center',
+        }"
+        maxWidth="350"
+      />
 
-        <CommonContentWithColumns title="Filosofía y ADN corporativo"
-            background-image="/images/backgrounds/mision-y-vision.webp" is-split-background auto-columns :columns="{
-                left: 'md:w-[25%]',
-                right: 'md:w-[75%]',
-            }">
-            <CommonContentCard title="Misión"
-                content="Diseñar y estructurar soluciones de inversión y financiamiento innovadoras que aporten una capa inexpugnable de seguridad, maximicen la rentabilidad y cultiven la confianza absoluta, garantizando un servicio de excelencia y sofisticación a nuestra clientela institucional y privada."
-                :image="{ url: '/images/pages/empresa/mision-item.webp', alt: 'Misión' }" :styles="{
-                    title: 'text-xl lending-[22px] md:text-sm md:lending-[18px] lg:text-xl lg:lending-[22px] text-black-alt mb-2 md:mb-4',
-                    content: 'text-lg lending-[26px] md:text-xs md:lending-[20px] lg:text-lg lg:lending-[26px] text-gray',
-                    wrapper: 'flex-1 p-4 pt-6 flex flex-col justify-center'
-                }" maxWidth="350" />
+      <CommonContentCard
+        title="Visión"
+        content="Consolidarnos indiscutiblemente como el referente principal y más respetado de la banca de inversión en el mercado venezolano, impulsando el tejido productivo del país a través de la máxima eficiencia operativa, la transparencia innegociable y la alineación total de intereses con nuestros stakeholders."
+        :image="{
+          url: '/images/pages/empresa/vision-item.webp',
+          alt: 'Visión',
+        }"
+        :styles="{
+          title:
+            'text-xl lending-[22px] md:text-sm md:lending-[18px] lg:text-xl lg:lending-[22px] text-black-alt mb-2 md:mb-4',
+          content:
+            'text-lg lending-[26px] md:text-xs md:lending-[20px] lg:text-lg lg:lending-[26px] text-gray',
+          wrapper: 'flex-1 p-4 pt-6 flex flex-col justify-center',
+        }"
+        maxWidth="350"
+      />
+    </CommonContentWithColumns>
 
-            <CommonContentCard title="Visión"
-                content="Consolidarnos indiscutiblemente como el referente principal y más respetado de la banca de inversión en el mercado venezolano, impulsando el tejido productivo del país a través de la máxima eficiencia operativa, la transparencia innegociable y la alineación total de intereses con nuestros stakeholders."
-                :image="{ url: '/images/pages/empresa/vision-item.webp', alt: 'Visión' }" :styles="{
-                    title: 'text-xl lending-[22px] md:text-sm md:lending-[18px] lg:text-xl lg:lending-[22px] text-black-alt mb-2 md:mb-4',
-                    content: 'text-lg lending-[26px] md:text-xs md:lending-[20px] lg:text-lg lg:lending-[26px] text-gray',
-                    wrapper: 'flex-1 p-4 pt-6 flex flex-col justify-center'
-                }" maxWidth="350" />
-        </CommonContentWithColumns>
+    <motion.section
+      class="bg-black-alt hidden w-full flex-col items-center py-16 md:flex"
+      :style="{
+        backgroundImage: `url(${'/images/backgrounds/valores.webp'})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }"
+      :variants="generalContainerVariants"
+      initial="hidden"
+      whileInView="visible"
+      :viewport="{ once: true }"
+    >
+      <ul
+        class="container mx-auto flex w-full flex-col justify-center gap-4 md:flex-row lg:gap-12"
+      >
+        <motion.li
+          v-for="(value, index) in institutionalValues"
+          :key="`empresa_item_${index}`"
+          class="flex flex-1 flex-col justify-center border-l-1 border-white pl-4"
+          :variants="headerItemVariants"
+        >
+          <h5 class="font-semibold text-white">{{ value.label }}</h5>
+          <p class="text-white">{{ value.description }}</p>
+        </motion.li>
+      </ul>
+    </motion.section>
 
-        <motion.section class="hidden md:flex py-16 bg-black-alt w-full flex-col items-center" :style="{
-            backgroundImage: `url(${'/images/backgrounds/valores.webp'})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-        }" :variants="generalContainerVariants" initial='hidden' whileInView="visible" :viewport="{ once: true }">
+    <ModulesEmpresaManagementTeam class="hidden md:flex" />
 
-            <ul class="container w-full mx-auto flex flex-col md:flex-row justify-center gap-4 lg:gap-12">
-                <motion.li v-for="(value, index) in institutionalValues" :key="`empresa_item_${index}`"
-                    class="flex-1 flex flex-col justify-center border-l-1 border-white pl-4"
-                    :variants="headerItemVariants">
+    <motion.section
+      class="container mb-20 hidden w-full md:flex"
+      :variants="generalContainerVariants"
+      initial="hidden"
+      animate="visible"
+    >
+      <div
+        class="mx-auto flex w-full flex-col items-center justify-center gap-8 md:flex-row"
+      >
+        <div class="flex w-2/5 flex-col gap-4">
+          <h3 class="text-black-alt text-right">
+            Red global de <br />
+            alianzas estratégicas
+          </h3>
+          <p class="text-gray text-right">
+            Nuestra solidez operativa se encuentra cimentada y respaldada en
+            décadas de relaciones formales e institucionales ininterrumpidas con
+            las firmas financieras más prestigiosas del hemisferio.
+          </p>
+        </div>
 
-                    <h5 class="text-white font-semibold">{{ value.label }}</h5>
-                    <p class="text-white ">{{ value.description }}</p>
+        <div
+          class="`md:p-8 bg-white-alt grid grid-cols-3 gap-6 p-4 lg:p-12 xl:p-16"
+        >
+          <motion.img
+            v-for="(logo, index) in alliesLogos"
+            :key="`empresa_allies_${index}`"
+            :src="logo.src"
+            :alt="logo.alt"
+            :title="logo.alt"
+            class="aspect-square"
+            :variants="generalItemVariants"
+          />
+        </div>
+      </div>
+    </motion.section>
 
-                </motion.li>
-            </ul>
-        </motion.section>
-
-        <ModulesEmpresaManagementTeam class="hidden md:flex" />
-
-        <motion.section class="hidden md:flex container w-full mb-20" :variants="generalContainerVariants"
-            initial="hidden" animate="visible">
-
-            <div class="w-full mx-auto flex flex-col md:flex-row justify-center items-center gap-8">
-                <div class="w-2/5 flex flex-col gap-4">
-                    <h3 class="text-right text-black-alt">
-                        Red global de <br /> alianzas estratégicas
-                    </h3>
-                    <p class=" text-right text-gray">
-                        Nuestra solidez operativa se encuentra cimentada y respaldada en décadas de relaciones
-                        formales
-                        e
-                        institucionales ininterrumpidas con las firmas financieras más prestigiosas del
-                        hemisferio.
-                    </p>
-                </div>
-
-                <div class="p-4 `md:p-8 lg:p-12 xl:p-16 bg-white-alt grid grid-cols-3 gap-6">
-                    <motion.img v-for="(logo, index) in alliesLogos" :key="`empresa_allies_${index}`" :src="logo.src"
-                        :alt="logo.alt" :title="logo.alt" class="aspect-square" :variants="generalItemVariants" />
-                </div>
-            </div>
-        </motion.section>
-
-        <ModulesEmpresaBalanceSection />
-    </div>
+    <ModulesEmpresaBalanceSection />
+  </div>
 </template>

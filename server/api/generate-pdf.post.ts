@@ -1,23 +1,26 @@
-import puppeteer from 'puppeteer-core';
-import chromium from '@sparticuz/chromium';
+import puppeteer from 'puppeteer-core'
+import chromium from '@sparticuz/chromium'
 
 export default defineEventHandler(async (event) => {
-  const body = await readBody(event);
-  const { htmlContent, cssContent } = body;
+  const body = await readBody(event)
+  const { htmlContent, cssContent } = body
 
   if (!htmlContent) {
-    throw createError({ statusCode: 400, statusMessage: 'Falta contenido HTML' });
+    throw createError({
+      statusCode: 400,
+      statusMessage: 'Falta contenido HTML',
+    })
   }
 
-  let browser;
+  let browser
 
   try {
-
-    const isProduction = process.env.NETLIFY || process.env.NODE_ENV === 'production';
+    const isProduction =
+      process.env.NETLIFY || process.env.NODE_ENV === 'production'
 
     if (isProduction) {
-      chromium.setHeadlessMode = true;
-      chromium.setGraphicsMode = false;
+      chromium.setHeadlessMode = true
+      chromium.setGraphicsMode = false
 
       browser = await puppeteer.launch({
         args: chromium.args,
@@ -25,23 +28,21 @@ export default defineEventHandler(async (event) => {
         executablePath: await chromium.executablePath(),
         headless: chromium.headless,
         ignoreHTTPSErrors: true,
-      });
-
+      })
     } else {
-
-      const localExecutablePath = process.platform === 'win32'
-        ? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
-        : '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
+      const localExecutablePath =
+        process.platform === 'win32'
+          ? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
+          : '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 
       browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
         executablePath: localExecutablePath,
-        headless: true
-      });
+        headless: true,
+      })
     }
 
-    const page = await browser.newPage();
-
+    const page = await browser.newPage()
 
     const fullHtml = `
       <!DOCTYPE html>
@@ -58,38 +59,35 @@ export default defineEventHandler(async (event) => {
         ${htmlContent}
       </body>
       </html>
-    `;
-
+    `
 
     await page.setContent(fullHtml, {
       waitUntil: 'load',
-      timeout: 8000
-    });
+      timeout: 8000,
+    })
 
     const pdfBuffer = await page.pdf({
       format: 'A4',
       printBackground: true,
-      margin: { top: '10mm', bottom: '10mm', left: '0mm', right: '0mm' }
-    });
+      margin: { top: '10mm', bottom: '10mm', left: '0mm', right: '0mm' },
+    })
 
-    await browser.close();
-
+    await browser.close()
 
     setHeaders(event, {
       'Content-Type': 'application/pdf',
       'Content-Disposition': 'attachment; filename="documento.pdf"',
-    });
+    })
 
-    return pdfBuffer;
-
+    return pdfBuffer
   } catch (error: any) {
-    console.error("ERROR CRÍTICO PDF:", error);
-    
-    if (browser) await browser.close();
+    console.error('ERROR CRÍTICO PDF:', error)
+
+    if (browser) await browser.close()
 
     throw createError({
       statusCode: 500,
-      statusMessage: error.message
-    });
+      statusMessage: error.message,
+    })
   }
-});
+})

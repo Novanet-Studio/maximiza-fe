@@ -1,20 +1,18 @@
 <script setup lang="ts">
-import { bankingInstituteOptions, getLabel } from "~/assets/data/formSources";
-import { formatAmount } from "~/lib/utils";
+import { bankingInstituteOptions, getLabel } from '~/assets/data/formSources'
+import { formatAmount } from '~/lib/utils'
 
-const getBankLabel = (val: string) => getLabel(val, bankingInstituteOptions);
+const getBankLabel = (val: string) => getLabel(val, bankingInstituteOptions)
 
 const { source } = defineProps<{
-  source: MXMZ.FinancialInformation;
-}>();
+  source: MXMZ.FinancialInformation
+}>()
 </script>
 
 <template>
-  <div class="w-full grid grid-cols-[115px_1fr]">
-    <aside
-      class="bg-primary min-h-[60px] flex justify-center items-center"
-    >
-      <h5 class="text-[12px] text-white font-bold">Referencias bancarias</h5>
+  <div class="grid w-full grid-cols-[115px_1fr]">
+    <aside class="bg-primary flex min-h-[60px] items-center justify-center">
+      <h5 class="text-[12px] font-bold text-white">Referencias bancarias</h5>
     </aside>
     <div>
       <div class="grid grid-cols-[1fr_1fr]">

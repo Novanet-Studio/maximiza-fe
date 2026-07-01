@@ -1,56 +1,59 @@
 export const truncateText = (text: string, length: number) => {
-  if (!text) return "";
+  if (!text) return ''
 
-  return text.length > length ? text.substring(0, length) + "..." : text;
-};
+  return text.length > length ? text.substring(0, length) + '...' : text
+}
 
 export const formatDate = (dateString: string | undefined | null): string => {
-  if (!dateString) return "";
+  if (!dateString) return ''
 
-  const parts = dateString.split("-");
+  const parts = dateString.split('-')
 
-  if (parts.length !== 3) return dateString;
+  if (parts.length !== 3) return dateString
 
-  const [year, month, day] = parts;
+  const [year, month, day] = parts
 
-  return `${day}/${month}/${year}`;
-};
+  return `${day}/${month}/${year}`
+}
 
-export const articleExcerpt = (text: string | undefined | null, length: number) => {
-  if (!text) return "";
+export const articleExcerpt = (
+  text: string | undefined | null,
+  length: number
+) => {
+  if (!text) return ''
 
-  const raw = text.replace(/<[^>]*>/g, '');
+  const raw = text.replace(/<[^>]*>/g, '')
 
-  return raw.length > length ? raw.substring(0, length) + "..." : raw;
-};
+  return raw.length > length ? raw.substring(0, length) + '...' : raw
+}
 
 export const minAgeDate = (age: number): string => {
-  const today = new Date();
+  const today = new Date()
   const date = new Date(
     today.getFullYear() - age,
     today.getMonth(),
-    today.getDate(),
-  );
+    today.getDate()
+  )
 
-  return date.toISOString().split("T")[0] ?? "";
-};
+  return date.toISOString().split('T')[0] ?? ''
+}
 
 export const formatAmount = (
-  value: string | number | undefined | null,
+  value: string | number | undefined | null
 ): string => {
-  if (value === "" || value === undefined || value === null) return "";
+  if (value === '' || value === undefined || value === null) return ''
 
-  const normalizedValue = String(value).replace(",", ".");
+  const normalizedValue = String(value).replace(',', '.')
 
-  const number = parseFloat(normalizedValue);
+  const number = parseFloat(normalizedValue)
 
-  if (isNaN(number)) return "";
+  if (isNaN(number)) return ''
 
   return (
-    new Intl.NumberFormat("es-VE", {
+    new Intl.NumberFormat('es-VE', {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
       useGrouping: true,
-    }).format(number) + " Bs"
-  );
-};
+    }).format(number) + ' Bs'
+  )
+}

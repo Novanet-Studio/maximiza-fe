@@ -1,39 +1,37 @@
 <script setup lang="ts">
 const props = defineProps<{
-  steps: string[];
-  currentStep: number;
-  maxStepReached: number;
-}>();
+  steps: string[]
+  currentStep: number
+  maxStepReached: number
+}>()
 
 const emit = defineEmits<{
-  goToStep: [index: number];
-}>();
+  goToStep: [index: number]
+}>()
 
 const handleStepClick = (index: number) => {
   // Only allow navigation to visited steps
   if (index <= props.maxStepReached) {
-    emit("goToStep", index);
+    emit('goToStep', index)
   }
-};
+}
 
 const isStepClickable = (index: number) => {
-  return index <= props.maxStepReached;
-};
+  return index <= props.maxStepReached
+}
 </script>
 
 <template>
-  <div id="formStepper" class="w-full mx-auto px-2 md:px-4">
+  <div id="formStepper" class="mx-auto w-full px-2 md:px-4">
     <!-- MOBILE VIEW -->
-    <div class="md:hidden mb-6">
-      <p class="text-primary font-bold text-sm uppercase mb-2">
+    <div class="mb-6 md:hidden">
+      <p class="text-primary mb-2 text-sm font-bold uppercase">
         Paso {{ currentStep + 1 }} de {{ steps.length }}
       </p>
-      <h3 class="text-black font-black text-3xl leading-tight">
+      <h3 class="text-3xl leading-tight font-black text-black">
         {{ steps[currentStep] }}
       </h3>
-      <div
-        class="w-full bg-white-alt2 h-2 mt-4 rounded-full overflow-hidden"
-      >
+      <div class="bg-white-alt2 mt-4 h-2 w-full overflow-hidden rounded-full">
         <div
           class="bg-primary h-full transition-all duration-500 ease-in-out"
           :style="{ width: `${((currentStep + 1) / steps.length) * 100}%` }"
@@ -42,23 +40,25 @@ const isStepClickable = (index: number) => {
     </div>
 
     <!-- DESKTOP VIEW -->
-    <div class="hidden md:flex justify-between items-center relative w-full py-4 mb-8">
+    <div
+      class="relative mb-8 hidden w-full items-center justify-between py-4 md:flex"
+    >
       <div
-        class="absolute top-1/2 left-0 w-full h-[1px] bg-gray z-10 transform -translate-y-1/2"
+        class="bg-gray absolute top-1/2 left-0 z-10 h-[1px] w-full -translate-y-1/2 transform"
       />
 
       <div
         v-for="(step, index) in steps"
         :key="index"
-        class="z-20 flex flex-col items-center relative group"
+        class="group relative z-20 flex flex-col items-center"
         @click="handleStepClick(index)"
       >
         <div
-          class="flex items-stretch border transition-all duration-500 ease-in-out overflow-hidden h-[54px]"
+          class="flex h-[54px] items-stretch overflow-hidden border transition-all duration-500 ease-in-out"
           :class="[
             index === currentStep
               ? 'bg-white-alt border-gray'
-              : 'bg-[#2b2b2b] border-[#2b2b2b]',
+              : 'border-[#2b2b2b] bg-[#2b2b2b]',
             isStepClickable(index)
               ? 'cursor-pointer hover:opacity-90'
               : 'cursor-not-allowed',
@@ -67,21 +67,27 @@ const isStepClickable = (index: number) => {
           <!-- Number Box -->
           <div
             class="flex items-center justify-center px-4 font-black transition-colors duration-500"
-            :class="index === currentStep ? 'bg-primary text-white text-xl' : 'bg-transparent text-white text-lg'"
+            :class="
+              index === currentStep
+                ? 'bg-primary text-xl text-white'
+                : 'bg-transparent text-lg text-white'
+            "
           >
             {{ String(index + 1).padStart(2, '0') }}
           </div>
 
           <!-- Label Box -->
           <div
-            class="transition-all duration-500 ease-in-out flex items-center overflow-hidden"
+            class="flex items-center overflow-hidden transition-all duration-500 ease-in-out"
             :class="[
               index === currentStep
-                ? 'max-w-[200px] opacity-100 px-3'
-                : 'max-w-0 opacity-0 px-0'
+                ? 'max-w-[200px] px-3 opacity-100'
+                : 'max-w-0 px-0 opacity-0',
             ]"
           >
-            <span class="text-primary font-bold text-sm leading-tight text-left w-24 pl-1 whitespace-normal">
+            <span
+              class="text-primary w-24 pl-1 text-left text-sm leading-tight font-bold whitespace-normal"
+            >
               {{ step }}
             </span>
           </div>

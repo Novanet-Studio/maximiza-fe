@@ -1,50 +1,50 @@
 <script setup lang="ts">
-import BaseLabel from "./BaseLabel.vue";
-import FormError from "./Error.vue";
+import BaseLabel from './BaseLabel.vue'
+import FormError from './Error.vue'
 
 interface Option {
-  value: string | number;
-  label: string;
+  value: string | number
+  label: string
 }
 
 interface Props {
-  modelValue?: string | number;
-  name: string;
-  label?: string;
-  options: (string | Option)[];
-  placeholder?: string;
-  errorMessage?: string;
-  disabled?: boolean;
-  comment?: string;
-  required?: boolean;
+  modelValue?: string | number
+  name: string
+  label?: string
+  options: (string | Option)[]
+  placeholder?: string
+  errorMessage?: string
+  disabled?: boolean
+  comment?: string
+  required?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  placeholder: "Seleccione...",
+  placeholder: 'Seleccione...',
   options: () => [],
-});
+})
 
-const emit = defineEmits(["update:modelValue", "blur"]);
+const emit = defineEmits(['update:modelValue', 'blur'])
 
 const normalizedOptions = computed(() => {
   return props.options.map((opt) => {
-    if (typeof opt === "object" && opt !== null) {
-      return opt as Option;
+    if (typeof opt === 'object' && opt !== null) {
+      return opt as Option
     }
 
-    return { value: opt, label: opt } as Option;
-  });
-});
+    return { value: opt, label: opt } as Option
+  })
+})
 
 const COMMENT_TYPES: Record<string, string> = {
-  INCOMES: "El monto indicado debe coincidir con su constancia de ingreso",
-};
+  INCOMES: 'El monto indicado debe coincidir con su constancia de ingreso',
+}
 
 const handleChange = (event: Event) => {
-  const target = event.target as HTMLSelectElement;
+  const target = event.target as HTMLSelectElement
 
-  emit("update:modelValue", target.value);
-};
+  emit('update:modelValue', target.value)
+}
 </script>
 
 <template>
@@ -64,7 +64,7 @@ const handleChange = (event: Event) => {
         :disabled="disabled"
         @change="handleChange"
         @blur="$emit('blur', $event)"
-        class="w-full px-3 py-2.5 bg-white text-black-alt border rounded-sm focus:outline-none focus:bg-white-alt/50 disabled:bg-white-alt2 disabled:text-gray transition-all duration-200 appearance-none text-sm cursor-pointer"
+        class="text-black-alt focus:bg-white-alt/50 disabled:bg-white-alt2 disabled:text-gray w-full cursor-pointer appearance-none rounded-sm border bg-white px-3 py-2.5 text-sm transition-all duration-200 focus:outline-none"
         :class="[
           errorMessage
             ? 'border-error focus:border-error focus:ring-error bg-error/5'
@@ -84,7 +84,7 @@ const handleChange = (event: Event) => {
       </select>
 
       <div
-        class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-gray"
+        class="text-gray pointer-events-none absolute inset-y-0 right-0 flex items-center px-3"
       >
         <font-awesome-icon :icon="['fas', 'caret-down']" />
       </div>
@@ -92,7 +92,7 @@ const handleChange = (event: Event) => {
 
     <p
       v-if="comment"
-      class="text-white-alt2 text-sm mt-2 bg-white-alt px-2 border-l-2 border-primary"
+      class="text-white-alt2 bg-white-alt border-primary mt-2 border-l-2 px-2 text-sm"
     >
       {{ COMMENT_TYPES[comment] || comment }}
     </p>

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useJsonLd } from '~/composables/useJsonLd';
-import { jsonld } from '~/assets/data/jsonld';
+import { useJsonLd } from '~/composables/useJsonLd'
+import { jsonld } from '~/assets/data/jsonld'
 
-useJsonLd(jsonld.organization);
+useJsonLd(jsonld.organization)
 </script>
 
 <template>

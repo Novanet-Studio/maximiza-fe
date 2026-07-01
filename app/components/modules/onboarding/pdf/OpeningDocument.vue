@@ -3,38 +3,36 @@ import {
   getLabel,
   nationalityOptions,
   countriesOptions,
-} from "~/assets/data/formSources";
+} from '~/assets/data/formSources'
 
-import { MAXIMIZA_LOGO } from "~/assets/data/maximiza-logo";
+import { MAXIMIZA_LOGO } from '~/assets/data/maximiza-logo'
 
-const MaximizaLogo = MAXIMIZA_LOGO;
+const MaximizaLogo = MAXIMIZA_LOGO
 
 const props = defineProps<{
-  data: MXMZ.OnboardingWizardResult;
-}>();
+  data: MXMZ.OnboardingWizardResult
+}>()
 
 const isNatural = computed(() => {
-  return !props.data.enterpriseIdentification?.taxInformationRegistration;
-});
+  return !props.data.enterpriseIdentification?.taxInformationRegistration
+})
 
-const personal = computed(() => props.data.personalData || {});
+const personal = computed(() => props.data.personalData || {})
 const enterprise = computed(
-  () => props.data.enterpriseIdentification || ({} as any),
-);
+  () => props.data.enterpriseIdentification || ({} as any)
+)
 
-const financial = computed(
-  () => props.data.financialInformation || ({} as any),
-);
+const financial = computed(() => props.data.financialInformation || ({} as any))
 
 const joinValues = (val1?: string, val2?: string) => {
-  const v1 = val1?.trim();
-  const v2 = val2?.trim();
+  const v1 = val1?.trim()
+  const v2 = val2?.trim()
 
-  if (v1 && v2 && v1 !== v2) return `${v1}, ${v2}`;
-  if (v1) return v1;
-  if (v2) return v2;
-  return "________________";
-};
+  if (v1 && v2 && v1 !== v2) return `${v1}, ${v2}`
+  if (v1) return v1
+  if (v2) return v2
+  return '________________'
+}
 
 const textData = computed(() => {
   if (isNatural.value) {
@@ -43,13 +41,13 @@ const textData = computed(() => {
       nationality: getLabel(personal.value.nationality, nationalityOptions),
       address: personal.value.address,
       id: personal.value.identification,
-    };
+    }
   } else {
-    const stockholder = financial.value.stockholders?.[0];
-    const legalRep = financial.value.legalRepresentatives?.[0];
+    const stockholder = financial.value.stockholders?.[0]
+    const legalRep = financial.value.legalRepresentatives?.[0]
 
-    const stockholderNat = stockholder?.nationality;
-    const legalRepNat = legalRep?.nationality;
+    const stockholderNat = stockholder?.nationality
+    const legalRepNat = legalRep?.nationality
 
     return {
       repName: joinValues(stockholder?.name, legalRep?.name),
@@ -60,41 +58,46 @@ const textData = computed(() => {
 
       repId: joinValues(stockholder?.dni, legalRep?.dni),
 
-      companyRole: "ACCIONISTA Y REPRESENTANTE LEGAL",
-      companyName: enterprise.value.socialReason || "________________",
-      companyRif: `${enterprise.value.taxType || ""}-${enterprise.value.taxInformationRegistration || ""}`,
-    };
+      companyRole: 'ACCIONISTA Y REPRESENTANTE LEGAL',
+      companyName: enterprise.value.socialReason || '________________',
+      companyRif: `${enterprise.value.taxType || ''}-${enterprise.value.taxInformationRegistration || ''}`,
+    }
   }
-});
+})
 </script>
 
 <template>
   <div class="spreadsheet" style="padding: 1rem">
     <div class="page-break-container">
       <header class="spreadsheet__header">
-        <img class="spreadsheet__image" :src="MaximizaLogo" alt="logo" title="logo" />
+        <img
+          class="spreadsheet__image"
+          :src="MaximizaLogo"
+          alt="logo"
+          title="logo"
+        />
       </header>
 
       <div class="spreadsheet__body mt-12 px-4">
-        <h2 class="text-center font-bold uppercase text-lg mb-12">
+        <h2 class="mb-12 text-center text-lg font-bold uppercase">
           PODER PARA APERTURA Y MANEJO DE CUENTA DE CUSTODIA
         </h2>
 
-        <p v-if="isNatural" class="text-justify leading-loose text-sm">
+        <p v-if="isNatural" class="text-justify text-sm leading-loose">
           Yo,
-          <span class="font-bold border-b border-black px-1">{{
+          <span class="border-b border-black px-1 font-bold">{{
             textData.name
           }}</span
           >, de nacionalidad
-          <span class="font-bold border-b border-black px-1">{{
+          <span class="border-b border-black px-1 font-bold">{{
             textData.nationality
           }}</span
           >, domiciliado (a) en
-          <span class="font-bold border-b border-black px-1">{{
+          <span class="border-b border-black px-1 font-bold">{{
             textData.address
           }}</span
           >, titular de la Cédula de Identidad N°
-          <span class="font-bold border-b border-black px-1">{{
+          <span class="border-b border-black px-1 font-bold">{{
             textData.id
           }}</span
           >, por el presente documento DECLARO QUE: Confiero poder especial,
@@ -117,33 +120,33 @@ const textData = computed(() => {
           deban ser efectuados a favor de mi representado.
         </p>
 
-        <p v-else class="text-justify leading-loose text-sm">
+        <p v-else class="text-justify text-sm leading-loose">
           Yo (nosotros),
-          <span class="font-bold border-b border-black px-1">{{
+          <span class="border-b border-black px-1 font-bold">{{
             textData.repName
           }}</span
           >, de nacionalidad
-          <span class="font-bold border-b border-black px-1">{{
+          <span class="border-b border-black px-1 font-bold">{{
             textData.repNationality
           }}</span
           >, domiciliado (os/as) en
-          <span class="font-bold border-b border-black px-1">{{
+          <span class="border-b border-black px-1 font-bold">{{
             textData.repAddress
           }}</span
           >, titular(es) de la(s) Cédula de Identidad N° (os.)
-          <span class="font-bold border-b border-black px-1">{{
+          <span class="border-b border-black px-1 font-bold">{{
             textData.repId
           }}</span
           >, (respectivamente), actuando en mí (nuestro) carácter de
-          <span class="font-bold border-b border-black px-1">{{
+          <span class="border-b border-black px-1 font-bold">{{
             textData.companyRole
           }}</span>
           de la sociedad mercantil
-          <span class="font-bold border-b border-black px-1">{{
+          <span class="border-b border-black px-1 font-bold">{{
             textData.companyName
           }}</span
           >, inscrita en el Registro de Información Fiscal (R.I.F.) bajo el N°
-          <span class="font-bold border-b border-black px-1">{{
+          <span class="border-b border-black px-1 font-bold">{{
             textData.companyRif
           }}</span
           >, por el presente documento DECLARO QUE: Confiero poder especial,
@@ -166,16 +169,16 @@ const textData = computed(() => {
           pagos que deban ser efectuados a favor de mi representado.
         </p>
 
-        <div class="mt-32 flex justify-end items-end gap-8">
-          <div class="flex-1 flex flex-col items-center justify-end pb-8">
-            <div class="w-full border-b border-black mb-2"></div>
+        <div class="mt-32 flex items-end justify-end gap-8">
+          <div class="flex flex-1 flex-col items-center justify-end pb-8">
+            <div class="mb-2 w-full border-b border-black"></div>
             <span class="text-sm font-bold">Firma</span>
           </div>
 
           <div
-            class="w-32 h-40 border border-black flex flex-col justify-end items-center pb-2 shrink-0"
+            class="flex h-40 w-32 shrink-0 flex-col items-center justify-end border border-black pb-2"
           >
-            <span class="text-[10px] font-bold text-center"
+            <span class="text-center text-[10px] font-bold"
               >Huella Dactilar</span
             >
           </div>

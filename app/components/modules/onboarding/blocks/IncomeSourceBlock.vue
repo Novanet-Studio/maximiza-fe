@@ -3,85 +3,85 @@ import {
   monthlyIncomeOptions,
   economicActivityOptions,
   getLabel,
-} from "~/assets/data/formSources";
+} from '~/assets/data/formSources'
 
-import { formatAmount, formatDate } from "~/lib/utils";
+import { formatAmount, formatDate } from '~/lib/utils'
 
 const { source } = defineProps<{
-  source: MXMZ.FinancialInformation;
-}>();
+  source: MXMZ.FinancialInformation
+}>()
 </script>
 
 <template>
   <div
-    class="spreadsheet__item text-center font-bold flex justify-center items-center"
+    class="spreadsheet__item flex items-center justify-center text-center font-bold"
   >
     Fuente de ingresos del inversionista
   </div>
 
-  <div class="grid grid-cols-[1fr_1fr_1fr] w-full">
+  <div class="grid w-full grid-cols-[1fr_1fr_1fr]">
     <div class="spreadsheet__item">
-      <div class="grid grid-cols-[1fr_auto] h-full items-center">
+      <div class="grid h-full grid-cols-[1fr_auto] items-center">
         <span>Relación de dependencia</span>
         <div
           :class="[
-            'border px-1 ml-1 font-black flex items-center justify-center',
+            'ml-1 flex items-center justify-center border px-1 font-black',
             source.incomeSource?.includes('dependencia')
               ? 'bg-error text-white'
               : 'bg-primary text-white',
           ]"
         >
-          {{ source.incomeSource?.includes("dependencia") ? "SI" : "NO" }}
+          {{ source.incomeSource?.includes('dependencia') ? 'SI' : 'NO' }}
         </div>
       </div>
     </div>
 
     <div class="spreadsheet__item">
-      <div class="grid grid-cols-[1fr_auto] h-full items-center">
+      <div class="grid h-full grid-cols-[1fr_auto] items-center">
         <span>Negocio propio</span>
         <div
           :class="[
-            'border px-1 ml-1 font-black flex items-center justify-center',
+            'ml-1 flex items-center justify-center border px-1 font-black',
             source.incomeSource?.includes('propio')
               ? 'bg-error text-white'
               : 'bg-primary text-white',
           ]"
         >
-          {{ source.incomeSource?.includes("propio") ? "SI" : "NO" }}
+          {{ source.incomeSource?.includes('propio') ? 'SI' : 'NO' }}
         </div>
       </div>
     </div>
 
     <div class="spreadsheet__item">
-      <div class="grid grid-cols-[1fr_auto] h-full items-center">
+      <div class="grid h-full grid-cols-[1fr_auto] items-center">
         <span>Otras formas de ingreso</span>
         <div
           :class="[
-            'border px-1 ml-1 font-black flex items-center justify-center',
+            'ml-1 flex items-center justify-center border px-1 font-black',
             source.otherIncomeSource
               ? 'bg-error text-white'
               : 'bg-primary text-white',
           ]"
         >
-          {{ source.otherIncomeSource ? "SI" : "NO" }}
+          {{ source.otherIncomeSource ? 'SI' : 'NO' }}
         </div>
       </div>
     </div>
   </div>
 
-  <div class="w-full grid grid-cols-[100px_1fr]">
+  <div class="grid w-full grid-cols-[100px_1fr]">
     <aside
-      class="bg-primary min-h-[60px] flex justify-center items-center border-b border-white"
+      class="bg-primary flex min-h-[60px] items-center justify-center border-b border-white"
     >
-      <h5 class="text-[12px] text-white font-bold">Relación de dependencia:</h5>
+      <h5 class="text-[12px] font-bold text-white">Relación de dependencia:</h5>
     </aside>
 
     <div>
-      <div class="grid grid-cols-[2.2fr_1fr_1fr_1fr] w-full">
+      <div class="grid w-full grid-cols-[2.2fr_1fr_1fr_1fr]">
         <div class="spreadsheet__item">
           <div class="spreadsheet__form-item">
             Nombre de la empresa:
-            <div class="content">{{ source.company.name || "N/A" }}</div>
+            <div class="content">{{ source.company.name || 'N/A' }}</div>
           </div>
         </div>
 
@@ -89,7 +89,7 @@ const { source } = defineProps<{
           <div class="spreadsheet__form-item">
             RIF:
             <div class="content">
-              {{ source.company.rif || "N/A" }}
+              {{ source.company.rif || 'N/A' }}
             </div>
           </div>
         </div>
@@ -98,7 +98,7 @@ const { source } = defineProps<{
           <div class="spreadsheet__form-item">
             Remuneración
             <div class="content">
-              {{ formatAmount(source.company.remuneration) || "N/A" }}
+              {{ formatAmount(source.company.remuneration) || 'N/A' }}
             </div>
           </div>
         </div>
@@ -106,21 +106,21 @@ const { source } = defineProps<{
         <div class="spreadsheet__item">
           <div class="spreadsheet__form-item">
             Cargo que ocupa:
-            <div class="content">{{ source.company.rol || "N/A" }}</div>
+            <div class="content">{{ source.company.rol || 'N/A' }}</div>
           </div>
         </div>
 
         <div class="spreadsheet__item col-span-2">
           <div class="spreadsheet__form-item">
             Dirección de la empresa:
-            <div class="content">{{ source.company.address || "N/A" }}</div>
+            <div class="content">{{ source.company.address || 'N/A' }}</div>
           </div>
         </div>
 
         <div class="spreadsheet__item">
           <div class="spreadsheet__form-item">
             Teléfono:
-            <div class="content">{{ source.company.phone || "N/A" }}</div>
+            <div class="content">{{ source.company.phone || 'N/A' }}</div>
           </div>
         </div>
 
@@ -130,7 +130,7 @@ const { source } = defineProps<{
             <span class="content font-bold">
               {{
                 getLabel(source.company.branch, economicActivityOptions) ||
-                "N/A"
+                'N/A'
               }}
             </span>
           </div>
@@ -139,32 +139,32 @@ const { source } = defineProps<{
     </div>
   </div>
 
-  <div class="w-full grid grid-cols-[100px_1fr]">
+  <div class="grid w-full grid-cols-[100px_1fr]">
     <aside
-      class="bg-primary min-h-[60px] flex justify-center items-center border-b border-white"
+      class="bg-primary flex min-h-[60px] items-center justify-center border-b border-white"
     >
-      <h5 class="text-[12px] text-white font-bold">Negocio propio:</h5>
+      <h5 class="text-[12px] font-bold text-white">Negocio propio:</h5>
     </aside>
 
     <div>
-      <div class="grid grid-cols-[1.1fr_1.1fr_1fr_1fr_1fr] w-full">
+      <div class="grid w-full grid-cols-[1.1fr_1.1fr_1fr_1fr_1fr]">
         <div class="spreadsheet__item col-span-2">
           <div class="spreadsheet__form-item">
             Nombre de la empresa:
-            <div class="content">{{ source.business.name || "N/A" }}</div>
+            <div class="content">{{ source.business.name || 'N/A' }}</div>
           </div>
         </div>
         <div class="spreadsheet__item">
           <div class="spreadsheet__form-item">
             RIF:
-            <div class="content">{{ source.business.rif || "N/A" }}</div>
+            <div class="content">{{ source.business.rif || 'N/A' }}</div>
           </div>
         </div>
         <div class="spreadsheet__item">
           <div class="spreadsheet__form-item">
             Ingresos mensuales:
             <div class="content">
-              {{ formatAmount(source.business.income) || "N/A" }}
+              {{ formatAmount(source.business.income) || 'N/A' }}
             </div>
           </div>
         </div>
@@ -172,7 +172,7 @@ const { source } = defineProps<{
           <div class="spreadsheet__form-item">
             Fecha de constitución:
             <div class="content">
-              {{ formatDate(source.business.constitutionDate) || "N/A" }}
+              {{ formatDate(source.business.constitutionDate) || 'N/A' }}
             </div>
           </div>
         </div>
@@ -181,7 +181,7 @@ const { source } = defineProps<{
           <div class="spreadsheet__form-item">
             Datos del registro:
             <div class="content">
-              {{ source.business.registerData || "N/A" }}
+              {{ source.business.registerData || 'N/A' }}
             </div>
           </div>
         </div>
@@ -190,17 +190,17 @@ const { source } = defineProps<{
           <div class="spreadsheet__form-item">
             Dirección fiscal:
             <div class="content">
-              {{ source.business.fiscalAddress || "N/A" }}
+              {{ source.business.fiscalAddress || 'N/A' }}
             </div>
           </div>
         </div>
 
-        <div class="col-span-full grid grid-cols-2 w-full">
+        <div class="col-span-full grid w-full grid-cols-2">
           <div class="spreadsheet__item">
             <div class="spreadsheet__form-item">
               Teléfono:
               <div class="content">
-                {{ source.business.phone || "N/A" }}
+                {{ source.business.phone || 'N/A' }}
               </div>
             </div>
           </div>
@@ -211,23 +211,23 @@ const { source } = defineProps<{
               <div class="content">
                 {{
                   getLabel(source.business.branch, economicActivityOptions) ||
-                  "N/A"
+                  'N/A'
                 }}
               </div>
             </div>
           </div>
         </div>
 
-        <div class="col-span-full grid grid-cols-2 w-full">
-          <div class="spreadsheet__item font-bold bg-gray-50">
+        <div class="col-span-full grid w-full grid-cols-2">
+          <div class="spreadsheet__item bg-gray-50 font-bold">
             Principales proveedores:
           </div>
-          <div class="spreadsheet__item font-bold bg-gray-50">
+          <div class="spreadsheet__item bg-gray-50 font-bold">
             Principales clientes:
           </div>
         </div>
 
-        <div class="w-full col-span-full grid grid-cols-4">
+        <div class="col-span-full grid w-full grid-cols-4">
           <div class="spreadsheet__item">Nombre o razón social:</div>
           <div class="spreadsheet__item">Ubicación:</div>
           <div class="spreadsheet__item">Nombre o razón social:</div>
@@ -235,26 +235,26 @@ const { source } = defineProps<{
         </div>
 
         <template v-for="i in [0, 1, 2]" :key="i">
-          <div class="w-full col-span-full grid grid-cols-4">
+          <div class="col-span-full grid w-full grid-cols-4">
             <div class="spreadsheet__item">
               <div class="content">
-                {{ source.business.providers?.[i]?.name || "N/A" }}
+                {{ source.business.providers?.[i]?.name || 'N/A' }}
               </div>
             </div>
             <div class="spreadsheet__item">
               <div class="content">
-                {{ source.business.providers?.[i]?.location || "N/A" }}
+                {{ source.business.providers?.[i]?.location || 'N/A' }}
               </div>
             </div>
 
             <div class="spreadsheet__item">
               <div class="content">
-                {{ source.business.clients?.[i]?.name || "N/A" }}
+                {{ source.business.clients?.[i]?.name || 'N/A' }}
               </div>
             </div>
             <div class="spreadsheet__item">
               <div class="content">
-                {{ source.business.clients?.[i]?.location || "N/A" }}
+                {{ source.business.clients?.[i]?.location || 'N/A' }}
               </div>
             </div>
           </div>
@@ -263,20 +263,18 @@ const { source } = defineProps<{
     </div>
   </div>
 
-  <div class="w-full grid grid-cols-[100px_1fr]">
-    <aside
-      class="bg-primary min-h-[60px] flex justify-center items-center"
-    >
-      <h5 class="text-[12px] text-white font-bold">Otros ingresos:</h5>
+  <div class="grid w-full grid-cols-[100px_1fr]">
+    <aside class="bg-primary flex min-h-[60px] items-center justify-center">
+      <h5 class="text-[12px] font-bold text-white">Otros ingresos:</h5>
     </aside>
 
     <div>
-      <div class="h-full grid grid-rows-2 w-full">
+      <div class="grid h-full w-full grid-rows-2">
         <div class="col-span-full grid grid-cols-2">
-          <div class="spreadsheet__item font-bold bg-gray-50">
+          <div class="spreadsheet__item bg-gray-50 font-bold">
             Actividad generadora de los ingresos:
           </div>
-          <div class="spreadsheet__item font-bold bg-gray-50">
+          <div class="spreadsheet__item bg-gray-50 font-bold">
             Ingresos mensuales:
           </div>
         </div>
@@ -286,14 +284,14 @@ const { source } = defineProps<{
             <div class="content">
               {{
                 getLabel(source.otherIncomeSource, economicActivityOptions) ||
-                "N/A"
+                'N/A'
               }}
             </div>
           </div>
 
           <div class="spreadsheet__item">
             <div class="content">
-              {{ formatAmount(source.otherIncomeAmount) || "N/A" }}
+              {{ formatAmount(source.otherIncomeAmount) || 'N/A' }}
             </div>
           </div>
         </div>

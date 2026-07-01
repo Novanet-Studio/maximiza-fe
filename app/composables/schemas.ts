@@ -1,5 +1,5 @@
 export const articles = {
-    getAllArticles: `
+  getAllArticles: `
         query BlogQuery {    
             articulos(sort: "fecha:desc") {
                 documentId
@@ -14,7 +14,7 @@ export const articles = {
             }
         }
     `,
-    getArticleBySlug: `
+  getArticleBySlug: `
         query ArticuloBySlug($slug: String!) {
             articulos(filters: { slug: { eq: $slug } }) {
                 documentId
@@ -28,11 +28,11 @@ export const articles = {
                 }
             }
         }
-    `
+    `,
 }
 
 export const balances = {
-    getAllBalances: `
+  getAllBalances: `
         query BalanceQuery {
             balances {
                 documentId
@@ -48,5 +48,5 @@ export const balances = {
                 }
             }
         }
-    `
+    `,
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { source } = defineProps<{
-  source: MXMZ.Providers[];
-}>();
+  source: MXMZ.Providers[]
+}>()
 </script>
 
 <template>
@@ -11,10 +11,10 @@ const { source } = defineProps<{
     </div>
 
     <div class="grid grid-cols-[2fr_1fr]">
-      <div class="spreadsheet__item font-bold text-[10px]">
+      <div class="spreadsheet__item text-[10px] font-bold">
         Nombre o razón social
       </div>
-      <div class="spreadsheet__item font-bold text-[10px]">Ubicación</div>
+      <div class="spreadsheet__item text-[10px] font-bold">Ubicación</div>
     </div>
 
     <div class="grid grid-cols-[2fr_1fr]">

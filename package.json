@@ -8,7 +8,8 @@
     "host": "nuxt dev --host",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "format": "prettier --write \"app/**/*.{vue,ts,js}\" \"server/**/*.ts\""
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
@@ -38,6 +39,8 @@
     "@nuxt/image": "^2.0.0",
     "@nuxtjs/robots": "^5.7.0",
     "@nuxtjs/sitemap": "^7.6.0",
+    "prettier": "^3.9.4",
+    "prettier-plugin-tailwindcss": "^0.8.0",
     "sass-embedded": "^1.98.0"
   },
   "overrides": {

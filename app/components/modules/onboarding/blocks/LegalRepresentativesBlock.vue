@@ -1,27 +1,27 @@
 <script setup lang="ts">
 const { source } = defineProps<{
-  source: MXMZ.LegalRepresentatives[];
-}>();
+  source: MXMZ.LegalRepresentatives[]
+}>()
 </script>
 
 <template>
   <div class="w-full">
-    <div class="spreadsheet__item text-center font-bold bg-gray-100">
+    <div class="spreadsheet__item bg-gray-100 text-center font-bold">
       Representante(s) legal(es) / Autorizados para realizar operaciones
       bursatiles
     </div>
 
     <div class="grid grid-cols-[2fr_2fr_2fr_2fr_1fr_1fr]">
-      <div class="spreadsheet__item font-bold text-[10px]">Nombre</div>
-      <div class="spreadsheet__item font-bold text-[10px]">
+      <div class="spreadsheet__item text-[10px] font-bold">Nombre</div>
+      <div class="spreadsheet__item text-[10px] font-bold">
         Documento de Identidad
       </div>
-      <div class="spreadsheet__item font-bold text-[10px]">Cargo</div>
-      <div class="spreadsheet__item font-bold text-[10px]">Condición</div>
-      <div class="spreadsheet__item font-bold text-[10px] text-center">
+      <div class="spreadsheet__item text-[10px] font-bold">Cargo</div>
+      <div class="spreadsheet__item text-[10px] font-bold">Condición</div>
+      <div class="spreadsheet__item text-center text-[10px] font-bold">
         ES PEP
       </div>
-      <div class="spreadsheet__item font-bold text-[10px] text-center">
+      <div class="spreadsheet__item text-center text-[10px] font-bold">
         Rel. PEP
       </div>
     </div>
@@ -48,13 +48,13 @@ const { source } = defineProps<{
         <div
           v-if="source[0]"
           :class="[
-            'border px-1 font-black text-[9px]',
+            'border px-1 text-[9px] font-black',
             source[0].esPep === 'SI'
               ? 'bg-error text-white'
               : 'bg-primary text-white',
           ]"
         >
-          {{ source[0].esPep || "NO" }}
+          {{ source[0].esPep || 'NO' }}
         </div>
         <div v-else class="content">N/A</div>
       </div>
@@ -63,13 +63,13 @@ const { source } = defineProps<{
         <div
           v-if="source[0]"
           :class="[
-            'border px-1 font-black text-[9px]',
+            'border px-1 text-[9px] font-black',
             source[0].relatedWithPep === 'SI'
               ? 'bg-error text-white'
               : 'bg-primary text-white',
           ]"
         >
-          {{ source[0].relatedWithPep || "NO" }}
+          {{ source[0].relatedWithPep || 'NO' }}
         </div>
         <div v-else class="content">N/A</div>
       </div>
@@ -97,13 +97,13 @@ const { source } = defineProps<{
         <div
           v-if="source[1]"
           :class="[
-            'border px-1 font-black text-[9px]',
+            'border px-1 text-[9px] font-black',
             source[1].esPep === 'SI'
               ? 'bg-error text-white'
               : 'bg-primary text-white',
           ]"
         >
-          {{ source[1].esPep || "NO" }}
+          {{ source[1].esPep || 'NO' }}
         </div>
         <div v-else class="content">N/A</div>
       </div>
@@ -112,13 +112,13 @@ const { source } = defineProps<{
         <div
           v-if="source[1]"
           :class="[
-            'border px-1 font-black text-[9px]',
+            'border px-1 text-[9px] font-black',
             source[1].relatedWithPep === 'SI'
               ? 'bg-error text-white'
               : 'bg-primary text-white',
           ]"
         >
-          {{ source[1].relatedWithPep || "NO" }}
+          {{ source[1].relatedWithPep || 'NO' }}
         </div>
         <div v-else class="content">N/A</div>
       </div>
@@ -146,13 +146,13 @@ const { source } = defineProps<{
         <div
           v-if="source[2]"
           :class="[
-            'border px-1 font-black text-[9px]',
+            'border px-1 text-[9px] font-black',
             source[2].esPep === 'SI'
               ? 'bg-error text-white'
               : 'bg-primary text-white',
           ]"
         >
-          {{ source[2].esPep || "NO" }}
+          {{ source[2].esPep || 'NO' }}
         </div>
         <div v-else class="content">N/A</div>
       </div>
@@ -161,13 +161,13 @@ const { source } = defineProps<{
         <div
           v-if="source[2]"
           :class="[
-            'border px-1 font-black text-[9px]',
+            'border px-1 text-[9px] font-black',
             source[2].relatedWithPep === 'SI'
               ? 'bg-error text-white'
               : 'bg-primary text-white',
           ]"
         >
-          {{ source[2].relatedWithPep || "NO" }}
+          {{ source[2].relatedWithPep || 'NO' }}
         </div>
         <div v-else class="content">N/A</div>
       </div>

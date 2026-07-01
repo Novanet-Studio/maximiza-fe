@@ -1,8 +1,8 @@
 <template>
-  <div class="min-h-dvh w-full flex flex-col">
+  <div class="flex min-h-dvh w-full flex-col">
     <AppHeader />
 
-    <main class="w-full flex-1 flex flex-col transition-opacity duration-500">
+    <main class="flex w-full flex-1 flex-col transition-opacity duration-500">
       <slot />
     </main>
 

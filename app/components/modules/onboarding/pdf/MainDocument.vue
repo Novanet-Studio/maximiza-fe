@@ -17,85 +17,84 @@ import {
   currencyOptions,
   productNamesOptions,
   virtualCurrencyOptions,
-} from "~/assets/data/formSources";
+} from '~/assets/data/formSources'
 
-import { MAXIMIZA_LOGO } from "~/assets/data/maximiza-logo";
-import { formatAmount, formatDate } from "~/lib/utils";
+import { MAXIMIZA_LOGO } from '~/assets/data/maximiza-logo'
+import { formatAmount, formatDate } from '~/lib/utils'
 
-
-const MaximizaLogo = MAXIMIZA_LOGO;
+const MaximizaLogo = MAXIMIZA_LOGO
 
 const props = defineProps<{
-  data: MXMZ.OnboardingWizardResult;
-}>();
+  data: MXMZ.OnboardingWizardResult
+}>()
 
 const isNatural = computed(() => {
-  return !props.data.enterpriseIdentification?.taxInformationRegistration;
-});
+  return !props.data.enterpriseIdentification?.taxInformationRegistration
+})
 
 const fillArray = (arr: any[], max: number, defaultObj: any) => {
-  const current = arr || [];
-  const emptyCount = Math.max(0, max - current.length);
-  return [...current, ...Array(emptyCount).fill(defaultObj)];
-};
+  const current = arr || []
+  const emptyCount = Math.max(0, max - current.length)
+  return [...current, ...Array(emptyCount).fill(defaultObj)]
+}
 
 // Data Helpers
 const personal = computed<MXMZ.PersonalData>(
-  () => props.data.personalData || ({} as MXMZ.PersonalData),
-);
+  () => props.data.personalData || ({} as MXMZ.PersonalData)
+)
 const enterprise = computed(
-  () => props.data.enterpriseIdentification || ({} as any),
-);
+  () => props.data.enterpriseIdentification || ({} as any)
+)
 const pep = computed<MXMZ.PepProfile>(
-  () => props.data.pepProfile || ({} as MXMZ.PepProfile),
-);
+  () => props.data.pepProfile || ({} as MXMZ.PepProfile)
+)
 const financial = computed<MXMZ.FinancialInformation>(
-  () => props.data.financialInformation || ({} as MXMZ.FinancialInformation),
-);
+  () => props.data.financialInformation || ({} as MXMZ.FinancialInformation)
+)
 const product = computed<MXMZ.ProductInformation>(
-  () => props.data.productInformation || ({} as MXMZ.ProductInformation),
-);
+  () => props.data.productInformation || ({} as MXMZ.ProductInformation)
+)
 
 const investor = computed<MXMZ.InvestorProfile>(
-  () => props.data.investorProfile || ({} as MXMZ.InvestorProfile),
-);
+  () => props.data.investorProfile || ({} as MXMZ.InvestorProfile)
+)
 
 const institutionData = computed<MXMZ.InstitutionData>(
-  () => props.data.institutionData || ({} as MXMZ.InstitutionData),
-);
+  () => props.data.institutionData || ({} as MXMZ.InstitutionData)
+)
 
 // Labels Computed
 const professionLabel = computed(() =>
-  getLabel(personal.value.profession, occupationsOptions),
-);
+  getLabel(personal.value.profession, occupationsOptions)
+)
 const economicActivityLabel = computed(() => {
   const code = isNatural.value
     ? financial.value.economicActivity
-    : enterprise.value.economicActivity;
-  return getLabel(code, economicActivityOptions);
-});
+    : enterprise.value.economicActivity
+  return getLabel(code, economicActivityOptions)
+})
 const nationalityLabel = computed(() =>
-  getLabel(personal.value.nationality, nationalityOptions),
-);
+  getLabel(personal.value.nationality, nationalityOptions)
+)
 const genderLabel = computed(() =>
-  getLabel(personal.value.gender, genderOptions),
-);
+  getLabel(personal.value.gender, genderOptions)
+)
 const maritalStatusLabel = computed(() =>
-  getLabel(personal.value.maritalStatus, maritalStatusOptions),
-);
+  getLabel(personal.value.maritalStatus, maritalStatusOptions)
+)
 const productNameLabel = computed(() =>
-  getLabel(product.value.productName, productNamesOptions),
-);
+  getLabel(product.value.productName, productNamesOptions)
+)
 const currencyLabel = computed(() =>
-  getLabel(product.value.currency, currencyOptions),
-);
+  getLabel(product.value.currency, currencyOptions)
+)
 
 const originCountryLabel = computed(() =>
-  getLabel(product.value.originCountry, countriesOptions),
-);
+  getLabel(product.value.originCountry, countriesOptions)
+)
 const destinationCountryLabel = computed(() =>
-  getLabel(product.value.destinationCountry, countriesOptions),
-);
+  getLabel(product.value.destinationCountry, countriesOptions)
+)
 
 /*
 onMounted(() => {
@@ -114,10 +113,15 @@ onMounted(() => {
       <div class="w-full text-right text-sm font-bold">Pág. 1/3</div>
 
       <header class="spreadsheet__header">
-        <img class="spreadsheet__image" :src="MaximizaLogo" alt="logo" title="logo" />
+        <img
+          class="spreadsheet__image"
+          :src="MaximizaLogo"
+          alt="logo"
+          title="logo"
+        />
         <h5 class="spreadsheet__main-title">
           FICHA DE IDENTIFICACIÓN DEL INVERSIONISTA PERSONA
-          {{ isNatural ? "NATURAL" : "JURÍDICA" }}
+          {{ isNatural ? 'NATURAL' : 'JURÍDICA' }}
         </h5>
       </header>
 
@@ -128,7 +132,7 @@ onMounted(() => {
               <div class="spreadsheet__form-item">
                 <div>Lugar:</div>
                 <div class="content">
-                  {{ institutionData.place || "Caracas" }}
+                  {{ institutionData.place || 'Caracas' }}
                 </div>
               </div>
             </div>
@@ -190,8 +194,8 @@ onMounted(() => {
         <h5 class="spreadsheet__title">
           {{
             isNatural
-              ? "DATOS PERSONALES DEL INVERSIONISTA"
-              : "DATOS DE IDENTIFICACIÓN DE LA EMPRESA"
+              ? 'DATOS PERSONALES DEL INVERSIONISTA'
+              : 'DATOS DE IDENTIFICACIÓN DE LA EMPRESA'
           }}
         </h5>
 
@@ -239,7 +243,7 @@ onMounted(() => {
               <div class="spreadsheet__form-item">
                 <div>Otra nacionalidad:</div>
                 <div class="content">
-                  {{ personal.otherNationality || "N/A" }}
+                  {{ personal.otherNationality || 'N/A' }}
                 </div>
               </div>
             </div>
@@ -357,7 +361,7 @@ onMounted(() => {
             <div class="spreadsheet__item">
               <div class="spreadsheet__form-item">
                 <div class="content">
-                  {{ personal.legalRepresentativeIdentification || "N/A" }}
+                  {{ personal.legalRepresentativeIdentification || 'N/A' }}
                 </div>
               </div>
             </div>
@@ -365,7 +369,7 @@ onMounted(() => {
             <div class="spreadsheet__item">
               <div class="spreadsheet__form-item">
                 <div class="content">
-                  {{ personal.legalRepresentativeFullname || "N/A" }}
+                  {{ personal.legalRepresentativeFullname || 'N/A' }}
                 </div>
               </div>
             </div>
@@ -376,7 +380,7 @@ onMounted(() => {
                   {{
                     `${formatDate(personal.legalRepresentativeBirthDate)}, ${getLabel(
                       personal.legalRepresentativeBirthPlace,
-                      countriesOptions,
+                      countriesOptions
                     )}`
                   }}
                 </div>
@@ -386,7 +390,7 @@ onMounted(() => {
             <div class="spreadsheet__item">
               <div class="spreadsheet__form-item">
                 <div class="content">
-                  {{ personal.legalRepresentativePhones || "N/A" }}
+                  {{ personal.legalRepresentativePhones || 'N/A' }}
                 </div>
               </div>
             </div>
@@ -394,7 +398,7 @@ onMounted(() => {
             <div class="spreadsheet__item">
               <div class="spreadsheet__form-item">
                 <div class="content">
-                  {{ personal.legalRepresentativeDocumentData || "N/A" }}
+                  {{ personal.legalRepresentativeDocumentData || 'N/A' }}
                 </div>
               </div>
             </div>
@@ -427,8 +431,8 @@ onMounted(() => {
             </div>
           </div>
 
-          <div class="grid grid-cols-2 w-full">
-            <div class="spreadsheet__item border-b-0 border-r-0">
+          <div class="grid w-full grid-cols-2">
+            <div class="spreadsheet__item border-r-0 border-b-0">
               <div class="spreadsheet__form-item">
                 <div>Actividad económica:</div>
               </div>
@@ -454,7 +458,7 @@ onMounted(() => {
                   {{
                     getLabel(
                       enterprise.specificActivity,
-                      specificActivityOptions,
+                      specificActivityOptions
                     )
                   }}
                 </div>
@@ -462,10 +466,11 @@ onMounted(() => {
             </div>
           </div>
 
-          <div class="w-full grid grid-cols-[135px_1fr]">
+          <div class="grid w-full grid-cols-[135px_1fr]">
             <aside
-              class="bg-primary min-h-[60px] flex justify-center items-center border-b border-white">
-              <h5 class="text-[12px] text-white font-bold">
+              class="bg-primary flex min-h-[60px] items-center justify-center border-b border-white"
+            >
+              <h5 class="text-[12px] font-bold text-white">
                 Datos del registro
               </h5>
             </aside>
@@ -528,10 +533,11 @@ onMounted(() => {
             </div>
           </div>
 
-          <div class="w-full grid grid-cols-[135px_1fr]">
+          <div class="grid w-full grid-cols-[135px_1fr]">
             <aside
-              class="bg-primary min-h-[60px] flex justify-center items-center border-b border-white">
-              <h5 class="text-[12px] text-white font-bold">
+              class="bg-primary flex min-h-[60px] items-center justify-center border-b border-white"
+            >
+              <h5 class="text-[12px] font-bold text-white">
                 Última modificación
               </h5>
             </aside>
@@ -596,9 +602,11 @@ onMounted(() => {
             </div>
           </div>
 
-          <div class="w-full grid grid-cols-[135px_1fr]">
-            <aside class="bg-primary min-h-[60px] flex justify-center items-center">
-              <h5 class="text-[12px] text-white font-bold">Entes públicos</h5>
+          <div class="grid w-full grid-cols-[135px_1fr]">
+            <aside
+              class="bg-primary flex min-h-[60px] items-center justify-center"
+            >
+              <h5 class="text-[12px] font-bold text-white">Entes públicos</h5>
             </aside>
             <div>
               <div class="grid grid-cols-[1fr_1fr]">
@@ -606,7 +614,7 @@ onMounted(() => {
                   <div class="spreadsheet__form-item">
                     <div>Número de gaceta oficial:</div>
                     <div class="content">
-                      {{ enterprise.officialGazetteNumber || "N/A" }}
+                      {{ enterprise.officialGazetteNumber || 'N/A' }}
                     </div>
                   </div>
                 </div>
@@ -614,7 +622,7 @@ onMounted(() => {
                   <div class="spreadsheet__form-item">
                     <div>Fecha:</div>
                     <div class="content">
-                      {{ formatDate(enterprise.publicEntitiesDate) || "N/A" }}
+                      {{ formatDate(enterprise.publicEntitiesDate) || 'N/A' }}
                     </div>
                   </div>
                 </div>
@@ -622,14 +630,14 @@ onMounted(() => {
                   <div class="spreadsheet__form-item">
                     <div>Autoridad / Ente de adscripción:</div>
                     <div class="content">
-                      {{ enterprise.authority || "N/A" }}
+                      {{ enterprise.authority || 'N/A' }}
                     </div>
                   </div>
                 </div>
                 <div class="spreadsheet__item">
                   <div class="spreadsheet__form-item">
                     <div>Código ONT:</div>
-                    <div class="content">{{ enterprise.ontCode || "N/A" }}</div>
+                    <div class="content">{{ enterprise.ontCode || 'N/A' }}</div>
                   </div>
                 </div>
               </div>
@@ -694,8 +702,12 @@ onMounted(() => {
           <h5 class="spreadsheet__title">
             INFORMACIÓN ECONÓMICO FINANCIERA DE LA EMPRESA
           </h5>
-          <ModulesOnboardingBlocksStockholdersBlock :source="financial.stockholders" />
-          <ModulesOnboardingBlocksLegalRepresentativesBlock :source="financial.legalRepresentatives" />
+          <ModulesOnboardingBlocksStockholdersBlock
+            :source="financial.stockholders"
+          />
+          <ModulesOnboardingBlocksLegalRepresentativesBlock
+            :source="financial.legalRepresentatives"
+          />
         </template>
 
         <template v-else>
@@ -744,7 +756,7 @@ onMounted(() => {
       <div class="spreadsheet__section">
         <h5 class="spreadsheet__title">
           INFORMACIÓN ECONÓMICO FINANCIERA
-          {{ isNatural ? "DEL INVERSIONISTA" : "DE LA EMPRESA" }}
+          {{ isNatural ? 'DEL INVERSIONISTA' : 'DE LA EMPRESA' }}
         </h5>
 
         <template v-if="isNatural">
@@ -752,14 +764,17 @@ onMounted(() => {
         </template>
 
         <template v-else>
-          <ModulesOnboardingBlocksPepBlock :source="pep" :stockholders="financial.stockholders" />
+          <ModulesOnboardingBlocksPepBlock
+            :source="pep"
+            :stockholders="financial.stockholders"
+          />
 
           <div class="grid grid-cols-3">
             <div class="spreadsheet__item">
               <div class="spreadsheet__form-item">
                 <div>N° de subsidiarias / Oficinas:</div>
                 <div class="content">
-                  {{ enterprise.officesNumber || "N/A" }}
+                  {{ enterprise.officesNumber || 'N/A' }}
                 </div>
               </div>
             </div>
@@ -770,7 +785,7 @@ onMounted(() => {
                   {{
                     getLabel(
                       enterprise.countryLargestPresence,
-                      countriesOptions,
+                      countriesOptions
                     )
                   }}
                 </div>
@@ -780,7 +795,7 @@ onMounted(() => {
               <div class="spreadsheet__form-item">
                 <div>N° de empleados:</div>
                 <div class="content">
-                  {{ enterprise.employeesNumber || "N/A" }}
+                  {{ enterprise.employeesNumber || 'N/A' }}
                 </div>
               </div>
             </div>
@@ -813,7 +828,7 @@ onMounted(() => {
             </div>
           </div>
 
-          <div class="spreadsheet__item font-bold text-[10px]">
+          <div class="spreadsheet__item text-[10px] font-bold">
             Última declaración ISLR:
           </div>
           <div class="grid grid-cols-2">
@@ -834,11 +849,15 @@ onMounted(() => {
           </div>
 
           <div class="grid grid-cols-2">
-            <ModulesOnboardingBlocksProvidersBlock :source="financial.providers" />
+            <ModulesOnboardingBlocksProvidersBlock
+              :source="financial.providers"
+            />
             <ModulesOnboardingBlocksClientsBlock :source="financial.clients" />
           </div>
 
-          <ModulesOnboardingBlocksRelatedCompaniesBlock :source="financial.relatedCompanies" />
+          <ModulesOnboardingBlocksRelatedCompaniesBlock
+            :source="financial.relatedCompanies"
+          />
 
           <ModulesOnboardingBlocksBankReferencesBlock :source="financial" />
         </template>
@@ -871,7 +890,7 @@ onMounted(() => {
           </div>
         </div>
 
-        <div class="spreadsheet__item font-bold text-[10px]">
+        <div class="spreadsheet__item text-[10px] font-bold">
           Información sobre movilización de fondos
         </div>
 
@@ -905,7 +924,7 @@ onMounted(() => {
           </div>
 
           <div class="spreadsheet__item grid grid-cols-2">
-            <div class="spreadsheet__form-item border-r-2 border-primary">
+            <div class="spreadsheet__form-item border-primary border-r-2">
               <div>Compra:</div>
               <div class="content">{{ product.perTransferPurchase }}</div>
             </div>
@@ -916,14 +935,14 @@ onMounted(() => {
           </div>
 
           <div class="spreadsheet__item grid grid-cols-3">
-            <div class="spreadsheet__form-item border-r-2 border-primary">
+            <div class="spreadsheet__form-item border-primary border-r-2">
               <div>País origen:</div>
-              <div class="content">{{ originCountryLabel || "N/A" }}</div>
+              <div class="content">{{ originCountryLabel || 'N/A' }}</div>
             </div>
 
-            <div class="spreadsheet__form-item border-r-2 border-primary">
+            <div class="spreadsheet__form-item border-primary border-r-2">
               <div>País destino:</div>
-              <div class="content">{{ destinationCountryLabel || "N/A" }}</div>
+              <div class="content">{{ destinationCountryLabel || 'N/A' }}</div>
             </div>
 
             <div class="spreadsheet__form-item">
@@ -933,8 +952,10 @@ onMounted(() => {
           </div>
         </div>
 
-        <div v-if="product.sendOrReceiveFundsFromAbroad === 'SI'"
-          class="spreadsheet__item font-bold bg-white-alt2 text-[10px]">
+        <div
+          v-if="product.sendOrReceiveFundsFromAbroad === 'SI'"
+          class="spreadsheet__item bg-white-alt2 text-[10px] font-bold"
+        >
           Enviar o recibir fondos del exterior
         </div>
 
@@ -991,7 +1012,9 @@ onMounted(() => {
           INVERSOR
         </h5>
         <div class="p-2">
-          <p class="spreadsheet__contract text-justify text-[9px] leading-tight">
+          <p
+            class="spreadsheet__contract text-justify text-[9px] leading-tight"
+          >
             Aceptación del contrato de cuenta de corretaje bursátil por parte
             del inversor con la firma del presente documento, el cliente
             expresamente conviene y acepta que las operaciones financieras y
@@ -1032,7 +1055,7 @@ onMounted(() => {
       <div class="spreadsheet__section">
         <h5 class="spreadsheet__title">DECLARACIÓN JURADA</h5>
         <div class="p-2 text-[10px]">
-          <p class="text-left font-bold mb-1">Quién suscribe declara:</p>
+          <p class="mb-1 text-left font-bold">Quién suscribe declara:</p>
           <ol class="list-none">
             <li class="text-start">
               1) Que los datos suministrados son verdaderos y autoriza a la
@@ -1055,19 +1078,19 @@ onMounted(() => {
         <div class="grid grid-cols-4">
           <div class="spreadsheet__sign-item">
             <div>Preparado por:</div>
-            <div class="mt-8 border-t border-primary text-[8px]">
+            <div class="border-primary mt-8 border-t text-[8px]">
               Nombre y apellido:
             </div>
           </div>
           <div class="spreadsheet__sign-item">
             <div>Verificado oficial de cumplimiento:</div>
-            <div class="mt-8 border-t border-primary text-[8px]">
+            <div class="border-primary mt-8 border-t text-[8px]">
               Nombre y apellido:
             </div>
           </div>
           <div class="spreadsheet__sign-item">
             <div>Firma del inversionista:</div>
-            <div class="mt-8 border-t border-primary text-[8px]">
+            <div class="border-primary mt-8 border-t text-[8px]">
               Nombre y apellido:
             </div>
           </div>
@@ -1128,20 +1151,22 @@ onMounted(() => {
       </div>
       <div class="spreadsheet__section">
         <div class="grid grid-cols-[1.5fr_1.5fr_1.5fr_0.5fr]">
-          <div class="spreadsheet__item border-r-0 h-[75px]">
+          <div class="spreadsheet__item h-[75px] border-r-0">
             Fecha de recepcion ejecutivo:
           </div>
-          <div class="spreadsheet__item border-r-0 h-[75px]">
+          <div class="spreadsheet__item h-[75px] border-r-0">
             Nombre del ejecutivo de cuentas:
           </div>
-          <div class="spreadsheet__item border-r-0 h-[75px]">
+          <div class="spreadsheet__item h-[75px] border-r-0">
             Firma del ejecutivo de cuentas:
           </div>
           <div class="spreadsheet__item h-[75px]">Pag</div>
         </div>
       </div>
 
-      <span class="copy text-left">Maximiza Casa de Bolsa. R.I.F. Nro. J-30025492-5</span>
+      <span class="copy text-left"
+        >Maximiza Casa de Bolsa. R.I.F. Nro. J-30025492-5</span
+      >
     </div>
   </div>
 </template>

@@ -1,58 +1,58 @@
 <script setup lang="ts">
-import { useForm } from "vee-validate";
-import * as yup from "yup";
-import { useOnboardingWizard } from "~/composables/useOnboardingWizard";
+import { useForm } from 'vee-validate'
+import * as yup from 'yup'
+import { useOnboardingWizard } from '~/composables/useOnboardingWizard'
 
-const wizard = useOnboardingWizard();
+const wizard = useOnboardingWizard()
 
 const schema = yup.object({
-  place: yup.string().required("El campo es requerido"),
-  productionDate: yup.string().required("El campo es requerido"),
+  place: yup.string().required('El campo es requerido'),
+  productionDate: yup.string().required('El campo es requerido'),
   inverstorNumber: yup.string(),
   taxInformationRegistration: yup
     .string()
-    .required("El campo es requerido")
-    .matches(/^[0-9]+$/, "Solo se aceptan números"),
-  address: yup.string().required("El campo es requerido"),
-});
+    .required('El campo es requerido')
+    .matches(/^[0-9]+$/, 'Solo se aceptan números'),
+  address: yup.string().required('El campo es requerido'),
+})
 
 const { handleSubmit, errors, defineField } = useForm({
   validationSchema: schema,
   initialValues: {
-    place: wizard.state.value.formData.institutionData?.place || "",
+    place: wizard.state.value.formData.institutionData?.place || '',
     productionDate:
-      wizard.state.value.formData.institutionData?.productionDate || "",
+      wizard.state.value.formData.institutionData?.productionDate || '',
     inverstorNumber:
-      wizard.state.value.formData.institutionData?.inverstorNumber || "",
+      wizard.state.value.formData.institutionData?.inverstorNumber || '',
 
-    brokerageHouseName: "Maximiza Casa de Bolsa, C.A.",
+    brokerageHouseName: 'Maximiza Casa de Bolsa, C.A.',
     taxInformationRegistration:
       wizard.state.value.formData.institutionData?.taxInformationRegistration ||
-      "",
-    address: wizard.state.value.formData.institutionData?.address || "",
+      '',
+    address: wizard.state.value.formData.institutionData?.address || '',
   },
-});
+})
 
-const [place] = defineField("place");
-const [productionDate] = defineField("productionDate");
-const [inverstorNumber] = defineField("inverstorNumber");
-const [brokerageHouseName] = defineField("brokerageHouseName");
-const [taxInformationRegistration] = defineField("taxInformationRegistration");
-const [address] = defineField("address");
+const [place] = defineField('place')
+const [productionDate] = defineField('productionDate')
+const [inverstorNumber] = defineField('inverstorNumber')
+const [brokerageHouseName] = defineField('brokerageHouseName')
+const [taxInformationRegistration] = defineField('taxInformationRegistration')
+const [address] = defineField('address')
 
 const validate = handleSubmit((values) => {
   wizard.updateFormData({
     institutionData: {
       ...values,
     },
-  });
+  })
 
-  wizard.nextStep();
-});
+  wizard.nextStep()
+})
 
 defineExpose({
   validate,
-});
+})
 </script>
 
 <template>

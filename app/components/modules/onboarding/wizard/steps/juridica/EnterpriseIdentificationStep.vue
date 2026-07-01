@@ -1,70 +1,70 @@
 <script setup lang="ts">
-import { useForm } from "vee-validate";
-import * as yup from "yup";
-import { useOnboardingWizard } from "~/composables/useOnboardingWizard";
+import { useForm } from 'vee-validate'
+import * as yup from 'yup'
+import { useOnboardingWizard } from '~/composables/useOnboardingWizard'
 
 import {
   economicActivityOptions,
   countriesOptions,
   specificActivityOptions,
-} from "~/assets/data/formSources";
+} from '~/assets/data/formSources'
 
-const wizard = useOnboardingWizard();
+const wizard = useOnboardingWizard()
 
 const rifTypeOptions = [
-  { value: "J", label: "J" },
-  { value: "G", label: "G" },
-];
+  { value: 'J', label: 'J' },
+  { value: 'G', label: 'G' },
+]
 
 const schema = yup.object({
-  rifType: yup.string().required("Requerido"),
+  rifType: yup.string().required('Requerido'),
   rifNumber: yup
     .string()
-    .required("Requerido")
-    .matches(/^[0-9]+$/, "Solo números"),
-  socialReason: yup.string().required("Requerido"),
-  tradename: yup.string().required("Requerido"),
+    .required('Requerido')
+    .matches(/^[0-9]+$/, 'Solo números'),
+  socialReason: yup.string().required('Requerido'),
+  tradename: yup.string().required('Requerido'),
 
-  economicActivity: yup.string().required("Requerido"),
-  specificActivity: yup.string().required("Requerido"),
+  economicActivity: yup.string().required('Requerido'),
+  specificActivity: yup.string().required('Requerido'),
 
-  officesNumber: yup.string().required("Requerido"),
-  countryLargestPresence: yup.string().required("Requerido"),
-  employeesNumber: yup.string().required("Requerido"),
+  officesNumber: yup.string().required('Requerido'),
+  countryLargestPresence: yup.string().required('Requerido'),
+  employeesNumber: yup.string().required('Requerido'),
 
-  registerRecordName: yup.string().required("Requerido"),
-  registerNumber: yup.string().required("Requerido"),
-  registerTook: yup.string().required("Requerido"),
-  registerDate: yup.string().required("Requerido"),
-  registerCapital: yup.string().required("Requerido"),
+  registerRecordName: yup.string().required('Requerido'),
+  registerNumber: yup.string().required('Requerido'),
+  registerTook: yup.string().required('Requerido'),
+  registerDate: yup.string().required('Requerido'),
+  registerCapital: yup.string().required('Requerido'),
 
-  lastModRecordName: yup.string().required("Requerido"),
-  lastModNumber: yup.string().required("Requerido"),
-  lastModTook: yup.string().required("Requerido"),
-  lastModDate: yup.string().required("Requerido"),
-  lastModCapital: yup.string().required("Requerido"),
+  lastModRecordName: yup.string().required('Requerido'),
+  lastModNumber: yup.string().required('Requerido'),
+  lastModTook: yup.string().required('Requerido'),
+  lastModDate: yup.string().required('Requerido'),
+  lastModCapital: yup.string().required('Requerido'),
 
   publicEntitiesDate: yup.string().optional(),
   ontCode: yup.string().optional(),
 
   publicPhones: yup
     .string()
-    .required("Requerido")
-    .matches(/^[0-9]+$/, "Solo números"),
+    .required('Requerido')
+    .matches(/^[0-9]+$/, 'Solo números'),
   publicPhones2: yup
     .string()
-    .matches(/^[0-9]*$/, "Solo números")
+    .matches(/^[0-9]*$/, 'Solo números')
     .optional(),
-  publicEntityEmail: yup.string().required("Requerido").email("Inválido"),
-  publicEntityEmail2: yup.string().email("Inválido").optional(),
-  publicEntityAddress: yup.string().required("Requerido"),
-});
+  publicEntityEmail: yup.string().required('Requerido').email('Inválido'),
+  publicEntityEmail2: yup.string().email('Inválido').optional(),
+  publicEntityAddress: yup.string().required('Requerido'),
+})
 
 const initialRif =
   wizard.state.value.formData.enterpriseIdentification
-    ?.taxInformationRegistration || "";
-const initialRifType = initialRif ? initialRif.charAt(0) : "J";
-const initialRifNum = initialRif ? initialRif.slice(1) : "";
+    ?.taxInformationRegistration || ''
+const initialRifType = initialRif ? initialRif.charAt(0) : 'J'
+const initialRifNum = initialRif ? initialRif.slice(1) : ''
 
 const { handleSubmit, errors, defineField } = useForm({
   validationSchema: schema,
@@ -72,133 +72,133 @@ const { handleSubmit, errors, defineField } = useForm({
     rifType: initialRifType,
     rifNumber: initialRifNum,
     socialReason:
-      wizard.state.value.formData.enterpriseIdentification?.socialReason || "",
+      wizard.state.value.formData.enterpriseIdentification?.socialReason || '',
     tradename:
-      wizard.state.value.formData.enterpriseIdentification?.tradename || "",
+      wizard.state.value.formData.enterpriseIdentification?.tradename || '',
 
     economicActivity:
       wizard.state.value.formData.enterpriseIdentification?.economicActivity ||
-      "",
+      '',
     specificActivity:
       wizard.state.value.formData.enterpriseIdentification?.specificActivity ||
-      "",
+      '',
 
     officesNumber:
-      wizard.state.value.formData.enterpriseIdentification?.officesNumber || "",
+      wizard.state.value.formData.enterpriseIdentification?.officesNumber || '',
     countryLargestPresence:
       wizard.state.value.formData.enterpriseIdentification
-        ?.countryLargestPresence || "VENEZUELA",
+        ?.countryLargestPresence || 'VENEZUELA',
     employeesNumber:
       wizard.state.value.formData.enterpriseIdentification?.employeesNumber ||
-      "",
+      '',
 
     registerRecordName:
       wizard.state.value.formData.enterpriseIdentification?.registerData
-        ?.recordName || "",
+        ?.recordName || '',
     registerNumber:
       wizard.state.value.formData.enterpriseIdentification?.registerData
-        ?.number || "",
+        ?.number || '',
     registerTook:
       wizard.state.value.formData.enterpriseIdentification?.registerData
-        ?.took || "",
+        ?.took || '',
     registerFol:
       wizard.state.value.formData.enterpriseIdentification?.registerData?.fol ||
-      "",
+      '',
     registerDate:
       wizard.state.value.formData.enterpriseIdentification?.registerData
-        ?.date || "",
+        ?.date || '',
     registerCapital:
       wizard.state.value.formData.enterpriseIdentification?.registerData
-        ?.socialCapital || "",
+        ?.socialCapital || '',
 
     lastModRecordName:
       wizard.state.value.formData.enterpriseIdentification?.lastModification
-        ?.recordName || "",
+        ?.recordName || '',
     lastModNumber:
       wizard.state.value.formData.enterpriseIdentification?.lastModification
-        ?.number || "",
+        ?.number || '',
     lastModTook:
       wizard.state.value.formData.enterpriseIdentification?.lastModification
-        ?.took || "",
+        ?.took || '',
     lastModFol:
       wizard.state.value.formData.enterpriseIdentification?.lastModification
-        ?.fol || "",
+        ?.fol || '',
     lastModDate:
       wizard.state.value.formData.enterpriseIdentification?.lastModification
-        ?.date || "",
+        ?.date || '',
     lastModCapital:
       wizard.state.value.formData.enterpriseIdentification?.lastModification
-        ?.socialCapital || "",
+        ?.socialCapital || '',
 
     officialGazetteNumber:
       wizard.state.value.formData.enterpriseIdentification
-        ?.officialGazetteNumber || "",
+        ?.officialGazetteNumber || '',
     publicEntitiesDate:
       wizard.state.value.formData.enterpriseIdentification
-        ?.publicEntitiesDate || "",
+        ?.publicEntitiesDate || '',
     authority:
-      wizard.state.value.formData.enterpriseIdentification?.authority || "",
+      wizard.state.value.formData.enterpriseIdentification?.authority || '',
     ontCode:
-      wizard.state.value.formData.enterpriseIdentification?.ontCode || "N/A",
+      wizard.state.value.formData.enterpriseIdentification?.ontCode || 'N/A',
 
     publicPhones:
-      wizard.state.value.formData.enterpriseIdentification?.publicPhones || "",
+      wizard.state.value.formData.enterpriseIdentification?.publicPhones || '',
     website:
-      wizard.state.value.formData.enterpriseIdentification?.website || "",
+      wizard.state.value.formData.enterpriseIdentification?.website || '',
     publicEntityEmail:
       wizard.state.value.formData.enterpriseIdentification?.publicEntityEmail ||
-      "",
+      '',
     publicEntityAddress:
       wizard.state.value.formData.enterpriseIdentification
-        ?.publicEntityAddress || "",
+        ?.publicEntityAddress || '',
 
     publicPhones2:
-      wizard.state.value.formData.enterpriseIdentification?.publicPhones2 || "",
+      wizard.state.value.formData.enterpriseIdentification?.publicPhones2 || '',
     website2:
-      wizard.state.value.formData.enterpriseIdentification?.website2 || "",
+      wizard.state.value.formData.enterpriseIdentification?.website2 || '',
     publicEntityEmail2:
       wizard.state.value.formData.enterpriseIdentification
-        ?.publicEntityEmail2 || "",
+        ?.publicEntityEmail2 || '',
   },
-});
+})
 
-const [rifType] = defineField("rifType");
-const [rifNumber] = defineField("rifNumber");
-const [socialReason] = defineField("socialReason");
-const [tradename] = defineField("tradename");
-const [economicActivity] = defineField("economicActivity");
-const [specificActivity] = defineField("specificActivity");
+const [rifType] = defineField('rifType')
+const [rifNumber] = defineField('rifNumber')
+const [socialReason] = defineField('socialReason')
+const [tradename] = defineField('tradename')
+const [economicActivity] = defineField('economicActivity')
+const [specificActivity] = defineField('specificActivity')
 
-const [officesNumber] = defineField("officesNumber");
-const [countryLargestPresence] = defineField("countryLargestPresence");
-const [employeesNumber] = defineField("employeesNumber");
+const [officesNumber] = defineField('officesNumber')
+const [countryLargestPresence] = defineField('countryLargestPresence')
+const [employeesNumber] = defineField('employeesNumber')
 
-const [registerRecordName] = defineField("registerRecordName");
-const [registerNumber] = defineField("registerNumber");
-const [registerTook] = defineField("registerTook");
-const [registerFol] = defineField("registerFol");
-const [registerDate] = defineField("registerDate");
-const [registerCapital] = defineField("registerCapital");
+const [registerRecordName] = defineField('registerRecordName')
+const [registerNumber] = defineField('registerNumber')
+const [registerTook] = defineField('registerTook')
+const [registerFol] = defineField('registerFol')
+const [registerDate] = defineField('registerDate')
+const [registerCapital] = defineField('registerCapital')
 
-const [lastModRecordName] = defineField("lastModRecordName");
-const [lastModNumber] = defineField("lastModNumber");
-const [lastModTook] = defineField("lastModTook");
-const [lastModFol] = defineField("lastModFol");
-const [lastModDate] = defineField("lastModDate");
-const [lastModCapital] = defineField("lastModCapital");
+const [lastModRecordName] = defineField('lastModRecordName')
+const [lastModNumber] = defineField('lastModNumber')
+const [lastModTook] = defineField('lastModTook')
+const [lastModFol] = defineField('lastModFol')
+const [lastModDate] = defineField('lastModDate')
+const [lastModCapital] = defineField('lastModCapital')
 
-const [officialGazetteNumber] = defineField("officialGazetteNumber");
-const [publicEntitiesDate] = defineField("publicEntitiesDate");
-const [authority] = defineField("authority");
-const [ontCode] = defineField("ontCode");
+const [officialGazetteNumber] = defineField('officialGazetteNumber')
+const [publicEntitiesDate] = defineField('publicEntitiesDate')
+const [authority] = defineField('authority')
+const [ontCode] = defineField('ontCode')
 
-const [publicPhones] = defineField("publicPhones");
-const [website] = defineField("website");
-const [publicEntityEmail] = defineField("publicEntityEmail");
-const [publicEntityAddress] = defineField("publicEntityAddress");
-const [publicPhones2] = defineField("publicPhones2");
-const [website2] = defineField("website2");
-const [publicEntityEmail2] = defineField("publicEntityEmail2");
+const [publicPhones] = defineField('publicPhones')
+const [website] = defineField('website')
+const [publicEntityEmail] = defineField('publicEntityEmail')
+const [publicEntityAddress] = defineField('publicEntityAddress')
+const [publicPhones2] = defineField('publicPhones2')
+const [website2] = defineField('website2')
+const [publicEntityEmail2] = defineField('publicEntityEmail2')
 
 const validate = handleSubmit((values) => {
   const payload = {
@@ -244,14 +244,14 @@ const validate = handleSubmit((values) => {
     publicPhones2: values.publicPhones2,
     website2: values.website2,
     publicEntityEmail2: values.publicEntityEmail2,
-  };
+  }
 
-  wizard.updateFormData({ enterpriseIdentification: payload });
+  wizard.updateFormData({ enterpriseIdentification: payload })
 
-  wizard.nextStep();
-});
+  wizard.nextStep()
+})
 
-defineExpose({ validate });
+defineExpose({ validate })
 </script>
 
 <template>
@@ -260,46 +260,97 @@ defineExpose({ validate });
 
     <FormBaseLayout>
       <div class="w-full">
-        <FormBaseLabel htmlFor="rifNumber" label="Registro de información fiscal" required />
+        <FormBaseLabel
+          htmlFor="rifNumber"
+          label="Registro de información fiscal"
+          required
+        />
 
         <div class="flex gap-1">
           <div class="w-16 shrink-0">
-            <FormBaseSelect name="rifType" v-model="rifType" :options="rifTypeOptions"
-              :error-message="errors.rifType ? ' ' : ''" />
+            <FormBaseSelect
+              name="rifType"
+              v-model="rifType"
+              :options="rifTypeOptions"
+              :error-message="errors.rifType ? ' ' : ''"
+            />
           </div>
 
           <div class="w-full">
-            <FormBaseInput name="rifNumber" v-model="rifNumber" type="tel" :error-message="errors.rifNumber" />
+            <FormBaseInput
+              name="rifNumber"
+              v-model="rifNumber"
+              type="tel"
+              :error-message="errors.rifNumber"
+            />
           </div>
         </div>
       </div>
 
-      <FormBaseInput name="socialReason" label="Razón social" v-model="socialReason"
-        :error-message="errors.socialReason" required />
+      <FormBaseInput
+        name="socialReason"
+        label="Razón social"
+        v-model="socialReason"
+        :error-message="errors.socialReason"
+        required
+      />
 
-      <FormBaseInput name="tradename" label="Nombre comercial" v-model="tradename" :error-message="errors.tradename"
-        required />
+      <FormBaseInput
+        name="tradename"
+        label="Nombre comercial"
+        v-model="tradename"
+        :error-message="errors.tradename"
+        required
+      />
     </FormBaseLayout>
 
     <FormBaseLayout>
-      <FormBaseSelect class="col-span-full" name="economicActivity" label="Actividad económica"
-        v-model="economicActivity" :options="economicActivityOptions" :error-message="errors.economicActivity"
-        required />
+      <FormBaseSelect
+        class="col-span-full"
+        name="economicActivity"
+        label="Actividad económica"
+        v-model="economicActivity"
+        :options="economicActivityOptions"
+        :error-message="errors.economicActivity"
+        required
+      />
 
-      <FormBaseSelect class="col-span-full" name="specificActivity" label="Actividad específica"
-        v-model="specificActivity" :options="specificActivityOptions" :error-message="errors.specificActivity"
-        required />
+      <FormBaseSelect
+        class="col-span-full"
+        name="specificActivity"
+        label="Actividad específica"
+        v-model="specificActivity"
+        :options="specificActivityOptions"
+        :error-message="errors.specificActivity"
+        required
+      />
     </FormBaseLayout>
 
     <FormBaseLayout>
-      <FormBaseInput name="officesNumber" label="N° de subsidiarias / Oficinas" v-model="officesNumber" type="number"
-        :error-message="errors.officesNumber" />
+      <FormBaseInput
+        name="officesNumber"
+        label="N° de subsidiarias / Oficinas"
+        v-model="officesNumber"
+        type="number"
+        :error-message="errors.officesNumber"
+      />
 
-      <FormBaseSelect name="countryLargestPresence" label="País con mayor presencia" v-model="countryLargestPresence"
-        :options="countriesOptions" :error-message="errors.countryLargestPresence" required />
+      <FormBaseSelect
+        name="countryLargestPresence"
+        label="País con mayor presencia"
+        v-model="countryLargestPresence"
+        :options="countriesOptions"
+        :error-message="errors.countryLargestPresence"
+        required
+      />
 
-      <FormBaseInput name="monthlySales" label="N° de empleados" v-model="employeesNumber" type="number"
-        :error-message="errors.employeesNumber" />
+      <FormBaseInput
+        name="monthlySales"
+        label="N° de empleados"
+        v-model="employeesNumber"
+        type="number"
+        :error-message="errors.employeesNumber"
+      />
     </FormBaseLayout>
 
     <FormBaseDivider />
@@ -307,17 +358,48 @@ defineExpose({ validate });
     <FormTitle text="Datos del registro" />
 
     <FormBaseLayout :style="'xl:grid-cols-4'">
-      <FormBaseInput name="registerRecordName" label="Nombre del registro" v-model="registerRecordName"
-        :error-message="errors.registerRecordName" required />
-      <FormBaseInput name="registerNumber" label="Número" v-model="registerNumber"
-        :error-message="errors.registerNumber" required />
-      <FormBaseInput name="registerTook" label="Tomo" v-model="registerTook" :error-message="errors.registerTook"
-        required />
-      <FormBaseInput name="registerFol" label="Folio (En caso de aplicar)" v-model="registerFol" />
-      <FormBaseInput name="registerDate" label="Fecha" type="date" v-model="registerDate"
-        :error-message="errors.registerDate" required />
-      <FormBaseInput name="registerCapital" label="Capital social" v-model="registerCapital"
-        :error-message="errors.registerCapital" required placeholder="Bs. 0,00" />
+      <FormBaseInput
+        name="registerRecordName"
+        label="Nombre del registro"
+        v-model="registerRecordName"
+        :error-message="errors.registerRecordName"
+        required
+      />
+      <FormBaseInput
+        name="registerNumber"
+        label="Número"
+        v-model="registerNumber"
+        :error-message="errors.registerNumber"
+        required
+      />
+      <FormBaseInput
+        name="registerTook"
+        label="Tomo"
+        v-model="registerTook"
+        :error-message="errors.registerTook"
+        required
+      />
+      <FormBaseInput
+        name="registerFol"
+        label="Folio (En caso de aplicar)"
+        v-model="registerFol"
+      />
+      <FormBaseInput
+        name="registerDate"
+        label="Fecha"
+        type="date"
+        v-model="registerDate"
+        :error-message="errors.registerDate"
+        required
+      />
+      <FormBaseInput
+        name="registerCapital"
+        label="Capital social"
+        v-model="registerCapital"
+        :error-message="errors.registerCapital"
+        required
+        placeholder="Bs. 0,00"
+      />
     </FormBaseLayout>
 
     <FormBaseDivider />
@@ -325,18 +407,49 @@ defineExpose({ validate });
     <FormTitle text="Última modificación" />
 
     <FormBaseLayout :style="'xl:grid-cols-4'">
-      <FormBaseInput name="lastModRecordName" label="Nombre del registro" v-model="lastModRecordName"
-        :error-message="errors.lastModRecordName" required />
-      <FormBaseInput name="lastModNumber" label="Número" v-model="lastModNumber" :error-message="errors.lastModNumber"
-        required />
-      <FormBaseInput name="lastModTook" label="Tomo" v-model="lastModTook" :error-message="errors.lastModTook"
-        required />
-      <FormBaseInput name="lastModFol" label="Folio (En caso de aplicar)" v-model="lastModFol"
-        placeholder="No aplica" />
-      <FormBaseInput name="lastModDate" label="Fecha" type="date" v-model="lastModDate"
-        :error-message="errors.lastModDate" required />
-      <FormBaseInput name="lastModCapital" label="Capital social" v-model="lastModCapital"
-        :error-message="errors.lastModCapital" required placeholder="Bs. 0,00" />
+      <FormBaseInput
+        name="lastModRecordName"
+        label="Nombre del registro"
+        v-model="lastModRecordName"
+        :error-message="errors.lastModRecordName"
+        required
+      />
+      <FormBaseInput
+        name="lastModNumber"
+        label="Número"
+        v-model="lastModNumber"
+        :error-message="errors.lastModNumber"
+        required
+      />
+      <FormBaseInput
+        name="lastModTook"
+        label="Tomo"
+        v-model="lastModTook"
+        :error-message="errors.lastModTook"
+        required
+      />
+      <FormBaseInput
+        name="lastModFol"
+        label="Folio (En caso de aplicar)"
+        v-model="lastModFol"
+        placeholder="No aplica"
+      />
+      <FormBaseInput
+        name="lastModDate"
+        label="Fecha"
+        type="date"
+        v-model="lastModDate"
+        :error-message="errors.lastModDate"
+        required
+      />
+      <FormBaseInput
+        name="lastModCapital"
+        label="Capital social"
+        v-model="lastModCapital"
+        :error-message="errors.lastModCapital"
+        required
+        placeholder="Bs. 0,00"
+      />
     </FormBaseLayout>
 
     <FormBaseDivider />
@@ -344,17 +457,34 @@ defineExpose({ validate });
     <FormTitle text="Entes públicos" />
 
     <FormBaseLayout>
-      <FormBaseInput name="officialGazetteNumber" label="Número de gaceta oficial" v-model="officialGazetteNumber"
-        placeholder="No aplica" />
+      <FormBaseInput
+        name="officialGazetteNumber"
+        label="Número de gaceta oficial"
+        v-model="officialGazetteNumber"
+        placeholder="No aplica"
+      />
 
-      <FormBaseInput name="publicEntitiesDate" label="Fecha (En caso de aplicar)" type="date"
-        v-model="publicEntitiesDate" :error-message="errors.publicEntitiesDate" />
+      <FormBaseInput
+        name="publicEntitiesDate"
+        label="Fecha (En caso de aplicar)"
+        type="date"
+        v-model="publicEntitiesDate"
+        :error-message="errors.publicEntitiesDate"
+      />
 
-      <FormBaseInput name="authority" label="Autoridad / Ente de adscripción" v-model="authority"
-        placeholder="No aplica" />
+      <FormBaseInput
+        name="authority"
+        label="Autoridad / Ente de adscripción"
+        v-model="authority"
+        placeholder="No aplica"
+      />
 
-      <FormBaseInput name="ontCode" label="Código ONT (En caso de aplicar)" v-model="ontCode"
-        :error-message="errors.ontCode" />
+      <FormBaseInput
+        name="ontCode"
+        label="Código ONT (En caso de aplicar)"
+        v-model="ontCode"
+        :error-message="errors.ontCode"
+      />
     </FormBaseLayout>
 
     <FormBaseDivider />
@@ -362,27 +492,65 @@ defineExpose({ validate });
     <FormTitle text="Información de contacto principal" />
 
     <FormBaseLayout>
-      <FormBaseInput name="publicPhones" label="Teléfono" type="tel" v-model="publicPhones"
-        :error-message="errors.publicPhones" required />
+      <FormBaseInput
+        name="publicPhones"
+        label="Teléfono"
+        type="tel"
+        v-model="publicPhones"
+        :error-message="errors.publicPhones"
+        required
+      />
 
-      <FormBaseInput name="website" label="Sitio web" v-model="website" placeholder="No aplica" />
+      <FormBaseInput
+        name="website"
+        label="Sitio web"
+        v-model="website"
+        placeholder="No aplica"
+      />
 
-      <FormBaseInput name="publicEntityEmail" label="Correo electrónico" type="email" v-model="publicEntityEmail"
-        :error-message="errors.publicEntityEmail" required />
+      <FormBaseInput
+        name="publicEntityEmail"
+        label="Correo electrónico"
+        type="email"
+        v-model="publicEntityEmail"
+        :error-message="errors.publicEntityEmail"
+        required
+      />
 
-      <FormBaseInput name="publicEntityAddress" label="Dirección" v-model="publicEntityAddress"
-        :error-message="errors.publicEntityAddress" class="col-span-full" required />
+      <FormBaseInput
+        name="publicEntityAddress"
+        label="Dirección"
+        v-model="publicEntityAddress"
+        :error-message="errors.publicEntityAddress"
+        class="col-span-full"
+        required
+      />
     </FormBaseLayout>
 
-    <h6 class="text-sm font-bold text-gray">
+    <h6 class="text-gray text-sm font-bold">
       Información de contacto alternativa (Opcional)
     </h6>
 
     <FormBaseLayout>
-      <FormBaseInput name="publicPhones2" label="Teléfono" type="tel" v-model="publicPhones2" />
-      <FormBaseInput name="website2" label="Sitio web" v-model="website2" placeholder="No aplica" />
-      <FormBaseInput name="publicEntityEmail2" label="Correo electrónico" type="email" v-model="publicEntityEmail2"
-        :error-message="errors.publicEntityEmail2" />
+      <FormBaseInput
+        name="publicPhones2"
+        label="Teléfono"
+        type="tel"
+        v-model="publicPhones2"
+      />
+      <FormBaseInput
+        name="website2"
+        label="Sitio web"
+        v-model="website2"
+        placeholder="No aplica"
+      />
+      <FormBaseInput
+        name="publicEntityEmail2"
+        label="Correo electrónico"
+        type="email"
+        v-model="publicEntityEmail2"
+        :error-message="errors.publicEntityEmail2"
+      />
     </FormBaseLayout>
   </form>
 </template>
