@@ -1,106 +1,62 @@
-# Maximiza - Frontend Web Application
+# Maximiza — Frontend Web (sitio público)
 
 ![Maximiza](public/images/brand/imagotipo-white.svg)
 
-Maximiza es una aplicación web frontend construida con **Nuxt 4** y **Vue 3** para **Maximiza Casa de Bolsa**. Este proyecto se conecta a un backend/CMS administrado con **Strapi** y está altamente optimizado para SEO, rendimiento web y experiencia de usuario moderna (PWA, animaciones, tipografías personalizadas).
+Sitio público de **Maximiza Casa de Bolsa** (Novanet Studio): SEO/PWA, blog, y el
+wizard de apertura de cuenta (onboarding) con generación de PDFs. Construido con
+**Nuxt 4 (SSR)** y **Vue 3**.
 
-## 🚀 Tecnologías Principales (Tech Stack)
+> Para detalle de arquitectura interna (wizard, PDF, composables) ver `CLAUDE.md`.
 
-### Core
-- **Framework:** [Nuxt 4](https://nuxt.com/) (Vue 3, SSR habilitado)
-- **Estilos:** [Tailwind CSS v4](https://tailwindcss.com/) (vía `@tailwindcss/vite`) y SCSS (`sass-embedded`)
-- **Iconos:** FontAwesome 7 (Solid & Brands)
-- **Animaciones:** [motion-v](https://motion.dev/)
-- **CMS:** [Strapi](https://strapi.io/) (vía `@nuxtjs/strapi`)
+## Stack
 
-### Rendimiento y SEO
-- **PWA:** `@vite-pwa/nuxt` para soporte de aplicaciones web progresivas (instalable, caché offline).
-- **SEO & Indexación:** `@nuxtjs/sitemap` y `@nuxtjs/robots`.
-- **Analíticas:** `nuxt-gtag` integrado con Google Analytics (ID: `G-4W17JXKS6P`).
-- **Optimización de Recursos:** `@nuxt/fonts` para fuentes locales y `@nuxt/image` integrado con Cloudinary para entrega de imágenes.
+- **Framework:** Nuxt 4 (Vue 3, SSR) — puerto dev **3014**
+- **Estilos:** Tailwind CSS v4 (`@tailwindcss/vite`) + SCSS (`sass-embedded`)
+- **CMS:** Strapi vía `@nuxtjs/strapi` (blog y balances, por GraphQL)
+- **PWA / SEO:** `@vite-pwa/nuxt`, `@nuxtjs/sitemap`, `@nuxtjs/robots`, `nuxt-gtag`
+- **Imágenes / fuentes:** `@nuxt/image` (Cloudinary) + `@nuxt/fonts`
+- **Formularios:** `vee-validate` + `yup`/`zod`
+- **Animaciones:** `motion-v`
+- **PDFs (Nitro):** ruta `/api/generate-pdf` con `puppeteer-core` + `@sparticuz/chromium`
+- **Deploy:** Netlify (`@netlify/nuxt`)
 
-### Formularios y Validación
-- **Manejo de Formularios:** `vee-validate`
-- **Esquemas de Validación:** `yup` y `zod`
+## Con qué se conecta
 
-### Utilidades Especiales del Servidor (Nitro)
-- **Generación de PDFs:** El servidor interno de Nitro cuenta con una ruta especializada (`/api/generate-pdf`) que crea documentos en formato PDF dinámicos utilizando `puppeteer-core` y `@sparticuz/chromium`.
+| Destino | Vía | Para |
+|---|---|---|
+| `maximiza-be` (Strapi) | GraphQL | Contenido: blog, balances financieros |
+| `maximiza-services` (NestJS) | `POST /api/tracking` | Pasos del wizard de onboarding |
+| Nitro interno | `/api/generate-pdf` | PDFs del onboarding (Puppeteer, in-process) |
 
----
+## Requisitos
 
-## 📁 Estructura del Proyecto
+- Node.js 20+
+- `npm` (o pnpm/yarn/bun)
 
-```text
-maximiza-fe/
-├── app/               # Carpeta principal de la aplicación Vue (componentes, páginas, layouts, composables)
-├── public/            # Archivos estáticos accesibles directamente (favicon, iconos PWA)
-├── server/            # Rutas y middlewares del servidor backend (Nitro) de Nuxt
-├── .env               # Variables de entorno (no versionado)
-├── nuxt.config.ts     # Configuración central del proyecto (módulos, PWA, SEO, Nitro)
-└── package.json       # Dependencias y scripts
-```
-
----
-
-## ⚙️ Requisitos Previos
-
-- **Node.js**: Versión 18+ (recomendado 20+)
-- **Package Manager**: `npm` (también compatible con `pnpm`, `yarn` o `bun`)
-
----
-
-## 🛠️ Configuración e Instalación
-
-1. **Clonar el repositorio y entrar en el directorio:**
-   ```bash
-   cd maximiza-fe
-   ```
-
-2. **Instalar dependencias:**
-   ```bash
-   npm install
-   ```
-
-3. **Configurar las Variables de Entorno:**
-   Crea un archivo llamado `.env` en la raíz del proyecto. El proyecto requiere la URL del servidor CMS Strapi:
-   ```env
-   STRAPI_API_URL=https://url-de-tu-backend-strapi/
-   ```
-   *(Nota: Si corres el backend de Strapi localmente, usa `STRAPI_API_URL=http://localhost:1337`)*
-
----
-
-## 💻 Desarrollo
-
-Para iniciar el servidor de desarrollo local, ejecuta:
+## Instalación
 
 ```bash
-npm run dev
+npm install
 ```
 
-El servidor estará disponible en [http://localhost:3013](http://localhost:3013) (puerto definido en `nuxt.config.ts`).
+Crear `.env` en la raíz:
 
----
+```env
+STRAPI_API_URL=http://localhost:1337   # URL base del CMS Strapi
+```
 
-## 📦 Construcción y Producción
-
-Para compilar la aplicación para producción (Server-Side Rendering u optimización de despliegue):
+## Scripts
 
 ```bash
-npm run build
+npm run dev        # dev server → http://localhost:3014
+npm run host       # dev server expuesto en la red local
+npm run build      # build SSR para producción
+npm run generate   # generación estática
+npm run preview    # previsualizar el build
+npm run format     # Prettier sobre app/ y server/
 ```
 
-Para previsualizar localmente la versión construida de producción:
-
-```bash
-npm run preview
-```
-
----
-
-## 🌐 Despliegue
-
-La aplicación hace uso del módulo `@netlify/nuxt` y provee una configuración `.netlify` nativa, lo que sugiere una compatibilidad out-of-the-box para su despliegue en **Netlify**. Para mayor información consulta la guía de despliegue correspondiente.
+No hay suite de tests: validación = TypeScript strict + revisión visual.
 
 ---
 *Desarrollado y mantenido por [Novanet Studio](https://novanet.studio/).*

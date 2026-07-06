@@ -6,6 +6,8 @@ export const useOnboardingWizard = () => {
     isComplete: false,
     type: null,
     formData: {},
+    sessionId: null,
+    trackingData: null,
   }))
 
   const initWizard = (type: MXMZ.OnboardingType, stepsCount: number) => {
@@ -28,6 +30,8 @@ export const useOnboardingWizard = () => {
       }
 
       state.value.isComplete = false
+      state.value.sessionId = null
+      state.value.trackingData = null
     }
 
     state.value.totalSteps = stepsCount
@@ -80,6 +84,14 @@ export const useOnboardingWizard = () => {
     state.value.formData = { ...state.value.formData, ...newData }
   }
 
+  const setSessionId = (id: number) => {
+    state.value.sessionId = id
+  }
+
+  const setTrackingData = (data: { name: string; email: string; phone: string }) => {
+    state.value.trackingData = data
+  }
+
   return {
     state: readonly(state),
     initWizard,
@@ -87,5 +99,7 @@ export const useOnboardingWizard = () => {
     prevStep,
     goToStep,
     updateFormData,
+    setSessionId,
+    setTrackingData,
   }
 }

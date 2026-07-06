@@ -25,6 +25,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
+      trackingApiUrl: process.env.TRACKING_API_URL ?? 'http://localhost:3001',
       strapi: {
         url: process.env.STRAPI_API_URL || "http://localhost:1337",
         prefix: "/api",

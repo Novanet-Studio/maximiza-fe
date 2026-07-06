@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { motion, AnimatePresence } from 'motion-v'
 import FormStepper from './FormStepper.vue'
 
@@ -21,6 +21,7 @@ import EnterpriseIdentificationStep from './steps/juridica/EnterpriseIdentificat
 const props = defineProps<{ type: MXMZ.OnboardingType }>()
 
 const wizard = useOnboardingWizard()
+const trackingApiUrl = useRuntimeConfig().public.trackingApiUrl
 
 const stepsConfigNames = {
   'persona-natural': [
@@ -76,12 +77,63 @@ const handleNext = async () => {
     return
   }
 
+  const completingStep = wizard.state.value.currentStep
+
   if (currentStepRef.value && currentStepRef.value.validate) {
     await currentStepRef.value.validate()
   } else {
     wizard.nextStep()
   }
+
+  // Guard: solo crear la sesión si el paso avanzó (validación pasó)
+  if (wizard.state.value.currentStep === completingStep) return
+
+  // La sesión se crea al completar el paso 0; el avance de paso lo maneja el
+  // watcher debounced de abajo (cubre botones y stepper por igual).
+  if (completingStep === 0 && wizard.state.value.trackingData) {
+    try {
+      const { name, email, phone } = wizard.state.value.trackingData
+      const res = await $fetch<{ data: { id: number } }>(`${trackingApiUrl}/api/tracking/session`, {
+        method: 'POST',
+        body: { name, email, phone, personType: props.type },
+      })
+      wizard.setSessionId(res.data.id)
+    } catch {
+      // silencioso — un fallo de BD nunca bloquea al usuario
+    }
+  }
 }
+
+// Registra el paso actual en el backend, debounced 5s para no saturar. Un fallo
+// nunca bloquea al usuario. Cubre botón Siguiente/Atrás y stepper porque todos
+// mutan currentStep; observar sessionId dispara el primer envío (transición 0→1).
+let progressTimer: ReturnType<typeof setTimeout> | null = null
+
+const sendProgress = (keepalive = false) => {
+  const { sessionId, currentStep } = wizard.state.value
+  if (!sessionId) return
+  $fetch(`${trackingApiUrl}/api/tracking/progress`, {
+    method: 'POST',
+    body: { sessionId, currentStep },
+    keepalive,
+  }).catch(() => {})
+}
+
+watch(
+  [() => wizard.state.value.currentStep, () => wizard.state.value.sessionId],
+  () => {
+    if (!wizard.state.value.sessionId) return
+    if (progressTimer) clearTimeout(progressTimer)
+    progressTimer = setTimeout(() => sendProgress(), 5000)
+  },
+)
+
+onBeforeUnmount(() => {
+  if (progressTimer) {
+    clearTimeout(progressTimer)
+    sendProgress(true) // flush inmediato al salir
+  }
+})
 
 onMounted(() => {
   if (props.type) {

@@ -60,6 +60,8 @@ declare namespace MXMZ {
         isComplete: boolean;
         type: OnboardingType | null;
         formData: Partial<MXMZ.OnboardingWizardResult>;
+        sessionId: number | null;
+        trackingData: { name: string; email: string; phone: string } | null;
     }
 
     interface InstitutionData {
