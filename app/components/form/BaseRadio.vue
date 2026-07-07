@@ -47,7 +47,7 @@ const handleChange = (value: string | number | boolean) => {
             :checked="modelValue === option.value"
             :disabled="disabled"
             @change="handleChange(option.value)"
-            class="peer checked:border-primary h-4 w-4 appearance-none rounded-full border border-gray-300 transition-all checked:border-[5px]"
+            class="checked:border-primary peer h-4 w-4 appearance-none rounded-full border border-gray-300 transition-all checked:border-[5px]"
           />
         </div>
         <span

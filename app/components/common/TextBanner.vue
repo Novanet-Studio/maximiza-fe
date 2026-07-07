@@ -38,7 +38,7 @@ const parsedOverlay = computed(() => {
   <motion.section
     class="flex w-full justify-center"
     :class="{
-      'h-auto md:h-[263px] xl:h-[390px]': !isDivider,
+      'h-auto md:h-[263px] lg:h-[390px]': !isDivider,
       'h-auto md:h-[150px]': isDivider,
     }"
     :style="{
@@ -55,7 +55,7 @@ const parsedOverlay = computed(() => {
     <div class="container flex h-full items-center justify-center py-20">
       <motion.div :variants="generalItemVariants">
         <p
-          class="text-center text-3xl leading-[40px] font-semibold text-white md:text-xl md:leading-[28px] lg:text-3xl lg:leading-[40px]"
+          class="text-center text-xl leading-7 font-semibold text-white lg:text-2xl lg:leading-8"
         >
           {{ props.description }}
         </p>

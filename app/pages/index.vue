@@ -18,7 +18,7 @@ useJsonLd(jsonld.home)
         link: '#',
       }"
       :image="{
-        src: '/images/hero/maximiza-aro-forma-abstracta-cristal.webp',
+        src: '/images/hero/maxmiza-caracas-el-avila.webp',
         alt: 'Hero Background',
       }"
       :pattern="{

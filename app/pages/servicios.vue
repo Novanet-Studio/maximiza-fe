@@ -23,7 +23,7 @@ useJsonLd(jsonld.services)
         link: '#',
       }"
       :image="{
-        src: '/images/hero/maximiza-organica-forma-abstracta-cristal.webp',
+        src: '/images/hero/maxmiza-operadores-financieros.webp',
         alt: 'Hero Background',
       }"
       :pattern="{

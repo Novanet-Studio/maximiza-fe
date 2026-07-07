@@ -41,7 +41,7 @@ const props = defineProps<HeroProps>()
   >
     <div class="h-full w-full bg-white/75">
       <div
-        class="container flex flex-col items-center justify-center max-sm:min-h-[90dvh] sm:min-h-[460px] sm:flex-row xl:justify-between"
+        class="container flex flex-col items-center justify-center py-8 max-sm:min-h-[90dvh] sm:min-h-[460px] sm:flex-row sm:py-0 xl:justify-between"
       >
         <div class="flex w-auto items-center justify-center sm:h-full">
           <div class="">
@@ -72,7 +72,7 @@ const props = defineProps<HeroProps>()
         </div>
 
         <motion.div
-          class="w-[90%] shrink-0 md:h-[250px] md:w-[284px] xl:h-[360px] xl:w-[410px]"
+          class="mt-8 aspect-[554/306] h-auto w-full shrink-0 sm:mt-0 md:w-[284px] xl:w-[554px]"
           :variants="generalImageVariants"
         >
           <img

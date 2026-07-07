@@ -39,7 +39,7 @@ useJsonLd(jsonld.contact)
       :title="'Inicie la estructuración de su nueva estrategia financiera'"
       :description="'Evaluación confidencial para proteger su tesorería de la volatilidad o diseñar un financiamiento a la medida para su ciclo productivo.'"
       :image="{
-        src: '/images/hero/maximiza-octagono-forma-abstracta-cristal.webp',
+        src: '/images/hero/maxmiza-mano-femenina-sujetando-boligrafo-organizando-monedas.webp',
         alt: 'Hero Background',
       }"
       :pattern="{

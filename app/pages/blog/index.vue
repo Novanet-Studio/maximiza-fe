@@ -13,7 +13,7 @@ useJsonLd(jsonld.blog)
       :title="'Perspectivas estratégicas <br /> y análisis de mercado'"
       :description="'Inteligencia financiera para el análisis de tendencias globales, macroeconómicos y perspectivas del mercado de capitales venezolano. Optimice sus inversiones con datos empíricos de alto valor.'"
       :image="{
-        src: '/images/hero/maximiza-irregular-forma-abstracta-cristal.webp',
+        src: '/images/hero/maxmiza-manos-sujetando-calculadora-y-boligrafo.webp',
         alt: 'Hero Background',
       }"
       :pattern="{

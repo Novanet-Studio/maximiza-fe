@@ -21,7 +21,7 @@ useJsonLd(jsonld.register)
       :title="'¡Bienvenido a Maximiza <br /> Casa de Bolsa!'"
       :description="'Abre tu Cuenta de Corretaje Bursátil de forma rápida, cumpliendo con la normativa de la Superintendencia Nacional de Valores (SNV).'"
       :image="{
-        src: '/images/hero/maximiza-circulo-forma-abstracta-cristal.webp',
+        src: '/images/hero/maxmiza-hombres-en-traje-sentados-de-frente-escritorio.webp',
         alt: 'Hero Background',
       }"
       :pattern="{

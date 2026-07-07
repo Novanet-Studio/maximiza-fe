@@ -23,6 +23,7 @@
     "@sparticuz/chromium": "^143.0.4",
     "@tailwindcss/vite": "^4.3.2",
     "@vite-pwa/nuxt": "^1.1.1",
+    "@vueuse/core": "^14.3.0",
     "marked": "^17.0.6",
     "motion-v": "^2.3.0",
     "nuxt": "^4.4.8",

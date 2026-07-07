@@ -81,7 +81,7 @@ useJsonLd(jsonld.about)
         link: '#',
       }"
       :image="{
-        src: '/images/hero/maximiza-cubo-forma-abstracta-cristal.webp',
+        src: '/images/hero/maxmiza-bolsa-de-valores-de-caracas.webp',
         alt: 'Hero Background',
       }"
       :pattern="{
@@ -122,11 +122,11 @@ useJsonLd(jsonld.about)
           <div
             class="to-white-alt2 z-0 -mt-30 flex w-full max-w-[940px] grow flex-col justify-center bg-linear-to-b from-white p-8 pt-40 md:m-0 md:-ml-31.25 md:bg-linear-to-r md:p-16 md:pr-4 md:pl-36 lg:h-[342px]"
           >
-            <h4 class="lending-[22px] text-black-alt mb-2 text-xl">
+            <h4 class="text-black-alt mb-2 text-xl leading-[22px]">
               Foco corporativo especializado
             </h4>
             <p
-              class="lending-[28px] md:lending-[24px] lg:lending-[28px] text-gray text-xl md:text-base lg:text-xl"
+              class="text-gray text-xl leading-[28px] md:text-base md:leading-[24px] lg:text-xl lg:leading-[28px]"
             >
               Brindamos asesoría analítica exhaustiva a corporaciones nacionales
               y entidades extranjeras en la intrincada valoración de empresas de
@@ -154,12 +154,12 @@ useJsonLd(jsonld.about)
             class="from-white-alt2 z-0 -mt-30 flex w-full max-w-[940px] grow flex-col justify-center bg-linear-to-t to-white p-8 pt-40 md:m-0 md:-mr-31.25 md:bg-linear-to-r md:p-16 md:pr-36 md:pl-4 lg:h-[342px]"
           >
             <h4
-              class="lending-[22px] text-black-alt mb-2 text-xl md:text-right"
+              class="text-black-alt mb-2 text-xl leading-[22px] md:text-right"
             >
               Ecosistema de promoción financiera
             </h4>
             <p
-              class="lending-[28px] md:lending-[24px] lg:lending-[28px] text-gray text-xl md:text-right md:text-base lg:text-xl"
+              class="text-gray text-xl leading-[28px] md:text-right md:text-base md:leading-[24px] lg:text-xl lg:leading-[28px]"
             >
               Nuestro ADN innovador nos ha llevado a participar activamente en
               la cimentación de vehículos financieros líderes, tales como Silk &
@@ -191,9 +191,9 @@ useJsonLd(jsonld.about)
         }"
         :styles="{
           title:
-            'text-xl lending-[22px] md:text-sm md:lending-[18px] lg:text-xl lg:lending-[22px] text-black-alt mb-2 md:mb-4',
+            'text-xl leading-[22px] md:text-sm md:leading-[18px] lg:text-xl lg:leading-[22px] text-black-alt mb-2 md:mb-4',
           content:
-            'text-lg lending-[26px] md:text-xs md:lending-[20px] lg:text-lg lg:lending-[26px] text-gray',
+            'text-lg leading-[26px] md:text-xs md:leading-[20px] lg:text-lg lg:leading-[26px] text-gray',
           wrapper: 'flex-1 p-4 pt-6 flex flex-col justify-center',
         }"
         maxWidth="350"
@@ -208,9 +208,9 @@ useJsonLd(jsonld.about)
         }"
         :styles="{
           title:
-            'text-xl lending-[22px] md:text-sm md:lending-[18px] lg:text-xl lg:lending-[22px] text-black-alt mb-2 md:mb-4',
+            'text-xl leading-[22px] md:text-sm md:leading-[18px] lg:text-xl lg:leading-[22px] text-black-alt mb-2 md:mb-4',
           content:
-            'text-lg lending-[26px] md:text-xs md:lending-[20px] lg:text-lg lg:lending-[26px] text-gray',
+            'text-lg leading-[26px] md:text-xs md:leading-[20px] lg:text-lg lg:leading-[26px] text-gray',
           wrapper: 'flex-1 p-4 pt-6 flex flex-col justify-center',
         }"
         maxWidth="350"

@@ -65,7 +65,7 @@ onMounted(async () => {
                   :href="doc.file.url"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="group bg-white-alt hover:bg-primary text-black-alt flex items-center justify-between gap-2 px-2 py-3 transition-colors duration-300 hover:text-white lg:px-6 lg:py-4"
+                  class="bg-white-alt hover:bg-primary text-black-alt group flex items-center justify-between gap-2 px-2 py-3 transition-colors duration-300 hover:text-white lg:px-6 lg:py-4"
                 >
                   <span class="text-base font-semibold">{{ doc.label }}</span>
 

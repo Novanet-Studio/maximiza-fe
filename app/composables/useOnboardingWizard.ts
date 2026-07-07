@@ -88,7 +88,11 @@ export const useOnboardingWizard = () => {
     state.value.sessionId = id
   }
 
-  const setTrackingData = (data: { name: string; email: string; phone: string }) => {
+  const setTrackingData = (data: {
+    name: string
+    email: string
+    phone: string
+  }) => {
     state.value.trackingData = data
   }
 

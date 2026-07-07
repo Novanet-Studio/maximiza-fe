@@ -51,7 +51,7 @@ const handleChange = (event: Event) => {
           :checked="isChecked"
           :disabled="disabled"
           @change="handleChange"
-          class="peer checked:border-primary checked:bg-primary hover:border-primary focus:ring-none focus:ring-primary/20 h-5 w-5 cursor-pointer appearance-none rounded border border-gray-300 transition-all"
+          class="checked:border-primary checked:bg-primary hover:border-primary focus:ring-none focus:ring-primary/20 peer h-5 w-5 cursor-pointer appearance-none rounded border border-gray-300 transition-all"
         />
 
         <font-awesome-icon

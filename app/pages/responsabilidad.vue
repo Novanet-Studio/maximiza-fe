@@ -144,7 +144,7 @@ useJsonLd(jsonld.socialResponsibility)
       :title="'Responsabilidad social <br /> y buen gobierno corporativo'"
       :description="'Combinamos el servicio social con estrictos controles de riesgo, <br /> asegurando un entorno de inversión seguro, ético y legal.'"
       :image="{
-        src: '/images/hero/maximiza-rombo-forma-abstracta-cristal.webp',
+        src: '/images/hero/maxmiza-mano-sujetando-bombillo-relleno-de-monedas.webp',
         alt: 'Hero Background',
       }"
       :pattern="{

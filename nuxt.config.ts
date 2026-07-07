@@ -47,6 +47,9 @@ export default defineNuxtConfig({
     plugins: [
       tailwindcss(),
     ],
+    resolve: {
+      dedupe: ["vue"],
+    },
   },
 
   gtag: {

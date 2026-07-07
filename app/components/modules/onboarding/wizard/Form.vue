@@ -93,10 +93,13 @@ const handleNext = async () => {
   if (completingStep === 0 && wizard.state.value.trackingData) {
     try {
       const { name, email, phone } = wizard.state.value.trackingData
-      const res = await $fetch<{ data: { id: number } }>(`${trackingApiUrl}/api/tracking/session`, {
-        method: 'POST',
-        body: { name, email, phone, personType: props.type },
-      })
+      const res = await $fetch<{ data: { id: number } }>(
+        `${trackingApiUrl}/api/tracking/session`,
+        {
+          method: 'POST',
+          body: { name, email, phone, personType: props.type },
+        }
+      )
       wizard.setSessionId(res.data.id)
     } catch {
       // silencioso — un fallo de BD nunca bloquea al usuario
@@ -125,7 +128,7 @@ watch(
     if (!wizard.state.value.sessionId) return
     if (progressTimer) clearTimeout(progressTimer)
     progressTimer = setTimeout(() => sendProgress(), 5000)
-  },
+  }
 )
 
 onBeforeUnmount(() => {
