@@ -33,7 +33,7 @@ import {
           animate="visible"
         >
           <div
-            class="bg-white-alt relative h-[275px] w-[275px] overflow-hidden p-4 md:h-[190px] md:w-[190px] xl:h-[275px] xl:w-[275px]"
+            class="bg-white-alt relative h-[275px] w-[275px] overflow-hidden p-0 md:h-[190px] md:w-[190px] xl:h-[275px] xl:w-[275px]"
           >
             <motion.div
               class="bg-primary absolute top-0 left-0 z-0 h-full"
@@ -41,7 +41,7 @@ import {
             />
 
             <img
-              src="/images/pages/home/maximiza-planta-cristal-inversionista-natural.webp"
+              src="/images/pages/home/maximiza-inversionista-individual.webp"
               alt="Person Type Natural"
               title="Person Type Natural"
               class="relative z-10 h-full w-full object-contain"
@@ -66,7 +66,7 @@ import {
           animate="visible"
         >
           <div
-            class="bg-white-alt relative h-[275px] w-[275px] overflow-hidden p-4 md:h-[190px] md:w-[190px] xl:h-[275px] xl:w-[275px]"
+            class="bg-white-alt relative h-[275px] w-[275px] overflow-hidden p-0 md:h-[190px] md:w-[190px] xl:h-[275px] xl:w-[275px]"
           >
             <motion.div
               class="bg-black-alt absolute top-0 left-0 z-0 h-full"
@@ -74,7 +74,7 @@ import {
             />
 
             <img
-              src="/images/pages/home/maximiza-edificios-cristal-inversionista-juridico.webp"
+              src="/images/pages/home/maximiza-inversionistas-juridico.webp"
               alt="Person Type Jurídica"
               title="Person Type Jurídica"
               class="relative z-10 h-full w-full object-contain"

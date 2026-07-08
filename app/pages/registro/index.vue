@@ -54,7 +54,7 @@ useJsonLd(jsonld.register)
             animate="visible"
           >
             <div
-              class="bg-white-alt relative h-[275px] w-[275px] overflow-hidden p-4"
+              class="bg-white-alt relative h-[275px] w-[275px] overflow-hidden p-0"
             >
               <motion.div
                 class="bg-primary absolute top-0 left-0 z-0 h-full"
@@ -62,7 +62,7 @@ useJsonLd(jsonld.register)
               />
 
               <img
-                src="/images/pages/home/maximiza-planta-cristal-inversionista-natural.webp"
+                src="/images/pages/home/maximiza-inversionista-individual.webp"
                 alt="Person Type Natural"
                 title="Person Type Natural"
                 class="relative z-10 h-full w-full object-contain"
@@ -87,7 +87,7 @@ useJsonLd(jsonld.register)
             animate="visible"
           >
             <div
-              class="bg-white-alt relative h-[275px] w-[275px] overflow-hidden p-4"
+              class="bg-white-alt relative h-[275px] w-[275px] overflow-hidden p-0"
             >
               <motion.div
                 class="bg-black-alt absolute top-0 left-0 z-0 h-full"
@@ -95,7 +95,7 @@ useJsonLd(jsonld.register)
               />
 
               <img
-                src="/images/pages/home/maximiza-edificios-cristal-inversionista-juridico.webp"
+                src="/images/pages/home/maximiza-inversionistas-juridico.webp"
                 alt="Person Type Jurídica"
                 title="Person Type Jurídica"
                 class="relative z-10 h-full w-full object-contain"
