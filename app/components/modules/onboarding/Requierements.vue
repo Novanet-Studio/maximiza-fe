@@ -25,12 +25,20 @@ const props = defineProps<Props>()
       :variants="generalItemVariants"
     >
       <div
-        class="bg-white-alt relative z-10 flex h-[275px] w-[275px] shrink-0 items-center justify-center p-4 max-sm:mb-4 md:h-[190px] md:w-[190px] xl:h-[275px] xl:w-[275px]"
+        class="bg-white-alt relative z-10 flex h-[275px] w-[275px] shrink-0 items-center justify-center overflow-hidden p-0 max-sm:mb-4 md:h-[190px] md:w-[190px] xl:h-[275px] xl:w-[275px]"
       >
         <img
-          :src="`/images/pages/home/${personType === 'persona-natural' ? 'maximiza-planta-cristal-inversionista-natural.webp' : 'maximiza-edificios-cristal-inversionista-juridico.webp'}`"
-          alt="Especialistas_en_asesoría"
-          title="Especialistas_en_asesoría"
+          :src="`/images/pages/home/${personType === 'persona-natural' ? 'maximiza-inversionista-individual.webp' : 'maximiza-inversionistas-juridico.webp'}`"
+          :alt="
+            personType === 'persona-natural'
+              ? 'Persona natural'
+              : 'Persona jurídica'
+          "
+          :title="
+            personType === 'persona-natural'
+              ? 'Persona natural'
+              : 'Persona jurídica'
+          "
           class="h-full w-full object-contain"
         />
       </div>
