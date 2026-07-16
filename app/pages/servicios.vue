@@ -82,10 +82,10 @@ useJsonLd(jsonld.services)
           animate="visible"
         >
           <div
-            class="bg-white-alt absolute top-0 left-1/2 flex aspect-square w-[220px] -translate-x-1/2 -translate-y-1/2 items-center justify-center p-6 transition-transform duration-300 lg:w-64 lg:p-10"
+            class="bg-white-alt absolute top-0 left-1/2 flex aspect-square w-[220px] -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-hidden p-0 transition-transform duration-300 lg:w-64 lg:p-0"
           >
             <img
-              src="/images/pages/home/maximiza-planta-cristal-inversionista-natural.webp"
+              src="/images/pages/home/maximiza-inversionista-individual.webp"
               alt="Persona natural"
               title="Persona natural"
               class="relative z-10 h-full w-full object-contain"
@@ -115,10 +115,10 @@ useJsonLd(jsonld.services)
           animate="visible"
         >
           <div
-            class="bg-white-alt absolute top-0 left-1/2 flex aspect-square w-[220px] -translate-x-1/2 -translate-y-1/2 items-center justify-center p-6 transition-transform duration-300 lg:w-64 lg:p-10"
+            class="bg-white-alt absolute top-0 left-1/2 flex aspect-square w-[220px] -translate-x-1/2 -translate-y-1/2 items-center justify-center overflow-hidden p-0 transition-transform duration-300 lg:w-64 lg:p-0"
           >
             <img
-              src="/images/pages/home/maximiza-edificios-cristal-inversionista-juridico.webp"
+              src="/images/pages/home/maximiza-inversionistas-juridico.webp"
               alt="Persona jurídica"
               title="Persona jurídica"
               class="relative z-10 h-full w-full object-contain"
