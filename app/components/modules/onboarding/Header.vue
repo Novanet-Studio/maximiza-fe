@@ -55,7 +55,7 @@ const props = defineProps<Props>()
         }"
         :button="{
           label: 'Onboarding SITRAD',
-          link: '/https://www.cajavenezolana.com/sitradweb/login.php',
+          link: 'https://www.cajavenezolana.com/sitradweb/login.php',
           icon: 'hand-point-right',
         }"
         is-vertical
