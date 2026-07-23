@@ -38,6 +38,7 @@ const props = withDefaults(
 
 <template>
   <motion.div
+    id="Soluciones-financieras"
     :variants="generalContainerVariants"
     initial="hidden"
     whileInView="visible"

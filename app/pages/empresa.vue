@@ -78,7 +78,7 @@ useJsonLd(jsonld.about)
       :description="'Aliados estratégicos en ingeniería financiera avanzada: gestión patrimonial, activos alternativos y financiamiento corporativo a gran escala con máxima integridad.'"
       :button="{
         text: 'Configure su estrategia patrimonial',
-        link: '#',
+        link: '/contacto',
       }"
       :image="{
         src: '/images/hero/maxmiza-bolsa-de-valores-de-caracas.webp',

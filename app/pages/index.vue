@@ -15,7 +15,7 @@ useJsonLd(jsonld.home)
       :description="'Contamos con 33 años de experiencia en el mercado bursátil venezolano, ofreciendo todo tipo de servicio de intermediación bursátil en el área de corretaje de Títulos Valores, Finanzas Corporativas e Inversión y Manejo de Capital.'"
       :button="{
         text: 'Quiero invertir',
-        link: '#',
+        link: '/registro',
       }"
       :image="{
         src: '/images/hero/maxmiza-caracas-el-avila.webp',

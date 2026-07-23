@@ -20,7 +20,7 @@ useJsonLd(jsonld.services)
       :description="'Gestionamos activos líquidos e instrumentos de financiamiento nacionales e internacionales para impulsar el crecimiento patrimonial y corporativo.'"
       :button="{
         text: 'Explore nuestras soluciones financieras',
-        link: '#',
+        link: '#Soluciones-financieras',
       }"
       :image="{
         src: '/images/hero/maxmiza-operadores-financieros.webp',
