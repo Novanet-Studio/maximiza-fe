@@ -12,6 +12,7 @@ import {
   docTypeOptions,
   occupationsOptions,
   booleanOptions,
+  PHONE_REGEX,
 } from '~/assets/data/formSources'
 import { minAgeDate } from '~/lib/utils'
 
@@ -50,7 +51,7 @@ const schema = yup.object({
   phones: yup
     .string()
     .required('Teléfono requerido')
-    .matches(/^[0-9]+$/, 'Solo números'),
+    .matches(PHONE_REGEX, 'Teléfono inválido'),
   email: yup.string().required('Correo requerido').email('Correo inválido'),
 
   hasLegalRepresentative: yup.string().required('Seleccione una opción'),
@@ -86,7 +87,8 @@ const schema = yup.object({
 
   legalRepresentativePhones: yup.string().when('hasLegalRepresentative', {
     is: 'SI',
-    then: (schema) => schema.required('Requerido'),
+    then: (schema) =>
+      schema.required('Requerido').matches(PHONE_REGEX, 'Teléfono inválido'),
     otherwise: (schema) => schema.notRequired(),
   }),
   legalRepresentativeDocumentData: yup.string(),
@@ -358,10 +360,9 @@ defineExpose({
         :comment="'RIF_REQUIRED'"
       />
 
-      <FormBaseInput
+      <FormPhoneInput
         name="phones"
         label="Teléfono"
-        type="tel"
         v-model="phones"
         :error-message="errors.phones"
         required
@@ -505,10 +506,9 @@ defineExpose({
             required
           />
 
-          <FormBaseInput
+          <FormPhoneInput
             name="legalRepresentativePhones"
             label="Teléfono"
-            type="tel"
             v-model="legalRepresentativePhones"
             :error-message="errors.legalRepresentativePhones"
             required

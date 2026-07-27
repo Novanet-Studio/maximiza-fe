@@ -15,6 +15,7 @@ import {
   economicActivityOptions,
   relatedWithPepOptions,
   docTypeOptions,
+  PHONE_REGEX,
 } from '~/assets/data/formSources'
 
 const wizard = useOnboardingWizard()
@@ -49,7 +50,13 @@ const schema = yup.object({
         rol: yup.string().required('Requerido'),
         branch: yup.string().required('Requerido'),
         address: yup.string().optional(),
-        phone: yup.string().optional(),
+        phone: yup
+          .string()
+          .matches(PHONE_REGEX, {
+            message: 'Teléfono inválido',
+            excludeEmptyString: true,
+          })
+          .optional(),
       }),
     otherwise: () => yup.object().optional(),
   }),
@@ -69,7 +76,13 @@ const schema = yup.object({
         constitutionDate: yup.string().required('Requerido'),
         registerData: yup.string().required('Requerido'),
         branch: yup.string().required('Requerido'),
-        phone: yup.string().optional(),
+        phone: yup
+          .string()
+          .matches(PHONE_REGEX, {
+            message: 'Teléfono inválido',
+            excludeEmptyString: true,
+          })
+          .optional(),
         providers: yup
           .array()
           .of(
@@ -724,10 +737,11 @@ defineExpose({ validate })
               v-model="companyAddress"
             />
 
-            <FormBaseInput
+            <FormPhoneInput
               name="company.phone"
               label="Teléfono"
               v-model="companyPhone"
+              :error-message="errors['company.phone']"
             />
           </FormBaseLayout>
         </div>
@@ -800,10 +814,11 @@ defineExpose({ validate })
               :comment="'RIF_REQUIRED'"
             />
 
-            <FormBaseInput
+            <FormPhoneInput
               name="business.phone"
               label="Teléfono"
               v-model="businessPhone"
+              :error-message="errors['business.phone']"
             />
 
             <FormBaseSelect

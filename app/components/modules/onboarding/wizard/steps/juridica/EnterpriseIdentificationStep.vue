@@ -7,6 +7,7 @@ import {
   economicActivityOptions,
   countriesOptions,
   specificActivityOptions,
+  PHONE_REGEX,
 } from '~/assets/data/formSources'
 
 const wizard = useOnboardingWizard()
@@ -50,10 +51,13 @@ const schema = yup.object({
   publicPhones: yup
     .string()
     .required('Requerido')
-    .matches(/^[0-9]+$/, 'Solo números'),
+    .matches(PHONE_REGEX, 'Teléfono inválido'),
   publicPhones2: yup
     .string()
-    .matches(/^[0-9]*$/, 'Solo números')
+    .matches(PHONE_REGEX, {
+      message: 'Teléfono inválido',
+      excludeEmptyString: true,
+    })
     .optional(),
   publicEntityEmail: yup.string().required('Requerido').email('Inválido'),
   publicEntityEmail2: yup.string().email('Inválido').optional(),
@@ -492,10 +496,9 @@ defineExpose({ validate })
     <FormTitle text="Información de contacto principal" />
 
     <FormBaseLayout>
-      <FormBaseInput
+      <FormPhoneInput
         name="publicPhones"
         label="Teléfono"
-        type="tel"
         v-model="publicPhones"
         :error-message="errors.publicPhones"
         required
@@ -532,11 +535,11 @@ defineExpose({ validate })
     </h6>
 
     <FormBaseLayout>
-      <FormBaseInput
+      <FormPhoneInput
         name="publicPhones2"
         label="Teléfono"
-        type="tel"
         v-model="publicPhones2"
+        :error-message="errors.publicPhones2"
       />
       <FormBaseInput
         name="website2"

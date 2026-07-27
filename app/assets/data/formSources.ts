@@ -12,6 +12,18 @@ export const getLabel = (
   return found ? found.label : String(value)
 }
 
+export const phoneOperatorOptions: FormOption[] = [
+  { value: '(+58)412', label: '(+58)412' },
+  { value: '(+58)414', label: '(+58)414' },
+  { value: '(+58)416', label: '(+58)416' },
+  { value: '(+58)422', label: '(+58)422' },
+  { value: '(+58)424', label: '(+58)424' },
+  { value: '(+58)426', label: '(+58)426' },
+]
+
+// operadora = 8 chars fijos: "(+58)" (5) + 3 dígitos; cuerpo = 7 dígitos
+export const PHONE_REGEX = /^\(\+58\)(412|414|416|422|424|426)[0-9]{7}$/
+
 export const docTypeOptions = [
   { value: 'J', label: 'J' },
   { value: 'G', label: 'G' },

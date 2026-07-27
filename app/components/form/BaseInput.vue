@@ -11,6 +11,8 @@ interface Props {
   errorMessage?: string
   min?: any
   max?: any
+  maxlength?: number | string
+  inputmode?: 'text' | 'numeric' | 'tel' | 'email' | 'decimal'
   subLabel?: string
   subLabelType?: string
   comment?: string
@@ -59,6 +61,8 @@ const handleInput = (event: Event) => {
       :disabled="disabled"
       :min="min"
       :max="max"
+      :maxlength="maxlength"
+      :inputmode="inputmode"
       @input="handleInput"
       @blur="$emit('blur', $event)"
       @focus="$emit('focus', $event)"

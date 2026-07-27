@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { useForm } from 'vee-validate'
 import * as yup from 'yup'
 import { useOnboardingWizard } from '~/composables/useOnboardingWizard'
+import { PHONE_REGEX } from '~/assets/data/formSources'
 
 const wizard = useOnboardingWizard()
 
@@ -11,7 +12,10 @@ const showContract = ref(false)
 const schema = yup.object({
   name: yup.string().required('Requerido'),
   email: yup.string().email('Email inválido').required('Requerido'),
-  phone: yup.string().required('Requerido'),
+  phone: yup
+    .string()
+    .required('Requerido')
+    .matches(PHONE_REGEX, 'Teléfono inválido'),
   accept: yup
     .boolean()
     .required('Debes aceptar para poder continuar')
@@ -68,10 +72,9 @@ defineExpose({ validate })
         :error-message="errors.email"
         required
       />
-      <FormBaseInput
+      <FormPhoneInput
         name="phone"
         label="Teléfono"
-        type="tel"
         v-model="phone"
         :error-message="errors.phone"
         required
