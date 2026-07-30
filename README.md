@@ -12,7 +12,7 @@ wizard de apertura de cuenta (onboarding) con generación de PDFs. Construido co
 
 - **Framework:** Nuxt 4 (Vue 3, SSR) — puerto dev **3014**
 - **Estilos:** Tailwind CSS v4 (`@tailwindcss/vite`) + SCSS (`sass-embedded`)
-- **CMS:** Strapi vía `@nuxtjs/strapi` (blog y balances, por GraphQL)
+- **CMS:** Kairos vía REST (composable `useKairos`, header `x-api-key`) — blog y balances
 - **PWA / SEO:** `@vite-pwa/nuxt`, `@nuxtjs/sitemap`, `@nuxtjs/robots`, `nuxt-gtag`
 - **Imágenes / fuentes:** `@nuxt/image` (Cloudinary) + `@nuxt/fonts`
 - **Formularios:** `vee-validate` + `yup`/`zod`
@@ -24,7 +24,7 @@ wizard de apertura de cuenta (onboarding) con generación de PDFs. Construido co
 
 | Destino | Vía | Para |
 |---|---|---|
-| `maximiza-be` (Strapi) | GraphQL | Contenido: blog, balances financieros |
+| Kairos CMS | REST (`x-api-key`) | Contenido: blog, balances financieros |
 | `maximiza-services` (NestJS) | `POST /api/tracking` | Pasos del wizard de onboarding |
 | Nitro interno | `/api/generate-pdf` | PDFs del onboarding (Puppeteer, in-process) |
 
@@ -42,7 +42,8 @@ npm install
 Crear `.env` en la raíz:
 
 ```env
-STRAPI_API_URL=http://localhost:1337   # URL base del CMS Strapi
+KAIROS_API_URL=   # URL base del CMS Kairos (incluye /public/<tenant>)
+KAIROS_API_KEY=   # API key enviada como header x-api-key
 ```
 
 ## Scripts
