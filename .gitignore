@@ -29,3 +29,6 @@ bun.lock
 .netlify
 
 notes.md
+
+# Local Claude Code settings (personal permission grants)
+.claude/settings.local.json
