@@ -18,7 +18,6 @@ declare namespace MXMZ {
 
     //> BALANCE
     export interface Balance {
-        readonly documentId: string;
         readonly label: string;
         readonly items: BalanceItem[];
     }
@@ -39,7 +38,6 @@ declare namespace MXMZ {
 
     //> ARTICLES
     export interface Article {
-        readonly documentId: string;
         readonly titulo: string;
         readonly fecha: string;
         readonly slug: string;

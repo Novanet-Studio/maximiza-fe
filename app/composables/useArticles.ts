@@ -1,22 +1,39 @@
-import { articles } from './schemas'
+import { useKairos } from './useKairos'
+
+// La API de Kairos usa nombres planos (title/date/portrait); los mapeamos a
+// MXMZ.Article para no tocar los templates que ya consumen la forma de Strapi.
+const normalize = (item: any): MXMZ.Article => ({
+  titulo: item.title,
+  fecha: item.date,
+  slug: item.slug,
+  descripcion: item.description,
+  imagen: {
+    url: item.portrait,
+    alternativeText: item.portrait_alt,
+  },
+})
 
 export const useArticles = () => {
-  const graphql = useStrapiGraphQL()
+  const { request } = useKairos()
 
-  const getAllArticles = async () => {
+  const getAllArticles = async (): Promise<MXMZ.Article[]> => {
     try {
-      const response = await graphql<any>(articles.getAllArticles)
-      return response.data?.articulos || []
+      const { data } = await request<{ data: any[] }>('/articulos')
+      return (data || [])
+        .map(normalize)
+        .sort((a, b) => b.fecha.localeCompare(a.fecha))
     } catch (error) {
       console.error('Error fetching all articles:', error)
       return []
     }
   }
 
-  const getArticleBySlug = async (slug: string) => {
+  const getArticleBySlug = async (
+    slug: string
+  ): Promise<MXMZ.Article | null> => {
     try {
-      const response = await graphql<any>(articles.getArticleBySlug, { slug })
-      return response.data?.articulos?.[0] || null
+      const { data } = await request<{ data: any }>(`/articulos/${slug}`)
+      return data ? normalize(data) : null
     } catch (error) {
       console.error('Error fetching article by slug:', error)
       return null

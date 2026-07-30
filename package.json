@@ -18,7 +18,6 @@
     "@fortawesome/vue-fontawesome": "^3.3.0",
     "@netlify/nuxt": "^0.2.41",
     "@nuxt/fonts": "0.14.0",
-    "@nuxtjs/strapi": "^2.2.0",
     "@nuxtjs/tailwindcss": "^6.14.0",
     "@sparticuz/chromium": "^143.0.4",
     "@tailwindcss/vite": "^4.3.2",

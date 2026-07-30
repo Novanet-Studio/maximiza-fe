@@ -4,11 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   compatibilityDate: '2026-02-15',
   devtools: { enabled: false },
-  modules: ["nuxt-gtag", "@nuxt/image", "@nuxt/fonts", "@vite-pwa/nuxt", "@nuxtjs/sitemap", "@nuxtjs/robots", "@netlify/nuxt", "@nuxtjs/strapi"],
-
-  strapi: {
-    url: process.env.STRAPI_API_URL || 'http://localhost:1337',
-  },
+  modules: ["nuxt-gtag", "@nuxt/image", "@nuxt/fonts", "@vite-pwa/nuxt", "@nuxtjs/sitemap", "@nuxtjs/robots", "@netlify/nuxt"],
 
   site: {
     url: "https://maximiza.com.ve",
@@ -26,10 +22,9 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       trackingApiUrl: process.env.TRACKING_API_URL ?? 'http://localhost:3001',
-      strapi: {
-        url: process.env.STRAPI_API_URL || "http://localhost:1337",
-        prefix: "/api",
-        version: "v4",
+      kairos: {
+        url: process.env.KAIROS_API_URL || "http://localhost:3000",
+        apiKey: process.env.KAIROS_API_KEY || "",
       },
     },
   },

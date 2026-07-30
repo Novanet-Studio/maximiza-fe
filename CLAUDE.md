@@ -33,13 +33,13 @@ No hay suite de tests configurada. La validación principal es TypeScript strict
 - `assets/data/formSources.ts` — todas las opciones de selects del formulario de onboarding + helper `getLabel`
 - `assets/styles/main.css` — entrada de Tailwind v4 con tokens de diseño (`@theme`)
 
-### CMS (Strapi)
+### CMS (Kairos)
 
-Las queries GraphQL viven en `app/composables/schemas.ts`. Los composables de datos son:
-- `useArticles` — blog (GraphQL via `useStrapiGraphQL`)
-- `useBalances` — balances financieros de la empresa
+REST vía `useKairos` (`$fetch` con header `x-api-key`). Los composables de datos son:
+- `useArticles` — blog (`GET /articulos`, `GET /articulos/:slug`)
+- `useBalances` — balances financieros (`GET /balance-tipo?fullRelation=true`)
 
-Configuración de URL: variable de entorno `STRAPI_API_URL` (default `http://localhost:1337`).
+Kairos devuelve campos planos (`title`/`date`/`portrait`, y `balance-tipo` con `inverse_relations`); cada composable los normaliza a `MXMZ.Article` / `MXMZ.Balance` para no tocar los templates. Config: `KAIROS_API_URL` + `KAIROS_API_KEY`.
 
 ### Onboarding Wizard
 
@@ -78,6 +78,7 @@ Tailwind v4 con plugin Vite (`@tailwindcss/vite`). Los tokens están en `app/ass
 
 | Variable | Uso |
 |---|---|
-| `STRAPI_API_URL` | URL base del CMS Strapi |
+| `KAIROS_API_URL` | URL base del CMS Kairos (incluye `/public/<tenant>`) |
+| `KAIROS_API_KEY` | API key enviada como header `x-api-key` |
 
 En producción el deploy es en Netlify (`@netlify/nuxt`). La ruta `/api/generate-pdf` tiene CORS abierto por configuración en `nitro.routeRules`.
