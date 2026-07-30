@@ -1,5 +1,5 @@
 //? JURIDICA
-export const PLANILLA_JURIDICA_MOCK_DATA: MXMZ.WizardPlanillaResult = {
+export const PLANILLA_JURIDICA_MOCK_DATA: MXMZ.OnboardingWizardResult = {
   institutionData: {
     place: 'Caracas',
     productionDate: '2026-01-27',
@@ -156,7 +156,7 @@ export const PLANILLA_JURIDICA_MOCK_DATA: MXMZ.WizardPlanillaResult = {
 }
 
 //? natural
-export const PLANILLA_NATURAL_MOCK_DATA: MXMZ.WizardPlanillaResult = {
+export const PLANILLA_NATURAL_MOCK_DATA: MXMZ.OnboardingWizardResult = {
   institutionData: {
     place: 'Caracas',
     productionDate: '2026-01-27',

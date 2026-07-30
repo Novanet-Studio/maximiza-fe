@@ -1,17 +1,29 @@
 export const getPageStyles = () => {
-  let cssText = ''
+  if (typeof document === 'undefined') return ''
 
-  for (const sheet of Array.from(document.styleSheets)) {
+  let cssText = ''
+  const styleSheets = Array.from(document.styleSheets)
+
+  for (const sheet of styleSheets) {
     try {
-      const rules = sheet.cssRules || sheet.rules
+      const cssSheet = sheet as CSSStyleSheet
+      const rules = cssSheet.cssRules || cssSheet.rules
       if (rules) {
-        for (const rule of Array.from(rules)) {
-          cssText += rule.cssText + '\n'
+        for (let i = 0; i < rules.length; i++) {
+          cssText += rules[i].cssText
         }
       }
     } catch (e) {
-      console.warn('No se pudo acceder a una hoja de estilos (posible bloqueo CORS):', sheet.href)
+      console.warn('Cannot read stylesheet: ', sheet?.href, e)
     }
   }
+
+  cssText += `
+    * { box-sizing: border-box; }
+    body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    .w-a4 { width: 100%; max-width: 210mm; margin: 0 auto; background: white; }
+    @page { margin: 0; size: A4; }
+  `
+
   return cssText
 }

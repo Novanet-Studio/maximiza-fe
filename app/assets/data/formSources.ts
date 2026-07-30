@@ -3,11 +3,26 @@ export interface FormOption {
   label: string
 }
 
-export const getLabel = (value: string | number | undefined, options: FormOption[]): string => {
+export const getLabel = (
+  value: string | number | undefined,
+  options: FormOption[]
+): string => {
   if (!value) return ''
   const found = options.find((opt) => opt.value === value)
   return found ? found.label : String(value)
 }
+
+export const phoneOperatorOptions: FormOption[] = [
+  { value: '(+58)412', label: '(+58)412' },
+  { value: '(+58)414', label: '(+58)414' },
+  { value: '(+58)416', label: '(+58)416' },
+  { value: '(+58)422', label: '(+58)422' },
+  { value: '(+58)424', label: '(+58)424' },
+  { value: '(+58)426', label: '(+58)426' },
+]
+
+// operadora = 8 chars fijos: "(+58)" (5) + 3 dígitos; cuerpo = 7 dígitos
+export const PHONE_REGEX = /^\(\+58\)(412|414|416|422|424|426)[0-9]{7}$/
 
 export const docTypeOptions = [
   { value: 'J', label: 'J' },
@@ -619,7 +634,8 @@ export const bankingInstituteOptions: FormOption[] = [
   },
   {
     value: '0175-Bicentenario',
-    label: 'Banco Bicentenario del Pueblo de la Clase Obrera, Mujer y Comunas, Banco Universal.',
+    label:
+      'Banco Bicentenario del Pueblo de la Clase Obrera, Mujer y Comunas, Banco Universal.',
   },
   {
     value: '0177-G200106573',
@@ -712,7 +728,8 @@ export const occupationsOptions: FormOption[] = [
   { value: 'OCC068', label: 'Comerciante de chatarra y metales' },
   {
     value: 'OCC069',
-    label: 'Comerciante independiente (buhonero, comisionista, vendedor ambulante, comerciante)',
+    label:
+      'Comerciante independiente (buhonero, comisionista, vendedor ambulante, comerciante)',
   },
   { value: 'OCC070', label: 'Compositor' },
   { value: 'OCC071', label: 'Computista, programador' },
@@ -747,7 +764,8 @@ export const occupationsOptions: FormOption[] = [
   { value: 'OCC100', label: 'Educación agropecuaria' },
   {
     value: 'OCC101',
-    label: 'Educación en castellano y literatura, idiomas y lenguas extranjeras',
+    label:
+      'Educación en castellano y literatura, idiomas y lenguas extranjeras',
   },
   { value: 'OCC102', label: 'Educación en ciencias básicas' },
   { value: 'OCC103', label: 'Educación en ciencias sociales' },
@@ -765,7 +783,10 @@ export const occupationsOptions: FormOption[] = [
   { value: 'OCC115', label: 'Escenógrafo' },
   { value: 'OCC116', label: 'Escritor' },
   { value: 'OCC117', label: 'Escultor, tallador' },
-  { value: 'OCC118', label: 'Esotérico, brujo, vidente, astrólogo, espiritista' },
+  {
+    value: 'OCC118',
+    label: 'Esotérico, brujo, vidente, astrólogo, espiritista',
+  },
   { value: 'OCC119', label: 'Estadística y ciencias actuariales' },
   { value: 'OCC120', label: 'Estilista' },
   { value: 'OCC121', label: 'Estudiante' },
@@ -926,7 +947,8 @@ export const occupationsOptions: FormOption[] = [
 export const economicActivityOptions: FormOption[] = [
   {
     value: 'ECAC063',
-    label: 'Actividades de arquitectura e ingeniería; ensayos y análisis técnicos',
+    label:
+      'Actividades de arquitectura e ingeniería; ensayos y análisis técnicos',
   },
   {
     value: 'ECAC079',
@@ -954,7 +976,8 @@ export const economicActivityOptions: FormOption[] = [
   },
   {
     value: 'ECAC055',
-    label: 'Actividades de la tecnología de información y del servicio informativo',
+    label:
+      'Actividades de la tecnología de información y del servicio informativo',
   },
   {
     value: 'ECAC070',
@@ -963,7 +986,8 @@ export const economicActivityOptions: FormOption[] = [
   },
   {
     value: 'ECAC086',
-    label: 'Actividades de los hogares en calidad de empleadores de personal doméstico',
+    label:
+      'Actividades de los hogares en calidad de empleadores de personal doméstico',
   },
   {
     value: 'ECAC062',
@@ -985,7 +1009,8 @@ export const economicActivityOptions: FormOption[] = [
   },
   {
     value: 'ECAC036',
-    label: 'Actividades de saneamiento y otros servicios de gestión de desechos',
+    label:
+      'Actividades de saneamiento y otros servicios de gestión de desechos',
   },
   {
     value: 'ECAC068',
@@ -1060,11 +1085,13 @@ export const economicActivityOptions: FormOption[] = [
   },
   {
     value: 'ECAC042',
-    label: 'Comercio al por mayor, excepto de los vehículos de motor y las motocicletas',
+    label:
+      'Comercio al por mayor, excepto de los vehículos de motor y las motocicletas',
   },
   {
     value: 'ECAC043',
-    label: 'Comercio al por menor, excepto el comercio de vehículos automotores y motocicletas',
+    label:
+      'Comercio al por menor, excepto el comercio de vehículos automotores y motocicletas',
   },
   {
     value: 'ECAC037',
@@ -1164,7 +1191,8 @@ export const economicActivityOptions: FormOption[] = [
   },
   {
     value: 'ECAC023',
-    label: 'Fabricación de productos derivados del metal, excepto maquinaria y equipo',
+    label:
+      'Fabricación de productos derivados del metal, excepto maquinaria y equipo',
   },
   {
     value: 'ECAC019',
@@ -1234,7 +1262,8 @@ export const economicActivityOptions: FormOption[] = [
   },
   {
     value: 'ECAC035',
-    label: 'Recolección, tratamiento y eliminación de desechos, recuperación de materiales',
+    label:
+      'Recolección, tratamiento y eliminación de desechos, recuperación de materiales',
   },
   {
     value: 'ECAC084',
@@ -1299,7 +1328,8 @@ export const specificActivityOptions: FormOption[] = [
   },
   {
     value: 'SAO002',
-    label: 'Casas de cambio nacionales o internacionales domiciliadas o no en el país',
+    label:
+      'Casas de cambio nacionales o internacionales domiciliadas o no en el país',
   },
   {
     value: 'SAO003',
@@ -1311,7 +1341,8 @@ export const specificActivityOptions: FormOption[] = [
   },
   {
     value: 'SAO005',
-    label: 'Comercializadoras y arrendadoras de vehículos automotores, embarcaciones y aeronaves',
+    label:
+      'Comercializadoras y arrendadoras de vehículos automotores, embarcaciones y aeronaves',
   },
   {
     value: 'SAO006',

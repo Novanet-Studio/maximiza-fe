@@ -1,173 +1,111 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
+import { metadata } from '@/assets/data/metadata'
+import commonData from '@/assets/data/common.json'
+import { motion } from 'motion-v'
+import {
+  generalContainerVariants,
+  generalItemVariants,
+} from '@/assets/animations/motion'
 
-  import { useMaximizaQueries } from '~/composables/useMaximizaQueries'
+import { useJsonLd } from '~/composables/useJsonLd'
+import { jsonld } from '~/assets/data/jsonld'
 
-  const form = ref({
-    'bot-field': '',
-    name: '',
-    email: '',
-    message: '',
-  })
+const contactMethods = [
+  {
+    title: 'Atención al cliente',
+    value: commonData.email,
+    icon: '/images/pages/contact/items/maximiza-logo-instagram-icono.webp',
+  },
+  {
+    title: 'Master',
+    value: commonData.phone,
+    icon: '/images/pages/contact/items/maximiza-contacto-master-icono.webp',
+  },
+  {
+    title: 'Fax',
+    value: commonData.fax,
+    icon: '/images/pages/contact/items/maximiza-contacto-fax-icono.webp',
+  },
+]
 
-  const encode = (data: Record<string, any>) => {
-    return Object.keys(data)
-      .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-      .join('&')
-  }
+useSeoMeta(metadata.contacto)
 
-  const handleSubmit = async () => {
-    try {
-      const formData = encode({
-        'form-name': 'inicio',
-        ...form.value,
-      })
-
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: formData,
-      })
-
-      if (!response.ok) {
-        throw new Error('Error en la respuesta del servidor')
-      }
-
-      form.value.name = ''
-      form.value.email = ''
-      form.value.message = ''
-    } catch (error) {
-      console.error('Error al enviar:', error)
-    }
-  }
-
-  const { contactoData, fetchContacto } = useMaximizaQueries()
-
-  onMounted(() => {
-    fetchContacto()
-  })
-
-  useSeoMeta({
-    title: 'Contacto',
-    description:
-      'Somos una casa de bolsa que ofrece innovadoras herramientas para la inversión, gestión y estructuración de activos financieros.',
-    ogImage:
-      'https://res.cloudinary.com/novanet-studio/image/upload/v1646847320/maximiza/v4/maximiza_contacto_miniatura_7e7d7d94e8.webp',
-  })
+useJsonLd(jsonld.contact)
 </script>
 
 <template>
-  <div class="min-h-dvh">
-    <div v-if="contactoData" class="w-full">
-      <CommonHero
-        :text="contactoData.principal.contenido"
-        :image="contactoData.principal.imagen"
-        :inverted="true"
-        :show-logo="false"
-        :button-text="''"
+  <div class="flex h-auto w-full flex-col">
+    <CommonHero
+      :title="'Inicie la estructuración de su nueva estrategia financiera'"
+      :description="'Evaluación confidencial para proteger su tesorería de la volatilidad o diseñar un financiamiento a la medida para su ciclo productivo.'"
+      :image="{
+        src: '/images/hero/maxmiza-mano-femenina-sujetando-boligrafo-organizando-monedas.webp',
+        alt: 'Hero Background',
+      }"
+      :pattern="{
+        src: '/images/hero/pattern-contacto.webp',
+      }"
+    />
+
+    <ModulesContactForm />
+
+    <motion.section
+      class="container mx-auto px-4 py-16 md:px-0"
+      :variants="generalContainerVariants"
+      initial="hidden"
+      whileInView="visible"
+      :viewport="{ once: true, margin: '-50px' }"
+    >
+      <div
+        class="flex flex-col items-center gap-16 lg:flex-row lg:items-stretch lg:gap-24"
       >
-        <template #custom-title>
-          <h1 class="hero-title text-left">
-            {{ contactoData.principal.titulo }}
-          </h1>
-        </template>
-      </CommonHero>
-
-      <section class="mx-auto mb-16 mt-12 px-4 md:mb-24 md:mt-16 xl:mt-24 xl:px-0">
-        <div class="flex flex-col justify-between gap-12 xl:flex-row xl:gap-0">
-          <div class="w-full text-left xl:w-[30%]">
-            <ul class="flex flex-col gap-8 md:gap-10">
-              <li class="flex items-center gap-4">
-                <span
-                  class="flex h-6 w-6 shrink-0 items-center justify-center bg-maximiza-verde1 text-maximiza-blanco1 md:h-8 md:w-8"
-                >
-                  <font-awesome-icon :icon="['fas', 'envelope']" class="text-lg md:text-xl" />
-                </span>
-                <p class="text-sm font-medium text-maximiza-gris2 md:text-base">
-                  contacto@maximiza.com.ve
-                </p>
-              </li>
-
-              <li class="flex items-center gap-4">
-                <span
-                  class="flex h-6 w-6 shrink-0 items-center justify-center bg-maximiza-verde1 text-maximiza-blanco1 md:h-8 md:w-8"
-                >
-                  <font-awesome-icon :icon="['fas', 'phone']" class="text-lg md:text-xl" />
-                </span>
-                <p class="text-sm font-medium leading-relaxed text-maximiza-gris2 md:text-base">
-                  Master +58 (212) 9539447 <br />
-                  Fax +58 (212) 9573365 / 3366
-                </p>
-              </li>
-
-              <li class="flex items-start gap-4">
-                <span
-                  class="mt-1 flex h-6 w-6 shrink-0 items-center justify-center bg-maximiza-verde1 text-maximiza-blanco1 md:h-8 md:w-8"
-                >
-                  <font-awesome-icon :icon="['fas', 'map-marker-alt']" class="text-lg md:text-xl" />
-                </span>
-                <p class="text-sm font-medium leading-relaxed text-maximiza-gris2 md:text-base">
-                  Avenida Francisco de Miranda, Torre Europa, Piso 3, Oficinas 3-B3. El Rosal,
-                  Caracas, Venezuela.
-                </p>
-              </li>
-            </ul>
-          </div>
-
-          <div class="w-full xl:w-[65%]">
-            <form
-              class="flex flex-col flex-wrap justify-between"
-              method="POST"
-              data-netlify="true"
-              name="inicio"
-              @submit.prevent="handleSubmit"
+        <motion.div
+          class="flex w-full max-w-[471px] flex-col shadow-lg lg:w-1/2"
+          :variants="generalItemVariants"
+        >
+          <div class="h-100 w-full lg:h-112.5">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.1148587256353!2d-66.8666605885711!3d10.491610989597191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a591b8dcdeec3%3A0x1118acd802417a6e!2sMaximiza%20Casa%20de%20Bolsa%20C.A!5e0!3m2!1ses!2sve!4v1773170192534!5m2!1ses!2sve"
+              class="h-full w-full border-0"
+              allowfullscreen="false"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
             >
-              <input type="hidden" name="form-name" value="inicio" />
-
-              <p class="hidden">
-                <label>
-                  Don’t fill this out if you’re human:
-                  <input name="bot-field" v-model="form['bot-field']" />
-                </label>
-              </p>
-
-              <div class="flex w-full flex-wrap justify-between">
-                <input
-                  v-model="form.name"
-                  type="text"
-                  name="name"
-                  placeholder="Nombre y apellido"
-                  class="bg-transparent placeholder-gray-400 focus:border-green-700 mb-6 w-full border-b-2 border-maximiza-verde1 py-2 text-maximiza-gris4 transition-colors focus:outline-none md:mb-4 md:w-[48%]"
-                  required
-                />
-                <input
-                  v-model="form.email"
-                  type="email"
-                  name="email"
-                  placeholder="Correo"
-                  class="bg-transparent placeholder-gray-400 focus:border-green-700 mb-6 w-full border-b-2 border-maximiza-verde1 py-2 text-maximiza-gris4 transition-colors focus:outline-none md:mb-4 md:w-[48%]"
-                  required
-                />
-                <textarea
-                  v-model="form.message"
-                  name="message"
-                  placeholder="Escriba su mensaje aquí..."
-                  class="bg-transparent placeholder-gray-400 focus:border-green-700 mb-8 h-12 w-full resize-none border-b-2 border-maximiza-verde1 py-2 text-maximiza-gris4 transition-colors focus:outline-none md:mb-0 md:h-auto"
-                  required
-                />
-              </div>
-
-              <div class="mt-4 flex w-full justify-end">
-                <input
-                  type="submit"
-                  class="button-primary cursor-pointer"
-                  value="Enviar mensaje ➤"
-                />
-              </div>
-            </form>
+            </iframe>
           </div>
-        </div>
-      </section>
-    </div>
+          <div class="bg-black-alt flex grow flex-col justify-center p-10">
+            <h3 class="mb-2 text-white">Dirección</h3>
+            <p class="text-white-alt">{{ commonData.address }}</p>
+          </div>
+        </motion.div>
+
+        <motion.div
+          class="flex w-full flex-col justify-center gap-8 pl-12 md:w-auto lg:w-1/2"
+          :variants="generalContainerVariants"
+        >
+          <motion.div
+            v-for="(method, index) in contactMethods"
+            :key="index"
+            :variants="generalItemVariants"
+            class="border-gray flex h-28 w-full border bg-white"
+          >
+            <div
+              class="bg-black-alt mt-2 flex h-18 w-18 shrink-0 -translate-x-1/2 items-center justify-center p-6"
+            >
+              <img
+                :src="method.icon"
+                :alt="method.title"
+                :title="method.title"
+                class="h-18 w-18 object-contain"
+              />
+            </div>
+            <div class="flex grow -translate-x-5 flex-col justify-center py-8">
+              <h5 class="text-black-alt">{{ method.title }}</h5>
+              <p class="text-gray">{{ method.value }}</p>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+    </motion.section>
   </div>
 </template>

@@ -1,87 +1,31 @@
-export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
-  devtools: { enabled: false },
+import tailwindcss from "@tailwindcss/vite";
 
-  future: {
-    compatibilityVersion: 4,
+// https://nuxt.com/docs/api/configuration/nuxt-config
+export default defineNuxtConfig({
+  compatibilityDate: '2026-02-15',
+  devtools: { enabled: false },
+  modules: ["nuxt-gtag", "@nuxt/image", "@nuxt/fonts", "@vite-pwa/nuxt", "@nuxtjs/sitemap", "@nuxtjs/robots", "@netlify/nuxt"],
+
+  site: {
+    url: "https://maximiza.com.ve",
   },
 
   ssr: true,
 
-  modules: [
-    '@nuxtjs/tailwindcss',
-    [
-      '@nuxtjs/strapi',
-      { version: 'v4', url: process.env.STRAPI_API_URL || 'http://localhost:1337', prefix: '/api' },
-    ],
-    '@nuxt/image',
-    '@vite-pwa/nuxt',
-    '@nuxt/fonts',
-  ],
+  router: {
+    options: {
+      linkActiveClass: "active",
+      linkExactActiveClass: "exact-active",
+    },
+  },
 
   runtimeConfig: {
     public: {
-      strapi: {
-        url: process.env.STRAPI_API_URL || 'http://localhost:1337',
-        prefix: '/api',
-        version: 'v4',
+      trackingApiUrl: process.env.TRACKING_API_URL ?? 'http://localhost:3001',
+      kairos: {
+        url: process.env.KAIROS_API_URL || "http://localhost:3000",
+        apiKey: process.env.KAIROS_API_KEY || "",
       },
-    },
-  },
-
-  pwa: {
-    manifest: {
-      name: 'Maximiza - Asesoría de inversión',
-      short_name: 'Maximiza',
-      description:
-        'Somos una casa de bolsa que ofrece innovadoras herramientas para la inversión, gestión y estructuración de activos financieros.',
-      theme_color: '#00735f',
-      background_color: '#ffffff',
-      display: 'standalone',
-      orientation: 'portrait',
-      lang: 'es',
-      icons: [
-        {
-          src: 'pwa-192x192.png',
-          sizes: '192x192',
-          type: 'image/png',
-        },
-        {
-          src: 'pwa-512x512.png',
-          sizes: '512x512',
-          type: 'image/png',
-        },
-        {
-          src: 'pwa-512x512.png',
-          sizes: '512x512',
-          type: 'image/png',
-          purpose: 'any maskable',
-        },
-      ],
-    },
-
-    workbox: {
-      globPatterns: ['**/*.{js,css,html,png,svg,ico}'],
-      navigateFallback: null,
-    },
-
-    client: {
-      installPrompt: true,
-    },
-
-    registerType: 'autoUpdate',
-    devOptions: {
-      enabled: true,
-      type: 'module',
-    },
-  },
-
-  css: ['~/assets/css/main.css', '@fortawesome/fontawesome-svg-core/styles.css'],
-
-  router: {
-    options: {
-      linkActiveClass: 'active',
-      linkExactActiveClass: 'exact-active',
     },
   },
 
@@ -89,100 +33,151 @@ export default defineNuxtConfig({
     strict: true,
     tsConfig: {
       compilerOptions: {
-        types: ['global.d.ts'],
+        types: ["maximiza.d.ts"],
       },
     },
   },
 
-  gtag: {
-    id: 'G-4W17JXKS6P',
+  vite: {
+    plugins: [
+      tailwindcss(),
+    ],
+    resolve: {
+      dedupe: ["vue"],
+    },
   },
 
-  icon: {
-    class: 'icon',
-    mode: 'css',
-    cssLayer: 'base',
+  gtag: {
+    id: "G-4W17JXKS6P",
   },
 
   devServer: {
-    port: 3000,
+    port: 3014,
   },
 
   nitro: {
     prerender: {
-      routes: ['/netlify-form-contact.html', '/netlify-form-suggestion.html'],
+      routes: ["/static/contact-form.html"],
     },
     moduleSideEffects: ['@sparticuz/chromium'],
     externals: {
       inline: [],
-      external: ['@sparticuz/chromium', 'puppeteer-core'],
+      external: ['@sparticuz/chromium', 'puppeteer-core']
     },
     routeRules: {
-      '/api/generate-pdf': { cors: true, headers: { 'Access-Control-Allow-Origin': '*' } },
-    },
+      '/api/generate-pdf': { cors: true, headers: { 'Access-Control-Allow-Origin': '*' } }
+    }
+  },
+
+  robots: {
+    sitemap: 'https://maximiza.com.ve/sitemap.xml',
+    disallow: ['/api/'],
   },
 
   app: {
     pageTransition: {
-      name: 'page',
-      mode: 'out-in',
+      name: "page",
+      mode: "out-in",
     },
 
     head: {
-      title: 'Maximiza - Asesoría de inversión',
-      titleTemplate: '%s',
+      title: "Maximiza - Asesoría de inversión",
+      titleTemplate: "%s",
+      htmlAttrs: {
+        lang: 'es',
+      },
       meta: [
         {
-          name: 'title',
-          content: 'Maximiza',
+          name: "title",
+          content: "Maximiza",
         },
         {
-          name: 'description',
+          name: "description",
           content:
-            'Somos una casa de bolsa que ofrece innovadoras herramientas para la inversión, gestión y estructuración de activos financieros.',
+            "Somos una casa de bolsa que ofrece innovadoras herramientas para la inversión, gestión y estructuración de activos financieros.",
         },
         {
-          name: 'name',
-          content: 'Maximiza WebApp',
+          name: "name",
+          content: "Maximiza WebApp",
         },
         {
-          name: 'author',
-          content: 'Novanet Studio <info@novanet.studio>',
+          name: "author",
+          content: "Novanet Studio <info@novanet.studio>",
         },
 
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
       ],
       link: [
-        { rel: 'icon', type: 'image/png', href: '/favicon.png' },
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: "icon", type: "image/webp", href: "/favicon.webp" },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
         {
-          rel: 'preconnect',
-          href: 'https://fonts.gstatic.com',
-          crossorigin: '',
+          rel: "preconnect",
+          href: "https://fonts.gstatic.com",
+          crossorigin: "",
         },
         {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap',
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..800;1,17..18,400..800&display=swap",
         },
       ],
-
-      script: [
-        {
-          innerHTML: `function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"58faf27c9328dd620b835fc7f7eb5b09"})});`,
-          type: 'text/javascript'
-        }
-      ]
     },
   },
 
   image: {
     cloudinary: {
-      baseURL: 'https://res.cloudinary.com/novanet-studio/image/upload/',
+      baseURL: "https://res.cloudinary.com/novanet-studio/image/upload/",
     },
   },
-  vite: {
-    optimizeDeps: {
-      include: ['qs'],
+
+  pwa: {
+    manifest: {
+      name: "Maximiza - Asesoría de inversión",
+      short_name: "Maximiza",
+      description:
+        "Somos una casa de bolsa que ofrece innovadoras herramientas para la inversión, gestión y estructuración de activos financieros.",
+      theme_color: "#00735f",
+      background_color: "#ffffff",
+      display: "standalone",
+      orientation: "portrait",
+      lang: "es",
+      icons: [
+        {
+          src: "pwa-192x192.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+        {
+          src: "pwa-512x512.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+        {
+          src: "pwa-512x512.png",
+          sizes: "512x512",
+          type: "image/png",
+          purpose: "any maskable",
+        },
+      ],
+    },
+
+    workbox: {
+      globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
+      navigateFallback: null,
+      maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
+    },
+
+    client: {
+      installPrompt: true,
+    },
+
+    registerType: "autoUpdate",
+    devOptions: {
+      enabled: true,
+      type: "module",
     },
   },
+
+  css: [
+    "~/assets/styles/main.css",
+  ],
 })

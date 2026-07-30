@@ -1,24 +1,34 @@
 <script setup lang="ts">
-  defineProps<{
-    htmlFor?: string
-    label?: string
-    required?: boolean
-    error?: string
-  }>()
+defineProps<{
+  htmlFor?: string
+  label?: string
+  subLabel?: string
+  required?: boolean
+  error?: string
+  subLabelType?: string
+}>()
+
+const SUBLABELS: Record<string, string> = {
+  BS: 'en Bolívares',
+  APPLY: 'En caso de aplicar',
+}
 </script>
 
 <template>
   <label
     v-if="label"
     :for="htmlFor"
-    class="block text-sm font-bold"
-    :class="[error ? 'text-maximiza-error' : 'text-maximiza-gris1']"
+    class="mb-1 block text-base font-semibold"
+    :class="[error ? 'text-error' : 'text-black-alt/85']"
   >
     {{ label }}
+    <span v-if="subLabel || subLabelType" class="text-xs font-normal">{{
+      `(${subLabel || SUBLABELS[subLabelType!]})`
+    }}</span>
     <span
       v-if="required"
-      class="font-black"
-      :class="[error ? 'text-maximiza-error' : 'text-maximiza-verde1']"
+      class="ml-1 font-black"
+      :class="[error ? 'text-error' : 'text-primary']"
       >*</span
     >
   </label>

@@ -1,16 +1,24 @@
 <script setup lang="ts">
-  interface Props {
-    style?: string
-    text?: string
-  }
+interface Props {
+  style?: string
+  text?: string
+  description?: string
+}
 
-  defineProps<Props>()
+defineProps<Props>()
 </script>
 
 <template>
-  <div class="mb-4 w-full border-b border-maximiza-gris5 pb-2">
-    <h4 :class="`text-xl font-black text-maximiza-verde1 md:text-2xl ${style}`">
+  <div class="w-full">
+    <h4 :class="`text-black-alt text-2xl ${style}`">
       {{ text }}
     </h4>
+
+    <div
+      v-if="description"
+      class="border-primary text-black-alt border-l-2 pl-2 text-sm"
+    >
+      <p v-html="description" />
+    </div>
   </div>
 </template>

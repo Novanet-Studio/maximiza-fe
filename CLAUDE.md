@@ -5,65 +5,80 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-pnpm dev          # Dev server at http://localhost:3000
-pnpm build        # Production build (SSR)
-pnpm generate     # Static site generation
-pnpm preview      # Preview production build
-pnpm postinstall  # Run after install to prepare Nuxt types
+npm run dev          # dev server en http://localhost:3014
+npm run host         # dev server expuesto en red local
+npm run build        # build SSR para producción
+npm run generate     # generación estática
+npm run preview      # previsualizar build
 ```
 
-## Environment
+No hay suite de tests configurada. La validación principal es TypeScript strict + revisión visual.
 
-Copy `.env.example` and set the required variable:
+## Arquitectura
 
-```
-STRAPI_API_URL=http://localhost:1337   # URL of the Strapi v4 backend
-```
+**Stack:** Nuxt 4 (SSR) · Vue 3 · Tailwind CSS v4 · Strapi v4 (CMS) · Netlify (deploy)
 
-The app falls back to `http://localhost:1337` in development if the variable is absent.
+### Estructura de `app/`
 
-## Architecture
+- `pages/` — rutas principales: `index`, `empresa`, `servicios`, `contacto`, `responsabilidad`, `blog/`, `registro/`
+- `components/app/` — shell: `Header`, `Footer`, `Loader`, `Popover`
+- `components/common/` — bloques reutilizables de layout: `Hero`, `SectionHeader`, `ContentCard`, `TextBanner`, `ContentWithColumns`
+- `components/shared/` — componentes cross-page: `OurServices`
+- `components/ui/` — primitivos: `Button`
+- `components/form/` — inputs con vee-validate: `BaseInput`, `BaseSelect`, `BaseCheckbox`, `BaseRadio`, `BaseLabel`, `BaseLayout`, `Error`, `Title`, `BaseDivider`
+- `components/modules/` — features por dominio: `blog/`, `contact/`, `empresa/`, `home/`, `onboarding/`
+- `composables/` — lógica compartida (ver abajo)
+- `lib/utils.ts` — helpers puros: `formatDate`, `formatAmount`, `truncateText`, `articleExcerpt`, `minAgeDate`
+- `lib/pdfHelper.ts` — extrae CSS del DOM para inyectarlo en el PDF
+- `assets/data/formSources.ts` — todas las opciones de selects del formulario de onboarding + helper `getLabel`
+- `assets/styles/main.css` — entrada de Tailwind v4 con tokens de diseño (`@theme`)
 
-**Stack:** Nuxt 4 (SSR), Vue 3, TypeScript (strict), Tailwind CSS, Strapi v4 (GraphQL), deployed to Netlify.
+### CMS (Kairos)
 
-### Data fetching — `useMaximizaQueries`
+REST vía `useKairos` (`$fetch` con header `x-api-key`). Los composables de datos son:
+- `useArticles` — blog (`GET /articulos`, `GET /articulos/:slug`)
+- `useBalances` — balances financieros (`GET /balance-tipo?fullRelation=true`)
 
-All CMS data comes through `app/composables/useMaximizaQueries.ts`. Each page has a dedicated GraphQL query defined in its corresponding `app/schemas/<page>.schemas.ts` file. The composable wraps `useStrapiGraphQL()` from `@nuxtjs/strapi` and exposes a `(fetch<Entity>, <entity>Data, loading)` pattern for every page. Pages call their fetch function in `onMounted` or via `useAsyncData`.
+Kairos devuelve campos planos (`title`/`date`/`portrait`, y `balance-tipo` con `inverse_relations`); cada composable los normaliza a `MXMZ.Article` / `MXMZ.Balance` para no tocar los templates. Config: `KAIROS_API_URL` + `KAIROS_API_KEY`.
 
-### Planilla (onboarding form)
+### Onboarding Wizard
 
-The multi-step onboarding wizard lives at `/planilla/:type` where `type` is `"natural"` or `"juridica"`. State is managed by `app/composables/usePlanillaWizard.ts` via `useState` (server-safe, global). The wizard state shape and all form data types are declared in `global.d.ts` under the `MXMZ` namespace — this is the source of truth for all form interfaces.
+Feature de apertura de cuenta en `components/modules/onboarding/`. Flujo complejo:
 
-Steps are assembled in `app/pages/planilla/[type].vue` as arrays of components. Each step component must expose a `validate()` method via `defineExpose` so the parent page can call it before advancing. `KeepAlive` wraps the active component to preserve state across navigation.
+1. **`wizard/Wrapper.vue`** — decide entre `persona-natural` y `persona-juridica`, inicializa el wizard
+2. **`wizard/Form.vue`** — orquesta los pasos, contiene la lógica de navegación
+3. **`wizard/FormStepper.vue`** — barra de progreso
+4. **`wizard/steps/`** — cada paso es un componente independiente que llama `updateFormData` al completarse
+5. **`composables/useOnboardingWizard.ts`** — estado global del wizard via `useState` de Nuxt (key `"onboarding-wizard-state"`); expone `initWizard`, `nextStep`, `prevStep`, `goToStep`, `updateFormData`
 
-### PDF generation
+El resultado acumulado (`formData`) satisface `MXMZ.OnboardingWizardResult` definido en `maximiza.d.ts`.
 
-When the wizard completes, the final step renders Vue components from `app/components/planilla/pdf/` to HTML, extracts computed page styles via `app/lib/pdfHelper.ts`, and POSTs that HTML+CSS to the Nitro server route `server/api/generate-pdf.post.ts`. The server route uses Puppeteer + `@sparticuz/chromium` (serverless-compatible) in production and a local Chrome binary in development.
+### Generación de PDF
 
-Local Chrome paths are hardcoded in `server/api/generate-pdf.post.ts`:
+- `components/modules/onboarding/pdf/` — componentes Vue que renderizan los documentos (planilla de apertura, origen de fondos, registro de firmas)
+- `lib/pdfHelper.ts#getPageStyles` — recolecta todos los CSS del DOM en tiempo de cliente
+- `server/api/generate-pdf.post.ts` — endpoint Nitro que usa Puppeteer + `@sparticuz/chromium`; en producción (Netlify) usa el binario de chromium serverless, en local apunta a Chrome instalado
 
-- Windows: `C:\Program Files\Google\Chrome\Application\chrome.exe`
-- macOS: `/Applications/Google Chrome.app/...`
+### Tipos globales
 
-### Styling conventions
+`maximiza.d.ts` declara el namespace `MXMZ` con todas las interfaces del dominio. Agregar tipos nuevos del negocio aquí.
 
-Tailwind is configured with a custom color palette under the `maximiza` namespace (e.g. `text-maximiza-verde1`, `bg-maximiza-gris5`). The full palette is defined in `tailwind.config.ts`. The default Tailwind color palette is replaced (not extended), so only `maximiza-*` colors are available. Extra breakpoints (`3xs`, `2xs`, `xs`, `3xl`, `portrait`, `landscape`) and an `a4` width (`210mm`) for PDF layouts are also defined there.
+### Estilos
 
-### Form validation
+Tailwind v4 con plugin Vite (`@tailwindcss/vite`). Los tokens están en `app/assets/styles/main.css` bajo `@theme`:
+- Colores: `primary` (#00735f), `secondary` (#f1cda7), `error`, `gray`, `white-alt`, etc.
+- Fuente: Google Sans / Google Sans Flex
+- `--width-a4: 210mm` — usado en los componentes PDF
 
-Step components use `vee-validate` with `yup` or `zod` schemas. Each step manages its own `useForm` instance and exposes a `validate` function that calls vee-validate's `handleSubmit` before calling `wizard.nextStep()`.
+### Imágenes
 
-### Modules active
+`@nuxt/image` con proveedor Cloudinary (`res.cloudinary.com/novanet-studio`). Usar `<NuxtImg>` en lugar de `<img>` para imágenes optimizadas.
 
-| Module                | Purpose                                      |
-| --------------------- | -------------------------------------------- |
-| `@nuxtjs/tailwindcss` | CSS framework                                |
-| `@nuxtjs/strapi`      | Strapi v4 GraphQL/REST client                |
-| `@nuxt/image`         | Cloudinary image provider (`novanet-studio`) |
-| `@vite-pwa/nuxt`      | PWA manifest + service worker                |
-| `@nuxt/fonts`         | Font optimization                            |
-| `nuxt-gtag`           | Google Analytics (`G-4W17JXKS6P`)            |
+### Variables de entorno
 
-### Netlify deployment
+| Variable | Uso |
+|---|---|
+| `KAIROS_API_URL` | URL base del CMS Kairos (incluye `/public/<tenant>`) |
+| `KAIROS_API_KEY` | API key enviada como header `x-api-key` |
 
-Forms (contact, suggestions) are pre-rendered as static HTML in `public/` and registered with Netlify Forms. Routes that must be prerendered are listed in `nuxt.config.ts` under `nitro.prerender.routes`.
+En producción el deploy es en Netlify (`@netlify/nuxt`). La ruta `/api/generate-pdf` tiene CORS abierto por configuración en `nitro.routeRules`.

@@ -1,23 +1,11 @@
-<script setup lang="ts">
-  const route = useRoute()
-
-  const showHeader = computed(() => {
-    return route.meta.showHeader !== false
-  })
-</script>
-
 <template>
-  <div class="font-montserrat mx-auto flex min-h-screen max-w-7xl flex-col overflow-hidden">
-    <div class="relative flex w-full justify-between py-7">
-      <CommonHeader v-if="showHeader" />
+  <div class="flex min-h-dvh w-full flex-col">
+    <AppHeader />
 
-      <CommonNavigation />
-    </div>
-
-    <main class="flex px-4 transition-opacity duration-500">
+    <main class="flex w-full flex-1 flex-col transition-opacity duration-500">
       <slot />
     </main>
 
-    <CommonFooter />
+    <AppFooter />
   </div>
 </template>

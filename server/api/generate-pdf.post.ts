@@ -6,17 +6,19 @@ export default defineEventHandler(async (event) => {
   const { htmlContent, cssContent } = body
 
   if (!htmlContent) {
-    throw createError({ statusCode: 400, statusMessage: 'Falta contenido HTML' })
+    throw createError({
+      statusCode: 400,
+      statusMessage: 'Falta contenido HTML',
+    })
   }
 
   let browser
 
   try {
-    const isProduction = process.env.NETLIFY || process.env.NODE_ENV === 'production'
+    const isProduction =
+      process.env.NETLIFY || process.env.NODE_ENV === 'production'
 
     if (isProduction) {
-      console.log('Iniciando Chromium en modo Serverless...')
-
       chromium.setHeadlessMode = true
       chromium.setGraphicsMode = false
 
@@ -80,6 +82,7 @@ export default defineEventHandler(async (event) => {
     return pdfBuffer
   } catch (error: any) {
     console.error('ERROR CRÍTICO PDF:', error)
+
     if (browser) await browser.close()
 
     throw createError({

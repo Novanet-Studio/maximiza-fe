@@ -1,75 +1,62 @@
-# Nuxt Minimal Starter
+# Maximiza — Frontend Web (sitio público)
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+![Maximiza](public/images/brand/imagotipo-white.svg)
 
-## Setup
+Sitio público de **Maximiza Casa de Bolsa** (Novanet Studio): SEO/PWA, blog, y el
+wizard de apertura de cuenta (onboarding) con generación de PDFs. Construido con
+**Nuxt 4 (SSR)** y **Vue 3**.
 
-Make sure to install dependencies:
+> Para detalle de arquitectura interna (wizard, PDF, composables) ver `CLAUDE.md`.
+
+## Stack
+
+- **Framework:** Nuxt 4 (Vue 3, SSR) — puerto dev **3014**
+- **Estilos:** Tailwind CSS v4 (`@tailwindcss/vite`) + SCSS (`sass-embedded`)
+- **CMS:** Strapi vía `@nuxtjs/strapi` (blog y balances, por GraphQL)
+- **PWA / SEO:** `@vite-pwa/nuxt`, `@nuxtjs/sitemap`, `@nuxtjs/robots`, `nuxt-gtag`
+- **Imágenes / fuentes:** `@nuxt/image` (Cloudinary) + `@nuxt/fonts`
+- **Formularios:** `vee-validate` + `yup`/`zod`
+- **Animaciones:** `motion-v`
+- **PDFs (Nitro):** ruta `/api/generate-pdf` con `puppeteer-core` + `@sparticuz/chromium`
+- **Deploy:** Netlify (`@netlify/nuxt`)
+
+## Con qué se conecta
+
+| Destino | Vía | Para |
+|---|---|---|
+| `maximiza-be` (Strapi) | GraphQL | Contenido: blog, balances financieros |
+| `maximiza-services` (NestJS) | `POST /api/tracking` | Pasos del wizard de onboarding |
+| Nitro interno | `/api/generate-pdf` | PDFs del onboarding (Puppeteer, in-process) |
+
+## Requisitos
+
+- Node.js 20+
+- `npm` (o pnpm/yarn/bun)
+
+## Instalación
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+Crear `.env` en la raíz:
 
-Start the development server on `http://localhost:3000`:
+```env
+STRAPI_API_URL=http://localhost:1337   # URL base del CMS Strapi
+```
+
+## Scripts
 
 ```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+npm run dev        # dev server → http://localhost:3014
+npm run host       # dev server expuesto en la red local
+npm run build      # build SSR para producción
+npm run generate   # generación estática
+npm run preview    # previsualizar el build
+npm run format     # Prettier sobre app/ y server/
 ```
 
-## Production
+No hay suite de tests: validación = TypeScript strict + revisión visual.
 
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+---
+*Desarrollado y mantenido por [Novanet Studio](https://novanet.studio/).*

@@ -1,131 +1,173 @@
 <script setup lang="ts">
-  import MarkdownIt from 'markdown-it'
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { motion } from 'motion-v'
 
-  import { getImageAlt, getImageUrl } from '~/lib/utils'
-  import { getArticuloBySlugQuery } from '~/schemas/blog.schemas'
+import { useJsonLd } from '~/composables/useJsonLd'
+import { jsonld } from '~/assets/data/jsonld'
 
-  const route = useRoute()
-  const md = new MarkdownIt({ html: true, breaks: true })
-  const renderMarkdown = (content: string) => md.render(content || '')
+import {
+  generalContainerVariants,
+  generalItemVariants,
+} from '~/assets/animations/motion'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faLinkedinIn, faXTwitter } from '@fortawesome/free-brands-svg-icons'
+import { useArticles } from '~/composables/useArticles'
+import { marked } from 'marked'
+import { articleExcerpt } from '~/lib/utils'
 
-  const slug = route.params.slug as string
-  const {
-    public: { strapi },
-  } = useRuntimeConfig()
+const route = useRoute()
+const slug = route.params.slug as string
+const requestUrl = useRequestURL()
 
-  const { data: articulo } = await useAsyncData(`articulo-${slug}`, async () => {
-    try {
-      const response = await $fetch<{ data: any }>(`${strapi.url}/graphql`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', accept: 'application/json' },
-        body: { query: getArticuloBySlugQuery, variables: { slug } },
-      })
+const { getArticleBySlug } = useArticles()
 
-      return response?.data?.articulos?.[0] || null
-    } catch (error) {
-      console.error('Error fetching articulo:', error)
-      return null
-    }
+const { data: article } = await useAsyncData(`article-${slug}`, () =>
+  getArticleBySlug(slug)
+)
+
+if (!article.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Artículo no encontrado',
+    fatal: true,
   })
+}
 
-  if (!articulo.value) {
-    throw createError({
-      statusCode: 404,
-      statusMessage: 'Artículo no encontrado',
-    })
-  }
+useSeoMeta({
+  title: article.value.titulo,
+  description: articleExcerpt(article.value.descripcion, 200),
+  ogTitle: article.value.titulo,
+  ogDescription: articleExcerpt(article.value.descripcion, 200),
+  ogImage: article.value.imagen?.url || '/images/article-placeholder.webp',
+  ogUrl: requestUrl.href,
+  ogType: 'article',
+  twitterCard: 'summary_large_image',
+  themeColor: '#00735f',
+})
 
-  useSeoMeta({
-    title: articulo.value?.titulo,
-    description: articulo.value?.descripcion?.substring(0, 160) || 'Artículo de Maximiza',
-    ogImage: getImageUrl(articulo.value?.imagen),
-  })
+useJsonLd(
+  jsonld.article(article.value, articleExcerpt(article.value.descripcion, 200))
+)
 
-  const currentUrl = ref('')
+const shareLinkedIn = computed(() => {
+  return `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(requestUrl.href)}`
+})
 
-  onMounted(() => {
-    currentUrl.value = window.location.href
-  })
+const shareX = computed(() => {
+  return `https://twitter.com/intent/tweet?url=${encodeURIComponent(requestUrl.href)}&text=${encodeURIComponent(article.value?.titulo || '')}`
+})
 
-  const share = (platform: 'twitter' | 'linkedin') => {
-    const url = encodeURIComponent(currentUrl.value)
-    const text = encodeURIComponent(articulo.value?.titulo || '')
-
-    let shareUrl = ''
-    if (platform === 'twitter') {
-      shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${text}`
-    } else if (platform === 'linkedin') {
-      shareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`
-    }
-
-    window.open(shareUrl, '_blank', 'width=600,height=400')
-  }
+const parsedContent = computed(() => {
+  const raw = article.value?.descripcion || ''
+  return marked.parse(raw) as string
+})
 </script>
 
 <template>
-  <div v-if="articulo" class="bg-white w-full">
-    <section class="mx-auto px-4 xl:px-0">
-      <NuxtLink
-        to="/blog"
-        class="mb-6 inline-block text-sm font-black text-maximiza-verde1 md:text-base"
+  <div class="relative mt-[10vh] flex min-h-dvh w-full flex-col bg-white pb-40">
+    <div class="absolute inset-0 z-0 h-100">
+      <img
+        src="/images/pages/blog/article-banner.webp"
+        alt="Background"
+        title="Background"
+        class="h-full w-full object-cover object-center"
+      />
+    </div>
+
+    <motion.article
+      class="container mx-auto translate-y-30 bg-white lg:translate-y-40"
+      :variants="generalContainerVariants"
+      initial="hidden"
+      whileInView="visible"
+      :viewport="{ once: true }"
+    >
+      <motion.header
+        class="relative z-10 mx-auto flex w-full flex-col md:max-h-96 md:flex-row"
+        :variants="generalItemVariants"
       >
-        « Volver al blog
-      </NuxtLink>
-
-      <div class="relative mb-8 h-[35vh] w-full md:h-[55vh] lg:h-[45vh]">
-        <NuxtImg
-          :src="getImageUrl(articulo.imagen)"
-          :alt="getImageAlt(articulo.imagen)"
-          provider="cloudinary"
-          class="h-full w-full object-cover shadow-sm"
-        />
-      </div>
-
-      <div
-        class="text-white relative z-10 mx-auto -mt-16 bg-maximiza-verde1 px-4 py-4 text-center shadow-lg md:-mt-20 md:px-12"
-      >
-        <h1 class="text-xl font-black leading-tight text-maximiza-blanco2 md:text-2xl">
-          {{ articulo.titulo }}
-        </h1>
-      </div>
-    </section>
-
-    <article class="mx-auto mb-20 px-4 md:mb-32 xl:px-0">
-      <div
-        class="prose prose-headings:text-maximiza-verde1 prose-a:text-maximiza-verde1 prose-strong:text-maximiza-negro1 mt-8 max-w-none text-base font-light text-maximiza-gris1 md:columns-2 md:gap-6 md:text-lg"
-        style="line-height: 1.3"
-        v-html="renderMarkdown(articulo.descripcion)"
-      ></div>
-
-      <div class="mt-12">
-        <h3 class="mb-4 text-lg font-bold text-maximiza-negro1">Comparte este artículo</h3>
-        <div class="flex gap-4">
-          <button
-            @click="share('linkedin')"
-            class="text-white flex h-10 w-10 items-center justify-center rounded-full bg-[#0077b5] transition-opacity hover:opacity-90"
-            aria-label="Compartir en LinkedIn"
-          >
-            <font-awesome-icon :icon="['fab', 'linkedin-in']" class="text-maximiza-blanco2" />
-          </button>
-
-          <button
-            @click="share('twitter')"
-            class="text-white flex h-10 w-10 items-center justify-center rounded-full bg-[#000] transition-opacity hover:opacity-90"
-            aria-label="Compartir en Twitter"
-          >
-            <font-awesome-icon :icon="['fab', 'x-twitter']" class="text-maximiza-blanco2" />
-          </button>
+        <div class="w-full shrink-0 md:w-1/2">
+          <img
+            :src="article?.imagen?.url || '/images/article-placeholder.webp'"
+            :alt="article?.titulo"
+            title="article?.titulo"
+            class="h-64 w-full object-cover object-center sm:h-80 md:h-full"
+          />
         </div>
-      </div>
-    </article>
+
+        <div
+          class="bg-white-alt relative flex min-h-48 w-full items-center justify-center overflow-hidden md:w-1/2"
+        >
+          <img
+            src="/images/pages/blog/polygon-assets.webp"
+            alt="Pattern"
+            title="Pattern"
+            class="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover"
+          />
+
+          <div
+            class="relative z-10 flex w-full items-center p-8 text-center md:p-12 md:text-left"
+          >
+            <h1 v-html="article?.titulo" class="m-0 w-full" />
+          </div>
+        </div>
+      </motion.header>
+
+      <motion.main
+        class="text-gray column-fill-balance gap-8 p-4 text-left text-sm leading-relaxed font-light md:columns-2 md:text-base lg:gap-16 lg:p-8"
+        :variants="generalItemVariants"
+      >
+        <div v-html="parsedContent" class="prose" />
+      </motion.main>
+
+      <motion.footer
+        class="border-gray/30 mt-12 flex items-center justify-between border-t py-6"
+        :variants="generalItemVariants"
+      >
+        <div
+          class="text-primary flex w-full flex-col items-start gap-2 sm:w-auto"
+        >
+          <p class="">Comparte este artículo</p>
+          <div class="flex items-center gap-2">
+            <a
+              title="Ir a shareLinkedIn"
+              :href="shareLinkedIn"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-black-alt hover:text-primary transition-colors"
+              aria-label="LinkedIn"
+            >
+              <FontAwesomeIcon :icon="faLinkedinIn" class="text-2xl" />
+            </a>
+            <a
+              title="Ir a shareX"
+              :href="shareX"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-black-alt hover:text-primary transition-colors"
+              aria-label="Twitter"
+            >
+              <FontAwesomeIcon :icon="faXTwitter" class="text-2xl" />
+            </a>
+          </div>
+        </div>
+
+        <NuxtLink
+          title="Volver al blog"
+          to="/blog"
+          class="text-black-alt hover:text-primary flex w-full items-center justify-end gap-1 transition-colors sm:w-auto"
+        >
+          <FontAwesomeIcon :icon="faArrowLeft" />
+          <p class="text-primary font-semibold">Volver al blog</p>
+        </NuxtLink>
+      </motion.footer>
+    </motion.article>
   </div>
 </template>
 
-<style>
-  .prose h2 {
-    @apply mb-4 mt-8 text-left text-xl font-bold md:text-2xl;
-  }
-  .prose p {
-    @apply mb-4;
-  }
+<style scoped>
+.column-fill-balance {
+  column-fill: balance;
+}
 </style>

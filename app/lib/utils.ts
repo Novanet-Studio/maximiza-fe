@@ -1,7 +1,3 @@
-export const getImageUrl = (imgObj: any) => imgObj?.url || ''
-
-export const getImageAlt = (imgObj: any) => imgObj?.alternativeText || 'Imagen maximiza'
-
 export const truncateText = (text: string, length: number) => {
   if (!text) return ''
 
@@ -13,7 +9,6 @@ export const formatDate = (dateString: string | undefined | null): string => {
 
   const parts = dateString.split('-')
 
-  // Aseguramos que tenga el formato YYYY-MM-DD
   if (parts.length !== 3) return dateString
 
   const [year, month, day] = parts
@@ -21,14 +16,31 @@ export const formatDate = (dateString: string | undefined | null): string => {
   return `${day}/${month}/${year}`
 }
 
+export const articleExcerpt = (
+  text: string | undefined | null,
+  length: number
+) => {
+  if (!text) return ''
+
+  const raw = text.replace(/<[^>]*>/g, '')
+
+  return raw.length > length ? raw.substring(0, length) + '...' : raw
+}
+
 export const minAgeDate = (age: number): string => {
   const today = new Date()
-  const date = new Date(today.getFullYear() - age, today.getMonth(), today.getDate())
+  const date = new Date(
+    today.getFullYear() - age,
+    today.getMonth(),
+    today.getDate()
+  )
 
   return date.toISOString().split('T')[0] ?? ''
 }
 
-export const formatAmount = (value: string | number | undefined | null): string => {
+export const formatAmount = (
+  value: string | number | undefined | null
+): string => {
   if (value === '' || value === undefined || value === null) return ''
 
   const normalizedValue = String(value).replace(',', '.')
