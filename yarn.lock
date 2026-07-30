@@ -2237,7 +2237,7 @@
   optionalDependencies:
     ipx "^3.1.1"
 
-"@nuxt/kit@4.4.8", "@nuxt/kit@^4.0.0", "@nuxt/kit@^4.1.3", "@nuxt/kit@^4.2.0", "@nuxt/kit@^4.2.2", "@nuxt/kit@^4.3.0", "@nuxt/kit@^4.3.1", "@nuxt/kit@^4.4.2", "@nuxt/kit@^4.4.4":
+"@nuxt/kit@4.4.8", "@nuxt/kit@^4.0.0", "@nuxt/kit@^4.1.3", "@nuxt/kit@^4.2.0", "@nuxt/kit@^4.2.2", "@nuxt/kit@^4.3.0", "@nuxt/kit@^4.3.1", "@nuxt/kit@^4.4.2":
   version "4.4.8"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-4.4.8.tgz#19e583f8e29c5363fd41f6f25995d2ae00611096"
   integrity sha512-ZUlZ5iYfyfJFDPluhn6ZxFWcsuxWbLnZBc8w3MAROcQ4lYfZ+qFpALBLSNlpc0zhOa++33EE+5PEbOAdVIY+dw==
@@ -2417,16 +2417,6 @@
     std-env "^3.10.0"
     ufo "^1.6.3"
     ultrahtml "^1.6.0"
-
-"@nuxtjs/strapi@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/strapi/-/strapi-2.2.0.tgz#79f7468121e1f03bd5264522316164291da9b291"
-  integrity sha512-uLw8rLMEXq8yiru5uyzDBSc3dHY1ui6eOXQS75vDH8PG2MefNA6OOYAW32mvbPcR/2dTmBTx6nXZM9Uhk+zlyQ==
-  dependencies:
-    "@nuxt/kit" "^4.4.4"
-    defu "^6.1.7"
-    graphql "^16.14.0"
-    ufo "^1.6.4"
 
 "@nuxtjs/tailwindcss@^6.14.0":
   version "6.14.0"
@@ -6025,11 +6015,6 @@ graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.11, graceful-fs@^4.2.4,
   version "4.2.11"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.11.tgz#4183e4e8bf08bb6e05bbb2f7d2e0c8f712ca40e3"
   integrity sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==
-
-graphql@^16.14.0:
-  version "16.14.2"
-  resolved "https://registry.yarnpkg.com/graphql/-/graphql-16.14.2.tgz#83faf25869e3df727cc855161db5da85b0e5b2c0"
-  integrity sha512-Chq1s4CY7jmh8gO2qvLIJyfCDIN+EHLFW/9iShnp1z8FjBQMoodWP1kDC36VAMXXIvAjj4ARa7ntfAV2BrjsbA==
 
 gzip-size@^7.0.0:
   version "7.0.0"
