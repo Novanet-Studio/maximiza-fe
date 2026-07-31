@@ -1,54 +1,51 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+  import { ref, onMounted, onUnmounted } from 'vue'
 
-const props = withDefaults(
-  defineProps<{
-    title?: string
-    icon?: string
-    bgColor?: string
-    position?: 'top' | 'bottom' | 'left' | 'right'
-  }>(),
-  {
-    bgColor: 'bg-white',
+  const props = withDefaults(
+    defineProps<{
+      title?: string
+      icon?: string
+      bgColor?: string
+      position?: 'top' | 'bottom' | 'left' | 'right'
+    }>(),
+    {
+      bgColor: 'bg-white',
+    }
+  )
+
+  const emit = defineEmits<{
+    (e: 'toggled', value: boolean): void
+  }>()
+
+  const isOpen = ref(false)
+  const popoverRef = ref<HTMLElement | null>(null)
+
+  const toggle = () => {
+    isOpen.value = !isOpen.value
+    emit('toggled', isOpen.value)
   }
-)
 
-const emit = defineEmits<{
-  (e: 'toggled', value: boolean): void
-}>()
-
-const isOpen = ref(false)
-const popoverRef = ref<HTMLElement | null>(null)
-
-const toggle = () => {
-  isOpen.value = !isOpen.value
-  emit('toggled', isOpen.value)
-}
-
-const close = (e: MouseEvent) => {
-  if (popoverRef.value && !popoverRef.value.contains(e.target as Node)) {
-    if (isOpen.value) {
-      isOpen.value = false
-      emit('toggled', false)
+  const close = (e: MouseEvent) => {
+    if (popoverRef.value && !popoverRef.value.contains(e.target as Node)) {
+      if (isOpen.value) {
+        isOpen.value = false
+        emit('toggled', false)
+      }
     }
   }
-}
 
-onMounted(() => {
-  document.addEventListener('click', close)
-})
+  onMounted(() => {
+    document.addEventListener('click', close)
+  })
 
-onUnmounted(() => {
-  document.removeEventListener('click', close)
-})
+  onUnmounted(() => {
+    document.removeEventListener('click', close)
+  })
 </script>
 
 <template>
   <div class="relative inline-block w-fit" ref="popoverRef">
-    <div
-      @click="toggle"
-      class="relative z-50 inline-block w-full cursor-pointer"
-    >
+    <div @click="toggle" class="relative z-50 inline-block w-full cursor-pointer">
       <slot name="trigger" />
     </div>
 
@@ -97,13 +94,7 @@ onUnmounted(() => {
         @click.stop
       >
         <div v-if="title || icon" class="mb-3 flex items-center gap-3">
-          <img
-            v-if="icon"
-            :src="icon"
-            alt="icon"
-            title="icon"
-            class="h-6 w-6 object-contain"
-          />
+          <img v-if="icon" :src="icon" alt="icon" title="icon" class="h-6 w-6 object-contain" />
           <h5 v-if="title" class="text-black-alt m-0 text-lg font-semibold">
             {{ title }}
           </h5>

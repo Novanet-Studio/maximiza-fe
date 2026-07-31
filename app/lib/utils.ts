@@ -16,10 +16,7 @@ export const formatDate = (dateString: string | undefined | null): string => {
   return `${day}/${month}/${year}`
 }
 
-export const articleExcerpt = (
-  text: string | undefined | null,
-  length: number
-) => {
+export const articleExcerpt = (text: string | undefined | null, length: number) => {
   if (!text) return ''
 
   const raw = text.replace(/<[^>]*>/g, '')
@@ -29,18 +26,12 @@ export const articleExcerpt = (
 
 export const minAgeDate = (age: number): string => {
   const today = new Date()
-  const date = new Date(
-    today.getFullYear() - age,
-    today.getMonth(),
-    today.getDate()
-  )
+  const date = new Date(today.getFullYear() - age, today.getMonth(), today.getDate())
 
   return date.toISOString().split('T')[0] ?? ''
 }
 
-export const formatAmount = (
-  value: string | number | undefined | null
-): string => {
+export const formatAmount = (value: string | number | undefined | null): string => {
   if (value === '' || value === undefined || value === null) return ''
 
   const normalizedValue = String(value).replace(',', '.')

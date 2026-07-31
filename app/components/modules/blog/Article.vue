@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { motion } from 'motion-v'
-import { generalItemVariants } from '~/assets/animations/motion'
-import { formatDate } from '~/lib/utils'
+  import { motion } from 'motion-v'
+  import { generalItemVariants } from '~/assets/animations/motion'
+  import { formatDate } from '~/lib/utils'
 
-interface Props {
-  article: MXMZ.Article
-}
+  interface Props {
+    article: MXMZ.Article
+  }
 
-const { article } = defineProps<Props>()
+  const { article } = defineProps<Props>()
 </script>
 
 <template>
@@ -26,9 +26,7 @@ const { article } = defineProps<Props>()
       </div>
 
       <div class="flex flex-1 flex-col gap-2 p-4 lg:p-6">
-        <span class="text-gray text-sm leading-tight">{{
-          formatDate(article.fecha)
-        }}</span>
+        <span class="text-gray text-sm leading-tight">{{ formatDate(article.fecha) }}</span>
         <h4 class="heading-[18px] text-black-alt text-base">
           {{ article.titulo }}
         </h4>

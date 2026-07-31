@@ -1,39 +1,36 @@
 <script setup lang="ts">
-import { motion } from 'motion-v'
-import {
-  generalContainerVariants,
-  generalItemVariants,
-} from '@/assets/animations/motion'
+  import { motion } from 'motion-v'
+  import { generalContainerVariants, generalItemVariants } from '@/assets/animations/motion'
 
-const services = [
-  {
-    title: 'Intermediación bursátil',
-    description:
-      'Ejecución algorítmica y transparente en el mercado de valores para la optimización de carteras de renta fija y variable.',
-    image: '/images/pages/home/services/1.webp',
-  },
-  {
-    title: 'Finanzas corporativas',
-    description:
-      'Asesoría analítica integral en valoración de empresas, fusiones, adquisiciones (M&A) y reestructuración de capital.',
-    image: '/images/pages/home/services/2.webp',
-  },
-  {
-    title: 'Estructuración y colocación de deuda',
-    description:
-      'Colocación de papeles comerciales e instrumentos indexados para blindar y potenciar la liquidez empresarial.',
-    image: '/images/pages/home/services/3.webp',
-  },
-]
+  const services = [
+    {
+      title: 'Intermediación bursátil',
+      description:
+        'Ejecución algorítmica y transparente en el mercado de valores para la optimización de carteras de renta fija y variable.',
+      image: '/images/pages/home/services/1.webp',
+    },
+    {
+      title: 'Finanzas corporativas',
+      description:
+        'Asesoría analítica integral en valoración de empresas, fusiones, adquisiciones (M&A) y reestructuración de capital.',
+      image: '/images/pages/home/services/2.webp',
+    },
+    {
+      title: 'Estructuración y colocación de deuda',
+      description:
+        'Colocación de papeles comerciales e instrumentos indexados para blindar y potenciar la liquidez empresarial.',
+      image: '/images/pages/home/services/3.webp',
+    },
+  ]
 
-const props = withDefaults(
-  defineProps<{
-    isReverse?: boolean
-  }>(),
-  {
-    isReverse: false,
-  }
-)
+  const props = withDefaults(
+    defineProps<{
+      isReverse?: boolean
+    }>(),
+    {
+      isReverse: false,
+    }
+  )
 </script>
 
 <template>
@@ -50,14 +47,12 @@ const props = withDefaults(
       title="Soluciones <br /> financieras integrales"
     >
       <motion.div :variants="generalItemVariants">
-        <h4 class="content-with-columns mb-4 text-white">
-          Legitimación de capitales
-        </h4>
+        <h4 class="content-with-columns mb-4 text-white">Legitimación de capitales</h4>
 
         <p class="content-with-columns text-white">
-          Diseñamos vehículos de inversión y financiamiento estrictamente
-          adaptados a la coyuntura económica imperante, alineando su perfil de
-          riesgo con los objetivos de crecimiento patrimonial a largo plazo.
+          Diseñamos vehículos de inversión y financiamiento estrictamente adaptados a la coyuntura
+          económica imperante, alineando su perfil de riesgo con los objetivos de crecimiento
+          patrimonial a largo plazo.
         </p>
       </motion.div>
     </CommonContentWithColumns>

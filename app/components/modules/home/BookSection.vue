@@ -1,16 +1,14 @@
 <script setup lang="ts">
-import { motion } from 'motion-v'
-import companyData from '@/assets/data/common.json'
-import { generalItemVariants } from '@/assets/animations/motion'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
+  import { motion } from 'motion-v'
+  import companyData from '@/assets/data/common.json'
+  import { generalItemVariants } from '@/assets/animations/motion'
+  import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+  import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
 </script>
 
 <template>
   <section class="bg-white-alt flex w-full items-center justify-center py-40">
-    <div
-      class="container mx-auto mt-20 flex justify-center px-4 sm:px-12 md:mt-0"
-    >
+    <div class="container mx-auto mt-20 flex justify-center px-4 sm:px-12 md:mt-0">
       <motion.div
         :variants="generalItemVariants"
         initial="hidden"
@@ -33,10 +31,9 @@ import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
             class="text-gray text mb-1 w-full max-w-md text-left text-base leading-[24px] md:text-right md:text-[9.74px] md:leading-[18.09px] lg:text-base lg:leading-[24px]"
           >
             El mercado de valores tiene historia. <br />
-            Obra clave de 2022, auspiciada por nuestra firma, que documenta la
-            resiliencia, evolución y perspectivas del ecosistema bursátil
-            venezolano. Testimonio de nuestro arraigo histórico y compromiso con
-            el desarrollo económico nacional.
+            Obra clave de 2022, auspiciada por nuestra firma, que documenta la resiliencia,
+            evolución y perspectivas del ecosistema bursátil venezolano. Testimonio de nuestro
+            arraigo histórico y compromiso con el desarrollo económico nacional.
           </p>
 
           <h5
@@ -53,10 +50,7 @@ import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons'
               :href="`mailto:${companyData.email}`"
               class="flex items-center gap-2 transition-opacity hover:opacity-80"
             >
-              <FontAwesomeIcon
-                :icon="faEnvelope"
-                class="text-primary text-xl"
-              />
+              <FontAwesomeIcon :icon="faEnvelope" class="text-primary text-xl" />
               {{ companyData.email }}
             </a>
             <a

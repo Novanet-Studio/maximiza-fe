@@ -1,68 +1,61 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { useRoute } from 'vue-router'
-import { motion } from 'motion-v'
+  import { computed } from 'vue'
+  import { useRoute } from 'vue-router'
+  import { motion } from 'motion-v'
 
-import { useJsonLd } from '~/composables/useJsonLd'
-import { jsonld } from '~/assets/data/jsonld'
+  import { useJsonLd } from '~/composables/useJsonLd'
+  import { jsonld } from '~/assets/data/jsonld'
 
-import {
-  generalContainerVariants,
-  generalItemVariants,
-} from '~/assets/animations/motion'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
-import { faLinkedinIn, faXTwitter } from '@fortawesome/free-brands-svg-icons'
-import { useArticles } from '~/composables/useArticles'
-import { marked } from 'marked'
-import { articleExcerpt } from '~/lib/utils'
+  import { generalContainerVariants, generalItemVariants } from '~/assets/animations/motion'
+  import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+  import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+  import { faLinkedinIn, faXTwitter } from '@fortawesome/free-brands-svg-icons'
+  import { useArticles } from '~/composables/useArticles'
+  import { marked } from 'marked'
+  import { articleExcerpt } from '~/lib/utils'
 
-const route = useRoute()
-const slug = route.params.slug as string
-const requestUrl = useRequestURL()
+  const route = useRoute()
+  const slug = route.params.slug as string
+  const requestUrl = useRequestURL()
 
-const { getArticleBySlug } = useArticles()
+  const { getArticleBySlug } = useArticles()
 
-const { data: article } = await useAsyncData(`article-${slug}`, () =>
-  getArticleBySlug(slug)
-)
+  const { data: article } = await useAsyncData(`article-${slug}`, () => getArticleBySlug(slug))
 
-if (!article.value) {
-  throw createError({
-    statusCode: 404,
-    statusMessage: 'Artículo no encontrado',
-    fatal: true,
+  if (!article.value) {
+    throw createError({
+      statusCode: 404,
+      statusMessage: 'Artículo no encontrado',
+      fatal: true,
+    })
+  }
+
+  useSeoMeta({
+    title: article.value.titulo,
+    description: articleExcerpt(article.value.descripcion, 200),
+    ogTitle: article.value.titulo,
+    ogDescription: articleExcerpt(article.value.descripcion, 200),
+    ogImage: article.value.imagen?.url || '/images/article-placeholder.webp',
+    ogUrl: requestUrl.href,
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    themeColor: '#00735f',
   })
-}
 
-useSeoMeta({
-  title: article.value.titulo,
-  description: articleExcerpt(article.value.descripcion, 200),
-  ogTitle: article.value.titulo,
-  ogDescription: articleExcerpt(article.value.descripcion, 200),
-  ogImage: article.value.imagen?.url || '/images/article-placeholder.webp',
-  ogUrl: requestUrl.href,
-  ogType: 'article',
-  twitterCard: 'summary_large_image',
-  themeColor: '#00735f',
-})
+  useJsonLd(jsonld.article(article.value, articleExcerpt(article.value.descripcion, 200)))
 
-useJsonLd(
-  jsonld.article(article.value, articleExcerpt(article.value.descripcion, 200))
-)
+  const shareLinkedIn = computed(() => {
+    return `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(requestUrl.href)}`
+  })
 
-const shareLinkedIn = computed(() => {
-  return `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(requestUrl.href)}`
-})
+  const shareX = computed(() => {
+    return `https://twitter.com/intent/tweet?url=${encodeURIComponent(requestUrl.href)}&text=${encodeURIComponent(article.value?.titulo || '')}`
+  })
 
-const shareX = computed(() => {
-  return `https://twitter.com/intent/tweet?url=${encodeURIComponent(requestUrl.href)}&text=${encodeURIComponent(article.value?.titulo || '')}`
-})
-
-const parsedContent = computed(() => {
-  const raw = article.value?.descripcion || ''
-  return marked.parse(raw) as string
-})
+  const parsedContent = computed(() => {
+    const raw = article.value?.descripcion || ''
+    return marked.parse(raw) as string
+  })
 </script>
 
 <template>
@@ -106,9 +99,7 @@ const parsedContent = computed(() => {
             class="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover"
           />
 
-          <div
-            class="relative z-10 flex w-full items-center p-8 text-center md:p-12 md:text-left"
-          >
+          <div class="relative z-10 flex w-full items-center p-8 text-center md:p-12 md:text-left">
             <h1 v-html="article?.titulo" class="m-0 w-full" />
           </div>
         </div>
@@ -125,9 +116,7 @@ const parsedContent = computed(() => {
         class="border-gray/30 mt-12 flex items-center justify-between border-t py-6"
         :variants="generalItemVariants"
       >
-        <div
-          class="text-primary flex w-full flex-col items-start gap-2 sm:w-auto"
-        >
+        <div class="text-primary flex w-full flex-col items-start gap-2 sm:w-auto">
           <p class="">Comparte este artículo</p>
           <div class="flex items-center gap-2">
             <a
@@ -167,7 +156,7 @@ const parsedContent = computed(() => {
 </template>
 
 <style scoped>
-.column-fill-balance {
-  column-fill: balance;
-}
+  .column-fill-balance {
+    column-fill: balance;
+  }
 </style>

@@ -1,17 +1,17 @@
 <script setup lang="ts">
-defineProps<{
-  htmlFor?: string
-  label?: string
-  subLabel?: string
-  required?: boolean
-  error?: string
-  subLabelType?: string
-}>()
+  defineProps<{
+    htmlFor?: string
+    label?: string
+    subLabel?: string
+    required?: boolean
+    error?: string
+    subLabelType?: string
+  }>()
 
-const SUBLABELS: Record<string, string> = {
-  BS: 'en Bolívares',
-  APPLY: 'En caso de aplicar',
-}
+  const SUBLABELS: Record<string, string> = {
+    BS: 'en Bolívares',
+    APPLY: 'En caso de aplicar',
+  }
 </script>
 
 <template>
@@ -25,10 +25,7 @@ const SUBLABELS: Record<string, string> = {
     <span v-if="subLabel || subLabelType" class="text-xs font-normal">{{
       `(${subLabel || SUBLABELS[subLabelType!]})`
     }}</span>
-    <span
-      v-if="required"
-      class="ml-1 font-black"
-      :class="[error ? 'text-error' : 'text-primary']"
+    <span v-if="required" class="ml-1 font-black" :class="[error ? 'text-error' : 'text-primary']"
       >*</span
     >
   </label>

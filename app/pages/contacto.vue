@@ -1,36 +1,33 @@
 <script setup lang="ts">
-import { metadata } from '@/assets/data/metadata'
-import commonData from '@/assets/data/common.json'
-import { motion } from 'motion-v'
-import {
-  generalContainerVariants,
-  generalItemVariants,
-} from '@/assets/animations/motion'
+  import { metadata } from '@/assets/data/metadata'
+  import commonData from '@/assets/data/common.json'
+  import { motion } from 'motion-v'
+  import { generalContainerVariants, generalItemVariants } from '@/assets/animations/motion'
 
-import { useJsonLd } from '~/composables/useJsonLd'
-import { jsonld } from '~/assets/data/jsonld'
+  import { useJsonLd } from '~/composables/useJsonLd'
+  import { jsonld } from '~/assets/data/jsonld'
 
-const contactMethods = [
-  {
-    title: 'Atención al cliente',
-    value: commonData.email,
-    icon: '/images/pages/contact/items/maximiza-logo-instagram-icono.webp',
-  },
-  {
-    title: 'Master',
-    value: commonData.phone,
-    icon: '/images/pages/contact/items/maximiza-contacto-master-icono.webp',
-  },
-  {
-    title: 'Fax',
-    value: commonData.fax,
-    icon: '/images/pages/contact/items/maximiza-contacto-fax-icono.webp',
-  },
-]
+  const contactMethods = [
+    {
+      title: 'Atención al cliente',
+      value: commonData.email,
+      icon: '/images/pages/contact/items/maximiza-logo-instagram-icono.webp',
+    },
+    {
+      title: 'Master',
+      value: commonData.phone,
+      icon: '/images/pages/contact/items/maximiza-contacto-master-icono.webp',
+    },
+    {
+      title: 'Fax',
+      value: commonData.fax,
+      icon: '/images/pages/contact/items/maximiza-contacto-fax-icono.webp',
+    },
+  ]
 
-useSeoMeta(metadata.contacto)
+  useSeoMeta(metadata.contacto)
 
-useJsonLd(jsonld.contact)
+  useJsonLd(jsonld.contact)
 </script>
 
 <template>
@@ -56,9 +53,7 @@ useJsonLd(jsonld.contact)
       whileInView="visible"
       :viewport="{ once: true, margin: '-50px' }"
     >
-      <div
-        class="flex flex-col items-center gap-16 lg:flex-row lg:items-stretch lg:gap-24"
-      >
+      <div class="flex flex-col items-center gap-16 lg:flex-row lg:items-stretch lg:gap-24">
         <motion.div
           class="flex w-full max-w-[471px] flex-col shadow-lg lg:w-1/2"
           :variants="generalItemVariants"

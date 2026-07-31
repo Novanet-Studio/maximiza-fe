@@ -1,102 +1,86 @@
 <script setup lang="ts">
-import {
-  getLabel,
-  occupationsOptions,
-  economicActivityOptions,
-  countriesOptions,
-  maritalStatusOptions,
-  genderOptions,
-  nationalityOptions,
-  fundsSourceOptions,
-  fundsDestinationOptions,
-  annualInvestmentOptions,
-  specificActivityOptions,
-  knowledgeOptions,
-  experienceOptions,
-  investmentLevelOptions,
-  currencyOptions,
-  productNamesOptions,
-  virtualCurrencyOptions,
-} from '~/assets/data/formSources'
+  import {
+    getLabel,
+    occupationsOptions,
+    economicActivityOptions,
+    countriesOptions,
+    maritalStatusOptions,
+    genderOptions,
+    nationalityOptions,
+    fundsSourceOptions,
+    fundsDestinationOptions,
+    annualInvestmentOptions,
+    specificActivityOptions,
+    knowledgeOptions,
+    experienceOptions,
+    investmentLevelOptions,
+    currencyOptions,
+    productNamesOptions,
+    virtualCurrencyOptions,
+  } from '~/assets/data/formSources'
 
-import { MAXIMIZA_LOGO } from '~/assets/data/maximiza-logo'
-import { formatAmount, formatDate } from '~/lib/utils'
+  import { MAXIMIZA_LOGO } from '~/assets/data/maximiza-logo'
+  import { formatAmount, formatDate } from '~/lib/utils'
 
-const MaximizaLogo = MAXIMIZA_LOGO
+  const MaximizaLogo = MAXIMIZA_LOGO
 
-const props = defineProps<{
-  data: MXMZ.OnboardingWizardResult
-}>()
+  const props = defineProps<{
+    data: MXMZ.OnboardingWizardResult
+  }>()
 
-const isNatural = computed(() => {
-  return !props.data.enterpriseIdentification?.taxInformationRegistration
-})
+  const isNatural = computed(() => {
+    return !props.data.enterpriseIdentification?.taxInformationRegistration
+  })
 
-const fillArray = (arr: any[], max: number, defaultObj: any) => {
-  const current = arr || []
-  const emptyCount = Math.max(0, max - current.length)
-  return [...current, ...Array(emptyCount).fill(defaultObj)]
-}
+  const fillArray = (arr: any[], max: number, defaultObj: any) => {
+    const current = arr || []
+    const emptyCount = Math.max(0, max - current.length)
+    return [...current, ...Array(emptyCount).fill(defaultObj)]
+  }
 
-// Data Helpers
-const personal = computed<MXMZ.PersonalData>(
-  () => props.data.personalData || ({} as MXMZ.PersonalData)
-)
-const enterprise = computed(
-  () => props.data.enterpriseIdentification || ({} as any)
-)
-const pep = computed<MXMZ.PepProfile>(
-  () => props.data.pepProfile || ({} as MXMZ.PepProfile)
-)
-const financial = computed<MXMZ.FinancialInformation>(
-  () => props.data.financialInformation || ({} as MXMZ.FinancialInformation)
-)
-const product = computed<MXMZ.ProductInformation>(
-  () => props.data.productInformation || ({} as MXMZ.ProductInformation)
-)
+  // Data Helpers
+  const personal = computed<MXMZ.PersonalData>(
+    () => props.data.personalData || ({} as MXMZ.PersonalData)
+  )
+  const enterprise = computed(() => props.data.enterpriseIdentification || ({} as any))
+  const pep = computed<MXMZ.PepProfile>(() => props.data.pepProfile || ({} as MXMZ.PepProfile))
+  const financial = computed<MXMZ.FinancialInformation>(
+    () => props.data.financialInformation || ({} as MXMZ.FinancialInformation)
+  )
+  const product = computed<MXMZ.ProductInformation>(
+    () => props.data.productInformation || ({} as MXMZ.ProductInformation)
+  )
 
-const investor = computed<MXMZ.InvestorProfile>(
-  () => props.data.investorProfile || ({} as MXMZ.InvestorProfile)
-)
+  const investor = computed<MXMZ.InvestorProfile>(
+    () => props.data.investorProfile || ({} as MXMZ.InvestorProfile)
+  )
 
-const institutionData = computed<MXMZ.InstitutionData>(
-  () => props.data.institutionData || ({} as MXMZ.InstitutionData)
-)
+  const institutionData = computed<MXMZ.InstitutionData>(
+    () => props.data.institutionData || ({} as MXMZ.InstitutionData)
+  )
 
-// Labels Computed
-const professionLabel = computed(() =>
-  getLabel(personal.value.profession, occupationsOptions)
-)
-const economicActivityLabel = computed(() => {
-  const code = isNatural.value
-    ? financial.value.economicActivity
-    : enterprise.value.economicActivity
-  return getLabel(code, economicActivityOptions)
-})
-const nationalityLabel = computed(() =>
-  getLabel(personal.value.nationality, nationalityOptions)
-)
-const genderLabel = computed(() =>
-  getLabel(personal.value.gender, genderOptions)
-)
-const maritalStatusLabel = computed(() =>
-  getLabel(personal.value.maritalStatus, maritalStatusOptions)
-)
-const productNameLabel = computed(() =>
-  getLabel(product.value.productName, productNamesOptions)
-)
-const currencyLabel = computed(() =>
-  getLabel(product.value.currency, currencyOptions)
-)
+  // Labels Computed
+  const professionLabel = computed(() => getLabel(personal.value.profession, occupationsOptions))
+  const economicActivityLabel = computed(() => {
+    const code = isNatural.value
+      ? financial.value.economicActivity
+      : enterprise.value.economicActivity
+    return getLabel(code, economicActivityOptions)
+  })
+  const nationalityLabel = computed(() => getLabel(personal.value.nationality, nationalityOptions))
+  const genderLabel = computed(() => getLabel(personal.value.gender, genderOptions))
+  const maritalStatusLabel = computed(() =>
+    getLabel(personal.value.maritalStatus, maritalStatusOptions)
+  )
+  const productNameLabel = computed(() => getLabel(product.value.productName, productNamesOptions))
+  const currencyLabel = computed(() => getLabel(product.value.currency, currencyOptions))
 
-const originCountryLabel = computed(() =>
-  getLabel(product.value.originCountry, countriesOptions)
-)
-const destinationCountryLabel = computed(() =>
-  getLabel(product.value.destinationCountry, countriesOptions)
-)
+  const originCountryLabel = computed(() => getLabel(product.value.originCountry, countriesOptions))
+  const destinationCountryLabel = computed(() =>
+    getLabel(product.value.destinationCountry, countriesOptions)
+  )
 
-/*
+  /*
 onMounted(() => {
   if (process.client) {
     console.group("📋 PDF JURIDICA MOCK DATA");
@@ -113,12 +97,7 @@ onMounted(() => {
       <div class="w-full text-right text-sm font-bold">Pág. 1/3</div>
 
       <header class="spreadsheet__header">
-        <img
-          class="spreadsheet__image"
-          :src="MaximizaLogo"
-          alt="logo"
-          title="logo"
-        />
+        <img class="spreadsheet__image" :src="MaximizaLogo" alt="logo" title="logo" />
         <h5 class="spreadsheet__main-title">
           FICHA DE IDENTIFICACIÓN DEL INVERSIONISTA PERSONA
           {{ isNatural ? 'NATURAL' : 'JURÍDICA' }}
@@ -155,16 +134,12 @@ onMounted(() => {
       </div>
 
       <div class="spreadsheet__section">
-        <h5 class="spreadsheet__title">
-          DATOS DE LA INSTITUCIÓN DEL SECTOR VALORES
-        </h5>
+        <h5 class="spreadsheet__title">DATOS DE LA INSTITUCIÓN DEL SECTOR VALORES</h5>
         <div class="spreadsheet__container">
           <div class="spreadsheet__section2">
             <div class="spreadsheet__item">
               <div class="spreadsheet__form-item">
-                <div>
-                  Nombre de casa de bolsa o sociedades de corretaje de valores:
-                </div>
+                <div>Nombre de casa de bolsa o sociedades de corretaje de valores:</div>
                 <div class="content">
                   {{ institutionData.brokerageHouseName }}
                 </div>
@@ -321,8 +296,7 @@ onMounted(() => {
           <ModulesOnboardingBlocksPepBlock :source="pep" />
 
           <div class="spreadsheet__item" style="text-align: center !important">
-            En caso de actuación de representante legal, apoderado y/o
-            autorizado
+            En caso de actuación de representante legal, apoderado y/o autorizado
           </div>
 
           <div class="grid grid-cols-[1fr_1fr_1fr_1fr_1fr]">
@@ -411,9 +385,7 @@ onMounted(() => {
               <div class="spreadsheet__form-item">
                 <div>Registro de información fiscal:</div>
                 <div class="content">
-                  {{ enterprise.taxType }}-{{
-                    enterprise.taxInformationRegistration
-                  }}
+                  {{ enterprise.taxType }}-{{ enterprise.taxInformationRegistration }}
                 </div>
               </div>
             </div>
@@ -455,12 +427,7 @@ onMounted(() => {
             <div class="spreadsheet__item">
               <div class="spreadsheet__form-item">
                 <div class="content text-[9px] leading-tight">
-                  {{
-                    getLabel(
-                      enterprise.specificActivity,
-                      specificActivityOptions
-                    )
-                  }}
+                  {{ getLabel(enterprise.specificActivity, specificActivityOptions) }}
                 </div>
               </div>
             </div>
@@ -470,9 +437,7 @@ onMounted(() => {
             <aside
               class="bg-primary flex min-h-[60px] items-center justify-center border-b border-white"
             >
-              <h5 class="text-[12px] font-bold text-white">
-                Datos del registro
-              </h5>
+              <h5 class="text-[12px] font-bold text-white">Datos del registro</h5>
             </aside>
             <div>
               <div class="grid grid-cols-[1fr_1fr_1fr]">
@@ -537,9 +502,7 @@ onMounted(() => {
             <aside
               class="bg-primary flex min-h-[60px] items-center justify-center border-b border-white"
             >
-              <h5 class="text-[12px] font-bold text-white">
-                Última modificación
-              </h5>
+              <h5 class="text-[12px] font-bold text-white">Última modificación</h5>
             </aside>
             <div>
               <div class="grid grid-cols-[1fr_1fr_1fr]">
@@ -592,9 +555,7 @@ onMounted(() => {
                   <div class="spreadsheet__form-item">
                     <div>Capital social:</div>
                     <div class="content">
-                      {{
-                        formatAmount(enterprise.lastModification?.socialCapital)
-                      }}
+                      {{ formatAmount(enterprise.lastModification?.socialCapital) }}
                     </div>
                   </div>
                 </div>
@@ -603,9 +564,7 @@ onMounted(() => {
           </div>
 
           <div class="grid w-full grid-cols-[135px_1fr]">
-            <aside
-              class="bg-primary flex min-h-[60px] items-center justify-center"
-            >
+            <aside class="bg-primary flex min-h-[60px] items-center justify-center">
               <h5 class="text-[12px] font-bold text-white">Entes públicos</h5>
             </aside>
             <div>
@@ -699,12 +658,8 @@ onMounted(() => {
 
       <div class="spreadsheet__section">
         <template v-if="!isNatural">
-          <h5 class="spreadsheet__title">
-            INFORMACIÓN ECONÓMICO FINANCIERA DE LA EMPRESA
-          </h5>
-          <ModulesOnboardingBlocksStockholdersBlock
-            :source="financial.stockholders"
-          />
+          <h5 class="spreadsheet__title">INFORMACIÓN ECONÓMICO FINANCIERA DE LA EMPRESA</h5>
+          <ModulesOnboardingBlocksStockholdersBlock :source="financial.stockholders" />
           <ModulesOnboardingBlocksLegalRepresentativesBlock
             :source="financial.legalRepresentatives"
           />
@@ -717,9 +672,7 @@ onMounted(() => {
       </div>
 
       <div v-if="isNatural" class="spreadsheet__section">
-        <h5 class="spreadsheet__title">
-          INFORMACIÓN ECONÓMICO FINANCIERA DEL INVERSIONISTA
-        </h5>
+        <h5 class="spreadsheet__title">INFORMACIÓN ECONÓMICO FINANCIERA DEL INVERSIONISTA</h5>
         <div class="grid grid-cols-2">
           <div class="spreadsheet__item">
             <div class="spreadsheet__form-item"></div>
@@ -740,9 +693,7 @@ onMounted(() => {
           <div class="spreadsheet__item">
             <div class="spreadsheet__form-item">
               <div class="content">
-                {{
-                  getLabel(financial.specificActivity, specificActivityOptions)
-                }}
+                {{ getLabel(financial.specificActivity, specificActivityOptions) }}
               </div>
             </div>
           </div>
@@ -764,10 +715,7 @@ onMounted(() => {
         </template>
 
         <template v-else>
-          <ModulesOnboardingBlocksPepBlock
-            :source="pep"
-            :stockholders="financial.stockholders"
-          />
+          <ModulesOnboardingBlocksPepBlock :source="pep" :stockholders="financial.stockholders" />
 
           <div class="grid grid-cols-3">
             <div class="spreadsheet__item">
@@ -782,12 +730,7 @@ onMounted(() => {
               <div class="spreadsheet__form-item">
                 <div>País con mayor presencia:</div>
                 <div class="content">
-                  {{
-                    getLabel(
-                      enterprise.countryLargestPresence,
-                      countriesOptions
-                    )
-                  }}
+                  {{ getLabel(enterprise.countryLargestPresence, countriesOptions) }}
                 </div>
               </div>
             </div>
@@ -828,9 +771,7 @@ onMounted(() => {
             </div>
           </div>
 
-          <div class="spreadsheet__item text-[10px] font-bold">
-            Última declaración ISLR:
-          </div>
+          <div class="spreadsheet__item text-[10px] font-bold">Última declaración ISLR:</div>
           <div class="grid grid-cols-2">
             <div class="spreadsheet__item">
               <div class="spreadsheet__form-item">
@@ -849,24 +790,18 @@ onMounted(() => {
           </div>
 
           <div class="grid grid-cols-2">
-            <ModulesOnboardingBlocksProvidersBlock
-              :source="financial.providers"
-            />
+            <ModulesOnboardingBlocksProvidersBlock :source="financial.providers" />
             <ModulesOnboardingBlocksClientsBlock :source="financial.clients" />
           </div>
 
-          <ModulesOnboardingBlocksRelatedCompaniesBlock
-            :source="financial.relatedCompanies"
-          />
+          <ModulesOnboardingBlocksRelatedCompaniesBlock :source="financial.relatedCompanies" />
 
           <ModulesOnboardingBlocksBankReferencesBlock :source="financial" />
         </template>
       </div>
 
       <div class="spreadsheet__section">
-        <h5 class="spreadsheet__title">
-          INFORMACIÓN DEL PRODUCTO O SERVICIO BURSATIL
-        </h5>
+        <h5 class="spreadsheet__title">INFORMACIÓN DEL PRODUCTO O SERVICIO BURSATIL</h5>
         <div class="grid grid-cols-3">
           <div class="spreadsheet__item">
             <div class="spreadsheet__form-item">
@@ -997,9 +932,7 @@ onMounted(() => {
           <div class="spreadsheet__item">
             <div class="spreadsheet__form-item">
               <div class="content">
-                {{
-                  getLabel(product.fundsDestination, fundsDestinationOptions)
-                }}
+                {{ getLabel(product.fundsDestination, fundsDestinationOptions) }}
               </div>
             </div>
           </div>
@@ -1008,42 +941,32 @@ onMounted(() => {
 
       <div class="spreadsheet__section" style="border-width: 2px">
         <h5 class="spreadsheet__title">
-          ACEPTACIÓN DEL CONTRATO DE CUENTA DE CORRETAJE BURSÁTIL POR PARTE DEL
-          INVERSOR
+          ACEPTACIÓN DEL CONTRATO DE CUENTA DE CORRETAJE BURSÁTIL POR PARTE DEL INVERSOR
         </h5>
         <div class="p-2">
-          <p
-            class="spreadsheet__contract text-justify text-[9px] leading-tight"
-          >
-            Aceptación del contrato de cuenta de corretaje bursátil por parte
-            del inversor con la firma del presente documento, el cliente
-            expresamente conviene y acepta que las operaciones financieras y
-            bursátiles celebradas entre maximiza y el cliente se regirán por el
-            contrato de cuenta corretaje bursátil, del cual el presente anexo
-            forma parte integrante, y cual fue autenticado por ante la Notaría
-            Pública sexta del Municipio Chacao del estado Miranda, el 26 de
-            Enero del 2007, bajo el N°56, tomo 10, de los libros de
-            autenticación llevados por esa notaría, así mismo, el cliente
-            declara haber leído y comprendido las operaciones objeto de los
-            contratos que integran la cuenta de corretaje bursátil. De
-            conformidad con lo establecido en las normas relativas a la
-            administración y fiscalización de los riesgos relacionados con los
-            delitos de legitimación de los capitales, financiamiento al
-            terrorismo, financiamiento de la proliferación de armas de
-            destrucción masiva y otros ilícitos, aplicables a los sujetos
-            regulados por la Superintendencia Nacional de Valores, por lo que el
-            (los) inversor(es) declara(n) bajo fe de juramento que los dineros,
-            capitales y haberes, valores o títulos utilizados en las
-            operaciones, no guardan relación con actividades provenientes del
-            delito de legitimación de capitales u otros delitos previstos y
-            sancionados en la ley orgánica contra la delincuencia organizada y
-            financiamiento al terrorismo. Así mismo, el inversor expresamente
-            declara que la información suministrada es cierta y completa y que
-            refleja con exactitud la realidad legal y financiera del cliente y,
-            autoriza suficientemente a Maximiza Casa de Bolsa, C.A., para que
-            verifique los datos aportados y que han sido vertidos en esta
-            planilla, señalados en la providencia N°025 y las demás
-            disposiciones que tutelan esta materia
+          <p class="spreadsheet__contract text-justify text-[9px] leading-tight">
+            Aceptación del contrato de cuenta de corretaje bursátil por parte del inversor con la
+            firma del presente documento, el cliente expresamente conviene y acepta que las
+            operaciones financieras y bursátiles celebradas entre maximiza y el cliente se regirán
+            por el contrato de cuenta corretaje bursátil, del cual el presente anexo forma parte
+            integrante, y cual fue autenticado por ante la Notaría Pública sexta del Municipio
+            Chacao del estado Miranda, el 26 de Enero del 2007, bajo el N°56, tomo 10, de los libros
+            de autenticación llevados por esa notaría, así mismo, el cliente declara haber leído y
+            comprendido las operaciones objeto de los contratos que integran la cuenta de corretaje
+            bursátil. De conformidad con lo establecido en las normas relativas a la administración
+            y fiscalización de los riesgos relacionados con los delitos de legitimación de los
+            capitales, financiamiento al terrorismo, financiamiento de la proliferación de armas de
+            destrucción masiva y otros ilícitos, aplicables a los sujetos regulados por la
+            Superintendencia Nacional de Valores, por lo que el (los) inversor(es) declara(n) bajo
+            fe de juramento que los dineros, capitales y haberes, valores o títulos utilizados en
+            las operaciones, no guardan relación con actividades provenientes del delito de
+            legitimación de capitales u otros delitos previstos y sancionados en la ley orgánica
+            contra la delincuencia organizada y financiamiento al terrorismo. Así mismo, el inversor
+            expresamente declara que la información suministrada es cierta y completa y que refleja
+            con exactitud la realidad legal y financiera del cliente y, autoriza suficientemente a
+            Maximiza Casa de Bolsa, C.A., para que verifique los datos aportados y que han sido
+            vertidos en esta planilla, señalados en la providencia N°025 y las demás disposiciones
+            que tutelan esta materia
           </p>
         </div>
       </div>
@@ -1058,17 +981,17 @@ onMounted(() => {
           <p class="mb-1 text-left font-bold">Quién suscribe declara:</p>
           <ol class="list-none">
             <li class="text-start">
-              1) Que los datos suministrados son verdaderos y autoriza a la
-              institución del sector valores a verificar dicha información.
+              1) Que los datos suministrados son verdaderos y autoriza a la institución del sector
+              valores a verificar dicha información.
             </li>
             <li class="text-start">
-              2) Que los fondos utilizados tienen origen y destino lícitos,
-              según lo previsto y sancionado en el ordenamiento jurídico vigente
-              en la República Bolivariana de Venezuela.
+              2) Que los fondos utilizados tienen origen y destino lícitos, según lo previsto y
+              sancionado en el ordenamiento jurídico vigente en la República Bolivariana de
+              Venezuela.
             </li>
             <li class="text-start">
-              3) Que notificará de inmediato cuando se produzcan cambios en los
-              datos personales y/o en movimiento de fondos reportados.
+              3) Que notificará de inmediato cuando se produzcan cambios en los datos personales y/o
+              en movimiento de fondos reportados.
             </li>
           </ol>
         </div>
@@ -1078,21 +1001,15 @@ onMounted(() => {
         <div class="grid grid-cols-4">
           <div class="spreadsheet__sign-item">
             <div>Preparado por:</div>
-            <div class="border-primary mt-8 border-t text-[8px]">
-              Nombre y apellido:
-            </div>
+            <div class="border-primary mt-8 border-t text-[8px]">Nombre y apellido:</div>
           </div>
           <div class="spreadsheet__sign-item">
             <div>Verificado oficial de cumplimiento:</div>
-            <div class="border-primary mt-8 border-t text-[8px]">
-              Nombre y apellido:
-            </div>
+            <div class="border-primary mt-8 border-t text-[8px]">Nombre y apellido:</div>
           </div>
           <div class="spreadsheet__sign-item">
             <div>Firma del inversionista:</div>
-            <div class="border-primary mt-8 border-t text-[8px]">
-              Nombre y apellido:
-            </div>
+            <div class="border-primary mt-8 border-t text-[8px]">Nombre y apellido:</div>
           </div>
           <div class="spreadsheet__sign-item">
             <div>Huella dactilar:</div>
@@ -1101,25 +1018,15 @@ onMounted(() => {
       </div>
 
       <div class="spreadsheet__section">
-        <h5 class="spreadsheet__title">
-          PARA USO INTERNO DE MAXIMIZA CASA DE BOLSA
-        </h5>
+        <h5 class="spreadsheet__title">PARA USO INTERNO DE MAXIMIZA CASA DE BOLSA</h5>
         <div class="p-2 text-[10px]">
           <span v-if="isNatural">
             <li class="text-start">1) Copia de la Cédula de identidad.</li>
-            <li class="text-start">
-              2) Copia del Registro de información Fiscal (R.I.F).
-            </li>
-            <li class="text-start">
-              3) Referencia bancaria denominada en moneda nacional.
-            </li>
+            <li class="text-start">2) Copia del Registro de información Fiscal (R.I.F).</li>
+            <li class="text-start">3) Referencia bancaria denominada en moneda nacional.</li>
             <li class="text-start">4) Constancia de trabajo.</li>
-            <li class="text-start">
-              5) Informe de atestiguamiento de ingresos.
-            </li>
-            <li class="text-start">
-              6) Declaración jurada cada vez que realice una operación.
-            </li>
+            <li class="text-start">5) Informe de atestiguamiento de ingresos.</li>
+            <li class="text-start">6) Declaración jurada cada vez que realice una operación.</li>
             <li class="text-start">7) Otros.</li>
           </span>
           <span v-else>
@@ -1127,186 +1034,173 @@ onMounted(() => {
               1) Copia del Registro de información Fiscal (R.I.F) de la empresa.
             </li>
             <li class="text-start">
-              2) Copia de la Cédula de identidad y del R.I.F del (los)
-              representante legal (es) de la empresa.
+              2) Copia de la Cédula de identidad y del R.I.F del (los) representante legal (es) de
+              la empresa.
             </li>
             <li class="text-start">
-              3) Copia del Documento constitutivo y las modificaciones
-              estatutarias.
+              3) Copia del Documento constitutivo y las modificaciones estatutarias.
             </li>
-            <li class="text-start">
-              4) Referencia bancaria denominada en moneda nacional.
-            </li>
-            <li class="text-start">
-              5) Declaración jurada cada vez que realice una operación.
-            </li>
+            <li class="text-start">4) Referencia bancaria denominada en moneda nacional.</li>
+            <li class="text-start">5) Declaración jurada cada vez que realice una operación.</li>
             <li class="text-start">6) Otros.</li>
           </span>
         </div>
       </div>
 
       <div class="p-2 text-[10px] italic">
-        El Ejecutivo de Cuentas declara haberse entrevistado con el cliente,
-        Quien firmó esta planilla en su presencia
+        El Ejecutivo de Cuentas declara haberse entrevistado con el cliente, Quien firmó esta
+        planilla en su presencia
       </div>
       <div class="spreadsheet__section">
         <div class="grid grid-cols-[1.5fr_1.5fr_1.5fr_0.5fr]">
-          <div class="spreadsheet__item h-[75px] border-r-0">
-            Fecha de recepcion ejecutivo:
-          </div>
-          <div class="spreadsheet__item h-[75px] border-r-0">
-            Nombre del ejecutivo de cuentas:
-          </div>
-          <div class="spreadsheet__item h-[75px] border-r-0">
-            Firma del ejecutivo de cuentas:
-          </div>
+          <div class="spreadsheet__item h-[75px] border-r-0">Fecha de recepcion ejecutivo:</div>
+          <div class="spreadsheet__item h-[75px] border-r-0">Nombre del ejecutivo de cuentas:</div>
+          <div class="spreadsheet__item h-[75px] border-r-0">Firma del ejecutivo de cuentas:</div>
           <div class="spreadsheet__item h-[75px]">Pag</div>
         </div>
       </div>
 
-      <span class="copy text-left"
-        >Maximiza Casa de Bolsa. R.I.F. Nro. J-30025492-5</span
-      >
+      <span class="copy text-left">Maximiza Casa de Bolsa. R.I.F. Nro. J-30025492-5</span>
     </div>
   </div>
 </template>
 
 <style lang="scss">
-.page-break-container {
-  page-break-after: always;
-}
-
-.spreadsheet {
-  width: 100%;
-  max-width: 100%;
-  padding: 0.4rem;
-}
-
-.spreadsheet__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.2rem;
-}
-
-.spreadsheet__image {
-  width: 180px;
-}
-
-.spreadsheet__main-title {
-  text-transform: uppercase;
-  text-wrap: balance;
-  max-width: 60%;
-  text-align: left;
-  border-left: 4px solid #006548;
-  font-weight: 700;
-  padding-left: 1rem;
-  font-size: 1rem;
-  line-height: 1.2;
-}
-
-.spreadsheet__section {
-  margin-top: 0.2rem;
-  width: 100%;
-  font-size: 11px;
-  border: 1px solid #006548;
-  overflow: hidden;
-}
-
-.spreadsheet__title {
-  width: 100%;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 0.7rem;
-  background: #006548;
-  padding: 0.2rem;
-  color: white;
-  font-weight: bold;
-}
-
-.spreadsheet__container {
-  display: grid;
-}
-
-.spreadsheet__form-item {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  text-align: left;
-  font-size: 0.5rem;
-
-  div.content {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    font-size: 0.7rem;
-  }
-
-  * {
-    text-align: left;
-  }
-}
-
-.spreadsheet__item {
-  min-height: 30px;
-  border: 1px solid #006548;
-  padding: 0.1rem;
-  font-size: 0.5rem;
-
-  &.border-r-0 {
-    border-right: none;
-  }
-
-  div.content {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    font-size: 0.7rem;
-    min-height: 1rem;
-  }
-}
-
-.spreadsheet__section1 {
-  display: flex;
-  width: 100%;
-
-  .spreadsheet__item {
-    flex: 1;
-  }
-}
-
-.spreadsheet__section2 {
-  display: grid;
-  grid-template-columns: 1fr 30%;
-
-  .spreadsheet__item:last-child {
-    grid-column: span 2;
-  }
-}
-
-.spreadsheet__sign-item {
-  border: 1px solid #006548;
-  padding: 0.25rem;
-  min-height: 6rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  font-size: 0.7rem;
-}
-
-.copy {
-  display: block;
-  margin-top: 0.5rem;
-  margin-left: 0.5rem;
-  font-size: 0.7rem;
-  color: #666;
-}
-
-@media print {
-  .page-break {
-    page-break-before: always;
+  .page-break-container {
+    page-break-after: always;
   }
 
   .spreadsheet {
-    padding: 0;
+    width: 100%;
+    max-width: 100%;
+    padding: 0.4rem;
   }
-}
+
+  .spreadsheet__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.2rem;
+  }
+
+  .spreadsheet__image {
+    width: 180px;
+  }
+
+  .spreadsheet__main-title {
+    text-transform: uppercase;
+    text-wrap: balance;
+    max-width: 60%;
+    text-align: left;
+    border-left: 4px solid #006548;
+    font-weight: 700;
+    padding-left: 1rem;
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .spreadsheet__section {
+    margin-top: 0.2rem;
+    width: 100%;
+    font-size: 11px;
+    border: 1px solid #006548;
+    overflow: hidden;
+  }
+
+  .spreadsheet__title {
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    background: #006548;
+    padding: 0.2rem;
+    color: white;
+    font-weight: bold;
+  }
+
+  .spreadsheet__container {
+    display: grid;
+  }
+
+  .spreadsheet__form-item {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    text-align: left;
+    font-size: 0.5rem;
+
+    div.content {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+    }
+
+    * {
+      text-align: left;
+    }
+  }
+
+  .spreadsheet__item {
+    min-height: 30px;
+    border: 1px solid #006548;
+    padding: 0.1rem;
+    font-size: 0.5rem;
+
+    &.border-r-0 {
+      border-right: none;
+    }
+
+    div.content {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 600;
+      font-size: 0.7rem;
+      min-height: 1rem;
+    }
+  }
+
+  .spreadsheet__section1 {
+    display: flex;
+    width: 100%;
+
+    .spreadsheet__item {
+      flex: 1;
+    }
+  }
+
+  .spreadsheet__section2 {
+    display: grid;
+    grid-template-columns: 1fr 30%;
+
+    .spreadsheet__item:last-child {
+      grid-column: span 2;
+    }
+  }
+
+  .spreadsheet__sign-item {
+    border: 1px solid #006548;
+    padding: 0.25rem;
+    min-height: 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 0.7rem;
+  }
+
+  .copy {
+    display: block;
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    font-size: 0.7rem;
+    color: #666;
+  }
+
+  @media print {
+    .page-break {
+      page-break-before: always;
+    }
+
+    .spreadsheet {
+      padding: 0;
+    }
+  }
 </style>

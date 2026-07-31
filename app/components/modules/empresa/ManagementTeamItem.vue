@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+  import { ref } from 'vue'
 
-interface Props {
-  name: string
-  rol: string
-  description: string
-  variant: {
-    background: string
-    titleText: string
-    subtitleText: string
+  interface Props {
+    name: string
+    rol: string
+    description: string
+    variant: {
+      background: string
+      titleText: string
+      subtitleText: string
+    }
   }
-}
 
-const { name, rol, description, variant } = defineProps<Props>()
+  const { name, rol, description, variant } = defineProps<Props>()
 
-const isPopoverOpen = ref(false)
+  const isPopoverOpen = ref(false)
 </script>
 
 <template>

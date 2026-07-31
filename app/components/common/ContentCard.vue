@@ -1,43 +1,43 @@
 <script setup lang="ts">
-import { motion } from 'motion-v'
-import { generalItemVariants } from '@/assets/animations/motion'
+  import { motion } from 'motion-v'
+  import { generalItemVariants } from '@/assets/animations/motion'
 
-interface Props {
-  subtitle?: string
-  title?: string
-  content: string
-  maxWidth?: string
-  styles?: {
+  interface Props {
+    subtitle?: string
     title?: string
-    content?: string
-    wrapper?: string
+    content: string
+    maxWidth?: string
+    styles?: {
+      title?: string
+      content?: string
+      wrapper?: string
+    }
+    image: {
+      url: string
+      alt: string
+    }
+    button?: {
+      label: string
+      link: string
+      icon?: string
+      variant?: 'primary' | 'secondary' | 'outline'
+      size?: 'sm' | 'md' | 'lg'
+    }
+    isVertical?: boolean
+    isReverse?: boolean
+    isImageFull?: boolean
   }
-  image: {
-    url: string
-    alt: string
-  }
-  button?: {
-    label: string
-    link: string
-    icon?: string
-    variant?: 'primary' | 'secondary' | 'outline'
-    size?: 'sm' | 'md' | 'lg'
-  }
-  isVertical?: boolean
-  isReverse?: boolean
-  isImageFull?: boolean
-}
 
-const props = withDefaults(defineProps<Props>(), {
-  maxWidth: '280',
-  styles: () => ({
-    title: 'text-black-alt mb-2 md:mb-4',
-    content:
-      'text-[12px] leading-[20px] md:text-[8.33px] md:leading-[13.89px] lg:text-[11.18px] lg:leading-[20.77px] text-gray',
-    wrapper: 'flex-1 p-4 flex flex-col justify-center',
-  }),
-  isImageFull: false,
-})
+  const props = withDefaults(defineProps<Props>(), {
+    maxWidth: '280',
+    styles: () => ({
+      title: 'text-black-alt mb-2 md:mb-4',
+      content:
+        'text-[12px] leading-[20px] md:text-[8.33px] md:leading-[13.89px] lg:text-[11.18px] lg:leading-[20.77px] text-gray',
+      wrapper: 'flex-1 p-4 flex flex-col justify-center',
+    }),
+    isImageFull: false,
+  })
 </script>
 
 <template>
@@ -70,9 +70,7 @@ const props = withDefaults(defineProps<Props>(), {
             : 'border-b-[0px] md:border-r-[0px] md:border-b',
       ]"
     >
-      <span v-if="props.subtitle" class="text-primary mb-1">{{
-        props.subtitle
-      }}</span>
+      <span v-if="props.subtitle" class="text-primary mb-1">{{ props.subtitle }}</span>
       <h4 v-if="props.title" :class="props.styles.title">{{ props.title }}</h4>
       <p :class="props.styles.content" v-html="props.content"></p>
 

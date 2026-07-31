@@ -1,39 +1,39 @@
 <script setup lang="ts">
-interface Props {
-  modelValue?: boolean | string[]
-  value?: string
-  name: string
-  label: string
-  errorMessage?: string
-  disabled?: boolean
-}
-
-const props = defineProps<Props>()
-const emit = defineEmits(['update:modelValue'])
-
-const isChecked = computed(() => {
-  if (Array.isArray(props.modelValue)) {
-    return props.modelValue.includes(props.value || '')
+  interface Props {
+    modelValue?: boolean | string[]
+    value?: string
+    name: string
+    label: string
+    errorMessage?: string
+    disabled?: boolean
   }
-  return props.modelValue
-})
 
-const handleChange = (event: Event) => {
-  const target = event.target as HTMLInputElement
+  const props = defineProps<Props>()
+  const emit = defineEmits(['update:modelValue'])
 
-  if (Array.isArray(props.modelValue) && props.value) {
-    const newValue = [...props.modelValue]
-    if (target.checked) {
-      newValue.push(props.value)
-    } else {
-      const index = newValue.indexOf(props.value)
-      if (index > -1) newValue.splice(index, 1)
+  const isChecked = computed(() => {
+    if (Array.isArray(props.modelValue)) {
+      return props.modelValue.includes(props.value || '')
     }
-    emit('update:modelValue', newValue)
-  } else {
-    emit('update:modelValue', target.checked)
+    return props.modelValue
+  })
+
+  const handleChange = (event: Event) => {
+    const target = event.target as HTMLInputElement
+
+    if (Array.isArray(props.modelValue) && props.value) {
+      const newValue = [...props.modelValue]
+      if (target.checked) {
+        newValue.push(props.value)
+      } else {
+        const index = newValue.indexOf(props.value)
+        if (index > -1) newValue.splice(index, 1)
+      }
+      emit('update:modelValue', newValue)
+    } else {
+      emit('update:modelValue', target.checked)
+    }
   }
-}
 </script>
 
 <template>

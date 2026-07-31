@@ -7,12 +7,10 @@ const normalize = (tipo: any): MXMZ.Balance => ({
   items: (tipo.inverse_relations?.['balance-periodo.type'] || []).map(
     (periodo: any): MXMZ.BalanceItem => ({
       ano: periodo.data?.ano,
-      source: (periodo.data?.items || []).map(
-        (doc: any): MXMZ.BalanceSource => ({
-          label: doc.label,
-          file: { url: doc.file },
-        })
-      ),
+      source: (periodo.data?.items || []).map((doc: any): MXMZ.BalanceSource => ({
+        label: doc.label,
+        file: { url: doc.file },
+      })),
     })
   ),
 })

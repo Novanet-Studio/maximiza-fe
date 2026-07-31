@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { motion } from 'motion-v'
-import { generalItemVariants } from '@/assets/animations/motion'
+  import { motion } from 'motion-v'
+  import { generalItemVariants } from '@/assets/animations/motion'
 
-interface Props {
-  title: string
-  titleClass?: string
-  description?: string
-}
+  interface Props {
+    title: string
+    titleClass?: string
+    description?: string
+  }
 
-const props = defineProps<Props>()
+  const props = defineProps<Props>()
 </script>
 
 <template>

@@ -1,24 +1,24 @@
 <script setup lang="ts">
-const props = defineProps<{
-  steps: string[]
-  currentStep: number
-  maxStepReached: number
-}>()
+  const props = defineProps<{
+    steps: string[]
+    currentStep: number
+    maxStepReached: number
+  }>()
 
-const emit = defineEmits<{
-  goToStep: [index: number]
-}>()
+  const emit = defineEmits<{
+    goToStep: [index: number]
+  }>()
 
-const handleStepClick = (index: number) => {
-  // Only allow navigation to visited steps
-  if (index <= props.maxStepReached) {
-    emit('goToStep', index)
+  const handleStepClick = (index: number) => {
+    // Only allow navigation to visited steps
+    if (index <= props.maxStepReached) {
+      emit('goToStep', index)
+    }
   }
-}
 
-const isStepClickable = (index: number) => {
-  return index <= props.maxStepReached
-}
+  const isStepClickable = (index: number) => {
+    return index <= props.maxStepReached
+  }
 </script>
 
 <template>
@@ -40,12 +40,8 @@ const isStepClickable = (index: number) => {
     </div>
 
     <!-- DESKTOP VIEW -->
-    <div
-      class="relative mb-8 hidden w-full items-center justify-between py-4 md:flex"
-    >
-      <div
-        class="bg-gray absolute top-1/2 left-0 z-10 h-[1px] w-full -translate-y-1/2 transform"
-      />
+    <div class="relative mb-8 hidden w-full items-center justify-between py-4 md:flex">
+      <div class="bg-gray absolute top-1/2 left-0 z-10 h-[1px] w-full -translate-y-1/2 transform" />
 
       <div
         v-for="(step, index) in steps"
@@ -56,12 +52,8 @@ const isStepClickable = (index: number) => {
         <div
           class="flex h-[54px] items-stretch overflow-hidden border transition-all duration-500 ease-in-out"
           :class="[
-            index === currentStep
-              ? 'bg-white-alt border-gray'
-              : 'border-[#2b2b2b] bg-[#2b2b2b]',
-            isStepClickable(index)
-              ? 'cursor-pointer hover:opacity-90'
-              : 'cursor-not-allowed',
+            index === currentStep ? 'bg-white-alt border-gray' : 'border-[#2b2b2b] bg-[#2b2b2b]',
+            isStepClickable(index) ? 'cursor-pointer hover:opacity-90' : 'cursor-not-allowed',
           ]"
         >
           <!-- Number Box -->
@@ -80,9 +72,7 @@ const isStepClickable = (index: number) => {
           <div
             class="flex items-center overflow-hidden transition-all duration-500 ease-in-out"
             :class="[
-              index === currentStep
-                ? 'max-w-[200px] px-3 opacity-100'
-                : 'max-w-0 px-0 opacity-0',
+              index === currentStep ? 'max-w-[200px] px-3 opacity-100' : 'max-w-0 px-0 opacity-0',
             ]"
           >
             <span

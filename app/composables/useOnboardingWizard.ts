@@ -71,11 +71,7 @@ export const useOnboardingWizard = () => {
 
   const goToStep = (index: number) => {
     // Only allow navigation to visited steps or current step
-    if (
-      index >= 0 &&
-      index <= state.value.maxStepReached &&
-      index < state.value.totalSteps
-    ) {
+    if (index >= 0 && index <= state.value.maxStepReached && index < state.value.totalSteps) {
       state.value.currentStep = index
     }
   }
@@ -88,11 +84,7 @@ export const useOnboardingWizard = () => {
     state.value.sessionId = id
   }
 
-  const setTrackingData = (data: {
-    name: string
-    email: string
-    phone: string
-  }) => {
+  const setTrackingData = (data: { name: string; email: string; phone: string }) => {
     state.value.trackingData = data
   }
 

@@ -1,21 +1,18 @@
 <script setup lang="ts">
-import companyData from '@/assets/data/common.json'
+  import companyData from '@/assets/data/common.json'
 
-import { motion } from 'motion-v'
-import {
-  generalContainerVariants,
-  generalItemVariants,
-} from '~/assets/animations/motion'
+  import { motion } from 'motion-v'
+  import { generalContainerVariants, generalItemVariants } from '~/assets/animations/motion'
 
-interface Props {
-  title: string
-  description: string
-  banner: {
-    src: string
+  interface Props {
+    title: string
+    description: string
+    banner: {
+      src: string
+    }
   }
-}
 
-const props = defineProps<Props>()
+  const props = defineProps<Props>()
 </script>
 
 <template>
@@ -26,10 +23,7 @@ const props = defineProps<Props>()
     :viewport="{ once: true, margin: '-120px' }"
     class="mt-[10vh] max-sm:pb-20"
   >
-    <CommonContentWithColumns
-      :backgroundImage="props.banner.src"
-      :title="props.title"
-    >
+    <CommonContentWithColumns :backgroundImage="props.banner.src" :title="props.title">
       <motion.div :variants="generalItemVariants">
         <p class="content-with-columns text-start text-white">
           {{ props.description }}
@@ -101,10 +95,7 @@ const props = defineProps<Props>()
 
         <div class="mt-auto pt-4">
           <NuxtLink title="Comenzar registro" to="#registro-formulario">
-            <UiButton
-              text="Comenzar registro"
-              icon="hand-point-right"
-            />
+            <UiButton text="Comenzar registro" icon="hand-point-right" />
           </NuxtLink>
         </div>
       </CommonContentCard>

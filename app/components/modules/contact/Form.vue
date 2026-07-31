@@ -1,74 +1,71 @@
 <script setup lang="ts">
-import { motion } from 'motion-v'
-import { ref } from 'vue'
-import {
-  generalContainerVariants,
-  generalItemVariants,
-} from '~/assets/animations/motion'
+  import { motion } from 'motion-v'
+  import { ref } from 'vue'
+  import { generalContainerVariants, generalItemVariants } from '~/assets/animations/motion'
 
-const form = ref({
-  'bot-field': '',
-  name: '',
-  email: '',
-  message: '',
-  area_of_interest: '',
-})
+  const form = ref({
+    'bot-field': '',
+    name: '',
+    email: '',
+    message: '',
+    area_of_interest: '',
+  })
 
-const isOpen = ref(false)
+  const isOpen = ref(false)
 
-const options = [
-  {
-    value: 'Apertura de cuenta corretaje',
-    label: 'Apertura de Cuenta Corretaje',
-  },
-  { value: 'Gestión patrimonial', label: 'Gestión Patrimonial' },
-  { value: 'Financiamiento corporativo', label: 'Financiamiento Corporativo' },
-  { value: 'Otros', label: 'Otro' },
-]
+  const options = [
+    {
+      value: 'Apertura de cuenta corretaje',
+      label: 'Apertura de Cuenta Corretaje',
+    },
+    { value: 'Gestión patrimonial', label: 'Gestión Patrimonial' },
+    { value: 'Financiamiento corporativo', label: 'Financiamiento Corporativo' },
+    { value: 'Otros', label: 'Otro' },
+  ]
 
-const selectedLabel = computed(() => {
-  const found = options.find((o) => o.value === form.value.area_of_interest)
-  return found ? found.label : null
-})
+  const selectedLabel = computed(() => {
+    const found = options.find((o) => o.value === form.value.area_of_interest)
+    return found ? found.label : null
+  })
 
-const selectOption = (option: any) => {
-  form.value.area_of_interest = option.value as string
-  isOpen.value = false
-}
-
-const encode = (data: Record<string, any>) => {
-  return Object.keys(data)
-    .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-    .join('&')
-}
-
-const handleSubmit = async () => {
-  try {
-    const formData = encode({
-      'form-name': 'FORMULARIO_DE_CONTACTO',
-      ...form.value,
-    })
-
-    const response = await fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: formData,
-    })
-
-    if (!response.ok) {
-      throw new Error('Error en la respuesta del servidor')
-    }
-
-    form.value.name = ''
-    form.value.email = ''
-    form.value.message = ''
-    form.value.area_of_interest = ''
-    alert('Mensaje enviado con éxito')
-  } catch (error) {
-    console.error('Error al enviar:', error)
-    alert('Hubo un error al enviar el mensaje. Por favor, intente nuevamente.')
+  const selectOption = (option: any) => {
+    form.value.area_of_interest = option.value as string
+    isOpen.value = false
   }
-}
+
+  const encode = (data: Record<string, any>) => {
+    return Object.keys(data)
+      .map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+      .join('&')
+  }
+
+  const handleSubmit = async () => {
+    try {
+      const formData = encode({
+        'form-name': 'FORMULARIO_DE_CONTACTO',
+        ...form.value,
+      })
+
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: formData,
+      })
+
+      if (!response.ok) {
+        throw new Error('Error en la respuesta del servidor')
+      }
+
+      form.value.name = ''
+      form.value.email = ''
+      form.value.message = ''
+      form.value.area_of_interest = ''
+      alert('Mensaje enviado con éxito')
+    } catch (error) {
+      console.error('Error al enviar:', error)
+      alert('Hubo un error al enviar el mensaje. Por favor, intente nuevamente.')
+    }
+  }
 </script>
 
 <template>
@@ -124,18 +121,13 @@ const handleSubmit = async () => {
           :variants="generalItemVariants"
         />
 
-        <motion.div
-          class="group relative w-full"
-          :variants="generalItemVariants"
-        >
+        <motion.div class="group relative w-full" :variants="generalItemVariants">
           <div
             @click="isOpen = !isOpen"
             class="focus:border-secondary flex w-full cursor-pointer items-center justify-between border-b border-white py-1.5 pr-2 text-white transition-colors"
             :class="{ 'border-secondary': isOpen }"
           >
-            <span
-              :class="form.area_of_interest ? 'text-white' : 'text-gray-400'"
-            >
+            <span :class="form.area_of_interest ? 'text-white' : 'text-gray-400'">
               {{ selectedLabel || 'Área específica de interés' }}
             </span>
 

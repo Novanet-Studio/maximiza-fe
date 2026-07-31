@@ -1,28 +1,28 @@
 <script setup lang="ts">
-import { motion } from 'motion-v'
-import {
-  generalContainerVariants,
-  generalItemVariants,
-  generalImageVariants,
-} from '@/assets/animations/motion'
+  import { motion } from 'motion-v'
+  import {
+    generalContainerVariants,
+    generalItemVariants,
+    generalImageVariants,
+  } from '@/assets/animations/motion'
 
-interface HeroProps {
-  title: string
-  description: string
-  button?: {
-    text: string
-    link: string
+  interface HeroProps {
+    title: string
+    description: string
+    button?: {
+      text: string
+      link: string
+    }
+    image: {
+      src: string
+      alt: string
+    }
+    pattern?: {
+      src: string
+    }
   }
-  image: {
-    src: string
-    alt: string
-  }
-  pattern?: {
-    src: string
-  }
-}
 
-const props = defineProps<HeroProps>()
+  const props = defineProps<HeroProps>()
 </script>
 
 <template>
@@ -55,17 +55,8 @@ const props = defineProps<HeroProps>()
               />
             </motion.div>
             <motion.div :variants="generalItemVariants">
-              <NuxtLink
-                :title="props.button.text"
-                v-if="props.button"
-                :to="props.button?.link"
-              >
-                <UiButton
-                  class="mt-4"
-                  :text="props.button.text"
-                  :icon="'check'"
-                  size="md"
-                />
+              <NuxtLink :title="props.button.text" v-if="props.button" :to="props.button?.link">
+                <UiButton class="mt-4" :text="props.button.text" :icon="'check'" size="md" />
               </NuxtLink>
             </motion.div>
           </div>

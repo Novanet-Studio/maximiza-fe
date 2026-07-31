@@ -1,57 +1,54 @@
 <script setup lang="ts">
-import { useForm } from 'vee-validate'
-import * as yup from 'yup'
-import {
-  annualInvestmentOptions,
-  knowledgeOptions,
-  experienceOptions,
-  investmentLevelOptions,
-} from '~/assets/data/formSources'
-import { useOnboardingWizard } from '~/composables/useOnboardingWizard'
+  import { useForm } from 'vee-validate'
+  import * as yup from 'yup'
+  import {
+    annualInvestmentOptions,
+    knowledgeOptions,
+    experienceOptions,
+    investmentLevelOptions,
+  } from '~/assets/data/formSources'
+  import { useOnboardingWizard } from '~/composables/useOnboardingWizard'
 
-const wizard = useOnboardingWizard()
+  const wizard = useOnboardingWizard()
 
-const investmentOptions = [...annualInvestmentOptions]
+  const investmentOptions = [...annualInvestmentOptions]
 
-const schema = yup.object({
-  knowledge: yup.string().required('Seleccione una opción'),
-  experience: yup.string().required('Seleccione una opción'),
-  inversionLevel: yup.string().required('Seleccione una opción'),
-  annualInversion: yup.string().required('Requerido'),
-  totalLiquidAssets: yup.string().required('Seleccione una opción'),
-  totalAssets: yup.string().required('Seleccione una opción'),
-})
+  const schema = yup.object({
+    knowledge: yup.string().required('Seleccione una opción'),
+    experience: yup.string().required('Seleccione una opción'),
+    inversionLevel: yup.string().required('Seleccione una opción'),
+    annualInversion: yup.string().required('Requerido'),
+    totalLiquidAssets: yup.string().required('Seleccione una opción'),
+    totalAssets: yup.string().required('Seleccione una opción'),
+  })
 
-const { handleSubmit, errors, defineField } = useForm({
-  validationSchema: schema,
-  initialValues: {
-    knowledge: wizard.state.value.formData.investorProfile?.knowledge || '',
-    experience: wizard.state.value.formData.investorProfile?.experience || '',
-    inversionLevel:
-      wizard.state.value.formData.investorProfile?.inversionLevel || '',
-    annualInversion:
-      wizard.state.value.formData.investorProfile?.annualInversion || '',
-    totalLiquidAssets:
-      wizard.state.value.formData.investorProfile?.totalLiquidAssets || '',
-    totalAssets: wizard.state.value.formData.investorProfile?.totalAssets || '',
-  },
-})
+  const { handleSubmit, errors, defineField } = useForm({
+    validationSchema: schema,
+    initialValues: {
+      knowledge: wizard.state.value.formData.investorProfile?.knowledge || '',
+      experience: wizard.state.value.formData.investorProfile?.experience || '',
+      inversionLevel: wizard.state.value.formData.investorProfile?.inversionLevel || '',
+      annualInversion: wizard.state.value.formData.investorProfile?.annualInversion || '',
+      totalLiquidAssets: wizard.state.value.formData.investorProfile?.totalLiquidAssets || '',
+      totalAssets: wizard.state.value.formData.investorProfile?.totalAssets || '',
+    },
+  })
 
-const [knowledge] = defineField('knowledge')
-const [experience] = defineField('experience')
-const [inversionLevel] = defineField('inversionLevel')
-const [annualInversion] = defineField('annualInversion')
-const [totalLiquidAssets] = defineField('totalLiquidAssets')
-const [totalAssets] = defineField('totalAssets')
+  const [knowledge] = defineField('knowledge')
+  const [experience] = defineField('experience')
+  const [inversionLevel] = defineField('inversionLevel')
+  const [annualInversion] = defineField('annualInversion')
+  const [totalLiquidAssets] = defineField('totalLiquidAssets')
+  const [totalAssets] = defineField('totalAssets')
 
-const validate = handleSubmit((values) => {
-  wizard.updateFormData({ investorProfile: values })
-  wizard.nextStep()
-})
+  const validate = handleSubmit((values) => {
+    wizard.updateFormData({ investorProfile: values })
+    wizard.nextStep()
+  })
 
-defineExpose({
-  validate,
-})
+  defineExpose({
+    validate,
+  })
 </script>
 
 <template>
@@ -60,18 +57,15 @@ defineExpose({
       <FormTitle text="Perfil del inversionista" class="mb-4" />
       <p class="text-gray mb-6 text-sm leading-relaxed">
         El propósito del siguiente cuestionario es informar a
-        <b>MAXIMIZA CASA DE BOLSA</b> los objetivos de inversión del cliente, y
-        debe ser completado en el espacio indicado. En ningún caso la Casa de
-        bolsa se hace responsable de las ganancias o pérdidas producto de las
-        operaciones realizadas bajo dicho perfil.
+        <b>MAXIMIZA CASA DE BOLSA</b> los objetivos de inversión del cliente, y debe ser completado
+        en el espacio indicado. En ningún caso la Casa de bolsa se hace responsable de las ganancias
+        o pérdidas producto de las operaciones realizadas bajo dicho perfil.
       </p>
     </div>
 
     <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
       <div class="border-white-alt2/90 bg-white-alt2/10 border-b border-l p-4">
-        <h5 class="text-primary mb-4 text-lg font-black">
-          Conocimiento como inversionista
-        </h5>
+        <h5 class="text-primary mb-4 text-lg font-black">Conocimiento como inversionista</h5>
 
         <FormBaseRadio
           name="knowledge"
@@ -83,9 +77,7 @@ defineExpose({
       </div>
 
       <div class="border-white-alt2/90 bg-white-alt2/10 border-b border-l p-4">
-        <h5 class="text-primary mb-4 text-lg font-black">
-          Experiencia como inversionista
-        </h5>
+        <h5 class="text-primary mb-4 text-lg font-black">Experiencia como inversionista</h5>
 
         <FormBaseRadio
           name="experience"
@@ -109,9 +101,7 @@ defineExpose({
       </div>
 
       <div class="border-white-alt2/90 bg-white-alt2/10 border-b border-l p-4">
-        <h5 class="text-primary mb-4 text-lg font-black">
-          Inversiones anuales
-        </h5>
+        <h5 class="text-primary mb-4 text-lg font-black">Inversiones anuales</h5>
 
         <FormBaseRadio
           name="annualInversion"
@@ -138,9 +128,7 @@ defineExpose({
       </div>
 
       <div class="border-white-alt2/90 bg-white-alt2/10 border-b border-l p-4">
-        <h5 class="text-primary mb-1 text-lg font-black">
-          Patrimonio total (en Bolívares)
-        </h5>
+        <h5 class="text-primary mb-1 text-lg font-black">Patrimonio total (en Bolívares)</h5>
 
         <FormBaseInput
           name="totalAssets"

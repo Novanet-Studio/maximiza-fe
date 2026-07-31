@@ -1,606 +1,543 @@
 <script setup lang="ts">
-import { useForm, useFieldArray } from 'vee-validate'
-import * as yup from 'yup'
-import { useOnboardingWizard } from '~/composables/useOnboardingWizard'
+  import { useForm, useFieldArray } from 'vee-validate'
+  import * as yup from 'yup'
+  import { useOnboardingWizard } from '~/composables/useOnboardingWizard'
 
-import {
-  bankingInstituteOptions,
-  conditionOptions,
-  isPepOptions,
-  countriesOptions,
-  specificActivityOptions,
-  nationalityOptions,
-  docTypeOptionsAlt,
-  monthlyIncomeOptions,
-  economicActivityOptions,
-  relatedWithPepOptions,
-  docTypeOptions,
-  PHONE_REGEX,
-} from '~/assets/data/formSources'
+  import {
+    bankingInstituteOptions,
+    conditionOptions,
+    isPepOptions,
+    countriesOptions,
+    specificActivityOptions,
+    nationalityOptions,
+    docTypeOptionsAlt,
+    monthlyIncomeOptions,
+    economicActivityOptions,
+    relatedWithPepOptions,
+    docTypeOptions,
+    PHONE_REGEX,
+  } from '~/assets/data/formSources'
 
-const wizard = useOnboardingWizard()
-const type = wizard.state.value.type
+  const wizard = useOnboardingWizard()
+  const type = wizard.state.value.type
 
-const schema = yup.object({
-  economicActivity:
-    type === 'persona-natural'
-      ? yup.string().required('Requerido')
-      : yup.string().optional(),
-  specificActivity:
-    type === 'persona-natural'
-      ? yup.string().required('Requerido')
-      : yup.string().optional(),
+  const schema = yup.object({
+    economicActivity:
+      type === 'persona-natural' ? yup.string().required('Requerido') : yup.string().optional(),
+    specificActivity:
+      type === 'persona-natural' ? yup.string().required('Requerido') : yup.string().optional(),
 
-  incomeSource:
-    type === 'persona-natural'
-      ? yup.array().min(1, 'Seleccione al menos una fuente')
-      : yup.array().optional(),
+    incomeSource:
+      type === 'persona-natural'
+        ? yup.array().min(1, 'Seleccione al menos una fuente')
+        : yup.array().optional(),
 
-  company: yup.object().when('incomeSource', {
-    is: (val: string[]) => val?.includes('dependencia'),
-    then: () =>
-      yup.object({
-        name: yup.string().required('Requerido'),
-        rifType: yup.string().required('Requerido'),
-        rifNumber: yup
-          .string()
-          .required('Requerido')
-          .matches(/^[0-9]+$/, 'Solo números'),
-        remuneration: yup.string().required('Requerido'),
-        rol: yup.string().required('Requerido'),
-        branch: yup.string().required('Requerido'),
-        address: yup.string().optional(),
-        phone: yup
-          .string()
-          .matches(PHONE_REGEX, {
-            message: 'Teléfono inválido',
-            excludeEmptyString: true,
-          })
-          .optional(),
-      }),
-    otherwise: () => yup.object().optional(),
-  }),
-
-  business: yup.object().when('incomeSource', {
-    is: (val: string[]) => val?.includes('propio'),
-    then: () =>
-      yup.object({
-        name: yup.string().required('Requerido'),
-        rifType: yup.string().required('Requerido'),
-        rifNumber: yup
-          .string()
-          .required('Requerido')
-          .matches(/^[0-9]+$/, 'Solo números'),
-        fiscalAddress: yup.string().optional(),
-        income: yup.string().required('Requerido'),
-        constitutionDate: yup.string().required('Requerido'),
-        registerData: yup.string().required('Requerido'),
-        branch: yup.string().required('Requerido'),
-        phone: yup
-          .string()
-          .matches(PHONE_REGEX, {
-            message: 'Teléfono inválido',
-            excludeEmptyString: true,
-          })
-          .optional(),
-        providers: yup
-          .array()
-          .of(
-            yup.object({
-              name: yup.string().required('Requerido'),
-              location: yup.string().required('Requerido'),
+    company: yup.object().when('incomeSource', {
+      is: (val: string[]) => val?.includes('dependencia'),
+      then: () =>
+        yup.object({
+          name: yup.string().required('Requerido'),
+          rifType: yup.string().required('Requerido'),
+          rifNumber: yup
+            .string()
+            .required('Requerido')
+            .matches(/^[0-9]+$/, 'Solo números'),
+          remuneration: yup.string().required('Requerido'),
+          rol: yup.string().required('Requerido'),
+          branch: yup.string().required('Requerido'),
+          address: yup.string().optional(),
+          phone: yup
+            .string()
+            .matches(PHONE_REGEX, {
+              message: 'Teléfono inválido',
+              excludeEmptyString: true,
             })
-          )
-          .max(3, 'Máximo 3 registros'),
-        clients: yup
-          .array()
-          .of(
-            yup.object({
-              name: yup.string().required('Requerido'),
-              location: yup.string().required('Requerido'),
+            .optional(),
+        }),
+      otherwise: () => yup.object().optional(),
+    }),
+
+    business: yup.object().when('incomeSource', {
+      is: (val: string[]) => val?.includes('propio'),
+      then: () =>
+        yup.object({
+          name: yup.string().required('Requerido'),
+          rifType: yup.string().required('Requerido'),
+          rifNumber: yup
+            .string()
+            .required('Requerido')
+            .matches(/^[0-9]+$/, 'Solo números'),
+          fiscalAddress: yup.string().optional(),
+          income: yup.string().required('Requerido'),
+          constitutionDate: yup.string().required('Requerido'),
+          registerData: yup.string().required('Requerido'),
+          branch: yup.string().required('Requerido'),
+          phone: yup
+            .string()
+            .matches(PHONE_REGEX, {
+              message: 'Teléfono inválido',
+              excludeEmptyString: true,
             })
-          )
-          .max(3, 'Máximo 3 registros'),
-      }),
-    otherwise: () => yup.object().optional(),
-  }),
+            .optional(),
+          providers: yup
+            .array()
+            .of(
+              yup.object({
+                name: yup.string().required('Requerido'),
+                location: yup.string().required('Requerido'),
+              })
+            )
+            .max(3, 'Máximo 3 registros'),
+          clients: yup
+            .array()
+            .of(
+              yup.object({
+                name: yup.string().required('Requerido'),
+                location: yup.string().required('Requerido'),
+              })
+            )
+            .max(3, 'Máximo 3 registros'),
+        }),
+      otherwise: () => yup.object().optional(),
+    }),
 
-  otherIncomeSource: yup.string().when('incomeSource', {
-    is: (val: string[]) => val?.includes('otros'),
-    then: (s) => s.required('Requerido'),
-  }),
+    otherIncomeSource: yup.string().when('incomeSource', {
+      is: (val: string[]) => val?.includes('otros'),
+      then: (s) => s.required('Requerido'),
+    }),
 
-  otherIncomeAmount: yup.string().when('incomeSource', {
-    is: (val: string[]) => val?.includes('otros'),
-    then: (s) => s.required('Requerido'),
-  }),
+    otherIncomeAmount: yup.string().when('incomeSource', {
+      is: (val: string[]) => val?.includes('otros'),
+      then: (s) => s.required('Requerido'),
+    }),
 
-  monthlyIncome:
-    type === 'persona-juridica'
-      ? yup.string().required('Requerido')
-      : yup.string().optional(),
-  monthlySales:
-    type === 'persona-juridica'
-      ? yup.string().required('Requerido')
-      : yup.string().optional(),
-  monthlyExpenses:
-    type === 'persona-juridica'
-      ? yup.string().required('Requerido')
-      : yup.string().optional(),
+    monthlyIncome:
+      type === 'persona-juridica' ? yup.string().required('Requerido') : yup.string().optional(),
+    monthlySales:
+      type === 'persona-juridica' ? yup.string().required('Requerido') : yup.string().optional(),
+    monthlyExpenses:
+      type === 'persona-juridica' ? yup.string().required('Requerido') : yup.string().optional(),
 
-  islrYear:
-    type === 'persona-juridica'
-      ? yup
-          .string()
-          .required('Requerido')
-          .test(
-            'is-valid-year',
-            `Año inválido (1900 - ${new Date().getFullYear()})`,
-            (value) => {
+    islrYear:
+      type === 'persona-juridica'
+        ? yup
+            .string()
+            .required('Requerido')
+            .test('is-valid-year', `Año inválido (1900 - ${new Date().getFullYear()})`, (value) => {
               if (!value) return false
               const year = parseInt(value, 10)
               const currentYear = new Date().getFullYear()
               return year >= 1900 && year <= currentYear
-            }
-          )
-      : yup.string().optional(),
-  islrAmount:
-    type === 'persona-juridica'
-      ? yup.string().required('Requerido')
-      : yup.string().optional(),
+            })
+        : yup.string().optional(),
+    islrAmount:
+      type === 'persona-juridica' ? yup.string().required('Requerido') : yup.string().optional(),
 
-  bankReference: yup.object({
-    institution: yup.string().required('Requerido'),
-    accountNumber: yup
-      .string()
-      .required('Requerido')
-      .matches(/^[0-9]{20}$/, '20 dígitos'),
-    productType: yup.string().required('Requerido'),
-    averageAmount: yup.string().required('Requerido'),
-  }),
+    bankReference: yup.object({
+      institution: yup.string().required('Requerido'),
+      accountNumber: yup
+        .string()
+        .required('Requerido')
+        .matches(/^[0-9]{20}$/, '20 dígitos'),
+      productType: yup.string().required('Requerido'),
+      averageAmount: yup.string().required('Requerido'),
+    }),
 
-  stockholders:
-    type === 'persona-juridica'
-      ? yup
-          .array()
-          .of(
-            yup.object({
-              name: yup.string().required('Requerido'),
-              dniType: yup.string().required('Requerido'),
-              dniNumber: yup
-                .string()
-                .required('Requerido')
-                .matches(/^[0-9]+$/, 'Solo números'),
-              percentage: yup
-                .string()
-                .required('Requerido')
-                .test(
-                  'is-valid-percentage',
-                  'Porcentaje inválido (0 - 100)',
-                  (value) => {
+    stockholders:
+      type === 'persona-juridica'
+        ? yup
+            .array()
+            .of(
+              yup.object({
+                name: yup.string().required('Requerido'),
+                dniType: yup.string().required('Requerido'),
+                dniNumber: yup
+                  .string()
+                  .required('Requerido')
+                  .matches(/^[0-9]+$/, 'Solo números'),
+                percentage: yup
+                  .string()
+                  .required('Requerido')
+                  .test('is-valid-percentage', 'Porcentaje inválido (0 - 100)', (value) => {
                     if (!value) return false
                     const percentage = parseFloat(value)
                     return percentage >= 0 && percentage <= 100
-                  }
-                ),
-              nationality: yup.string().required('Requerido'),
-              address: yup.string().required('Requerido'),
-              cargo: yup.string().required('Requerido'),
-              esPep: yup.string().required('Requerido'),
-              relatedWithPep: yup.string().required('Requerido'),
-            })
-          )
-          .max(3, 'Máximo 3 registros')
-      : yup.array().optional(),
+                  }),
+                nationality: yup.string().required('Requerido'),
+                address: yup.string().required('Requerido'),
+                cargo: yup.string().required('Requerido'),
+                esPep: yup.string().required('Requerido'),
+                relatedWithPep: yup.string().required('Requerido'),
+              })
+            )
+            .max(3, 'Máximo 3 registros')
+        : yup.array().optional(),
 
-  legalRepresentatives:
-    type === 'persona-juridica'
-      ? yup
-          .array()
-          .of(
-            yup.object({
-              name: yup.string().required('Requerido'),
-              dniType: yup.string().required('Requerido'),
-              dniNumber: yup
-                .string()
-                .required('Requerido')
-                .matches(/^[0-9]+$/, 'Solo números'),
-              cargo: yup.string().required('Requerido'),
-              nationality: yup.string().required('Requerido'),
-              address: yup.string().required('Requerido'),
-              condition: yup.string().required('Requerido'),
-              esPep: yup.string().required('Requerido'),
-              relatedWithPep: yup.string().required('Requerido'),
-            })
-          )
-          .max(3, 'Máximo 3 registros')
-      : yup.array().optional(),
+    legalRepresentatives:
+      type === 'persona-juridica'
+        ? yup
+            .array()
+            .of(
+              yup.object({
+                name: yup.string().required('Requerido'),
+                dniType: yup.string().required('Requerido'),
+                dniNumber: yup
+                  .string()
+                  .required('Requerido')
+                  .matches(/^[0-9]+$/, 'Solo números'),
+                cargo: yup.string().required('Requerido'),
+                nationality: yup.string().required('Requerido'),
+                address: yup.string().required('Requerido'),
+                condition: yup.string().required('Requerido'),
+                esPep: yup.string().required('Requerido'),
+                relatedWithPep: yup.string().required('Requerido'),
+              })
+            )
+            .max(3, 'Máximo 3 registros')
+        : yup.array().optional(),
 
-  providers:
-    type === 'persona-juridica'
-      ? yup
-          .array()
-          .of(
-            yup.object({
-              name: yup.string().required('Requerido'),
-              location: yup.string().required('Requerido'),
-            })
-          )
-          .max(3, 'Máximo 3 registros')
-      : yup.array().optional(),
+    providers:
+      type === 'persona-juridica'
+        ? yup
+            .array()
+            .of(
+              yup.object({
+                name: yup.string().required('Requerido'),
+                location: yup.string().required('Requerido'),
+              })
+            )
+            .max(3, 'Máximo 3 registros')
+        : yup.array().optional(),
 
-  clients:
-    type === 'persona-juridica'
-      ? yup
-          .array()
-          .of(
-            yup.object({
-              name: yup.string().required('Requerido'),
-              location: yup.string().required('Requerido'),
-            })
-          )
-          .max(3, 'Máximo 3 registros')
-      : yup.array().optional(),
+    clients:
+      type === 'persona-juridica'
+        ? yup
+            .array()
+            .of(
+              yup.object({
+                name: yup.string().required('Requerido'),
+                location: yup.string().required('Requerido'),
+              })
+            )
+            .max(3, 'Máximo 3 registros')
+        : yup.array().optional(),
 
-  relatedCompanies:
-    type === 'persona-juridica'
-      ? yup
-          .array()
-          .of(
-            yup.object({
-              name: yup.string().required('Requerido'),
-              activity: yup.string().required('Requerido'),
-              rifType: yup.string().required('Requerido'),
-              rifNumber: yup
-                .string()
-                .required('Requerido')
-                .matches(/^[0-9]+$/, 'Solo números'),
-            })
-          )
-          .max(3, 'Máximo 3 registros')
-      : yup.array().optional(),
-})
-
-const splitId = (val: string) => {
-  if (!val) return { type: 'J', number: '' }
-  return { type: val.charAt(0), number: val.slice(1) }
-}
-
-const companyRifData = splitId(
-  wizard.state.value.formData.financialInformation?.company?.rif
-)
-
-const businessRifData = splitId(
-  wizard.state.value.formData.financialInformation?.business?.rif
-)
-
-const processArrayIds = (
-  arr: any[],
-  idField: string,
-  typeField: string,
-  numField: string
-) => {
-  if (!arr || arr.length === 0) return null
-  return arr.map((item) => {
-    if (item[idField] && !item[numField]) {
-      const split = splitId(item[idField])
-      return { ...item, [typeField]: split.type, [numField]: split.number }
-    }
-    return item
+    relatedCompanies:
+      type === 'persona-juridica'
+        ? yup
+            .array()
+            .of(
+              yup.object({
+                name: yup.string().required('Requerido'),
+                activity: yup.string().required('Requerido'),
+                rifType: yup.string().required('Requerido'),
+                rifNumber: yup
+                  .string()
+                  .required('Requerido')
+                  .matches(/^[0-9]+$/, 'Solo números'),
+              })
+            )
+            .max(3, 'Máximo 3 registros')
+        : yup.array().optional(),
   })
-}
 
-const defaultStockholder = {
-  name: '',
-  dniType: 'V',
-  dniNumber: '',
-  percentage: '',
-  cargo: '',
-  esPep: 'NO',
-  relatedWithPep: 'NO',
-  nationality: 'VENEZOLANO',
-  address: '',
-  entityName: '',
-  position: '',
-  country: '',
-  relatedIdentification: '',
-  dni: '',
-}
-
-const defaultLegalRep = {
-  name: '',
-  dniType: 'V',
-  dniNumber: '',
-  cargo: '',
-  condition: '',
-  esPep: 'NO',
-  relatedWithPep: 'NO',
-  nationality: 'VENEZOLANO',
-  address: '',
-  dni: '',
-}
-
-const defaultProvider = { name: '', location: '' }
-const defaultClient = { name: '', location: '' }
-const defaultCompany = {
-  name: '',
-  activity: '',
-  rifType: 'J',
-  rifNumber: '',
-  rif: '',
-}
-const defaultBank = {
-  institution: '',
-  accountNumber: '',
-  productType: '',
-  averageAmount: '',
-}
-
-const initialStockholders = processArrayIds(
-  wizard.state.value.formData.financialInformation?.stockholders,
-  'dni',
-  'dniType',
-  'dniNumber'
-) || [defaultStockholder]
-
-const initialLegal = processArrayIds(
-  wizard.state.value.formData.financialInformation?.legalRepresentatives,
-  'dni',
-  'dniType',
-  'dniNumber'
-) || [defaultLegalRep]
-
-const initialRelated = processArrayIds(
-  wizard.state.value.formData.financialInformation?.relatedCompanies,
-  'rif',
-  'rifType',
-  'rifNumber'
-) || [defaultCompany]
-
-const initialJurídicaProviders =
-  wizard.state.value.formData.financialInformation?.providers?.length > 0
-    ? wizard.state.value.formData.financialInformation?.providers
-    : [defaultProvider]
-
-const initialJurídicaClients =
-  wizard.state.value.formData.financialInformation?.clients?.length > 0
-    ? wizard.state.value.formData.financialInformation?.clients
-    : [defaultClient]
-
-const initialBusinessProviders =
-  wizard.state.value.formData.financialInformation?.business?.providers
-    ?.length > 0
-    ? wizard.state.value.formData.financialInformation?.business?.providers
-    : [defaultProvider]
-
-const initialBusinessClients =
-  wizard.state.value.formData.financialInformation?.business?.clients?.length >
-  0
-    ? wizard.state.value.formData.financialInformation?.business?.clients
-    : [defaultClient]
-
-const initialBankReference =
-  wizard.state.value.formData.financialInformation?.bankReference || defaultBank
-
-const { handleSubmit, errors, defineField, values } = useForm({
-  validationSchema: schema,
-  initialValues: {
-    economicActivity:
-      wizard.state.value.formData.financialInformation?.economicActivity || '',
-    specificActivity:
-      wizard.state.value.formData.financialInformation?.specificActivity || '',
-    incomeSource:
-      wizard.state.value.formData.financialInformation?.incomeSource || [],
-
-    company: {
-      name:
-        wizard.state.value.formData.financialInformation?.company?.name || '',
-      rifType: companyRifData.type,
-      rifNumber: companyRifData.number,
-      remuneration:
-        wizard.state.value.formData.financialInformation?.company
-          ?.remuneration || '',
-      rol: wizard.state.value.formData.financialInformation?.company?.rol || '',
-      branch:
-        wizard.state.value.formData.financialInformation?.company?.branch || '',
-      address:
-        wizard.state.value.formData.financialInformation?.company?.address ||
-        '',
-      phone:
-        wizard.state.value.formData.financialInformation?.company?.phone || '',
-    },
-
-    business: {
-      name:
-        wizard.state.value.formData.financialInformation?.business?.name || '',
-      rifType: businessRifData.type,
-      rifNumber: businessRifData.number,
-      fiscalAddress:
-        wizard.state.value.formData.financialInformation?.business
-          ?.fiscalAddress || '',
-      income:
-        wizard.state.value.formData.financialInformation?.business?.income ||
-        '',
-      constitutionDate:
-        wizard.state.value.formData.financialInformation?.business
-          ?.constitutionDate || '',
-      registerData:
-        wizard.state.value.formData.financialInformation?.business
-          ?.registerData || '',
-      branch:
-        wizard.state.value.formData.financialInformation?.business?.branch ||
-        '',
-      phone:
-        wizard.state.value.formData.financialInformation?.business?.phone || '',
-      providers: initialBusinessProviders,
-      clients: initialBusinessClients,
-    },
-
-    otherIncomeSource:
-      wizard.state.value.formData.financialInformation?.otherIncomeSource || '',
-    otherIncomeAmount:
-      wizard.state.value.formData.financialInformation?.otherIncomeAmount || '',
-
-    monthlyIncome:
-      wizard.state.value.formData.financialInformation?.monthlyIncome || '',
-    monthlySales:
-      wizard.state.value.formData.financialInformation?.monthlySales || '',
-    monthlyExpenses:
-      wizard.state.value.formData.financialInformation?.monthlyExpenses || '',
-    islrYear: wizard.state.value.formData.financialInformation?.islrYear || '',
-    islrAmount:
-      wizard.state.value.formData.financialInformation?.islrAmount || '',
-
-    bankReference: initialBankReference,
-
-    stockholders: initialStockholders,
-    legalRepresentatives: initialLegal,
-    providers: initialJurídicaProviders,
-    clients: initialJurídicaClients,
-    relatedCompanies: initialRelated,
-  },
-})
-
-const [economicActivity] = defineField('economicActivity')
-const [specificActivity] = defineField('specificActivity')
-const [incomeSource] = defineField('incomeSource')
-
-const [companyName] = defineField('company.name')
-const [companyRifType] = defineField('company.rifType')
-const [companyRifNumber] = defineField('company.rifNumber')
-const [companyRemuneration] = defineField('company.remuneration')
-const [companyRol] = defineField('company.rol')
-const [companyBranch] = defineField('company.branch')
-const [companyAddress] = defineField('company.address')
-const [companyPhone] = defineField('company.phone')
-
-const [businessName] = defineField('business.name')
-const [businessRifType] = defineField('business.rifType')
-const [businessRifNumber] = defineField('business.rifNumber')
-const [businessFiscalAddress] = defineField('business.fiscalAddress')
-const [businessIncome] = defineField('business.income')
-const [businessConstitutionDate] = defineField('business.constitutionDate')
-const [businessRegisterData] = defineField('business.registerData')
-const [businessBranch] = defineField('business.branch')
-const [businessPhone] = defineField('business.phone')
-
-const [otherIncomeSource] = defineField('otherIncomeSource')
-const [otherIncomeAmount] = defineField('otherIncomeAmount')
-
-const [monthlyIncome] = defineField('monthlyIncome')
-const [monthlySales] = defineField('monthlySales')
-const [monthlyExpenses] = defineField('monthlyExpenses')
-const [islrYear] = defineField('islrYear')
-const [islrAmount] = defineField('islrAmount')
-
-const [bankInstitution] = defineField('bankReference.institution')
-const [bankProductType] = defineField('bankReference.productType')
-const [bankAccountNumber] = defineField('bankReference.accountNumber')
-const [bankAverageAmount] = defineField('bankReference.averageAmount')
-
-const {
-  fields: stockholderFields,
-  push: addStockholder,
-  remove: removeStockholder,
-} = useFieldArray('stockholders')
-const {
-  fields: legalFields,
-  push: addLegal,
-  remove: removeLegal,
-} = useFieldArray('legalRepresentatives')
-const {
-  fields: jurídicaProviderFields,
-  push: addJurídicaProvider,
-  remove: removeJurídicaProvider,
-} = useFieldArray('providers')
-const {
-  fields: jurídicaClientFields,
-  push: addJurídicaClient,
-  remove: removeJurídicaClient,
-} = useFieldArray('clients')
-const {
-  fields: companyFields,
-  push: addCompany,
-  remove: removeCompany,
-} = useFieldArray('relatedCompanies')
-
-const {
-  fields: businessProviderFields,
-  push: addBusinessProvider,
-  remove: removeBusinessProvider,
-} = useFieldArray('business.providers')
-const {
-  fields: businessClientFields,
-  push: addBusinessClient,
-  remove: removeBusinessClient,
-} = useFieldArray('business.clients')
-
-const handleAddStockholder = () => {
-  if (stockholderFields.value.length < 3)
-    addStockholder({ ...defaultStockholder })
-}
-const handleAddLegal = () => {
-  if (legalFields.value.length < 3) addLegal({ ...defaultLegalRep })
-}
-const handleAddJurídicaProvider = () => {
-  if (jurídicaProviderFields.value.length < 3)
-    addJurídicaProvider({ ...defaultProvider })
-}
-const handleAddJurídicaClient = () => {
-  if (jurídicaClientFields.value.length < 3)
-    addJurídicaClient({ ...defaultClient })
-}
-const handleAddCompany = () => {
-  if (companyFields.value.length < 3) addCompany({ ...defaultCompany })
-}
-
-const handleAddBusinessProvider = () => {
-  if (businessProviderFields.value.length < 3)
-    addBusinessProvider({ ...defaultProvider })
-}
-const handleAddBusinessClient = () => {
-  if (businessClientFields.value.length < 3)
-    addBusinessClient({ ...defaultClient })
-}
-
-const validate = handleSubmit((values) => {
-  const payload = { ...values }
-
-  if (type === 'persona-natural') {
-    if (values.incomeSource?.includes('dependencia')) {
-      if (values.company?.rifType && values.company?.rifNumber) {
-        payload.company.rif = `${values.company.rifType}${values.company.rifNumber}`
-      }
-    }
-    if (values.incomeSource?.includes('propio')) {
-      if (values.business?.rifType && values.business?.rifNumber) {
-        payload.business.rif = `${values.business.rifType}${values.business.rifNumber}`
-      }
-    }
+  const splitId = (val: string) => {
+    if (!val) return { type: 'J', number: '' }
+    return { type: val.charAt(0), number: val.slice(1) }
   }
 
-  if (type === 'persona-juridica') {
-    payload.stockholders = values.stockholders.map((s: any) => ({
-      ...s,
-      dni: `${s.dniType}${s.dniNumber}`,
-    }))
-    payload.legalRepresentatives = values.legalRepresentatives.map(
-      (l: any) => ({
+  const companyRifData = splitId(wizard.state.value.formData.financialInformation?.company?.rif)
+
+  const businessRifData = splitId(wizard.state.value.formData.financialInformation?.business?.rif)
+
+  const processArrayIds = (arr: any[], idField: string, typeField: string, numField: string) => {
+    if (!arr || arr.length === 0) return null
+    return arr.map((item) => {
+      if (item[idField] && !item[numField]) {
+        const split = splitId(item[idField])
+        return { ...item, [typeField]: split.type, [numField]: split.number }
+      }
+      return item
+    })
+  }
+
+  const defaultStockholder = {
+    name: '',
+    dniType: 'V',
+    dniNumber: '',
+    percentage: '',
+    cargo: '',
+    esPep: 'NO',
+    relatedWithPep: 'NO',
+    nationality: 'VENEZOLANO',
+    address: '',
+    entityName: '',
+    position: '',
+    country: '',
+    relatedIdentification: '',
+    dni: '',
+  }
+
+  const defaultLegalRep = {
+    name: '',
+    dniType: 'V',
+    dniNumber: '',
+    cargo: '',
+    condition: '',
+    esPep: 'NO',
+    relatedWithPep: 'NO',
+    nationality: 'VENEZOLANO',
+    address: '',
+    dni: '',
+  }
+
+  const defaultProvider = { name: '', location: '' }
+  const defaultClient = { name: '', location: '' }
+  const defaultCompany = {
+    name: '',
+    activity: '',
+    rifType: 'J',
+    rifNumber: '',
+    rif: '',
+  }
+  const defaultBank = {
+    institution: '',
+    accountNumber: '',
+    productType: '',
+    averageAmount: '',
+  }
+
+  const initialStockholders = processArrayIds(
+    wizard.state.value.formData.financialInformation?.stockholders,
+    'dni',
+    'dniType',
+    'dniNumber'
+  ) || [defaultStockholder]
+
+  const initialLegal = processArrayIds(
+    wizard.state.value.formData.financialInformation?.legalRepresentatives,
+    'dni',
+    'dniType',
+    'dniNumber'
+  ) || [defaultLegalRep]
+
+  const initialRelated = processArrayIds(
+    wizard.state.value.formData.financialInformation?.relatedCompanies,
+    'rif',
+    'rifType',
+    'rifNumber'
+  ) || [defaultCompany]
+
+  const initialJurídicaProviders =
+    wizard.state.value.formData.financialInformation?.providers?.length > 0
+      ? wizard.state.value.formData.financialInformation?.providers
+      : [defaultProvider]
+
+  const initialJurídicaClients =
+    wizard.state.value.formData.financialInformation?.clients?.length > 0
+      ? wizard.state.value.formData.financialInformation?.clients
+      : [defaultClient]
+
+  const initialBusinessProviders =
+    wizard.state.value.formData.financialInformation?.business?.providers?.length > 0
+      ? wizard.state.value.formData.financialInformation?.business?.providers
+      : [defaultProvider]
+
+  const initialBusinessClients =
+    wizard.state.value.formData.financialInformation?.business?.clients?.length > 0
+      ? wizard.state.value.formData.financialInformation?.business?.clients
+      : [defaultClient]
+
+  const initialBankReference =
+    wizard.state.value.formData.financialInformation?.bankReference || defaultBank
+
+  const { handleSubmit, errors, defineField, values } = useForm({
+    validationSchema: schema,
+    initialValues: {
+      economicActivity: wizard.state.value.formData.financialInformation?.economicActivity || '',
+      specificActivity: wizard.state.value.formData.financialInformation?.specificActivity || '',
+      incomeSource: wizard.state.value.formData.financialInformation?.incomeSource || [],
+
+      company: {
+        name: wizard.state.value.formData.financialInformation?.company?.name || '',
+        rifType: companyRifData.type,
+        rifNumber: companyRifData.number,
+        remuneration: wizard.state.value.formData.financialInformation?.company?.remuneration || '',
+        rol: wizard.state.value.formData.financialInformation?.company?.rol || '',
+        branch: wizard.state.value.formData.financialInformation?.company?.branch || '',
+        address: wizard.state.value.formData.financialInformation?.company?.address || '',
+        phone: wizard.state.value.formData.financialInformation?.company?.phone || '',
+      },
+
+      business: {
+        name: wizard.state.value.formData.financialInformation?.business?.name || '',
+        rifType: businessRifData.type,
+        rifNumber: businessRifData.number,
+        fiscalAddress:
+          wizard.state.value.formData.financialInformation?.business?.fiscalAddress || '',
+        income: wizard.state.value.formData.financialInformation?.business?.income || '',
+        constitutionDate:
+          wizard.state.value.formData.financialInformation?.business?.constitutionDate || '',
+        registerData:
+          wizard.state.value.formData.financialInformation?.business?.registerData || '',
+        branch: wizard.state.value.formData.financialInformation?.business?.branch || '',
+        phone: wizard.state.value.formData.financialInformation?.business?.phone || '',
+        providers: initialBusinessProviders,
+        clients: initialBusinessClients,
+      },
+
+      otherIncomeSource: wizard.state.value.formData.financialInformation?.otherIncomeSource || '',
+      otherIncomeAmount: wizard.state.value.formData.financialInformation?.otherIncomeAmount || '',
+
+      monthlyIncome: wizard.state.value.formData.financialInformation?.monthlyIncome || '',
+      monthlySales: wizard.state.value.formData.financialInformation?.monthlySales || '',
+      monthlyExpenses: wizard.state.value.formData.financialInformation?.monthlyExpenses || '',
+      islrYear: wizard.state.value.formData.financialInformation?.islrYear || '',
+      islrAmount: wizard.state.value.formData.financialInformation?.islrAmount || '',
+
+      bankReference: initialBankReference,
+
+      stockholders: initialStockholders,
+      legalRepresentatives: initialLegal,
+      providers: initialJurídicaProviders,
+      clients: initialJurídicaClients,
+      relatedCompanies: initialRelated,
+    },
+  })
+
+  const [economicActivity] = defineField('economicActivity')
+  const [specificActivity] = defineField('specificActivity')
+  const [incomeSource] = defineField('incomeSource')
+
+  const [companyName] = defineField('company.name')
+  const [companyRifType] = defineField('company.rifType')
+  const [companyRifNumber] = defineField('company.rifNumber')
+  const [companyRemuneration] = defineField('company.remuneration')
+  const [companyRol] = defineField('company.rol')
+  const [companyBranch] = defineField('company.branch')
+  const [companyAddress] = defineField('company.address')
+  const [companyPhone] = defineField('company.phone')
+
+  const [businessName] = defineField('business.name')
+  const [businessRifType] = defineField('business.rifType')
+  const [businessRifNumber] = defineField('business.rifNumber')
+  const [businessFiscalAddress] = defineField('business.fiscalAddress')
+  const [businessIncome] = defineField('business.income')
+  const [businessConstitutionDate] = defineField('business.constitutionDate')
+  const [businessRegisterData] = defineField('business.registerData')
+  const [businessBranch] = defineField('business.branch')
+  const [businessPhone] = defineField('business.phone')
+
+  const [otherIncomeSource] = defineField('otherIncomeSource')
+  const [otherIncomeAmount] = defineField('otherIncomeAmount')
+
+  const [monthlyIncome] = defineField('monthlyIncome')
+  const [monthlySales] = defineField('monthlySales')
+  const [monthlyExpenses] = defineField('monthlyExpenses')
+  const [islrYear] = defineField('islrYear')
+  const [islrAmount] = defineField('islrAmount')
+
+  const [bankInstitution] = defineField('bankReference.institution')
+  const [bankProductType] = defineField('bankReference.productType')
+  const [bankAccountNumber] = defineField('bankReference.accountNumber')
+  const [bankAverageAmount] = defineField('bankReference.averageAmount')
+
+  const {
+    fields: stockholderFields,
+    push: addStockholder,
+    remove: removeStockholder,
+  } = useFieldArray('stockholders')
+  const {
+    fields: legalFields,
+    push: addLegal,
+    remove: removeLegal,
+  } = useFieldArray('legalRepresentatives')
+  const {
+    fields: jurídicaProviderFields,
+    push: addJurídicaProvider,
+    remove: removeJurídicaProvider,
+  } = useFieldArray('providers')
+  const {
+    fields: jurídicaClientFields,
+    push: addJurídicaClient,
+    remove: removeJurídicaClient,
+  } = useFieldArray('clients')
+  const {
+    fields: companyFields,
+    push: addCompany,
+    remove: removeCompany,
+  } = useFieldArray('relatedCompanies')
+
+  const {
+    fields: businessProviderFields,
+    push: addBusinessProvider,
+    remove: removeBusinessProvider,
+  } = useFieldArray('business.providers')
+  const {
+    fields: businessClientFields,
+    push: addBusinessClient,
+    remove: removeBusinessClient,
+  } = useFieldArray('business.clients')
+
+  const handleAddStockholder = () => {
+    if (stockholderFields.value.length < 3) addStockholder({ ...defaultStockholder })
+  }
+  const handleAddLegal = () => {
+    if (legalFields.value.length < 3) addLegal({ ...defaultLegalRep })
+  }
+  const handleAddJurídicaProvider = () => {
+    if (jurídicaProviderFields.value.length < 3) addJurídicaProvider({ ...defaultProvider })
+  }
+  const handleAddJurídicaClient = () => {
+    if (jurídicaClientFields.value.length < 3) addJurídicaClient({ ...defaultClient })
+  }
+  const handleAddCompany = () => {
+    if (companyFields.value.length < 3) addCompany({ ...defaultCompany })
+  }
+
+  const handleAddBusinessProvider = () => {
+    if (businessProviderFields.value.length < 3) addBusinessProvider({ ...defaultProvider })
+  }
+  const handleAddBusinessClient = () => {
+    if (businessClientFields.value.length < 3) addBusinessClient({ ...defaultClient })
+  }
+
+  const validate = handleSubmit((values) => {
+    const payload = { ...values }
+
+    if (type === 'persona-natural') {
+      if (values.incomeSource?.includes('dependencia')) {
+        if (values.company?.rifType && values.company?.rifNumber) {
+          payload.company.rif = `${values.company.rifType}${values.company.rifNumber}`
+        }
+      }
+      if (values.incomeSource?.includes('propio')) {
+        if (values.business?.rifType && values.business?.rifNumber) {
+          payload.business.rif = `${values.business.rifType}${values.business.rifNumber}`
+        }
+      }
+    }
+
+    if (type === 'persona-juridica') {
+      payload.stockholders = values.stockholders.map((s: any) => ({
+        ...s,
+        dni: `${s.dniType}${s.dniNumber}`,
+      }))
+      payload.legalRepresentatives = values.legalRepresentatives.map((l: any) => ({
         ...l,
         dni: `${l.dniType}${l.dniNumber}`,
-      })
-    )
-    payload.relatedCompanies = values.relatedCompanies.map((c: any) => ({
-      ...c,
-      rif: `${c.rifType}${c.rifNumber}`,
-    }))
-  }
+      }))
+      payload.relatedCompanies = values.relatedCompanies.map((c: any) => ({
+        ...c,
+        rif: `${c.rifType}${c.rifNumber}`,
+      }))
+    }
 
-  wizard.updateFormData({ financialInformation: payload })
-  wizard.nextStep()
-})
+    wizard.updateFormData({ financialInformation: payload })
+    wizard.nextStep()
+  })
 
-defineExpose({ validate })
+  defineExpose({ validate })
 </script>
 
 <template>
@@ -662,10 +599,7 @@ defineExpose({ validate })
       <FormError v-if="errors.incomeSource" :error="errors.incomeSource" />
 
       <div class="form-section">
-        <div
-          v-if="incomeSource.includes('dependencia')"
-          class="form-subsection"
-        >
+        <div v-if="incomeSource.includes('dependencia')" class="form-subsection">
           <h5 class="form-subsection-title">Relación de dependencia</h5>
           <FormBaseLayout>
             <FormBaseInput
@@ -731,11 +665,7 @@ defineExpose({ validate })
               :comment="'INCOMES'"
             />
 
-            <FormBaseInput
-              name="company.address"
-              label="Dirección"
-              v-model="companyAddress"
-            />
+            <FormBaseInput name="company.address" label="Dirección" v-model="companyAddress" />
 
             <FormPhoneInput
               name="company.phone"
@@ -758,11 +688,7 @@ defineExpose({ validate })
             />
 
             <div class="w-full">
-              <FormBaseLabel
-                htmlFor="business.rifNumber"
-                label="RIF"
-                required
-              />
+              <FormBaseLabel htmlFor="business.rifNumber" label="RIF" required />
               <div class="flex gap-1">
                 <div class="w-16 shrink-0">
                   <FormBaseSelect
@@ -783,9 +709,7 @@ defineExpose({ validate })
                 </div>
               </div>
               <FormError
-                v-if="
-                  !errors['business.rifNumber'] && errors['business.rifType']
-                "
+                v-if="!errors['business.rifNumber'] && errors['business.rifType']"
                 error="Seleccione tipo"
               />
             </div>
@@ -1006,9 +930,7 @@ defineExpose({ validate })
       </FormBaseLayout>
 
       <div class="form-subsection --alt flex flex-col">
-        <h6 class="form-subsection-title --alt">
-          Accionistas / Junta directiva
-        </h6>
+        <h6 class="form-subsection-title --alt">Accionistas / Junta directiva</h6>
 
         <div class="w-full">
           <div
@@ -1134,9 +1056,7 @@ defineExpose({ validate })
                       :name="`stockholders[${i}].relatedIdentification`"
                       label="Identificación del relacionado (En caso de aplicar)"
                       v-model="field.value.relatedIdentification"
-                      :error-message="
-                        errors[`stockholders[${i}].relatedIdentification`]
-                      "
+                      :error-message="errors[`stockholders[${i}].relatedIdentification`]"
                     />
                   </div>
                 </div>
@@ -1193,9 +1113,7 @@ defineExpose({ validate })
                       :name="`legalRepresentatives[${i}].dniType`"
                       v-model="field.value.dniType"
                       :options="docTypeOptions"
-                      :error-message="
-                        errors[`legalRepresentatives[${i}].dniType`]
-                      "
+                      :error-message="errors[`legalRepresentatives[${i}].dniType`]"
                     />
                   </div>
                   <div class="w-full">
@@ -1203,9 +1121,7 @@ defineExpose({ validate })
                       :name="`legalRepresentatives[${i}].dniNumber`"
                       v-model="field.value.dniNumber"
                       type="tel"
-                      :error-message="
-                        errors[`legalRepresentatives[${i}].dniNumber`]
-                      "
+                      :error-message="errors[`legalRepresentatives[${i}].dniNumber`]"
                     />
                   </div>
                 </div>
@@ -1231,9 +1147,7 @@ defineExpose({ validate })
                 v-model="field.value.nationality"
                 label="Nacionalidad"
                 :options="nationalityOptions"
-                :error-message="
-                  errors[`legalRepresentatives[${i}].nationality`]
-                "
+                :error-message="errors[`legalRepresentatives[${i}].nationality`]"
                 required
               />
 
@@ -1258,9 +1172,7 @@ defineExpose({ validate })
                     :name="`legalRepresentatives[${i}].relatedWithPep`"
                     label="¿Relacionado con PEP?"
                     v-model="field.value.relatedWithPep"
-                    :error-message="
-                      errors[`legalRepresentatives[${i}].relatedWithPep`]
-                    "
+                    :error-message="errors[`legalRepresentatives[${i}].relatedWithPep`]"
                     :options="relatedWithPepOptions"
                   />
                 </div>
@@ -1402,11 +1314,7 @@ defineExpose({ validate })
               />
 
               <div class="w-full">
-                <FormBaseLabel
-                  :htmlFor="`relatedCompanies[${i}].rifNumber`"
-                  label="RIF"
-                  required
-                />
+                <FormBaseLabel :htmlFor="`relatedCompanies[${i}].rifNumber`" label="RIF" required />
                 <div class="flex gap-1">
                   <div class="w-16 shrink-0">
                     <FormBaseSelect
@@ -1420,9 +1328,7 @@ defineExpose({ validate })
                     <FormBaseInput
                       :name="`relatedCompanies[${i}].rifNumber`"
                       v-model="field.value.rifNumber"
-                      :error-message="
-                        errors[`relatedCompanies[${i}].rifNumber`]
-                      "
+                      :error-message="errors[`relatedCompanies[${i}].rifNumber`]"
                       type="tel"
                     />
                   </div>

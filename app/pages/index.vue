@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { metadata } from '@/assets/data/metadata'
-import { useJsonLd } from '~/composables/useJsonLd'
-import { jsonld } from '~/assets/data/jsonld'
+  import { metadata } from '@/assets/data/metadata'
+  import { useJsonLd } from '~/composables/useJsonLd'
+  import { jsonld } from '~/assets/data/jsonld'
 
-useSeoMeta(metadata.home)
+  useSeoMeta(metadata.home)
 
-useJsonLd(jsonld.home)
+  useJsonLd(jsonld.home)
 </script>
 
 <template>

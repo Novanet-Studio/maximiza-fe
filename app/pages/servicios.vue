@@ -1,16 +1,13 @@
 <script setup lang="ts">
-import { metadata } from '@/assets/data/metadata'
-import { motion } from 'motion-v'
-import {
-  generalContainerVariants,
-  generalItemVariants,
-} from '~/assets/animations/motion'
-import { useJsonLd } from '~/composables/useJsonLd'
-import { jsonld } from '~/assets/data/jsonld'
+  import { metadata } from '@/assets/data/metadata'
+  import { motion } from 'motion-v'
+  import { generalContainerVariants, generalItemVariants } from '~/assets/animations/motion'
+  import { useJsonLd } from '~/composables/useJsonLd'
+  import { jsonld } from '~/assets/data/jsonld'
 
-useSeoMeta(metadata.servicios)
+  useSeoMeta(metadata.servicios)
 
-useJsonLd(jsonld.services)
+  useJsonLd(jsonld.services)
 </script>
 
 <template>
@@ -47,27 +44,22 @@ useJsonLd(jsonld.services)
       >
         <h2 class="text-left">Apertura Privada de Cuenta de Corretaje</h2>
 
-        <h3 class="mb-8 text-left">
-          (Inversionistas Corporativos e Individuales)
-        </h3>
+        <h3 class="mb-8 text-left">(Inversionistas Corporativos e Individuales)</h3>
 
         <p class="text-gray text-left text-base lg:text-lg">
-          Comience su recorrido de inversión y diversificación con el respaldo,
-          la discreción y la solidez institucional de Maximiza. En estricto y
-          riguroso apego al marco regulatorio tutelado por la Superintendencia
-          Nacional de Valores (SUNAVAL), hemos diseñado un proceso de apertura
-          de cuentas fluido, transparente y de confidencialidad extrema.
+          Comience su recorrido de inversión y diversificación con el respaldo, la discreción y la
+          solidez institucional de Maximiza. En estricto y riguroso apego al marco regulatorio
+          tutelado por la Superintendencia Nacional de Valores (SUNAVAL), hemos diseñado un proceso
+          de apertura de cuentas fluido, transparente y de confidencialidad extrema.
           <br />
           <br />
-          Para proceder con la integración formal de su expediente fiduciario,
-          le invitamos a descargar y evaluar nuestro Contrato de Cuenta de
-          Corretaje Bursátil, junto con la documentación estándar de
-          Identificación del Inversor. Nuestro equipo élite de asesores
-          patrimoniales le acompañará y guiará de manera personalizada en cada
-          paso del proceso: desde la validación de la Ficha de Registro de
-          Firmas hasta la delegación del Poder de manejo de cuenta custodia.
-          Nuestro objetivo primordial es garantizar que su incursión estratégica
-          en el mercado de capitales sea expedita, tecnológicamente segura y
+          Para proceder con la integración formal de su expediente fiduciario, le invitamos a
+          descargar y evaluar nuestro Contrato de Cuenta de Corretaje Bursátil, junto con la
+          documentación estándar de Identificación del Inversor. Nuestro equipo élite de asesores
+          patrimoniales le acompañará y guiará de manera personalizada en cada paso del proceso:
+          desde la validación de la Ficha de Registro de Firmas hasta la delegación del Poder de
+          manejo de cuenta custodia. Nuestro objetivo primordial es garantizar que su incursión
+          estratégica en el mercado de capitales sea expedita, tecnológicamente segura y
           absolutamente blindada desde la perspectiva legal y jurídica.
         </p>
       </motion.header>
@@ -92,14 +84,9 @@ useJsonLd(jsonld.services)
             />
           </div>
 
-          <h3 class="text-black-alt pb-8 text-2xl font-extrabold">
-            Persona natural
-          </h3>
+          <h3 class="text-black-alt pb-8 text-2xl font-extrabold">Persona natural</h3>
 
-          <NuxtLink
-            title="Quiero registrarme"
-            :to="'/registro/persona-natural'"
-          >
+          <NuxtLink title="Quiero registrarme" :to="'/registro/persona-natural'">
             <UiButton
               :text="'Quiero registrarme'"
               :icon="'arrow-right-to-bracket'"
@@ -125,14 +112,9 @@ useJsonLd(jsonld.services)
             />
           </div>
 
-          <h3 class="text-black-alt pb-8 text-2xl font-extrabold">
-            Persona jurídica
-          </h3>
+          <h3 class="text-black-alt pb-8 text-2xl font-extrabold">Persona jurídica</h3>
 
-          <NuxtLink
-            title="Quiero registrarme"
-            :to="'/registro/persona-juridica'"
-          >
+          <NuxtLink title="Quiero registrarme" :to="'/registro/persona-juridica'">
             <UiButton
               :text="'Quiero registrarme'"
               :icon="'arrow-right-to-bracket'"

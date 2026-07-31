@@ -15,8 +15,7 @@ export default defineEventHandler(async (event) => {
   let browser
 
   try {
-    const isProduction =
-      process.env.NETLIFY || process.env.NODE_ENV === 'production'
+    const isProduction = process.env.NETLIFY || process.env.NODE_ENV === 'production'
 
     if (isProduction) {
       chromium.setHeadlessMode = true

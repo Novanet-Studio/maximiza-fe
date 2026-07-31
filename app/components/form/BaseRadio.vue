@@ -1,38 +1,36 @@
 <script setup lang="ts">
-interface Option {
-  value: string | number | boolean
-  label: string
-}
-
-interface Props {
-  modelValue?: string | number | boolean
-  name: string
-  style?: string
-  label?: string
-  options: Option[]
-  errorMessage?: string
-  disabled?: boolean
-  row?: boolean
-  required?: boolean
-}
-
-const props = defineProps<Props>()
-const emit = defineEmits(['update:modelValue'])
-
-const handleChange = (value: string | number | boolean) => {
-  if (!props.disabled) {
-    emit('update:modelValue', value)
+  interface Option {
+    value: string | number | boolean
+    label: string
   }
-}
+
+  interface Props {
+    modelValue?: string | number | boolean
+    name: string
+    style?: string
+    label?: string
+    options: Option[]
+    errorMessage?: string
+    disabled?: boolean
+    row?: boolean
+    required?: boolean
+  }
+
+  const props = defineProps<Props>()
+  const emit = defineEmits(['update:modelValue'])
+
+  const handleChange = (value: string | number | boolean) => {
+    if (!props.disabled) {
+      emit('update:modelValue', value)
+    }
+  }
 </script>
 
 <template>
   <div class="w-full">
     <FormBaseLabel :html-for="name" :label="label" :required="required" />
 
-    <div
-      :class="`grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-3 ${style} gap-4`"
-    >
+    <div :class="`grid grid-cols-1 items-start md:grid-cols-2 lg:grid-cols-3 ${style} gap-4`">
       <label
         v-for="option in options"
         :key="String(option.value)"

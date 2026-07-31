@@ -1,42 +1,42 @@
 <script setup lang="ts">
-import BaseLabel from './BaseLabel.vue'
-import FormError from './Error.vue'
+  import BaseLabel from './BaseLabel.vue'
+  import FormError from './Error.vue'
 
-interface Props {
-  modelValue?: string | number
-  name: string
-  label?: string
-  type?: 'text' | 'email' | 'number' | 'date' | 'password' | 'tel'
-  placeholder?: string
-  errorMessage?: string
-  min?: any
-  max?: any
-  maxlength?: number | string
-  inputmode?: 'text' | 'numeric' | 'tel' | 'email' | 'decimal'
-  subLabel?: string
-  subLabelType?: string
-  comment?: string
-  disabled?: boolean
-  required?: boolean
-}
+  interface Props {
+    modelValue?: string | number
+    name: string
+    label?: string
+    type?: 'text' | 'email' | 'number' | 'date' | 'password' | 'tel'
+    placeholder?: string
+    errorMessage?: string
+    min?: any
+    max?: any
+    maxlength?: number | string
+    inputmode?: 'text' | 'numeric' | 'tel' | 'email' | 'decimal'
+    subLabel?: string
+    subLabelType?: string
+    comment?: string
+    disabled?: boolean
+    required?: boolean
+  }
 
-const COMMENT_TYPES: Record<string, string> = {
-  INCOMES: 'El monto indicado debe coincidir con su constancia de ingreso',
-  RIF_REQUIRED:
-    'Ingresar la información exacta como aparece en su <b>Registro de Información fiscal</b>',
-}
+  const COMMENT_TYPES: Record<string, string> = {
+    INCOMES: 'El monto indicado debe coincidir con su constancia de ingreso',
+    RIF_REQUIRED:
+      'Ingresar la información exacta como aparece en su <b>Registro de Información fiscal</b>',
+  }
 
-const props = withDefaults(defineProps<Props>(), {
-  type: 'text',
-  modelValue: '',
-})
+  const props = withDefaults(defineProps<Props>(), {
+    type: 'text',
+    modelValue: '',
+  })
 
-const emit = defineEmits(['update:modelValue', 'blur', 'focus'])
+  const emit = defineEmits(['update:modelValue', 'blur', 'focus'])
 
-const handleInput = (event: Event) => {
-  const target = event.target as HTMLInputElement
-  emit('update:modelValue', target.value)
-}
+  const handleInput = (event: Event) => {
+    const target = event.target as HTMLInputElement
+    emit('update:modelValue', target.value)
+  }
 </script>
 
 <template>
@@ -55,9 +55,7 @@ const handleInput = (event: Event) => {
       :name="name"
       :type="type"
       :value="modelValue"
-      :placeholder="
-        !placeholder ? (subLabelType === 'BS' ? 'Bs. 0,00' : '') : placeholder
-      "
+      :placeholder="!placeholder ? (subLabelType === 'BS' ? 'Bs. 0,00' : '') : placeholder"
       :disabled="disabled"
       :min="min"
       :max="max"

@@ -1,74 +1,74 @@
 <script setup lang="ts">
-import { motion } from 'motion-v'
-import { metadata } from '@/assets/data/metadata'
+  import { motion } from 'motion-v'
+  import { metadata } from '@/assets/data/metadata'
 
-import { useJsonLd } from '~/composables/useJsonLd'
-import { jsonld } from '~/assets/data/jsonld'
+  import { useJsonLd } from '~/composables/useJsonLd'
+  import { jsonld } from '~/assets/data/jsonld'
 
-import {
-  headerItemVariants,
-  generalContainerVariants,
-  generalItemVariants,
-} from '@/assets/animations/motion'
+  import {
+    headerItemVariants,
+    generalContainerVariants,
+    generalItemVariants,
+  } from '@/assets/animations/motion'
 
-const institutionalValues = ref([
-  {
-    label: 'Confianza',
-    description: 'fiduciaria integral',
-    image: '/images/pages/empresa/items/1.webp',
-  },
-  {
-    label: 'Responsabilidad',
-    description: 'patrimonial rigurosa',
-    image: '/images/pages/empresa/items/2.webp',
-  },
-  {
-    label: 'Compromiso',
-    description: 'analitico de excelencia',
-    image: '/images/pages/empresa/items/3.webp',
-  },
-  {
-    label: 'Pensamiento',
-    description: 'estrategico anticipado',
-    image: '/images/pages/empresa/items/4.webp',
-  },
-  {
-    label: 'Transparencia',
-    description: 'operativa absoluta',
-    image: '/images/pages/empresa/items/5.webp',
-  },
-])
+  const institutionalValues = ref([
+    {
+      label: 'Confianza',
+      description: 'fiduciaria integral',
+      image: '/images/pages/empresa/items/1.webp',
+    },
+    {
+      label: 'Responsabilidad',
+      description: 'patrimonial rigurosa',
+      image: '/images/pages/empresa/items/2.webp',
+    },
+    {
+      label: 'Compromiso',
+      description: 'analitico de excelencia',
+      image: '/images/pages/empresa/items/3.webp',
+    },
+    {
+      label: 'Pensamiento',
+      description: 'estrategico anticipado',
+      image: '/images/pages/empresa/items/4.webp',
+    },
+    {
+      label: 'Transparencia',
+      description: 'operativa absoluta',
+      image: '/images/pages/empresa/items/5.webp',
+    },
+  ])
 
-const alliesLogos = ref([
-  {
-    src: '/images/pages/empresa/allies/1.webp',
-    alt: 'Alianzas 1',
-  },
-  {
-    src: '/images/pages/empresa/allies/2.webp',
-    alt: 'Alianzas 2',
-  },
-  {
-    src: '/images/pages/empresa/allies/3.webp',
-    alt: 'Alianzas 3',
-  },
-  {
-    src: '/images/pages/empresa/allies/4.webp',
-    alt: 'Alianzas 4',
-  },
-  {
-    src: '/images/pages/empresa/allies/5.webp',
-    alt: 'Alianzas 5',
-  },
-  {
-    src: '/images/pages/empresa/allies/6.webp',
-    alt: 'Alianzas 6',
-  },
-])
+  const alliesLogos = ref([
+    {
+      src: '/images/pages/empresa/allies/1.webp',
+      alt: 'Alianzas 1',
+    },
+    {
+      src: '/images/pages/empresa/allies/2.webp',
+      alt: 'Alianzas 2',
+    },
+    {
+      src: '/images/pages/empresa/allies/3.webp',
+      alt: 'Alianzas 3',
+    },
+    {
+      src: '/images/pages/empresa/allies/4.webp',
+      alt: 'Alianzas 4',
+    },
+    {
+      src: '/images/pages/empresa/allies/5.webp',
+      alt: 'Alianzas 5',
+    },
+    {
+      src: '/images/pages/empresa/allies/6.webp',
+      alt: 'Alianzas 6',
+    },
+  ])
 
-useSeoMeta(metadata.empresa)
+  useSeoMeta(metadata.empresa)
 
-useJsonLd(jsonld.about)
+  useJsonLd(jsonld.about)
 </script>
 
 <template>
@@ -100,9 +100,7 @@ useJsonLd(jsonld.about)
       initial="hidden"
       animate="visible"
     >
-      <CommonSectionHeader
-        title="Banca de inversión y asesoría corporativa de clase mundial"
-      />
+      <CommonSectionHeader title="Banca de inversión y asesoría corporativa de clase mundial" />
 
       <div class="mt-6 flex w-full max-w-6xl flex-col gap-16 px-4 md:px-0">
         <motion.div
@@ -128,10 +126,10 @@ useJsonLd(jsonld.about)
             <p
               class="text-gray text-xl leading-[28px] md:text-base md:leading-[24px] lg:text-xl lg:leading-[28px]"
             >
-              Brindamos asesoría analítica exhaustiva a corporaciones nacionales
-              y entidades extranjeras en la intrincada valoración de empresas de
-              gran capitalización, estructuración de fusiones y adquisiciones
-              (M&A), y diseño de financiamientos a la medida.
+              Brindamos asesoría analítica exhaustiva a corporaciones nacionales y entidades
+              extranjeras en la intrincada valoración de empresas de gran capitalización,
+              estructuración de fusiones y adquisiciones (M&A), y diseño de financiamientos a la
+              medida.
             </p>
           </div>
         </motion.div>
@@ -153,18 +151,15 @@ useJsonLd(jsonld.about)
           <div
             class="from-white-alt2 z-0 -mt-30 flex w-full max-w-[940px] grow flex-col justify-center bg-linear-to-t to-white p-8 pt-40 md:m-0 md:-mr-31.25 md:bg-linear-to-r md:p-16 md:pr-36 md:pl-4 lg:h-[342px]"
           >
-            <h4
-              class="text-black-alt mb-2 text-xl leading-[22px] md:text-right"
-            >
+            <h4 class="text-black-alt mb-2 text-xl leading-[22px] md:text-right">
               Ecosistema de promoción financiera
             </h4>
             <p
               class="text-gray text-xl leading-[28px] md:text-right md:text-base md:leading-[24px] lg:text-xl lg:leading-[28px]"
             >
-              Nuestro ADN innovador nos ha llevado a participar activamente en
-              la cimentación de vehículos financieros líderes, tales como Silk &
-              CO (banca de inversión regional) y Vitral Advisors LLC (RIA
-              registrado en la SEC, Nueva York), lo que nos capacita para
+              Nuestro ADN innovador nos ha llevado a participar activamente en la cimentación de
+              vehículos financieros líderes, tales como Silk & CO (banca de inversión regional) y
+              Vitral Advisors LLC (RIA registrado en la SEC, Nueva York), lo que nos capacita para
               ofrecer soluciones transfronterizas sin fricciones.
             </p>
           </div>
@@ -229,9 +224,7 @@ useJsonLd(jsonld.about)
       whileInView="visible"
       :viewport="{ once: true }"
     >
-      <ul
-        class="container mx-auto flex w-full flex-col justify-center gap-4 md:flex-row lg:gap-12"
-      >
+      <ul class="container mx-auto flex w-full flex-col justify-center gap-4 md:flex-row lg:gap-12">
         <motion.li
           v-for="(value, index) in institutionalValues"
           :key="`empresa_item_${index}`"
@@ -252,24 +245,20 @@ useJsonLd(jsonld.about)
       initial="hidden"
       animate="visible"
     >
-      <div
-        class="mx-auto flex w-full flex-col items-center justify-center gap-8 md:flex-row"
-      >
+      <div class="mx-auto flex w-full flex-col items-center justify-center gap-8 md:flex-row">
         <div class="flex w-2/5 flex-col gap-4">
           <h3 class="text-black-alt text-right">
             Red global de <br />
             alianzas estratégicas
           </h3>
           <p class="text-gray text-right">
-            Nuestra solidez operativa se encuentra cimentada y respaldada en
-            décadas de relaciones formales e institucionales ininterrumpidas con
-            las firmas financieras más prestigiosas del hemisferio.
+            Nuestra solidez operativa se encuentra cimentada y respaldada en décadas de relaciones
+            formales e institucionales ininterrumpidas con las firmas financieras más prestigiosas
+            del hemisferio.
           </p>
         </div>
 
-        <div
-          class="`md:p-8 bg-white-alt grid grid-cols-3 gap-6 p-4 lg:p-12 xl:p-16"
-        >
+        <div class="`md:p-8 bg-white-alt grid grid-cols-3 gap-6 p-4 lg:p-12 xl:p-16">
           <motion.img
             v-for="(logo, index) in alliesLogos"
             :key="`empresa_allies_${index}`"

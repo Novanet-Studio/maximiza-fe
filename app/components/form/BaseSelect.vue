@@ -1,60 +1,55 @@
 <script setup lang="ts">
-import BaseLabel from './BaseLabel.vue'
-import FormError from './Error.vue'
+  import BaseLabel from './BaseLabel.vue'
+  import FormError from './Error.vue'
 
-interface Option {
-  value: string | number
-  label: string
-}
+  interface Option {
+    value: string | number
+    label: string
+  }
 
-interface Props {
-  modelValue?: string | number
-  name: string
-  label?: string
-  options: (string | Option)[]
-  placeholder?: string
-  errorMessage?: string
-  disabled?: boolean
-  comment?: string
-  required?: boolean
-}
+  interface Props {
+    modelValue?: string | number
+    name: string
+    label?: string
+    options: (string | Option)[]
+    placeholder?: string
+    errorMessage?: string
+    disabled?: boolean
+    comment?: string
+    required?: boolean
+  }
 
-const props = withDefaults(defineProps<Props>(), {
-  placeholder: 'Seleccione...',
-  options: () => [],
-})
-
-const emit = defineEmits(['update:modelValue', 'blur'])
-
-const normalizedOptions = computed(() => {
-  return props.options.map((opt) => {
-    if (typeof opt === 'object' && opt !== null) {
-      return opt as Option
-    }
-
-    return { value: opt, label: opt } as Option
+  const props = withDefaults(defineProps<Props>(), {
+    placeholder: 'Seleccione...',
+    options: () => [],
   })
-})
 
-const COMMENT_TYPES: Record<string, string> = {
-  INCOMES: 'El monto indicado debe coincidir con su constancia de ingreso',
-}
+  const emit = defineEmits(['update:modelValue', 'blur'])
 
-const handleChange = (event: Event) => {
-  const target = event.target as HTMLSelectElement
+  const normalizedOptions = computed(() => {
+    return props.options.map((opt) => {
+      if (typeof opt === 'object' && opt !== null) {
+        return opt as Option
+      }
 
-  emit('update:modelValue', target.value)
-}
+      return { value: opt, label: opt } as Option
+    })
+  })
+
+  const COMMENT_TYPES: Record<string, string> = {
+    INCOMES: 'El monto indicado debe coincidir con su constancia de ingreso',
+  }
+
+  const handleChange = (event: Event) => {
+    const target = event.target as HTMLSelectElement
+
+    emit('update:modelValue', target.value)
+  }
 </script>
 
 <template>
   <div class="w-full">
-    <BaseLabel
-      :html-for="name"
-      :label="label"
-      :required="required"
-      :error="errorMessage"
-    />
+    <BaseLabel :html-for="name" :label="label" :required="required" :error="errorMessage" />
 
     <div class="relative">
       <select
@@ -83,9 +78,7 @@ const handleChange = (event: Event) => {
         </option>
       </select>
 
-      <div
-        class="text-gray pointer-events-none absolute inset-y-0 right-0 flex items-center px-3"
-      >
+      <div class="text-gray pointer-events-none absolute inset-y-0 right-0 flex items-center px-3">
         <font-awesome-icon :icon="['fas', 'caret-down']" />
       </div>
     </div>

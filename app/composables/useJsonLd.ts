@@ -1,6 +1,4 @@
-export const useJsonLd = (
-  schema: Record<string, any> | Record<string, any>[]
-) => {
+export const useJsonLd = (schema: Record<string, any> | Record<string, any>[]) => {
   useHead({
     script: [
       {

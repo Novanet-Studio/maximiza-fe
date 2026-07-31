@@ -19,15 +19,11 @@ export const jsonld = {
       email: commonData.email,
       address: {
         '@type': 'PostalAddress',
-        streetAddress:
-          'Avenida Francisco de Miranda, Torre Europa, Piso 3, Oficinas 3-B3',
+        streetAddress: 'Avenida Francisco de Miranda, Torre Europa, Piso 3, Oficinas 3-B3',
         addressLocality: 'El Rosal, Caracas',
         addressCountry: 'VE',
       },
-      sameAs: [
-        'https://www.instagram.com/maximiza_ve/',
-        'https://twitter.com/maximiza_ve',
-      ],
+      sameAs: ['https://www.instagram.com/maximiza_ve/', 'https://twitter.com/maximiza_ve'],
     },
   },
   home: {
@@ -48,15 +44,11 @@ export const jsonld = {
       email: commonData.email,
       address: {
         '@type': 'PostalAddress',
-        streetAddress:
-          'Avenida Francisco de Miranda, Torre Europa, Piso 3, Oficinas 3-B3',
+        streetAddress: 'Avenida Francisco de Miranda, Torre Europa, Piso 3, Oficinas 3-B3',
         addressLocality: 'El Rosal, Caracas',
         addressCountry: 'VE',
       },
-      sameAs: [
-        'https://www.instagram.com/maximiza_ve/',
-        'https://twitter.com/maximiza_ve',
-      ],
+      sameAs: ['https://www.instagram.com/maximiza_ve/', 'https://twitter.com/maximiza_ve'],
     },
   },
   services: {
@@ -111,8 +103,7 @@ export const jsonld = {
     '@id': `${commonData.baseUrl}/blog`,
     url: `${commonData.baseUrl}/blog`,
     name: 'Blog de Finanzas y Mercado Bursátil - Maximiza',
-    description:
-      'Noticias, análisis y perspectivas sobre el ecosistema bursátil venezolano.',
+    description: 'Noticias, análisis y perspectivas sobre el ecosistema bursátil venezolano.',
     publisher: {
       '@id': `${commonData.baseUrl}/#organization`,
     },
@@ -123,9 +114,7 @@ export const jsonld = {
     '@id': `${commonData.baseUrl}/blog/${articleData.slug || ''}`,
     headline: articleData.titulo,
     description: excerpt,
-    image:
-      articleData.imagen?.url ||
-      `${commonData.baseUrl}/images/article-placeholder.webp`,
+    image: articleData.imagen?.url || `${commonData.baseUrl}/images/article-placeholder.webp`,
     datePublished: articleData.fecha,
     dateModified: articleData.fecha,
     author: {

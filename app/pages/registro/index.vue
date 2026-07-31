@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { motion } from 'motion-v'
+  import { motion } from 'motion-v'
 
-import { metadata } from '~/assets/data/metadata'
-import { jsonld } from '~/assets/data/jsonld'
+  import { metadata } from '~/assets/data/metadata'
+  import { jsonld } from '~/assets/data/jsonld'
 
-import {
-  generalContainerVariants,
-  generalItemVariants,
-  overlayVariants,
-} from '~/assets/animations/motion'
+  import {
+    generalContainerVariants,
+    generalItemVariants,
+    overlayVariants,
+  } from '~/assets/animations/motion'
 
-useSeoMeta(metadata.registro)
+  useSeoMeta(metadata.registro)
 
-useJsonLd(jsonld.register)
+  useJsonLd(jsonld.register)
 </script>
 
 <template>
@@ -53,9 +53,7 @@ useJsonLd(jsonld.register)
             whileHover="hover"
             animate="visible"
           >
-            <div
-              class="bg-white-alt relative h-[275px] w-[275px] overflow-hidden p-0"
-            >
+            <div class="bg-white-alt relative h-[275px] w-[275px] overflow-hidden p-0">
               <motion.div
                 class="bg-primary absolute top-0 left-0 z-0 h-full"
                 :variants="overlayVariants"
@@ -86,9 +84,7 @@ useJsonLd(jsonld.register)
             whileHover="hover"
             animate="visible"
           >
-            <div
-              class="bg-white-alt relative h-[275px] w-[275px] overflow-hidden p-0"
-            >
+            <div class="bg-white-alt relative h-[275px] w-[275px] overflow-hidden p-0">
               <motion.div
                 class="bg-black-alt absolute top-0 left-0 z-0 h-full"
                 :variants="overlayVariants"

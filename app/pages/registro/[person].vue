@@ -1,65 +1,62 @@
 <script setup lang="ts">
-import { motion } from 'motion-v'
-import {
-  generalContainerVariants,
-  generalItemVariants,
-} from '~/assets/animations/motion'
-import { metadata } from '~/assets/data/metadata'
+  import { motion } from 'motion-v'
+  import { generalContainerVariants, generalItemVariants } from '~/assets/animations/motion'
+  import { metadata } from '~/assets/data/metadata'
 
-const route = useRoute()
-const personType = ref<string>('')
+  const route = useRoute()
+  const personType = ref<string>('')
 
-const labels: Record<
-  string,
-  {
-    title: string
-    description: string
-    banner: string
-    requiredDocuments: string[]
+  const labels: Record<
+    string,
+    {
+      title: string
+      description: string
+      banner: string
+      requiredDocuments: string[]
+    }
+  > = {
+    'persona-natural': {
+      title: 'Persona Natural',
+      description: 'Pasos a seguir para el registro de Persona Natural',
+      banner: '/images/pages/registro/header-persona-natural.webp',
+      requiredDocuments: [
+        'Cédula de Identidad vigente, para personas venezolanas y extranjeras residentes en el país, o copia del pasaporte para personas extrajeras no residente.',
+        'Registro de Información Fiscal (RIF), vigente.',
+        'Una (1) Referencia Bancaria, con una vigencia mínima de tres meses.',
+        'Constancia de trabajo actual del inversor, o informe de atestiguamiento de ingresos emitida por un contador público colegiado, en el caso de personas que trabajen de manera independiente.',
+        'Onboarding de Declaración Jurada de Origen y Destino de los Fondos, cada vez que realice una operación.',
+      ],
+    },
+    'persona-juridica': {
+      title: 'Persona Jurídica',
+      description: 'Pasos a seguir para el registro de Persona Jurídica',
+      banner: '/images/pages/registro/header-persona-juridica.webp',
+      requiredDocuments: [
+        'Registro de Información Fiscal (RIF), vigente.',
+        'Cédula de Identidad y Registro de Información Fiscal (RIF) vigente del representante legal de la persona jurídica.',
+        'Documento constitutivo y las modificaciones estatutarias de la persona jurídica que muestre los socios beneficiarios finales de la sociedad. En caso de persona jurídica no domiciliada en el país, los mismos documentos debidamente protocolizados y traducidos al idioma castellano.',
+        'Acta de asamblea donde conste la elección de la junta directiva actual, sin que se encuentre vencido su período electivo.',
+        'Una (1) Referencia Bancaria, con una vigencia mínima de tres meses.',
+        'Onboarding de Declaración Jurada de Origen y Destino de los Fondos, cada vez que realice una operación.',
+      ],
+    },
   }
-> = {
-  'persona-natural': {
-    title: 'Persona Natural',
-    description: 'Pasos a seguir para el registro de Persona Natural',
-    banner: '/images/pages/registro/header-persona-natural.webp',
-    requiredDocuments: [
-      'Cédula de Identidad vigente, para personas venezolanas y extranjeras residentes en el país, o copia del pasaporte para personas extrajeras no residente.',
-      'Registro de Información Fiscal (RIF), vigente.',
-      'Una (1) Referencia Bancaria, con una vigencia mínima de tres meses.',
-      'Constancia de trabajo actual del inversor, o informe de atestiguamiento de ingresos emitida por un contador público colegiado, en el caso de personas que trabajen de manera independiente.',
-      'Onboarding de Declaración Jurada de Origen y Destino de los Fondos, cada vez que realice una operación.',
-    ],
-  },
-  'persona-juridica': {
-    title: 'Persona Jurídica',
-    description: 'Pasos a seguir para el registro de Persona Jurídica',
-    banner: '/images/pages/registro/header-persona-juridica.webp',
-    requiredDocuments: [
-      'Registro de Información Fiscal (RIF), vigente.',
-      'Cédula de Identidad y Registro de Información Fiscal (RIF) vigente del representante legal de la persona jurídica.',
-      'Documento constitutivo y las modificaciones estatutarias de la persona jurídica que muestre los socios beneficiarios finales de la sociedad. En caso de persona jurídica no domiciliada en el país, los mismos documentos debidamente protocolizados y traducidos al idioma castellano.',
-      'Acta de asamblea donde conste la elección de la junta directiva actual, sin que se encuentre vencido su período electivo.',
-      'Una (1) Referencia Bancaria, con una vigencia mínima de tres meses.',
-      'Onboarding de Declaración Jurada de Origen y Destino de los Fondos, cada vez que realice una operación.',
-    ],
-  },
-}
 
-onMounted(() => {
-  personType.value = String(route.params.person)
+  onMounted(() => {
+    personType.value = String(route.params.person)
 
-  if (labels[personType.value]) {
-    useSeoMeta({
-      ...metadata.registro,
-      title: `Registro ${labels[personType.value]!.title} — Maximiza Casa de Bolsa`,
-      description: labels[personType.value]!.description,
-      ogTitle: `Registro ${labels[personType.value]!.title} — Maximiza Casa de Bolsa`,
-      ogDescription: labels[personType.value]!.description,
-    })
-  } else {
-    useSeoMeta(metadata.registro)
-  }
-})
+    if (labels[personType.value]) {
+      useSeoMeta({
+        ...metadata.registro,
+        title: `Registro ${labels[personType.value]!.title} — Maximiza Casa de Bolsa`,
+        description: labels[personType.value]!.description,
+        ogTitle: `Registro ${labels[personType.value]!.title} — Maximiza Casa de Bolsa`,
+        ogDescription: labels[personType.value]!.description,
+      })
+    } else {
+      useSeoMeta(metadata.registro)
+    }
+  })
 </script>
 
 <template>

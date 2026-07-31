@@ -1,19 +1,15 @@
 <script setup lang="ts">
-const { source } = defineProps<{
-  source: MXMZ.Clients[]
-}>()
+  const { source } = defineProps<{
+    source: MXMZ.Clients[]
+  }>()
 </script>
 
 <template>
   <div class="w-full">
-    <div class="spreadsheet__item text-center font-bold">
-      Principales clientes
-    </div>
+    <div class="spreadsheet__item text-center font-bold">Principales clientes</div>
 
     <div class="grid grid-cols-[2fr_1fr]">
-      <div class="spreadsheet__item text-[10px] font-bold">
-        Nombre o razón social
-      </div>
+      <div class="spreadsheet__item text-[10px] font-bold">Nombre o razón social</div>
       <div class="spreadsheet__item text-[10px] font-bold">Ubicación</div>
     </div>
 

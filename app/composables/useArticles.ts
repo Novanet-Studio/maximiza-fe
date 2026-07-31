@@ -19,18 +19,14 @@ export const useArticles = () => {
   const getAllArticles = async (): Promise<MXMZ.Article[]> => {
     try {
       const { data } = await request<{ data: any[] }>('/articulos')
-      return (data || [])
-        .map(normalize)
-        .sort((a, b) => b.fecha.localeCompare(a.fecha))
+      return (data || []).map(normalize).sort((a, b) => b.fecha.localeCompare(a.fecha))
     } catch (error) {
       console.error('Error fetching all articles:', error)
       return []
     }
   }
 
-  const getArticleBySlug = async (
-    slug: string
-  ): Promise<MXMZ.Article | null> => {
+  const getArticleBySlug = async (slug: string): Promise<MXMZ.Article | null> => {
     try {
       const { data } = await request<{ data: any }>(`/articulos/${slug}`)
       return data ? normalize(data) : null

@@ -1,25 +1,25 @@
 <script setup lang="ts">
-import { Motion } from 'motion-v'
-import { generalItemVariants } from '~/assets/animations/motion'
+  import { Motion } from 'motion-v'
+  import { generalItemVariants } from '~/assets/animations/motion'
 
-const props = withDefaults(
-  defineProps<{
-    title?: string
-    backgroundImage?: string
-    isSplitBackground?: boolean
-    coverWrapper?: boolean
-    autoColumns?: boolean
-    columns?: {
-      left?: string
-      right?: string
+  const props = withDefaults(
+    defineProps<{
+      title?: string
+      backgroundImage?: string
+      isSplitBackground?: boolean
+      coverWrapper?: boolean
+      autoColumns?: boolean
+      columns?: {
+        left?: string
+        right?: string
+      }
+    }>(),
+    {
+      coverWrapper: false,
+      isSplitBackground: false,
+      autoColumns: false,
     }
-  }>(),
-  {
-    coverWrapper: false,
-    isSplitBackground: false,
-    autoColumns: false,
-  }
-)
+  )
 </script>
 
 <template>

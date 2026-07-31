@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Form from './Form.vue'
+  import Form from './Form.vue'
 
-const props = defineProps<{
-  personType: 'persona-natural' | 'persona-juridica'
-}>()
+  const props = defineProps<{
+    personType: 'persona-natural' | 'persona-juridica'
+  }>()
 </script>
 
 <template>

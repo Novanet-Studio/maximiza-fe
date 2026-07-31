@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { motion } from 'motion-v'
-import {
-  generalContainerVariants,
-  generalItemVariants,
-  overlayVariants,
-} from '@/assets/animations/motion'
+  import { motion } from 'motion-v'
+  import {
+    generalContainerVariants,
+    generalItemVariants,
+    overlayVariants,
+  } from '@/assets/animations/motion'
 </script>
 
 <template>

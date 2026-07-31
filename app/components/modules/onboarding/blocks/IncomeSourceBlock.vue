@@ -1,21 +1,19 @@
 <script setup lang="ts">
-import {
-  monthlyIncomeOptions,
-  economicActivityOptions,
-  getLabel,
-} from '~/assets/data/formSources'
+  import {
+    monthlyIncomeOptions,
+    economicActivityOptions,
+    getLabel,
+  } from '~/assets/data/formSources'
 
-import { formatAmount, formatDate } from '~/lib/utils'
+  import { formatAmount, formatDate } from '~/lib/utils'
 
-const { source } = defineProps<{
-  source: MXMZ.FinancialInformation
-}>()
+  const { source } = defineProps<{
+    source: MXMZ.FinancialInformation
+  }>()
 </script>
 
 <template>
-  <div
-    class="spreadsheet__item flex items-center justify-center text-center font-bold"
-  >
+  <div class="spreadsheet__item flex items-center justify-center text-center font-bold">
     Fuente de ingresos del inversionista
   </div>
 
@@ -58,9 +56,7 @@ const { source } = defineProps<{
         <div
           :class="[
             'ml-1 flex items-center justify-center border px-1 font-black',
-            source.otherIncomeSource
-              ? 'bg-error text-white'
-              : 'bg-primary text-white',
+            source.otherIncomeSource ? 'bg-error text-white' : 'bg-primary text-white',
           ]"
         >
           {{ source.otherIncomeSource ? 'SI' : 'NO' }}
@@ -70,9 +66,7 @@ const { source } = defineProps<{
   </div>
 
   <div class="grid w-full grid-cols-[100px_1fr]">
-    <aside
-      class="bg-primary flex min-h-[60px] items-center justify-center border-b border-white"
-    >
+    <aside class="bg-primary flex min-h-[60px] items-center justify-center border-b border-white">
       <h5 class="text-[12px] font-bold text-white">Relación de dependencia:</h5>
     </aside>
 
@@ -128,10 +122,7 @@ const { source } = defineProps<{
           <div class="spreadsheet__form-item">
             Ramo del negocio:
             <span class="content font-bold">
-              {{
-                getLabel(source.company.branch, economicActivityOptions) ||
-                'N/A'
-              }}
+              {{ getLabel(source.company.branch, economicActivityOptions) || 'N/A' }}
             </span>
           </div>
         </div>
@@ -140,9 +131,7 @@ const { source } = defineProps<{
   </div>
 
   <div class="grid w-full grid-cols-[100px_1fr]">
-    <aside
-      class="bg-primary flex min-h-[60px] items-center justify-center border-b border-white"
-    >
+    <aside class="bg-primary flex min-h-[60px] items-center justify-center border-b border-white">
       <h5 class="text-[12px] font-bold text-white">Negocio propio:</h5>
     </aside>
 
@@ -209,22 +198,15 @@ const { source } = defineProps<{
             <div class="spreadsheet__form-item">
               Ramo del negocio:
               <div class="content">
-                {{
-                  getLabel(source.business.branch, economicActivityOptions) ||
-                  'N/A'
-                }}
+                {{ getLabel(source.business.branch, economicActivityOptions) || 'N/A' }}
               </div>
             </div>
           </div>
         </div>
 
         <div class="col-span-full grid w-full grid-cols-2">
-          <div class="spreadsheet__item bg-gray-50 font-bold">
-            Principales proveedores:
-          </div>
-          <div class="spreadsheet__item bg-gray-50 font-bold">
-            Principales clientes:
-          </div>
+          <div class="spreadsheet__item bg-gray-50 font-bold">Principales proveedores:</div>
+          <div class="spreadsheet__item bg-gray-50 font-bold">Principales clientes:</div>
         </div>
 
         <div class="col-span-full grid w-full grid-cols-4">
@@ -274,18 +256,13 @@ const { source } = defineProps<{
           <div class="spreadsheet__item bg-gray-50 font-bold">
             Actividad generadora de los ingresos:
           </div>
-          <div class="spreadsheet__item bg-gray-50 font-bold">
-            Ingresos mensuales:
-          </div>
+          <div class="spreadsheet__item bg-gray-50 font-bold">Ingresos mensuales:</div>
         </div>
 
         <div class="col-span-full grid grid-cols-2">
           <div class="spreadsheet__item">
             <div class="content">
-              {{
-                getLabel(source.otherIncomeSource, economicActivityOptions) ||
-                'N/A'
-              }}
+              {{ getLabel(source.otherIncomeSource, economicActivityOptions) || 'N/A' }}
             </div>
           </div>
 
