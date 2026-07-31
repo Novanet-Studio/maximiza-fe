@@ -85,6 +85,7 @@ onMounted(() => {
       initial="hidden"
       whileInView="visible"
       :viewport="{ once: true, margin: '-120px' }"
+      id="registro-formulario"
       class="bg-white-alt mt-[10vh]"
     >
       <CommonContentWithColumns

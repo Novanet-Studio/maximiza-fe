@@ -98,6 +98,15 @@ const props = defineProps<Props>()
             <p class="">Poder de apertura y manejo de cuenta</p>
           </li>
         </ul>
+
+        <div class="mt-auto pt-4">
+          <NuxtLink title="Comenzar registro" to="#registro-formulario">
+            <UiButton
+              text="Comenzar registro"
+              icon="hand-point-right"
+            />
+          </NuxtLink>
+        </div>
       </CommonContentCard>
 
       <CommonContentCard
