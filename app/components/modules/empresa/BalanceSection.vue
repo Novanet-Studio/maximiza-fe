@@ -1,27 +1,34 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { motion } from 'motion-v'
-import {
-  generalContainerVariants,
-  generalItemVariants,
-} from '~/assets/animations/motion'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faFileDownload } from '@fortawesome/free-solid-svg-icons'
-import { useBalances } from '~/composables/useBalances'
+  import { ref, onMounted } from 'vue'
+  import { motion } from 'motion-v'
+  import { generalContainerVariants, generalItemVariants } from '~/assets/animations/motion'
+  import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+  import { faFileDownload } from '@fortawesome/free-solid-svg-icons'
+  import { useBalances } from '~/composables/useBalances'
 
-const { getAllBalances } = useBalances()
-const balancesData = ref<MXMZ.Balance[]>([])
-const isLoading = ref(true)
+  const { getAllBalances } = useBalances()
+  const balancesData = ref<MXMZ.Balance[]>([])
+  const isLoading = ref(true)
 
-onMounted(async () => {
-  try {
-    balancesData.value = await getAllBalances()
-  } catch (e) {
-    console.error('Error loading balances:', e)
-  } finally {
-    isLoading.value = false
-  }
-})
+  onMounted(async () => {
+    try {
+      balancesData.value = await getAllBalances()
+
+      balancesData.value = balancesData.value.map((balance) => ({
+        ...balance,
+        items: balance.items
+          .sort((a, b) => a.ano - b.ano)
+          .map((item) => ({
+            ...item,
+            source: item.source.filter((doc) => doc.file),
+          })),
+      }))
+    } catch (e) {
+      console.error('Error loading balances:', e)
+    } finally {
+      isLoading.value = false
+    }
+  })
 </script>
 
 <template>
