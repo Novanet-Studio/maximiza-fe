@@ -86,7 +86,7 @@ useJsonLd(jsonld.about)
           <div
             class="to-white-alt2 z-0 -mt-30 flex w-full max-w-[940px] grow flex-col justify-center bg-linear-to-b from-white p-8 pt-40 md:m-0 md:-ml-31.25 md:bg-linear-to-r md:p-16 md:pr-4 md:pl-36 lg:h-[342px]">
             <h4 class="text-black-alt mb-2 text-xl leading-[22px]">
-              Foco corporativo especializado
+              Foco Corporativo Especializado
             </h4>
             <p class="text-gray text-xl leading-[28px] md:text-base md:leading-[24px] lg:text-xl lg:leading-[28px]">
               Brindamos asesoría analítica exhaustiva a corporaciones nacionales y entidades
@@ -105,7 +105,7 @@ useJsonLd(jsonld.about)
           <div
             class="from-white-alt2 z-0 -mt-30 flex w-full max-w-[940px] grow flex-col justify-center bg-linear-to-t to-white p-8 pt-40 md:m-0 md:-mr-31.25 md:bg-linear-to-r md:p-16 md:pr-36 md:pl-4 lg:h-[342px]">
             <h4 class="text-black-alt mb-2 text-xl leading-[22px] md:text-right">
-              Ecosistema de promoción financiera
+              Ecosistema de Promoción Financiera
             </h4>
             <p
               class="text-gray text-xl leading-[28px] md:text-right md:text-base md:leading-[24px] lg:text-xl lg:leading-[28px]">

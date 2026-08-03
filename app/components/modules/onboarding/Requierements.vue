@@ -35,8 +35,8 @@
         class="to-white-alt2 z-0 -mt-30 w-full bg-linear-to-b from-white p-8 pt-40 md:m-0 md:-ml-31.25 md:bg-linear-to-r md:p-8 md:pr-10 md:pl-40 lg:pr-24"
       >
         <h4 class="text-black-alt mb-2 font-extrabold">
-          Recaudos para personas
-          {{ personType === 'persona-natural' ? 'naturales' : 'jurídicas' }}
+          Recaudos para Personas
+          {{ personType === 'persona-natural' ? 'Naturales' : 'Jurídicas' }}
         </h4>
         <ol class="flex flex-col gap-2 pl-5">
           <li

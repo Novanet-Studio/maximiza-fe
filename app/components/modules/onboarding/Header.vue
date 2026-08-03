@@ -57,7 +57,7 @@
 
       <CommonContentCard
         subtitle="Paso 2:"
-        title="Registro en línea"
+        title="Registro en Línea"
         content="Completa el formulario de registro digital. Nuestro sistema genera y completa automáticamente las siguientes planillas:"
         :image="{
           url: '/images/pages/registro/header/2.webp',
@@ -102,7 +102,7 @@
 
       <CommonContentCard
         subtitle="Paso 3:"
-        title="Envío de recaudos"
+        title="Envío de Recaudos"
         content="Una vez cuentes con todas las planillas y los recaudos completos, envíalos por correo electrónico a:"
         :image="{
           url: '/images/pages/registro/header/3.webp',

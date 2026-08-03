@@ -204,7 +204,7 @@ useJsonLd(jsonld.socialResponsibility)
       title="Buen Gobierno <br /> Corporativo" cover-wrapper>
       <motion.div :variants="generalItemVariants">
         <h4 class="content-with-columns mb-4 text-white">
-          El pilar inquebrantable de nuestra integridad
+          El Pilar Inquebrantable de nuestra Integridad
         </h4>
 
         <p class="content-with-columns text-white">
