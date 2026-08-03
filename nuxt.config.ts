@@ -142,26 +142,26 @@ export default defineNuxtConfig({
       lang: "es",
       icons: [
         {
-          src: "pwa-192x192.png",
+          src: "pwa-192x192.webp",
           sizes: "192x192",
-          type: "image/png",
+          type: "image/webp",
         },
         {
-          src: "pwa-512x512.png",
+          src: "pwa-512x512.webp",
           sizes: "512x512",
-          type: "image/png",
+          type: "image/webp",
         },
         {
-          src: "pwa-512x512.png",
+          src: "pwa-512x512.webp",
           sizes: "512x512",
-          type: "image/png",
+          type: "image/webp",
           purpose: "any maskable",
         },
       ],
     },
 
     workbox: {
-      globPatterns: ["**/*.{js,css,html,png,svg,ico}"],
+      globPatterns: ["**/*.{js,css,html,png,svg,ico,webp}"],
       navigateFallback: null,
       maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
     },
