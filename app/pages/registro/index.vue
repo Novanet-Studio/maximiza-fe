@@ -37,7 +37,7 @@
       :viewport="{ once: true, margin: '-50px' }"
     >
       <CommonSectionHeader
-        title="¿Qué tipo de registro deseas realizar?"
+        title="¿Qué Tipo de Registro Deseas Realizar?"
         description="Selecciona una opción para comenzar:"
       />
 

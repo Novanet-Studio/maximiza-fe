@@ -91,7 +91,7 @@
             ? '/images/pages/registro/banner-persona-natural.webp'
             : '/images/pages/registro/banner-persona-juridica.webp'
         "
-        title="Comienza completando el formulario de registro"
+        title="Comienza Completando el Formulario de Registro"
       />
 
       <div class="container w-full translate-y-0 pb-8 md:pb-16">
@@ -102,7 +102,7 @@
 
   <div v-else class="flex h-auto w-full flex-col">
     <CommonHero
-      :title="'Inicie la estructuración de su nueva estrategia financiera'"
+      :title="'Inicie la Estructuración de su Nueva Estrategia Financiera'"
       :description="'Evaluación confidencial para proteger su tesorería de la volatilidad o diseñar un financiamiento a la medida para su ciclo productivo.'"
       :image="{
         src: '/images/hero/main-registro.webp',

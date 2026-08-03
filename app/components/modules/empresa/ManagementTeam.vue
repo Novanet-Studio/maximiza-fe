@@ -99,7 +99,7 @@ const managementTeamVariants = {
 
 <template>
   <section class="container mx-auto flex min-h-dvh w-full flex-col items-start justify-start py-16">
-    <CommonSectionHeader title="Equipo directivo" />
+    <CommonSectionHeader title="Equipo Directivo" />
 
     <motion.div class="mb-16 w-full" :variants="generalContainerVariants" initial="hidden" whileInView="visible"
       :viewport="{ once: true, margin: '-50px' }">
@@ -119,7 +119,7 @@ const managementTeamVariants = {
     <motion.div class="mb-16 w-full" :variants="generalContainerVariants" initial="hidden" whileInView="visible"
       :viewport="{ once: true, margin: '-50px' }">
       <div class="mb-4">
-        <h3 class="text-black-alt text-left">Junta directiva</h3>
+        <h3 class="text-black-alt text-left">Junta Directiva</h3>
       </div>
 
       <div class="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

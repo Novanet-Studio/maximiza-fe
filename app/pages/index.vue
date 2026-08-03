@@ -10,7 +10,7 @@ useJsonLd(jsonld.home)
 
 <template>
   <div class="flex h-auto w-full flex-col">
-    <CommonHero :title="'Maximiza: experiencia <br /> y liderazgo'"
+    <CommonHero :title="'Maximiza: Experiencia <br /> y Liderazgo'"
       :description="'Contamos con 34 años de experiencia en el mercado bursátil venezolano, ofreciendo todo tipo de servicio de intermediación bursátil en el área de corretaje de Títulos Valores, Finanzas Corporativas, Inversión y Manejo de Capital.'"
       :button="{
         text: 'Quiero invertir',

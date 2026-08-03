@@ -41,7 +41,7 @@ useJsonLd(jsonld.contact)
 
 <template>
   <div class="flex h-auto w-full flex-col">
-    <CommonHero :title="'Inicie la estructuración de su nueva estrategia financiera'"
+    <CommonHero :title="'Inicie la Estructuración de su Nueva Estrategia Financiera'"
       :description="'Evaluación confidencial para proteger su tesorería de la volatilidad o diseñar un financiamiento a la medida para su ciclo productivo.'"
       :image="{
         src: '/images/hero/maxmiza-mano-femenina-sujetando-boligrafo-organizando-monedas.webp',

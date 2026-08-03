@@ -24,7 +24,7 @@
             class="mb-4 text-left text-2xl leading-[26px] md:text-right md:text-base md:leading-[18.09px] lg:text-2xl lg:leading-[26px]"
           >
             Memoria y <br class="hidden lg:block" />
-            liderazgo intelectual
+            Liderazgo Intelectual
           </h2>
 
           <p

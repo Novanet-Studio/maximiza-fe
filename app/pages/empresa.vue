@@ -57,7 +57,7 @@ useJsonLd(jsonld.about)
 
 <template>
   <div class="flex h-auto w-full flex-col">
-    <CommonHero :title="'Arquitectos de su futuro financiero'"
+    <CommonHero :title="'Arquitectos de su Futuro Financiero'"
       :description="'Aliados estratégicos en ingeniería financiera avanzada: gestión patrimonial, activos alternativos y financiamiento corporativo a gran escala con máxima integridad.'"
       :button="{
         text: 'Configure su estrategia patrimonial',
@@ -75,7 +75,7 @@ useJsonLd(jsonld.about)
 
     <motion.section class="container flex min-h-dvh w-full flex-col items-center justify-center py-16"
       :variants="generalContainerVariants" initial="hidden" animate="visible">
-      <CommonSectionHeader title="Banca de inversión y asesoría corporativa de clase mundial" />
+      <CommonSectionHeader title="Banca de Inversión y Asesoría Corporativa de Clase Mundial" />
 
       <div class="mt-6 flex w-full max-w-6xl flex-col gap-16 px-4 md:px-0">
         <motion.div class="flex w-full flex-col items-center md:flex-row" :variants="generalItemVariants">
@@ -119,7 +119,7 @@ useJsonLd(jsonld.about)
       </div>
     </motion.section>
 
-    <CommonContentWithColumns title="Filosofía y ADN corporativo"
+    <CommonContentWithColumns title="Filosofía y ADN Corporativo"
       background-image="/images/backgrounds/mision-y-vision.webp" is-split-background auto-columns :columns="{
         left: 'md:w-[25%]',
         right: 'md:w-[75%]',
@@ -172,8 +172,8 @@ useJsonLd(jsonld.about)
       <div class="mx-auto flex w-full flex-col items-center justify-center gap-8 md:flex-row">
         <div class="flex w-2/5 flex-col gap-4">
           <h3 class="text-black-alt text-right">
-            Red global de <br />
-            alianzas estratégicas
+            Red Global de <br />
+            Alianzas Estratégicas
           </h3>
           <p class="text-gray text-right">
             Nuestra solidez operativa se encuentra cimentada y respaldada en décadas de relaciones

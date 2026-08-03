@@ -10,7 +10,7 @@
 <template>
   <div class="flex h-auto w-full flex-col">
     <CommonHero
-      :title="'Perspectivas estratégicas <br /> y análisis de mercado'"
+      :title="'Perspectivas Estratégicas <br /> y Análisis de Mercado'"
       :description="'Inteligencia financiera para el análisis de tendencias globales, macroeconómicos y perspectivas del mercado de capitales venezolano. Optimice sus inversiones con datos empíricos de alto valor.'"
       :image="{
         src: '/images/hero/maxmiza-manos-sujetando-calculadora-y-boligrafo.webp',

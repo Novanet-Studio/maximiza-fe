@@ -132,7 +132,7 @@ useJsonLd(jsonld.socialResponsibility)
 
 <template>
   <div class="flex h-auto w-full flex-col">
-    <CommonHero :title="'Responsabilidad social <br /> y buen gobierno corporativo'"
+    <CommonHero :title="'Responsabilidad Social <br /> y Buen Gobierno Corporativo'"
       :description="'Combinamos el servicio social con estrictos controles de riesgo, <br /> asegurando un entorno de inversión seguro, ético y legal.'"
       :image="{
         src: '/images/hero/maxmiza-mano-sujetando-bombillo-relleno-de-monedas.webp',
@@ -142,7 +142,7 @@ useJsonLd(jsonld.socialResponsibility)
       }" />
 
     <CommonContentWithColumns backgroundImage="/images/backgrounds/responsabilidad-1.webp"
-      title="Responsabilidad <br /> social corporativa" cover-wrapper>
+      title="Responsabilidad <br /> Social Corporativa" cover-wrapper>
       <Motion :variants="generalItemVariants">
         <h4 class="content-with-columns mb-4 text-white">
           Compromiso Integral ESG y Fortalecimiento Social

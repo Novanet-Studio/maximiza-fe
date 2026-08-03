@@ -119,7 +119,7 @@
       />
     </picture>
 
-    <h2 class="text-black-alt mb-2 text-2xl font-black md:text-3xl">¡El expediente está listo!</h2>
+    <h2 class="text-black-alt mb-2 text-2xl font-black md:text-3xl">¡El Expediente Está Listo!</h2>
 
     <p class="text-gray text-md mx-auto mb-8 max-w-2xl">
       Para poder validar el registro es necesario enviar a

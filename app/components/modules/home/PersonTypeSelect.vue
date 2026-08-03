@@ -16,7 +16,7 @@
     :viewport="{ once: true, margin: '-50px' }"
   >
     <CommonSectionHeader
-      title="Alcance internacional, ejecución local impecable"
+      title="Alcance Internacional, Ejecución Local Impecable"
       description="Brindamos atención táctica y estratégica para todos nuestros clientes en el extenso universo del mercado de capitales"
     />
 

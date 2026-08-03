@@ -71,7 +71,7 @@
 <template>
   <CommonContentWithColumns
     backgroundImage="/images/pages/contact/banner.webp"
-    title="Formulario <br /> de contacto"
+    title="Formulario <br /> de Contacto"
     cover-wrapper
   >
     <div class="w-full">

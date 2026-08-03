@@ -13,7 +13,7 @@
 <template>
   <div class="flex h-auto w-full flex-col">
     <CommonHero
-      :title="'Aceleramos y protegemos <br /> el valor de su capital'"
+      :title="'Aceleramos y Protegemos <br /> el Valor de su Capital'"
       :description="'Gestionamos activos líquidos e instrumentos de financiamiento nacionales e internacionales para impulsar el crecimiento patrimonial y corporativo.'"
       :button="{
         text: 'Explore nuestras soluciones financieras',
@@ -78,13 +78,13 @@
           >
             <img
               src="/images/pages/home/maximiza-inversionista-individual.webp"
-              alt="Persona natural"
-              title="Persona natural"
+              alt="Persona Natural"
+              title="Persona Natural"
               class="relative z-10 h-full w-full object-contain"
             />
           </div>
 
-          <h3 class="text-black-alt pb-8 text-2xl font-extrabold">Persona natural</h3>
+          <h3 class="text-black-alt pb-8 text-2xl font-extrabold">Persona Natural</h3>
 
           <NuxtLink title="Quiero registrarme" :to="'/registro/persona-natural'">
             <UiButton
@@ -112,7 +112,7 @@
             />
           </div>
 
-          <h3 class="text-black-alt pb-8 text-2xl font-extrabold">Persona jurídica</h3>
+          <h3 class="text-black-alt pb-8 text-2xl font-extrabold">Persona Jurídica</h3>
 
           <NuxtLink title="Quiero registrarme" :to="'/registro/persona-juridica'">
             <UiButton
