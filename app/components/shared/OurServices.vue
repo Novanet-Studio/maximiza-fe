@@ -16,7 +16,7 @@ const services = [
     image: '/images/pages/home/services/2.webp',
   },
   {
-    title: 'Estructuración y colocación de deuda',
+    title: 'Certificados de Financiamiento Bursátil (CFB)',
     description:
       'Formulación y negociación de CFB ofreciendo liquidez anticipadamente a los clientes al descontar sus facturas por cobrar.',
     image: '/images/pages/home/services/3.webp',
