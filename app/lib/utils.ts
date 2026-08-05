@@ -16,6 +16,36 @@ export const formatDate = (dateString: string | undefined | null): string => {
   return `${day}/${month}/${year}`
 }
 
+const LONG_MONTH_NAMES = [
+  'enero',
+  'febrero',
+  'marzo',
+  'abril',
+  'mayo',
+  'junio',
+  'julio',
+  'agosto',
+  'septiembre',
+  'octubre',
+  'noviembre',
+  'diciembre',
+]
+
+export const formatLongDate = (dateString: string | undefined | null): string => {
+  if (!dateString) return ''
+
+  const parts = dateString.split('-')
+
+  if (parts.length !== 3) return dateString
+
+  const [year, month, day] = parts
+  const monthName = LONG_MONTH_NAMES[Number(month) - 1]
+
+  if (!monthName) return dateString
+
+  return `${Number(day)} ${monthName}, ${year}`
+}
+
 export const articleExcerpt = (text: string | undefined | null, length: number) => {
   if (!text) return ''
 

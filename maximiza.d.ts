@@ -48,6 +48,13 @@ declare namespace MXMZ {
         };
     }
 
+    //> ENLACES
+    export interface Enlace {
+        readonly titulo: string;
+        readonly fecha: string;
+        readonly link: string;
+    }
+
     //> WIZARD FORM
     type OnboardingType = "persona-natural" | "persona-juridica";
 

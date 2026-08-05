@@ -28,5 +28,7 @@
     />
 
     <ModulesBlogArticlesGrid />
+
+    <ModulesBlogEnlacesGrid />
   </div>
 </template>
