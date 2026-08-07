@@ -39,7 +39,7 @@
         title="Onboardings de la CVV"
         content="Realiza tu registro o actualización de datos en la Caja Venezolana de Valores (CVV) y descarga la lanilla firmada:"
         :image="{
-          url: '/images/pages/registro/header/1.webp',
+          url: '/images/pages/registro/header/maximiza-1.webp',
           alt: 'Onboardings_de_la_CVV',
         }"
         :styles="{
@@ -60,7 +60,7 @@
         title="Registro en Línea"
         content="Completa el formulario de registro digital. Nuestro sistema genera y completa automáticamente las siguientes planillas:"
         :image="{
-          url: '/images/pages/registro/header/2.webp',
+          url: '/images/pages/registro/header/maximiza-2.webp',
           alt: 'Registro_en_linea',
         }"
         :styles="{
@@ -105,7 +105,7 @@
         title="Envío de Recaudos"
         content="Una vez cuentes con todas las planillas y los recaudos completos, envíalos por correo electrónico a:"
         :image="{
-          url: '/images/pages/registro/header/3.webp',
+          url: '/images/pages/registro/header/maximiza-3.webp',
           alt: 'Envio_de_recaudos',
         }"
         :styles="{

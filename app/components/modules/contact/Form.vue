@@ -8,10 +8,12 @@
     name: '',
     email: '',
     message: '',
+    referral: '',
     area_of_interest: '',
   })
 
   const isOpen = ref(false)
+  const isOpenReferral = ref(false)
 
   const options = [
     {
@@ -23,14 +25,46 @@
     { value: 'Otros', label: 'Otro' },
   ]
 
+  const referralOptions = [
+    { value: 'Pagina web', label: 'Página Web' },
+    { value: 'Instagram', label: 'Instagram' },
+    { value: 'Facebook', label: 'Facebook' },
+    { value: 'Publicidad', label: 'Publicidad' },
+    { value: 'Recomendacion', label: 'Recomendación' },
+  ]
+
   const selectedLabel = computed(() => {
     const found = options.find((o) => o.value === form.value.area_of_interest)
+    return found ? found.label : null
+  })
+
+  const selectedReferralLabel = computed(() => {
+    const found = referralOptions.find((o) => o.value === form.value.referral)
     return found ? found.label : null
   })
 
   const selectOption = (option: any) => {
     form.value.area_of_interest = option.value as string
     isOpen.value = false
+  }
+
+  const selectReferralOption = (option: any) => {
+    form.value.referral = option.value as string
+    isOpenReferral.value = false
+  }
+
+  const toggleAreaDropdown = () => {
+    isOpen.value = !isOpen.value
+    if (isOpen.value) {
+      isOpenReferral.value = false
+    }
+  }
+
+  const toggleReferralDropdown = () => {
+    isOpenReferral.value = !isOpenReferral.value
+    if (isOpenReferral.value) {
+      isOpen.value = false
+    }
   }
 
   const encode = (data: Record<string, any>) => {
@@ -59,6 +93,7 @@
       form.value.name = ''
       form.value.email = ''
       form.value.message = ''
+      form.value.referral = ''
       form.value.area_of_interest = ''
       alert('Mensaje enviado con éxito')
     } catch (error) {
@@ -70,7 +105,7 @@
 
 <template>
   <CommonContentWithColumns
-    backgroundImage="/images/pages/contact/banner.webp"
+    backgroundImage="/images/pages/contact/maximiza-banner.webp"
     title="Formulario <br /> de Contacto"
     cover-wrapper
   >
@@ -123,7 +158,46 @@
 
         <motion.div class="group relative w-full" :variants="generalItemVariants">
           <div
-            @click="isOpen = !isOpen"
+            @click="toggleReferralDropdown"
+            class="focus:border-secondary flex w-full cursor-pointer items-center justify-between border-b border-white py-1.5 pr-2 text-white transition-colors"
+            :class="{ 'border-secondary': isOpenReferral }"
+          >
+            <span :class="form.referral ? 'text-white' : 'text-gray-400'">
+              {{ selectedReferralLabel || '¿Cómo nos encontró?' }}
+            </span>
+
+            <FontAwesomeIcon
+              icon="fa-solid fa-chevron-down"
+              class="transition-all duration-300"
+              :class="{ '-rotate-180': isOpenReferral }"
+            />
+          </div>
+
+          <transition name="fade">
+            <ul
+              v-if="isOpenReferral"
+              class="bg-black-alt absolute z-50 mt-1 w-full overflow-hidden border border-gray-700 shadow-xl"
+            >
+              <li
+                v-for="option in referralOptions"
+                :key="option.value"
+                @click="selectReferralOption(option)"
+                class="hover:bg-primary cursor-pointer px-4 py-2 text-base text-white transition-colors duration-200"
+                :class="{
+                  'bg-primary': option.value === form.referral,
+                }"
+              >
+                {{ option.label }}
+              </li>
+            </ul>
+          </transition>
+
+          <input type="hidden" v-model="form.referral" required />
+        </motion.div>
+
+        <motion.div class="group relative w-full" :variants="generalItemVariants">
+          <div
+            @click="toggleAreaDropdown"
             class="focus:border-secondary flex w-full cursor-pointer items-center justify-between border-b border-white py-1.5 pr-2 text-white transition-colors"
             :class="{ 'border-secondary': isOpen }"
           >

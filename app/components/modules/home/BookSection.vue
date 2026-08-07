@@ -69,7 +69,7 @@
           class="pointer-events-none absolute top-0 left-1/2 z-10 flex w-50 -translate-x-1/2 -translate-y-[45%] justify-center sm:w-60 md:top-1/2 md:left-3/5 md:w-70 md:translate-x-0 md:-translate-y-1/2 lg:w-80 xl:w-90"
         >
           <img
-            src="/images/pages/home/book.webp"
+            src="/images/pages/home/maximiza-book.webp"
             alt="Pasado, presente y futuro del mercado de valores en Venezuela"
             title="Pasado, presente y futuro del mercado de valores en Venezuela"
             class="w-full object-contain shadow-[15px_15px_24px_-3px_rgba(0,_0,_0,_0.5)]"

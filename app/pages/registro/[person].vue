@@ -18,7 +18,7 @@
     'persona-natural': {
       title: 'Persona Natural',
       description: 'Pasos a seguir para el registro de Persona Natural',
-      banner: '/images/pages/registro/header-persona-natural.webp',
+      banner: '/images/pages/registro/maximiza-header-persona-natural.webp',
       requiredDocuments: [
         'Cédula de Identidad vigente, para personas venezolanas y extranjeras residentes en el país, o copia del pasaporte para personas extrajeras no residente.',
         'Registro de Información Fiscal (RIF), vigente.',
@@ -30,7 +30,7 @@
     'persona-juridica': {
       title: 'Persona Jurídica',
       description: 'Pasos a seguir para el registro de Persona Jurídica',
-      banner: '/images/pages/registro/header-persona-juridica.webp',
+      banner: '/images/pages/registro/maximiza-header-persona-juridica.webp',
       requiredDocuments: [
         'Registro de Información Fiscal (RIF), vigente.',
         'Cédula de Identidad y Registro de Información Fiscal (RIF) vigente del representante legal de la persona jurídica.',
@@ -88,8 +88,8 @@
       <CommonContentWithColumns
         :backgroundImage="
           personType === 'persona-natural'
-            ? '/images/pages/registro/banner-persona-natural.webp'
-            : '/images/pages/registro/banner-persona-juridica.webp'
+            ? '/images/pages/registro/maximiza-banner-persona-natural.webp'
+            : '/images/pages/registro/maximiza-banner-persona-juridica.webp'
         "
         title="Comienza Completando el Formulario de Registro"
       />
@@ -109,7 +109,7 @@
         alt: 'Hero Background',
       }"
       :pattern="{
-        src: '/images/hero/pattern-registro.webp',
+        src: '/images/hero/maximiza-pattern-registro.webp',
       }"
       :button="{
         text: 'Registrarse',

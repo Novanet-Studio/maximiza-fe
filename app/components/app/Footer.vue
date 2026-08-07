@@ -20,6 +20,8 @@
     { label: 'Registro', to: '/registro' },
     { label: 'Iniciar sesión', to: '/registro' },
     { label: 'Contacto', to: '/contacto' },
+    { label: 'Términos y condiciones', to: '/terminos-y-condiciones' },
+    { label: 'Política de privacidad', to: '/politica-de-privacidad' },
   ]
 
   const interestLinks = [
@@ -61,7 +63,7 @@
           <NuxtLink title="Ir a Enlace" to="/">
             <picture>
               <img
-                src="/images/brand/imagotipo.svg"
+                src="/images/brand/maximiza-logo.svg"
                 alt="Maximiza Casa de Bolsa"
                 title="Maximiza Casa de Bolsa"
                 class="w-full max-w-[180px] brightness-0 invert xl:max-w-[240px]"

@@ -62,7 +62,7 @@
   <div class="relative mt-[10vh] flex min-h-dvh w-full flex-col bg-white pb-40">
     <div class="absolute inset-0 z-0 h-100">
       <img
-        src="/images/pages/blog/article-banner.webp"
+        src="/images/pages/blog/maximiza-article-banner.webp"
         alt="Background"
         title="Background"
         class="h-full w-full object-cover object-center"
@@ -93,7 +93,7 @@
           class="bg-white-alt relative flex min-h-48 w-full items-center justify-center overflow-hidden md:w-1/2"
         >
           <img
-            src="/images/pages/blog/polygon-assets.webp"
+            src="/images/pages/blog/maximiza-polygon-assets.webp"
             alt="Pattern"
             title="Pattern"
             class="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover"

@@ -16,10 +16,10 @@ export const useEnlaces = () => {
       let totalPages = 1
 
       do {
-        const { data, pagination } = await request<{ data: any[]; pagination: { totalPages: number } }>(
-          '/enlaces',
-          { page: String(page) }
-        )
+        const { data, pagination } = await request<{
+          data: any[]
+          pagination: { totalPages: number }
+        }>('/enlaces', { page: String(page) })
         enlaces.push(...(data || []))
         totalPages = pagination?.totalPages || 1
         page += 1

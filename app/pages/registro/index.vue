@@ -21,11 +21,11 @@
       :title="'¡Bienvenido a Maximiza <br /> Casa de Bolsa!'"
       :description="'Abre tu Cuenta de Corretaje Bursátil de forma rápida, cumpliendo con la normativa de la Superintendencia Nacional de Valores (SNV).'"
       :image="{
-        src: '/images/hero/maxmiza-hombres-en-traje-sentados-de-frente-escritorio.webp',
+        src: '/images/hero/maximiza-hombres-en-traje-sentados-de-frente-escritorio.webp',
         alt: 'Hero Background',
       }"
       :pattern="{
-        src: '/images/hero/pattern-registro.webp',
+        src: '/images/hero/maximiza-pattern-registro.webp',
       }"
     />
 

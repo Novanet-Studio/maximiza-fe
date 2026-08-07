@@ -104,6 +104,22 @@ export default defineNuxtConfig({
           name: "author",
           content: "Novanet Studio <info@novanet.studio>",
         },
+        {
+          name: "geo.region",
+          content: "VE-M",
+        },
+        {
+          name: "geo.placename",
+          content: "Caracas, Venezuela",
+        },
+        {
+          name: "geo.position",
+          content: "10.491611;-66.866661",
+        },
+        {
+          name: "ICBM",
+          content: "10.491611, -66.866661",
+        },
 
         { name: "viewport", content: "width=device-width, initial-scale=1" },
       ],

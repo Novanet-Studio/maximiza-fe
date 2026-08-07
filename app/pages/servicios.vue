@@ -20,11 +20,11 @@
         link: '#Soluciones-financieras',
       }"
       :image="{
-        src: '/images/hero/maxmiza-operadores-financieros.webp',
+        src: '/images/hero/maximiza-operadores-financieros.webp',
         alt: 'Hero Background',
       }"
       :pattern="{
-        src: '/images/hero/pattern-servicios.webp',
+        src: '/images/hero/maximiza-pattern-servicios.webp',
       }"
     />
 

@@ -1,6 +1,6 @@
 # Maximiza — Frontend Web (sitio público)
 
-![Maximiza](public/images/brand/imagotipo-white.svg)
+![Maximiza](public/images/brand/maximiza-logo-blanco.svg)
 
 Sitio público de **Maximiza Casa de Bolsa** (Novanet Studio): SEO/PWA, blog, y el
 wizard de apertura de cuenta (onboarding) con generación de PDFs. Construido con

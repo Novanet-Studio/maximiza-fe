@@ -1,30 +1,35 @@
 <script setup lang="ts">
-import { metadata } from '@/assets/data/metadata'
-import { useJsonLd } from '~/composables/useJsonLd'
-import { jsonld } from '~/assets/data/jsonld'
+  import { metadata } from '@/assets/data/metadata'
+  import { useJsonLd } from '~/composables/useJsonLd'
+  import { jsonld } from '~/assets/data/jsonld'
 
-useSeoMeta(metadata.home)
+  useSeoMeta(metadata.home)
 
-useJsonLd(jsonld.home)
+  useJsonLd(jsonld.home)
 </script>
 
 <template>
   <div class="flex h-auto w-full flex-col">
-    <CommonHero :title="'Maximiza: Experiencia <br /> y Liderazgo'"
+    <CommonHero
+      :title="'Maximiza: Experiencia <br /> y Liderazgo'"
       :description="'Contamos con 34 años de experiencia en el mercado bursátil venezolano, ofreciendo todo tipo de servicio de intermediación bursátil en el área de corretaje de Títulos Valores, Finanzas Corporativas, Inversión y Manejo de Capital.'"
       :button="{
         text: 'Quiero invertir',
         link: '/registro',
-      }" :image="{
-        src: '/images/hero/maxmiza-caracas-el-avila.webp',
+      }"
+      :image="{
+        src: '/images/hero/maximiza-caracas-el-avila.webp',
         alt: 'Hero Background',
-      }" :pattern="{
-        src: '/images/hero/pattern-home.webp',
-      }" />
+      }"
+      :pattern="{
+        src: '/images/hero/maximiza-pattern-home.webp',
+      }"
+    />
 
     <CommonTextBanner
       :description="'Pertenecemos a un ecosistema financiero consolidado a nivel nacional e internacional; somos miembros de la Bolsa de Valores de Caracas (BVC) y autorizados por la SUNAVAL. Nuestras alianzas estratégicas onshore y offshore nos otorgan una capacidad de respuesta inigualable  para estructurar soluciones a la medida, conectando de forma fluida el mercado venezolano con los flujos de capital global.'"
-      :background="'/images/textBanner/home.webp'" />
+      :background="'/images/textBanner/home.webp'"
+    />
 
     <ModulesHomePersonTypeSelect />
 

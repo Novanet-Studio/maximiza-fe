@@ -13,11 +13,11 @@
       :title="'Perspectivas Estratégicas <br /> y Análisis de Mercado'"
       :description="'Inteligencia financiera para el análisis de tendencias globales, macroeconómicos y perspectivas del mercado de capitales venezolano. Optimice sus inversiones con datos empíricos de alto valor.'"
       :image="{
-        src: '/images/hero/maxmiza-manos-sujetando-calculadora-y-boligrafo.webp',
+        src: '/images/hero/maximiza-manos-sujetando-calculadora-y-boligrafo.webp',
         alt: 'Hero Background',
       }"
       :pattern="{
-        src: '/images/hero/pattern-blog.webp',
+        src: '/images/hero/maximiza-pattern-blog.webp',
       }"
     />
 

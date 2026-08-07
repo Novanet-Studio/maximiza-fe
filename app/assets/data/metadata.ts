@@ -97,4 +97,30 @@ export const metadata: Record<string, any> = {
     twitterCard: 'summary_large_image',
     themeColor: '#00735f',
   },
+  terminosYCondiciones: {
+    title: 'Términos y condiciones, seguridad y transparencia',
+    description:
+      'Conozca los términos y condiciones que rigen el uso de nuestros servicios financieros, canales de comunicación y plataforma digital de Maximiza Casa de Bolsa.',
+    ogTitle: 'Términos y condiciones, seguridad y transparencia',
+    ogDescription:
+      'Conozca los términos y condiciones que rigen el uso de nuestros servicios financieros, canales de comunicación y plataforma digital de Maximiza Casa de Bolsa.',
+    ogImage: OG_IMAGE_BASE_URL('v1773756060/maximiza/v5/openGraph/Inicio_jolui6.png'),
+    ogUrl: BASE_URL('terminos-y-condiciones'),
+    ogType: 'website',
+    twitterCard: 'summary_large_image',
+    themeColor: '#00735f',
+  },
+  politicaPrivacidad: {
+    title: 'Política de privacidad, protección de datos garantizada',
+    description:
+      'En Maximiza Casa de Bolsa protegemos y respetamos su información personal. Conozca nuestra política de privacidad, canales digitales y chatbot.',
+    ogTitle: 'Política de privacidad, protección de datos garantizada',
+    ogDescription:
+      'En Maximiza Casa de Bolsa protegemos y respetamos su información personal. Conozca nuestra política de privacidad, canales digitales y chatbot.',
+    ogImage: OG_IMAGE_BASE_URL('v1773756060/maximiza/v5/openGraph/Inicio_jolui6.png'),
+    ogUrl: BASE_URL('politica-de-privacidad'),
+    ogType: 'website',
+    twitterCard: 'summary_large_image',
+    themeColor: '#00735f',
+  },
 }

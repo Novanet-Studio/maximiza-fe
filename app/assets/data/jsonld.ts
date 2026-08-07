@@ -23,6 +23,11 @@ export const jsonld = {
         addressLocality: 'El Rosal, Caracas',
         addressCountry: 'VE',
       },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 10.491611,
+        longitude: -66.866661,
+      },
       sameAs: ['https://www.instagram.com/maximiza_ve/', 'https://twitter.com/maximiza_ve'],
     },
   },
@@ -47,6 +52,11 @@ export const jsonld = {
         streetAddress: 'Avenida Francisco de Miranda, Torre Europa, Piso 3, Oficinas 3-B3',
         addressLocality: 'El Rosal, Caracas',
         addressCountry: 'VE',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 10.491611,
+        longitude: -66.866661,
       },
       sameAs: ['https://www.instagram.com/maximiza_ve/', 'https://twitter.com/maximiza_ve'],
     },
@@ -138,6 +148,30 @@ export const jsonld = {
     potentialAction: {
       '@type': 'RegisterAction',
       target: `${commonData.baseUrl}/registro`,
+    },
+  },
+  terminosYCondiciones: {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${commonData.baseUrl}/terminos-y-condiciones`,
+    url: `${commonData.baseUrl}/terminos-y-condiciones`,
+    name: 'Términos y Condiciones - Maximiza Casa de Bolsa',
+    description:
+      'Términos y condiciones de uso de la plataforma digital, chatbot y servicios de corretaje de Maximiza Casa de Bolsa.',
+    publisher: {
+      '@id': `${commonData.baseUrl}/#organization`,
+    },
+  },
+  politicaPrivacidad: {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${commonData.baseUrl}/politica-de-privacidad`,
+    url: `${commonData.baseUrl}/politica-de-privacidad`,
+    name: 'Política de Privacidad - Maximiza Casa de Bolsa',
+    description:
+      'Política de privacidad y de protección de datos de carácter personal de Maximiza Casa de Bolsa.',
+    publisher: {
+      '@id': `${commonData.baseUrl}/#organization`,
     },
   },
 }

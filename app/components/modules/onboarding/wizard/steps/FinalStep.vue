@@ -113,7 +113,7 @@
     <picture class="mb-12">
       <img
         class="h-auto w-[240px] md:w-[300px]"
-        src="/images/brand/imagotipo.svg"
+        src="/images/brand/maximiza-logo.svg"
         alt="Maximiza Logo"
         title="Maximiza Logo"
       />
