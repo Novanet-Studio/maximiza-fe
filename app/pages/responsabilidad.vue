@@ -96,7 +96,7 @@
     {
       description: 'Providencia 209 - Gaceta oficial 42115',
       button: {
-        link: 'https://res.cloudinary.com/novanet-studio/image/upload/v1663620677/maximiza/downloads/Providencia_209-GO_42115_izkots.pdf',
+        link: 'https://drive.google.com/file/d/1hxVYY5kNajB1shV6Q4f-zDQgZkcz0TDc/view?usp=sharing',
       },
       image: {
         url: '/images/pages/responsabilidad/links/maximiza-4.webp',
