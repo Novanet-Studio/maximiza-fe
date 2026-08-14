@@ -22,6 +22,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       trackingApiUrl: process.env.TRACKING_API_URL ?? 'http://localhost:3001',
+      publicMetricoolHash: process.env.PUBLIC_METRICOOL_HASH,
       kairos: {
         url: process.env.KAIROS_API_URL || "http://localhost:3000",
         apiKey: process.env.KAIROS_API_KEY || "",
@@ -134,6 +135,11 @@ export default defineNuxtConfig({
         {
           rel: "stylesheet",
           href: "https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Google+Sans:ital,opsz,wght@0,17..18,400..800;1,17..18,400..800&display=swap",
+        },
+      ],
+      script: [
+        {
+          innerHTML: `function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"${process.env.PUBLIC_METRICOOL_HASH ?? ""}"})});`,
         },
       ],
     },
