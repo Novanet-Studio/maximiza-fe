@@ -4,6 +4,7 @@
   import * as yup from 'yup'
   import { useOnboardingWizard } from '~/composables/useOnboardingWizard'
   import { PHONE_REGEX } from '~/assets/data/formSources'
+  import { NGROK_HEADERS } from '~/lib/tracking'
 
   const wizard = useOnboardingWizard()
   const trackingApiUrl = useRuntimeConfig().public.trackingApiUrl
@@ -23,7 +24,8 @@
   onMounted(async () => {
     try {
       const res = await $fetch<{ data: { id: number; name: string }[] }>(
-        `${trackingApiUrl}/api/tracking/advisors`
+        `${trackingApiUrl}/api/tracking/advisors`,
+        { headers: NGROK_HEADERS }
       )
       advisorOptions.value = [
         { value: NO_PREFERENCE, label: 'Sin preferencia' },

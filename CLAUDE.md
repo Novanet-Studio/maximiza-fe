@@ -113,6 +113,15 @@ component (step 0) renders a hidden selector of available executors, fed by a no
 `GET /api/tracking/advisors` call at mount time; if the call fails, the selector is hidden and the
 wizard proceeds normally. The preselection is an optional convenience, never a blocker.
 
+### Cabecera ngrok
+
+`NGROK_HEADERS` (`app/lib/tracking.ts`) exporta `{ 'ngrok-skip-browser-warning': 'true' }` y **toda
+llamada del navegador debe mandarla** — las tres del wizard, `POST /api/generate-pdf` y el submit del
+form de contacto a Netlify. Sin ella, ngrok-free contesta con su página interstitial (200, text/html,
+sin `Access-Control-Allow-Origin`) y el navegador lo reporta como fallo de CORS aunque el servidor
+esté bien. Es inofensiva fuera de ngrok, así que va siempre, no solo al tunelizar. Mismo patrón que
+`useApi()` en el dashboard. Al añadir un `fetch`/`$fetch` nuevo desde el cliente, incluye la cabecera.
+
 ### PDF generation
 
 The completed application is rendered to PDF in-process, not by an external service:

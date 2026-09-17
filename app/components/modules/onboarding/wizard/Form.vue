@@ -4,6 +4,7 @@
   import FormStepper from './FormStepper.vue'
 
   import { useOnboardingWizard } from '~/composables/useOnboardingWizard'
+  import { NGROK_HEADERS } from '~/lib/tracking'
 
   import AcceptContractStep from './steps/AcceptContractStep.vue'
   import FinancialInformationStep from './steps/FinancialInformationStep.vue'
@@ -93,6 +94,7 @@
           `${trackingApiUrl}/api/tracking/session`,
           {
             method: 'POST',
+            headers: NGROK_HEADERS,
             body: { name, email, phone, personType: props.type, advisorId: advisorId ?? undefined },
           }
         )
@@ -113,6 +115,7 @@
     if (!sessionId || !sessionToken) return
     $fetch(`${trackingApiUrl}/api/tracking/progress`, {
       method: 'POST',
+      headers: NGROK_HEADERS,
       body: { sessionId, sessionToken, currentStep, completed: currentStep >= totalSteps - 1 },
       keepalive,
     }).catch(() => {})

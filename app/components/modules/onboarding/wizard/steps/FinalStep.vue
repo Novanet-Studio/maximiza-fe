@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import { useOnboardingWizard } from '~/composables/useOnboardingWizard'
   import { getPageStyles } from '~/lib/pdfHelper'
+  import { NGROK_HEADERS } from '~/lib/tracking'
 
   import { PLANILLA_NATURAL_MOCK_DATA } from '~/assets/data/planilla_result.mock'
 
@@ -19,6 +20,7 @@
 
     const response = await $fetch('/api/generate-pdf', {
       method: 'POST',
+      headers: NGROK_HEADERS,
       body: {
         htmlContent: html,
         cssContent: styles,
