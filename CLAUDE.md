@@ -1,84 +1,166 @@
-# CLAUDE.md
+# CLAUDE.md — maximiza-fe
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Guidance for Claude Code (claude.ai/code) when working in this repository. Read it before editing.
+
+## What this is
+
+The public website of Maximiza Casa de Bolsa (a Venezuelan brokerage): marketing pages, a blog, legal
+pages, and the **client onboarding wizard** that collects an account-opening application and renders it
+to PDF. It is SEO-first and ships as an installable PWA.
+
+Nuxt 4 with **SSR enabled**, deployed to Netlify. Dev server runs on port **3014**. Site URL is
+`https://maximiza.com.ve`.
 
 ## Commands
 
-```bash
-npm run dev          # dev server en http://localhost:3014
-npm run host         # dev server expuesto en red local
-npm run build        # build SSR para producción
-npm run generate     # generación estática
-npm run preview      # previsualizar build
+The lockfile in the tree is `bun.lock` (a stale `yarn.lock` is also present; ignore it). Netlify builds
+with `npm run build`.
+
+- `bun run dev` — dev server on port 3014 (`bun run host` to expose on the LAN)
+- `bun run build` — production build
+- `bun run generate` — static generation
+- `bun run preview` — preview a production build
+- `bun run format` — Prettier over `app/**/*.{vue,ts,js}` and `server/**/*.ts`
+
+There is no lint script and no test suite. Validation is TypeScript strict plus visual review.
+Prettier config: **no semicolons**, single quotes, 2 spaces, ES5 trailing commas, printWidth 100,
+`vueIndentScriptAndStyle: true`, with `prettier-plugin-tailwindcss` sorting class lists.
+
+## Architecture
+
+Nuxt 4 with the default `app/` source directory, `ssr: true`, TypeScript strict. Styling is
+Tailwind CSS 4 through `@tailwindcss/vite` (not the Nuxt Tailwind module, despite it being installed).
+Animations use `motion-v`; icons are Font Awesome registered in `app/plugins/fontawesome.ts`.
+
+```
+app/
+  pages/            file-based routes
+  layouts/          default.vue only
+  components/
+    app/            app shell pieces
+    common/         cross-page pieces
+    shared/         reusable content sections
+    ui/             Button.vue
+    form/           Base* form primitives (Input, Select, Radio, Checkbox, PhoneInput, …)
+    modules/        feature areas: home, empresa, blog, contact, onboarding
+  composables/      data access and wizard state
+  lib/              pdfHelper.ts, utils.ts
+  assets/           styles, animations, data JSON
+  plugins/          fontawesome.ts
+server/
+  api/generate-pdf.post.ts   Nitro route, renders HTML to PDF with Puppeteer
+maximiza.d.ts       global MXMZ namespace of domain types (no imports needed)
 ```
 
-No hay suite de tests configurada. La validación principal es TypeScript strict + revisión visual.
+Routes: `/`, `/empresa`, `/servicios`, `/contacto`, `/blog` + `/blog/[slug]`, `/registro` +
+`/registro/[person]`, `/politica-de-privacidad`, `/terminos-y-condiciones`, `/responsabilidad`.
 
-## Arquitectura
+### Types
 
-**Stack:** Nuxt 4 (SSR) · Vue 3 · Tailwind CSS v4 · Strapi v4 (CMS) · Netlify (deploy)
+Domain types live in the global `MXMZ` namespace declared in `maximiza.d.ts`, wired through
+`typescript.tsConfig.compilerOptions.types` in `nuxt.config.ts`. They are ambient — reference
+`MXMZ.Article`, `MXMZ.Balance`, `MXMZ.WizardState` and friends directly, with no import.
 
-### Estructura de `app/`
+### Content API
 
-- `pages/` — rutas principales: `index`, `empresa`, `servicios`, `contacto`, `responsabilidad`, `blog/`, `registro/`
-- `components/app/` — shell: `Header`, `Footer`, `Loader`, `Popover`
-- `components/common/` — bloques reutilizables de layout: `Hero`, `SectionHeader`, `ContentCard`, `TextBanner`, `ContentWithColumns`
-- `components/shared/` — componentes cross-page: `OurServices`
-- `components/ui/` — primitivos: `Button`
-- `components/form/` — inputs con vee-validate: `BaseInput`, `BaseSelect`, `BaseCheckbox`, `BaseRadio`, `BaseLabel`, `BaseLayout`, `Error`, `Title`, `BaseDivider`
-- `components/modules/` — features por dominio: `blog/`, `contact/`, `empresa/`, `home/`, `onboarding/`
-- `composables/` — lógica compartida (ver abajo)
-- `lib/utils.ts` — helpers puros: `formatDate`, `formatAmount`, `truncateText`, `articleExcerpt`, `minAgeDate`
-- `lib/pdfHelper.ts` — extrae CSS del DOM para inyectarlo en el PDF
-- `assets/data/formSources.ts` — todas las opciones de selects del formulario de onboarding + helper `getLabel`
-- `assets/styles/main.css` — entrada de Tailwind v4 con tokens de diseño (`@theme`)
+Blog articles, financial balances and regulatory links come from an external headless CMS reached
+through `useKairos()` (`app/composables/useKairos.ts`), a `$fetch` wrapper that sends an `x-api-key`
+header and a base URL from `runtimeConfig.public.kairos`.
 
-### CMS (Kairos)
+`useArticles()`, `useBalances()` and `useEnlaces()` each wrap that request and **normalize the CMS
+response into the `MXMZ.*` shapes** the templates already consume — the normalizers exist so the
+templates never had to change when the content source did. Keep that boundary: normalize in the
+composable, never spread raw CMS fields into a template. Every one of them catches its own errors and
+returns an empty value, so a CMS outage degrades to an empty section rather than a failed render.
 
-REST vía `useKairos` (`$fetch` con header `x-api-key`). Los composables de datos son:
-- `useArticles` — blog (`GET /articulos`, `GET /articulos/:slug`)
-- `useBalances` — balances financieros (`GET /balance-tipo?fullRelation=true`)
+`useJsonLd()` builds structured data for SEO.
 
-Kairos devuelve campos planos (`title`/`date`/`portrait`, y `balance-tipo` con `inverse_relations`); cada composable los normaliza a `MXMZ.Article` / `MXMZ.Balance` para no tocar los templates. Config: `KAIROS_API_URL` + `KAIROS_API_KEY`.
+### Onboarding wizard
 
-### Onboarding Wizard
+The wizard is the most involved part of the codebase. Entry point is `/registro`, which asks for a
+person type, then `/registro/[person]` renders it.
 
-Feature de apertura de cuenta en `components/modules/onboarding/`. Flujo complejo:
+- `wizard/Wrapper.vue` is a thin passthrough — it only picks the person type and renders `Form.vue`.
+  **All the real logic lives in `wizard/Form.vue`**: step list, validation wiring, tracking calls, and
+  the final submit.
+- State is `useOnboardingWizard()` (`app/composables/`), a `useState('onboarding-wizard-state')` store
+  holding `currentStep`, `totalSteps`, `maxStepReached`, `isComplete`, `type`, `formData`, `sessionId`
+  and `trackingData`. `initWizard(type, stepsCount)` resets everything when the person type changes and
+  pre-fills the institution block (brokerage name, RIF, address) with constants.
+- **Steps differ by person type**: natural persons get a longer flow (`steps/natural/`, plus the shared
+  steps) than legal entities (`steps/juridica/`). Shared steps are `AcceptContractStep`,
+  `DatosInstitucionStep`, `InvestorProfileStep`, `FinancialInformationStep`, `ProductInformationStep`,
+  `FinalStep`. Repeating sub-forms (stockholders, bank references, providers, PEP data, …) are the
+  components under `modules/onboarding/blocks/`.
+- Form validation is `vee-validate` with `yup` schemas.
 
-1. **`wizard/Wrapper.vue`** — decide entre `persona-natural` y `persona-juridica`, inicializa el wizard
-2. **`wizard/Form.vue`** — orquesta los pasos, contiene la lógica de navegación
-3. **`wizard/FormStepper.vue`** — barra de progreso
-4. **`wizard/steps/`** — cada paso es un componente independiente que llama `updateFormData` al completarse
-5. **`composables/useOnboardingWizard.ts`** — estado global del wizard via `useState` de Nuxt (key `"onboarding-wizard-state"`); expone `initWizard`, `nextStep`, `prevStep`, `goToStep`, `updateFormData`
+### Progress tracking
 
-El resultado acumulado (`formData`) satisface `MXMZ.OnboardingWizardResult` definido en `maximiza.d.ts`.
+The wizard reports progress to the platform backend so the internal dashboard can see how far each
+applicant got. The calls are made inline in `wizard/Form.vue` against
+`runtimeConfig.public.trackingApiUrl` (env `TRACKING_API_URL`, default `http://localhost:3001`):
 
-### Generación de PDF
+- `POST /api/tracking/session` on start (step 0 advance) — sends `name`, `email`, `phone`, `personType`,
+  and optional `advisorId` (the applicant's preselected executor from the initial step). The API
+  returns the session id, stored in `state.sessionId`.
+- `POST /api/tracking/progress` on each later step advance — sends `sessionId`, `currentStep`, and
+  optional `completed` (boolean flag set when `currentStep >= totalSteps - 1`, indicating the wizard
+  reached or passed the final step).
 
-- `components/modules/onboarding/pdf/` — componentes Vue que renderizan los documentos (planilla de apertura, origen de fondos, registro de firmas)
-- `lib/pdfHelper.ts#getPageStyles` — recolecta todos los CSS del DOM en tiempo de cliente
-- `server/api/generate-pdf.post.ts` — endpoint Nitro que usa Puppeteer + `@sparticuz/chromium`; en producción (Netlify) usa el binario de chromium serverless, en local apunta a Chrome instalado
+Both endpoints are public on the backend side. These calls are **fire-and-forget**: a tracking failure
+must never block the applicant from continuing. Preserve that when touching them. The `AcceptContractStep`
+component (step 0) renders a hidden selector of available executors, fed by a non-blocking
+`GET /api/tracking/advisors` call at mount time; if the call fails, the selector is hidden and the
+wizard proceeds normally. The preselection is an optional convenience, never a blocker.
 
-### Tipos globales
+### PDF generation
 
-`maximiza.d.ts` declara el namespace `MXMZ` con todas las interfaces del dominio. Agregar tipos nuevos del negocio aquí.
+The completed application is rendered to PDF in-process, not by an external service:
 
-### Estilos
+- `modules/onboarding/pdf/` holds the document components (`MainDocument`, `OpeningDocument`,
+  `OriginFundsDocuments`, `SignatureRegistrationDocument`).
+- `app/lib/pdfHelper.ts` serializes them to an HTML string plus CSS.
+- `POST /api/generate-pdf` (`server/api/generate-pdf.post.ts`) drives `puppeteer-core` over that HTML.
+  In production it uses `@sparticuz/chromium` (a Lambda-compatible Chromium build); locally it expects a
+  system Chrome at a hard-coded path per platform — that path is the usual reason local PDF generation
+  fails on a new machine.
+- `nuxt.config.ts` keeps `@sparticuz/chromium` and `puppeteer-core` out of the Nitro bundle
+  (`nitro.externals.external`), and `netlify.toml` repeats that under `functions.external_node_modules`.
+  Both must stay in sync or the deployed function breaks at runtime.
 
-Tailwind v4 con plugin Vite (`@tailwindcss/vite`). Los tokens están en `app/assets/styles/main.css` bajo `@theme`:
-- Colores: `primary` (#00735f), `secondary` (#f1cda7), `error`, `gray`, `white-alt`, etc.
-- Fuente: Google Sans / Google Sans Flex
-- `--width-a4: 210mm` — usado en los componentes PDF
+### SEO and PWA
 
-### Imágenes
+- `@nuxtjs/sitemap` and `@nuxtjs/robots` (which disallows `/api/`), `@nuxt/image` with a Cloudinary
+  provider, `@nuxt/fonts`, `nuxt-gtag` for Google Analytics, and a Metricool tracker injected as an
+  inline head script.
+- `@vite-pwa/nuxt` with `registerType: 'autoUpdate'`, an install prompt, and `navigateFallback: null` —
+  the app shell is deliberately not used as an offline fallback, because SSR pages must win.
+- Global head config (title template, description, geo meta, Google Fonts preconnect) lives in
+  `app.head` in `nuxt.config.ts`. Per-page SEO goes in the page with `useSeoMeta` / `useHead`.
+- `/static/contact-form.html` is prerendered explicitly via `nitro.prerender.routes`.
 
-`@nuxt/image` con proveedor Cloudinary (`res.cloudinary.com/novanet-studio`). Usar `<NuxtImg>` en lugar de `<img>` para imágenes optimizadas.
+## Environment
 
-### Variables de entorno
+- `TRACKING_API_URL` — base URL of the platform backend for wizard progress tracking and advisor
+  listing (no `/api` suffix; the wizard paths add it). Used by `AcceptContractStep` to fetch
+  `GET /api/tracking/advisors` and by `Form.vue` to POST session creation and progress. Defaults to
+  `http://localhost:3001`. If unreachable, the wizard still works: the advisor selector hides and
+  tracking calls are retried fire-and-forget, never blocking the applicant.
+- `KAIROS_API_URL` / `KAIROS_API_KEY` — content CMS endpoint and key. Default URL
+  `http://localhost:3000`.
+- `PUBLIC_METRICOOL_HASH` — Metricool tracker hash; the script is injected empty when unset.
 
-| Variable | Uso |
-|---|---|
-| `KAIROS_API_URL` | URL base del CMS Kairos (incluye `/public/<tenant>`) |
-| `KAIROS_API_KEY` | API key enviada como header `x-api-key` |
+Note that `.env.example` is out of date: it still lists `STRAPI_API_URL`, which nothing reads any more,
+and omits `TRACKING_API_URL`, `KAIROS_API_URL` and `KAIROS_API_KEY`.
 
-En producción el deploy es en Netlify (`@netlify/nuxt`). La ruta `/api/generate-pdf` tiene CORS abierto por configuración en `nitro.routeRules`.
+## Gotchas
+
+- `ssr: true` — components run on the server too. Guard `window` / `document` access with
+  `import.meta.client`. The wizard's scroll helpers already do this by only running in event handlers.
+- Prettier here is configured **without semicolons**, unlike other Nuxt projects. Run `bun run format`
+  rather than matching style by hand.
+- `vite.resolve.dedupe: ['vue']` is deliberate; removing it reintroduces duplicate-Vue errors.
+- `zod` v4 is installed but form validation uses `yup` through vee-validate. Do not mix the two in one
+  form.
+- Both `@nuxtjs/tailwindcss` and `@tailwindcss/vite` are in `package.json`; only the Vite plugin is
+  registered in `nuxt.config.ts`. Add Tailwind config through the Vite plugin path.

@@ -21,7 +21,7 @@
 
   const emit = defineEmits(['update:modelValue'])
 
-  const OPERATOR_LEN = 8 // "(+58)" (5) + 3 dígitos
+  const OPERATOR_LEN = 8 // "(+58)" plus the 3-digit carrier code
 
   const parse = (value: string) => {
     const prefix = value.slice(0, OPERATOR_LEN)
@@ -34,12 +34,12 @@
   const body = ref(initial.body)
 
   const emitCombined = () => {
-    // ponytail: la operadora vive en estado local, no en el modelValue combinado;
-    // si el cuerpo está vacío emitimos '' para que los campos opcionales queden vacíos.
+    // The carrier prefix is local state, never part of the combined modelValue: with an
+    // empty subscriber number we emit '' so optional fields stay empty instead of prefix-only.
     emit('update:modelValue', body.value ? `${operator.value}${body.value}` : '')
   }
 
-  // Re-hidratar cuando el valor cambia desde afuera (reset / volver a un paso).
+  // Re-hydrate when modelValue changes from outside (form reset, navigating back to a step).
   watch(
     () => props.modelValue,
     (value) => {

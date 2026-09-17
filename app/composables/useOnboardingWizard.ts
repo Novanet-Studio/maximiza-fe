@@ -7,6 +7,7 @@ export const useOnboardingWizard = () => {
     type: null,
     formData: {},
     sessionId: null,
+    sessionToken: null,
     trackingData: null,
   }))
 
@@ -31,6 +32,7 @@ export const useOnboardingWizard = () => {
 
       state.value.isComplete = false
       state.value.sessionId = null
+      state.value.sessionToken = null
       state.value.trackingData = null
     }
 
@@ -40,7 +42,6 @@ export const useOnboardingWizard = () => {
   const nextStep = () => {
     if (state.value.currentStep < state.value.totalSteps - 1) {
       state.value.currentStep++
-      // Update maxStepReached when moving forward
       if (state.value.currentStep > state.value.maxStepReached) {
         state.value.maxStepReached = state.value.currentStep
       }
@@ -70,7 +71,6 @@ export const useOnboardingWizard = () => {
   }
 
   const goToStep = (index: number) => {
-    // Only allow navigation to visited steps or current step
     if (index >= 0 && index <= state.value.maxStepReached && index < state.value.totalSteps) {
       state.value.currentStep = index
     }
@@ -80,11 +80,17 @@ export const useOnboardingWizard = () => {
     state.value.formData = { ...state.value.formData, ...newData }
   }
 
-  const setSessionId = (id: number) => {
+  const setSessionId = (id: number, token?: string) => {
     state.value.sessionId = id
+    if (token) state.value.sessionToken = token
   }
 
-  const setTrackingData = (data: { name: string; email: string; phone: string }) => {
+  const setTrackingData = (data: {
+    name: string
+    email: string
+    phone: string
+    advisorId?: number | null
+  }) => {
     state.value.trackingData = data
   }
 

@@ -16,7 +16,6 @@
         :viewport="{ once: true, margin: '-100px' }"
         class="border-gray/30 relative flex w-full max-w-5xl flex-col items-stretch border bg-white md:flex-row"
       >
-        <!-- Text Content -->
         <div
           class="z-0 flex w-full flex-col items-start p-4 px-6 text-left max-sm:pt-52 md:w-3/5 md:items-end md:p-6 md:text-right lg:p-10"
         >
@@ -64,7 +63,6 @@
           </div>
         </div>
 
-        <!-- Book Image (Absolute Positioning) -->
         <div
           class="pointer-events-none absolute top-0 left-1/2 z-10 flex w-50 -translate-x-1/2 -translate-y-[45%] justify-center sm:w-60 md:top-1/2 md:left-3/5 md:w-70 md:translate-x-0 md:-translate-y-1/2 lg:w-80 xl:w-90"
         >

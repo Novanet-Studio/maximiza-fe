@@ -206,7 +206,6 @@
         </tr>
       </thead>
       <tbody class="grid grid-cols-[4fr_7fr_4fr_3fr_4fr]">
-        <!-- fila -->
         <tr class="spreadsheet__item">
           <td class="grid grid-cols-[1fr_auto]">
             <span> El inversionista es (PEP)</span>
@@ -240,7 +239,6 @@
             {{ source.isPep === 'SI' ? source.relatedIdentification : '' }}
           </td>
         </tr>
-        <!-- fila -->
         <tr class="spreadsheet__item">
           <td class="grid grid-cols-[1fr_auto]">
             <span> Tiene parentesco con (PEP)</span>
@@ -278,7 +276,6 @@
             {{ source.hasPepRelationship === 'SI' ? source.relatedIdentification : '' }}
           </td>
         </tr>
-        <!-- fila -->
         <tr class="spreadsheet__item">
           <td class="grid grid-cols-[1fr_auto]">
             <span> Es asociado cercano de (PE)</span>

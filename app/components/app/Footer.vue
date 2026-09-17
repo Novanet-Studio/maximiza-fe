@@ -1,11 +1,9 @@
 <script setup lang="ts">
   import companyData from '@/assets/data/common.json'
 
-  //? FontAwesome
   import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
   import { faEnvelope, faPhone, faFax, faLocationDot } from '@fortawesome/free-solid-svg-icons'
 
-  //? Motion
   import { motion } from 'motion-v'
   import { footerContainerVariants, footerItemVariants } from '@/assets/animations/motion'
 

@@ -18,7 +18,7 @@ export const phoneOperatorOptions: FormOption[] = [
   { value: '(+58)426', label: '(+58)426' },
 ]
 
-// operadora = 8 chars fijos: "(+58)" (5) + 3 dígitos; cuerpo = 7 dígitos
+// Carrier prefix is a fixed 8 chars: "(+58)" plus 3 digits; subscriber number is 7 digits.
 export const PHONE_REGEX = /^\(\+58\)(412|414|416|422|424|426)[0-9]{7}$/
 
 export const docTypeOptions = [

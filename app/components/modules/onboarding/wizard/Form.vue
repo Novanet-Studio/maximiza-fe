@@ -5,17 +5,14 @@
 
   import { useOnboardingWizard } from '~/composables/useOnboardingWizard'
 
-  //? common steps
   import AcceptContractStep from './steps/AcceptContractStep.vue'
   import FinancialInformationStep from './steps/FinancialInformationStep.vue'
   import ProductInformationStep from './steps/ProductInformationStep.vue'
   import FinalStep from './steps/FinalStep.vue'
 
-  //? natural steps
   import PersonalDataStep from './steps/natural/PersonalDataStep.vue'
   import PepProfileStep from './steps/natural/PepProfileStep.vue'
 
-  //? jurídica steps
   import EnterpriseIdentificationStep from './steps/juridica/EnterpriseIdentificationStep.vue'
 
   const props = defineProps<{ type: MXMZ.OnboardingType }>()
@@ -43,24 +40,23 @@
 
   const stepsComponents = {
     'persona-natural': [
-      AcceptContractStep, //? common step
+      AcceptContractStep,
       PersonalDataStep,
       PepProfileStep,
-      FinancialInformationStep, //? common step
-      ProductInformationStep, //? common step
-      FinalStep, //? common step
+      FinancialInformationStep,
+      ProductInformationStep,
+      FinalStep,
     ],
     'persona-juridica': [
-      AcceptContractStep, //? common step
+      AcceptContractStep,
       EnterpriseIdentificationStep,
-      FinancialInformationStep, //? common step
-      ProductInformationStep, //? common step
-      FinalStep, //? common step
+      FinancialInformationStep,
+      ProductInformationStep,
+      FinalStep,
     ],
   }
 
   const currentStepsList = computed(() => {
-    // wait until props init
     if (!props.type || !stepsConfigNames[props.type]) return []
     return stepsConfigNames[props.type]
   })
@@ -85,39 +81,39 @@
       wizard.nextStep()
     }
 
-    // Guard: solo crear la sesión si el paso avanzó (validación pasó)
+    // Only proceed when the step actually advanced, i.e. validation passed.
     if (wizard.state.value.currentStep === completingStep) return
 
-    // La sesión se crea al completar el paso 0; el avance de paso lo maneja el
-    // watcher debounced de abajo (cubre botones y stepper por igual).
+    // The tracking session is created once, on completing step 0; every later step advance
+    // is reported by the debounced watcher below.
     if (completingStep === 0 && wizard.state.value.trackingData) {
       try {
-        const { name, email, phone } = wizard.state.value.trackingData
-        const res = await $fetch<{ data: { id: number } }>(
+        const { name, email, phone, advisorId } = wizard.state.value.trackingData
+        const res = await $fetch<{ data: { id: number; token: string } }>(
           `${trackingApiUrl}/api/tracking/session`,
           {
             method: 'POST',
-            body: { name, email, phone, personType: props.type },
+            body: { name, email, phone, personType: props.type, advisorId: advisorId ?? undefined },
           }
         )
-        wizard.setSessionId(res.data.id)
+        wizard.setSessionId(res.data.id, res.data.token)
       } catch {
-        // silencioso — un fallo de BD nunca bloquea al usuario
+        // Tracking is fire-and-forget: a failure must never block the applicant.
       }
     }
   }
 
-  // Registra el paso actual en el backend, debounced 5s para no saturar. Un fallo
-  // nunca bloquea al usuario. Cubre botón Siguiente/Atrás y stepper porque todos
-  // mutan currentStep; observar sessionId dispara el primer envío (transición 0→1).
+  // Reports the current step to the tracking API, debounced 5s. Watching currentStep covers
+  // the Next/Back buttons and the stepper alike; watching sessionId fires the first report.
+  // Failures are swallowed on purpose: tracking must never block the applicant.
   let progressTimer: ReturnType<typeof setTimeout> | null = null
 
   const sendProgress = (keepalive = false) => {
-    const { sessionId, currentStep } = wizard.state.value
-    if (!sessionId) return
+    const { sessionId, sessionToken, currentStep, totalSteps } = wizard.state.value
+    if (!sessionId || !sessionToken) return
     $fetch(`${trackingApiUrl}/api/tracking/progress`, {
       method: 'POST',
-      body: { sessionId, currentStep },
+      body: { sessionId, sessionToken, currentStep, completed: currentStep >= totalSteps - 1 },
       keepalive,
     }).catch(() => {})
   }
@@ -131,7 +127,7 @@
   onBeforeUnmount(() => {
     if (progressTimer) {
       clearTimeout(progressTimer)
-      sendProgress(true) // flush inmediato al salir
+      sendProgress(true) // flush the pending step before the component goes away
     }
   })
 

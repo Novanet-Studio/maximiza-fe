@@ -169,7 +169,6 @@
     width: 180px;
   }
 
-  /* Clases de utilidad para el texto */
   .text-justify {
     text-align: justify;
   }

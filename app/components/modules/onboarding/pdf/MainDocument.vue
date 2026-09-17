@@ -38,7 +38,6 @@
     return [...current, ...Array(emptyCount).fill(defaultObj)]
   }
 
-  // Data Helpers
   const personal = computed<MXMZ.PersonalData>(
     () => props.data.personalData || ({} as MXMZ.PersonalData)
   )
@@ -59,7 +58,6 @@
     () => props.data.institutionData || ({} as MXMZ.InstitutionData)
   )
 
-  // Labels Computed
   const professionLabel = computed(() => getLabel(personal.value.profession, occupationsOptions))
   const economicActivityLabel = computed(() => {
     const code = isNatural.value
@@ -79,16 +77,6 @@
   const destinationCountryLabel = computed(() =>
     getLabel(product.value.destinationCountry, countriesOptions)
   )
-
-  /*
-onMounted(() => {
-  if (process.client) {
-    console.group("📋 PDF JURIDICA MOCK DATA");
-    console.log(JSON.stringify(props.data, null, 2));
-    console.groupEnd();
-  }
-});
-*/
 </script>
 
 <template>

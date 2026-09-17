@@ -1,4 +1,3 @@
-//? JURIDICA
 export const PLANILLA_JURIDICA_MOCK_DATA: MXMZ.OnboardingWizardResult = {
   institutionData: {
     place: 'Caracas',
@@ -155,7 +154,6 @@ export const PLANILLA_JURIDICA_MOCK_DATA: MXMZ.OnboardingWizardResult = {
   },
 }
 
-//? natural
 export const PLANILLA_NATURAL_MOCK_DATA: MXMZ.OnboardingWizardResult = {
   institutionData: {
     place: 'Caracas',
