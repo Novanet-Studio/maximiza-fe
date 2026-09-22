@@ -5,3 +5,35 @@
 [functions]
   external_node_modules = ["@sparticuz/chromium", "puppeteer-core"]
   node_bundler = "esbuild"
+
+# Security headers. Everything here is enforced except the CSP, which ships as Report-Only on
+# purpose: the site has inline script and style that a strict policy would break right now —
+# the Metricool loader built in nuxt.config.ts, the JSON-LD from useJsonLd, the __NUXT__ payload
+# Nuxt SSR injects, and the inline `style` attributes motion-v writes on ~30 components.
+# Netlify Edge Functions are disabled (nuxt.config.ts), so there is no per-response nonce to
+# lean on. Collect the violation reports from real traffic, close the gaps, then rename the
+# header to Content-Security-Policy.
+#
+# Two values still have to be confirmed before enforcing:
+#   - img-src is missing whatever host the Kairos CMS serves article images from
+#     (components/modules/blog/Article.vue binds article.imagen.url straight into <img>).
+# It will show up as a Report-Only violation while browsing the site; add it then.
+#
+# connect-src carries the API as https://*.herokuapp.com because the backend still answers on
+# Heroku's default domain and the exact app name is not in this repo. NARROW IT to the single
+# host before promoting the policy out of Report-Only — a wildcard over herokuapp.com allows
+# every app on the platform, which defeats the point of the directive. Better still, give the
+# Heroku app a custom domain under maximiza.com.ve and pin that.
+#
+# HSTS ships without `preload` until it is confirmed that no subdomain of maximiza.com.ve is
+# still served over HTTP.
+[[headers]]
+  for = "/*"
+
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+    Content-Security-Policy-Report-Only = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://tracker.metricool.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https://res.cloudinary.com https://www.google-analytics.com; connect-src 'self' https://*.herokuapp.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://stats.g.doubleclick.net https://tracker.metricool.com; frame-src https://www.google.com; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; worker-src 'self' blob:; manifest-src 'self'"

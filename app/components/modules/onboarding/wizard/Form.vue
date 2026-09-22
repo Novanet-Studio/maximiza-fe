@@ -89,13 +89,23 @@
     // is reported by the debounced watcher below.
     if (completingStep === 0 && wizard.state.value.trackingData) {
       try {
-        const { name, email, phone, advisorId } = wizard.state.value.trackingData
+        const { name, email, phone, advisorId, acceptedTerms, policyVersion } =
+          wizard.state.value.trackingData
         const res = await $fetch<{ data: { id: number; token: string } }>(
           `${trackingApiUrl}/api/tracking/session`,
           {
             method: 'POST',
             headers: NGROK_HEADERS,
-            body: { name, email, phone, personType: props.type, advisorId: advisorId ?? undefined },
+            body: {
+              name,
+              email,
+              phone,
+              personType: props.type,
+              advisorId: advisorId ?? undefined,
+              // The backend rejects a session without acceptance, so this is not optional.
+              acceptedTerms,
+              policyVersion,
+            },
           }
         )
         wizard.setSessionId(res.data.id, res.data.token)

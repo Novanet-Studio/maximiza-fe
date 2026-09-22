@@ -2,6 +2,9 @@
   import { ref, onMounted, onUnmounted } from 'vue'
   import { metadata } from '@/assets/data/metadata'
   import { useJsonLd } from '~/composables/useJsonLd'
+  // Shared with the consent record the wizard writes, so the date shown here and the version
+  // stored against a person's consent cannot drift apart.
+  import { PRIVACY_POLICY_DISPLAY } from '~/lib/legal'
   import { jsonld } from '~/assets/data/jsonld'
   import { motion } from 'motion-v'
   import { generalContainerVariants, generalItemVariants } from '~/assets/animations/motion'
@@ -337,7 +340,9 @@
                 tecnológicas de Meta. Dichas modificaciones serán notificadas de forma oportuna a
                 través de la Plataforma o con el envío de un boletín transaccional en el Chatbot.
               </p>
-              <p class="text-gray-alt mt-4 text-xs">Última actualización: 7 de Agosto de 2026.</p>
+              <p class="text-gray-alt mt-4 text-xs">
+                Última actualización: {{ PRIVACY_POLICY_DISPLAY }}.
+              </p>
             </div>
           </motion.div>
         </motion.div>

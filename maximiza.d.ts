@@ -70,7 +70,16 @@ declare namespace MXMZ {
         // cada reporte de progreso: sin el, el id secuencial por si solo permitia alterar la
         // sesion de cualquier otro solicitante.
         sessionToken: string | null;
-        trackingData: { name: string; email: string; phone: string; advisorId?: number | null } | null;
+        trackingData: {
+          name: string;
+          email: string;
+          phone: string;
+          advisorId?: number | null;
+          // Consent captured on step 0, forwarded with the tracking session so it is recorded
+          // server-side rather than living only in the browser.
+          acceptedTerms: boolean;
+          policyVersion: string;
+        } | null;
     }
 
     interface InstitutionData {

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import { PRIVACY_POLICY_VERSION } from '~/lib/legal'
+
   import { onMounted, ref } from 'vue'
   import { useForm } from 'vee-validate'
   import * as yup from 'yup'
@@ -74,6 +76,10 @@
       email: values.email,
       phone: values.phone,
       advisorId: values.advisorId ? Number(values.advisorId) : null,
+      // The acceptance used to stay in the browser; it now travels with the session so there
+      // is a server-side record of who consented, when, and to which version of the notice.
+      acceptedTerms: values.accept === true,
+      policyVersion: PRIVACY_POLICY_VERSION,
     })
     wizard.nextStep()
   })

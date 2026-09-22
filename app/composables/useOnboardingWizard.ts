@@ -90,6 +90,8 @@ export const useOnboardingWizard = () => {
     email: string
     phone: string
     advisorId?: number | null
+    acceptedTerms: boolean
+    policyVersion: string
   }) => {
     state.value.trackingData = data
   }
