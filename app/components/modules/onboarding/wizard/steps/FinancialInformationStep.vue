@@ -15,7 +15,7 @@
     economicActivityOptions,
     relatedWithPepOptions,
     docTypeOptions,
-    PHONE_REGEX,
+    FREE_PHONE_REGEX,
   } from '~/assets/data/formSources'
 
   const wizard = useOnboardingWizard()
@@ -48,7 +48,7 @@
           address: yup.string().optional(),
           phone: yup
             .string()
-            .matches(PHONE_REGEX, {
+            .matches(FREE_PHONE_REGEX, {
               message: 'Teléfono inválido',
               excludeEmptyString: true,
             })
@@ -74,7 +74,7 @@
           branch: yup.string().required('Requerido'),
           phone: yup
             .string()
-            .matches(PHONE_REGEX, {
+            .matches(FREE_PHONE_REGEX, {
               message: 'Teléfono inválido',
               excludeEmptyString: true,
             })
@@ -670,6 +670,7 @@
             <FormPhoneInput
               name="company.phone"
               label="Teléfono"
+              free-prefix
               v-model="companyPhone"
               :error-message="errors['company.phone']"
             />
@@ -741,6 +742,7 @@
             <FormPhoneInput
               name="business.phone"
               label="Teléfono"
+              free-prefix
               v-model="businessPhone"
               :error-message="errors['business.phone']"
             />

@@ -10,7 +10,6 @@
   }>()
 
   const handleStepClick = (index: number) => {
-    // Only allow navigation to visited steps
     if (index <= props.maxStepReached) {
       emit('goToStep', index)
     }
@@ -23,7 +22,6 @@
 
 <template>
   <div id="formStepper" class="mx-auto w-full px-2 md:px-4">
-    <!-- MOBILE VIEW -->
     <div class="mb-6 md:hidden">
       <p class="text-primary mb-2 text-sm font-bold uppercase">
         Paso {{ currentStep + 1 }} de {{ steps.length }}
@@ -39,7 +37,6 @@
       </div>
     </div>
 
-    <!-- DESKTOP VIEW -->
     <div class="relative mb-8 hidden w-full items-center justify-between py-4 md:flex">
       <div class="bg-gray absolute top-1/2 left-0 z-10 h-[1px] w-full -translate-y-1/2 transform" />
 
@@ -56,7 +53,6 @@
             isStepClickable(index) ? 'cursor-pointer hover:opacity-90' : 'cursor-not-allowed',
           ]"
         >
-          <!-- Number Box -->
           <div
             class="flex items-center justify-center px-4 font-black transition-colors duration-500"
             :class="
@@ -68,7 +64,6 @@
             {{ String(index + 1).padStart(2, '0') }}
           </div>
 
-          <!-- Label Box -->
           <div
             class="flex items-center overflow-hidden transition-all duration-500 ease-in-out"
             :class="[

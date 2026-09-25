@@ -242,7 +242,7 @@
     width: 150px;
   }
 
-  /* Utilidad para evitar que las fichas se corten al imprimir */
+  /* Keeps cards from being split across printed pages */
   .break-inside-avoid {
     break-inside: avoid;
     page-break-inside: avoid;

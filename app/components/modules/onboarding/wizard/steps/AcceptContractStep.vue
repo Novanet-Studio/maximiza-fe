@@ -1,18 +1,51 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { PRIVACY_POLICY_VERSION } from '~/lib/legal'
+
+  import { onMounted, ref } from 'vue'
   import { useForm } from 'vee-validate'
   import * as yup from 'yup'
   import { useOnboardingWizard } from '~/composables/useOnboardingWizard'
   import { PHONE_REGEX } from '~/assets/data/formSources'
+  import { NGROK_HEADERS } from '~/lib/tracking'
 
   const wizard = useOnboardingWizard()
+  const trackingApiUrl = useRuntimeConfig().public.trackingApiUrl
 
   const showContract = ref(false)
+
+  // Empty string means "no preference"; advisorId is optional and never blocks the form.
+  const NO_PREFERENCE = ''
+
+  const advisorOptions = ref<{ value: string | number; label: string }[]>([
+    { value: NO_PREFERENCE, label: 'Sin preferencia' },
+  ])
+  // Hidden by default; only shown once the advisor list loads successfully. The
+  // preselection is an optional convenience, never a requirement to continue.
+  const showAdvisorSelect = ref(false)
+
+  onMounted(async () => {
+    try {
+      const res = await $fetch<{ data: { id: number; name: string }[] }>(
+        `${trackingApiUrl}/api/tracking/advisors`,
+        { headers: NGROK_HEADERS }
+      )
+      advisorOptions.value = [
+        { value: NO_PREFERENCE, label: 'Sin preferencia' },
+        ...res.data.map((advisor) => ({ value: advisor.id, label: advisor.name })),
+      ]
+      showAdvisorSelect.value = true
+    } catch {
+      // Advisor list is a nice-to-have: if the backend is down or unreachable,
+      // hide the selector and keep the wizard working exactly as before.
+      showAdvisorSelect.value = false
+    }
+  })
 
   const schema = yup.object({
     name: yup.string().required('Requerido'),
     email: yup.string().email('Email inválido').required('Requerido'),
     phone: yup.string().required('Requerido').matches(PHONE_REGEX, 'Teléfono inválido'),
+    advisorId: yup.string().optional(),
     accept: yup
       .boolean()
       .required('Debes aceptar para poder continuar')
@@ -26,6 +59,7 @@
       name: wizard.state.value.trackingData?.name ?? '',
       email: wizard.state.value.trackingData?.email ?? '',
       phone: wizard.state.value.trackingData?.phone ?? '',
+      advisorId: wizard.state.value.trackingData?.advisorId ?? NO_PREFERENCE,
     },
   })
 
@@ -33,6 +67,7 @@
   const [name] = defineField('name')
   const [email] = defineField('email')
   const [phone] = defineField('phone')
+  const [advisorId] = defineField('advisorId')
 
   const validate = handleSubmit((values) => {
     wizard.updateFormData({ accepted: values.accept || false })
@@ -40,6 +75,11 @@
       name: values.name,
       email: values.email,
       phone: values.phone,
+      advisorId: values.advisorId ? Number(values.advisorId) : null,
+      // The acceptance used to stay in the browser; it now travels with the session so there
+      // is a server-side record of who consented, when, and to which version of the notice.
+      acceptedTerms: values.accept === true,
+      policyVersion: PRIVACY_POLICY_VERSION,
     })
     wizard.nextStep()
   })
@@ -75,6 +115,14 @@
         v-model="phone"
         :error-message="errors.phone"
         required
+      />
+      <FormBaseSelect
+        v-if="showAdvisorSelect"
+        name="advisorId"
+        label="Ejecutivo de tu preferencia"
+        v-model="advisorId"
+        :options="advisorOptions"
+        :error-message="errors.advisorId"
       />
     </FormBaseLayout>
 

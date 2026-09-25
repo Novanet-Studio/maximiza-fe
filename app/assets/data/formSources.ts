@@ -18,8 +18,11 @@ export const phoneOperatorOptions: FormOption[] = [
   { value: '(+58)426', label: '(+58)426' },
 ]
 
-// operadora = 8 chars fijos: "(+58)" (5) + 3 dígitos; cuerpo = 7 dígitos
+// Carrier prefix is a fixed 8 chars: "(+58)" plus 3 digits; subscriber number is 7 digits.
 export const PHONE_REGEX = /^\(\+58\)(412|414|416|422|424|426)[0-9]{7}$/
+
+// Free prefix typed by the user (landline area code, "(+58)212", etc.) plus the 7-digit number.
+export const FREE_PHONE_REGEX = /^[0-9()+]{2,8}[0-9]{7}$/
 
 export const docTypeOptions = [
   { value: 'J', label: 'J' },

@@ -2,6 +2,7 @@
   import { motion } from 'motion-v'
   import { ref } from 'vue'
   import { generalContainerVariants, generalItemVariants } from '~/assets/animations/motion'
+  import { NGROK_HEADERS } from '~/lib/tracking'
 
   const form = ref({
     'bot-field': '',
@@ -82,7 +83,7 @@
 
       const response = await fetch('/', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded', ...NGROK_HEADERS },
         body: formData,
       })
 

@@ -66,7 +66,20 @@ declare namespace MXMZ {
         type: OnboardingType | null;
         formData: Partial<MXMZ.OnboardingWizardResult>;
         sessionId: number | null;
-        trackingData: { name: string; email: string; phone: string } | null;
+        // Secreto que devuelve POST /api/tracking/session junto al id. El backend lo exige en
+        // cada reporte de progreso: sin el, el id secuencial por si solo permitia alterar la
+        // sesion de cualquier otro solicitante.
+        sessionToken: string | null;
+        trackingData: {
+          name: string;
+          email: string;
+          phone: string;
+          advisorId?: number | null;
+          // Consent captured on step 0, forwarded with the tracking session so it is recorded
+          // server-side rather than living only in the browser.
+          acceptedTerms: boolean;
+          policyVersion: string;
+        } | null;
     }
 
     interface InstitutionData {

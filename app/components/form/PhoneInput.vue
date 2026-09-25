@@ -13,6 +13,8 @@
     errorMessage?: string
     required?: boolean
     disabled?: boolean
+    // Free-text prefix instead of the mobile carrier dropdown (landlines, other area codes).
+    freePrefix?: boolean
   }
 
   const props = withDefaults(defineProps<Props>(), {
@@ -21,9 +23,16 @@
 
   const emit = defineEmits(['update:modelValue'])
 
-  const OPERATOR_LEN = 8 // "(+58)" (5) + 3 dígitos
+  const OPERATOR_LEN = 8 // "(+58)" plus the 3-digit carrier code
+  const BODY_LEN = 7
 
   const parse = (value: string) => {
+    // A free prefix has no fixed length, but the subscriber number is always 7 digits.
+    if (props.freePrefix) {
+      return value.length > BODY_LEN
+        ? { op: value.slice(0, -BODY_LEN), body: value.slice(-BODY_LEN) }
+        : { op: '', body: value }
+    }
     const prefix = value.slice(0, OPERATOR_LEN)
     const valid = phoneOperatorOptions.some((o) => o.value === prefix)
     return { op: valid ? prefix : '', body: valid ? value.slice(OPERATOR_LEN) : '' }
@@ -34,12 +43,12 @@
   const body = ref(initial.body)
 
   const emitCombined = () => {
-    // ponytail: la operadora vive en estado local, no en el modelValue combinado;
-    // si el cuerpo está vacío emitimos '' para que los campos opcionales queden vacíos.
+    // The carrier prefix is local state, never part of the combined modelValue: with an
+    // empty subscriber number we emit '' so optional fields stay empty instead of prefix-only.
     emit('update:modelValue', body.value ? `${operator.value}${body.value}` : '')
   }
 
-  // Re-hidratar cuando el valor cambia desde afuera (reset / volver a un paso).
+  // Re-hydrate when modelValue changes from outside (form reset, navigating back to a step).
   watch(
     () => props.modelValue,
     (value) => {
@@ -55,8 +64,15 @@
     emitCombined()
   }
 
+  const onPrefix = (value: string | number) => {
+    operator.value = String(value)
+      .replace(/[^0-9()+]/g, '')
+      .slice(0, OPERATOR_LEN)
+    emitCombined()
+  }
+
   const onBody = (value: string | number) => {
-    body.value = String(value).replace(/\D/g, '').slice(0, 7)
+    body.value = String(value).replace(/\D/g, '').slice(0, BODY_LEN)
     emitCombined()
   }
 </script>
@@ -67,7 +83,19 @@
 
     <div class="flex gap-1">
       <div class="w-24 shrink-0">
+        <BaseInput
+          v-if="freePrefix"
+          :name="`${name}Operator`"
+          :model-value="operator"
+          type="tel"
+          inputmode="tel"
+          :maxlength="OPERATOR_LEN"
+          placeholder="0212"
+          :disabled="disabled"
+          @update:model-value="onPrefix"
+        />
         <BaseSelect
+          v-else
           :name="`${name}Operator`"
           :model-value="operator"
           :options="phoneOperatorOptions"

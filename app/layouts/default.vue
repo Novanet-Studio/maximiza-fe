@@ -8,7 +8,6 @@
 
     <AppFooter />
 
-    <!-- WhatsApp Floating Button -->
     <a
       href="https://wa.me/584228539447"
       target="_blank"

@@ -2,6 +2,9 @@
   import { ref, onMounted, onUnmounted } from 'vue'
   import { metadata } from '@/assets/data/metadata'
   import { useJsonLd } from '~/composables/useJsonLd'
+  // Shared with the consent record the wizard writes, so the date shown here and the version
+  // stored against a person's consent cannot drift apart.
+  import { PRIVACY_POLICY_DISPLAY } from '~/lib/legal'
   import { jsonld } from '~/assets/data/jsonld'
   import { motion } from 'motion-v'
   import { generalContainerVariants, generalItemVariants } from '~/assets/animations/motion'
@@ -22,7 +25,7 @@
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id)
     if (element) {
-      const yOffset = -120 // accounting for sticky header
+      const yOffset = -120 // offset for the sticky header
       const y = element.getBoundingClientRect().top + window.scrollY + yOffset
       window.scrollTo({ top: y, behavior: 'smooth' })
       activeSection.value = id
@@ -62,7 +65,6 @@
 
 <template>
   <div class="flex h-auto w-full flex-col bg-white">
-    <!-- Hero Banner -->
     <CommonHero
       title="Política de Privacidad"
       description="En Maximiza Casa de Bolsa garantizamos el tratamiento lícito, confidencial y extremadamente seguro de la información personal de nuestros clientes y prospectos."
@@ -75,10 +77,8 @@
       }"
     />
 
-    <!-- Main Content Section -->
     <section class="container mx-auto px-4 py-16 md:px-0">
       <div class="flex flex-col gap-12 md:flex-row">
-        <!-- Sticky Sidebar Navigation for Desktop -->
         <aside class="hidden md:block md:w-1/4">
           <div class="border-white-alt2 sticky top-[15vh] flex flex-col gap-3 border-l pl-4">
             <p class="text-primary mb-2 text-xs font-bold tracking-wider uppercase">
@@ -101,7 +101,6 @@
           </div>
         </aside>
 
-        <!-- Rich Text Legal Content -->
         <motion.div
           class="flex w-full flex-col gap-12 md:w-3/4"
           :variants="generalContainerVariants"
@@ -109,7 +108,6 @@
           whileInView="visible"
           :viewport="{ once: true, margin: '-50px' }"
         >
-          <!-- Section 1: Compromiso de Privacidad -->
           <motion.div :variants="generalItemVariants" id="compromiso" class="scroll-mt-32">
             <h2 class="text-black-alt border-white-alt2 mb-4 flex items-center gap-3 border-b pb-3">
               <span class="text-primary font-serif">1.</span>
@@ -135,7 +133,6 @@
             </div>
           </motion.div>
 
-          <!-- Section 2: Datos que Recopilamos -->
           <motion.div :variants="generalItemVariants" id="datos" class="scroll-mt-32">
             <h2 class="text-black-alt border-white-alt2 mb-4 flex items-center gap-3 border-b pb-3">
               <span class="text-primary font-serif">2.</span>
@@ -172,7 +169,6 @@
             </div>
           </motion.div>
 
-          <!-- Section 3: Finalidad del Tratamiento -->
           <motion.div :variants="generalItemVariants" id="finalidad" class="scroll-mt-32">
             <h2 class="text-black-alt border-white-alt2 mb-4 flex items-center gap-3 border-b pb-3">
               <span class="text-primary font-serif">3.</span>
@@ -209,7 +205,6 @@
             </div>
           </motion.div>
 
-          <!-- Section 4: Canal de WhatsApp -->
           <motion.div :variants="generalItemVariants" id="chatbot" class="scroll-mt-32">
             <h2 class="text-black-alt border-white-alt2 mb-4 flex items-center gap-3 border-b pb-3">
               <span class="text-primary font-serif">4.</span>
@@ -257,7 +252,6 @@
             </div>
           </motion.div>
 
-          <!-- Section 5: Protección de Datos -->
           <motion.div :variants="generalItemVariants" id="seguridad" class="scroll-mt-32">
             <h2 class="text-black-alt border-white-alt2 mb-4 flex items-center gap-3 border-b pb-3">
               <span class="text-primary font-serif">5.</span>
@@ -288,7 +282,6 @@
             </div>
           </motion.div>
 
-          <!-- Section 6: Derechos del Usuario -->
           <motion.div :variants="generalItemVariants" id="derechos" class="scroll-mt-32">
             <h2 class="text-black-alt border-white-alt2 mb-4 flex items-center gap-3 border-b pb-3">
               <span class="text-primary font-serif">6.</span>
@@ -321,7 +314,6 @@
             </div>
           </motion.div>
 
-          <!-- Section 7: Soporte y Consultas -->
           <motion.div :variants="generalItemVariants" id="contacto" class="scroll-mt-32">
             <h2 class="text-black-alt border-white-alt2 mb-4 flex items-center gap-3 border-b pb-3">
               <span class="text-primary font-serif">7.</span>
@@ -354,7 +346,9 @@
                   <p class="m-0"><strong>Dirección Física:</strong> {{ commonData.address }}</p>
                 </div>
               </div>
-              <p class="text-gray-alt mt-4 text-xs">Última actualización: 7 de Agosto de 2026.</p>
+              <p class="text-gray-alt mt-4 text-xs">
+                Última actualización: {{ PRIVACY_POLICY_DISPLAY }}.
+              </p>
             </div>
           </motion.div>
         </motion.div>

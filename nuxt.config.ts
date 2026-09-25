@@ -20,13 +20,13 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
+    kairos: {
+      url: process.env.KAIROS_API_URL || 'http://localhost:3000',
+      apiKey: process.env.KAIROS_API_KEY || '',
+    },
     public: {
       trackingApiUrl: process.env.TRACKING_API_URL ?? 'http://localhost:3001',
       publicMetricoolHash: process.env.PUBLIC_METRICOOL_HASH,
-      kairos: {
-        url: process.env.KAIROS_API_URL || "http://localhost:3000",
-        apiKey: process.env.KAIROS_API_KEY || "",
-      },
     },
   },
 
@@ -56,18 +56,24 @@ export default defineNuxtConfig({
     port: 3014,
   },
 
+  // El emulador de Netlify solo corre en dev. Su servidor de Edge Functions arranca Deno con
+  // `deno eval --allow-scripts`, un flag que Deno 2.9 ya no acepta: el servidor nunca levanta y
+  // Nuxt entra en bucle de reinicio. Este sitio no tiene edge functions propias
+  // (no existe netlify/edge-functions/), así que se apaga esa pieza y el resto del emulador
+  // —variables de entorno, redirects, functions— sigue funcionando.
+  netlify: {
+    edgeFunctions: { enabled: false },
+  },
+
   nitro: {
     prerender: {
-      routes: ["/static/contact-form.html"],
+      routes: ['/static/contact-form.html'],
     },
     moduleSideEffects: ['@sparticuz/chromium'],
     externals: {
       inline: [],
-      external: ['@sparticuz/chromium', 'puppeteer-core']
+      external: ['@sparticuz/chromium', 'puppeteer-core'],
     },
-    routeRules: {
-      '/api/generate-pdf': { cors: true, headers: { 'Access-Control-Allow-Origin': '*' } }
-    }
   },
 
   robots: {

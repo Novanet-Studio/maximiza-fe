@@ -129,7 +129,6 @@
           </NuxtLink>
         </motion.div>
 
-        <!-- Desktop Menu -->
         <ul class="hidden items-center gap-4 lg:flex xl:gap-8">
           <motion.li
             as="li"
@@ -151,7 +150,6 @@
           </motion.li>
         </ul>
 
-        <!-- Desktop Buttons -->
         <motion.div class="hidden items-center space-x-2 lg:flex" :variants="headerItemVariants">
           <NuxtLink title="Registrarse" to="/registro">
             <UiButton :text="'Registrarse'" :icon="'user-plus'" size="sm" />
@@ -162,7 +160,6 @@
           </NuxtLink>
         </motion.div>
 
-        <!-- Mobile Header Toggle Button -->
         <div class="lg:hidden">
           <button
             @click="isMobileMenuOpen = !isMobileMenuOpen"
@@ -175,7 +172,6 @@
       </motion.nav>
     </div>
 
-    <!-- Mobile Menu Dropdown -->
     <AnimatePresence>
       <motion.div
         v-if="isMobileMenuOpen"
@@ -185,7 +181,6 @@
         :transition="{ duration: 0.3, ease: 'easeInOut', type: 'tween' }"
         class="border-white-alt2 absolute top-[10dvh] left-0 z-10 flex w-full flex-col border-t bg-white shadow-sm lg:hidden"
       >
-        <!-- Mobile Menu Links -->
         <div class="flex max-h-[calc(100vh-10dvh)] flex-1 flex-col overflow-y-auto px-6 py-6">
           <ul class="flex flex-col gap-6">
             <li v-for="item in navigationLinks" :key="item.label">
@@ -203,7 +198,6 @@
             </li>
           </ul>
 
-          <!-- Mobile Menu Buttons -->
           <div class="mt-8 flex w-fit items-center gap-3">
             <NuxtLink title="Registrarse" to="/registro" class="flex-1">
               <UiButton
