@@ -35,7 +35,9 @@ export default defineEventHandler(async (event) => {
 
   try {
     const response = await $fetch.raw(target.toString(), {
-      headers: { 'x-api-key': config.kairos.apiKey },
+      // Kairos solo acepta peticiones cuyo Origin sea el sitio de prod. Una llamada
+      // servidor-a-servidor no trae Origin, así que se envía explícitamente.
+      headers: { 'x-api-key': config.kairos.apiKey, origin: config.kairos.origin },
       query: getQuery(event),
       // Seguir una redirección reenviaría la clave al host de destino. Si el CMS empieza a
       // redirigir legítimamente, esto se verá como un 502 y habrá que resolverlo con una

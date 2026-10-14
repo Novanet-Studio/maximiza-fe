@@ -23,6 +23,7 @@ export default defineNuxtConfig({
     kairos: {
       url: process.env.KAIROS_API_URL || 'http://localhost:3000',
       apiKey: process.env.KAIROS_API_KEY || '',
+      origin: process.env.KAIROS_ORIGIN || 'https://maximiza.com.ve',
     },
     public: {
       trackingApiUrl: process.env.TRACKING_API_URL ?? 'http://localhost:3001',

@@ -202,6 +202,9 @@ same change, or it will break the moment the policy is enforced.
   tracking calls are retried fire-and-forget, never blocking the applicant.
 - `KAIROS_API_URL` / `KAIROS_API_KEY` — content CMS endpoint and key. **Server-side only**: they live
   in the private half of `runtimeConfig` and are read by the `/api/cms/**` proxy, never by the browser.
+- `KAIROS_ORIGIN` — `Origin` header the proxy sends to the CMS (default `https://maximiza.com.ve`).
+  Kairos rejects requests whose `Origin` is not the production site with a 403, and a server-to-server
+  call carries no `Origin` of its own, so the proxy sets it explicitly.
 - `PUBLIC_METRICOOL_HASH` — Metricool tracker hash; the script is injected empty when unset.
 
 ## Gotchas
