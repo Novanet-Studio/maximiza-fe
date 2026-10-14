@@ -1,23 +1,18 @@
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue'
   import { motion } from 'motion-v'
   import { generalContainerVariants } from '~/assets/animations/motion'
   import { useEnlaces } from '~/composables/useEnlaces'
 
   const { getAllEnlaces } = useEnlaces()
 
-  const enlaces = ref<MXMZ.Enlace[]>([])
-  const isLoading = ref(true)
-
-  onMounted(async () => {
-    try {
-      enlaces.value = await getAllEnlaces()
-    } catch (error) {
-      console.error('Error fetching enlaces:', error)
-    } finally {
-      isLoading.value = false
-    }
-  })
+  // Fetched during setup (SSR included) rather than onMounted, so the links grid is already
+  // in the server-rendered HTML — getAllEnlaces() already catches its own errors and degrades
+  // to an empty array, so no extra try/catch is needed here.
+  const { data: enlaces, pending: isLoading } = await useAsyncData(
+    'all-enlaces',
+    () => getAllEnlaces(),
+    { default: () => [] }
+  )
 </script>
 
 <template>

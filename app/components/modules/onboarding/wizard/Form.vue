@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+  import { computed, onBeforeUnmount, ref, watch } from 'vue'
   import { motion, AnimatePresence } from 'motion-v'
   import FormStepper from './FormStepper.vue'
 
@@ -144,11 +144,20 @@
     }
   })
 
-  onMounted(() => {
-    if (props.type) {
-      wizard.initWizard(props.type, currentStepsList.value.length)
-    }
-  })
+  // immediate: true runs this synchronously during setup (SSR included), so totalSteps is
+  // already correct in the server-rendered HTML — otherwise the "Siguiente" button, gated on
+  // currentStep < totalSteps - 1, is absent from the initial render (totalSteps defaults to 0)
+  // and pops in right after hydration. The watch (rather than a one-off call) also means
+  // switching person type via client-side navigation — [person].vue's route param changing
+  // without remounting this component — re-initializes the wizard instead of leaving stale
+  // state (and a stale step count) from the previous type.
+  watch(
+    () => props.type,
+    (type) => {
+      if (type) wizard.initWizard(type, currentStepsList.value.length)
+    },
+    { immediate: true }
+  )
 </script>
 
 <template>

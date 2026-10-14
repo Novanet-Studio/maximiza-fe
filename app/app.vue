@@ -5,6 +5,18 @@
 
 
   useJsonLd(jsonld.organization)
+
+  const route = useRoute()
+  const siteConfig = useSiteConfig()
+
+  useHead({
+    link: [
+      {
+        rel: 'canonical',
+        href: () => `${siteConfig.url}${route.path}`,
+      },
+    ],
+  })
 </script>
 
 <template>

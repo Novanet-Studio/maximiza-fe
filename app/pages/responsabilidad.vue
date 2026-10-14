@@ -104,16 +104,6 @@
       },
     },
     {
-      description: 'Demás circulares enmarcadas por la SUNAVAL',
-      button: {
-        link: '#',
-      },
-      image: {
-        url: '/images/pages/responsabilidad/links/maximiza-5.webp',
-        alt: 'link_5',
-      },
-    },
-    {
       description: 'Gaceta oficial normas relativas <br /> al buen gobierno corporativo',
       button: {
         link: 'https://res.cloudinary.com/novanet-studio/image/upload/v1663620767/maximiza/downloads/G.O_Normas_Relativas_al_buen_Gobierno_Corporativo_tgiqhy.pdf',

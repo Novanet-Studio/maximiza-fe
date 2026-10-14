@@ -4,7 +4,7 @@
   import { metadata } from '~/assets/data/metadata'
 
   const route = useRoute()
-  const personType = ref<string>('')
+  const personType = computed(() => String(route.params.person))
 
   const labels: Record<
     string,
@@ -42,20 +42,18 @@
     },
   }
 
-  onMounted(() => {
-    personType.value = String(route.params.person)
-
-    if (labels[personType.value]) {
-      useSeoMeta({
-        ...metadata.registro,
-        title: `Registro ${labels[personType.value]!.title} — Maximiza Casa de Bolsa`,
-        description: labels[personType.value]!.description,
-        ogTitle: `Registro ${labels[personType.value]!.title} — Maximiza Casa de Bolsa`,
-        ogDescription: labels[personType.value]!.description,
-      })
-    } else {
-      useSeoMeta(metadata.registro)
-    }
+  useSeoMeta({
+    ...metadata.registro,
+    title: () =>
+      labels[personType.value]
+        ? `Registro ${labels[personType.value]!.title} — Maximiza Casa de Bolsa`
+        : metadata.registro.title,
+    description: () => labels[personType.value]?.description || metadata.registro.description,
+    ogTitle: () =>
+      labels[personType.value]
+        ? `Registro ${labels[personType.value]!.title} — Maximiza Casa de Bolsa`
+        : metadata.registro.title,
+    ogDescription: () => labels[personType.value]?.description || metadata.registro.description,
   })
 </script>
 

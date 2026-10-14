@@ -1,23 +1,18 @@
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue'
   import { motion } from 'motion-v'
   import { generalContainerVariants } from '~/assets/animations/motion'
   import { useArticles } from '~/composables/useArticles'
 
   const { getAllArticles } = useArticles()
 
-  const articles = ref<MXMZ.Article[]>([])
-  const isLoading = ref(true)
-
-  onMounted(async () => {
-    try {
-      articles.value = await getAllArticles()
-    } catch (error) {
-      console.error('Error fetching articles:', error)
-    } finally {
-      isLoading.value = false
-    }
-  })
+  // Fetched during setup (SSR included) rather than onMounted, so the article grid is already
+  // in the server-rendered HTML — getAllArticles() already catches its own errors and degrades
+  // to an empty array, so no extra try/catch is needed here.
+  const { data: articles, pending: isLoading } = await useAsyncData(
+    'all-articles',
+    () => getAllArticles(),
+    { default: () => [] }
+  )
 </script>
 
 <template>

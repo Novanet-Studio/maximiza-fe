@@ -75,11 +75,37 @@ export default defineNuxtConfig({
       inline: [],
       external: ['@sparticuz/chromium', 'puppeteer-core'],
     },
+    // netlify.toml's [[headers]] block only lands on responses served straight from the
+    // Netlify CDN (static files). SSR pages are rendered by the Nitro Function, and Netlify
+    // does not merge that file's headers into a Function's response, so every HTML page was
+    // shipping without X-Frame-Options, Referrer-Policy, Permissions-Policy and the CSP.
+    // Setting them here makes the Nuxt server itself attach them, regardless of host.
+    // Keep this in sync with netlify.toml — same values, same reasoning (CSP stays
+    // Report-Only until the gaps noted there are closed).
+    routeRules: {
+      '/**': {
+        headers: {
+          'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
+          'X-Content-Type-Options': 'nosniff',
+          'X-Frame-Options': 'DENY',
+          'Referrer-Policy': 'strict-origin-when-cross-origin',
+          'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=(), usb=()',
+          'Content-Security-Policy-Report-Only':
+            "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://tracker.metricool.com https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https://res.cloudinary.com https://www.google-analytics.com https://www.facebook.com; connect-src 'self' https://*.herokuapp.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://stats.g.doubleclick.net https://tracker.metricool.com https://connect.facebook.net https://www.facebook.com; frame-src https://www.google.com https://www.googletagmanager.com; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; worker-src 'self' blob:; manifest-src 'self'",
+        },
+      },
+    },
   },
 
   robots: {
     sitemap: 'https://maximiza.com.ve/sitemap.xml',
     disallow: ['/api/'],
+  },
+
+  // @nuxtjs/sitemap only auto-discovers static file-based routes. /registro/[person] and
+  // /blog/[slug] are dynamic, so their URLs come from server/api/__sitemap__/urls.get.ts instead.
+  sitemap: {
+    sources: ['/api/__sitemap__/urls'],
   },
 
   app: {

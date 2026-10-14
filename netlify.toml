@@ -6,6 +6,102 @@
   external_node_modules = ["@sparticuz/chromium", "puppeteer-core"]
   node_bundler = "esbuild"
 
+# The old Gatsby blog served every article with a trailing slash (/blog/<slug>/); the new
+# blog drops it (/blog/<slug>). Confirmed the 10 old article slugs are unchanged in the new
+# Kairos CMS, so a single splat rule covers all of them instead of listing each one.
+[[redirects]]
+  from = "/blog/:slug/"
+  to = "/blog/:slug"
+  status = 301
+
+# 301s for pages dropped from the old Gatsby site's IA. Each old path is listed with and
+# without its trailing slash, since the old site served everything with one and an inbound
+# link may or may not include it.
+[[redirects]]
+  from = "/directiva/"
+  to = "/empresa"
+  status = 301
+
+[[redirects]]
+  from = "/directiva"
+  to = "/empresa"
+  status = 301
+
+[[redirects]]
+  from = "/cumplimiento/"
+  to = "/responsabilidad"
+  status = 301
+
+[[redirects]]
+  from = "/cumplimiento"
+  to = "/responsabilidad"
+  status = 301
+
+[[redirects]]
+  from = "/capital/"
+  to = "/responsabilidad"
+  status = 301
+
+[[redirects]]
+  from = "/capital"
+  to = "/responsabilidad"
+  status = 301
+
+[[redirects]]
+  from = "/sugerencias/"
+  to = "/contacto"
+  status = 301
+
+[[redirects]]
+  from = "/sugerencias"
+  to = "/contacto"
+  status = 301
+
+# No equivalent content exists in the new IA for these two — 301 to the homepage rather than
+# leaving them as dead links or redirecting to an unrelated page.
+[[redirects]]
+  from = "/educacion/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/educacion"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/medios/"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/medios"
+  to = "/"
+  status = 301
+
+# Old account-opening form.
+[[redirects]]
+  from = "/planilla/"
+  to = "/registro"
+  status = 301
+
+[[redirects]]
+  from = "/planilla"
+  to = "/registro"
+  status = 301
+
+# /servicios/registro-juridico/ rendered the persona-jurídica investor form specifically — the
+# onboarding wizard's legal-entity flow replaces it.
+[[redirects]]
+  from = "/servicios/registro-juridico/"
+  to = "/registro/persona-juridica"
+  status = 301
+
+[[redirects]]
+  from = "/servicios/registro-juridico"
+  to = "/registro/persona-juridica"
+  status = 301
+
 # Security headers. Everything here is enforced except the CSP, which ships as Report-Only on
 # purpose: the site has inline script and style that a strict policy would break right now —
 # the Metricool loader built in nuxt.config.ts, the JSON-LD from useJsonLd, the __NUXT__ payload
