@@ -73,12 +73,12 @@ export const jsonld = {
       '@id': `${commonData.baseUrl}/#organization`,
     },
   },
-  socialResponsibility: {
+  compliance: {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    '@id': `${commonData.baseUrl}/responsabilidad`,
-    url: `${commonData.baseUrl}/responsabilidad`,
-    name: 'Responsabilidad Social Corporativa - Maximiza',
+    '@id': `${commonData.baseUrl}/cumplimiento`,
+    url: `${commonData.baseUrl}/cumplimiento`,
+    name: 'Cumplimiento y Buen Gobierno Corporativo - Maximiza',
     publisher: {
       '@id': `${commonData.baseUrl}/#organization`,
     },

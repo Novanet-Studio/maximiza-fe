@@ -28,23 +28,23 @@
   status = 301
 
 [[redirects]]
-  from = "/cumplimiento/"
-  to = "/responsabilidad"
+  from = "/responsabilidad/"
+  to = "/cumplimiento"
   status = 301
 
 [[redirects]]
-  from = "/cumplimiento"
-  to = "/responsabilidad"
+  from = "/responsabilidad"
+  to = "/cumplimiento"
   status = 301
 
 [[redirects]]
   from = "/capital/"
-  to = "/responsabilidad"
+  to = "/cumplimiento"
   status = 301
 
 [[redirects]]
   from = "/capital"
-  to = "/responsabilidad"
+  to = "/cumplimiento"
   status = 301
 
 [[redirects]]

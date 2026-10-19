@@ -55,7 +55,7 @@ maximiza.d.ts       global MXMZ namespace of domain types (no imports needed)
 ```
 
 Routes: `/`, `/empresa`, `/servicios`, `/contacto`, `/blog` + `/blog/[slug]`, `/registro` +
-`/registro/[person]`, `/politica-de-privacidad`, `/terminos-y-condiciones`, `/responsabilidad`.
+`/registro/[person]`, `/politica-de-privacidad`, `/terminos-y-condiciones`, `/cumplimiento`.
 
 ### Types
 

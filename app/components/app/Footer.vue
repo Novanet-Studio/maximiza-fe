@@ -11,7 +11,7 @@
     { label: 'La empresa', to: '/empresa' },
     { label: 'Servicios', to: '/servicios' },
     { label: 'Blog', to: '/blog' },
-    { label: 'Responsabilidad social', to: '/responsabilidad' },
+    { label: 'Cumplimiento', to: '/cumplimiento' },
   ]
 
   const userLinks = [

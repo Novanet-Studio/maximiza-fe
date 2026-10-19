@@ -43,17 +43,17 @@ export const metadata: Record<string, any> = {
     twitterCard: 'summary_large_image',
     themeColor: '#00735f',
   },
-  responsabilidadSocial: {
-    title: 'Responsabilidad social y buen gobierno corporativo',
+  cumplimiento: {
+    title: 'Buen Gobierno Corporativo',
     description:
       'Combinamos el servicio social con estrictos controles de riesgo, asegurando un entorno de inversión seguro, ético y legal.',
-    ogTitle: 'Responsabilidad social y buen gobierno corporativo',
+    ogTitle: 'Buen Gobierno Corporativo',
     ogDescription:
       'Combinamos el servicio social con estrictos controles de riesgo, asegurando un entorno de inversión seguro, ético y legal.',
     ogImage: OG_IMAGE_BASE_URL(
       'v1773756061/maximiza/v5/openGraph/Responsabilidad_Social_vbzxso.png'
     ),
-    ogUrl: BASE_URL('responsabilidad'),
+    ogUrl: BASE_URL('cumplimiento'),
     ogType: 'website',
     twitterCard: 'summary_large_image',
     themeColor: '#00735f',

@@ -26,6 +26,10 @@
       to: '/blog',
     },
     {
+      label: 'Cumplimiento',
+      to: '/cumplimiento',
+    },
+    {
       label: 'Contacto',
       to: '/contacto',
     },
