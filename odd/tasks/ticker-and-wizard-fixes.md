@@ -12,7 +12,7 @@ Branch: feat/ticker-and-wizard-fixes · Delivery: ask-on-risk · Runner: none (T
 - T1 S4 RIF constant — inline — done — 801f9b8
 - T2 S3 phone area-code input — inline — done — 1971c30
 - T3 S2 Step 01 → Step 02 prefill — inline — done — c414a5d
-- T4 S1 ticker — inline — done — 168092a
+- T4 S1 ticker — inline — done — 0a90d8d
 
 ## Log
 - L1 (2026-10-19) User request: "maqueta la implementacion del componente descrito en @adicional-assigment-4.md (global en todas las paginas excepto las de /registro" + wizard corrections (Paso 01 consistencia, Paso 02 prefijo telefónico, RIF en planilla).
