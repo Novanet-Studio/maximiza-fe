@@ -79,7 +79,7 @@
     <section class="container mx-auto px-4 py-16 md:px-0">
       <div class="flex flex-col gap-12 md:flex-row">
         <aside class="hidden md:block md:w-1/4">
-          <div class="border-white-alt2 sticky top-[15vh] flex flex-col gap-3 border-l pl-4">
+          <div class="border-white-alt2 sticky top-[calc(15vh+var(--ticker-h,0px))] flex flex-col gap-3 border-l pl-4">
             <p class="text-primary mb-2 text-xs font-bold tracking-wider uppercase">
               Índice del Contrato
             </p>
@@ -107,7 +107,7 @@
           whileInView="visible"
           :viewport="{ once: true, margin: '-50px' }"
         >
-          <motion.div :variants="generalItemVariants" id="general" class="scroll-mt-32">
+          <motion.div :variants="generalItemVariants" id="general" class="scroll-mt-[calc(8rem+var(--ticker-h,0px))]">
             <h2 class="text-black-alt border-white-alt2 mb-4 flex items-center gap-3 border-b pb-3">
               <span class="text-primary font-serif">1.</span>
               Disposiciones Generales
@@ -134,7 +134,7 @@
             </div>
           </motion.div>
 
-          <motion.div :variants="generalItemVariants" id="corretaje" class="scroll-mt-32">
+          <motion.div :variants="generalItemVariants" id="corretaje" class="scroll-mt-[calc(8rem+var(--ticker-h,0px))]">
             <h2 class="text-black-alt border-white-alt2 mb-4 flex items-center gap-3 border-b pb-3">
               <span class="text-primary font-serif">2.</span>
               Contrato de Cuenta de Corretaje Bursátil
@@ -183,7 +183,7 @@
             </div>
           </motion.div>
 
-          <motion.div :variants="generalItemVariants" id="chatbot" class="scroll-mt-32">
+          <motion.div :variants="generalItemVariants" id="chatbot" class="scroll-mt-[calc(8rem+var(--ticker-h,0px))]">
             <h2 class="text-black-alt border-white-alt2 mb-4 flex items-center gap-3 border-b pb-3">
               <span class="text-primary font-serif">3.</span>
               WhatsApp Onboarding y Chatbot Informativo
@@ -233,7 +233,7 @@
             </div>
           </motion.div>
 
-          <motion.div :variants="generalItemVariants" id="usuarios" class="scroll-mt-32">
+          <motion.div :variants="generalItemVariants" id="usuarios" class="scroll-mt-[calc(8rem+var(--ticker-h,0px))]">
             <h2 class="text-black-alt border-white-alt2 mb-4 flex items-center gap-3 border-b pb-3">
               <span class="text-primary font-serif">4.</span>
               Obligaciones y Responsabilidades del Usuario
@@ -267,7 +267,7 @@
             </div>
           </motion.div>
 
-          <motion.div :variants="generalItemVariants" id="propiedad" class="scroll-mt-32">
+          <motion.div :variants="generalItemVariants" id="propiedad" class="scroll-mt-[calc(8rem+var(--ticker-h,0px))]">
             <h2 class="text-black-alt border-white-alt2 mb-4 flex items-center gap-3 border-b pb-3">
               <span class="text-primary font-serif">5.</span>
               Propiedad Intelectual e Industrial
@@ -292,7 +292,7 @@
             </div>
           </motion.div>
 
-          <motion.div :variants="generalItemVariants" id="limitacion" class="scroll-mt-32">
+          <motion.div :variants="generalItemVariants" id="limitacion" class="scroll-mt-[calc(8rem+var(--ticker-h,0px))]">
             <h2 class="text-black-alt border-white-alt2 mb-4 flex items-center gap-3 border-b pb-3">
               <span class="text-primary font-serif">6.</span>
               Exclusión y Limitación de Responsabilidad
@@ -317,7 +317,7 @@
             </div>
           </motion.div>
 
-          <motion.div :variants="generalItemVariants" id="ley" class="scroll-mt-32">
+          <motion.div :variants="generalItemVariants" id="ley" class="scroll-mt-[calc(8rem+var(--ticker-h,0px))]">
             <h2 class="text-black-alt border-white-alt2 mb-4 flex items-center gap-3 border-b pb-3">
               <span class="text-primary font-serif">7.</span>
               Jurisdicción, Modificaciones y Ley Aplicable

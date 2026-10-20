@@ -1,6 +1,18 @@
+<script setup lang="ts">
+  import { computed } from 'vue'
+  import { useRoute } from 'vue-router'
+
+  const route = useRoute()
+  // The market ticker shows on every page except the onboarding flow.
+  const showTicker = computed(() => !route.path.startsWith('/registro'))
+</script>
+
 <template>
-  <div class="flex min-h-dvh w-full flex-col">
-    <AppHeader />
+  <div
+    class="flex min-h-dvh w-full flex-col"
+    :style="{ '--ticker-h': showTicker ? '2.25rem' : '0px' }"
+  >
+    <AppHeader :show-ticker="showTicker" />
 
     <main class="flex w-full flex-1 flex-col transition-opacity duration-500">
       <slot />

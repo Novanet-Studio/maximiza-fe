@@ -78,3 +78,14 @@ export const formatAmount = (value: string | number | undefined | null): string 
     }).format(number) + ' Bs'
   )
 }
+
+export const formatNumber = (value: number, decimals = 2): string =>
+  new Intl.NumberFormat('es-VE', {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+    useGrouping: true,
+  }).format(value)
+
+// Signed percentage in local format, e.g. "+1,25%" / "-0,54%" / "0,00%".
+export const formatPercent = (value: number): string =>
+  `${value > 0 ? '+' : ''}${formatNumber(value, 2)}%`

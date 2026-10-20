@@ -27,7 +27,7 @@
 
 <template>
   <motion.section
-    class="mt-[10vh] w-full overflow-hidden"
+    class="mt-[calc(10vh+var(--ticker-h,0px))] w-full overflow-hidden"
     :style="{
       backgroundImage: `url(${props.pattern?.src})`,
       backgroundPosition: 'center',

@@ -80,7 +80,7 @@
     <section class="container mx-auto px-4 py-16 md:px-0">
       <div class="flex flex-col gap-12 md:flex-row">
         <aside class="hidden md:block md:w-1/4">
-          <div class="border-white-alt2 sticky top-[15vh] flex flex-col gap-3 border-l pl-4">
+          <div class="border-white-alt2 sticky top-[calc(15vh+var(--ticker-h,0px))] flex flex-col gap-3 border-l pl-4">
             <p class="text-primary mb-2 text-xs font-bold tracking-wider uppercase">
               Secciones de Privacidad
             </p>
@@ -108,7 +108,7 @@
           whileInView="visible"
           :viewport="{ once: true, margin: '-50px' }"
         >
-          <motion.div :variants="generalItemVariants" id="compromiso" class="scroll-mt-32">
+          <motion.div :variants="generalItemVariants" id="compromiso" class="scroll-mt-[calc(8rem+var(--ticker-h,0px))]">
             <h2 class="text-black-alt border-white-alt2 mb-4 flex items-center gap-3 border-b pb-3">
               <span class="text-primary font-serif">1.</span>
               Compromiso de Privacidad y Consentimiento
@@ -133,7 +133,7 @@
             </div>
           </motion.div>
 
-          <motion.div :variants="generalItemVariants" id="datos" class="scroll-mt-32">
+          <motion.div :variants="generalItemVariants" id="datos" class="scroll-mt-[calc(8rem+var(--ticker-h,0px))]">
             <h2 class="text-black-alt border-white-alt2 mb-4 flex items-center gap-3 border-b pb-3">
               <span class="text-primary font-serif">2.</span>
               Categorías de Datos Personales Recopilados
@@ -169,7 +169,7 @@
             </div>
           </motion.div>
 
-          <motion.div :variants="generalItemVariants" id="finalidad" class="scroll-mt-32">
+          <motion.div :variants="generalItemVariants" id="finalidad" class="scroll-mt-[calc(8rem+var(--ticker-h,0px))]">
             <h2 class="text-black-alt border-white-alt2 mb-4 flex items-center gap-3 border-b pb-3">
               <span class="text-primary font-serif">3.</span>
               Finalidad del Tratamiento de los Datos
@@ -205,7 +205,7 @@
             </div>
           </motion.div>
 
-          <motion.div :variants="generalItemVariants" id="chatbot" class="scroll-mt-32">
+          <motion.div :variants="generalItemVariants" id="chatbot" class="scroll-mt-[calc(8rem+var(--ticker-h,0px))]">
             <h2 class="text-black-alt border-white-alt2 mb-4 flex items-center gap-3 border-b pb-3">
               <span class="text-primary font-serif">4.</span>
               Tratamiento Especial de Datos en el Canal de WhatsApp
@@ -252,7 +252,7 @@
             </div>
           </motion.div>
 
-          <motion.div :variants="generalItemVariants" id="seguridad" class="scroll-mt-32">
+          <motion.div :variants="generalItemVariants" id="seguridad" class="scroll-mt-[calc(8rem+var(--ticker-h,0px))]">
             <h2 class="text-black-alt border-white-alt2 mb-4 flex items-center gap-3 border-b pb-3">
               <span class="text-primary font-serif">5.</span>
               Medidas de Seguridad y Custodia de Datos
@@ -282,7 +282,7 @@
             </div>
           </motion.div>
 
-          <motion.div :variants="generalItemVariants" id="derechos" class="scroll-mt-32">
+          <motion.div :variants="generalItemVariants" id="derechos" class="scroll-mt-[calc(8rem+var(--ticker-h,0px))]">
             <h2 class="text-black-alt border-white-alt2 mb-4 flex items-center gap-3 border-b pb-3">
               <span class="text-primary font-serif">6.</span>
               Derechos del Usuario (ARCO)
@@ -314,7 +314,7 @@
             </div>
           </motion.div>
 
-          <motion.div :variants="generalItemVariants" id="contacto" class="scroll-mt-32">
+          <motion.div :variants="generalItemVariants" id="contacto" class="scroll-mt-[calc(8rem+var(--ticker-h,0px))]">
             <h2 class="text-black-alt border-white-alt2 mb-4 flex items-center gap-3 border-b pb-3">
               <span class="text-primary font-serif">7.</span>
               Contacto del Oficial de Cumplimiento y Soporte
