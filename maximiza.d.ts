@@ -72,6 +72,9 @@ declare namespace MXMZ {
         sessionToken: string | null;
         trackingData: {
           name: string;
+          // Split name from step 0, kept to rehydrate it; the API only receives `name`.
+          firstName?: string;
+          lastName?: string;
           email: string;
           phone: string;
           advisorId?: number | null;

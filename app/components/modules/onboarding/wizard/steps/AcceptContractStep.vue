@@ -42,7 +42,8 @@
   })
 
   const schema = yup.object({
-    name: yup.string().required('Requerido'),
+    firstName: yup.string().required('Requerido'),
+    lastName: yup.string().required('Requerido'),
     email: yup.string().email('Email inválido').required('Requerido'),
     phone: yup
       .string()
@@ -59,7 +60,8 @@
     validationSchema: schema,
     initialValues: {
       accept: wizard.state.value.formData.accepted,
-      name: wizard.state.value.trackingData?.name ?? '',
+      firstName: wizard.state.value.trackingData?.firstName ?? '',
+      lastName: wizard.state.value.trackingData?.lastName ?? '',
       email: wizard.state.value.trackingData?.email ?? '',
       phone: wizard.state.value.trackingData?.phone ?? '',
       advisorId: wizard.state.value.trackingData?.advisorId ?? NO_PREFERENCE,
@@ -67,15 +69,31 @@
   })
 
   const [accept] = defineField('accept')
-  const [name] = defineField('name')
+  const [firstName] = defineField('firstName')
+  const [lastName] = defineField('lastName')
   const [email] = defineField('email')
   const [phone] = defineField('phone')
   const [advisorId] = defineField('advisorId')
 
   const validate = handleSubmit((values) => {
     wizard.updateFormData({ accepted: values.accept || false })
+    // Seed step 02 so the investor does not type the same data twice; it stays editable there.
+    if (wizard.state.value.type === 'persona-natural') {
+      wizard.updateFormData({
+        personalData: {
+          ...wizard.state.value.formData.personalData,
+          firstName: values.firstName,
+          lastName: values.lastName,
+          email: values.email,
+          phones: values.phone,
+        },
+      })
+    }
     wizard.setTrackingData({
-      name: values.name,
+      // The tracking API keeps a single full-name field.
+      name: `${values.firstName} ${values.lastName}`.trim(),
+      firstName: values.firstName,
+      lastName: values.lastName,
       email: values.email,
       phone: values.phone,
       advisorId: values.advisorId ? Number(values.advisorId) : null,
@@ -98,10 +116,17 @@
 
     <FormBaseLayout :style="'py-4'">
       <FormBaseInput
-        name="name"
-        label="Nombre completo"
-        v-model="name"
-        :error-message="errors.name"
+        name="firstName"
+        label="Nombres"
+        v-model="firstName"
+        :error-message="errors.firstName"
+        required
+      />
+      <FormBaseInput
+        name="lastName"
+        label="Apellidos"
+        v-model="lastName"
+        :error-message="errors.lastName"
         required
       />
       <FormBaseInput

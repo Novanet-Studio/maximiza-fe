@@ -87,6 +87,8 @@ export const useOnboardingWizard = () => {
 
   const setTrackingData = (data: {
     name: string
+    firstName?: string
+    lastName?: string
     email: string
     phone: string
     advisorId?: number | null
