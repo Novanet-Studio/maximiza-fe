@@ -16,11 +16,28 @@ export default defineEventHandler(async () => {
     // Kairos rejects a request whose Origin isn't the production site with a 403; a
     // server-to-server call carries none of its own, so it's set explicitly here too
     // (mirrors server/api/cms/[...path].get.ts).
-    const { data } = await $fetch<{ data: { slug: string }[] }>(target.toString(), {
-      headers: { 'x-api-key': config.kairos.apiKey, origin: config.kairos.origin },
-    })
+    type ArticlesPage = {
+      data: { slug: string }[]
+      pagination?: { totalPages?: number }
+    }
+    const fetchPage = (page: number) =>
+      $fetch<ArticlesPage>(target.toString(), {
+        headers: { 'x-api-key': config.kairos.apiKey, origin: config.kairos.origin },
+        query: { page },
+      })
 
-    articleSlugs = (data || []).map((item) => item.slug)
+    // Kairos paginates /articulos with a fixed page size, so every page has to be walked or the
+    // newest articles (which land on the last page) are left out. Capped like useArticles.ts.
+    const first = await fetchPage(1)
+    const totalPages = Math.min(first.pagination?.totalPages || 1, 20)
+    const rest = await Promise.allSettled(
+      Array.from({ length: totalPages - 1 }, (_, i) => fetchPage(i + 2))
+    )
+
+    articleSlugs = [
+      ...(first.data || []),
+      ...rest.flatMap((page) => (page.status === 'fulfilled' ? page.value.data || [] : [])),
+    ].map((item) => item.slug)
   } catch {
     // A CMS outage must not break sitemap generation; it just omits the articles for this run.
   }
