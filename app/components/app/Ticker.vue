@@ -17,7 +17,7 @@
 
 <template>
   <div
-    class="border-white-alt2 bg-white-alt text-black-alt flex h-9 w-full items-center border-t text-xs"
+    class="bg-black-alt text-white-alt flex h-9 w-full items-center border-t border-white/10 text-xs"
     title="Datos referenciales de la Bolsa de Valores de Caracas, no en tiempo real"
   >
     <span class="bg-primary flex h-full shrink-0 items-center px-3 font-semibold text-white">
@@ -29,14 +29,14 @@
       class="flex flex-1 gap-6 overflow-hidden px-4"
       aria-hidden="true"
     >
-      <span v-for="n in 6" :key="n" class="bg-white-alt2 h-3 w-32 shrink-0 animate-pulse rounded" />
+      <span v-for="n in 6" :key="n" class="h-3 w-32 shrink-0 animate-pulse rounded bg-white/10" />
     </div>
 
-    <p v-else-if="status === 'error'" class="text-gray px-4">
+    <p v-else-if="status === 'error'" class="text-white-alt/60 px-4">
       Cotizaciones no disponibles en este momento.
     </p>
 
-    <p v-else-if="!quotes.length" class="text-gray px-4">Sin cotizaciones para mostrar.</p>
+    <p v-else-if="!quotes.length" class="text-white-alt/60 px-4">Sin cotizaciones para mostrar.</p>
 
     <div
       v-else
@@ -59,10 +59,12 @@
           <li
             v-for="quote in quotes"
             :key="quote.symbol"
-            class="border-white-alt2 flex items-center gap-2 border-r px-4 whitespace-nowrap"
+            class="flex items-center gap-2 border-r border-white/10 px-4 whitespace-nowrap"
           >
             <span class="font-semibold">{{ quote.symbol }}</span>
-            <span class="text-gray" title="Volumen">{{ formatNumber(quote.volume, 0) }}</span>
+            <span class="text-white-alt/60" title="Volumen">{{
+              formatNumber(quote.volume, 0)
+            }}</span>
             <span>{{ formatNumber(quote.lastPrice, 2) }}</span>
             <span class="flex items-center gap-1" :class="TREND[quote.trend].class">
               <span :aria-label="TREND[quote.trend].label">{{ TREND[quote.trend].symbol }}</span>

@@ -59,7 +59,7 @@
 </script>
 
 <template>
-  <div class="relative mt-[calc(10vh+var(--ticker-h,0px))] flex min-h-dvh w-full flex-col bg-white pb-40">
+  <div class="relative mt-[10vh] flex min-h-dvh w-full flex-col bg-white pb-40">
     <div class="absolute inset-0 z-0 h-100">
       <img
         src="/images/pages/blog/maximiza-article-banner.webp"

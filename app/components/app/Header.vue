@@ -6,8 +6,6 @@
   import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
   import { faBars, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 
-  defineProps<{ showTicker?: boolean }>()
-
   const active = ref('Inicio')
   const route = useRoute()
   const isVisible = ref(true)
@@ -179,8 +177,6 @@
         </div>
       </motion.nav>
     </div>
-
-    <AppTicker v-if="showTicker" />
 
     <AnimatePresence>
       <motion.div
