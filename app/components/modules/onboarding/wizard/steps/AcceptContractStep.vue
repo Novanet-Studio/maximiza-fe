@@ -5,7 +5,7 @@
   import { useForm } from 'vee-validate'
   import * as yup from 'yup'
   import { useOnboardingWizard } from '~/composables/useOnboardingWizard'
-  import { PHONE_REGEX } from '~/assets/data/formSources'
+  import { AREA_PHONE_REGEX } from '~/assets/data/formSources'
   import { NGROK_HEADERS } from '~/lib/tracking'
 
   const wizard = useOnboardingWizard()
@@ -44,7 +44,10 @@
   const schema = yup.object({
     name: yup.string().required('Requerido'),
     email: yup.string().email('Email inválido').required('Requerido'),
-    phone: yup.string().required('Requerido').matches(PHONE_REGEX, 'Teléfono inválido'),
+    phone: yup
+      .string()
+      .required('Requerido')
+      .matches(AREA_PHONE_REGEX, 'Teléfono inválido (02XX o 04XX + 7 dígitos)'),
     advisorId: yup.string().optional(),
     accept: yup
       .boolean()
@@ -112,6 +115,7 @@
       <FormPhoneInput
         name="phone"
         label="Teléfono"
+        area-code
         v-model="phone"
         :error-message="errors.phone"
         required

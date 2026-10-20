@@ -15,6 +15,8 @@
     disabled?: boolean
     // Free-text prefix instead of the mobile carrier dropdown (landlines, other area codes).
     freePrefix?: boolean
+    // 4-digit numeric area code typed by the user: local "02XX" or mobile "04XX".
+    areaCode?: boolean
   }
 
   const props = withDefaults(defineProps<Props>(), {
@@ -24,9 +26,15 @@
   const emit = defineEmits(['update:modelValue'])
 
   const OPERATOR_LEN = 8 // "(+58)" plus the 3-digit carrier code
+  const AREA_CODE_LEN = 4 // "0212", "0412", ...
   const BODY_LEN = 7
 
   const parse = (value: string) => {
+    if (props.areaCode) {
+      return /^[0-9]+$/.test(value) && value.length > AREA_CODE_LEN
+        ? { op: value.slice(0, AREA_CODE_LEN), body: value.slice(AREA_CODE_LEN) }
+        : { op: '', body: '' }
+    }
     // A free prefix has no fixed length, but the subscriber number is always 7 digits.
     if (props.freePrefix) {
       return value.length > BODY_LEN
@@ -71,6 +79,11 @@
     emitCombined()
   }
 
+  const onAreaCode = (value: string | number) => {
+    operator.value = String(value).replace(/\D/g, '').slice(0, AREA_CODE_LEN)
+    emitCombined()
+  }
+
   const onBody = (value: string | number) => {
     body.value = String(value).replace(/\D/g, '').slice(0, BODY_LEN)
     emitCombined()
@@ -84,7 +97,18 @@
     <div class="flex gap-1">
       <div class="w-24 shrink-0">
         <BaseInput
-          v-if="freePrefix"
+          v-if="areaCode"
+          :name="`${name}Operator`"
+          :model-value="operator"
+          type="tel"
+          inputmode="numeric"
+          :maxlength="AREA_CODE_LEN"
+          placeholder="0412"
+          :disabled="disabled"
+          @update:model-value="onAreaCode"
+        />
+        <BaseInput
+          v-else-if="freePrefix"
           :name="`${name}Operator`"
           :model-value="operator"
           type="tel"
