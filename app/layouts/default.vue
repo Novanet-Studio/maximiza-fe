@@ -1,6 +1,7 @@
 <template>
-  <!-- The bottom padding reserves the fixed ticker's height so it never covers the footer. -->
-  <div class="flex min-h-dvh w-full flex-col pb-(--ticker-h) [--ticker-h:2.25rem]">
+  <!-- The bottom padding reserves the fixed ticker's height so it never covers the footer.
+       Ticker disabled for now: --ticker-h is 0; restore it to 2.25rem when re-enabling AppTicker. -->
+  <div class="flex min-h-dvh w-full flex-col pb-(--ticker-h) [--ticker-h:0px]">
     <AppHeader />
 
     <main class="flex w-full flex-1 flex-col transition-opacity duration-500">
@@ -9,7 +10,7 @@
 
     <AppFooter />
 
-    <AppTicker class="fixed inset-x-0 bottom-0 z-40" />
+    <!-- <AppTicker class="fixed inset-x-0 bottom-0 z-40" /> -->
 
     <a
       href="https://wa.me/584228539447"
