@@ -13,6 +13,7 @@
     occupationsOptions,
     booleanOptions,
     PHONE_REGEX,
+    AREA_PHONE_REGEX,
   } from '~/assets/data/formSources'
   import { minAgeDate } from '~/lib/utils'
 
@@ -48,7 +49,10 @@
     spouseIdentification: yup.string(),
 
     address: yup.string().required('Dirección requerida'),
-    phones: yup.string().required('Teléfono requerido').matches(PHONE_REGEX, 'Teléfono inválido'),
+    phones: yup
+      .string()
+      .required('Teléfono requerido')
+      .matches(AREA_PHONE_REGEX, 'Teléfono inválido (02XX o 04XX + 7 dígitos)'),
     email: yup.string().required('Correo requerido').email('Correo inválido'),
 
     hasLegalRepresentative: yup.string().required('Seleccione una opción'),
@@ -334,6 +338,7 @@
       <FormPhoneInput
         name="phones"
         label="Teléfono"
+        area-code
         v-model="phones"
         :error-message="errors.phones"
         required

@@ -21,6 +21,22 @@
 
   --color-warning: #ffb73a;
 
+  /* Market ticker trends: up (green), down (red), unchanged (blue). */
+  --color-up: #16a34a;
+  --color-down: #ec131e;
+  --color-flat: #2563eb;
+
+  --animate-ticker: ticker-scroll 40s linear infinite;
+
+  @keyframes ticker-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
   --breakpoint-xs: 25rem;
 
   --width-a4: 210mm;

@@ -24,7 +24,7 @@ export const useOnboardingWizard = () => {
           inverstorNumber: '',
 
           brokerageHouseName: 'Maximiza Casa de Bolsa, C.A.',
-          taxInformationRegistration: 'J-30025449-2',
+          taxInformationRegistration: 'J-30025492-5',
           address:
             'Av. Francisco de Miranda. Edificio Torre Europa. Piso 3. Ofic 3-B. Urb. Campo Alegre. Caracas',
         },
@@ -87,6 +87,8 @@ export const useOnboardingWizard = () => {
 
   const setTrackingData = (data: {
     name: string
+    firstName?: string
+    lastName?: string
     email: string
     phone: string
     advisorId?: number | null

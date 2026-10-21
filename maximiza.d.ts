@@ -11,6 +11,16 @@ declare module "@/assets/data/common.json" {
 }
 
 declare namespace MXMZ {
+    //> TICKER
+    // One security quote shown in the header ticker (see useMarketTicker).
+    export interface TickerQuote {
+        symbol: string;
+        volume: number;
+        lastPrice: number;
+        changePct: number;
+        trend: 'up' | 'down' | 'flat';
+    }
+
     //> COMMON
     export interface Response<T> {
         data: T
@@ -72,6 +82,9 @@ declare namespace MXMZ {
         sessionToken: string | null;
         trackingData: {
           name: string;
+          // Split name from step 0, kept to rehydrate it; the API only receives `name`.
+          firstName?: string;
+          lastName?: string;
           email: string;
           phone: string;
           advisorId?: number | null;

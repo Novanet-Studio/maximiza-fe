@@ -104,7 +104,7 @@
 <template>
   <header
     ref="headerRef"
-    class="fixed top-0 right-0 left-0 z-50 flex h-[10dvh] items-center bg-white transition-colors duration-300"
+    class="fixed top-0 right-0 left-0 z-50 flex flex-col bg-white transition-colors duration-300"
     :class="[isVisible ? 'translate-y-0' : '-translate-y-full']"
     style="
       transition-property:
@@ -113,7 +113,9 @@
       transition-duration: 300ms;
     "
   >
-    <div class="relative z-20 container mx-auto flex h-full items-center justify-between bg-white">
+    <div
+      class="relative z-20 container mx-auto flex h-[10dvh] items-center justify-between bg-white"
+    >
       <motion.nav
         class="flex w-full items-center justify-between"
         :variants="headerContainerVariants"

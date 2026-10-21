@@ -24,6 +24,9 @@ export const PHONE_REGEX = /^\(\+58\)(412|414|416|422|424|426)[0-9]{7}$/
 // Free prefix typed by the user (landline area code, "(+58)212", etc.) plus the 7-digit number.
 export const FREE_PHONE_REGEX = /^[0-9()+]{2,8}[0-9]{7}$/
 
+// 4-digit area code (local 02XX or mobile 04XX) plus the 7-digit number, e.g. "04121234567".
+export const AREA_PHONE_REGEX = /^0[24][0-9]{2}[0-9]{7}$/
+
 export const docTypeOptions = [
   { value: 'J', label: 'J' },
   { value: 'G', label: 'G' },
