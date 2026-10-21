@@ -32,31 +32,10 @@
     </CommonContentWithColumns>
 
     <div
-      class="container grid w-full translate-y-0 grid-cols-1 justify-items-center gap-12 md:grid-cols-3 md:justify-around md:gap-8 lg:gap-12 xl:gap-16"
+      class="container grid w-full translate-y-0 grid-cols-1 justify-items-center gap-12 md:grid-cols-2 md:gap-8 lg:gap-12 xl:gap-16"
     >
       <CommonContentCard
         subtitle="Paso 1:"
-        title="Onboardings de la CVV"
-        content="Realiza tu registro o actualización de datos en la Caja Venezolana de Valores (CVV) y descarga la lanilla firmada:"
-        :image="{
-          url: '/images/pages/registro/header/maximiza-1.webp',
-          alt: 'Onboardings_de_la_CVV',
-        }"
-        :styles="{
-          title: 'text-black-alt mb-4',
-          content: 'text-gray',
-          wrapper: `flex-1 p-6 md:p-4 lg:p-6 flex flex-col justify-start`,
-        }"
-        :button="{
-          label: 'Onboarding SITRAD',
-          link: 'https://www.cajavenezolana.com/sitradweb/login.php',
-          icon: 'hand-point-right',
-        }"
-        is-vertical
-      />
-
-      <CommonContentCard
-        subtitle="Paso 2:"
         title="Registro en Línea"
         content="Completa el formulario de registro digital. Nuestro sistema genera y completa automáticamente las siguientes planillas:"
         :image="{
@@ -66,8 +45,9 @@
         :styles="{
           title: 'text-black-alt mb-4',
           content: 'text-gray',
-          wrapper: `flex-1 p-6 md:p-4 lg:p-6 flex flex-col justify-start`,
+          wrapper: `flex-1 p-6 md:p-6 lg:p-8 flex flex-col justify-start`,
         }"
+        class="w-full [&_img]:h-48 [&_img]:w-full [&_img]:object-cover md:[&_img]:h-52 lg:[&_img]:h-60"
         is-vertical
       >
         <ul class="mt-4 flex flex-col">
@@ -93,7 +73,7 @@
           </li>
         </ul>
 
-        <div class="mt-auto pt-4">
+        <div class="mt-auto pt-6">
           <NuxtLink title="Comenzar registro" to="#registro-formulario">
             <UiButton text="Comenzar registro" icon="hand-point-right" />
           </NuxtLink>
@@ -101,7 +81,7 @@
       </CommonContentCard>
 
       <CommonContentCard
-        subtitle="Paso 3:"
+        subtitle="Paso 2:"
         title="Envío de Recaudos"
         content="Una vez cuentes con todas las planillas y los recaudos completos, envíalos por correo electrónico a:"
         :image="{
@@ -111,8 +91,9 @@
         :styles="{
           title: 'text-black-alt mb-4',
           content: 'text-gray',
-          wrapper: `flex-1 p-6 md:p-4 lg:p-6 flex flex-col justify-start`,
+          wrapper: `flex-1 p-6 md:p-6 lg:p-8 flex flex-col justify-start`,
         }"
+        class="w-full [&_img]:h-48 [&_img]:w-full [&_img]:object-cover md:[&_img]:h-52 lg:[&_img]:h-60"
         is-vertical
       >
         <div class="mt-4 flex items-center gap-2">
