@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { getLabel, occupationsOptions } from '~/assets/data/formSources'
+  import { getLabel, nationalityOptions, occupationsOptions } from '~/assets/data/formSources'
 
   import { MAXIMIZA_LOGO } from '~/assets/data/maximiza-logo'
 
@@ -17,6 +17,11 @@
   const enterprise = computed(() => props.data.enterpriseIdentification || ({} as any))
   const financial = computed(() => props.data.financialInformation || ({} as any))
   const institution = computed(() => props.data.institutionData || ({} as any))
+
+  // Lowercased to fit mid-sentence ("..., extranjero(a), mayor de edad"). An empty value prints
+  // a blank line to fill by hand instead of assuming a nationality.
+  const nationalityText = (value?: string) =>
+    getLabel(value, nationalityOptions).toLowerCase() || '________________'
 
   const dateParts = computed(() => {
     const dateStr = institution.value.productionDate
@@ -51,6 +56,7 @@
         {
           type: 'NATURAL',
           name: `${personal.value.firstName} ${personal.value.lastName}`,
+          nationality: nationalityText(personal.value.nationality),
           address: personal.value.address,
           id: personal.value.identification,
           profession: getLabel(personal.value.profession, occupationsOptions) || '________________',
@@ -64,6 +70,7 @@
           {
             type: 'JURIDICA',
             repName: '________________',
+            repNationality: '________________',
             repAddress: '________________',
             repId: '________________',
             companyName: enterprise.value.socialReason || '________________',
@@ -74,6 +81,7 @@
       return legalRepresentatives.map((holder: any) => ({
         type: 'JURIDICA',
         repName: holder.name || '________________',
+        repNationality: nationalityText(holder.nationality),
 
         repAddress: holder.address || '________________',
 
@@ -110,7 +118,7 @@
           <p>
             Quien suscribe
             <span class="border-b border-black px-1 font-bold">{{ doc.name }}</span
-            >, venezolano(a), mayor de edad, domiciliado(a) en
+            >, {{ doc.nationality }}, mayor de edad, domiciliado(a) en
             <span class="border-b border-black px-1 font-bold">{{ doc.address }}</span>
             y titular de la Cédula de Identidad N°
             <span class="border-b border-black px-1 font-bold">{{ doc.id }}</span
@@ -132,7 +140,7 @@
           <p>
             Quien suscribe
             <span class="border-b border-black px-1 font-bold">{{ doc.repName }}</span
-            >, venezolano(a), mayor de edad, domiciliado(a) en
+            >, {{ doc.repNationality }}, mayor de edad, domiciliado(a) en
             <span class="border-b border-black px-1 font-bold">{{ doc.repAddress }}</span>
             y titular de la Cédula de Identidad N°
             <span class="border-b border-black px-1 font-bold">{{ doc.repId }}</span
