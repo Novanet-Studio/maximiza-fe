@@ -58,10 +58,15 @@ export default defineEventHandler(async (event) => {
         headless: chromium.headless,
       })
     } else {
+      // CHROME_EXECUTABLE_PATH overrides the per-OS default. Linux has no standard install
+      // path, so it falls back to the bundled @sparticuz/chromium binary.
       const localExecutablePath =
-        process.platform === 'win32'
+        process.env.CHROME_EXECUTABLE_PATH ||
+        (process.platform === 'win32'
           ? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
-          : '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+          : process.platform === 'darwin'
+            ? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+            : await chromium.executablePath())
 
       browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
