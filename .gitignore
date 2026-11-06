@@ -24,7 +24,7 @@ logs
 !.env.example
 
 .agent
-bun.lock
+
 # Local Netlify folder
 .netlify
 
