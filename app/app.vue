@@ -2,8 +2,6 @@
   import { useJsonLd } from '~/composables/useJsonLd'
   import { jsonld } from '~/assets/data/jsonld'
 
-
-
   useJsonLd(jsonld.organization)
 
   const route = useRoute()
