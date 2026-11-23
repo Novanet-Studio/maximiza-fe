@@ -10,7 +10,7 @@
           name: 'José Carrillo',
           rol: 'Presidente',
           description:
-            'Abogado de la Universidad Católica Andrés Bello (1977). Corredor Público de Valores autorizado por la Superintendencia Nacional de Valores. Programa Mason (Harvard Kennedy School), MBA de Babson, LLM de Harvard Law y abogado de la UCAB. Co-fundador de Mibanco y de CNI Asesores Financieros.',
+            'Abogado de la Universidad Católica Andrés Bello (1977). Corredor Público de Valores autorizado por la Superintendencia Nacional de Valores. Programa Mason (Harvard Kennedy School), MBA de Babson, LLM de Harvard Law. Co-fundador de Mibanco y de CNI Asesores Financieros.',
         },
         {
           name: 'Vicente Carrillo',
